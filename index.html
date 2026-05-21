@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="小白学 AI 的个人作品集：AI 工具实验、内容系统建设、视觉设计。">
-  <title>小白学 AI · 小伟的工具系统实验室</title>
+  <title>小白学 AI · 工具系统实验室</title>
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -12,22 +12,22 @@
   <nav class="nav" aria-label="主导航">
     <a class="brand" href="#top">小白学 AI</a>
     <div>
+      <a href="#shipping">Now Shipping</a>
       <a href="#tracks">三条主线</a>
-      <a href="#projects">项目</a>
-      <a href="#path">路径</a>
-      <a href="https://github.com/siuserxiaowei">GitHub</a>
+      <a href="#projects">项目地图</a>
+      <a href="https://github.com/siuserxiaowei" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
   </nav>
 
   <main id="main">
     <header class="hero" id="top">
       <section class="hero-copy">
-        <p class="eyebrow">AI BEGINNER TO BUILDER</p>
+        <p class="eyebrow">BEGINNER TO BUILDER / PUBLIC LEARNING LAB</p>
         <h1>小白学 AI，也能搭出自己的工具系统。</h1>
-        <p class="lede">我把每天学到的 AI、自动化、内容整理和视觉设计，做成可运行的项目。这里记录一个普通人如何从使用工具，走到搭建工具。</p>
+        <p class="lede">我把每天学到的 AI、自动化、内容整理和视觉设计，做成可运行、可分享、可复用的项目。这里不是大神履历，而是一条普通人能看见过程的学习路径。</p>
         <div class="hero-actions">
-          <a class="primary" href="#projects">看作品</a>
-          <a href="https://github.com/siuserxiaowei/siuserxiaowei">Profile README</a>
+          <a class="primary" href="#shipping">看现在主推</a>
+          <a href="https://github.com/siuserxiaowei/siuserxiaowei" target="_blank" rel="noopener noreferrer">GitHub 主页</a>
         </div>
       </section>
       <figure class="hero-visual">
@@ -35,17 +35,52 @@
       </figure>
     </header>
 
-    <section class="ticker" aria-label="当前定位">
-      <span>AI 工具实验者</span>
-      <span>内容系统建设者</span>
-      <span>视觉设计学习者</span>
-      <span>普通人可复制的 AI 学习路径</span>
+    <section class="signal-row" aria-label="定位摘要">
+      <span><b>01</b> AI 工具实验</span>
+      <span><b>02</b> 内容系统建设</span>
+      <span><b>03</b> 视觉设计学习</span>
+      <span><b>Goal</b> 普通人可复制的 AI 路径</span>
+    </section>
+
+    <section class="shipping" id="shipping">
+      <div class="section-head">
+        <p>NOW SHIPPING</p>
+        <h2>现在最想让别人先看的三件事。</h2>
+      </div>
+      <div class="shipping-grid">
+        <article>
+          <p class="project-code">主推 / VISUAL SYSTEM</p>
+          <h3>visual-taste-lab</h3>
+          <p>把“让页面好看一点”拆成可执行的视觉身份审计、设计语言和页面验证流程。</p>
+          <div class="links">
+            <a href="https://github.com/siuserxiaowei/visual-taste-lab" target="_blank" rel="noopener noreferrer">Repo</a>
+            <a href="https://siuserxiaowei.github.io/visual-taste-lab/" target="_blank" rel="noopener noreferrer">Demo</a>
+          </div>
+        </article>
+        <article>
+          <p class="project-code">新完成 / ENGINEERING FRAMEWORK</p>
+          <h3>AI 时代的工程纪律</h3>
+          <p>把复杂度、Spec、测试、API 契约、Agent 和 Context Engineering 整理成三套阅读界面。</p>
+          <div class="links">
+            <a href="https://github.com/siuserxiaowei/ai-coding-knowledge-framework" target="_blank" rel="noopener noreferrer">Repo</a>
+            <a href="https://siuserxiaowei.github.io/ai-coding-knowledge-framework/" target="_blank" rel="noopener noreferrer">Demo</a>
+          </div>
+        </article>
+        <article>
+          <p class="project-code">长期线 / KNOWLEDGE BRIDGE</p>
+          <h3>wechat-to-obsidian</h3>
+          <p>把微信与 WeFlow 资料导入 Obsidian，让每天的信息变成能搜索、能引用的本地知识库。</p>
+          <div class="links">
+            <a href="https://github.com/siuserxiaowei/wechat-to-obsidian" target="_blank" rel="noopener noreferrer">Repo</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="tracks" id="tracks">
       <div class="section-head">
         <p>THREE TRACKS</p>
-        <h2>我不是只学概念，而是沿着三条线做出东西。</h2>
+        <h2>我不是只学概念，而是沿着三条线持续做出东西。</h2>
       </div>
       <div class="track-grid">
         <article>
@@ -71,52 +106,91 @@
 
     <section class="projects" id="projects">
       <div class="section-head">
-        <p>FEATURED BUILDS</p>
-        <h2>这些不是简历词条，是已经能打开的作品。</h2>
+        <p>PROJECT MAP</p>
+        <h2>项目按能力主线组织，不做散乱的仓库清单。</h2>
       </div>
-      <div class="project-list">
-        <article class="project">
-          <div class="project-code">VISUAL SYSTEM</div>
-          <h3>visual-taste-lab</h3>
-          <p>问题：AI 生成页面容易有模板味。做法：先审计视觉身份，再把颜色、排版、组件规则写成 Skill。</p>
-          <p class="learned">学到：好看不是随机换颜色，而是先建立视觉语言。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/visual-taste-lab">Repo</a><a href="https://siuserxiaowei.github.io/visual-taste-lab/">Demo</a></div>
-        </article>
-        <article class="project">
-          <div class="project-code">KNOWLEDGE PIPELINE</div>
-          <h3>wechat-to-obsidian</h3>
-          <p>问题：微信里的信息很快沉没。做法：把聊天记录、文件、链接导入 Obsidian，变成本地知识库。</p>
-          <p class="learned">学到：内容系统的核心是让资料可搜索、可引用、可复用。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/wechat-to-obsidian">Repo</a></div>
-        </article>
-        <article class="project">
-          <div class="project-code">ENGINEERING FRAMEWORK</div>
-          <h3>AI 时代的工程纪律</h3>
-          <p>问题：AI 编程不能只追求生成速度。做法：整理复杂度、Spec、测试、Agent、Context Engineering 的工程框架。</p>
-          <p class="learned">学到：AI 放大能力，也放大工程纪律缺口。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/ai-coding-knowledge-framework">Repo</a><a href="https://siuserxiaowei.github.io/ai-coding-knowledge-framework/">Demo</a></div>
-        </article>
-        <article class="project">
-          <div class="project-code">DAILY OUTPUT</div>
-          <h3>daily-card-public</h3>
-          <p>问题：学到的内容很难持续输出。做法：把群聊、主题和笔记压缩成每日学习卡片。</p>
-          <p class="learned">学到：稳定输出比一次性灵感更重要。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/daily-card-public">Repo</a><a href="https://siuserxiaowei.github.io/daily-card-public/">Demo</a></div>
-        </article>
-        <article class="project">
-          <div class="project-code">REPORT SKILL</div>
-          <h3>wechat-daily-report-skill</h3>
-          <p>问题：微信群日报需要可读、可分享。做法：生成聊天气泡风格 HTML 和长图报告。</p>
-          <p class="learned">学到：自动化输出也需要阅读体验。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/wechat-daily-report-skill">Repo</a><a href="https://siuserxiaowei.github.io/wechat-daily-report-skill/">Demo</a></div>
-        </article>
-        <article class="project">
-          <div class="project-code">POLICY TOOL</div>
-          <h3>opc-policy</h3>
-          <p>问题：政策信息分散且难查询。做法：把全国 OPC 政策资料整理成可导航页面。</p>
-          <p class="learned">学到：资料整理到最后，应该变成工具。</p>
-          <div class="links"><a href="https://github.com/siuserxiaowei/opc-policy">Repo</a><a href="https://siuserxiaowei.github.io/opc-policy/">Demo</a></div>
-        </article>
+
+      <div class="project-group">
+        <header>
+          <span>AI Tools</span>
+          <h3>AI 工具实验</h3>
+        </header>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-code">ENGINEERING FRAMEWORK</div>
+            <h4>AI 时代的工程纪律</h4>
+            <p>问题：AI 编程不能只追求生成速度。做法：整理复杂度、Spec、测试、Agent、Context Engineering 的工程框架。</p>
+            <p class="learned">学到：AI 放大能力，也放大工程纪律缺口。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/ai-coding-knowledge-framework" target="_blank" rel="noopener noreferrer">Repo</a><a href="https://siuserxiaowei.github.io/ai-coding-knowledge-framework/" target="_blank" rel="noopener noreferrer">Demo</a></div>
+          </article>
+          <article class="project">
+            <div class="project-code">POLICY TOOL</div>
+            <h4>opc-policy</h4>
+            <p>问题：政策信息分散且难查询。做法：把全国 OPC 政策资料整理成可导航页面。</p>
+            <p class="learned">学到：资料整理到最后，应该变成工具。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/opc-policy" target="_blank" rel="noopener noreferrer">Repo</a><a href="https://siuserxiaowei.github.io/opc-policy/" target="_blank" rel="noopener noreferrer">Demo</a></div>
+          </article>
+          <article class="project">
+            <div class="project-code">TOPIC ANALYSIS</div>
+            <h4>content-creator-toolkit</h4>
+            <p>问题：选题和账号监控太依赖手动浏览。做法：把多平台 KOL 监控与 AI 选题分析做成工具系统。</p>
+            <p class="learned">学到：AI 工具最值钱的地方是减少重复判断。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/content-creator-toolkit" target="_blank" rel="noopener noreferrer">Repo</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="project-group">
+        <header>
+          <span>Content Systems</span>
+          <h3>内容系统建设</h3>
+        </header>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-code">KNOWLEDGE PIPELINE</div>
+            <h4>wechat-to-obsidian</h4>
+            <p>问题：微信里的信息很快沉没。做法：把聊天记录、文件、链接导入 Obsidian，变成本地知识库。</p>
+            <p class="learned">学到：内容系统的核心是让资料可搜索、可引用、可复用。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/wechat-to-obsidian" target="_blank" rel="noopener noreferrer">Repo</a></div>
+          </article>
+          <article class="project">
+            <div class="project-code">DAILY OUTPUT</div>
+            <h4>daily-card-public</h4>
+            <p>问题：学到的内容很难持续输出。做法：把群聊、主题和笔记压缩成每日学习卡片。</p>
+            <p class="learned">学到：稳定输出比一次性灵感更重要。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/daily-card-public" target="_blank" rel="noopener noreferrer">Repo</a><a href="https://siuserxiaowei.github.io/daily-card-public/" target="_blank" rel="noopener noreferrer">Demo</a></div>
+          </article>
+          <article class="project">
+            <div class="project-code">REPORT SKILL</div>
+            <h4>wechat-daily-report-skill</h4>
+            <p>问题：微信群日报需要可读、可分享。做法：生成聊天气泡风格 HTML 和长图报告。</p>
+            <p class="learned">学到：自动化输出也需要阅读体验。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/wechat-daily-report-skill" target="_blank" rel="noopener noreferrer">Repo</a><a href="https://siuserxiaowei.github.io/wechat-daily-report-skill/" target="_blank" rel="noopener noreferrer">Demo</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="project-group">
+        <header>
+          <span>Visual Design</span>
+          <h3>视觉设计</h3>
+        </header>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-code">VISUAL SYSTEM</div>
+            <h4>visual-taste-lab</h4>
+            <p>问题：AI 生成页面容易有模板味。做法：先审计视觉身份，再把颜色、排版、组件规则写成 Skill。</p>
+            <p class="learned">学到：好看不是随机换颜色，而是先建立视觉语言。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/visual-taste-lab" target="_blank" rel="noopener noreferrer">Repo</a><a href="https://siuserxiaowei.github.io/visual-taste-lab/" target="_blank" rel="noopener noreferrer">Demo</a></div>
+          </article>
+          <article class="project">
+            <div class="project-code">WRITING TOOL</div>
+            <h4>x-md-composer</h4>
+            <p>问题：长文和帖子串发布前需要排版预览。做法：做一个本地优先的 Markdown 到 X 内容编辑器。</p>
+            <p class="learned">学到：内容工具也需要清楚的编辑体验。</p>
+            <div class="links"><a href="https://github.com/siuserxiaowei/x-md-composer" target="_blank" rel="noopener noreferrer">Repo</a></div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -134,8 +208,8 @@
     </section>
 
     <section class="closing">
-      <p>如果你也是刚开始学 AI，可以从这些项目里看到一件事：不需要一开始就懂所有东西，先把一个小问题做成能运行的版本。</p>
-      <a class="primary" href="https://github.com/siuserxiaowei">去 GitHub 看全部项目</a>
+      <p>不需要一开始就懂所有东西。先把一个小问题做成能运行的版本，下一步就会变清楚。</p>
+      <a class="primary" href="https://github.com/siuserxiaowei" target="_blank" rel="noopener noreferrer">去 GitHub 看全部项目</a>
     </section>
   </main>
 </body>

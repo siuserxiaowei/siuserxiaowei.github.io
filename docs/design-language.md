@@ -18,3 +18,5 @@ This is a personal portfolio for "小白学 AI": a beginner-to-builder learning 
 - Every featured project needs a repo link or demo link.
 - Avoid fake numbers, fake client logos, fake senior-expert claims.
 - Cards are only for repeated project items; sections are full-width bands.
+- Homepage priority: hero first, `Now Shipping` second, then three-track project map.
+- Project cards keep the same narrative structure: problem, method, lesson, repo/demo.
