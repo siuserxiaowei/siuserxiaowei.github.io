@@ -1,0 +1,50 @@
+<svg width="1100" height="680" viewBox="0 0 1100 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">小白学 AI 项目星图</title>
+  <desc id="desc">A constellation map of AI tools, content systems, and visual design projects.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="680">
+      <stop stop-color="#08261d"/>
+      <stop offset="0.58" stop-color="#07130f"/>
+      <stop offset="1" stop-color="#0a3140"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1100" height="680" rx="32" fill="url(#bg)"/>
+  <g opacity="0.18">
+    <path d="M80 0V680M160 0V680M240 0V680M320 0V680M400 0V680M480 0V680M560 0V680M640 0V680M720 0V680M800 0V680M880 0V680M960 0V680M1040 0V680" stroke="#63d8ff"/>
+    <path d="M0 80H1100M0 160H1100M0 240H1100M0 320H1100M0 400H1100M0 480H1100M0 560H1100M0 640H1100" stroke="#63d8ff"/>
+  </g>
+  <text x="58" y="70" fill="#00e6a8" font-family="Menlo, Consolas, monospace" font-size="16" letter-spacing="4">LEARNING CONSTELLATION</text>
+  <text x="58" y="128" fill="#f7f5ea" font-family="Georgia, serif" font-size="54" font-weight="700">从学习笔记到可运行作品</text>
+  <text x="60" y="170" fill="#b8cec5" font-family="Avenir Next, sans-serif" font-size="23">AI 工具实验 / 内容系统建设 / 视觉设计，三条线一起长出来。</text>
+  <path d="M220 374C310 260 420 256 510 350C604 448 730 438 866 270" stroke="#63d8ff" stroke-opacity="0.45" stroke-width="2"/>
+  <path d="M220 374C322 462 484 510 626 450C750 398 800 344 866 270" stroke="#00e6a8" stroke-opacity="0.35" stroke-width="2"/>
+  <g font-family="Avenir Next, sans-serif" font-weight="800">
+    <g transform="translate(168 332)">
+      <circle cx="52" cy="42" r="14" fill="#00e6a8" filter="url(#glow)"/>
+      <rect x="82" y="10" width="246" height="66" rx="17" fill="#0d3027" stroke="#2e6b5a"/>
+      <text x="104" y="40" fill="#f7f5ea" font-size="20">visual-taste-lab</text>
+      <text x="104" y="62" fill="#d8ff6a" font-family="Menlo, Consolas, monospace" font-size="12">visual design system</text>
+    </g>
+    <g transform="translate(414 310)">
+      <circle cx="52" cy="42" r="14" fill="#63d8ff" filter="url(#glow)"/>
+      <rect x="82" y="10" width="320" height="66" rx="17" fill="#0d3027" stroke="#2e6b5a"/>
+      <text x="104" y="40" fill="#f7f5ea" font-size="20">wechat-to-obsidian</text>
+      <text x="104" y="62" fill="#63d8ff" font-family="Menlo, Consolas, monospace" font-size="12">local knowledge bridge</text>
+    </g>
+    <g transform="translate(740 230)">
+      <circle cx="52" cy="42" r="14" fill="#d8ff6a" filter="url(#glow)"/>
+      <rect x="82" y="10" width="274" height="66" rx="17" fill="#0d3027" stroke="#2e6b5a"/>
+      <text x="104" y="40" fill="#f7f5ea" font-size="20">AI 工程纪律</text>
+      <text x="104" y="62" fill="#d8ff6a" font-family="Menlo, Consolas, monospace" font-size="12">research archive</text>
+    </g>
+    <g transform="translate(284 468)">
+      <circle cx="52" cy="42" r="11" fill="#63d8ff"/>
+      <text x="78" y="48" fill="#f7f5ea" font-size="18">daily-card-public</text>
+    </g>
+    <g transform="translate(590 438)">
+      <circle cx="52" cy="42" r="11" fill="#00e6a8"/>
+      <text x="78" y="48" fill="#f7f5ea" font-size="18">wechat-daily-report-skill</text>
+    </g>
+  </g>
+</svg>
