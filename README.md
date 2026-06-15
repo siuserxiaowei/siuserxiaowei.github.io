@@ -1,5 +1,75 @@
 # Qiaomu Blog Open Source
 
+<!-- SIUSER-REPO-GUIDE:START -->
+## Repository Guide
+
+### What This Repository Does
+
+Cloudflare 博客模板（fork）：基于 OpenNext、Next.js、D1 和 R2 的开源博客参考。
+
+English summary: Forked Cloudflare blog template based on OpenNext, Next.js, D1, and R2.
+
+### Online Entry Points
+
+- GitHub repository: https://github.com/siuserxiaowei/qiaomu-blog-opensource
+- Live / GitHub Pages: not configured for this repository
+- Default branch: `main`
+- Primary language: `TypeScript`
+- Repository type: fork / reference repository
+
+### How To Read / Learn This Repository
+
+1. 先读本 README，确认项目目标、在线入口和本地运行方式。
+2. 查看 `package.json` 的 scripts，确认开发、构建和预览命令。
+3. 如果要修改内容，先小范围改动，再运行本 README 中的验证命令。
+
+### Clone This Repository
+
+```bash
+git clone https://github.com/siuserxiaowei/qiaomu-blog-opensource.git
+cd qiaomu-blog-opensource
+```
+
+### Run Or View Locally
+
+```bash
+npm install
+npm run dev
+npm run build
+npm test
+```
+
+### Repository Map
+
+| Path | Purpose |
+| --- | --- |
+| `README.md` | 项目入口说明，先读这里。 |
+| `package.json` | Node/前端项目配置和常用脚本。 |
+| `app/` | 应用入口或路由目录。 |
+| `public/` | 公开静态资源。 |
+| `docs/` | 文档或 GitHub Pages 输出目录。 |
+| `scripts/` | 构建、同步、生成或维护脚本。 |
+| `tests/` | 测试用例或验证脚本。 |
+| `.github/` | GitHub Actions、Issue/PR 模板等自动化配置。 |
+| `DEPLOY.md` | 项目文件。 |
+| `DESIGN.md` | 项目文件。 |
+| `LICENSE` | 项目文件。 |
+| `PERFORMANCE.md` | 项目文件。 |
+
+### Maintenance Notes
+
+- Keep this README in sync when the project purpose, live link, or run commands change.
+- Prefer small, focused commits when changing code, data, or generated pages.
+- Run the relevant build or validation command before publishing changes.
+- If this is a generated/static archive, update the source data first, then regenerate the public files.
+
+### Privacy And Safety
+
+- Do not commit API keys, tokens, passwords, cookies, private URLs, or internal account data.
+- Keep private source material out of public GitHub Pages output unless it has been explicitly cleared for publication.
+- When in doubt, run a quick secret scan such as `rg -n "token|secret|password|access_key|authorization"` before pushing.
+<!-- SIUSER-REPO-GUIDE:END -->
+
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/joeseesun/qiaomu-blog-opensource)
 [![Use this template](https://img.shields.io/badge/GitHub-Use%20this%20template-111111?logo=github)](https://github.com/joeseesun/qiaomu-blog-opensource/generate)
 
