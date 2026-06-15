@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出海研习社 2026 线下聚会 · 问答整理</title>
+<style>
+  :root{
+    --ink:#23201a;
+    --ink-soft:#5a544a;
+    --paper:#f7f3ea;
+    --paper-deep:#efe8d8;
+    --line:#d8cdb6;
+    --leaf:#3f6e4a;
+    --leaf-deep:#2c4f35;
+    --soil:#9a6b3f;
+    --fruit:#c4622d;
+    --gold:#b8923a;
+    --card:#fffdf7;
+    --shadow:rgba(58,48,30,.10);
+    --display:"Songti SC","STSong","Noto Serif SC",serif;
+    --body:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(63,110,74,.05), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(196,98,45,.04), transparent 45%);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:64px 24px 48px;
+    max-width:920px;
+    margin:0 auto;
+    text-align:center;
+    overflow:hidden;
+  }
+  .orchard{
+    display:flex;justify-content:center;gap:6px;
+    margin-bottom:26px;font-size:0;
+  }
+  .orchard .tree{
+    width:13px;height:13px;border-radius:50% 50% 50% 0;
+    background:var(--leaf);transform:rotate(45deg);
+    opacity:.32;animation:grow 2.4s ease both;
+  }
+  .orchard .tree:nth-child(3),.orchard .tree:nth-child(7){opacity:.9;background:var(--leaf-deep)}
+  .orchard .tree:nth-child(5){opacity:1;background:var(--fruit);box-shadow:0 0 0 3px rgba(196,98,45,.15)}
+  @keyframes grow{from{transform:rotate(45deg) scale(.2);opacity:0}}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--soil);margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(30px,6vw,52px);line-height:1.18;
+    letter-spacing:.01em;color:var(--ink);
+  }
+  .hero h1 .accent{color:var(--leaf-deep)}
+  .hero .sub{
+    margin:22px auto 0;max-width:580px;
+    font-size:16px;color:var(--ink-soft);line-height:1.85;
+  }
+  .stamp{
+    display:inline-block;margin-top:30px;padding:7px 18px;
+    border:1.5px solid var(--line);border-radius:2px;
+    font-family:var(--mono);font-size:12px;color:var(--soil);
+    letter-spacing:.08em;background:var(--card);
+    transform:rotate(-1deg);
+  }
+  .stamp b{color:var(--leaf-deep)}
+  .note{
+    max-width:620px;margin:34px auto 0;padding:16px 22px;
+    border-left:3px solid var(--leaf);background:rgba(63,110,74,.06);
+    font-size:14px;color:var(--ink-soft);text-align:left;line-height:1.8;
+  }
+
+  /* ---------- INTRO / 小果园理论 ---------- */
+  .intro{
+    max-width:760px;margin:0 auto;padding:8px 24px 56px;
+  }
+  .intro-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    box-shadow:0 6px 28px var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .intro-head{
+    display:flex;align-items:center;gap:14px;
+    padding:22px 28px;cursor:pointer;user-select:none;
+  }
+  .intro-head:hover{background:rgba(63,110,74,.03)}
+  .intro-head .sprout{font-size:24px;line-height:1;flex:none}
+  .intro-head .htxt{flex:1}
+  .intro-eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--soil);margin-bottom:4px;
+  }
+  .intro-head h2{
+    font-family:var(--display);font-size:21px;font-weight:700;
+    color:var(--ink);line-height:1.3;
+  }
+  .intro-toggle{
+    flex:none;display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--body);font-size:12px;font-weight:600;
+    color:var(--leaf-deep);background:rgba(63,110,74,.10);
+    border:1px solid rgba(63,110,74,.25);
+    border-radius:16px;padding:5px 12px 5px 11px;white-space:nowrap;transition:.2s;
+  }
+  .intro-head:hover .intro-toggle{background:rgba(63,110,74,.18)}
+  .intro-toggle .chev{
+    width:8px;height:8px;border-right:2px solid var(--leaf-deep);
+    border-bottom:2px solid var(--leaf-deep);
+    transform:rotate(45deg);transition:transform .25s;margin-top:-2px;
+  }
+  .intro-card.open .intro-toggle .chev{transform:rotate(-135deg);margin-top:2px}
+  .intro-toggle .l-open{display:none}
+  .intro-card.open .intro-toggle .l-closed{display:none}
+  .intro-card.open .intro-toggle .l-open{display:inline}
+  .intro-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+  .intro-body-inner{padding:0 28px 30px;border-top:1px dashed var(--line);margin:0 28px;padding-left:0;padding-right:0;padding-top:20px}
+  .intro-body-inner p{font-size:15px;color:#332f27;line-height:1.9;margin-bottom:14px}
+  .intro-body-inner strong{color:var(--leaf-deep);font-weight:600}
+  .intro-saplings{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+  .intro-saplings span{
+    font-size:13px;color:var(--leaf-deep);
+    background:rgba(63,110,74,.08);border:1px solid rgba(63,110,74,.18);
+    border-radius:14px;padding:4px 11px;
+  }
+  /* 对比模块 */
+  .compare{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;
+  }
+  .compare .col{border-radius:8px;padding:18px 18px 16px;}
+  .compare .col.theirs{background:rgba(122,110,90,.08);border:1px solid var(--line)}
+  .compare .col.yours{background:rgba(63,110,74,.09);border:1px solid rgba(63,110,74,.3)}
+  .compare .col .ct{font-family:var(--display);font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .compare .col.theirs .ct{color:var(--soil)}
+  .compare .col.yours .ct{color:var(--leaf-deep)}
+  .compare .col p{font-size:13.5px;line-height:1.7;margin:0 0 7px;color:#46402f}
+  .compare .col p:last-child{margin-bottom:0}
+  .compare .col .punch{font-weight:700}
+  .compare .col.theirs .punch{color:#8a6a3a}
+  .compare .col.yours .punch{color:var(--leaf-deep)}
+  .intro-body-inner .closing{
+    font-family:var(--display);font-size:16px;font-weight:700;
+    color:var(--leaf-deep);border-left:3px solid var(--fruit);
+    padding-left:14px;line-height:1.65;margin-top:18px;
+  }
+  .intro-sign{font-family:var(--mono);font-size:12px;color:var(--soil);margin-top:16px;text-align:right;letter-spacing:.04em}
+  @media(max-width:600px){
+    .intro-head{padding:18px 20px}
+    .intro-head h2{font-size:18px}
+    .intro-body-inner{padding-left:0;padding-right:0}
+    .intro-card .intro-body-inner{margin:0 20px}
+    .compare{grid-template-columns:1fr}
+    .intro-toggle .l-closed,.intro-toggle .l-open{display:none}
+    .intro-card.open .intro-toggle .l-open{display:none}
+  }
+
+  /* ---------- NAV / TABS ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(247,243,234,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:12px 24px;
+  }
+  .toolbar-inner{
+    max-width:920px;margin:0 auto;
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  }
+  .tier-btn{
+    font-family:var(--body);font-size:13px;font-weight:600;
+    padding:6px 14px;border:1px solid var(--line);
+    background:var(--card);color:var(--ink-soft);
+    border-radius:20px;cursor:pointer;transition:all .18s;
+  }
+  .tier-btn:hover{border-color:var(--leaf);color:var(--leaf-deep)}
+  .tier-btn.active{background:var(--leaf-deep);border-color:var(--leaf-deep);color:#fdfcf7}
+  .toolbar .spacer{flex:1}
+  .count{font-family:var(--mono);font-size:12px;color:var(--soil)}
+
+  /* ---------- MAIN ---------- */
+  main{max-width:920px;margin:0 auto;padding:40px 24px 80px}
+
+  .tier-head{
+    display:flex;align-items:baseline;gap:14px;
+    margin:48px 0 8px;padding-bottom:10px;
+    border-bottom:2px solid var(--ink);
+  }
+  .tier-head:first-of-type{margin-top:8px}
+  .tier-badge{
+    font-family:var(--display);font-weight:700;font-size:30px;
+    color:var(--leaf-deep);line-height:1;
+  }
+  .tier-title{font-family:var(--display);font-size:20px;font-weight:700}
+  .tier-desc{font-size:13px;color:var(--ink-soft);margin:6px 0 4px}
+
+  /* ---------- QA CARD ---------- */
+  .qa{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin:18px 0;
+    box-shadow:0 1px 0 var(--shadow);
+    overflow:hidden;
+    transition:box-shadow .2s;
+  }
+  .qa.open{box-shadow:0 6px 24px var(--shadow)}
+  .qa-head{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:18px 20px;cursor:pointer;user-select:none;
+    position:relative;
+  }
+  .qa-head:hover{background:rgba(63,110,74,.03)}
+  .qa-id{
+    flex:none;font-family:var(--mono);font-size:12px;font-weight:600;
+    color:#fff;background:var(--soil);
+    padding:3px 7px;border-radius:3px;margin-top:2px;
+    letter-spacing:.04em;
+  }
+  .qa.a-tier .qa-id{background:var(--fruit)}
+  .qa.b-tier .qa-id{background:var(--leaf)}
+  .qa.c-tier .qa-id{background:var(--gold)}
+  .qa-q{flex:1}
+  .qa-q .topic{
+    font-family:var(--display);font-size:18px;font-weight:700;
+    color:var(--ink);line-height:1.4;
+  }
+  .qa-q .ask{font-size:14px;color:var(--ink-soft);margin-top:7px;line-height:1.7}
+  /* 折叠状态提示标签 —— 让用户明确知道可点击 */
+  .qa-toggle{
+    flex:none;align-self:center;
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--body);font-size:12px;font-weight:600;
+    color:var(--leaf-deep);
+    background:rgba(63,110,74,.10);
+    border:1px solid rgba(63,110,74,.25);
+    border-radius:16px;padding:5px 12px 5px 11px;
+    white-space:nowrap;transition:.2s;
+  }
+  .qa-head:hover .qa-toggle{background:rgba(63,110,74,.18)}
+  .qa-toggle .chev{
+    width:8px;height:8px;border-right:2px solid var(--leaf-deep);
+    border-bottom:2px solid var(--leaf-deep);
+    transform:rotate(45deg);transition:transform .25s;
+    margin-top:-2px;
+  }
+  .qa.open .qa-toggle .chev{transform:rotate(-135deg);margin-top:2px}
+  .qa-toggle .label-open{display:none}
+  .qa.open .qa-toggle .label-closed{display:none}
+  .qa.open .qa-toggle .label-open{display:inline}
+
+  .qa-body{
+    max-height:0;overflow:hidden;
+    transition:max-height .45s cubic-bezier(.4,0,.2,1);
+  }
+  .qa-body-inner{
+    padding:0 20px 22px 20px;
+    border-top:1px dashed var(--line);
+    margin:0 20px;padding-top:18px;padding-left:0;padding-right:0;
+  }
+  .gefei-tag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+    color:var(--leaf-deep);margin-bottom:12px;
+    background:rgba(63,110,74,.07);padding:4px 10px;border-radius:12px;
+  }
+  .gefei-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--leaf)}
+  .qa-body-inner p{margin:0 0 12px;font-size:15px;color:#332f27;line-height:1.85}
+  .qa-body-inner p:last-child{margin-bottom:0}
+  .qa-body-inner strong{color:var(--leaf-deep);font-weight:600}
+  .qa-body-inner .lead{
+    font-family:var(--display);font-size:16px;font-weight:700;
+    color:var(--ink);border-left:3px solid var(--fruit);
+    padding-left:14px;margin-bottom:16px;line-height:1.6;
+  }
+  .qa-body-inner ul{margin:4px 0 14px;padding-left:0;list-style:none}
+  .qa-body-inner li{
+    position:relative;padding-left:24px;margin-bottom:9px;
+    font-size:14.5px;color:#332f27;line-height:1.75;
+  }
+  .qa-body-inner li::before{
+    content:"";position:absolute;left:6px;top:11px;
+    width:7px;height:7px;border-radius:50% 50% 50% 0;
+    background:var(--leaf);transform:rotate(45deg);
+  }
+  .pull{
+    margin:14px 0;padding:12px 16px;
+    background:rgba(184,146,58,.10);border-radius:4px;
+    font-size:14px;color:var(--soil);line-height:1.7;
+    border:1px dashed rgba(184,146,58,.4);
+  }
+  .pull b{color:var(--soil)}
+  code{
+    font-family:var(--mono);font-size:13px;
+    background:rgba(58,48,30,.07);padding:1px 5px;border-radius:3px;color:var(--leaf-deep);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    max-width:920px;margin:0 auto;padding:40px 24px 60px;
+    text-align:center;border-top:1px solid var(--line);
+  }
+  footer .orchard{margin-bottom:18px}
+  footer p{font-size:13px;color:var(--ink-soft);line-height:1.8}
+  footer .disc{font-family:var(--mono);font-size:11px;color:var(--soil);margin-top:14px;letter-spacing:.04em}
+
+  .hidden{display:none}
+
+  @media(max-width:600px){
+    .hero{padding:46px 20px 36px}
+    .qa-q .topic{font-size:16px}
+    .tier-badge{font-size:24px}
+    .qa-toggle .label-closed,.qa-toggle .label-open{display:none}
+    .qa.open .qa-toggle .label-open{display:none}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="orchard" aria-hidden="true">
+    <span class="tree"></span><span class="tree"></span><span class="tree"></span>
+    <span class="tree"></span><span class="tree"></span><span class="tree"></span>
+    <span class="tree"></span><span class="tree"></span><span class="tree"></span>
+  </div>
+  <div class="eyebrow">出海研习社 · 2026 线下聚会</div>
+  <h1>种一片<span class="accent">小果园</span><br>而不是赌一棵大树</h1>
+  <p class="sub">这是一份现场问答整理。问题来自独立开发者们最真实的困惑——方向、冷启动、增长、商业化、合规。下面是这些问题的回答。</p>
+  <div class="stamp">哥飞老师作品 · 由 <b>哥飞.ai</b> 回答</div>
+  <div class="note">
+    下面 21 个问答,围绕的是同一套底层方法论:<strong>多点轻验证,谁结果好就给谁浇水</strong>。先不熟悉"小果园"的话,可以点开下面这张卡片了解一下。
+  </div>
+</header>
+
+<section class="intro">
+  <div class="intro-card" id="introCard">
+    <div class="intro-head" id="introHead">
+      <span class="sprout" aria-hidden="true">🌱</span>
+      <div class="htxt">
+        <div class="intro-eyebrow">写在前面 · 给还不了解的人</div>
+        <h2>什么是"小果园"?</h2>
+      </div>
+      <span class="intro-toggle"><span class="l-closed">展开</span><span class="l-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="intro-body"><div class="intro-body-inner">
+      <p>大家好,我是哥飞。我一直讲一个理念叫"养网站防老",后来把它升级成了更大的概念——<strong>每个人都该有一片自己的小果园。</strong></p>
+      <p>这片果园里能种各种果树。你做一个网站、一个 App、一个插件,写一本书、一套教程,做一个账号、一个个人 IP——<strong>都是种下一棵小树苗。</strong></p>
+      <div class="intro-saplings">
+        <span>一个网站</span><span>一个 App</span><span>一个插件</span><span>一套教程</span><span>一本书</span><span>一个账号</span><span>一个 IP</span>
+      </div>
+      <p>这些小树苗,有些会长起来,有些可能枯萎。但都没关系,只要你不断地种,能长起来的果树就会越来越多。慢慢地你就有了一片小果园——<strong>一年四季都有树在开花结果,每个月都有果子可以采摘。</strong>哪天你不想工作了,也不会立刻断收入,因为之前种下的果树已经能养你了。</p>
+
+      <p>那为什么一定要有<strong>自己的</strong>果园?看一眼这个对比就明白了:</p>
+      <div class="compare">
+        <div class="col theirs">
+          <div class="ct">🏢 上班:替别人养果园</div>
+          <p>你每天除草、施肥、捉虫,把一片大果园伺候得枝繁叶茂。</p>
+          <p>但这片果园的主人不是你。果子年年丰收,<span class="punch">却一颗都不属于你</span>——你拿到的只是除草施肥的辛苦费。</p>
+        </div>
+        <div class="col yours">
+          <div class="ct">🌳 小果园:种自己的树</div>
+          <p>下班后、周末,你为自己种下一棵棵小树苗,亲手浇水看它长大。</p>
+          <p>树是你的,<span class="punch">结的果子也全是你的</span>——它一年四季为你结果,越积累越多,慢慢就能反过来养你。</p>
+        </div>
+      </div>
+      <p>所以,我们要去做那些<strong>有积累</strong>的事——不一定全职,但一定要做。别人喝咖啡、刷视频的时间,你可以拿来种一棵小树苗。</p>
+
+      <p class="closing">这份问答,讲的就是怎么挑种子、怎么浇水、怎么舍得砍掉不结果的树。如果你还没开始——今天,请为你的小果园种下第一棵小树苗吧。🌿🌱🌳</p>
+      <div class="intro-sign">—— 哥飞</div>
+    </div></div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <button class="tier-btn active" data-filter="all">全部</button>
+    <button class="tier-btn" data-filter="a-tier">A 级 · 优先</button>
+    <button class="tier-btn" data-filter="b-tier">B 级 · 充足时</button>
+    <button class="tier-btn" data-filter="c-tier">C 级 · 定向</button>
+    <div class="spacer"></div>
+    <button class="tier-btn" id="collapseAll">全部收起</button>
+    <span class="count" id="counter"></span>
+  </div>
+</div>
+
+<main id="qaRoot">
+
+  <!-- ========== A 级 ========== -->
+  <div class="tier-head" data-tier-head="a-tier">
+    <span class="tier-badge">A</span>
+    <div>
+      <div class="tier-title">优先提问</div>
+      <div class="tier-desc">方向、冷启动、增长、商业化、合规——大多数独立开发者最关心的问题。时间不够就从上往下问。</div>
+    </div>
+  </div>
+
+  <!-- A01 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A01</span>
+      <div class="qa-q">
+        <div class="topic">重新起步与方向选择</div>
+        <div class="ask">业务全部归零、只剩自己一人、预算有限,你会怎么重新起步?Web 还是 App?AI 视频/图片/音乐怎么取舍?大站还是垂直小工具?前 3-6 个月怎么冷启动、用什么指标判断?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">如果一切归零,我不会先想"做什么大事",而是先想"我怎么用一周时间种下三五棵小苗"。</p>
+      <p><strong>先选 Web,不选 App。</strong>原因很现实:Web 的冷启动渠道(SEO + Google Ads)我能完全掌控、可量化、可低成本反复试;App 的冷启动绑死在 App Store 和 ASA 上,审核、上架、关键词权重都不在你手里,一个人很难快速拿到信号。App 适合等 Web 端验证出真实需求、有了现金流之后再做。</p>
+      <p><strong>方向不要在 AI 视频/图片/音乐里"选一个",而是同时埋三个种子。</strong>这就是小果园:每个方向先做一个最小可用的工具站,围绕对应的长尾词或品牌词,看哪个先冒出自然流量、哪个 Google Ads 的 ROAS 先转正。不要凭直觉押注,让数据替你选。</p>
+      <p><strong>垂直小工具优先于 all-in-one 大站。</strong>大站的 SEO 是一场旷日持久的权重战,一个人打不动;垂直小工具一词一页,长尾词进来就能转化,见效快、止损也快。等某个垂直站真的跑出来了,再考虑把它做厚做大。</p>
+      <p>前 3-6 个月的冷启动节奏我会这样排:</p>
+      <ul>
+        <li><strong>第 1 个月</strong>:每个种子站围绕一个核心词 + 几十个长尾词铺内容,用 KGR/EKGR 筛低竞争词,一词一页。</li>
+        <li><strong>第 2-3 个月</strong>:对有曝光苗头的站投少量 Google Ads 做冷启动,目的是快速验证"这个需求有没有人付费",而不是马上盈利。</li>
+        <li><strong>第 4-6 个月</strong>:砍掉没信号的,给跑出来的浇水(加内链、加内页、加预算)。</li>
+      </ul>
+      <p>判断"值得继续投入"的指标,我看三个真实信号:<strong>GSC 曝光是否在爬坡</strong>(需求存在的证据)、<strong>自然流量的转化率</strong>(需求是否真实、是否愿意用)、<strong>Google Ads 的 ROAS 能否摸到盈亏线附近</strong>(需求是否愿意付费)。三个里有两个在往上走,就值得继续;全平或全跌,果断止损。</p>
+    </div></div>
+  </article>
+
+  <!-- A02 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A02</span>
+      <div class="qa-q">
+        <div class="topic">产品灵感与需求判断</div>
+        <div class="ask">平时从哪里获取产品信息和灵感?启动一个产品前重点看哪些核心要素?如何挖掘和判断需求是否真实?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">灵感不是"想出来"的,是"搜出来"的。真实需求会以搜索量的形式提前告诉你。</p>
+      <p>我的灵感来源,主要不是看别人在做什么,而是<strong>看用户在搜什么</strong>:关键词工具里的搜索量趋势、新模型/新品牌词刚出现时的流量缺口、竞品站突然涨的页面、社区里反复被问的同一类问题。这些都是需求的"前置信号"。</p>
+      <p>启动前我重点看四个核心要素:</p>
+      <ul>
+        <li><strong>有没有搜索量</strong>:没人搜的需求,大概率是伪需求。先用关键词工具确认有真实、稳定或上升的搜索量。</li>
+        <li><strong>SEO 难度能不能打</strong>:用 KGR(intitle 数量 ÷ 月搜索量)和 KD 一起看,KGR 看竞争者数量、KD 看竞争者质量,两个维度都看。一个人能打得动的才进。</li>
+        <li><strong>变现路径清不清晰</strong>:这个需求的人愿不愿意为结果付费?是订阅、按次,还是广告?</li>
+        <li><strong>我能不能快速做出来</strong>:一周内能不能上线一个能用的版本?做不出来的不做。</li>
+      </ul>
+      <p><strong>判断需求是否真实,最便宜的方法是先上线再说。</strong>与其反复纠结分析,不如花一周做一个最小工具页推上线,挂广告或铺长尾词,看有没有人进、进了有没有用、用了愿不愿意付费。真实需求会很快给你反馈,伪需求则石沉大海。这比任何调研都准。</p>
+    </div></div>
+  </article>
+
+  <!-- A03 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A03</span>
+      <div class="qa-q">
+        <div class="topic">长期机会与沉没成本</div>
+        <div class="ask">如何区分"值得坚持的长期机会"和"方向不够大却不愿承认"的项目?用哪些具体指标或信号判断?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">沉没成本之所以骗人,是因为它让你用"已经投了多少"代替"还能长出什么"来做决定。</p>
+      <p>区分这两者,我只问一个问题:<strong>抛开已经投入的时间和钱,如果今天才认识这个项目,我还会从零开始做它吗?</strong>如果答案是否定的,那它就是沉没成本,不是机会。</p>
+      <p>具体看几个信号:</p>
+      <ul>
+        <li><strong>增长是不是自己在长</strong>:停掉投放后,自然流量/自然用户是否还在增长?能自己长的才是真机会;一停就停的是靠钱续命。</li>
+        <li><strong>天花板在哪</strong>:这个赛道的搜索总量、付费意愿、可扩展的内页数量,决定了它最大能长到多大。小果园里允许有小树,但你要诚实地知道它就是棵小树。</li>
+        <li><strong>边际投入的回报</strong>:再加一份内容、一份预算,带来的回报是递增还是递减?递减说明已经触顶。</li>
+        <li><strong>你是不是在反复说服自己</strong>:当你需要不断给一个项目找"它其实有潜力"的理由时,通常就是它没潜力。</li>
+      </ul>
+      <p>小果园哲学本身就是为了对抗沉没成本——因为我从一开始就种了很多棵,所以砍掉一棵不长果的树,对我来说不是损失,是把水让给更值得的树。<strong>能坦然砍树,是因为你从不只有一棵树。</strong></p>
+    </div></div>
+  </article>
+
+  <!-- A04 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A04</span>
+      <div class="qa-q">
+        <div class="topic">红海 SEO 如何突围</div>
+        <div class="ask">核心词被老玩家占据、打主词成本高,独立开发者还有哪些 SEO 突围方法?小工具能带流量但不转化,怎么调整?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">红海里有两条路:一是绕开主词从长尾切进去,二是用我们群里反复讲的"举全站之力、用首页打别人的内页",以弱胜强。</p>
+      <p>第一条,<strong>从长尾、场景、工具页绕进去</strong>:</p>
+      <ul>
+        <li><strong>系统性挖长尾</strong>:用 KGR 筛词——<code>KGR = intitle 结果数 ÷ 月搜索量</code>,KGR &lt; 0.25 就是新站能打的金矿词。主词打不动,但成百上千个长尾词的总和可能比主词流量还大,且竞争小得多。一词一页。</li>
+        <li><strong>场景页 / 用途页</strong>:老玩家盖的是"什么是 X",你去盖"用 X 做 Y""给 Z 人群的 X""X vs 竞品",这些词竞争低、意图明确、转化反而高。</li>
+        <li><strong>工具页吃免费流量</strong>:做一个真正能用的免费小工具页,用户为了"用工具"而来,这类词商业竞争往往没那么激烈。</li>
+      </ul>
+      <p>第二条,也是更进阶的打法——<strong>不要只盯着 KD 高就退缩</strong>。排名不仅看权重,也看用户行为数据。所以遇到搜索量大的词,<strong>只要 KGR 低(参与者少),即使 KD 高(现有排名者强),也可以做</strong>:举全站之力、用首页去打别人的内页,首页有更高的内链权重和更新频率,花三五个月做好用户体验,以新胜强、以弱胜强。这是被很多群友验证过的。</p>
+      <p class="pull"><b>关于"小工具有流量但不转化":</b>根因通常是——来的人意图和你的付费点对不上。免费工具吸引来的是"想白嫖"的流量,他们的需求在用完工具那一刻就结束了。调整方向有三条:<b>(1)</b> 在工具用完、用户刚看到价值的那一刻插入付费点(更高质量/批量/去水印放到付费);<b>(2)</b> 用工具页做钩子,把流量导向真正能变现的页面;<b>(3)</b> 如果反复调整仍不转化,接受它可能只是个流量站,用广告变现或当作给主产品引流的卫星站,别强求它直接付费。</p>
+    </div></div>
+  </article>
+
+  <!-- A05 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A05</span>
+      <div class="qa-q">
+        <div class="topic">半年没起量的站是否该砍</div>
+        <div class="ask">年初上线、主打"AI video generator"红海词、投了几百美元外链、半年几乎没自然流量、GSC 曝光没爬坡、约 200 内页、添油式投入。直接砍掉,还是抢救?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">先别急着砍站,先做个体检。这个站的问题大概率不是"该不该活",而是"词选错了 + 投入方式错了"。</p>
+      <p>先说判断:<strong>半年了 GSC 曝光都没爬坡,这是最危险的信号</strong>。流量没有不可怕,曝光都起不来,说明 Google 根本没认为你这些页面值得展示——要么词太红打不动,要么内容质量不够,要么站本身权重太弱。</p>
+      <p>但我不会无脑砍掉,200 个内页是有价值的资产。我会按这个顺序抢救:</p>
+      <ul>
+        <li><strong>第一步,换词 + 换打法,不换站</strong>:直接打"AI video generator"这种红海主词,新站几乎没机会。把内页重新对齐到 KGR 低的长尾词、场景词上(见 A04),保留站和内容框架,只换攻击目标。同时确认核心页是不是在用首页之力去打,而不是用一个弱内页硬刚别人的首页。这是成本最低的抢救。</li>
+        <li><strong>第二步,看添油式投入的问题</strong>:"赚一点投一点"在红海里基本等于慢性失血——投入永远追不上竞争门槛。外链几百美元撒在红海主词上,基本听不见响。要么集中火力投到能见效的量级,要么就别投。</li>
+        <li><strong>第三步,设止损线</strong>:换词后再给它 2-3 个月,只看一个指标——<strong>GSC 曝光有没有开始爬坡</strong>。换了长尾词、曝光开始涨,说明站还活着,继续;换词后曝光依然纹丝不动,果断砍掉,把时间和钱挪到新种子上。</li>
+      </ul>
+      <p class="pull"><b>复盘的核心教训:</b>这个站最大的问题不是"做得不够久",而是"一开始就选了一个新站打不动的红海主词,还用添油式投入去打持久战"。下次起步,先用 KGR/KD 确认词能打得动,再决定要不要种这棵树。</p>
+    </div></div>
+  </article>
+
+  <!-- A06 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A06</span>
+      <div class="qa-q">
+        <div class="topic">垂直工具 App 冷启动</div>
+        <div class="ask">刚做完一个非 AI 的垂直工具类 App,没有明显社交传播属性,有哪些有效的冷启动打法?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">没有社交传播属性的工具 App,就别指望裂变。它的增长引擎应该是"搜索",不是"分享"。</p>
+      <p>工具类 App 的用户是带着明确需求来的——他们在 App Store 里搜一个功能词,或在 Google 里搜一个问题。所以冷启动要围绕"被搜到"来打:</p>
+      <ul>
+        <li><strong>ASO 是地基</strong>:把 App 的标题、副标题、关键词字段对齐到用户真正会搜的功能词上。用关键词的逻辑做 ASO,和做网站 SEO 选词是一套思路:找搜索量够、竞争能打的词。</li>
+        <li><strong>用 Web 给 App 引流</strong>:这是我会重点用的打法。先做一个对应的工具网站或落地页,用 SEO 把自然流量做起来,网站上引导下载 App。Web 端的获客成本远低于纯 ASA,而且 Web 本身就能验证需求。</li>
+        <li><strong>ASA 做精准冷启动</strong>:用少量预算投 ASA,只投高意图的功能词,目的是冷启动排名和测词,不是大规模买量。</li>
+        <li><strong>去用户聚集的垂直社区</strong>:工具 App 的用户往往集中在特定的论坛、Reddit 子版块、垂直社群里。去这些地方真实地解决问题、自然带出产品,比泛泛投广告有效。</li>
+      </ul>
+      <p>核心心态:<strong>工具 App 的护城河是"被需要",不是"被传播"。</strong>把精力放在"让需要它的人能搜到它"上。</p>
+    </div></div>
+  </article>
+
+  <!-- A07 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A07</span>
+      <div class="qa-q">
+        <div class="topic">To C 工具站转 To B</div>
+        <div class="ask">做了几个 To C AI 工具站,有小结果。转 To B,第一单怎么来?从现有 C 端筛高付费客户,还是另起炉灶?海外第一批企业客户怎么触达?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">最好的第一单 To B 客户,往往本来就藏在你的 C 端用户里——只是你没去找他们。</p>
+      <p><strong>优先从现有 C 端用户里筛,而不是另起炉灶。</strong>原因很简单:你已经有流量、有产品、有真实使用数据,而冷启动企业客户是从零开始,成本高得多。</p>
+      <p>怎么从 C 端里挖出 B 端:</p>
+      <ul>
+        <li><strong>看谁在异常使用</strong>:用量明显超出个人需求的、反复触达免费上限的、用公司邮箱注册的、来问 API / 批量 / 团队席位的——这些都是 B 端信号。后台数据会告诉你谁是潜在企业客户。</li>
+        <li><strong>主动去聊</strong>:给这些高用量用户发一封真人邮件,问他们用来做什么、有没有团队/批量/定制需求。第一单 To B 经常就是这么一封邮件聊出来的。</li>
+        <li><strong>把 C 端能力包成 B 端产品</strong>:同样的功能,给个人是订阅,给企业就是 API、白标、批量额度、团队管理。需求是现成的,只是换个交付形态。</li>
+      </ul>
+      <p class="pull"><b>如果确实要冷启动企业客户,</b>海外第一批 B 端触达渠道通常是:相关的垂直社区和行业群、LinkedIn 精准触达、做能被搜到的 To B 场景内容页(企业客户也会在 Google 搜解决方案)、以及现有客户的口碑转介绍。但我还是那句话——先把眼前 C 端里的金矿挖完,再去开新矿。</p>
+    </div></div>
+  </article>
+
+  <!-- A08 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A08</span>
+      <div class="qa-q">
+        <div class="topic">免费增长还是直接收费</div>
+        <div class="ask">SaaS 开发阶段,竞品靠免费裂变、插件市场用户多好评多排名高。预算有限,该跟进免费增长,还是直接收费?如何判断免费用户增长是否值得?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">免费不是策略,免费是手段。问题不是"免费还是收费",而是"免费这一步,到底帮你换来了什么"。</p>
+      <p>预算有限时,我会这样想:</p>
+      <ul>
+        <li><strong>免费能带来的真正价值,是"排名"和"信任",不是"用户数"</strong>。你提到竞品在插件市场里用户多、好评多、排名高——这才是免费的意义:在一个有排名机制的平台(插件市场、App Store、Product Hunt),免费用户能换来下载量、评分、排名,而排名会带来源源不断的免费曝光。这种免费是值得的。</li>
+        <li><strong>如果免费换不来这些杠杆,那免费就是纯成本</strong>。一个没有平台排名加成、靠服务器烧钱养着白嫖用户的免费,只会拖垮你。</li>
+      </ul>
+      <p>我的建议是<strong>"有限免费 + 清晰付费墙"</strong>,而不是纯免费或纯收费:</p>
+      <ul>
+        <li>给一个有意义的免费额度(像我做工具站常用的免费层),让用户先体验到价值、愿意留评、愿意传播;</li>
+        <li>把高价值的部分(更高额度、更高质量、批量、API、去水印)放到付费墙后;</li>
+        <li>在用户"刚体会到价值"的那一刻设置付费转化点。</li>
+      </ul>
+      <p class="pull"><b>判断免费是否值得的指标:</b>看免费用户的<b>留存</b>和<b>付费转化率</b>。如果免费用户用完就走、转化率趋近于零,这批增长就是虚的;如果免费用户有留存、且有稳定比例转付费,免费就是健康的获客漏斗。盯住这两个数,而不是盯总注册数。</p>
+    </div></div>
+  </article>
+
+  <!-- A09 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A09</span>
+      <div class="qa-q">
+        <div class="topic">税务与出海合规</div>
+        <div class="ask">CRS、境外收入报税、券商被查……赚美元后税务合规越来越现实。独立开发者该如何处理?有哪些常见误区和可执行经验?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">先说一句重话:税务合规不是"要不要做"的选择题,是"早做还是被动做"的时间题。趁早把结构搭对,比事后补救省心得多。</p>
+      <p>但我要很明确地说:<strong>税务合规高度专业、且和每个人的具体情况强相关,我不是税务师也不是律师,不适合在这里给具体怎么做的建议。</strong></p>
+      <p>这里先泼一盆冷水:<strong>对市面上各种"税务规划""出海架构规划",一定要多留个心眼。</strong>这行业信息壁垒太高,普通独立开发者根本没能力分辨一套方案到底合不合规、雷埋在哪。而市面上不少所谓的"规划",本质是销售导向的——它给你搭一套看起来很省税的结构,但<strong>潜在风险点都埋在里面,真出了事,承担后果的是你,不是当初给你做规划的那个人。</strong>越是把"帮你省钱、帮你搞定一切"挂在嘴上、越是热情兜售现成方案的,越要警惕。</p>
+      <p><strong>所以关于"找谁",我的真实建议是:优先找你所属地区的官方税务部门咨询。</strong>原因很现实——中小会计/税务师事务所水平参差不齐,踩雷的不少;真正顶级的事务所,独立开发者这个体量既接触不到、也未必有那个预算去匹配;而官方部门的口径最权威,也没有"卖方案"的利益动机。所以遇到拿不准的,优先去问官方,而不是优先去信一套现成的"规划"。</p>
+      <p>几点具体提醒:</p>
+      <ul>
+        <li><strong>咨询时以"一般性问题"的方式问,不必上来就报自己的真实身份和具体收入</strong>。先把规则和口径问清楚,把它当成了解政策,而不是主动申报。</li>
+        <li><strong>落地优先选一线、二线的沿海地区</strong>。这些地方处理跨境、外贸、境外收入的经验更成熟,政策执行也更规范、可预期。</li>
+        <li><strong>别再赌"查不到"</strong>。在 CRS 信息交换的大背景下,"赚的是美元、收在海外就管不到"这种假设越来越不成立,把合规寄希望于侥幸是最危险的策略。</li>
+      </ul>
+      <p>还有一层心态我想说清楚:<strong>合规的目标不是"想方设法少交、甚至不交",而是把综合税负算清楚,在自己能接受的范围内坦然交。</strong>很多人一听交税就本能抗拒,但其实<strong>走企业主体,服务器、API、外包、推广、设备等很多成本都能合规抵扣</strong>,真正落到税基上的利润远没有营收那么多,综合税负算下来,国内其实没有想象中那么高。把账算明白之后你会发现,与其为了省那点税去搭一套有风险的结构、整天提心吊胆,不如踏踏实实合规经营——这份安心,本身就很值钱。</p>
+      <p>核心原则:<strong>把结构搭在阳光下,主动去把规则问清楚,而不是想办法藏起来。</strong></p>
+    </div></div>
+  </article>
+
+  <!-- A10 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A10</span>
+      <div class="qa-q">
+        <div class="topic">海外公司、收款与回款</div>
+        <div class="ask">为收款注册海外公司,要综合考虑税务、合规、成本和回款。哪个国家/地区更适合?收款后想合规低成本转回国内怎么做?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">这个问题我同样要先把话说在前面:注册地选择、税务结构、合规回款,每一项都是专业且和你具体情况强相关的事,我不适合也不应该在这里给具体答案。</p>
+      <p><strong>关于"找谁",和上一题一样:优先找官方部门把规则问清楚。</strong>注册地、税务、回款这些,与其一上来就找中小事务所(水平参差、容易踩雷),不如先去所属地区的官方税务/外汇等主管部门,以一般性问题的方式把政策口径问明白,不必上来就报自己的身份和具体收入。落地也优先考虑一线、二线沿海地区,这些地方处理跨境业务更成熟、执行更规范。</p>
+      <p>我只提两点方向性的提醒:</p>
+      <ul>
+        <li><strong>没有"最好的国家",只有"最适合你当前阶段的组合"</strong>。先想清楚你要解决的到底是收款、是支付审核,还是身份与税务——不同诉求对应的方案不一样,带着清晰的诉求去咨询,沟通会高效很多。</li>
+        <li><strong>回款这一步,该走的合规路径一定要走</strong>。千万别用地下钱庄、拆分小额这类"省事"的灰色方式——省下的那点成本,远不够覆盖被认定为违规的风险。具体怎么走,以官方口径和正规渠道为准。</li>
+      </ul>
+    </div></div>
+  </article>
+
+  <!-- A11 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A11</span>
+      <div class="qa-q">
+        <div class="topic">AI 品牌词流量与支付审核</div>
+        <div class="ask">蹭新模型/品牌词流量,但站里出现别人品牌词后申请支付可能被拒。想蹭 AI 品牌词流量,怎样既合规又有效?套壳站通常怎么解决支付审核?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">蹭品牌词流量和过支付审核,本质是一对矛盾。能长久的做法,是"用品牌词引流,但不让品牌词进入你的品牌、域名和收款主体"。</p>
+      <p>先把风险边界讲清楚:<strong>直接拿别人的注册商标当自己的品牌/域名、做让用户误以为是官方的页面,既容易被支付平台拒,也容易吃商标投诉。这两年大厂对自己的 AI 品牌词维权越来越主动、越来越批量,擦边的做法风险只会越来越大,不要碰。</strong>(具体某个用法是否构成侵权,属于法律判断,要以专业律师的意见为准——下面只讲产品和运营层面的策略。)</p>
+      <p>合规又有效的做法是把"引流"和"承接"彻底分层:</p>
+      <ul>
+        <li><strong>品牌词只用在内容/SEO 层,不进品牌/域名/支付层</strong>:你可以做"如何使用 X 模型""X vs Y 对比""X 平替"这类<b>信息性内容页</b>来蹭搜索流量;但你网站的主品牌、域名、收款主体,必须是你自己的独立品牌。</li>
+        <li><strong>页面要醒目地标明"非官方、无关联"</strong>:加上明确的非关联声明,不要让用户误以为你就是那个品牌的官方站。误导性是支付平台和商标方最在意的点。</li>
+        <li><strong>支付审核走干净的主体和落地页</strong>:把支付绑定在一个品牌干净、没有他人商标的主站/主页面上,品牌词内容页只作为引流卫星,把流量导到这个干净主体上转化。</li>
+        <li><strong>尽早把独立品牌立起来</strong>:别等到被投诉才被动改名。一开始就用自己的品牌,把生意长在自己的地基上。</li>
+      </ul>
+      <p class="pull"><b>关于套壳站怎么过审:</b>那些短期能过审的,多数是把收款页做得"干净"、和品牌词内容做了隔离;但只要主体本身在打擦边球,被支付方风控或被商标方投诉只是时间问题。<b>我的建议是不要赌这个</b>——用品牌词合理引流可以,但品牌、域名、收款主体一定要干净。</p>
+    </div></div>
+  </article>
+
+  <!-- A12 -->
+  <article class="qa a-tier open">
+    <div class="qa-head">
+      <span class="qa-id">A12</span>
+      <div class="qa-q">
+        <div class="topic">蹭热点词后的站内扩展</div>
+        <div class="ask">先蹭一个新词(如 Nano Banana)获得流量,后续想加其他品牌词/模型词内页(如 GPT Image 2)。适合继续加吗?用户从一个品牌词进来看到其他品牌词,会影响转化吗?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">可以继续加,但要想清楚你这个站的定位是"某个品牌的专属站",还是"一个能力的聚合站"。定位决定了加品牌词会帮你还是害你。</p>
+      <p>先回答会不会影响转化:<strong>关键看你站的定位是否一致。</strong></p>
+      <ul>
+        <li><strong>定位成"聚合型工具站"</strong>(比如"AI 图像生成器,支持多种模型"),那么加 GPT Image 2、加其他模型词,不仅不影响转化,反而强化了"我这里什么都能用"的认知。用户从一个模型进来,看到还能用别的模型,是加分项。这种情况大胆加。</li>
+        <li><strong>定位成"某单一品牌专属站"</strong>,用户冲着这一个东西来,你突然塞一堆别的品牌词,会稀释专注度、让用户怀疑"这到底是不是我要的那个",反而伤转化。</li>
+      </ul>
+      <p>从小果园的角度,我更推荐<strong>把站做成"能力聚合站",品牌词只是一个个引流入口</strong>:</p>
+      <ul>
+        <li>每个模型词做一个独立的引流内页(一词一页),吃各自的搜索流量;</li>
+        <li>所有内页最终都导向同一个聚合的核心产品/工具;</li>
+        <li>新模型词一出来就能快速加一页吃流量,而不依赖任何单一品牌词的生死。</li>
+      </ul>
+      <p class="pull"><b>一个重要提醒:</b>呼应 A11——你可以用品牌词做<b>内容页</b>引流,但你的<b>主品牌、域名、收款主体必须干净</b>,不要把站建在某个别人的注册商标上。否则一旦遇到大厂批量商标维权,这个站随时可能被迫改名、甚至弃用域名。把站建在"自己的聚合能力"上,无论哪个热点词凉了、哪个品牌词被维权,你的站都还活着。</p>
+    </div></div>
+  </article>
+
+  <!-- ========== B 级 ========== -->
+  <div class="tier-head" data-tier-head="b-tier">
+    <span class="tier-badge">B</span>
+    <div>
+      <div class="tier-title">时间充足时提问</div>
+      <div class="tier-desc">渠道、运营、规模化与阶段性增长。时间够的话,这些值得展开。</div>
+    </div>
+  </div>
+
+  <!-- B01 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B01</span>
+      <div class="qa-q">
+        <div class="topic">社媒平台推广与转化标准</div>
+        <div class="ask">小团队想在 TikTok 等社媒推广工具类产品,试过中介平台效果不理想。如何从零做社媒推广?工具类产品有可参考的转化率/点击率/增长基准吗?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">坦白说,纯靠社媒做工具类产品,不是我最擅长也不是我最推荐的主路径——我的增长引擎一直是 SEO + Google Ads,因为它可量化、可控、可复制。</p>
+      <p>但如果要做社媒,我的看法是:</p>
+      <ul>
+        <li><strong>别迷信中介平台</strong>。你已经试过效果不好——中介投放和达人合作的问题是不可控、不可量化、难复制,跟我的方法论是相反的。</li>
+        <li><strong>社媒的逻辑是"内容即获客"</strong>,不是投广告。工具类产品在 TikTok 上能跑起来的,几乎都是靠"展示工具用法/效果"的短内容本身,而不是硬广。先研究你赛道里跑出来的对标账号,拆解它们的内容形式,自己批量做、快速试。</li>
+        <li><strong>把社媒当作小果园里的一棵试验苗</strong>:用最小成本试 2-3 个月,有自然爆款苗头就追加,没有就回到 SEO + 广告的主路径,别在不可控的渠道上耗太久。</li>
+      </ul>
+      <p class="pull"><b>关于转化/点击基准:</b>工具类产品的转化率差异极大,跟品类、定价、流量意图都强相关,行业"平均值"参考意义不大。<b>更靠谱的做法是建立你自己产品的基线</b>——记录你自己渠道的点击率、注册率、付费转化率,然后每次优化都和你自己上一版比。和别人比不如和自己比。</p>
+    </div></div>
+  </article>
+
+  <!-- B02 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B02</span>
+      <div class="qa-q">
+        <div class="topic">Twitter/X 运营与私信转化</div>
+        <div class="ask">做英文市场发 X 不如中文顺手,不清楚发帖节奏;想用私信触达转化。X 发帖和私信转化有可参考的运营节奏吗?英文内容怎么发,私信从建联到转化怎么设计?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">英文发不顺手是真问题,但解决方案不是"硬写得像母语者",而是"少写花活、多发对用户有用的东西"。</p>
+      <p>关于发帖:</p>
+      <ul>
+        <li><strong>英文内容靠"有用"而非"文采"取胜</strong>。你不需要写得像 native,你需要发对目标用户真正有价值的东西:工具的真实用法、解决的具体问题、可复用的经验。信息价值能盖过语言上的不完美。</li>
+        <li><strong>节奏上,持续 + 垂直 比 偶尔爆发 更重要</strong>。固定围绕你产品解决的问题领域持续发,让账号有清晰的标签,而不是什么都发。</li>
+        <li>善用工具辅助润色英文,但保持真实,别写成 AI 味十足的营销腔。</li>
+      </ul>
+      <p>关于私信转化:</p>
+      <ul>
+        <li><strong>私信不能一上来就推销</strong>,那是最快被拉黑的方式。节奏应该是:先因为对方的内容/需求建立真实连接 → 提供一个具体的、对他有用的帮助 → 在自然的时机才提到你的产品能解决他的问题。</li>
+        <li><strong>私信适合做 To B 或高价值用户的精准触达</strong>(呼应 A07),不适合大规模铺。把它当作"一对一深聊"而不是"群发"。</li>
+      </ul>
+      <p>但我还是要诚实地说:对独立开发者,<strong>X 更适合作为"建立信任和品牌"的辅助渠道,而不是主要的获客和转化引擎</strong>。主引擎还是放在能规模化、可量化的 SEO 和广告上。</p>
+    </div></div>
+  </article>
+
+  <!-- B03 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B03</span>
+      <div class="qa-q">
+        <div class="topic">iOS 工具 App 与 ASA</div>
+        <div class="ask">准备做 iOS 工具类 App 出海,刚做了几个但没量。ASA 投放、关键词选择、素材测试、运营推广有哪些实操经验?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">ASA 的底层逻辑和我做 Google Ads 冷启动是一套思路:先用小预算精准测词,验证哪个词带来的用户最值钱,再把预算集中到那个词上。</p>
+      <p>结合我做 Google Ads 冷启动的经验,迁移到 ASA:</p>
+      <ul>
+        <li><strong>关键词选择 = ASO 选词的延伸</strong>:先用 ASO 的思路找到搜索量够、意图明确、竞争能打的功能词。ASA 投的就是这些高意图词,因为搜功能词的人转化意愿最高。</li>
+        <li><strong>冷启动先求"测出信号",不求"立刻盈利"</strong>:用小预算分别测多个词组,目的是找出哪个词的<b>下载成本低、且下载后留存/付费好</b>。这和我做广告 ROAS 监控是一个逻辑——不看单个指标,看"花出去的钱换回了多少真实价值"。</li>
+        <li><strong>素材测试要小步快跑</strong>:一次只改一个变量(图标、首图、副标题),对比哪个版本转化更好,迭代出最优组合。</li>
+        <li><strong>ASA 不是孤立的</strong>:配合 ASO(自然排名)和 Web 引流(见 A06),三条腿一起跑,别只靠 ASA 烧钱买量。</li>
+      </ul>
+      <p class="pull"><b>一个判断纪律:</b>给每个 App 一个明确的测试预算和周期。测完如果某个 App 的获客成本始终高于它能产生的价值,别恋战——这就是小果园里那棵不结果的树,砍掉,把预算挪给跑出来的那个。</p>
+    </div></div>
+  </article>
+
+  <!-- B04 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B04</span>
+      <div class="qa-q">
+        <div class="topic">独立开发者时间分配</div>
+        <div class="ask">新人常不知道时间该花在新需求、营销推广、老产品维护之间怎么分。你每天/每周大概怎么分配?对新人有什么建议?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">时间分配的本质,是给"种新苗"和"给好苗浇水"找平衡。新人最常见的错误,是把时间全花在"做"上,几乎不花时间在"推"和"判断"上。</p>
+      <p>我的大致原则(不同阶段比例会变):</p>
+      <ul>
+        <li><strong>挖掘新需求 / 种新苗</strong>:始终留一块固定时间做关键词研究、看新机会、上线新的小种子站。果园需要不断种新树,断了新苗,园子就会老化。</li>
+        <li><strong>营销推广 / 浇水</strong>:这是新人最容易忽视、却最该加重的部分。一个做好但没人推的产品等于没做。给已经有信号的产品持续加内容、调广告、做增长,占很大比重。</li>
+        <li><strong>老产品维护</strong>:尽量压缩。能自动化的(监控脚本、自动通知)就自动化,让维护成本随产品增多而不是线性上升。</li>
+      </ul>
+      <p>给新人的三条建议:</p>
+      <ul>
+        <li><strong>别陷在"无限打磨产品"里</strong>。产品到能用就推出去,让市场告诉你它值不值得继续打磨。</li>
+        <li><strong>把"判断"也当成一项要花时间的工作</strong>。每周固定回顾数据,决定哪些浇水、哪些止损,这比埋头干活更重要。</li>
+        <li><strong>用工具和自动化省时间</strong>。我自己做了大量监控脚本、自动通知来压缩重复劳动,把时间留给真正需要判断和创造的事。</li>
+      </ul>
+    </div></div>
+  </article>
+
+  <!-- B05 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B05</span>
+      <div class="qa-q">
+        <div class="topic">从 10 万 MRR 到 100 万 MRR</div>
+        <div class="ask">产品做到 10 万 MRR,从 10 万到 100 万会进入完全不同的阶段。最关键是做对了什么?产品、渠道、团队、定价、管理上哪些变化最重要?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">老实说,这个阶段我也还在路上,所以我讲的是我观察到的规律,不是已经走通的炫耀。10 到 100 的核心,是从"靠个人能力"切换到"靠可复制的系统"。</p>
+      <p>我观察到这个跨越最关键的几个变化:</p>
+      <ul>
+        <li><strong>渠道要从单一走向多元且可规模化</strong>。10 万 MRR 可能靠一两个渠道就够了,但要到 100 万,必须找到能持续放大的获客系统,且不能押在单一渠道上——单一渠道一旦出问题(算法变化、封号、平台政策),收入会断崖。</li>
+        <li><strong>从"自己干"到"建系统让别人也能干"</strong>。把你脑子里的打法变成可复制的 SOP——选词、铺内容、投广告、监控数据,都要能交给团队按流程执行,而不是只有你会。</li>
+        <li><strong>定价要敢于分层和提价</strong>。这个阶段往往要往上拓展更高价值的客户(比如 To B、企业版、API),用高客单价拉高天花板,而不只是堆更多低价用户。</li>
+        <li><strong>管理上从"做事"转向"做判断和带人"</strong>。你的时间价值最高的用法,变成定方向、看数据、配置资源、带团队,而不是亲手做每件事。</li>
+      </ul>
+      <p class="pull"><b>一个我相信的判断:</b>能跨过 10 到 100 的,通常不是靠又做了一个新爆款,而是把<b>已经被验证的那一个,用系统化的方式做深做透、把每个环节都规模化</b>。这时候小果园里那棵真正长成大树的,值得你把大部分资源都压上去。</p>
+    </div></div>
+  </article>
+
+  <!-- B06 -->
+  <article class="qa b-tier open">
+    <div class="qa-head">
+      <span class="qa-id">B06</span>
+      <div class="qa-q">
+        <div class="topic">从 1 到 100 的典型案例</div>
+        <div class="ask">听过很多 0 到 1 的故事,更想知道 1 到 100 的真实路径。你或身边朋友怎么从 1 做到 100?有典型案例吗?10 人以内小团队在出海上还有多大想象空间?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">从 1 到 100 没有传奇,只有"把验证过的事重复做、做深、做规模化"的笨功夫。真实路径往往很无聊,但正因为无聊才可复制。</p>
+      <p>我看到的 1 到 100 的共同路径,通常是这几步:</p>
+      <ul>
+        <li><strong>1 的阶段:验证一个能自己长的东西</strong>。先有一个停掉投放还能持续来流量、持续有付费的产品。这个"1"必须是真实的、能自驱动的,不是靠烧钱撑出来的假象。</li>
+        <li><strong>1 到 10:把这一个打法复制和加深</strong>。同样的选词逻辑、同样的内容打法、同样的广告 SOP,在这个产品上做深(更多内页、更多长尾、更多语言),或复制到相邻品类。</li>
+        <li><strong>10 到 100:系统化 + 多元化</strong>。把打法变成团队能执行的系统,渠道多元化,客单价分层(见 B05)。</li>
+      </ul>
+      <p class="pull"><b>关于 10 人以内小团队的想象空间:</b>我的看法是——<b>空间非常大,而且 AI 时代反而更大了</b>。AI 让小团队的人均产出大幅提升,一个几人小队现在能维护一整片产品矩阵,做到过去几十人才能做的事。出海面对的是全球市场,天花板从来不是市场大小,而是你的获客系统能不能规模化、你愿不愿意把验证过的事重复做下去。小团队 + 全球市场 + AI 杠杆,这个组合的想象空间,远没到顶。</p>
+    </div></div>
+  </article>
+
+  <!-- ========== C 级 ========== -->
+  <div class="tier-head" data-tier-head="c-tier">
+    <span class="tier-badge">C</span>
+    <div>
+      <div class="tier-title">定向补充</div>
+      <div class="tier-desc">更偏具体技术、框架和团队的问题。现场刚好有相关的人时再补。</div>
+    </div>
+  </div>
+
+  <!-- C01 -->
+  <article class="qa c-tier open">
+    <div class="qa-head">
+      <span class="qa-id">C01</span>
+      <div class="qa-q">
+        <div class="topic">平台爬虫的技术与政策风险</div>
+        <div class="ask">做面向小 B 电商客户的 SaaS,要扩展电商平台内部 SEO 和商品排名服务,需要做电商平台爬虫但没经验。技术上如何规避反爬?政策合规有哪些风险?有哪些边界要注意?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">爬平台数据这件事,技术从来不是最大的坑,合规和"对方平台的脾气"才是。先想清楚边界,再想技术。</p>
+      <p>我先把风险说在前面:</p>
+      <ul>
+        <li><strong>政策与合规风险是首要的</strong>。爬取平台数据可能触及对方的服务条款、数据权属、甚至当地的数据法规。把业务建在"违反对方 ToS"的爬虫上,等于把地基建在别人随时能抽走的地板上——平台一旦封禁或追责,你的整个 SaaS 都悬了。</li>
+        <li><strong>给客户提供的服务如果依赖灰色爬虫,客户的风险也会回流到你</strong>。这是 To B,口碑和稳定性极其重要。</li>
+      </ul>
+      <p>从经验角度的几个边界建议:</p>
+      <ul>
+        <li><strong>优先用官方渠道</strong>:很多电商平台有官方 API 或开放数据接口。能用官方的就别爬,合规、稳定、可持续。</li>
+        <li><strong>只取公开、必要的数据,控制频率</strong>:不碰需要登录/授权才能看的私有数据,请求频率保持克制,尊重 robots 和速率限制——这既是技术上降低被封的方式,也是合规的底线。</li>
+        <li><strong>把数据当"参考信号"而非"核心资产"</strong>:让你的 SaaS 价值更多体现在分析、建议、工具能力上,而不是单纯转卖爬来的原始数据,这样即使数据源受限,产品依然有价值。</li>
+      </ul>
+      <p>具体的反爬对抗技术(IP 池、指纹、频控等)网上很多,但我不建议把核心竞争力压在"比平台反爬更强"上——那是一场你大概率会输、且越赢风险越大的军备竞赛。</p>
+    </div></div>
+  </article>
+
+  <!-- C02 -->
+  <article class="qa c-tier open">
+    <div class="qa-head">
+      <span class="qa-id">C02</span>
+      <div class="qa-q">
+        <div class="topic">TanStack 上站经验</div>
+        <div class="ask">TanStack 最近比较火,看起来简单好配置,很多人会考虑用于真实项目。实际上站有没有遇到坑?哪些场景适合用,哪些要谨慎?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">技术选型上,我有一个比"用什么框架"更上位的原则:对做 SEO 流量站的独立开发者,先问这个框架对 SEO 友不友好、上手快不快,再谈它酷不酷。</p>
+      <p>我做工具站有个偏好——<strong>能用一个单 HTML 文件解决的,就不上重框架</strong>,因为它能直接跑、好部署、SEO 没有额外坑。这个偏好背后的逻辑,对任何新框架都适用:</p>
+      <ul>
+        <li><strong>适合用的场景</strong>:交互复杂、状态管理重、偏应用型(dashboard、工具型 App)的项目,这类项目本来 SEO 权重就不靠首屏内容,用现代框架能提效。</li>
+        <li><strong>要谨慎的场景</strong>:重度依赖 SEO 自然流量的内容站/工具站。这类站最怕的是首屏内容渲染、爬虫抓取、首屏速度上踩坑。任何新框架在用于 SEO 站之前,都要先确认它的渲染方式(SSR/SSG/CSR)对搜索引擎是否友好,别为了用新工具牺牲了你的命根子——自然流量。</li>
+      </ul>
+      <p class="pull"><b>我的通用建议:</b>新框架先用一个不重要的小种子站试水,跑通 SEO 收录和性能,确认没坑了再用到主力项目上。<b>别拿你最重要的站去当新框架的小白鼠。</b>这也是小果园的好处——你永远有便宜的试验田。</p>
+    </div></div>
+  </article>
+
+  <!-- C03 -->
+  <article class="qa c-tier open">
+    <div class="qa-head">
+      <span class="qa-id">C03</span>
+      <div class="qa-q">
+        <div class="topic">小公司招人与激励</div>
+        <div class="ask">小公司扩张时难和大公司拼薪资。用股份或营收分红吸引人才,一般给多少比例合适?从大公司挖人时,现金、股份、分红怎么配比?</div>
+      </div>
+      <span class="qa-toggle"><span class="label-closed">看回答</span><span class="label-open">收起</span><span class="chev"></span></span>
+    </div>
+    <div class="qa-body"><div class="qa-body-inner">
+      <span class="gefei-tag"><span class="dot"></span>哥飞.ai 回答</span>
+      <p class="lead">小公司抢人,别在"现金"这个大公司的主场和它硬碰。你的武器是大公司给不了的东西:成长速度、参与感,和真实的利益绑定。</p>
+      <p>先说一个判断:小团队的优势不在规模,所以我更相信<strong>"少而精 + 利益深度绑定"</strong>,而不是靠规模和高薪堆人。</p>
+      <p>关于配比,没有标准答案,但有几个原则:</p>
+      <ul>
+        <li><strong>现金给到"能安心生活"的线,而不是市场顶薪</strong>。小公司现金拼不过大厂,目标是让人没有后顾之忧,而不是靠工资赢。</li>
+        <li><strong>用营收分红做即时激励,比期权更适合小团队</strong>。独立开发者/小团队的项目变现快、周期短,营收分红能让核心成员<b>当下就感受到自己的努力换来真实回报</b>,激励比"遥远的期权"直接得多。比例上,给到让他真切觉得"这是我的事业"的程度。</li>
+        <li><strong>股份留给真正长期共创的核心人</strong>,且要谈清楚兑现(vesting)和退出机制,别一上来就大方撒股,后面反悔伤感情。</li>
+      </ul>
+      <p class="pull"><b>这一点我要反复强调,一定一定记住:不管多熟、多铁,合作的钱和权利,务必白纸黑字签好合同。</b>劳务/劳动合同、合作协议、股份与分红的约定、兑现(vesting)和退出机制,统统要落到书面上。小团队最容易栽的跟头就是——觉得是兄弟、是熟人,口头说说就开干,分红比例、谁占多少、走的时候怎么算,全凭一张嘴。<b>等到要分钱、有人要离开、或者闹掰的那天,没有合同就是一笔扯不清的烂账,轻则伤钱、重则散伙反目甚至对簿公堂。</b>省下签合同那点功夫和那点"不好意思",最后赔进去的是钱、是团队、是人情,这才是真正的因小失大。<b>先小人后君子,把丑话和规则写在前面,反而是对彼此关系最好的保护。</b></p>
+      <p class="pull"><b>从大厂挖人的现实建议:</b>能被"成长 + 分红 + 真实参与感"打动从大厂出来的人,本身就是你要的人——他看重的是事业而非稳定。配比上可以是<b>"够生活的现金 + 有诚意的营收分红 + 给核心人的股份"</b>三件套。但记住:<b>对小团队,选对人比设计激励更重要。</b>一个对的人,什么激励都好谈;一个错的人,给多少都留不住、也不值得。</p>
+    </div></div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="orchard" aria-hidden="true">
+    <span class="tree"></span><span class="tree"></span><span class="tree"></span>
+    <span class="tree"></span><span class="tree"></span>
+  </div>
+  <p>以上是由哥飞.ai 整理的问答。所有回答围绕同一套方法论:<strong>小果园 · 多点轻验证 · 用真实信号决定浇水还是止损</strong>。</p>
+  <p>涉及税务、法律、合规的内容均为方向性提醒,不构成专业意见,具体请优先以所属地区官方主管部门的口径为准。</p>
+  <p class="disc">出海研习社 2026 线下聚会 · 问答整理</p>
+</footer>
+
+<script>
+(function(){
+  // 小果园介绍卡片 —— 默认折叠,点击头部展开/收起
+  var introCard = document.getElementById('introCard');
+  var introHead = document.getElementById('introHead');
+  if(introCard && introHead){
+    var introBody = introCard.querySelector('.intro-body');
+    introHead.addEventListener('click', function(){
+      var open = introCard.classList.toggle('open');
+      introBody.style.maxHeight = open ? introBody.scrollHeight + 'px' : '0px';
+    });
+  }
+
+  // 折叠/展开单个 —— 默认全部展开,点击标题可收起/展开
+  function setOpen(qa, open){
+    var body = qa.querySelector('.qa-body');
+    if(open){ qa.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+    else { qa.classList.remove('open'); body.style.maxHeight = '0px'; }
+  }
+  // 初始化:全部展开
+  document.querySelectorAll('.qa').forEach(function(qa){ setOpen(qa, true); });
+
+  document.querySelectorAll('.qa-head').forEach(function(head){
+    head.addEventListener('click', function(){
+      var qa = head.closest('.qa');
+      setOpen(qa, !qa.classList.contains('open'));
+    });
+  });
+
+  // 筛选
+  var btns = document.querySelectorAll('.tier-btn[data-filter]');
+  var counter = document.getElementById('counter');
+  function applyFilter(f){
+    document.querySelectorAll('.qa').forEach(function(qa){
+      var show = (f==='all') || qa.classList.contains(f);
+      qa.classList.toggle('hidden', !show);
+      if(show && qa.classList.contains('open')){
+        var body = qa.querySelector('.qa-body');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+    document.querySelectorAll('.tier-head').forEach(function(h){
+      var t = h.getAttribute('data-tier-head');
+      h.classList.toggle('hidden', !(f==='all' || f===t));
+    });
+    var visible = document.querySelectorAll('.qa:not(.hidden)').length;
+    counter.textContent = visible + ' 个问题';
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      applyFilter(b.getAttribute('data-filter'));
+    });
+  });
+  applyFilter('all');
+
+  // 全部收起 / 全部展开
+  var collapseBtn = document.getElementById('collapseAll');
+  var collapsed = false;
+  collapseBtn.addEventListener('click', function(){
+    collapsed = !collapsed;
+    document.querySelectorAll('.qa:not(.hidden)').forEach(function(qa){
+      setOpen(qa, !collapsed);
+    });
+    collapseBtn.textContent = collapsed ? '全部展开' : '全部收起';
+  });
+
+  // 窗口尺寸变化时重算已展开卡片的高度
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.qa.open:not(.hidden)').forEach(function(qa){
+      var body = qa.querySelector('.qa-body');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+    if(introCard && introCard.classList.contains('open')){
+      introCard.querySelector('.intro-body').style.maxHeight = introCard.querySelector('.intro-body').scrollHeight + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>
