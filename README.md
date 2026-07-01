@@ -4,10 +4,10 @@
 ## 项目介绍 / Project Introduction
 
 ### 中文
-个人 AI 作品集：展示 AI 工具、内容系统、视觉设计和 GitHub Pages 项目。
+个人 AI 作品集：展示 AI 工具、内容系统、视觉设计、AI 视频提示词学习站和 GitHub Pages 项目。
 
 ### English
-Personal AI portfolio for AI tools, content systems, visual design, and GitHub Pages projects.
+Personal AI portfolio for AI tools, content systems, visual design, AI video prompt learning hubs, and GitHub Pages projects.
 
 ## 使用方式 / Usage
 
@@ -71,11 +71,11 @@ python3 -m http.server 8000
 
 ## 项目介绍 / Project Introduction
 
-**中文介绍**：个人作品集主页，集中展示 AI 工具实验、内容系统、视觉设计作品和可公开访问的项目入口。
+**中文介绍**：个人作品集主页，集中展示 AI 工具实验、内容系统、视觉设计、AI 视频提示词学习站和可公开访问的项目入口。
 
-**English**: A personal portfolio site for AI tool experiments, content systems, visual design work, and public project demos.
+**English**: A personal portfolio site for AI tool experiments, content systems, visual design work, AI video prompt learning hubs, and public project demos.
 
-**SEO 关键词 / SEO Keywords**: AI portfolio, personal website, GitHub Pages, AI tools, visual design, 个人作品集
+**SEO 关键词 / SEO Keywords**: AI portfolio, personal website, GitHub Pages, AI tools, visual design, cinematic prompt, AI video prompts, 个人作品集
 
 <!-- SIUSER-SEO-INTRO:END -->
 
@@ -83,6 +83,7 @@ Personal portfolio and learning lab for `siuserxiaowei`.
 
 - Site: https://siuserxiaowei.github.io/
 - Profile README: https://github.com/siuserxiaowei
+- Latest learning hub: https://siuserxiaowei.github.io/cinematic-ai-visual-prompt-hub/
 - Design language: `docs/design-language.md`
 
 This site is intentionally static: no build step, no tracking script, no external runtime dependency.

@@ -1,6 +1,6 @@
 <svg width="1100" height="680" viewBox="0 0 1100 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">小白学 AI 项目星图</title>
-  <desc id="desc">A constellation map of AI tools, content systems, and visual design projects.</desc>
+  <desc id="desc">A constellation map of AI tools, content systems, visual design, and cinematic prompt projects.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="680">
       <stop stop-color="#08261d"/>
@@ -16,7 +16,7 @@
   </g>
   <text x="58" y="70" fill="#00e6a8" font-family="Menlo, Consolas, monospace" font-size="16" letter-spacing="4">LEARNING CONSTELLATION</text>
   <text x="58" y="128" fill="#f7f5ea" font-family="Georgia, serif" font-size="54" font-weight="700">从学习笔记到可运行作品</text>
-  <text x="60" y="170" fill="#b8cec5" font-family="Avenir Next, sans-serif" font-size="23">AI 工具实验 / 内容系统建设 / 视觉设计，三条线一起长出来。</text>
+  <text x="60" y="170" fill="#b8cec5" font-family="Avenir Next, sans-serif" font-size="23">AI 工具实验 / 内容系统建设 / 视觉设计与影像提示词，三条线一起长出来。</text>
   <path d="M220 374C310 260 420 256 510 350C604 448 730 438 866 270" stroke="#63d8ff" stroke-opacity="0.45" stroke-width="2"/>
   <path d="M220 374C322 462 484 510 626 450C750 398 800 344 866 270" stroke="#00e6a8" stroke-opacity="0.35" stroke-width="2"/>
   <g font-family="Avenir Next, sans-serif" font-weight="800">
@@ -45,6 +45,10 @@
     <g transform="translate(590 438)">
       <circle cx="52" cy="42" r="11" fill="#00e6a8"/>
       <text x="78" y="48" fill="#f7f5ea" font-size="18">wechat-daily-report-skill</text>
+    </g>
+    <g transform="translate(662 534)">
+      <circle cx="52" cy="42" r="11" fill="#d8ff6a"/>
+      <text x="78" y="48" fill="#f7f5ea" font-size="18">cinematic-ai-visual-prompt-hub</text>
     </g>
   </g>
 </svg>
