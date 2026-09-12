@@ -23,7 +23,7 @@ Yangge business-mindset Miaoji breakdown site organized by Shu, Fa, Dao, Qi, and
 
 ## 入口与元信息 / Entry Points & Metadata
 
-- GitHub 仓库 / Repository: https://github.com/siuserxiaowei/yangge-business-mindset-pages
+- GitHub 仓库 / Repository: https://github.com/siuserxiaowei/siuserxiaowei.github.io/tree/main/library/yangge-business-mindset-pages
 - Live / 在线入口：https://siuserxiaowei.github.io/yangge-business-mindset-pages/
 - 默认分支 / Default branch: `main`
 - 主要语言 / Primary language: `HTML`
@@ -34,7 +34,7 @@ Yangge business-mindset Miaoji breakdown site organized by Shu, Fa, Dao, Qi, and
 ## 本地运行 / Local Run
 
 ```bash
-git clone https://github.com/siuserxiaowei/yangge-business-mindset-pages.git
+git clone https://github.com/siuserxiaowei/siuserxiaowei.github.io/tree/main/library/yangge-business-mindset-pages.git
 cd yangge-business-mindset-pages
 python3 -m http.server 8000
 ```
@@ -93,7 +93,7 @@ python3 -m http.server 8000
 | 系列首页 | https://siuserxiaowei.github.io/yangge-business-mindset-pages/ | 5 篇拆解的统一入口 |
 | 素材核对报告 | https://siuserxiaowei.github.io/yangge-business-mindset-pages/audit.html | 核对 5 个笔记是否重复、每篇抓到了哪些素材 |
 | GET 笔记原文备份 | https://siuserxiaowei.github.io/yangge-business-mindset-pages/archive.html | 一页式离线备份，集中保存 5 篇智能总结、会议纪要、逐字稿和课堂资料 |
-| GitHub 仓库 | https://github.com/siuserxiaowei/yangge-business-mindset-pages | 源文件、脚本、图片和 Markdown 原稿 |
+| GitHub 仓库 | https://github.com/siuserxiaowei/siuserxiaowei.github.io/tree/main/library/yangge-business-mindset-pages | 源文件、脚本、图片和 Markdown 原稿 |
 
 ## 推荐学习顺序
 
@@ -152,7 +152,7 @@ python3 -m http.server 8000
 你可以直接克隆到本地阅读、备份或二次修改：
 
 ```bash
-git clone https://github.com/siuserxiaowei/yangge-business-mindset-pages.git
+git clone https://github.com/siuserxiaowei/siuserxiaowei.github.io/tree/main/library/yangge-business-mindset-pages.git
 cd yangge-business-mindset-pages
 ```
 

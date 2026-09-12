@@ -91,7 +91,7 @@ function fileHref(file) {
 }
 
 function githubHref(file) {
-  return `https://github.com/siuserxiaowei/moneyhunter-learning-hub/blob/main/${file.publicPath}`;
+  return `https://github.com/siuserxiaowei/chuhai-xuexi/blob/main/collections/moneyhunter/${file.publicPath}`;
 }
 
 function statCards() {
