@@ -177,7 +177,7 @@
       "name": "AI-image-enlarge",
       "title": "AI Image Enlarger",
       "originalTitle": "AI Image Enlarger",
-      "purpose": "图片放大 Next.js 前端工程；已核对页面代码，真实超分模型接入能力未验收。",
+      "purpose": "图片放大工具的 Next.js 前端，提供页面交互；真实超分辨率模型接入尚未验收。",
       "category": "产品、网站与代码工具",
       "topics": [
         "综合交流与学习"
@@ -285,7 +285,7 @@
       "name": "august-meeting-knowledge",
       "title": "八月会议知识场",
       "originalTitle": "八月会议知识场",
-      "purpose": "2026 年 8 月飞书会议知识场：缺席者学习、知识库复用与 AI Agent 对流",
+      "purpose": "2026 年 8 月飞书会议资料合集，供缺席者学习、会议复盘与知识复用。",
       "category": "会议、分享与访谈资料",
       "topics": [
         "综合交流与学习"
@@ -619,7 +619,7 @@
       "name": "blog",
       "title": "小伟的 AI 与独立构建博客",
       "originalTitle": "Astro Starter Kit: Minimal",
-      "purpose": "记录 AI 工具、自动化、产品笔记与独立构建过程；根 README 仍为框架模板。",
+      "purpose": "记录 AI 工具、自动化和独立产品开发过程的博客工程；根 README 仍使用框架模板。",
       "category": "产品、网站与代码工具",
       "topics": [
         "综合交流与学习"
@@ -1024,7 +1024,7 @@
       "name": "evidence-decision-brief",
       "title": "Evidence Decision Brief（证据罗盘）",
       "originalTitle": "Evidence Decision Brief（证据罗盘）",
-      "purpose": "证据罗盘：把多源材料整理为可复核、可追踪、可回放的版本化决策简报",
+      "purpose": "证据罗盘：把多源材料整理为可复核、可追踪、可回放的版本化决策简报。",
       "category": "可复用 Skills",
       "topics": [
         "综合交流与学习"
@@ -1075,7 +1075,7 @@
       "name": "fireworks-benny-chen-deep-dive",
       "title": "Fireworks × Benny Chen：开源、Token 与定制模型",
       "originalTitle": "Fireworks × Benny Chen：开源、Token 与定制模型",
-      "purpose": "Benny Chen 对谈完整逐字稿、深度分析与交互式学习页",
+      "purpose": "Benny Chen 对谈学习资料：完整逐字稿、深度拆解与交互式阅读页面。",
       "category": "会议、分享与访谈资料",
       "topics": [
         "创业、经营与合作"
@@ -1151,7 +1151,7 @@
       "name": "geolyze-replica",
       "title": "GEO Library",
       "originalTitle": "GEO Library",
-      "purpose": "GEO Library 可搜索资料站工程，含 Astro 源码、测试与数据构建；不是单篇研究笔记。",
+      "purpose": "GEO/AI 搜索优化资料站，支持资料检索、数据构建与专题阅读，并集中保存增长研究资料。",
       "category": "产品、网站与代码工具",
       "topics": [
         "出海、增长与商业化"
@@ -1252,7 +1252,7 @@
       "name": "hr-agent-reading-hub",
       "title": "AI Agent 架构与 HR 自动化阅读台",
       "originalTitle": "AI Agent 架构阅读台",
-      "purpose": "AI Agent 架构阅读台；HR 招聘只是保留的业务案例，已扩展至工具、上下文和评估等主题。",
+      "purpose": "AI Agent 架构学习站，整理工具调用、上下文、评估和 AI 编程；保留 HR 招聘案例。",
       "category": "专题研究、课程与日常档案",
       "topics": [
         "AI 编程与 Agent"
@@ -1303,7 +1303,7 @@
       "name": "jacky-awesome-agent-skills",
       "title": "Awesome Agent Skills",
       "originalTitle": "Awesome Agent Skills",
-      "purpose": "🤖 精选的 AI Agent Skills 列表，适用于 Cursor、Claude Code、GitHub Copilot 等 AI 编程工具",
+      "purpose": "查找适用于 Cursor、Claude Code、GitHub Copilot 等工具的 AI Agent Skills。",
       "category": "上游 Fork",
       "topics": [
         "AI 编程与 Agent"
@@ -1380,7 +1380,7 @@
       "name": "meeting-minutes-shu-fa-dao-qi-shi-pages",
       "title": "道法术器势会议拆解站（公开发布版）",
       "originalTitle": "道法术器势会议拆解站（公开发布版）",
-      "purpose": "公开 GitHub Pages：道法术器势会议拆解站，含文章、维度索引、配置页和在线链接",
+      "purpose": "公开 GitHub Pages：道法术器势会议拆解站，含文章、维度索引、配置页和在线链接。",
       "category": "会议、分享与访谈资料",
       "topics": [
         "综合交流与学习"
@@ -1506,7 +1506,7 @@
       "name": "opc-policy",
       "title": "OPC Gate · 一人公司政策与落地路线诊断",
       "originalTitle": "OPC Gate · 一人公司政策与落地路线诊断",
-      "purpose": "OPC Gate｜InfiniSynapse × CSDN Vibe Coding 2026：一人公司政策与落地路线诊断",
+      "purpose": "OPC Gate｜InfiniSynapse × CSDN Vibe Coding 2026：一人公司政策与落地路线诊断。",
       "category": "产品、网站与代码工具",
       "topics": [
         "综合交流与学习"
@@ -1581,7 +1581,7 @@
       "name": "pi-runtime-field-guide",
       "title": "Pi Runtime Field Guide",
       "originalTitle": "Pi Runtime Field Guide",
-      "purpose": "源码级 Pi Agent 学习指南：Loop、工具管道、上下文、会话树、AgentHarness 与 DeepSeek Harness 对照",
+      "purpose": "源码级 Pi Agent 学习指南：Loop、工具管道、上下文、会话树、AgentHarness 与 DeepSeek Harness 对照。",
       "category": "专题研究、课程与日常档案",
       "topics": [
         "AI 编程与 Agent"
@@ -1606,7 +1606,7 @@
       "name": "policy-radar-agent",
       "title": "智策雷达",
       "originalTitle": "智策雷达",
-      "purpose": "智策雷达：面向制造业与中小企业的 AI 政策搜索与申报助手",
+      "purpose": "智策雷达：面向制造业与中小企业的 AI 政策搜索与申报助手。",
       "category": "产品、网站与代码工具",
       "topics": [
         "创业、经营与合作"
@@ -1764,7 +1764,7 @@
       "name": "remote-ai-nomads-getgiffgaff",
       "title": "🌍 RemoteAI-Nomads | 全球数字游民实践指南",
       "originalTitle": "🌍 RemoteAI-Nomads | 全球数字游民实践指南",
-      "purpose": "🌍 数字游民实战指南",
+      "purpose": "数字游民实用指南，汇集远程工作、出海生活及相关服务资料。",
       "category": "上游 Fork",
       "topics": [
         "综合交流与学习"
@@ -1915,7 +1915,7 @@
       "name": "siuserxiaowei",
       "title": "小伟的 GitHub 个人主页",
       "originalTitle": "Hi, I'm 小伟",
-      "purpose": "GitHub Profile README：个人公开项目主页，集中索引 AI 工具、内容系统和视觉作品集。",
+      "purpose": "GitHub 个人主页 README，介绍工作方向，并链接项目目录、作品集与联系入口。",
       "category": "产品、网站与代码工具",
       "topics": [
         "内容创作与社群"
@@ -1940,7 +1940,7 @@
       "name": "siuserxiaowei.github.io",
       "title": "小伟的作品集与项目导航",
       "originalTitle": "小白学 AI Portfolio",
-      "purpose": "个人 AI 作品集：展示 AI 工具、内容系统、视觉设计和 GitHub Pages 项目。",
+      "purpose": "个人项目与资料总入口：浏览代码项目、按主题阅读会议资料，并查看作品展示。",
       "category": "产品、网站与代码工具",
       "topics": [
         "内容创作与社群"
@@ -1990,7 +1990,7 @@
       "name": "spark-meetup-deep-dive",
       "title": "Spark 上海独立开发者分享会深度拆解",
       "originalTitle": "Spark 上海独立开发者分享会深度拆解",
-      "purpose": "Spark 上海独立开发者分享会：89 分钟时间线、事实核查、外部研究与道法术器势",
+      "purpose": "Spark 上海独立开发者分享会复盘，包含时间线、事实核查、补充研究与分层拆解。",
       "category": "会议、分享与访谈资料",
       "topics": [
         "出海、增长与商业化"
@@ -2253,7 +2253,7 @@
       "name": "weibo-sponsored-risk-gate",
       "title": "微博商单发布前风险门禁",
       "originalTitle": "微博商单发布前风险门禁",
-      "purpose": "OA-005 微博商单发布前风险门禁：本地、确定性、可解释的 PASS / REVISE / ABSTAIN 检查器",
+      "purpose": "微博商单发布前检查 Skill，按固定规则检查风险并输出通过、修改或暂缓的依据。",
       "category": "产品、网站与代码工具",
       "topics": [
         "综合交流与学习"
