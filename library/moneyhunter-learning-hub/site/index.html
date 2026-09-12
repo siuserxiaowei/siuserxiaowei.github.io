@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoneyHunter 全量公开交互学习库</title>
+  <meta name="description" content="MoneyHunter 全量公开交互学习库，支持原文、附件、外链、目录和全文搜索。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home" data-root-prefix="../">
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">MH</span>
+        <span>MoneyHunter Learning Hub</span>
+      </a>
+      <div class="nav-links">
+        <a class="active" href="index.html">学习库</a>
+        <a href="links.html">链接库</a>
+        <a href="../docs/moneyhunter-overview.md">文档</a>
+        <a href="../raw/">Raw</a>
+        <a href="https://github.com/siuserxiaowei/moneyhunter-learning-hub" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </nav>
+    <section class="masthead">
+      <div>
+        <p class="eyebrow">Full Public Archive</p>
+        <h1>MoneyHunter 全量公开交互学习库</h1>
+      </div>
+      <div class="masthead-actions">
+        <a class="button primary" href="#explore">开始检索</a>
+        <a class="button secondary" href="../raw/">Raw</a>
+        <a class="button secondary" href="../docs/moneyhunter-overview.md">Docs</a>
+      </div>
+    </section>
+  </header>
+  <main>
+
+    <section class="stats-strip" id="stats" aria-label="资料统计"></section>
+    <section class="desk-toolbar" id="explore" aria-label="资料筛选">
+      <label class="search-box">
+        <span>全文搜索</span>
+        <input id="searchInput" type="search" placeholder="tiktok、revenuecat、ASO、七麦、Facebook、知识星球">
+      </label>
+      <label>
+        <span>年份</span>
+        <select id="yearFilter"></select>
+      </label>
+      <label>
+        <span>主题</span>
+        <select id="tagFilter"></select>
+      </label>
+      <label>
+        <span>风险标签</span>
+        <select id="riskFilter"></select>
+      </label>
+    </section>
+    <section class="workspace-grid">
+      <aside class="side-rail">
+        <div class="section-head">
+          <h2>目录树</h2>
+          <span id="treeCount"></span>
+        </div>
+        <div class="tree" id="directoryTree"></div>
+      </aside>
+      <section class="result-pane">
+        <div class="section-head">
+          <h2>文件检索</h2>
+          <span id="resultCount"></span>
+        </div>
+        <div class="file-list" id="fileResults"></div>
+      </section>
+      <aside class="detail-pane" id="fileDetail">
+        <div class="empty-detail">
+          <p class="eyebrow">File Detail</p>
+          <h2>选择一份资料</h2>
+          <p>右侧会显示原文摘要、标签、外链和公开打开入口。</p>
+        </div>
+      </aside>
+    </section>
+    <section class="learning-band">
+      <div class="section-head">
+        <h2>学习拆解</h2>
+        <a class="text-link" href="../docs/moneyhunter-overview.md">打开完整文档</a>
+      </div>
+      <div class="study-grid">
+        <a href="../docs/moneyhunter-overview.md">总览路径</a>
+        <a href="../docs/moneyhunter-growth-map.md">增长打法地图</a>
+        <a href="../docs/moneyhunter-file-index.md">全量文件索引</a>
+        <a href="../docs/moneyhunter-risk-notes.md">风险边界说明</a>
+      </div>
+    </section>
+    <section class="asset-grid">
+      <div class="asset-section">
+        <div class="section-head">
+          <h2>附件库</h2>
+          <span id="attachmentCount"></span>
+        </div>
+        <div class="attachment-list" id="attachmentGrid"></div>
+      </div>
+      <div class="asset-section">
+        <div class="section-head">
+          <h2>高频外链域名</h2>
+          <a class="text-link" href="links.html">完整链接库</a>
+        </div>
+        <div class="domain-list" id="domainGrid"></div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <p>MoneyHunter Learning Hub · 全量公开资料库 · GitHub Pages 静态站。</p>
+  </footer>
+  <script src="moneyhunter-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

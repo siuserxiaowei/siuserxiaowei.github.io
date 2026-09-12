@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 让小程序几天就能上线，但第一批用户到底从哪来？ · 公众号排版预览</title>
+<style>
+  body{margin:0;background:#eef0f2;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;-webkit-text-size-adjust:100%;}
+  .gzh-toolbar{position:fixed;top:0;left:0;right:0;height:54px;background:#ffffff;box-shadow:0 1px 10px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:99;}
+  .gzh-hint{font-size:13px;color:#6b7280;line-height:1.4;}
+  .gzh-hint b{color:#111827;}
+  .gzh-copy{background:#059669;color:#fff;border:0;border-radius:9px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(5,150,105,.28);white-space:nowrap;transition:transform .08s,background .15s;}
+  .gzh-copy:hover{background:#047857;}
+  .gzh-copy:active{transform:translateY(1px);}
+  .gzh-toast{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:88vw;text-align:center;}
+  .gzh-toast.show{opacity:1;}
+  .gzh-stage{max-width:700px;margin:78px auto 64px;padding:0 8px;}
+  @media(max-width:520px){.gzh-hint{max-width:150px;}}
+</style>
+</head>
+<body>
+<div class="gzh-toolbar">
+  <span class="gzh-hint">👇 下方是排版效果 · 点右侧 <b>复制</b> 直接粘到公众号</span>
+  <button class="gzh-copy" id="gzhCopyBtn" onclick="gzhCopy()">📋 复制到公众号</button>
+</div>
+<div class="gzh-toast" id="gzhToast"></div>
+<div class="gzh-stage">
+  <div id="gzh-content">
+<section style="max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.3px;overflow-x:hidden;">
+  <section style="padding:24px 14px 20px;">
+    <p style="font-size:10px;color:#A1A1AA;letter-spacing:2px;margin:0 0 18px;"><span leaf="">FIELD NOTES ／ 2026.08.08</span></p>
+    <p style="font-size:24px;font-weight:800;color:#27272A;margin:0;line-height:1.45;letter-spacing:0.5px;"><span leaf="">AI 让小程序几天就能上线，</span></p>
+    <p style="font-size:24px;font-weight:800;color:#27272A;margin:0 0 18px;line-height:1.45;letter-spacing:0.5px;"><span style="border-bottom:2px solid #F97316;"><span leaf="">但第一批用户从哪来？</span></span></p>
+    <p style="font-size:12px;color:#A1A1AA;margin:0;letter-spacing:1px;"><span leaf="">一场微信小程序开发者活动后的产品思考</span></p>
+  </section>
+
+  <section style="margin:10px 14px 36px;padding:28px 20px 22px;border-top:1px solid #E4E4E7;border-bottom:1px solid #E4E4E7;background:#FFFFFF;">
+    <p style="font-size:11px;color:#A1A1AA;letter-spacing:2px;margin:0 0 16px;"><span leaf="">QUOTE</span></p>
+    <p style="font-size:18px;font-weight:700;color:#27272A;margin:0;line-height:1.7;letter-spacing:0.5px;"><span leaf="">AI 没有消灭创业瓶颈，只是把瓶颈从“能不能做出来”，转移到了</span><span style="border-bottom:2px solid #52525B;"><span leaf="">“值不值得做、谁会相信、怎么让价值被看见”</span></span><span leaf="">。</span></p>
+    <p style="text-align:right;font-size:12px;color:#A1A1AA;margin:16px 0 0;letter-spacing:1px;"><span leaf="">—— siuser小伟</span></p>
+  </section>
+
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">今天去参加了一场微信小程序开发者活动。整场听下来，我最强烈的感受不是“小程序又开放了多少新能力”，而是一个更基本的问题：</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">不管我们做的是网站、App，还是小程序，第一件应该想清楚的事始终是：</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">用户从哪里来？</span></span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">再往前追一步，就是：你有没有挖到一个真实需求？</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">AI 已经把做出功能的成本降得很低。以前可能要一两个月才能上线的小程序，现在几天就能做出来。创业的瓶颈并没有因此消失，而是从生产转移到了</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">问题的选择、信任的建立和价值的分发</span></span><span leaf="">。</span></p>
+    <p style="margin:0 0 32px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">找到需求之后，问题才刚开始：怎么完成冷启动？怎么缩短传播链路？怎么让用户留下？产品最终应该以怎样的形态存在？</span></p>
+  </section>
+
+  <section style="padding:0 14px 38px;">
+    <p style="font-size:11px;color:#A1A1AA;margin:0 0 14px;letter-spacing:2px;"><span leaf="">本文看点</span></p>
+    <section style="display:flex;justify-content:space-between;">
+      <section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:16px 9px 14px;margin-right:6px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">01</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">平台降低了哪些门槛</span></p></section>
+      <section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:16px 9px 14px;margin-right:6px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">02</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">什么产品更容易跑出来</span></p></section>
+      <section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:16px 9px 14px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">03</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">为什么判断越来越重要</span></p></section>
+    </section>
+  </section>
+
+  <section style="margin-top:16px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;">
+      <p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">01</span></p>
+      <section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">THE SHIFT</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">生产门槛降了，判断门槛升了</span></h3></section>
+    </section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">现在平台给开发者的政策和资源支持确实很大。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">在开发环节，会上提到混元模型 Token、AI 生图额度、云托管、云函数、数据库等资源，也在尝试让 AI 直接操作开发者工具，完成编译、测试和日志分析。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">这些能力解决的是</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">现金成本和工具切换成本</span></span><span leaf="">。以前你可能需要先搭团队、买服务器、熟悉一套开发流程；现在一个人也有机会快速完成产品雏形。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">但这里很容易出现一个错觉：</span><strong style="color:#27272A;"><span leaf="">做出来容易，就等于创业变容易。</span></strong></p>
+    <p style="margin:0 0 26px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">其实恰恰相反。当做出功能不再稀缺，判断“什么值得做”就会变得更稀缺。</span></p>
+  </section>
+
+  <section style="border:1px solid #E4E4E7;padding:4px;margin:0 14px 8px;"><section style="margin:0;overflow:hidden;"><span leaf=""><img src="https://siuserxiaowei.github.io/library/wechat-workshop-field-notes/wechat-article/assets/01-platform-capabilities.png" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span></section></section>
+  <p style="font-size:11px;color:#A1A1AA;text-align:center;margin:0 14px 26px;line-height:1.7;"><span leaf="">平台能力可以降低开发、传播、复访与变现摩擦，但不能替代需求、定价和用户信任。</span></p>
+
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">图里有一个很重要的区分：平台能力可以降低摩擦，却不能替你判断需求。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">开发资源不会自动产生一个稳定、完整、好看的产品；传播入口不会把不相关的内容自动变成精准流量；桌面入口和订阅消息也不会凭空创造第二次使用理由；支付能力更不能替代定价、付费价值和交易信任。</span></p>
+    <p style="margin:0 0 28px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">所以，平台越努力解决“做不出”，开发者越应该把精力放在另外两个问题上：</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">推不动，为什么？用户来了以后，为什么不留下？</span></span></p>
+  </section>
+
+  <section style="border-left:3px solid #52525B;padding:14px 0 14px 20px;margin:0 14px 26px;"><p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.8;"><span leaf="">平台解决的是“能不能更容易开始”，市场回答的仍然是“有没有人持续需要”。</span></p></section>
+
+  <section style="margin-top:54px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;"><p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">02</span></p><section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">PLATFORM SUPPORT</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">平台正在补齐哪些环节</span></h3></section></section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:0 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">开发</span></p>
+    <p style="margin:0 0 22px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">模型 Token、生图、云托管、云函数、数据库，以及 AI 编译和调试能力，主要用来降低生产成本。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:0 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">传播</span></p>
+    <p style="margin:0 0 22px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">截图可以携带小程序入口，公众号、视频号、贴图等内容可以与小程序联动。它们真正有价值的地方，是缩短</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">“看到内容”到“打开产品”</span></span><span leaf="">的距离。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:0 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">复访</span></p>
+    <p style="margin:0 0 22px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">添加到桌面、“最近使用”“我的小程序”和订阅消息，都在给用户创造一个回来入口。</span></p>
+    <p style="margin:0 0 22px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">不过，入口只能帮助用户回来，产品本身还需要给他一个</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">想回来的理由</span></span><span leaf="">。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:0 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">变现</span></p>
+    <p style="margin:0 0 22px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">会上还谈到 iOS 虚拟支付、会员续费、个人收款、赞赏和智能广告等能力。它们降低了收款和广告接入的摩擦，让个人开发者有机会更早验证商业模式。</span></p>
+  </section>
+  <section style="background:#FAFAFA;border-top:2px solid #27272A;padding:16px 18px;margin:0 14px 28px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 8px;letter-spacing:2px;"><span leaf="">NOTE</span></p><p style="font-size:14px;color:#52525B;margin:0;line-height:1.8;"><span leaf="">以上信息属于会上口径。政策、费率和开放状态仍然要以微信官方最新文档为准。</span></p></section>
+
+  <section style="margin-top:54px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;"><p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">03</span></p><section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">WINNING PRODUCTS</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">什么产品更容易跑出来</span></h3></section></section>
+  </section>
+  <section style="padding:0 14px;"><p style="margin:0 0 24px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">现场复盘了不少案例。真正跑出来的产品，往往有三个共同特征。</span></p></section>
+  <section style="border:1px solid #E4E4E7;padding:4px;margin:0 14px 8px;"><section style="margin:0;overflow:hidden;"><span leaf=""><img src="https://siuserxiaowei.github.io/library/wechat-workshop-field-notes/wechat-article/assets/02-winning-products.png" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span></section></section>
+  <p style="font-size:11px;color:#A1A1AA;text-align:center;margin:0 14px 26px;line-height:1.7;"><span leaf="">跑出来的产品，通常同时占住体验、领域知识或生活需求中的至少一项。</span></p>
+
+  <section style="padding:0 14px;">
+    <p style="margin:26px 0 12px;font-size:15px;font-weight:800;color:#27272A;line-height:1.6;"><span style="display:inline-block;background:#27272A;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;margin-right:8px;"><span leaf="">01</span></span><span leaf="">独一无二的新体验</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">初体验足够好，本身就是记忆点。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">比如让 AI 扮演病人，用户通过问诊猜病。这不是简单地把聊天框放进小程序，而是把模型能力变成了一种用户能直接感知的玩法。</span></p>
+    <p style="margin:0 0 26px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">真正的新体验，不一定技术最复杂，但一定能让用户快速说出：</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">“原来还可以这样。”</span></span></p>
+
+    <p style="margin:26px 0 12px;font-size:15px;font-weight:800;color:#27272A;line-height:1.6;"><span style="display:inline-block;background:#27272A;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;margin-right:8px;"><span leaf="">02</span></span><span leaf="">垂直领域的 know-how</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">另一类机会来自细分人群。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">现场提到一个游戏辅助工具，据分享者称已经有百万日活。我先不展开具体产品，因为这个方向我自己也有兴趣。</span></p>
+    <p style="margin:0 0 26px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">它的价值不在于模型更通用，而在于它更懂一个具体游戏、具体规则和具体玩家。</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">通用模型很容易被复制，领域知识和长期积累没那么容易。</span></span></p>
+
+    <p style="margin:26px 0 12px;font-size:15px;font-weight:800;color:#27272A;line-height:1.6;"><span style="display:inline-block;background:#27272A;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px;margin-right:8px;"><span leaf="">03</span></span><span leaf="">源于生活的强需求</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">真实需求往往没有那么性感，但它已经在生活里反复发生。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">计算工具、快递服务、旧衣回收都是类似的例子。用户原本就在用某种笨办法处理问题，产品不是发明需求，而是提供一个更省事、更便宜或更可靠的替代方案。</span></p>
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">判断一个需求是否真实，可以先问：</span></p>
+    <section style="margin-bottom:26px;">
+      <section style="display:flex;align-items:flex-start;margin-bottom:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:3px;margin-right:10px;"><span leaf="">1</span></span><p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">这个问题上一次真实发生是什么时候？</span></p></section>
+      <section style="display:flex;align-items:flex-start;margin-bottom:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:3px;margin-right:10px;"><span leaf="">2</span></span><p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">用户现在按什么顺序解决？</span></p></section>
+      <section style="display:flex;align-items:flex-start;margin-bottom:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:3px;margin-right:10px;"><span leaf="">3</span></span><p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">哪一步最耗时间、最焦虑或最容易出错？</span></p></section>
+      <section style="display:flex;align-items:flex-start;margin-bottom:10px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:3px;margin-right:10px;"><span leaf="">4</span></span><p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">他试过哪些替代方案？为什么仍然不满意？</span></p></section>
+      <section style="display:flex;align-items:flex-start;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:3px;margin-right:10px;"><span leaf="">5</span></span><p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">下次再发生时，他愿意付出什么换一个更好的结果？</span></p></section>
+    </section>
+  </section>
+  <section style="border-left:3px solid #F97316;padding:14px 0 14px 20px;margin:0 14px 28px;"><p style="font-size:15px;font-weight:700;color:#27272A;margin:0;line-height:1.8;"><span leaf="">不要先问“你会不会用”。要问已经发生过的事实。</span></p></section>
+
+  <section style="margin-top:54px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;"><p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">04</span></p><section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">PRODUCT JUDGEMENT</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">为什么 AI 越强，产品判断越重要</span></h3></section></section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">这个结论看起来有点反直觉。</span></p>
+    <p style="margin:0 0 24px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">AI 越强，按理说我们做产品应该越轻松。为什么反而更考验判断？</span></p>
+  </section>
+  <section style="border:1px solid #E4E4E7;padding:4px;margin:0 14px 8px;"><section style="margin:0;overflow:hidden;"><span leaf=""><img src="https://siuserxiaowei.github.io/library/wechat-workshop-field-notes/wechat-article/assets/03-ai-judgement.png" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span></section></section>
+  <p style="font-size:11px;color:#A1A1AA;text-align:center;margin:0 14px 26px;line-height:1.7;"><span leaf="">实现成本下降，会把竞争推向供给、分发与不可复制的能力。</span></p>
+  <section style="padding:0 14px;">
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:24px 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.5;"><span leaf="">第一，同类供给一定会增加</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">以前一两个月才能上线一个小程序，现在几天就能上线。越来越多人会进入市场。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:24px 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.5;"><span leaf="">第二，功能本身的稀缺性会下降</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">你每次和 AI 聊，它都能很快给你正反馈，把想要的功能做出来。可如果你能做到，别人通常也能做到。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:24px 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.5;"><span leaf="">第三，用户注意力没有同步增加</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">结果就是分发与传播竞争越来越激烈。真正稀缺的，不再是一个功能页面，而是用户愿不愿意停下来理解你、尝试你、相信你。</span></p>
+    <p style="font-size:15px;font-weight:800;color:#27272A;margin:24px 0 10px;padding-left:12px;border-left:3px solid #52525B;line-height:1.5;"><span leaf="">第四，不可复制的部分占比提高</span></p>
+    <p style="margin:0 0 28px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">场景洞察、用户信任、数据积累、审美、关系网络和执行速度，这些能力反而会越来越重要。</span></p>
+  </section>
+  <section style="border-left:3px solid #52525B;padding:16px 0 16px 22px;margin:0 14px 30px;"><p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.8;"><span leaf="">低代码门槛，不等于低创业门槛。它只是把淘汰赛从“会不会写”，推迟到了“有没有人持续使用”。</span></p></section>
+
+  <section style="margin-top:54px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;"><p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">05</span></p><section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">COLD START</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">第一批用户，本质上是共同验证者</span></h3></section></section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">所以回到文章开头：第一批用户到底从哪里来？</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">他们通常不来自一个万能的流量渠道，而来自</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">问题正在发生的地方</span></span><span leaf="">。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">如果你的用户是开发者，就去开发者真正讨论问题的社区和线下活动；如果你的产品解决一个低频但高情感的需求，就用具体场景招募，而不是做一份泛问卷；如果是高客单、高信任产品，创始人早期的一对一沟通，可能比拉一个大群更有价值。</span></p>
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">冷启动阶段最重要的，不是尽快把人数做大，而是让第一批用户帮助你共同回答三个问题：</span></p>
+  </section>
+  <section style="display:flex;margin:0 14px 28px;">
+    <section style="flex:1;border-top:2px solid #27272A;padding:16px 8px;margin-right:6px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">01</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.55;"><span leaf="">问题是不是真的？</span></p></section>
+    <section style="flex:1;border-top:2px solid #27272A;padding:16px 8px;margin-right:6px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">02</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.55;"><span leaf="">结果够不够好？</span></p></section>
+    <section style="flex:1;border-top:2px solid #27272A;padding:16px 8px;"><p style="font-size:11px;color:#A1A1AA;margin:0 0 7px;"><span leaf="">03</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.55;"><span leaf="">价值能否重复交付？</span></p></section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">当这三个问题没有答案时，买量只是在放大漏水。</span></p>
+    <p style="margin:0 0 28px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">当这三个问题有了稳定答案，传播、留存和变现才真正有了可以承接的底座。</span></p>
+  </section>
+
+  <section style="margin-top:54px;margin-bottom:28px;padding:0 14px;">
+    <section style="padding-bottom:10px;"><p style="font-size:42px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;"><span leaf="">∞</span></p><section style="margin-top:-5px;"><p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 5px;"><span leaf="">THE END</span></p><h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;line-height:1.45;"><span leaf="">最后</span></h3></section></section>
+  </section>
+  <section style="padding:0 14px;">
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">AI 没有让创业变成一个没有门槛的游戏。</span></p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.95;text-align:justify;color:#52525B;"><span leaf="">它只是拿走了一部分生产门槛，把更难的问题留给了我们：你是否看见了一个真实问题，是否能获得用户信任，是否能让价值顺利到达下一位用户。</span></p>
+  </section>
+  <p style="font-size:16px;margin:4px 14px 32px;text-align:center;color:#27272A;font-weight:700;letter-spacing:0.5px;border-top:1px solid #E4E4E7;border-bottom:1px solid #E4E4E7;padding:15px 8px;"><span leaf="">第一批用户，不是一批被“找来”的流量。<br>他们是和你一起验证问题、结果与复制路径的人。</span></p>
+
+  <section style="padding:0 14px;"><section style="text-align:center;margin:0 0 32px;"><section style="display:flex;align-items:center;justify-content:center;"><span style="height:1px;width:42px;background:#E4E4E7;margin-right:14px;"><span leaf=""><br></span></span><span style="font-size:10px;color:#A1A1AA;letter-spacing:4px;font-weight:500;"><span leaf="">END</span></span><span style="height:1px;width:42px;background:#E4E4E7;margin-left:14px;"><span leaf=""><br></span></span></section></section></section>
+
+  <section style="padding:0 14px 24px;">
+    <section style="border-top:1px solid #E4E4E7;padding-top:26px;">
+      <p style="margin:0 0 12px;font-size:15px;line-height:1.8;color:#52525B;text-align:justify;"><span leaf="">我是 siuser小伟，持续记录 AI 产品、增长实验和真实创业现场。</span></p>
+      <p style="margin:0 0 8px;font-size:14px;line-height:1.8;color:#52525B;"><span leaf="">X ／ Twitter：@_HIT_SZ_</span></p>
+      <p style="margin:0 0 16px;font-size:14px;line-height:1.8;color:#52525B;"><span leaf="">微信号：siuserxiaowei</span></p>
+      <p style="margin:0;font-size:15px;line-height:1.8;color:#52525B;text-align:justify;"><span leaf="">如果你觉得今天这篇有收获，欢迎</span><strong style="color:#27272A;"><span leaf="">点赞、在看、转发</span></strong><span leaf="">三连，我们下篇见。</span></p>
+    </section>
+  </section>
+</section>
+  </div>
+</div>
+<script>
+  function gzhShowToast(msg){
+    var t=document.getElementById('gzhToast');
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer=setTimeout(function(){t.classList.remove('show');},2800);
+  }
+  function gzhCopy(){
+    var el=document.getElementById('gzh-content');
+    // 选中渲染后的富文本节点并复制（等价于手动 Ctrl+A / Ctrl+C，保留全部样式）
+    var range=document.createRange();
+    range.selectNodeContents(el);
+    var sel=window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    var ok=false;
+    try{ok=document.execCommand('copy');}catch(e){ok=false;}
+    sel.removeAllRanges();
+    var btn=document.getElementById('gzhCopyBtn');
+    if(ok){
+      gzhShowToast('✅ 已复制！去公众号编辑器按 Ctrl/⌘+V 粘贴即可');
+      var old=btn.textContent;btn.textContent='✅ 已复制';
+      setTimeout(function(){btn.textContent=old;},2200);
+    }else{
+      gzhShowToast('⚠ 自动复制失败，请手动全选(Ctrl/⌘+A)再复制(Ctrl/⌘+C)');
+    }
+  }
+</script>
+</body>
+</html>

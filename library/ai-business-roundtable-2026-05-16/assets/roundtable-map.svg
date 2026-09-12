@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 680" role="img" aria-labelledby="title desc">
+  <title id="title">AI 业务圆桌机会地图</title>
+  <desc id="desc">一张会议主题关系图，中心是 AI 业务圆桌，周围连接企业 AI、跨境电商、语音硬件、自媒体、供需撮合和合规风险。</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fbf8ef"/>
+      <stop offset=".5" stop-color="#f3ead8"/>
+      <stop offset="1" stop-color="#edf2e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#17211f" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="920" height="680" fill="url(#paper)"/>
+  <g opacity=".13" stroke="#17211f" stroke-width="1">
+    <path d="M0 94h920M0 188h920M0 282h920M0 376h920M0 470h920M0 564h920"/>
+    <path d="M92 0v680M184 0v680M276 0v680M368 0v680M460 0v680M552 0v680M644 0v680M736 0v680M828 0v680"/>
+  </g>
+  <g stroke="#17211f" stroke-width="2" opacity=".6">
+    <path d="M459 338 215 184"/>
+    <path d="M459 338 682 165"/>
+    <path d="M459 338 746 384"/>
+    <path d="M459 338 626 540"/>
+    <path d="M459 338 295 548"/>
+    <path d="M459 338 156 392"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="459" cy="338" r="104" fill="#17211f"/>
+    <circle cx="215" cy="184" r="78" fill="#0a6f5f"/>
+    <circle cx="682" cy="165" r="78" fill="#1e5f83"/>
+    <circle cx="746" cy="384" r="78" fill="#ad5338"/>
+    <circle cx="626" cy="540" r="78" fill="#b78a25"/>
+    <circle cx="295" cy="548" r="78" fill="#6750a4"/>
+    <circle cx="156" cy="392" r="78" fill="#4f7f62"/>
+  </g>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" text-anchor="middle" fill="#fffaf0">
+    <text x="459" y="322" font-size="30" font-weight="800">AI 业务圆桌</text>
+    <text x="459" y="360" font-size="17">13 人 · 3.5 小时 · 6 条主线</text>
+    <text x="215" y="176" font-size="22" font-weight="800">企业 AI</text>
+    <text x="215" y="204" font-size="14">Agent / 知识库 / 提效</text>
+    <text x="682" y="157" font-size="22" font-weight="800">跨境电商</text>
+    <text x="682" y="185" font-size="14">选品 / 图文 / Listing</text>
+    <text x="746" y="376" font-size="22" font-weight="800">语音硬件</text>
+    <text x="746" y="404" font-size="14">板子 / 固件 / 代工</text>
+    <text x="626" y="532" font-size="22" font-weight="800">自媒体</text>
+    <text x="626" y="560" font-size="14">推特 / 视频 / 商单</text>
+    <text x="295" y="540" font-size="22" font-weight="800">供需撮合</text>
+    <text x="295" y="568" font-size="14">项目池 / 团队 / 渠道</text>
+    <text x="156" y="384" font-size="22" font-weight="800">合规风险</text>
+    <text x="156" y="412" font-size="14">边界 / 成本 / 责任</text>
+  </g>
+</svg>

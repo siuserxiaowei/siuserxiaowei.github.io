@@ -1,0 +1,12 @@
+{
+  "name": "ai-product-feishu-breakdowns-20260510",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone GitHub Pages site for three Feishu AI product meeting breakdowns from 2026-05-10.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate.mjs",
+    "all": "npm run build && npm run validate",
+    "serve": "python3 -m http.server 8130"
+  }
+}

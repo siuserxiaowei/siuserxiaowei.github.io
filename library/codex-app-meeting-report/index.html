@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Codex App 配置文档与会议深度报告</title>
+  <style>
+    :root {
+      --paper: #f7f3ea;
+      --paper-2: #eee6d6;
+      --ink: #1d2522;
+      --muted: #66716c;
+      --line: #d3c6b1;
+      --brick: #b94732;
+      --teal: #0f766e;
+      --blue: #285f82;
+      --gold: #b37a19;
+      --green: #526b3f;
+      --white: #fffdf8;
+      --shadow: 0 20px 70px rgba(50, 35, 20, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+      line-height: 1.65;
+      background:
+        linear-gradient(90deg, rgba(29, 37, 34, .035) 1px, transparent 1px) 0 0 / 42px 42px,
+        linear-gradient(0deg, rgba(29, 37, 34, .028) 1px, transparent 1px) 0 0 / 42px 42px,
+        var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 52px;
+      align-items: center;
+      padding: 64px 0 36px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .64);
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .eyebrow::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brick);
+      box-shadow: 14px 0 0 var(--teal), 28px 0 0 var(--gold);
+      margin-right: 28px;
+    }
+
+    h1 {
+      margin: 24px 0 18px;
+      max-width: 820px;
+      font-size: clamp(38px, 6.2vw, 76px);
+      line-height: .98;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0;
+      color: #3f4944;
+      font-size: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .source-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+    }
+
+    .hero-board {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .hero-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(185, 71, 50, .08), transparent 35%),
+        linear-gradient(315deg, rgba(15, 118, 110, .08), transparent 42%);
+    }
+
+    .board-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .board-title strong {
+      font-size: 18px;
+    }
+
+    .board-title span {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .metric-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      min-height: 118px;
+      padding: 16px;
+      border: 1px solid rgba(29, 37, 34, .12);
+      border-radius: 6px;
+      background: rgba(255, 253, 248, .82);
+    }
+
+    .metric b {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 10px;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .thesis {
+      position: relative;
+      margin-top: 14px;
+      padding: 18px;
+      border-left: 4px solid var(--brick);
+      background: rgba(247, 243, 234, .82);
+      border-radius: 0 6px 6px 0;
+      font-size: 17px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 243, 234, .92);
+      backdrop-filter: blur(14px);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .nav .shell {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #3f4944;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      background: var(--white);
+    }
+
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid rgba(211, 198, 177, .72);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .72fr) minmax(280px, .28fr);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--brick);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 8px 0 0;
+      font-size: clamp(28px, 3.8vw, 48px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .section-desc {
+      margin: 0;
+      color: var(--muted);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(255, 253, 248, .82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(50, 35, 20, .06);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: #46514c;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, .1);
+      color: var(--teal);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag.brick { background: rgba(185, 71, 50, .1); color: var(--brick); }
+    .tag.blue { background: rgba(40, 95, 130, .12); color: var(--blue); }
+    .tag.gold { background: rgba(179, 122, 25, .12); color: var(--gold); }
+    .tag.green { background: rgba(82, 107, 63, .12); color: var(--green); }
+
+    .wide-card {
+      display: grid;
+      grid-template-columns: minmax(260px, .42fr) minmax(0, .58fr);
+      gap: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .wide-card h3 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.18;
+    }
+
+    .wide-card p {
+      margin: 0;
+      color: var(--muted);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 10px;
+      color: #3f4944;
+    }
+
+    .list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 10px;
+      border-radius: 50%;
+      background: var(--brick);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .time-item {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .78);
+    }
+
+    .time {
+      color: var(--brick);
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .time-item h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .time-item p {
+      margin: 0;
+      color: #46514c;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 154px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      width: 12px;
+      height: 1px;
+      background: var(--brick);
+    }
+
+    .flow-step b {
+      display: block;
+      color: var(--brick);
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .flow-step span {
+      display: block;
+      color: var(--muted);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .matrix th {
+      color: var(--ink);
+      background: #eadfce;
+      font-weight: 800;
+    }
+
+    .matrix tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .quote-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .quote {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .quote:nth-child(2) {
+      background: #fbf8ef;
+      color: var(--ink);
+    }
+
+    .quote b {
+      display: block;
+      color: #e3b15e;
+      margin-bottom: 12px;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .action {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .86);
+    }
+
+    .action h3 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .action h3 span {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: var(--brick);
+      color: var(--white);
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 16px;
+    }
+
+    .footer {
+      padding: 36px 0 54px;
+      color: var(--muted);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+    }
+
+    .print-note {
+      padding: 16px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .66);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .wide-card,
+      .quote-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .action-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step:not(:last-child)::after {
+        top: auto;
+        right: auto;
+        bottom: -11px;
+        left: 28px;
+        width: 1px;
+        height: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        padding-top: 34px;
+        gap: 28px;
+      }
+
+      .cards,
+      .action-grid,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .time-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .matrix {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .nav,
+      .hero-actions {
+        display: none;
+      }
+
+      section,
+      .hero {
+        break-inside: avoid;
+        padding: 32px 0;
+      }
+
+      .card,
+      .wide-card,
+      .time-item,
+      .action,
+      .hero-board {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell hero" id="top">
+    <div>
+      <div class="eyebrow">配置文档 · Codex App 自动化开发会议复盘</div>
+      <h1>Codex App 自动化开发配置文档</h1>
+      <p class="lead">这是一份可转发的会议复盘与配置指南：一边解释 Codex App 的桌面端 Agent 工作流，一边把参会讨论沉淀成配置清单、风险边界、测试规范和产品化行动方案。</p>
+      <div class="hero-actions">
+        <a class="button" href="#coverage">看来源核查</a>
+        <a class="button secondary" href="#config">看配置指南</a>
+        <a class="button secondary" href="#actions">看行动清单</a>
+        <a class="button secondary" href="pdf/codex-app-meeting-report.pdf">下载 PDF</a>
+      </div>
+      <p class="source-note">资料来源：用户粘贴的元宝会议助手分段纪要、AI 摘要版 Word、逐字稿 Word。我没有原始音频，因此这里的“认真阅读”指对这些文本材料做交叉整理与判断。涉及账号、支付、代理、接码等内容，本报告只保留风险与合规层面的整理，不沉淀可复制绕行教程。</p>
+    </div>
+
+    <aside class="hero-board" aria-label="报告概览">
+      <div class="board-title">
+        <strong>一页判断</strong>
+        <span>2026-05-10 整理</span>
+      </div>
+      <div class="metric-grid">
+        <div class="metric">
+          <b>3</b>
+          <span>类来源：元宝分段纪要、AI 摘要、逐字稿</span>
+        </div>
+        <div class="metric">
+          <b>5</b>
+          <span>条会议主线：能力、流程、账号、工程、商业</span>
+        </div>
+        <div class="metric">
+          <b>6</b>
+          <span>主要风险：权限、稳定性、合规、版权、测试、协作</span>
+        </div>
+        <div class="metric">
+          <b>4</b>
+          <span>配置层：权限、浏览器、仓库、测试验收</span>
+        </div>
+      </div>
+      <div class="thesis">最值得带走的一句话：Agent 的价值不在“替你点按钮”，而在把人的经验沉淀成可复用规则，再让规则驱动可验证的工作流。</div>
+    </aside>
+  </header>
+
+  <nav class="nav" aria-label="报告导航">
+    <div class="shell">
+      <a href="#coverage">来源核查</a>
+      <a href="#executive">核心结论</a>
+      <a href="#timeline">时间线</a>
+      <a href="#config">配置指南</a>
+      <a href="#workflow">自动化闭环</a>
+      <a href="#qa">问答沉淀</a>
+      <a href="#business">商业判断</a>
+      <a href="#risks">风险边界</a>
+      <a href="#actions">行动清单</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="coverage">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Source Coverage</div>
+            <h2>我到底整理了哪些材料</h2>
+          </div>
+          <p class="section-desc">这部分专门回应“是不是认真看完”的问题：我没有原始会议音频，但对你提供的三类文本材料做了交叉阅读。报告中的事实来自材料，判断和建议会单独标为整理后的观点。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag brick">来源 01</span>
+            <h3>元宝会议助手分段纪要</h3>
+            <p>覆盖从开场到约 01:54 的完整会议脉络，尤其补足了后半段问答：上下文、工作树、UI 设计、测试、团队协作、产品壁垒和 ToB/G 端合作。</p>
+          </article>
+          <article class="card">
+            <span class="tag blue">来源 02</span>
+            <h3>AI 摘要版 Word</h3>
+            <p>提供了会议主题、核心能力、账号升级、自动化开发流程和待办事项的概览。它适合做目录，但不足以支撑深度判断。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">来源 03</span>
+            <h3>逐字稿 Word</h3>
+            <p>提供了演示细节和语境：宠物状态、鼠标控制问题、浏览器自动化、案例采集、GitHub 推送、权限配置、学习资源站等。</p>
+          </article>
+        </div>
+
+        <div style="height: 24px"></div>
+
+        <div class="wide-card">
+          <div>
+            <span class="tag gold">整理原则</span>
+            <h3>不把会议口播直接当结论</h3>
+            <p>我把材料分为“事实复述、发言人判断、我的整理建议”三层处理。比如“Codex 比很多 RPA 丝滑”属于发言人体验判断；“自动化流程需要人工确认点”是结合演示故障和问答后的整理建议。</p>
+          </div>
+          <ul class="list">
+            <li>事实层：会议出现过的功能、流程、问题和问答。</li>
+            <li>判断层：发言人对工具、产品、商业化的主观评价。</li>
+            <li>建议层：适合沉淀给别人转发的配置、风险和执行清单。</li>
+            <li>删减层：账号绕行、接码、代理等内容只保留合规提醒。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="executive">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Executive Reading</div>
+            <h2>会议真正讨论的是“AI 开发的生产系统”</h2>
+          </div>
+          <p class="section-desc">原纪要容易读成工具分享，但逐字稿里反复出现的关键词是：自动控制、模板、验证、上下文、权限、分发、开源流量。这说明大家关心的不是单点功能，而是能不能把 AI 从助手升级为稳定产线。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag brick">结论 01</span>
+            <h3>Codex App 被定位成桌面端 Agent 中枢</h3>
+            <p>Computer Use 与 Browser Use 被视为两只手：一只控制本地应用，一只控制网页。它们让“浏览、点击、下载、校验、提交”从脚本任务变成可观察的交互任务。</p>
+          </article>
+          <article class="card">
+            <span class="tag blue">结论 02</span>
+            <h3>真正资产不是提示词，而是 Skill 化模板</h3>
+            <p>分享者强调把案例提炼成工程模板，让 Agent 判断使用哪个案例库、怎样分类、是否需要提炼提示词。这个动作把“灵感素材”变成了可复用生产资料。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">结论 03</span>
+            <h3>自动化越强，人工验收越关键</h3>
+            <p>会议多次出现卡顿、触发失败、鼠标劫持、测试质量不足等问题。它们不是反例，而是提醒：Agent 能扩大产能，但不能替代最终质量责任。</p>
+          </article>
+          <article class="card">
+            <span class="tag gold">结论 04</span>
+            <h3>上下文管理正在变成工程能力</h3>
+            <p>参会者讨论了上下文压缩、Memory、工作树、大文件拆解、跨项目串联。核心共识是：复杂项目不能靠“把所有东西塞进一次对话”。</p>
+          </article>
+          <article class="card">
+            <span class="tag">结论 05</span>
+            <h3>UI/UX 的方法从生成转向借鉴和验收</h3>
+            <p>分享者承认 AI 味重、审美不足，建议分析优秀网站、抽取设计元素，再用更强前端模型或工具实现。重点不是“让 AI 随便发挥”，而是建立审美参考系。</p>
+          </article>
+          <article class="card">
+            <span class="tag brick">结论 06</span>
+            <h3>商业壁垒被重新定义为渠道和信任</h3>
+            <p>会议后段明确：AI SaaS 技术很容易被复制，先开源积累流量、建立个人 IP、再转付费产品，是个人开发者更现实的商业路径。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Meeting Timeline</div>
+            <h2>按时间线重整后的会议脉络</h2>
+          </div>
+          <p class="section-desc">以下不是逐字复述，而是把同类信息合并后的结构化纪要，方便复盘和二次分享。</p>
+        </div>
+
+        <div class="timeline">
+          <div class="time-item">
+            <div class="time">00:00<br>— 07:00</div>
+            <div>
+              <h3>Codex App 核心能力与宠物状态反馈</h3>
+              <p>重点展示 Computer Use、Browser Use 与桌面宠物。宠物作为任务状态浮层，承担“后台任务可见化”的信任作用；同时演示中出现鼠标不可见、浏览器控制冲突，暴露了多设备远程控制和权限管理问题。</p>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time">07:00<br>— 27:00</div>
+            <div>
+              <h3>案例采集到网站部署的自动化闭环</h3>
+              <p>分享者展示从 X/Twitter 发现高质量图像案例，到复制链接、提取图片、挖掘提示词、分类入库、生成文档、提交 GitHub、触发部署、更新网站的完整链路。这个部分是会议的技术核心。</p>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time">27:00<br>— 44:00</div>
+            <div>
+              <h3>账号、会员与登录可达性问题</h3>
+              <p>会议讨论了 ChatGPT 账号、会员升级、节点稳定性等基础设施问题。由于涉及跨区支付、接码、代理等敏感流程，本报告不复述具体步骤，只提炼为“可达性是国内用户使用 Agent 工具的现实门槛，同时也带来合规与账号安全风险”。</p>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time">44:00<br>— 50:00</div>
+            <div>
+              <h3>学习资源、开源项目与工具生态</h3>
+              <p>分享者推荐整理型学习站与官方资料，强调国内用户需要更实战、更具体的教程。对 Codex App 的评价集中在桌面端、Web Coding、Agent Coding 与办公自动化整合。</p>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time">50:00<br>— 01:54</div>
+            <div>
+              <h3>问答：上下文、UI、测试、协作与商业化</h3>
+              <p>参会者围绕上下文压缩、Memory、工作树、大文件项目、前后端协作、AI 生成代码测试、UI 设计、产品壁垒和 ToB/G 端机会提问。后半段将会议从工具演示推进到方法论与商业判断。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="config">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Configuration Guide</div>
+            <h2>可转发的 Codex App 配置清单</h2>
+          </div>
+          <p class="section-desc">以下是基于会议经验整理出的配置文档，不是官方说明书。它适合发给第一次尝试 Codex App 自动化工作流的人，让对方知道先配什么、哪里要谨慎、哪些动作必须人工确认。</p>
+        </div>
+
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>配置层</th>
+              <th>建议配置</th>
+              <th>验收标准</th>
+              <th>风险提醒</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>运行设备</td>
+              <td>优先使用单独设备或远程 Mac Mini 跑自动化任务，避免主力机被浏览器控制、权限弹窗或鼠标劫持影响。</td>
+              <td>Agent 可独立打开浏览器、访问目标页面、执行点击，不影响主力电脑正常操作。</td>
+              <td>不要在有私人聊天、支付、敏感文件的主力环境里无差别放权。</td>
+            </tr>
+            <tr>
+              <td>Computer Use</td>
+              <td>只给必要应用授权，先用低风险任务验证，例如打开浏览器、保存文件、截图检查。</td>
+              <td>能完成指定本地动作；失败时会停在可人工接管的位置。</td>
+              <td>权限越大，误操作和隐私暴露风险越高；不要让 Agent 自动发送消息或提交不可逆动作。</td>
+            </tr>
+            <tr>
+              <td>Browser Use</td>
+              <td>把浏览器自动化用于资料收集、页面验证、案例整理、UI 点击测试等重复工作。</td>
+              <td>能打开页面、识别目标、下载素材、记录来源，并输出可检查结果。</td>
+              <td>网页结构变化、登录状态、网络卡顿都会导致失败；必须保留重试和人工确认。</td>
+            </tr>
+            <tr>
+              <td>Skill/模板</td>
+              <td>把高频任务写成 Skill 或规则模板，例如案例分类、提示词提取、文档生成、质量评分。</td>
+              <td>同类输入能得到稳定输出；规则能解释为什么收录、为什么拒绝。</td>
+              <td>没有标准的自动化只是“快一点的混乱”，不要只存提示词，要存判断规则。</td>
+            </tr>
+            <tr>
+              <td>GitHub 流程</td>
+              <td>让 Agent 生成文件、提交分支、触发部署，但关键提交前设置人工确认点。</td>
+              <td>仓库里能看到来源、改动、构建结果和回滚路径。</td>
+              <td>自动推送前必须检查版权、隐私、密钥、错误文件和生成内容质量。</td>
+            </tr>
+            <tr>
+              <td>测试验收</td>
+              <td>不要只测“能不能打开”，要准备真实用户路径、异常输入、权限状态、数据一致性场景。</td>
+              <td>每次自动修复后，都有截图、日志、复现步骤或测试结果可回看。</td>
+              <td>AI 很容易通过表面 UI 测试，但漏掉业务逻辑和边界条件。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="height: 24px"></div>
+
+        <div class="wide-card">
+          <div>
+            <span class="tag blue">推荐工作流</span>
+            <h3>先做半自动，再做全自动</h3>
+            <p>会议里最稳的模式不是完全无人值守，而是“人工发现/确认 + Agent 执行重复动作”。这能兼顾质量、成本和风险，是更适合个人开发者和小团队的起步方式。</p>
+          </div>
+          <ul class="list">
+            <li>第一阶段：人工复制链接，Agent 抽取素材、生成文档、等待确认。</li>
+            <li>第二阶段：Agent 定时搜索候选案例，人工筛掉低质量或版权不清内容。</li>
+            <li>第三阶段：通过规则引擎自动分类、写入仓库、触发部署。</li>
+            <li>第四阶段：将稳定流程封装成 Skill，并加入测试、日志和回滚。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Automation System</div>
+            <h2>最有价值的工作流：从案例到产品资产</h2>
+          </div>
+          <p class="section-desc">会议中真正值得复用的，不是“让浏览器自动搜索”这个动作，而是把外部案例转成内部模板资产的流水线。</p>
+        </div>
+
+        <div class="flow" aria-label="自动化闭环流程">
+          <div class="flow-step">
+            <b>01</b>
+            <strong>发现案例</strong>
+            <span>人工看到高质量案例，或让浏览器自动搜索特定关键词与时间范围。</span>
+          </div>
+          <div class="flow-step">
+            <b>02</b>
+            <strong>采集素材</strong>
+            <span>Agent 打开网页、下载图片、记录来源，避免依赖昂贵或不稳定 API。</span>
+          </div>
+          <div class="flow-step">
+            <b>03</b>
+            <strong>提炼规则</strong>
+            <span>根据分类标准、审美标准、传播标准判断案例是否值得入库。</span>
+          </div>
+          <div class="flow-step">
+            <b>04</b>
+            <strong>写入工程</strong>
+            <span>生成文档、匹配 case 编号、提交仓库、触发自动部署。</span>
+          </div>
+          <div class="flow-step">
+            <b>05</b>
+            <strong>反向验证</strong>
+            <span>在网站中生成测试图、人工确认质量，再把有效模板沉淀成 Skill。</span>
+          </div>
+        </div>
+
+        <div style="height: 24px"></div>
+
+        <div class="wide-card">
+          <div>
+            <span class="tag blue">深度判断</span>
+            <h3>这套流程的护城河在“标准”，不在“自动化”</h3>
+            <p>浏览器自动点击，别人也能做；真正难的是定义什么叫好案例、如何分类、如何提炼模板、如何校验输出、如何持续更新。标准越清楚，Agent 越能变成生产力。</p>
+          </div>
+          <ul class="list">
+            <li>输入标准：来源、清晰度、可复现性、传播价值、版权边界。</li>
+            <li>加工标准：案例分类、提示词提取、模板结构、适用场景。</li>
+            <li>输出标准：生成质量、可读文档、网站展示、可复制调用。</li>
+            <li>验收标准：人工抽检、视觉对比、来源留痕、失败回滚。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="qa">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Q&A Synthesis</div>
+            <h2>问答部分沉淀出的 6 个方法论</h2>
+          </div>
+          <p class="section-desc">后半段问答比工具演示更接近真实开发现场：大家关心的是如何少掉坑、如何协作、如何让 AI 输出更可靠。</p>
+        </div>
+
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>问题</th>
+              <th>会议观点</th>
+              <th>整理后的建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>上下文会丢怎么办？</td>
+              <td>不要过度依赖自动压缩；不同任务分开处理，必要时使用 Memory 类能力。</td>
+              <td>为每个项目建立 README、决策记录、任务记录和验收清单，把记忆落到文件，而不是只留在对话里。</td>
+            </tr>
+            <tr>
+              <td>大文件和复杂项目怎么处理？</td>
+              <td>几十兆文件不适合一次性塞给模型；用工作树/项目串联方式拆解。</td>
+              <td>先拆知识库、接口、页面、测试、资料五类上下文，再让 Agent 按模块读取，减少“一锅粥”式上下文。</td>
+            </tr>
+            <tr>
+              <td>后端文件看不懂怎么调试？</td>
+              <td>从用户视角描述功能异常，不必一开始定位到代码文件。</td>
+              <td>截图、录屏、复现步骤、期望结果、实际结果，比“帮我看后端哪里错了”更容易触发正确修复。</td>
+            </tr>
+            <tr>
+              <td>如何降低 Bug 率？</td>
+              <td>用 Plan Mode 先产出计划；复杂需求可让多个模型互相审查方案。</td>
+              <td>把计划评审前置，但不要迷信模型辩论。必须补充真实测试场景、边界条件和人工验收。</td>
+            </tr>
+            <tr>
+              <td>前后端分离适合工作树吗？</td>
+              <td>单人开发可行；多人协作的关键仍是职责边界和接口文档。</td>
+              <td>团队场景要接口先行：OpenAPI/字段表/错误码/状态流，比跨聊天记忆更可靠。</td>
+            </tr>
+            <tr>
+              <td>UI 怎么减少 AI 味？</td>
+              <td>借鉴优秀网站，提取设计元素；必要时用更强前端审美工具辅助。</td>
+              <td>先建立参考板和设计语言，再生成页面。不要让模型在没有品牌约束时“自由发挥”。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="business">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Product & Business</div>
+            <h2>商业化部分的核心判断：渠道先于功能</h2>
+          </div>
+          <p class="section-desc">会议后段出现一个很现实的共识：AI 产品越来越容易做，难的是被看见、被信任、被持续购买。</p>
+        </div>
+
+        <div class="quote-panel">
+          <div class="quote">
+            <b>显性观点</b>
+            <p>当前很多 AI SaaS 缺少技术壁垒，功能很容易被复刻。</p>
+          </div>
+          <div class="quote">
+            <b>隐性判断</b>
+            <p>开源项目、个人 IP、真实案例、渠道资源，才是个人产品更难复制的资产。</p>
+          </div>
+        </div>
+
+        <div style="height: 24px"></div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag">路径 A</span>
+            <h3>开源引流</h3>
+            <p>先用开源项目获得自然流量、技术可信度和社区反馈，再把高频需求转成付费工具或服务。</p>
+          </article>
+          <article class="card">
+            <span class="tag blue">路径 B</span>
+            <h3>案例资产化</h3>
+            <p>把高质量案例整理为模板、Skill、文档、网站和课程，形成内容与产品互相喂养的循环。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">路径 C</span>
+            <h3>渠道合作</h3>
+            <p>ToB/G 端机会不只看产品完成度，更看能否找到场景、预算、试点单位和交付伙伴。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="risks">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Risk Boundary</div>
+            <h2>报告需要补上的风险视角</h2>
+          </div>
+          <p class="section-desc">原会议氛围偏兴奋，但如果要作为团队方法论，需要把风险写在明面上。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag brick">权限</span>
+            <h3>不要在主力机无差别放权</h3>
+            <p>电脑操控能力越强，误操作、隐私暴露和越权风险越高。建议用隔离设备、测试账号和最小权限。</p>
+          </article>
+          <article class="card">
+            <span class="tag gold">稳定性</span>
+            <h3>演示成功不等于生产稳定</h3>
+            <p>会议中出现鼠标、网络、上下文触发、页面未打开等问题。自动化流程必须设计失败重试、人工确认和回滚。</p>
+          </article>
+          <article class="card">
+            <span class="tag blue">合规</span>
+            <h3>账号和支付流程不宜教程化</h3>
+            <p>涉及跨区账号、接码、代理、第三方支付的内容应当谨慎处理，避免沉淀为可复制规避流程。</p>
+          </article>
+          <article class="card">
+            <span class="tag green">版权</span>
+            <h3>案例采集必须保留来源与边界</h3>
+            <p>从社交平台抓取图片和提示词时，要保留来源、区分学习参考与商业使用，避免把他人成果误包装成自有资产。</p>
+          </article>
+          <article class="card">
+            <span class="tag">测试</span>
+            <h3>AI 测试容易停在表面</h3>
+            <p>按钮能点、页面能打开，不代表业务逻辑正确。真实用户路径、异常输入、权限状态和数据一致性仍需人工设计。</p>
+          </article>
+          <article class="card">
+            <span class="tag brick">协作</span>
+            <h3>多人项目不能只靠 Agent 记忆</h3>
+            <p>接口文档、变更记录、分支策略、验收标准必须显式化，否则合并后才暴露逻辑问题。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="actions">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Action Plan</div>
+            <h2>会后可执行清单</h2>
+          </div>
+          <p class="section-desc">按“个人学习、项目落地、团队协作、商业验证”四类拆解，方便直接变成待办。</p>
+        </div>
+
+        <div class="action-grid">
+          <div class="action">
+            <h3><span>1</span>个人学习</h3>
+            <ul class="list">
+              <li>整理自己的 Codex App 插件清单，区分常用、试验、风险较高三类。</li>
+              <li>建立一份“优质案例参考板”，每个案例记录来源、亮点、可复用结构。</li>
+              <li>练习用产品语言描述 Bug：复现路径、期望、实际、截图或录屏。</li>
+            </ul>
+          </div>
+          <div class="action">
+            <h3><span>2</span>项目落地</h3>
+            <ul class="list">
+              <li>选一个低风险任务试跑浏览器自动化，例如资料收集或页面截图验收。</li>
+              <li>把重复任务写成 Skill 或脚本，而不是每次临时提示。</li>
+              <li>为自动提交仓库设置人工确认点，避免 Agent 直接推送错误内容。</li>
+            </ul>
+          </div>
+          <div class="action">
+            <h3><span>3</span>团队协作</h3>
+            <ul class="list">
+              <li>为前后端分离项目补接口文档、字段定义、状态流和错误码。</li>
+              <li>建立测试用例清单，至少覆盖登录、支付、权限、异常输入和数据回滚。</li>
+              <li>把上下文沉淀到仓库文档：README、AGENTS、决策记录、验收清单。</li>
+            </ul>
+          </div>
+          <div class="action">
+            <h3><span>4</span>商业验证</h3>
+            <ul class="list">
+              <li>产品研发前先写清楚获客渠道、首批用户、付费理由和替代方案。</li>
+              <li>用开源、案例站或公开复盘建立信任入口，再转化为付费产品。</li>
+              <li>优先找有预算、有场景、有交付窗口的小试点，避免闭门造 SaaS。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="height: 24px"></div>
+
+        <div class="print-note">
+          <strong>建议分享方式：</strong>这份报告适合直接作为群内复盘页使用。若要对外公开，建议再删除具体人名、手机号、账号注册相关细节，并把“会议中提到的工具能力”统一改写为“参会者经验判断”，避免把未经验证的主观评价写成事实。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>生成说明：本报告基于本地 Word 文档抽取文本与用户粘贴的元宝会议助手纪要整理；未包含原始音频听辨。报告重点是复盘、配置、方法论和行动建议，不构成对第三方平台规则、账号注册或支付方案的操作指导。</p>
+    </div>
+  </footer>
+</body>
+</html>

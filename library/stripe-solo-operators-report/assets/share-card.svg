@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#d6c7b5" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f4efe5"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.65"/>
+  <rect x="72" y="72" width="1056" height="486" fill="#fffaf0" stroke="#20201d" stroke-width="2"/>
+  <rect x="96" y="96" width="54" height="54" fill="#20201d"/>
+  <text x="123" y="132" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#fffaf0">S</text>
+  <text x="174" y="125" font-family="Menlo, Consolas, monospace" font-size="22" fill="#245f9d" font-weight="700">SOLO PRODUCT STUDY MAP</text>
+  <text x="96" y="252" font-family="Georgia, serif" font-size="72" line-height="1" font-weight="700" fill="#15130f">34 indie products</text>
+  <text x="96" y="336" font-family="Georgia, serif" font-size="72" line-height="1" font-weight="700" fill="#15130f">into a playbook</text>
+  <text x="98" y="418" font-family="Menlo, Consolas, monospace" font-size="24" fill="#6d655c">links / routes / validation / distribution</text>
+  <g transform="translate(860 150)">
+    <rect x="0" y="0" width="230" height="230" fill="#e0eedc" stroke="#20201d" stroke-width="2"/>
+    <text x="115" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="58" font-weight="700" fill="#15130f">12</text>
+    <text x="115" y="134" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="17" fill="#6d655c">study first</text>
+  </g>
+  <g transform="translate(890 352)">
+    <rect x="0" y="0" width="220" height="104" fill="#dceaf2" stroke="#20201d" stroke-width="2"/>
+    <text x="110" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#15130f">75 links</text>
+    <text x="110" y="72" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="14" fill="#6d655c">ready to inspect</text>
+  </g>
+</svg>

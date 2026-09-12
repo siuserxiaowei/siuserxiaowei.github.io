@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="微信开发者创新工坊深圳站深度课程：平台变化、三个冷启动案例、增长机制、Agent 时代产品设计与可直接使用的实验工具。">
+  <meta name="theme-color" content="#f4f0e6">
+  <title>第一批用户从哪里来？｜微信开发者创新工坊深度课程</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><i id="reading-progress"></i></div>
+
+  <header class="site-header">
+    <a href="#top" class="brand" aria-label="回到顶部"><b>场外课</b><span>WECHAT WORKSHOP / SHENZHEN</span></a>
+    <div class="header-meta"><span>深度版 · V2</span><span>约 35 分钟</span><a class="header-contact" href="#contact">X / 微信联系我</a><button type="button" id="print-page">打印 / PDF ↗</button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero" data-section="top">
+      <div class="hero-topline"><span>2026.08.08</span><span>3H 40MIN → 1 COURSE</span><span>给没到场的人</span></div>
+      <div class="hero-grid">
+        <div class="hero-main">
+          <p class="eyebrow">这场会真正讨论的，不是怎么做小程序</p>
+          <h1>第一批用户，<br><em>到底从哪里来？</em></h1>
+          <p class="hero-dek">一堂关于<strong>真实需求、冷启动、传播链路、留存和 Agent 时代产品形态</strong>的案例课。保留现场数字和失败过程，也补上会议没有来得及讲清楚的机制与边界。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#orientation">开始上课 ↓</a>
+            <a class="button secondary" href="#workbench">直接做诊断</a>
+            <a class="button contact-button" href="#contact">联系作者：X + 微信</a>
+          </div>
+        </div>
+        <aside class="learning-contract">
+          <p class="micro-label">LEARNING OUTCOMES / 读完你能回答</p>
+          <ol>
+            <li><span>01</span>为什么“有人说想要”不等于需求成立？</li>
+            <li><span>02</span>为什么 40 万播放可能不如 20 个精准报名？</li>
+            <li><span>03</span>冷启动时，线下、一对一、内容和 KOL 怎么选？</li>
+            <li><span>04</span>Aha、激活、传播和留存分别是什么？</li>
+            <li><span>05</span>什么时候可以买量，什么时候应该停？</li>
+            <li><span>06</span>Agent 时代，产品为什么要拆成“原子能力”？</li>
+          </ol>
+        </aside>
+      </div>
+      <div class="hero-note">
+        <strong>先给一个结论：</strong>
+        <p>AI 把“做出功能”的成本压低以后，创业的瓶颈没有消失，只是从<strong>生产</strong>转移到了<strong>问题选择、信任建立和价值分发</strong>。</p>
+      </div>
+    </section>
+
+    <nav class="course-nav" aria-label="课程章节">
+      <div class="course-nav-inner">
+        <span>课程目录</span>
+        <a href="#orientation" data-nav="orientation">00 全景</a>
+        <a href="#platform" data-nav="platform">01 变局</a>
+        <a href="#cases" data-nav="cases">02 案例</a>
+        <a href="#mechanics" data-nav="mechanics">03 机制</a>
+        <a href="#retention" data-nav="retention">04 留存</a>
+        <a href="#agent" data-nav="agent">05 Agent</a>
+        <a href="#workbench" data-nav="workbench">06 实验室</a>
+        <a href="#sources" data-nav="sources">07 边界</a>
+        <a href="#contact" data-nav="contact" class="nav-contact">联系我</a>
+      </div>
+    </nav>
+
+    <section class="chapter orientation" id="orientation" data-section="orientation">
+      <header class="chapter-header">
+        <span class="chapter-no">00</span>
+        <div><p class="eyebrow">ORIENTATION / 先知道你在学什么</p><h2>不是一场功能发布会，<br>而是一张创业闭环地图</h2></div>
+      </header>
+
+      <div class="agenda-map">
+        <article>
+          <b>第一幕</b><time>00:29—01:05</time>
+          <h3>平台为什么现在推“超级个体”</h3>
+          <p>AI 编程和云开发降低生产门槛后，平台把支持从开发延伸到传播和变现，并提出未来“服务被 AI 调用”的可能。</p>
+        </article>
+        <article>
+          <b>第二幕</b><time>01:08—01:44</time>
+          <h3>三种冷启动，三种失败</h3>
+          <p>人脉撮合、AI 回忆录、儿童硬件分别用线下活动、场景招募、创始人一对一找到早期用户，也各自暴露 KOL、长链路和福利群的坑。</p>
+        </article>
+        <article>
+          <b>第三幕</b><time>02:09—02:38</time>
+          <h3>圆桌把问题推向留存</h3>
+          <p>现场从“用户哪里来”追问到“来了为什么留下”，讨论桌面入口、订阅消息、投放时机、小微与原子能力。</p>
+        </article>
+        <article>
+          <b>第四幕</b><time>02:38—03:28</time>
+          <h3>产品体验与比赛强调真实上线</h3>
+          <p>现场体验自然语言生成小工具，也直面 UI 粗糙、Bug 和复杂需求失败。赛事评价强调真实用户、创新、体验与完整度，不只看 Demo。</p>
+        </article>
+      </div>
+
+      <div class="product-landscape">
+        <div class="landscape-intro">
+          <p class="micro-label">10 PRODUCTS / 现场产品光谱</p>
+          <h3>AI 已经进入很碎、很生活化的需求</h3>
+          <p>从找人、回忆录、儿童探索，到饮品记录、旅行、亲密关系和个人日常。这恰好说明：AI 小程序的机会不一定是“大模型产品”，而可能是一个足够具体的生活动作。</p>
+        </div>
+        <div class="product-cloud" aria-label="现场十款产品类型">
+          <span class="large">人脉撮合</span><span>饮品记录</span><span class="accent">AI 回忆录</span><span>宝宝日常</span><span class="large blue">儿童探索硬件</span><span>旅行助手</span><span>生活规划</span><span>跨次元对话</span><span>亲密关系</span><span>恋爱表达</span>
+        </div>
+      </div>
+
+      <aside class="course-tip">
+        <b>怎么读这份课程？</b>
+        <p>每一节都分四层：<span>现场发生了什么</span> → <span>背后的机制</span> → <span>适用边界</span> → <span>你可以做什么</span>。蓝色标签是会议事实，绿色标签是计算或推导，橙色标签是风险提醒。</p>
+      </aside>
+    </section>
+
+    <section class="chapter platform" id="platform" data-section="platform">
+      <header class="chapter-header light">
+        <span class="chapter-no">01</span>
+        <div><p class="eyebrow">THE SHIFT / 开发变便宜之后</p><h2>旧瓶颈被解决，<br>新瓶颈就会出现</h2></div>
+      </header>
+
+      <div class="shift-equation">
+        <div><small>过去先卡在</small><strong>能不能做</strong><p>团队、代码、服务器、接口、审核</p></div>
+        <i>→</i>
+        <div><small>AI 降低了</small><strong>生产门槛</strong><p>自然语言生成、AI 编译、云开发资源</p></div>
+        <i>→</i>
+        <div class="hot"><small>现在更卡在</small><strong>值不值得做</strong><p>真实需求、差异体验、分发、留存、信任</p></div>
+      </div>
+
+      <div class="three-problems">
+        <article><span>01</span><h3>做不出</h3><p>云资源有成本；微信独有接口和调试流程需要学习。</p><b>平台回答：资源 + AI 开发工具</b></article>
+        <article><span>02</span><h3>推不动</h3><p>产品只在熟人圈里传播，内容和体验之间有断点。</p><b>平台回答：分享 + 内容挂载 + 公私域入口</b></article>
+        <article><span>03</span><h3>赚不到</h3><p>个人开发者支付能力受限，广告接入又消耗开发精力。</p><b>平台回答：支付 + 赞赏 + 智能广告</b></article>
+      </div>
+
+      <div class="capability-ledger">
+        <header><p class="micro-label">MEETING CLAIMS / 会上发布与介绍</p><h3>平台给出的“开发—增长—变现”工具箱</h3><p>以下是现场口径，不是本站替官方背书。政策、费率和开放状态会变化。</p></header>
+        <div class="ledger-table">
+          <div class="ledger-row ledger-head"><b>阶段</b><b>会上提到的能力</b><b>真正解决什么</b><b>不能替你解决什么</b></div>
+          <div class="ledger-row"><strong>开发</strong><p>混元 Token、生图额度、云托管/函数/数据库资源；AI 操作开发者工具完成编译、测试和日志分析。</p><p>降低现金成本与工具切换成本。</p><p>不会判断需求，也不会自动产生完整、稳定、好看的产品。</p></div>
+          <div class="ledger-row"><strong>传播</strong><p>截图携带小程序入口；公众号、视频号、贴图等内容联动；会上提到小红书投流直达能力。</p><p>缩短“看到内容 → 打开产品”的距离。</p><p>不会让不相关的内容自动变成精准流量。</p></div>
+          <div class="ledger-row"><strong>复访</strong><p>添加桌面、“最近使用/我的小程序”、订阅消息。</p><p>给用户一个回来入口，或在合理时刻提醒。</p><p>不会创造第二次使用理由。</p></div>
+          <div class="ledger-row"><strong>变现</strong><p>会上称 iOS 虚拟支付、会员续费、个人收款、无手续费赞赏、免开发智能广告正在开放或计划上线。</p><p>降低支付和广告接入摩擦。</p><p>不会替代定价、付费价值和交易信任。</p></div>
+        </div>
+      </div>
+
+      <div class="success-triad">
+        <div class="triad-title"><p class="micro-label">00:49:37 / 现场复盘</p><h3>跑出来的产品，三个共同特征</h3></div>
+        <article><span>①</span><h4>独一无二的新体验</h4><p>体验本身形成记忆点。现场举例是让 AI 扮演病人、用户通过问诊猜病，把模型能力变成一个可感知的玩法。</p></article>
+        <article><span>②</span><h4>垂直领域 know-how</h4><p>不是更通用，而是对一个细分人群更懂。现场举例的游戏辅助工具，据分享者称约有百万日活，价值来自领域知识而非通用模型。</p></article>
+        <article><span>③</span><h4>源于生活的强需求</h4><p>问题在用户生活里已经存在，产品只是替换了原来的笨办法。只有“AI 可以做”却没有“人正在需要”，生命力很弱。</p></article>
+      </div>
+
+      <div class="reasoning-box">
+        <span class="tag derive">编辑推导</span>
+        <h3>为什么 AI 越强，产品判断反而越重要？</h3>
+        <div class="reasoning-steps"><p><b>1.</b> 当实现成本下降，同类供给增加。</p><p><b>2.</b> 功能更容易复制，功能稀缺性下降。</p><p><b>3.</b> 用户注意力没有同步增加，分发竞争上升。</p><p><b>4.</b> 于是不可复制的部分——场景洞察、信任、数据、审美、关系与执行速度——占比提高。</p></div>
+        <blockquote>低代码门槛，不等于低创业门槛；它只是把淘汰赛从“会不会写”推迟到“有没有人持续用”。</blockquote>
+      </div>
+    </section>
+
+    <section class="chapter cases" id="cases" data-section="cases">
+      <header class="chapter-header">
+        <span class="chapter-no">02</span>
+        <div><p class="eyebrow">THREE CASES / 不跳过失败过程</p><h2>同样找第一批用户，<br>为什么答案完全不同？</h2></div>
+      </header>
+
+      <article class="case-study case-a">
+        <header class="case-title">
+          <div><span>CASE A / 低客单、双边网络、开发者人群</span><h3>连连 AI：先抢高密度场合的“话语权”</h3></div>
+          <b>A</b>
+        </header>
+        <div class="case-facts">
+          <div><span class="tag fact">现场事实</span><strong>500</strong><p>当时约有用户</p></div>
+          <div><span class="tag fact">现场事实</span><strong>+100</strong><p>一次北京线下活动带来</p></div>
+          <div><span class="tag derive">换算</span><strong>+20%</strong><p>相当于当时存量的增幅</p></div>
+        </div>
+        <div class="case-body">
+          <div class="narrative">
+            <h4>发生了什么</h4>
+            <p>产品帮助开发者和创业者找人、找合作。早期团队并未等产品完全打磨好，而是从身边资源开始问；在约 500 用户时，主创反复争取一个原本没有邀请自己的北京活动，最终获得发言机会并新增约 100 位用户。</p>
+            <p>线上内容没有继续硬闯小红书和抖音的推荐机制，而是转向<strong>知乎圈子、稀土掘金</strong>等目标用户已经聚集的地方。内容不只夸产品，而是讲创业问题、暴露不足，甚至用争议观点引发讨论。</p>
+          </div>
+          <div class="mechanism">
+            <h4>为什么可能有效</h4>
+            <ol><li><b>场合先完成筛选：</b>创业活动和开发者社区天然提高目标用户浓度。</li><li><b>发言权借来信任：</b>在台上讲方法，比发一条广告拥有更高的上下文和可信度。</li><li><b>双边产品需要密度：</b>“找人”类产品不是总人数越大越好，而是某一类供需能否在局部先匹配起来。</li></ol>
+          </div>
+        </div>
+        <div class="case-lesson-grid">
+          <div><span class="tag risk">失败/风险</span><h4>早期 KOL 合作不稳定</h4><p>小体量博主报价也可能超过承受能力，且注册转化波动大，早期团队缺乏按结果议价的能力。问题不是“KOL 永远无效”，而是当留存和单位经济未知时，你还不知道最多能为一个用户付多少钱。</p></div>
+          <div><span class="tag use">何时可迁移</span><h4>你的用户有明确职业或兴趣身份</h4><p>开发者、设计师、律师、家长等人群有稳定聚集地，而且产品价值可以通过现场演示或专业内容快速说明。</p></div>
+          <div><span class="tag caution">不要照抄</span><h4>争议不是目的</h4><p>争议内容只有在能把正确的人带入有效对话时才有价值。为互动而制造争议，会获得错误用户并损害信任。</p></div>
+        </div>
+        <details class="transfer-box"><summary>把这个案例迁移成一个动作</summary><div><p>列出目标用户正在出现的 10 个“高密度场合”：3 个线下活动、3 个垂直社区、2 个群体组织、2 个内容栏目。不要先问“哪里流量大”，先问“哪里目标用户比例高，而且我能完成一次价值演示”。</p></div></details>
+      </article>
+
+      <article class="case-study case-b">
+        <header class="case-title">
+          <div><span>CASE B / 低频、高情感、高输入成本</span><h3>轻诺谛听：40 万播放输给一篇场景招募帖</h3></div>
+          <b>B</b>
+        </header>
+        <div class="case-facts four">
+          <div><span class="tag fact">现场事实</span><strong>2000</strong><p>问卷触达人数</p></div>
+          <div><span class="tag fact">现场事实</span><strong>20</strong><p>场景招募帖报名</p></div>
+          <div><span class="tag fact">现场事实</span><strong>40万</strong><p>爷爷回忆录视频播放</p></div>
+          <div><span class="tag fact">现场事实</span><strong>5000+</strong><p>视频带来涨粉</p></div>
+        </div>
+        <div class="case-body">
+          <div class="narrative">
+            <h4>发生了什么</h4>
+            <p>产品通过对话追问，把用户讲述的经历、细节和情绪整理成结构化文章。第一轮邀请亲友，大家礼貌体验但很少留下；第二轮问卷触达约 2000 人，真正联系上的只有十几人。后来一篇把使用场景讲清楚的内测帖带来 20 人报名，其中十几人持续反馈。</p>
+            <p>另一个实验是为杭州一位爷爷制作视频回忆录：视频号累计约 40 万播放、涨粉 5000+，但小程序数据没有明显起伏。内容证明了“故事有人看”，却没有证明“观看者愿意亲自完成一篇回忆录”。</p>
+          </div>
+          <div class="mechanism">
+            <h4>为什么流量没有过去</h4>
+            <div class="long-funnel"><span>看到视频</span><i>→</i><span>产生兴趣</span><i>→</i><span>退出视频</span><i>→</i><span>微信搜索</span><i>→</i><span>登录小程序</span><i>→</i><span>讲 200–300 字经历</span><i>→</i><span>等待并阅读结果</span></div>
+            <p>这是一个<strong>高动机、高输入成本</strong>任务。内容消费只要几秒，产品体验却要求用户先产生诉说欲，再投入耐心和隐私。两者不是同一种行为。</p>
+          </div>
+        </div>
+        <div class="calculation-note">
+          <span class="tag derive">可验证推导</span>
+          <div><strong>5000 ÷ 400000 ≈ 1.25%</strong><p>播放到关注已经只剩约 1.25%；从关注到完成小程序核心任务还要继续经过多道门槛。由于现场没有给出确切新增数，不能算最终转化率，但足以说明“内容成功”和“产品增长”必须分别测量。</p></div>
+        </div>
+        <div class="case-lesson-grid">
+          <div><span class="tag learn">核心概念</span><h4>场景语言 > 产品定义</h4><p>“AI 回忆录”要求用户理解两个抽象词；“记录此刻的情绪”“给父母留一段人生故事”直接唤起一个具体时刻。营销不是解释你是什么，而是让用户认出自己正在做的事。</p></div>
+          <div><span class="tag learn">产品动作</span><h4>把 Aha 变成传播物</h4><p>完整长文不适合直接传播，因此产品从文章里提取金句。它降低分享成本，也让用户用一句话表达自我。分享按钮不是增长机制，<strong>值得分享的产物</strong>才是。</p></div>
+          <div><span class="tag risk">仍未解决</span><h4>低频需求的复访难题</h4><p>一个人不会每天写回忆录。留存不能机械追求“次日打开”，更合理的指标可能是完成率、章节数、家庭协作、30 天再次记录或推荐他人。</p></div>
+        </div>
+        <details class="transfer-box"><summary>把这个案例迁移成一个动作</summary><div><p>把你的产品名从招募文案里删掉，只写触发场景、现在的笨办法和完成后的结果。如果删掉名字后用户仍能判断“这正是我现在需要的”，场景才算写清楚。</p></div></details>
+      </article>
+
+      <article class="case-study case-c">
+        <header class="case-title">
+          <div><span>CASE C / 高客单、硬件、家长信任</span><h3>百问兔兔：精准的 200 人，也可能是错误的用户资产</h3></div>
+          <b>C</b>
+        </header>
+        <div class="case-facts four">
+          <div><span class="tag fact">现场事实</span><strong>1周</strong><p>福利招募周期</p></div>
+          <div><span class="tag fact">现场事实</span><strong>200</strong><p>精准家长进群</p></div>
+          <div><span class="tag fact">现场报价</span><strong>899</strong><p>订阅制价格</p></div>
+          <div><span class="tag fact">现场报价</span><strong>1280</strong><p>买断制价格</p></div>
+        </div>
+        <div class="case-body">
+          <div class="narrative">
+            <h4>发生了什么</h4>
+            <p>产品是一台面向儿童的 AI 放大镜。早期商务以“进群送福利”一周招到约 200 位宝爸宝妈，画像很准。但硬件交付从原计划不断延期，群里形成的不是共创关系，而是“我已付出注意力，你欠我福利”的交换契约；每延期一次，负面情绪就在群里集中爆发。</p>
+            <p>后来创始人的打法反过来：先直接公开 899/1280 的价格，筛出仍然深入咨询、甚至主动问购买方式的人，再选择直接赠送；不要求填问卷，改用个人微信点对点沟通和朋友圈建立“能找到活人、能找到创始人”的感知。</p>
+          </div>
+          <div class="mechanism">
+            <h4>真正变化的不是“群 → 私聊”</h4>
+            <ol><li><b>筛选机制变了：</b>福利筛出想拿福利的人；先报价筛出愿意面对真实成本的人。</li><li><b>心理契约变了：</b>进群像一次交换；意外赠送像超预期体验，更容易形成互惠。</li><li><b>责任主体变清楚：</b>高客单硬件最怕出问题后找不到人，创始人身份本身就是风险担保。</li></ol>
+          </div>
+        </div>
+        <div class="case-lesson-grid">
+          <div><span class="tag use">值得学习</span><h4>用高成本信号筛选需求</h4><p>报价、排期、押金、提交真实材料，都比“感兴趣吗”更接近行为证据。信号不一定要收钱，但要让用户付出与需求强度相称的成本。</p></div>
+          <div><span class="tag caution">不能神化</span><h4>一对一不是普适增长模型</h4><p>创始人一对一适合首批高价值用户、复杂产品和研究期；它有明显容量上限。案例里用“首批 5000 台、好友上限 1 万”论证可覆盖，这是阶段性策略，不是无限规模解法。</p></div>
+          <div><span class="tag risk">伦理边界</span><h4>赠送不应换取隐形义务</h4><p>用户收下产品，不等于必须填问卷、发种草或提供商业数据。明确、可撤回的反馈邀请，比用“人情债”换内容更可靠。</p></div>
+        </div>
+        <details class="transfer-box"><summary>把这个案例迁移成一个动作</summary><div><p>设计一个“需求强度信号”：让用户看到真实价格、等待时间或所需输入，再问是否继续。记录继续者比例，并访谈继续和退出的两组人。不要急着赠送，先弄清楚他们愿意付出的究竟是什么。</p></div></details>
+      </article>
+
+      <div class="comparison-matrix">
+        <header><p class="micro-label">不要抄渠道，先识别产品结构</p><h3>三个案例为什么不能互抄答案</h3></header>
+        <div class="matrix-grid">
+          <div class="matrix-head"><b>变量</b><b>连连 AI</b><b>AI 回忆录</b><b>儿童硬件</b></div>
+          <div><strong>用户动机</strong><p>找人、找合作，结果导向</p><p>表达与保存，情绪驱动</p><p>教育与探索，信任驱动</p></div>
+          <div><strong>体验成本</strong><p>中：描述需求并等待匹配</p><p>高：讲述大量个人经历</p><p>高：付费、等待、使用硬件</p></div>
+          <div><strong>最合适的早期关系</strong><p>圈层和场合密度</p><p>场景招募与陪伴完成</p><p>创始人担保与一对一</p></div>
+          <div><strong>Aha Moment</strong><p>找到一个有价值的人</p><p>看到“这真像我”的文章</p><p>孩子看懂眼前的对象</p></div>
+          <div><strong>主要风险</strong><p>供需不够密、错误用户</p><p>输入太长、使用低频</p><p>交付、售后与信任破裂</p></div>
+          <div><strong>不该优先做</strong><p>泛 KOL 买量</p><p>追泛内容播放量</p><p>大规模福利拉群</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter mechanics" id="mechanics" data-section="mechanics">
+      <header class="chapter-header light">
+        <span class="chapter-no">03</span>
+        <div><p class="eyebrow">GROWTH MECHANICS / 学会看数字背后</p><h2>增长不是一个数字，<br>而是六种不同的行为</h2></div>
+      </header>
+
+      <div class="concept-stair">
+        <article><span>01</span><h3>曝光 Reach</h3><p>看到了内容。证明内容获得分发，不证明用户需要产品。</p><small>例：40 万播放</small></article>
+        <article><span>02</span><h3>访问 Visit</h3><p>点进产品。证明标题或入口有效，不证明价值交付。</p><small>看打开率</small></article>
+        <article><span>03</span><h3>激活 Activation</h3><p>完成第一次核心任务。用户终于拿到你承诺的价值。</p><small>不是“注册成功”</small></article>
+        <article><span>04</span><h3>Aha Moment</h3><p>用户主观感到“原来它能帮我”。常发生在结果出现时。</p><small>需要观察和访谈</small></article>
+        <article><span>05</span><h3>留存 Retention</h3><p>在合理周期内再次回来完成核心任务。</p><small>周期由场景决定</small></article>
+        <article><span>06</span><h3>传播/付费</h3><p>愿意用声誉或金钱为价值下注，是更强的需求证据。</p><small>推荐、邀请、购买</small></article>
+      </div>
+
+      <div class="signal-ladder">
+        <header><p class="micro-label">DEMAND EVIDENCE / 需求证据阶梯</p><h3>别再把“大家都说不错”当验证</h3></header>
+        <ol>
+          <li><span class="weak">弱</span><b>亲友说不错</b><p>受关系和礼貌影响最大。</p></li>
+          <li><span></span><b>问卷说感兴趣</b><p>表达意愿几乎没有行为成本。</p></li>
+          <li><span></span><b>留下联系方式 / 报名</b><p>开始付出一点隐私和注意力。</p></li>
+          <li><span></span><b>完成核心任务</b><p>愿意承担真实的时间和输入成本。</p></li>
+          <li><span></span><b>在没有催促时再次使用</b><p>问题持续存在，价值开始稳定。</p></li>
+          <li><span></span><b>主动推荐 / 付费</b><p>愿意拿声誉或金钱下注。</p></li>
+          <li><span class="strong">强</span><b>原方案被长期替代</b><p>产品真正进入用户习惯或工作流。</p></li>
+        </ol>
+      </div>
+
+      <div class="growth-loop">
+        <header><p class="micro-label">MULTIPLICATIVE LOOP / 乘法而非加法</p><h3>为什么要先修最小项</h3></header>
+        <div class="loop-equation"><span>精准触达</span><i>×</i><span>激活</span><i>×</i><span>结果质量</span><i>×</i><span>分享</span><i>×</i><span>回流</span><i>×</i><span>复访</span><b>= 有效增长</b></div>
+        <div class="number-demo">
+          <div><h4>假设 10,000 人看见</h4><p>入口率 5% → 500 人访问<br>激活率 20% → 100 人拿到价值<br>分享率 10% → 10 人分享<br>每次分享带来 2 人 → 20 个新访问</p></div>
+          <div><h4>只把曝光翻倍</h4><strong>20,000</strong><p>新访问从 20 变 40，买量成本翻倍。</p></div>
+          <div class="better"><h4>把激活从 20% 提到 50%</h4><strong>250</strong><p>完成价值的人变为 250；分享带来的新访问变为 50，且每一轮都受益。</p></div>
+        </div>
+        <p class="formula-note">示例数字用于解释机制，不来自会议。现实中应同时观察用户质量，不能把所有转化视为同质。</p>
+      </div>
+
+      <div class="aha-workshop">
+        <header><p class="micro-label">AHA ≠ 功能完成</p><h3>找 Aha Moment 的三个问题</h3></header>
+        <div class="aha-grid">
+          <article><span>1</span><h4>用户在结果出现前期待什么？</h4><p>如果期待本身很弱，入口再短也不会激活。回忆录首先需要“我想讲这段故事”的欲望。</p></article>
+          <article><span>2</span><h4>哪一刻他的语言或表情变化？</h4><p>例如从操作性问题转成“这句话真像我”“这个人正是我要找的”。这是价值被感知的现场证据。</p></article>
+          <article><span>3</span><h4>结果能否脱离产品继续存在？</h4><p>文章、金句卡、匹配结果、孩子的探索记录都能成为传播物；一个看不见的后台优化很难自然传播。</p></article>
+        </div>
+      </div>
+
+      <aside class="mistake-callout"><b>最常见的误判</b><p>把“用户点了分享按钮”当传播成功。真正的传播至少要继续看到：分享是否发送、接收者是否打开、是否完成核心任务。按钮点击只是意图，不是结果。</p></aside>
+    </section>
+
+    <section class="chapter retention" id="retention" data-section="retention">
+      <header class="chapter-header">
+        <span class="chapter-no">04</span>
+        <div><p class="eyebrow">RETENTION / 用户为什么还回来</p><h2>入口只能帮助回来，<br>理由才能让人想回来</h2></div>
+      </header>
+
+      <blockquote class="big-quote"><span>02:20:19 / 圆桌观点</span>“在没有优化好留存之前，我们不做拉新。”</blockquote>
+
+      <div class="retention-model">
+        <div class="retention-core"><span>复访</span><p>用户在一个合理时点<br>再次完成核心价值</p></div>
+        <article><b>理由</b><h3>为什么回来</h3><p>新内容、新任务、周期需求、关系互动、进度延续。</p></article>
+        <article><b>入口</b><h3>从哪里回来</h3><p>桌面、“我的小程序”、会话、内容卡片、搜索。</p></article>
+        <article><b>提醒</b><h3>什么时候回来</h3><p>订阅消息应匹配用户预期和任务节点。</p></article>
+        <article><b>记忆</b><h3>能否接着做</h3><p>保留历史、进度、偏好和关系，不让每次从零开始。</p></article>
+      </div>
+
+      <div class="frequency-table">
+        <header><p class="micro-label">不要所有产品都看次日留存</p><h3>使用频率决定正确指标</h3></header>
+        <div><strong>高频工具</strong><p>记账、打卡、任务</p><b>看 D1 / D7 核心任务复用</b></div>
+        <div><strong>事件型服务</strong><p>旅行计划、一次生成</p><b>看任务完成、结果保存、下一事件复用</b></div>
+        <div><strong>低频高情感</strong><p>回忆录、家庭故事</p><b>看 30 天记录、章节完成、家人邀请</b></div>
+        <div><strong>硬件伴侣</strong><p>儿童探索设备</p><b>看设备活跃、探索次数、家长查询</b></div>
+        <div><strong>双边网络</strong><p>找人、找合作</p><b>看有效匹配率、回复率、复用需求</b></div>
+      </div>
+
+      <div class="subscription-debate">
+        <div class="debate-fact"><span class="tag fact">现场经验</span><h3>订阅消息被视为重要召回工具</h3><p>圆桌开发者分享：一次性订阅、会员订阅等机制可以为小程序创造主动触达机会；他们曾在多个按钮和关键动作上优化订阅授权，并通过 A/B 测试提升同意率。</p></div>
+        <div class="debate-risk"><span class="tag caution">课程判断</span><h3>“能多触达”不等于“应该尽量多触达”</h3><p>把授权藏在所有按钮后、积累用户不知情的推送机会，可能短期提高可触达数，却损害知情同意和长期信任。更稳健的做法是：在结果生成、任务到期、对方回复等<strong>用户能够预期消息价值</strong>的节点，清楚说明会收到什么。</p></div>
+      </div>
+
+      <div class="buying-gate">
+        <header><p class="micro-label">WHEN TO BUY TRAFFIC / 什么时候可以买量</p><h3>四道门，没有通过就先别放大</h3></header>
+        <ol><li><span>01</span><div><h4>目标用户门</h4><p>能用一句场景描述你在买谁，而不是“18–35 岁对 AI 感兴趣的人”。</p></div></li><li><span>02</span><div><h4>激活门</h4><p>陌生用户不靠人工教学，也能完成第一次核心任务。</p></div></li><li><span>03</span><div><h4>价值门</h4><p>有复访、主动分享、愿意付费或替代旧方案中的至少一种强信号。</p></div></li><li><span>04</span><div><h4>归因门</h4><p>知道用户从哪里来、走到哪一步、每个激活/留存用户花了多少钱。</p></div></li></ol>
+        <p>会上连连 AI 的判断是：核心功能稳定满足需求以后才考虑投放；回忆录案例倾向只放大真实用户生成的优质内容。共同点是<strong>投放用于复制已验证链路，而不是替代验证</strong>。</p>
+      </div>
+    </section>
+
+    <section class="chapter agent" id="agent" data-section="agent">
+      <header class="chapter-header light">
+        <span class="chapter-no">05</span>
+        <div><p class="eyebrow">AGENT SHIFT / 从被找到到被调用</p><h2>未来的入口，<br>可能不再是产品名字</h2></div>
+      </header>
+
+      <div class="search-shift">
+        <div><span>过去</span><h3>我知道品牌</h3><p>用户搜索“美团外卖”<br>→ 找到一个应用<br>→ 在页面里完成任务</p></div>
+        <i>→</i>
+        <div><span>变化中</span><h3>我只表达意图</h3><p>用户说“帮我点外卖”<br>→ AI 理解约束<br>→ 选择并调用服务</p></div>
+        <i>→</i>
+        <div class="future"><span>产品挑战</span><h3>为什么调用你</h3><p>能力描述、结果质量、权限、稳定性、信任和历史偏好都成为新的分发变量。</p></div>
+      </div>
+
+      <div class="atomic-lesson">
+        <header><p class="micro-label">ATOMIC CAPABILITY / 原子能力是什么</p><h3>把“整个小程序”拆成一个可独立完成的结果</h3><p>这是基于会上 AI 调用、小微和服务被发现的讨论所做的产品设计推导，不是官方技术规范。</p></header>
+        <div class="bad-good">
+          <div class="bad"><span>太大、不可调用</span><p>“打开我的 AI 回忆录小程序”</p></div>
+          <div class="good"><span>清楚、可组合</span><p>“根据这段口述，追问三个缺失细节，并生成一篇 800 字、保留原语气的人生片段。”</p></div>
+          <div class="bad"><span>只有设备概念</span><p>“使用儿童 AI 放大镜”</p></div>
+          <div class="good"><span>清楚、可授权</span><p>“查询孩子今天识别过的植物，按兴趣主题生成一份亲子探索回顾。”</p></div>
+        </div>
+      </div>
+
+      <div class="atomic-checklist">
+        <header><h3>一个能力要被 Agent 安全调用，至少要说清 7 件事</h3></header>
+        <article><span>01</span><h4>触发意图</h4><p>用户会用哪句话表达这个需求？</p></article>
+        <article><span>02</span><h4>必要输入</h4><p>缺什么信息就不能开始？</p></article>
+        <article><span>03</span><h4>明确输出</h4><p>返回文章、列表、交易还是设备动作？</p></article>
+        <article><span>04</span><h4>权限边界</h4><p>读取隐私、支付或控制设备前如何授权？</p></article>
+        <article><span>05</span><h4>质量标准</h4><p>怎样知道任务完成得好？</p></article>
+        <article><span>06</span><h4>失败方式</h4><p>信息不足、调用失败时如何安全退出？</p></article>
+        <article><span>07</span><h4>可追溯性</h4><p>用户能否知道用了谁的服务、为什么这样做？</p></article>
+      </div>
+
+      <div class="strategic-implication">
+        <p class="micro-label">战略含义</p>
+        <h3>Agent 不会消灭产品，但会重新分配产品价值</h3>
+        <div><p><b>界面价值下降：</b>简单任务不必每次打开完整页面。</p><p><b>能力价值上升：</b>稳定完成具体结果的服务更容易组合。</p><p><b>信任价值上升：</b>当 AI 替用户选择服务，来源、权限和责任必须更透明。</p><p><b>品牌仍然存在：</b>高风险、高情感、高客单任务里，用户仍会主动选择可信品牌。</p></div>
+      </div>
+    </section>
+
+    <section class="chapter workbench" id="workbench" data-section="workbench">
+      <header class="chapter-header">
+        <span class="chapter-no">06</span>
+        <div><p class="eyebrow">WORKBENCH / 现在轮到你的产品</p><h2>不要只读懂，<br>现场做一次诊断</h2></div>
+      </header>
+
+      <section class="calculator-tool">
+        <header><span class="tool-no">TOOL 01</span><div><h3>增长漏斗诊断器</h3><p>填入一个真实周期的数据。工具会计算各步转化并指出最弱环节。数据只留在你的浏览器。</p></div></header>
+        <div class="funnel-inputs">
+          <label><span>内容曝光</span><input type="number" id="reach" min="0" value="10000"><small>看见内容的人</small></label>
+          <i>→</i>
+          <label><span>进入产品</span><input type="number" id="visit" min="0" value="500"><small>真正打开</small></label>
+          <i>→</i>
+          <label><span>完成核心任务</span><input type="number" id="activate" min="0" value="100"><small>拿到首次价值</small></label>
+          <i>→</i>
+          <label><span>主动分享/付费</span><input type="number" id="commit" min="0" value="10"><small>强价值信号</small></label>
+          <i>→</i>
+          <label><span>合理周期复访</span><input type="number" id="return" min="0" value="25"><small>再次完成任务</small></label>
+        </div>
+        <div class="funnel-results" id="funnel-results" aria-live="polite">
+          <div><span>曝光 → 进入</span><strong id="rate-visit">5.0%</strong></div>
+          <div><span>进入 → 激活</span><strong id="rate-activate">20.0%</strong></div>
+          <div><span>激活 → 承诺</span><strong id="rate-commit">10.0%</strong></div>
+          <div><span>激活 → 复访</span><strong id="rate-return">25.0%</strong></div>
+        </div>
+        <div class="diagnosis-output"><span>当前优先检查</span><strong id="weakest-stage">分享/付费承诺</strong><p id="weakest-advice">先访谈已激活却没有分享或付费的人：结果不值得展示、时机不对，还是价值不足？</p></div>
+      </section>
+
+      <section class="selector-tool">
+        <header><span class="tool-no">TOOL 02</span><div><h3>冷启动打法选择器</h3><p>选择最接近的产品结构，不要选择你最想要的渠道。</p></div></header>
+        <div class="selector-tabs" role="tablist" aria-label="产品结构">
+          <button type="button" role="tab" aria-selected="true" data-playbook="network">垂直人群 / 撮合</button>
+          <button type="button" role="tab" aria-selected="false" data-playbook="emotional">低频 / 高情感</button>
+          <button type="button" role="tab" aria-selected="false" data-playbook="trust">高客单 / 高信任</button>
+          <button type="button" role="tab" aria-selected="false" data-playbook="utility">高频 / 工具</button>
+        </div>
+        <div class="playbook" id="playbook">
+          <div><span>第一批去哪里找</span><p>一个垂直活动 + 一个专业社区；优先目标用户浓度，不优先总流量。</p></div>
+          <div><span>先验证什么</span><p>同一细分圈层内能否连续完成有效匹配，双方是否回复。</p></div>
+          <div><span>核心指标</span><p>有效匹配率、回复率、第二次发布需求。</p></div>
+          <div><span>暂时不要做</span><p>跨人群扩张、泛 KOL 投放、只追注册数。</p></div>
+        </div>
+      </section>
+
+      <section class="template-tool">
+        <header><span class="tool-no">TOOL 03</span><div><h3>场景招募帖生成骨架</h3><p>像回忆录案例一样，先让用户认出自己的处境，再解释产品。</p></div></header>
+        <div class="template-sheet" id="recruit-template">
+          <p><b>标题：</b>正在经历【具体场景】的人，我想帮你在【时间/成本】内得到【可见结果】</p>
+          <p><b>你可能遇到：</b>当【触发时刻】发生，你现在只能用【现有笨办法】，最麻烦的是【具体摩擦】。</p>
+          <p><b>这次不是：</b>不是泛泛问卷，也不要求你先理解一个新概念。</p>
+          <p><b>我们会一起完成：</b>你提供【最小输入】，我帮助你得到【最终结果】，全程大约【投入】。</p>
+          <p><b>适合：</b>最近 30 天内真实发生过【场景证据】的人。</p>
+          <p><b>不适合：</b>只是对 AI 好奇、暂时没有这个任务的人。</p>
+          <p><b>你要付出的：</b>完成一次真实使用，并允许我追问【3 个具体问题】；可以随时退出。</p>
+        </div>
+        <button type="button" class="button primary copy-button" data-copy="#recruit-template">复制模板</button>
+      </section>
+
+      <section class="interview-tool">
+        <header><span class="tool-no">TOOL 04</span><div><h3>五问需求访谈</h3><p>问过去发生的事实，不问“你以后会不会用”。</p></div></header>
+        <ol id="interview-template">
+          <li><span>01</span><p>上一次这个问题真实发生是什么时候？当时在哪里、和谁、为什么必须处理？</p></li>
+          <li><span>02</span><p>你当时按什么顺序解决？把每一步讲给我听。</p></li>
+          <li><span>03</span><p>哪一步最耗时间、最焦虑或最容易出错？你怎么判断它很麻烦？</p></li>
+          <li><span>04</span><p>你试过哪些替代方案？为什么仍然没有解决？</p></li>
+          <li><span>05</span><p>如果下周再次发生，你现在准备怎么做？你愿意为更好的结果付出什么？</p></li>
+        </ol>
+        <button type="button" class="button primary copy-button" data-copy="#interview-template">复制问题</button>
+      </section>
+
+      <section class="experiment-plan">
+        <header><span class="tool-no">TOOL 05</span><div><h3>14 天最小证据计划</h3><p>目标不是把产品做大，而是拿到一个更可靠的 Go / Pivot / Stop 判断。</p></div></header>
+        <div class="plan-list">
+          <label><input type="checkbox" data-task="scene"><span class="fake-check"></span><b>Day 1–2</b><p>写清一个用户、一个触发时刻、一种旧办法；找 3 个最近真实经历过的人。</p></label>
+          <label><input type="checkbox" data-task="manual"><span class="fake-check"></span><b>Day 3–4</b><p>不用完整产品，手工为 3 人交付最终结果；记录输入、等待和异议。</p></label>
+          <label><input type="checkbox" data-task="recruit"><span class="fake-check"></span><b>Day 5–7</b><p>发布一篇场景招募帖；通过一个有成本的动作筛选 10 位目标用户。</p></label>
+          <label><input type="checkbox" data-task="aha"><span class="fake-check"></span><b>Day 8–10</b><p>旁观 5 位陌生用户独立体验，定位 Aha 和第一次价值时间。</p></label>
+          <label><input type="checkbox" data-task="artifact"><span class="fake-check"></span><b>Day 11–12</b><p>把结果封装为可保存、可展示、带明确回流入口的传播物。</p></label>
+          <label><input type="checkbox" data-task="decision"><span class="fake-check"></span><b>Day 13–14</b><p>只看激活、复访、主动推荐/付费和重复反馈，做继续、转向或停止决策。</p></label>
+        </div>
+        <div class="plan-footer"><div><span id="task-count">0 / 6 完成</span><i><b id="task-progress-bar"></b></i></div><button type="button" class="button primary" id="copy-plan">复制 14 天计划</button></div>
+      </section>
+
+      <section class="quiz">
+        <header><span class="tool-no">CHECK</span><div><h3>你真的学会了吗？</h3><p>选完再看解释。答错比“觉得自己懂了”更有价值。</p></div></header>
+        <div class="quiz-list">
+          <article data-quiz="a"><h4>1. 一条内容获得 40 万播放，最可靠的结论是什么？</h4><button type="button" data-answer="wrong">产品需求已经验证</button><button type="button" data-answer="correct">内容获得了注意力，产品行为仍需单独验证</button><button type="button" data-answer="wrong">应该立刻加大买量</button><p class="answer">正确。观看、进入、激活是不同的行为；回忆录案例正是内容成功、产品链路未成功。</p></article>
+          <article data-quiz="b"><h4>2. 早期用户“很精准”为什么仍可能没价值？</h4><button type="button" data-answer="wrong">精准用户一定有价值</button><button type="button" data-answer="correct">筛选他们的动机可能是福利，而非产品需求</button><button type="button" data-answer="wrong">因为人数不够多</button><p class="answer">正确。用户画像匹配不等于购买动机匹配；福利可以带来精准画像，却建立错误心理契约。</p></article>
+          <article data-quiz="c"><h4>3. 什么时候最适合开始 KOL 投放？</h4><button type="button" data-answer="wrong">产品一上线就投</button><button type="button" data-answer="wrong">找最便宜的博主就投</button><button type="button" data-answer="correct">目标人群、激活、价值信号与归因都跑通后</button><p class="answer">正确。投放的作用是复制已验证链路；链路未知时，价格再低也不知道是否划算。</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="chapter sources" id="sources" data-section="sources">
+      <header class="chapter-header">
+        <span class="chapter-no">07</span>
+        <div><p class="eyebrow">SOURCE & BOUNDARY / 保持诚实</p><h2>哪些来自现场，<br>哪些是课程推导</h2></div>
+      </header>
+      <div class="source-cards">
+        <article><span class="tag fact">会议事实</span><h3>两份飞书材料</h3><p>内容依据 2026 年 8 月 8 日的智能纪要与逐字记录，重点回看了平台分享、三个增长案例、圆桌留存与 Agent 讨论。页面未公开逐字稿链接，避免扩大其中私人交流。</p></article>
+        <article><span class="tag derive">计算与推导</span><h3>为了让知识可迁移</h3><p>增长乘法、需求证据阶梯、产品结构对照、买量四道门、原子能力七项检查和实操工具，是对现场材料的编辑推导，不是演讲者原话或官方框架。</p></article>
+        <article><span class="tag caution">不确定性</span><h3>智能转写会出错</h3><p>产品名、人名、数字和日期可能存在识别误差。明显可疑的信息未采用；无法交叉确认的数据使用“据分享者称”“会上口径”而非当成外部事实。</p></article>
+        <article><span class="tag risk">易变信息</span><h3>政策需查最新版</h3><p>Token、生图额度、支付费率、个人收款、赞赏、广告、比赛奖金及开放时间都属于会上信息。任何开发、经营或报名决策，请再核对微信官方最新文档。</p></article>
+      </div>
+      <div class="source-map">
+        <h3>关键证据时间索引</h3>
+        <div><p><time>00:31</time>活动核心问题与 10 款产品</p><p><time>00:49</time>跑出来产品的三个特征</p><p><time>01:09</time>500 用户阶段线下活动新增 100</p><p><time>01:10</time>知乎/掘金内容策略</p><p><time>01:15</time>早期 KOL 合作问题</p><p><time>01:21</time>亲友与 2000 人问卷失效</p><p><time>01:22</time>20 人场景招募</p><p><time>01:27</time>40 万播放、5000 涨粉与长链路</p><p><time>01:34</time>福利群与硬件延期</p><p><time>01:35</time>先报价再赠送</p><p><time>01:40</time>创始人一对一与信任</p><p><time>02:18</time>桌面入口与复访</p><p><time>02:20</time>留存优先、订阅消息</p><p><time>00:54 / 01:30</time>AI 调用、小微与被调用</p></div>
+      </div>
+      <aside class="closing-thesis"><span>最后带走这句话</span><p>第一批用户不是“找来”的一批流量，而是你用来共同回答三个问题的人：<strong>问题是不是真的、结果够不够好、价值能不能复制。</strong></p></aside>
+    </section>
+
+    <section class="contact-section" id="contact" data-section="contact" aria-labelledby="contact-title">
+      <div class="contact-intro">
+        <p class="eyebrow">KEEP THE CONVERSATION GOING / 找我聊聊</p>
+        <h2 id="contact-title">如果你也在做<br>AI 产品与增长实验</h2>
+        <p>欢迎把你的产品、冷启动难题或实验结果发给我。X 上看我持续公开思考；微信更适合具体交流与合作。</p>
+        <div class="contact-signature">— siuser小伟</div>
+      </div>
+      <div class="contact-channels">
+        <a class="x-card" href="https://x.com/_HIT_SZ_" target="_blank" rel="noreferrer" aria-label="在 X 上关注 @_HIT_SZ_">
+          <div class="channel-icon">𝕏</div>
+          <div><span>X / TWITTER</span><strong>@_HIT_SZ_</strong><p>公开思考 · AI 产品 · 增长实验</p></div>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <div class="wechat-card">
+          <div class="wechat-copy">
+            <span>WECHAT / 微信</span>
+            <strong>扫码添加</strong>
+            <p>微信号 <code>siuserxiaowei</code></p>
+            <button type="button" class="copy-wechat" data-copy-text="siuserxiaowei">复制微信号</button>
+          </div>
+          <div class="qr-frame"><img src="assets/wechat-qrcode.jpg" width="720" height="720" loading="lazy" alt="siuser小伟的微信二维码"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="floating-contact" href="#contact" aria-label="查看作者的 X 和微信联系方式"><span>联系作者</span><b>X · 微信</b></a>
+
+  <footer class="site-footer"><div><p>缺席一场会议，<br>不该只得到一份摘要。</p><span>深度课程 V2 · 深圳 · 2026.08.08</span></div><div class="footer-links"><a href="https://x.com/_HIT_SZ_" target="_blank" rel="noreferrer">X / @_HIT_SZ_ ↗</a><a href="#contact">微信 / siuserxiaowei ↑</a><a href="#top">回到顶部 ↑</a></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
+  <script src="script.js"></script>
+</body>
+</html>

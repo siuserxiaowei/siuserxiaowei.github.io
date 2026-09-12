@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spec Playbook｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="Meta Spec、分层 Spec、资源感知和前后端工程规范的整理。">
+  <meta property="og:title" content="Spec Playbook">
+  <meta property="og:description" content="Meta Spec、分层 Spec、资源感知和前后端工程规范的整理。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html" aria-current="page">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Spec Playbook</p>
+    <h1>Spec 是任务契约，不是漂亮文档</h1>
+    <p class="lede">会议里对 Spec 的讨论非常务实：它不需要预测所有未来，但要覆盖足够多的安全、性能、资源、接口和业务边界，让 Agent 不靠猜来写系统。</p>
+    <div class="hero-meta"><span class="chip">Meta Spec</span><span class="chip">85%-90% 完整度</span><span class="chip">分层拆解</span><span class="chip">资源感知</span><span class="chip">检查点</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Meta</p>
+      <h2>先有 Meta Spec，再裁剪具体项目</h2>
+      <p>Meta Spec 是可复用的通用规范底座。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>通用维度</h3>
+      <p>安全、性能、用户体验、数据边界、错误处理、测试策略、部署资源和监控口径都应先沉淀为默认规范。</p>
+    </article>
+    <article class="card">
+      
+      <h3>项目裁剪</h3>
+      <p>新项目不是从空白开始写 Spec，而是在 Meta Spec 上删减、补充和具体化。这样 Spec 周期可以从一个月压缩到数天。</p>
+    </article>
+    <article class="card">
+      
+      <h3>合理完整度</h3>
+      <p>会议建议 Spec 完整度控制在 85%-90%，为未来 3-6 个月变化留空间。追求 100% 往往会拖慢启动。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Layers</p>
+      <h2>分层拆解：业务、表结构、API、组件</h2>
+      <p>ToB 项目尤其需要把可复用子系统拆出来。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>业务逻辑先行</h3>
+      <p>先讨论产品需求和业务主流程，再确定表结构和接口。过早进入数据库设计会污染需求讨论。</p>
+    </article>
+    <article class="card">
+      
+      <h3>子系统复用</h3>
+      <p>权限管理、商户端、账户系统、资源管理等能力应被沉淀成可复用模块，而不是每个版本重做一次。</p>
+    </article>
+    <article class="card">
+      
+      <h3>前后端契约</h3>
+      <p>前端需要集中 mock 数据和接口结构，后端按数据层、算法层、业务逻辑层拆分，双方用契约而不是口头同步。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Checkpoints</p>
+      <h2>检查点比口头偏好可靠</h2>
+      <p>会议提到前端和后端都要设硬约束。</p>
+    </div>
+    <table class="table">
+    <thead><tr><th>领域</th><th>检查点</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td>前端</td><td>组件库优先、统一 ID 类型、长文本不撑破布局、多端一致性、关键流程截图验收。</td><td>减少 AI 味和反复改坏旧逻辑。</td></tr>
+      <tr><td>后端</td><td>数据层/算法层/业务层分离，脚手架约定目录，API 与数据结构分开封装。</td><td>让不可见后端也能被逐层验收。</td></tr>
+      <tr><td>资源</td><td>端口、CPU、GPU、外部服务、测试账号、线上线下差异写入 Markdown。</td><td>防止多项目并发时互相抢资源。</td></tr>
+      <tr><td>质量</td><td>KISS、DRY、复用公共类、自动测试、Review 后转 Skill。</td><td>把治理从人工提醒变成制度。</td></tr>
+    </tbody>
+  </table>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Template</p>
+      <h2>一份最小可用 Spec 应该回答什么</h2>
+      <p>这是从会议观点抽象出的执行模板。</p>
+    </div>
+    <div class="grid two">
+    <article class="card">
+      
+      <h3>目标与非目标</h3>
+      <p>这次要解决什么，不解决什么，什么情况算过度设计。</p>
+    </article>
+    <article class="card">
+      
+      <h3>上下文入口</h3>
+      <p>业务背景、现有架构、关键文件、术语表、禁止改动区。</p>
+    </article>
+    <article class="card">
+      
+      <h3>接口与数据</h3>
+      <p>输入输出、表结构、API shape、mock 数据、错误状态。</p>
+    </article>
+    <article class="card">
+      
+      <h3>验收与测试</h3>
+      <p>功能路径、回归风险、自动测试命令、人工检查点。</p>
+    </article>
+    <article class="card">
+      
+      <h3>资源与环境</h3>
+      <p>端口、服务依赖、CPU/GPU、外部凭证、部署差异。</p>
+    </article>
+    <article class="card">
+      
+      <h3>沉淀方式</h3>
+      <p>本次 Review 里哪些问题要转成 Skill、模板、脚手架或自动检查。</p>
+    </article></div>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b100f">
+  <meta name="description" content="20 Agent
+从道法术器势、安全、成本、设计、写作与多 Agent 架构拆解 GPT‑5.6
+早期使用经验。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GPT‑5.6 使用经验交流会｜20 Agent
+学习报告">
+  <meta property="og:description" content="20 Agent
+从道法术器势、安全、成本、设计、写作与多 Agent 架构拆解 GPT‑5.6
+早期使用经验。">
+  <meta name="twitter:card" content="summary">
+  <title>GPT‑5.6 使用经验交流会｜20 Agent 学习报告</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">研</span>
+      <span>AI 实战研究简报</span>
+    </a>
+    <nav aria-label="快捷链接">
+      <a href="https://github.com/siuserxiaowei/gpt56-meeting-report">GitHub</a>
+      <a href="report.md">Markdown</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-kicker">2026.07 · 证据审计版</div>
+      <h1 id="hero-title">GPT‑5.6 使用经验交流会</h1>
+      <p class="hero-subtitle">20 Agent「道法术器势」学习报告</p>
+      <p class="hero-lead">面向没参会的同学：不追模型神话，只提炼可迁移的方法、证据边界与行动方案。</p>
+      <div class="hero-meta" aria-label="报告概览">
+        <div><strong>20</strong><span>Agent 视角</span></div>
+        <div><strong>05</strong><span>框架层次</span></div>
+        <div><strong>07</strong><span>实践天数</span></div>
+        <div><strong>01:53</strong><span>逐字稿时长</span></div>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="#先说结论">先读结论</a>
+        <a class="button secondary" href="#七给没参会同学的一周实践计划">开始实践</a>
+      </div>
+    </section>
+
+    <section class="thesis" aria-label="核心判断">
+      <span>核心判断</span>
+      <p>当执行能力越来越便宜，稀缺的会变成问题定义、评价标准、领域事实、组织方式和责任边界。</p>
+    </section>
+
+    <div class="page-shell">
+      <aside class="toc-panel" aria-label="文章目录">
+        <div class="toc-title">目录</div>
+                <nav id="TOC" role="doc-toc">
+          <ul>
+          <li><a href="#gpt56-使用经验交流会20-agent道法术器势学习报告"
+          id="toc-gpt56-使用经验交流会20-agent道法术器势学习报告">GPT‑5.6
+          使用经验交流会：20 Agent「道法术器势」学习报告</a>
+          <ul>
+          <li><a href="#先说结论" id="toc-先说结论">先说结论</a></li>
+          <li><a href="#材料与证据口径"
+          id="toc-材料与证据口径">材料与证据口径</a></li>
+          <li><a href="#可信度总览" id="toc-可信度总览">可信度总览</a>
+          <ul>
+          <li><a href="#高可信可以直接迁移的方法"
+          id="toc-高可信可以直接迁移的方法">高可信：可以直接迁移的方法</a></li>
+          <li><a href="#中可信值得在自己团队复测的观察"
+          id="toc-中可信值得在自己团队复测的观察">中可信：值得在自己团队复测的观察</a></li>
+          <li><a href="#低可信不能直接当结论传播"
+          id="toc-低可信不能直接当结论传播">低可信：不能直接当结论传播</a></li>
+          </ul></li>
+          <li><a href="#一道真正稀缺的是什么"
+          id="toc-一道真正稀缺的是什么">一、道：真正稀缺的是什么</a>
+          <ul>
+          <li><a href="#1-人的价值从亲自生成上移到定义与裁决"
+          id="toc-1-人的价值从亲自生成上移到定义与裁决">1.
+          人的价值从“亲自生成”上移到“定义与裁决”</a></li>
+          <li><a href="#2-最强不等于最适合"
+          id="toc-2-最强不等于最适合">2. “最强”不等于“最适合”</a></li>
+          <li><a href="#3-多-agent-的本质是三种组织算子"
+          id="toc-3-多-agent-的本质是三种组织算子">3. 多 Agent
+          的本质是三种组织算子</a></li>
+          <li><a href="#4-越自动越要把治理移到系统层"
+          id="toc-4-越自动越要把治理移到系统层">4.
+          越自动，越要把治理移到系统层</a></li>
+          <li><a href="#5-最耐久的资产不是某个-skill"
+          id="toc-5-最耐久的资产不是某个-skill">5. 最耐久的资产不是某个
+          Skill</a></li>
+          </ul></li>
+          <li><a href="#二法怎样形成稳定方法"
+          id="toc-二法怎样形成稳定方法">二、法：怎样形成稳定方法</a>
+          <ul>
+          <li><a href="#标准闭环" id="toc-标准闭环">标准闭环</a></li>
+          <li><a href="#四类任务-sop" id="toc-四类任务-sop">四类任务
+          SOP</a></li>
+          <li><a href="#升级与停止条件"
+          id="toc-升级与停止条件">升级与停止条件</a></li>
+          </ul></li>
+          <li><a href="#三术可直接复用的做法"
+          id="toc-三术可直接复用的做法">三、术：可直接复用的做法</a></li>
+          <li><a href="#四器模型档位与工具怎么选"
+          id="toc-四器模型档位与工具怎么选">四、器：模型、档位与工具怎么选</a>
+          <ul>
+          <li><a href="#工具退场判断"
+          id="toc-工具退场判断">工具退场判断</a></li>
+          </ul></li>
+          <li><a href="#五势哪些变化值得关注"
+          id="toc-五势哪些变化值得关注">五、势：哪些变化值得关注</a></li>
+          <li><a href="#六专题拆解" id="toc-六专题拆解">六、专题拆解</a>
+          <ul>
+          <li><a href="#1-成本吞吐与并发" id="toc-1-成本吞吐与并发">1.
+          成本、吞吐与并发</a></li>
+          <li><a href="#2-设计与前端" id="toc-2-设计与前端">2.
+          设计与前端</a></li>
+          <li><a href="#3-写作与-anti-slop"
+          id="toc-3-写作与-anti-slop">3. 写作与 Anti-slop</a></li>
+          <li><a href="#4-seo--geo" id="toc-4-seo--geo">4. SEO /
+          GEO</a></li>
+          <li><a href="#5-computer-use" id="toc-5-computer-use">5.
+          Computer Use</a></li>
+          <li><a href="#6-135g-文件事件" id="toc-6-135g-文件事件">6.
+          135G 文件事件</a></li>
+          <li><a href="#7-可复现评测协议" id="toc-7-可复现评测协议">7.
+          可复现评测协议</a></li>
+          </ul></li>
+          <li><a href="#七给没参会同学的一周实践计划"
+          id="toc-七给没参会同学的一周实践计划">七、给没参会同学的一周实践计划</a>
+          <ul>
+          <li><a href="#day-1任务分类" id="toc-day-1任务分类">Day
+          1：任务分类</a></li>
+          <li><a href="#day-2模型路由小样本"
+          id="toc-day-2模型路由小样本">Day 2：模型路由小样本</a></li>
+          <li><a href="#day-3约束-lint" id="toc-day-3约束-lint">Day
+          3：约束 lint</a></li>
+          <li><a href="#day-4依赖图与三种多-agent"
+          id="toc-day-4依赖图与三种多-agent">Day 4：依赖图与三种多
+          Agent</a></li>
+          <li><a href="#day-5computer-use-证据包"
+          id="toc-day-5computer-use-证据包">Day 5：Computer Use
+          证据包</a></li>
+          <li><a href="#day-6安全演练与旧-skill-消融"
+          id="toc-day-6安全演练与旧-skill-消融">Day 6：安全演练与旧
+          Skill 消融</a></li>
+          <li><a href="#day-7复盘" id="toc-day-7复盘">Day
+          7：复盘</a></li>
+          </ul></li>
+          <li><a href="#八原文时间码索引"
+          id="toc-八原文时间码索引">八、原文时间码索引</a></li>
+          <li><a href="#九20-agent-分工与交叉结论"
+          id="toc-九20-agent-分工与交叉结论">九、20 Agent
+          分工与交叉结论</a>
+          <ul>
+          <li><a href="#交叉共识" id="toc-交叉共识">交叉共识</a></li>
+          <li><a href="#仍有分歧" id="toc-仍有分歧">仍有分歧</a></li>
+          <li><a href="#最终选择树"
+          id="toc-最终选择树">最终选择树</a></li>
+          </ul></li>
+          <li><a href="#最后给缺席者的三句话"
+          id="toc-最后给缺席者的三句话">最后给缺席者的三句话</a></li>
+          </ul></li>
+          </ul>
+        </nav>
+                <div class="toc-note">全文采用飞书时间码。会议观察不等于官方规格。</div>
+      </aside>
+
+      <article class="report-content">
+        <h1 id="gpt56-使用经验交流会20-agent道法术器势学习报告">GPT‑5.6
+        使用经验交流会：20 Agent「道法术器势」学习报告</h1>
+        <blockquote>
+        <p>面向没参会的同学。分析日期：2026-07-14。会议日期：2026-07-13。</p>
+        </blockquote>
+        <h2 id="先说结论">先说结论</h2>
+        <p>这场会真正值得带走的，不是“哪个档位最强”，而是五个工作原则：</p>
+        <ol type="1">
+        <li><strong>先定义问题类型，再选模型和工具。</strong>
+        速度、成本、覆盖率、审美、风险、可验证性往往互相冲突，不能用单一“模型强弱”替代任务判断。</li>
+        <li><strong>把隐性要求变成可检查的规格。</strong>
+        模型越强，人的工作越应从亲自生成迁移到目标、约束、反例、证据与验收。</li>
+        <li><strong>多 Agent 是组织设计，不是数量游戏。</strong>
+        独立模块用分治，有限资源与创意取舍用竞争，高风险与完整覆盖用验证；强依赖链保持串行。</li>
+        <li><strong>模型自检不是安全边界。</strong>
+        最小权限、沙箱、备份、审批、日志和回滚必须由系统提供，不能押注
+        Ultra 或安全 Prompt。</li>
+        <li><strong>Skills/Harness 是阶段性脚手架。</strong>
+        模型升级后应做回归测试，删除重复编排，保留领域知识、确定性检查、权限治理与可观测性。</li>
+        </ol>
+        <p>一句话概括：<strong>当执行能力越来越便宜，稀缺的会变成问题定义、评价标准、领域事实、组织方式和责任边界。</strong></p>
+        <h2 id="材料与证据口径">材料与证据口径</h2>
+        <ul>
+        <li><a
+        href="https://vi8r050ecuz.feishu.cn/docx/JBIudF8bRoCOhuxUjglcZzpGn9f?from=from_copylink">飞书原始逐字稿</a>：主要证据源，录音时间码至
+        <code>01:53:01</code>。</li>
+        <li><a
+        href="https://vi8r050ecuz.feishu.cn/docx/F75bdlsFOonAwJxX4ZIcgrYtnlb">飞书
+        AI 智能纪要</a>：用于章节定位，不把机器总结当原始证据。</li>
+        <li><a
+        href="https://meeting.tencent.com/crm/2ZyyVZPZ46">腾讯会议页面</a>：同一场会议的另一加工/承载版本，不是独立信源；当前公开页返回“暂无文本内容”。</li>
+        </ul>
+        <p>注意：</p>
+        <ul>
+        <li>三份材料来自同一场会议，不能按“三个来源互相印证”计算。</li>
+        <li>会议发生在模型上线约三天半时，核心内容是少数重度用户的早期经验，不是官方规格、公开基准或普遍结论。</li>
+        <li>飞书逐字稿的 <code>00:06:19–00:43:44</code>
+        被合并成一个长发言段；本报告对该段使用区间时间码，不伪造更细时间。</li>
+        <li>腾讯时间码相对飞书约早 6 分钟；全文统一采用飞书时间码。</li>
+        <li>转写存在名称歧义：<code>Sol</code> 常被写成
+        <code>Soul/搜/So</code>，<code>Terra</code> 写成
+        <code>Tara/Kara</code>，其他工具名也有 FIBO/Fable/Able
+        等不确定转写。</li>
+        </ul>
+        <h2 id="可信度总览">可信度总览</h2>
+        <h3
+        id="高可信可以直接迁移的方法">高可信：可以直接迁移的方法</h3>
+        <ul>
+        <li>先分类任务，再路由模型、档位、工具与并发。</li>
+        <li>用依赖图拆任务；独立分支并行，强依赖链串行。</li>
+        <li>把要求转成 lint、测试、证据清单与人工门禁。</li>
+        <li>高风险操作必须具备最小权限、备份、日志和回滚。</li>
+        <li>模型升级后重测旧 Skills/Harness，避免与原生编排重复。</li>
+        </ul>
+        <h3
+        id="中可信值得在自己团队复测的观察">中可信：值得在自己团队复测的观察</h3>
+        <ul>
+        <li>不同模型族可能有任务特化，Luna
+        在设计提示词/文学场景可能有优势。</li>
+        <li>原生 subagent
+        可降低部分长上下文压力，但不能消除全局一致性需求。</li>
+        <li>Computer Use
+        更适合后台采集、截图、下载与证据整理，但写操作仍容易越界。</li>
+        <li>多 Agent
+        竞争可能改善创意取舍，前提是存在有限资源、差异化角色与裁决机制。</li>
+        </ul>
+        <h3
+        id="低可信不能直接当结论传播">低可信：不能直接当结论传播</h3>
+        <ul>
+        <li>“所有 Ultra 约束符合率 100%”。逐字稿同段还说部分 Max/Ultra
+        有 1%–2% 漏项，内部矛盾。</li>
+        <li><code>100:70:45</code>
+        是参会者内部测算，不是已核实的官方定价。</li>
+        <li>Luna 的设计优势是团队样本，不是普遍排名。</li>
+        <li>“Superpowers brainstorming
+        已彻底过时”“长上下文不再重要”都过度外推。</li>
+        <li>135G 文件事件根因未确定，不能归因于 GPT‑5.6、Remotion、旧
+        Skill、某个档位或勒索软件。</li>
+        </ul>
+        <hr />
+        <h2 id="一道真正稀缺的是什么">一、道：真正稀缺的是什么</h2>
+        <h3 id="1-人的价值从亲自生成上移到定义与裁决">1.
+        人的价值从“亲自生成”上移到“定义与裁决”</h3>
+        <p>模型降低了生成、尝试和实现的成本，却没有替人回答：什么值得做、谁真正需要、什么事实不能编、失败由谁承担、怎样才算完成。会上最后的“先定义问题，定义问题的类型，再选工具”是最值得带走的一句（<code>01:35:21</code>）。</p>
+        <p>因此，人的工作重心应迁移到：</p>
+        <ul>
+        <li>选题与价值排序；</li>
+        <li>真实业务事实和领域数据；</li>
+        <li>目标、边界、反例和失败代价；</li>
+        <li>可观察的验收标准；</li>
+        <li>冲突裁决、证据核验和最终责任。</li>
+        </ul>
+        <h3 id="2-最强不等于最适合">2. “最强”不等于“最适合”</h3>
+        <p>任务真正优化的是一个多目标函数：质量、成本、墙钟时间、覆盖率、审美、可解释性、可回滚性。设计分享者甚至明确说“并不是越聪明就越好”（<code>00:44:00</code>）；较强模型也可能替用户做未经授权的“正确化”，把本来正确的页面和客户数据改乱（<code>01:04:49</code>）。</p>
+        <h3 id="3-多-agent-的本质是三种组织算子">3. 多 Agent
+        的本质是三种组织算子</h3>
+        <ul>
+        <li><strong>分治</strong>：独立模块、超长材料、批量任务按依赖图拆开；</li>
+        <li><strong>竞争</strong>：创意方向、功能优先级、有限镜头或版位让候选互相否定和说服；</li>
+        <li><strong>验证</strong>：安全、合规、事实、约束覆盖由不同轨迹交叉检查。</li>
+        </ul>
+        <p>强依赖链不应硬并行；没有统一评分和最终裁判的“专家团”，只是并行制造意见。商业短片中的多
+        Agent
+        价值来自争夺有限镜头资源，而非数量本身（<code>00:57:33</code>）。</p>
+        <h3 id="4-越自动越要把治理移到系统层">4.
+        越自动，越要把治理移到系统层</h3>
+        <p>自检是概率性能力，权限、备份、审计和回滚是确定性控制。高推理档位不能替代系统边界；安全
+        Prompt 也不能阻止一个拥有全盘写权限的 Agent 误操作。</p>
+        <h3 id="5-最耐久的资产不是某个-skill">5. 最耐久的资产不是某个
+        Skill</h3>
+        <p>长期资产是任务分类、依赖图、评测集、领域数据、约束清单、失败样本、权限规则和审计记录。Skill/Harness
+        只是当期实现；模型升级后应做回归和消融，而不是继续叠补丁，也不是一刀切清空。</p>
+        <h2 id="二法怎样形成稳定方法">二、法：怎样形成稳定方法</h2>
+        <h3 id="标准闭环">标准闭环</h3>
+        <pre class="text"><code>定义任务与失败代价
+→ 标注风险、时限、创意度、可验证性
+→ 写必须项、禁止项、证据要求和回滚条件
+→ 画依赖图，决定串行/分治/竞争/验证
+→ 选择最低够用模型、档位和工具
+→ 小样本或基线测试
+→ 执行并留证
+→ lint / 测试 / 独立复核
+→ 人工验收
+→ 记录成本、返工、事故和可复用规则</code></pre>
+        <h3 id="四类任务-sop">四类任务 SOP</h3>
+        <h4 id="快任务">快任务</h4>
+        <p>单
+        Agent、最低够用档位；明确输出格式；跑一次确定性检查。失败后先补上下文和验收标准，再升级档位。日常对话、成熟小任务没有必要默认
+        Ultra（<code>00:06:19–00:43:44</code>）。</p>
+        <h4 id="高风险任务">高风险任务</h4>
+        <p>只读勘察 → 计划 → 人工批准 → 沙箱小范围执行 → diff/测试 →
+        回滚演练 →
+        再放大。执行者与审查者分离。任何删除、批量覆盖、部署、客户数据写入和对外承诺都要设人工闸门。</p>
+        <h4 id="创意任务">创意任务</h4>
+        <p>先定受众、目标、硬约束和稀缺资源；用较低成本模型产生 6–12
+        个明显不同方向；再竞争淘汰、综合 2–3
+        案，由人按品牌与业务价值拍板。普通润色不需要多 Agent。</p>
+        <h4 id="长工程任务">长工程任务</h4>
+        <p>先做
+        Spec/依赖图；节点必须有输入、输出、前置依赖、文件所有权和验收。分阶段
+        checkpoint，主控只调度，Worker
+        不重复修改同一状态。并发根据依赖与预算扩缩，不按 Agent
+        数量追求热闹。</p>
+        <h3 id="升级与停止条件">升级与停止条件</h3>
+        <ul>
+        <li>连续两次未通过验收，先检查任务规格，再考虑升档；</li>
+        <li>高风险、跨模块回归、关键约束难程序验证时，增加独立
+        Reviewer；</li>
+        <li>连续重复失败、无产出、预算/时间/轮数封顶时停止；</li>
+        <li>配置变化不得自动视为“新任务”，使用唯一 <code>task_id</code>
+        与幂等队列。</li>
+        </ul>
+        <h2 id="三术可直接复用的做法">三、术：可直接复用的做法</h2>
+        <ol type="1">
+        <li><strong>受控 A/B</strong>：同任务、同上下文、同
+        effort、同工具权限；随机顺序、匿名输出、盲评。</li>
+        <li><strong>约束 lint</strong>：把“安全、专业、无 AI
+        味”拆成可判定原子项，同时报告约束违规率和任务零违规率。</li>
+        <li><strong>设计提示词链</strong>：业务 brief →
+        模型生成绘图提示词 → 同一图像模型/参数出图 →
+        统一评分；再加“共用同一中间 prompt”的控制组。</li>
+        <li><strong>Anti-slop 编辑链</strong>：真实用户视角 → 论证地图 →
+        正向文风规格 → 反模式清单 → 事实审校与文风审校分离。</li>
+        <li><strong>Computer Use 证据包</strong>：来源页面、原始
+        CSV、筛选条件、计算公式、截图和“结论—证据”映射一起交付。</li>
+        <li><strong>SEO 数据链</strong>：垂类参考站 →
+        Semrush/Ahrefs/自有站数据 → 关键词聚类与搜索意图 →
+        页面/功能/内容/设计方案 → 联合验收 → 上线复盘。</li>
+        <li><strong>多 Agent
+        竞争</strong>：不同角色必须争夺明确的稀缺资源，并有统一评分与最终裁判。</li>
+        <li><strong>依赖图拆分</strong>：只有无依赖分支并行；跨模块共享约束留在
+        Master/共享 Spec。</li>
+        <li><strong>安全预检</strong>：任务开始前生成允许目录、禁止命令、权限、备份、审批点和回滚步骤。</li>
+        <li><strong>Skill 消融</strong>：同任务开/关 Skill
+        对比通过率、成本、时延、无产出与冲突；没有可测增益就默认停用。</li>
+        </ol>
+        <h2
+        id="四器模型档位与工具怎么选">四、器：模型、档位与工具怎么选</h2>
+        <p>以下只是把会议观察转成“待验证路由”，不是官方推荐。</p>
+        <table>
+        <thead>
+        <tr>
+        <th>任务</th>
+        <th>会议中的起步选择</th>
+        <th>多 Agent</th>
+        <th>必须护栏</th>
+        <th>何时升级</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>日常对话、成熟小任务</td>
+        <td>Terra High</td>
+        <td>通常不要</td>
+        <td>输出格式、基本核验</td>
+        <td>连续不过验收</td>
+        </tr>
+        <tr>
+        <td>C++ 算法/性能达标</td>
+        <td>Terra High，平行 3 案</td>
+        <td>可做方案竞争</td>
+        <td>编译、测试、Benchmark</td>
+        <td>跨模块或关键约束复杂</td>
+        </tr>
+        <tr>
+        <td>Rust、原生移动端</td>
+        <td>Sol High/Max</td>
+        <td>独立模块才并行</td>
+        <td>专家审查、测试、回归</td>
+        <td>安全/完整覆盖要求高</td>
+        </tr>
+        <tr>
+        <td>数十项强约束、安全、合规</td>
+        <td>中高档起步，必要时 Ultra</td>
+        <td>验证型</td>
+        <td>外部 lint、独立复核、系统权限</td>
+        <td>漏项或失败代价越线</td>
+        </tr>
+        <tr>
+        <td>形式化证明</td>
+        <td>Sol Ultra（会议观察）</td>
+        <td>搜索＋验证</td>
+        <td>proof assistant / 专家验证</td>
+        <td>不以自评作为完成</td>
+        </tr>
+        <tr>
+        <td>普通写作</td>
+        <td>Luna Medium/High</td>
+        <td>通常不要</td>
+        <td>事实源、用户视角、编辑清单</td>
+        <td>高强度 Anti-slop 才升档</td>
+        </tr>
+        <tr>
+        <td>Landing Page / 图片提示词</td>
+        <td>Luna Medium</td>
+        <td>多候选而非盲并发</td>
+        <td>同 brief 横测、人工审美</td>
+        <td>质量不稳再换族/升档</td>
+        </tr>
+        <tr>
+        <td>商业广告、有限资源竞争</td>
+        <td>多个候选 Agent</td>
+        <td>竞争型</td>
+        <td>品牌规则、时长/镜头预算、创意总监</td>
+        <td>无法形成明显差异时停止</td>
+        </tr>
+        <tr>
+        <td>大批量独立任务、赶时间</td>
+        <td>多个 Max/够用档</td>
+        <td>分治型</td>
+        <td>幂等 ID、限流、预算、抽检</td>
+        <td>关键分片单独升档</td>
+        </tr>
+        <tr>
+        <td>SEO 数据采集</td>
+        <td>会议未明确族/档</td>
+        <td>通常单执行器</td>
+        <td>只读账号、证据包、禁止直改线上</td>
+        <td>写入另走审批流程</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="工具退场判断">工具退场判断</h3>
+        <p>“五个 Skill 可能剩两三个”不能改写成“60%
+        已被模型内化”。该说法没有逐项清单和消融实验。可优先停用的是重复做
+        Spec 拆分、自动开
+        Agent、同源自检且导致冲突的补丁；应保留的是领域规则、异构路由、弹性并发、任务幂等、成本追踪、确定性检查、安全审批和回滚。</p>
+        <p>Superpowers
+        brainstorming“彻底过时”同样只是个人判断。先用真实任务
+        A/B，再决定归档。</p>
+        <h2 id="五势哪些变化值得关注">五、势：哪些变化值得关注</h2>
+        <ol type="1">
+        <li><strong>工作流能力从外置 Harness
+        向模型原生编排迁移。</strong>
+        外部框架的价值会收缩到灵活调度、异构模型、可观测性、安全与合规。</li>
+        <li><strong>模型家族更可能走向任务专门化。</strong>
+        不能再只按“尺寸越大越好”路由，但具体专门化需盲测。</li>
+        <li><strong>长上下文与分治是替代关系，不是消灭关系。</strong>
+        分治降低局部上下文压力，跨块依赖、全局一致性和综合判断仍需要共享上下文。</li>
+        <li><strong>Computer Use 正从前台演示走向后台执行器。</strong>
+        真正的生产门槛不只是会点击，而是证据、权限、幂等、审批和回滚。</li>
+        <li><strong>AI for Science/Math
+        的工作流可能是“搜索—形式化—验证—解释”。</strong>
+        会议没有提供可复现实验，不能外推到所有自然科学和社会科学问题。</li>
+        <li><strong>成本单位从一次请求转向一个验收通过结果。</strong>
+        便宜模型和并发降低墙钟，但协调、重复上下文、无产出和返工会吞掉节省。</li>
+        </ol>
+        <p>这些均是早期趋势信号，不是“行业已经确定”。</p>
+        <h2 id="六专题拆解">六、专题拆解</h2>
+        <h3 id="1-成本吞吐与并发">1. 成本、吞吐与并发</h3>
+        <p><code>10/30/100/200</code> 来自不同目的：Spec
+        辩论、额度重置前测试、2.6
+        万项任务的弹性批处理，不能拼成一条并发曲线。<code>100:70:45</code>
+        也只能作团队样本内先验。</p>
+        <p>建议统一计算：</p>
+        <pre class="text"><code>EAC =（模型账单 + 工具/编排成本）÷ 验收通过数
+J = EAC + 每小时延期价值 × 墙钟时间 + 一次错误损失 × 失败概率</code></pre>
+        <p>每批记录总 token、P50/P95
+        墙钟、一次通过率、返工轮数、无产出率；并发按阶梯放量，只有吞吐提升且重复率不升时继续扩容。</p>
+        <h3 id="2-设计与前端">2. 设计与前端</h3>
+        <p>可采信的是“受控横测、视觉重心、功能—设计—SEO
+        耦合”，不能采信“Luna
+        普遍最强”。统一评分应覆盖三秒可理解性、单一视觉重心、信息密度、主
+        CTA、功能完整、SEO
+        可实现、品牌与事实准确。会议中的反例是首屏同时堆两个大动效和高密度文字，用户不知道眼睛看哪里（<code>01:04:49</code>）。</p>
+        <h3 id="3-写作与-anti-slop">3. 写作与 Anti-slop</h3>
+        <p>会议指出的 AI
+        味主要是套路化转折和为一个观点强加过多论证（<code>00:53:25</code>）。正向文风规格“陈述性、朴实、具体”比只列禁词更有效（<code>00:54:29</code>）。</p>
+        <p>质量分三层：内容真不真、视角准不准、表达像不像人。Anti-slop
+        只治理第三层，删掉“不是……而是”不会自动补足事实和洞察。所谓 30
+        项清单是高召回验收思路，不是通用黄金标准。</p>
+        <h3 id="4-seo--geo">4. SEO / GEO</h3>
+        <p>SEO
+        应在页面立项时和功能、设计、内容一起定义，而不是开发结束后再补（<code>00:49:35</code>）。“Google
+        官方不承认
+        GEO/AEO”“数据投毒会导致某种确定处罚”在会议里没有官方链接、处罚通知或因果对照，只能标为参会者观点。</p>
+        <p>风险方向仍成立：批量虚假内容、账号操纵、伪造评价和数据污染可能违反平台规则并伤害品牌，不应尝试。</p>
+        <h3 id="5-computer-use">5. Computer Use</h3>
+        <p>会议样例显示浏览器任务可以后台运行、下载
+        CSV、截图和计算，但同一分享者也观察到它会擅改
+        HTML、客户数据和业务承诺（<code>01:04:49</code>）。</p>
+        <p>生产 SOP：</p>
+        <pre class="text"><code>只读账号/副本
+→ 输出访问与计算计划
+→ 采集并生成证据包
+→ 人工审批拟改字段和业务事实
+→ 只在 staging/分支写入
+→ 机器 diff + 人工事实核对
+→ 失败回滚并保存日志</code></pre>
+        <h3 id="6-135g-文件事件">6. 135G 文件事件</h3>
+        <p>已知：约 135G、近 50
+        万文件的目录被整体移入废纸篓，随后恢复；<code>03:27–03:28</code>
+        附近有前台切换与磁盘活动；原路径残留 Remotion/Webpack
+        痕迹（<code>01:29:54</code>）。</p>
+        <p>未知：发起进程、命令、触发链、模型档位、Skill
+        调用记录和同名目录重建者。日志调查不完整，当事人明确说根因未确定（<code>01:34:42</code>）。</p>
+        <p>因此不得归因 GPT‑5.6、Remotion、旧 Skill
+        或某个档位，也不能称为
+        ransomware。应落实版本库外快照、异机备份、沙箱、最小权限、危险操作审批、文件事件日志和恢复演练。把
+        <code>rm</code> 改为 move-to-trash 只是一层兜底。</p>
+        <h3 id="7-可复现评测协议">7. 可复现评测协议</h3>
+        <ul>
+        <li>预注册任务、主指标、最小有意义差异和停止规则；</li>
+        <li>固定 prompt、上下文、effort、工具、版本、账号和时间窗；</li>
+        <li>任务—模型顺序随机化，匿名输出，2 人盲评，分歧交第三人；</li>
+        <li>硬约束用机器 lint，语义约束用盲评；</li>
+        <li>报 Wilson 95%
+        CI、中位数、P95、成本、墙钟、返工和无产出；</li>
+        <li>每轨先做 5 题
+        pilot，冻结协议后再正式跑；证据不足就明确写证据不足。</li>
+        </ul>
+        <h2
+        id="七给没参会同学的一周实践计划">七、给没参会同学的一周实践计划</h2>
+        <h3 id="day-1任务分类">Day 1：任务分类</h3>
+        <p>把 10 个真实任务按
+        precision/recall、可逆/不可逆、风险、依赖标注，补齐输入、边界和完成定义。歧义超过
+        30% 时，先补需求，不选模型。</p>
+        <h3 id="day-2模型路由小样本">Day 2：模型路由小样本</h3>
+        <p>抽 6 项任务，固定输入与提示，比较 2–3 个候选模型/档位，各跑 2
+        次；盲评质量、时延和成本。以“达到质量门槛后的最低成本”作为默认路由。</p>
+        <h3 id="day-3约束-lint">Day 3：约束 lint</h3>
+        <p>选一个真实产物，写 10–20 条原子硬约束，人工植入 3
+        个违规；生成者与检查者分离。两轮仍失败就拆任务或升级人工。</p>
+        <h3 id="day-4依赖图与三种多-agent">Day 4：依赖图与三种多
+        Agent</h3>
+        <p>画一个中型任务
+        DAG；独立节点分治，稀缺资源竞争，最终结果验证。每节点有负责人、输入、输出、依赖和合并点；冲突超过
+        20% 退回串行。</p>
+        <h3 id="day-5computer-use-证据包">Day 5：Computer Use
+        证据包</h3>
+        <p>只做只读网页任务，保存
+        URL、时间、步骤截图、下载文件校验值和结论映射；遇登录、支付、个人信息或写操作立即停。</p>
+        <h3 id="day-6安全演练与旧-skill-消融">Day 6：安全演练与旧 Skill
+        消融</h3>
+        <p>在沙箱里模拟删除/部署边界，做 Skill 开/关
+        A/B。沙箱外写入必须为 0，并能在 5
+        分钟内恢复。只有通过率不降且成本或时延改善明显时才保留
+        Skill。</p>
+        <h3 id="day-7复盘">Day 7：复盘</h3>
+        <p>按任务类型、路由和 Skill
+        开关统计：成本/通过项、P50/P95、一次通过率、返工率、越权率、无产出率。每条结论链接样本量和证据；日志缺失超过
+        10% 时只报不确定。</p>
+        <h2 id="八原文时间码索引">八、原文时间码索引</h2>
+        <table>
+        <thead>
+        <tr>
+        <th>飞书时间码</th>
+        <th>主题</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>00:06:19–00:43:44</code></td>
+        <td>模型族、推理档位、内部成本、约束测试、Ultra、依赖树、设计提示词</td>
+        </tr>
+        <tr>
+        <td><code>00:44:00–00:53:23</code></td>
+        <td>Luna/Terra/Sol 设计对比、视觉重心、前端与 SEO 耦合</td>
+        </tr>
+        <tr>
+        <td><code>00:53:25–01:01:18</code></td>
+        <td>写作去 AI 味、Anti-slop、广告分镜多 Agent 竞争</td>
+        </tr>
+        <tr>
+        <td><code>01:02:14–01:04:46</code></td>
+        <td>真实用户视角、SEO 文案</td>
+        </tr>
+        <tr>
+        <td><code>01:04:49–01:11:04</code></td>
+        <td>Computer Use、Semrush/Ahrefs、CSV/截图、误改
+        HTML/业务事实</td>
+        </tr>
+        <tr>
+        <td><code>01:11:35–01:16:08</code></td>
+        <td>多 Agent 同调 Skill 空烧 Token、SEO/GEO 与数据投毒观点</td>
+        </tr>
+        <tr>
+        <td><code>01:17:05–01:29:47</code></td>
+        <td>工具内化、Spec 辩论、10–30 Agent、长上下文观点、AI for Math
+        外推</td>
+        </tr>
+        <tr>
+        <td><code>01:29:54–01:35:21</code></td>
+        <td>135G/近50万文件事件与未完成日志调查</td>
+        </tr>
+        <tr>
+        <td><code>01:35:21–01:52:34</code></td>
+        <td>旧 Harness 冲突、10/200 并发、precision/recall、安全与
+        Anti-slop</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>飞书 AI
+        章节时间通常比逐字稿段落起点晚几秒；腾讯时间码约比飞书早 6
+        分钟。引用时应写明基准。</p>
+        <h2 id="九20-agent-分工与交叉结论">九、20 Agent
+        分工与交叉结论</h2>
+        <p>20 个 Agent 角色（受 4
+        并发槽限制，分批执行）覆盖：证据审计、道、法、术、器、势、安全、成本、评测、设计、写作、SEO、Computer
+        Use、多 Agent 架构、红队、教学设计、一周行动与最终综合等。主
+        Agent 未把任何单个 Agent
+        输出直接当事实，而是回到逐字稿检查时间码、内部矛盾和方法完整性。</p>
+        <table>
+        <thead>
+        <tr>
+        <th style="text-align: right;">Agent</th>
+        <th>角色</th>
+        <th>状态/用途</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td style="text-align: right;">1</td>
+        <td>首轮证据审计</td>
+        <td>完成，识别同源材料与关键误读</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">2</td>
+        <td>首轮“道”</td>
+        <td>中途停止，由 5 号完整补做</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">3</td>
+        <td>首轮“法”</td>
+        <td>中途停止，由 6 号完整补做</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">4</td>
+        <td>“术”</td>
+        <td>完成，提取可迁移动作</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">5</td>
+        <td>“道”重做</td>
+        <td>完成，提炼第一性原则与反例</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">6</td>
+        <td>“法”重做</td>
+        <td>完成，形成闭环与四类 SOP</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">7</td>
+        <td>“器”</td>
+        <td>完成，输出模型/工具选型矩阵</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">8</td>
+        <td>“势”</td>
+        <td>完成，分析能力内化与行业信号</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">9</td>
+        <td>证据台账</td>
+        <td>完成，审计 15 项关键主张</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">10</td>
+        <td>安全</td>
+        <td>完成，复盘文件事件与分层护栏</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">11</td>
+        <td>成本经济性</td>
+        <td>完成，统一成本/通过项与并发口径</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">12</td>
+        <td>设计/前端</td>
+        <td>完成，拆提示词链、视觉重心与联合验收</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">13</td>
+        <td>写作/Anti-slop</td>
+        <td>完成，形成编辑 SOP</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">14</td>
+        <td>SEO/GEO</td>
+        <td>完成，区分可迁移链路与未经核验观点</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">15</td>
+        <td>Computer Use</td>
+        <td>完成，形成受控执行与证据包 SOP</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">16</td>
+        <td>多 Agent 架构</td>
+        <td>完成，区分分治、竞争、验证</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">17</td>
+        <td>独立红队</td>
+        <td>完成，核对 8 条危险传播口径</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">18</td>
+        <td>教学设计</td>
+        <td>完成，形成 90 分钟学习单元</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">19</td>
+        <td>行动计划</td>
+        <td>完成，形成 7 天实践营与指标盘</td>
+        </tr>
+        <tr>
+        <td style="text-align: right;">20</td>
+        <td>最终综合</td>
+        <td>完成，汇总共识、分歧与选择树</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="交叉共识">交叉共识</h3>
+        <ol type="1">
+        <li>无全任务最优模型或档位；</li>
+        <li>任务类型和失败代价先于模型选择；</li>
+        <li>模糊提示应改写成可验收规格；</li>
+        <li>多 Agent 只有在分治、竞争或验证结构明确时才有价值；</li>
+        <li>Ultra/self-review 不能替代独立验证和系统安全；</li>
+        <li>新模型上线后必须重测旧 Skills/Harness；</li>
+        <li>会议数字只能生成团队实验假设。</li>
+        </ol>
+        <h3 id="仍有分歧">仍有分歧</h3>
+        <ul>
+        <li>Luna 是否真实存在可复现的设计特化；</li>
+        <li>Ultra 的收益主要来自更深推理、自动
+        subagent，还是样本和评分偏差；</li>
+        <li>原生多 Agent 能在多大程度上替代外置 Harness
+        和长上下文；</li>
+        <li>Computer Use 后台化在不同系统、站点和账号上的稳定性；</li>
+        <li>旧 Skills 中哪些应保留、改写或退场。</li>
+        </ul>
+        <h3 id="最终选择树">最终选择树</h3>
+        <pre class="text"><code>高风险或不可逆？
+├─ 是：沙箱 + 备份 + 最小权限 + 人工审批 + 独立复核
+│      Ultra 只能作为辅助，不能替代安全控制
+└─ 否：是否要求约束完整覆盖？
+       ├─ 是：中/高档 + lint + 独立检查；仍漏再升 Ultra/多Agent验证
+       └─ 否：是否创意/设计？
+              ├─ 是：低成本模型产多个明显不同候选，盲评选优
+              └─ 否：够用档起步，失败后按证据升级
+
+任务可独立拆分？
+├─ 是：按依赖图分治，设置幂等ID、预算和停止条件
+└─ 否：保持串行或少量强Agent，保留全局上下文</code></pre>
+        <h2 id="最后给缺席者的三句话">最后给缺席者的三句话</h2>
+        <ol type="1">
+        <li><strong>先看任务类型和失败代价，再决定模型、档位和 Agent
+        数量。</strong></li>
+        <li><strong>真正的生产力来自“生成—证据—验收—回滚”，不是一次生成。</strong></li>
+        <li><strong>自主性越强，权限边界、独立验证和可恢复性越要优先。</strong></li>
+        </ol>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>基于同一场会议的逐字稿与纪要交叉审计 · 2026-07-14</p>
+    <a href="#top">返回顶部 ↑</a>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

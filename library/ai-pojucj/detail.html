@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 破局拆解 · 详情</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;--bg-soft:#11162a;--bg-card:#161c33;
+  --line:#262e4d;--ink:#e7eaf4;--ink-soft:#9aa3c0;--ink-mute:#6a7396;
+  --gold:#d4a574;--gold-soft:#e8c89a;--accent:#7c8ef0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);background:rgba(10,14,26,.7);border-bottom:1px solid var(--line)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold) 0%,#a87a48 100%);display:grid;place-items:center;color:#1a1208;font-family:"Noto Serif SC",serif;font-weight:900}
+.btn-wx-top{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:999px;background:var(--gold);color:#1a1208;font-weight:600;font-size:13px;border:none;cursor:pointer;font-family:inherit}
+.btn-wx-top:hover{background:var(--gold-soft)}
+.back-link{font-size:14px;color:var(--ink-soft)}
+.back-link:hover{color:var(--gold)}
+
+/* hero */
+.detail-hero{padding:60px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--gold);letter-spacing:.1em;background:rgba(212,165,116,.06)}
+.detail-hero h1{font-family:"Noto Serif SC",serif;font-size:clamp(28px,4.4vw,46px);font-weight:900;line-height:1.2;margin:18px 0;letter-spacing:-.01em}
+.detail-hero .meta{color:var(--ink-mute);font-size:14px}
+
+/* article */
+article{padding:48px 0 80px}
+article h1{display:none}
+article h2{font-family:"Noto Serif SC",serif;font-size:28px;font-weight:800;margin:48px 0 20px;padding-top:24px;border-top:1px solid var(--line);letter-spacing:-.01em;line-height:1.3}
+article h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+article h3{font-family:"Noto Serif SC",serif;font-size:21px;font-weight:700;margin:32px 0 14px;color:var(--ink)}
+article h4{font-family:"Noto Serif SC",serif;font-size:17px;font-weight:700;margin:24px 0 10px;color:var(--gold-soft)}
+article p{margin:14px 0;color:var(--ink)}
+article ul,article ol{padding-left:22px;margin:12px 0}
+article li{margin:8px 0;color:var(--ink)}
+article li::marker{color:var(--gold)}
+article strong{color:var(--gold);font-weight:700}
+article em{color:var(--accent);font-style:normal}
+article hr{border:none;height:1px;background:var(--line);margin:36px 0}
+article blockquote{border-left:3px solid var(--gold);padding:14px 22px;margin:20px 0;background:rgba(212,165,116,.06);color:var(--ink);font-family:"Noto Serif SC",serif;border-radius:0 12px 12px 0}
+article blockquote p{margin:6px 0;color:inherit}
+article code{background:rgba(124,142,240,.12);color:#b6c2ff;padding:2px 7px;border-radius:5px;font-size:14px;font-family:"SF Mono",Menlo,monospace}
+article pre{background:var(--bg-card);border:1px solid var(--line);padding:16px;border-radius:10px;overflow-x:auto;margin:16px 0}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+article th,article td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+article tr:last-child td{border-bottom:none}
+article th{color:var(--gold);font-weight:600;background:rgba(212,165,116,.06);font-family:"Noto Serif SC",serif;font-size:14px}
+article tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.loading{padding:80px 0;text-align:center;color:var(--ink-mute)}
+.error{padding:80px 0;text-align:center;color:#ff7a8a}
+.error h2{font-family:"Noto Serif SC",serif;font-size:24px;margin-bottom:14px;color:var(--ink)}
+
+/* CTA bottom */
+.cta-strip{margin-top:56px;padding:36px 28px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(800px 300px at 0% 0%,rgba(212,165,116,.1),transparent 60%),var(--bg-soft);text-align:center}
+.cta-strip h3{font-family:"Noto Serif SC",serif;font-size:22px;font-weight:800;margin-bottom:10px}
+.cta-strip p{color:var(--ink-soft);margin-bottom:20px}
+.cta-strip .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;background:var(--gold);color:#1a1208;border:none;cursor:pointer;font-family:inherit;transition:transform .18s ease,background .2s}
+.cta-strip .btn:hover{background:var(--gold-soft);transform:translateY(-1px);text-decoration:none}
+
+/* modal */
+.modal-back{position:fixed;inset:0;background:rgba(5,8,18,.75);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.modal-back.open{display:flex}
+.modal{background:var(--bg-card);border:1px solid var(--line);border-radius:20px;padding:28px 24px 22px;max-width:380px;width:100%;text-align:center;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,.7);max-height:92vh;overflow-y:auto}
+.modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--ink-mute);cursor:pointer;display:grid;place-items:center;font-family:inherit;transition:all .2s}
+.modal-close:hover{color:var(--gold);border-color:var(--gold)}
+.modal h3{font-family:"Noto Serif SC",serif;font-size:20px;font-weight:800}
+.modal-sub{color:var(--ink-soft);font-size:13px;margin-top:4px}
+.wx-block{margin:14px 0 10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+.wx-label{font-size:11px;color:var(--ink-mute);letter-spacing:.1em;text-transform:uppercase}
+.wx-id{font-family:"Inter",monospace;font-size:18px;font-weight:700;color:var(--gold);margin:4px 0;letter-spacing:.01em}
+.wx-copy{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-soft);background:rgba(212,165,116,.08);border:1px solid rgba(212,165,116,.2);padding:4px 11px;border-radius:999px;cursor:pointer;font-family:inherit}
+.wx-copy:hover{color:var(--gold);border-color:var(--gold)}
+.qr-card{background:#fff;border-radius:14px;padding:10px;margin-top:14px;display:inline-block}
+.qr-card img{width:180px;height:180px;margin:0 auto;object-fit:contain;border-radius:6px;display:block}
+.qr-card .qr-cap{color:#222;font-size:12px;margin-top:6px;font-weight:600}
+.modal-extra{margin-top:10px;padding-top:12px;border-top:1px dashed var(--line);display:flex;flex-direction:column;align-items:center;gap:6px}
+.modal-extra-label{font-size:11px;color:var(--ink-mute);letter-spacing:.05em}
+.qr-mini-img{width:72px;height:72px;background:#fff;padding:4px;border-radius:6px;object-fit:contain}
+
+footer{border-top:1px solid var(--line);padding:42px 0 60px;color:var(--ink-mute);font-size:13px;text-align:center;margin-top:40px}
+.credit{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(212,165,116,.08);border:1px solid rgba(212,165,116,.2);border-radius:999px;color:var(--gold);font-weight:600;margin-bottom:10px}
+
+mark{background:rgba(212,165,116,.18);color:var(--gold);padding:0 4px;border-radius:3px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">破</div>
+      <div>AI 破局拆解</div>
+    </a>
+    <a href="index.html" class="back-link">← 返回全部场次</a>
+  </div>
+</header>
+
+<section class="container detail-hero">
+  <span class="eyebrow">破局拆解 · 道法术器 · 7 字段</span>
+  <h1 id="detail-title">加载中…</h1>
+  <div class="meta" id="detail-meta">杭州 AI 破局大会 · 2026-04-25</div>
+</section>
+
+<article class="container" id="detail-content">
+  <div class="loading">正在加载拆解内容…</div>
+</article>
+
+<footer>
+  <div class="container">
+    <div>AI 破局拆解 · AI 破局俱乐部杭州大会现场精华整理</div>
+    <div style="margin-top:8px">
+      由 <strong style="color:var(--gold)">小伟</strong> 制作 ·
+      <a href="javascript:void(0)" onclick="openWX()" style="color:var(--gold);text-decoration:underline;text-underline-offset:3px">加作者微信</a>
+      · <a href="index.html" style="color:var(--ink-soft)">返回首页</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-back" id="wx-modal" onclick="if(event.target===this)closeWX()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeWX()">×</button>
+    <h3>加作者微信</h3>
+    <div class="modal-sub">备注「破局拆解」优先通过</div>
+    <div class="qr-card">
+      <img src="assets/wechat-personal.jpg" alt="作者微信二维码">
+      <div class="qr-cap">长按识别 / 扫一扫加微信</div>
+    </div>
+    <div class="wx-block">
+      <div class="wx-label">微信号</div>
+      <div class="wx-id" id="wxid">siuserxiaowei</div>
+      <button class="wx-copy" onclick="copyWX()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        <span id="wxcopy-text">点击复制</span>
+      </button>
+    </div>
+    <div class="modal-extra">
+      <div class="modal-extra-label">也欢迎关注公众号</div>
+      <img class="qr-mini-img" src="assets/qrcode.jpg" alt="公众号二维码">
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+const slugMap = {
+  "mengjian-25-ai-employees":"孟建：用 25 个 AI 员工打造一人公司自动化",
+  "qiuye-ecological-niche":"秋叶：AI 时代的生态位选择与爆品生意经",
+  "ai-ecommerce-roundtable":"圆桌：AI 电商破局与发展讨论",
+  "pojucj-qa":"破局俱乐部线下大会问答与成员成长",
+  "lilike-industry-restructure":"李立克：AI 重构传统行业的全闭环创业逻辑",
+  "lishanglong-soloventure":"李尚龙：AI 时代单人公司三条铁律",
+  "shuilong-education":"水龙：千万级教育业务的 AI 改造心法",
+  "liutongliang-survival":"刘通亮：AI 时代生存与能力重构",
+  "skills-knowledge-base":"AI 时代：知识库 + Skills 实现一人成军",
+  "ai-business-discussion":"圆桌：AI 应用与商业创业交流",
+  "l3-ai-coding-overseas":"L3 时代 AI 编程出海创业分享",
+  "realestate-ai-transition":"地产人 AI 转型：45 岁裁员后用智能体搭一人公司",
+  "solo-dev-saas":"个人开发者：AI 编程做语言学习 SaaS 从 0 到 1",
+  "guanyun-ppt":"关云：普通人 AI+PPT 变现到百万团队",
+  "yangge-keynote":"洋哥：杭州 AI 破局大会主题演讲",
+  "multi-agent-website":"多 Agent 网站运营自动化落地实操",
+  "linjie-second-brain":"林杰：一人公司 AI 第二大脑生产系统",
+  "pobi-ai-app-growth":"破壁俱乐部：AI APP 增长方法论与商业化",
+  "gouge-business-model":"狗哥：月入两万的项目，如何变成月入百万的商业模式",
+  "hamer-insurance-100x":"哈默：用 AI 改造保险行业 业绩 100 倍增长",
+  "yanglei-200b-second-curve":"杨磊：200 亿企业用 AI 跑第二增长曲线",
+  "women-entrepreneurs-roundtable":"AI 赛道女性创业者圆桌：0 到 1 到 N 的破局之路",
+  "tanwei-volcano-arkclaw":"谭伟：火山引擎与 ArkClaw（字节技术布道）",
+  "huihuicai-actionhouse-method":"辉辉菜：行动家极速成长五步方法论",
+  "shuangjie-enterprise-digital":"爽姐：企业 AI 数字化转型解决方案"
+};
+
+const params = new URLSearchParams(location.search);
+const slug = params.get('s');
+
+if (!slug || !slugMap[slug]) {
+  document.getElementById('detail-content').innerHTML =
+    '<div class="error"><h2>找不到这篇拆解</h2><p>可能链接被改过了，<a href="index.html">回到首页</a>看看吧。</p></div>';
+} else {
+  document.getElementById('detail-title').textContent = slugMap[slug];
+  fetch(`posts/${slug}.md`)
+    .then(r => { if (!r.ok) throw new Error('not found'); return r.text(); })
+    .then(md => {
+      marked.setOptions({ breaks:false, gfm:true });
+      // CJK 强调修复：marked 对中文紧贴 ** 不识别为加粗，预先转 <strong>
+      // 跳过代码块和行内代码里的 **
+      md = md.replace(/(```[\s\S]*?```|`[^`\n]+`)|\*\*([^*\n]+?)\*\*/g,
+        (m, code, bold) => code || `<strong>${bold}</strong>`);
+      document.getElementById('detail-content').innerHTML = marked.parse(md);
+      document.title = slugMap[slug] + ' · AI 破局拆解';
+    })
+    .catch(err => {
+      document.getElementById('detail-content').innerHTML =
+        `<div class="error"><h2>这篇拆解还在路上 🛠️</h2><p>正在按"7 字段 + 道法术器"框架精细化整理，回头刷新就能看到完整内容。<br><a href="index.html">先看其他场次</a></p></div>`;
+    });
+}
+
+function openWX(){document.getElementById('wx-modal').classList.add('open')}
+function closeWX(){document.getElementById('wx-modal').classList.remove('open')}
+function copyWX(){
+  navigator.clipboard.writeText('siuserxiaowei').then(()=>{
+    document.getElementById('wxcopy-text').textContent = '已复制 ✓';
+    setTimeout(()=>document.getElementById('wxcopy-text').textContent = '点击复制', 1600);
+  });
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeWX(); });
+</script>
+</body>
+</html>

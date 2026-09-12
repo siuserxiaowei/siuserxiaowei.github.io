@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 编程范式｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="AI 编程的角色变化：从副驾式提示到管理者式工程组织。">
+  <meta property="og:title" content="AI 编程范式">
+  <meta property="og:description" content="AI 编程的角色变化：从副驾式提示到管理者式工程组织。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html" aria-current="page">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Paradigm</p>
+    <h1>AI 编程不是更快地写代码，而是更早地进入管理状态</h1>
+    <p class="lede">会议反复回到同一个问题：为什么同样使用 Claude Code、Codex 或其他编码工具，有的人只能开一个窗口，有的人能管理多个 Agent 并发？答案不是提示词魔法，而是角色定位。</p>
+    <div class="hero-meta"><span class="chip">Agent 是新人</span><span class="chip">上下文是入职培训</span><span class="chip">Review 是带教</span><span class="chip">自动验证是制度</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Shift</p>
+      <h2>从副驾到管理者</h2>
+      <p>副驾模式关注“下一行代码怎么写”，管理者模式关注“任务如何被理解、执行、验收和沉淀”。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>副驾模式</h3>
+      <p>人盯着局部实现，频繁修补模型输出；注意力被代码细节吃掉，很难开启更高并发。</p>
+    </article>
+    <article class="card">
+      
+      <h3>管理者模式</h3>
+      <p>人定义目标、边界、质量标准和上下文，让 Agent 完成一段可验收的工作，再通过 Review 把经验沉淀下来。</p>
+    </article>
+    <article class="card">
+      
+      <h3>关键转折</h3>
+      <p>当模型代码质量达到可用水准后，继续把它当工具会浪费杠杆；把它当团队成员，才会自然引出规范、看板、Review 和培训材料。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Mental Model</p>
+      <h2>Agent 的无状态决定了文档的重要性</h2>
+      <p>人对项目的理解会随时间沉淀，Agent 每次启动都像新人报到。这个差异解释了为什么项目规范比过去更重要。</p>
+    </div>
+    <div class="grid three">
+    <article class="card">
+      <span class="metric">Context</span>
+      <h3>上下文不是提示词装饰</h3>
+      <p>项目背景、架构设计、业务边界、目录约定、复用原则和禁区都要前置。给得越清楚，Agent 越可能按团队方式工作。</p>
+    </article>
+    <article class="card">
+      <span class="metric">Scope</span>
+      <h3>范围要比能力更重要</h3>
+      <p>模型会倾向完成目标，有时会引入过度设计。驱动者要明确这是小工具、MVP、企业系统还是长期平台，避免它替你膨胀架构。</p>
+    </article>
+    <article class="card">
+      <span class="metric">Trust</span>
+      <h3>信任不是放任</h3>
+      <p>信任意味着把任务交出去，但同时建立验收、自动测试、代码 Review 和回滚机制。没有制度的信任，只会变成失控。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Practice</p>
+      <h2>管理者心态的落地动作</h2>
+      <p>把抽象心态翻译成每天能执行的动作。</p>
+    </div>
+    <table class="table">
+    <thead><tr><th>动作</th><th>目的</th><th>会议里的含义</th></tr></thead>
+    <tbody>
+      <tr><td>写清项目规范</td><td>降低每次启动成本</td><td>让无状态 Agent 进入项目时不再从零理解。</td></tr>
+      <tr><td>任务前对齐范围</td><td>防止过度设计</td><td>先说清要简单实现、MVP 还是平台化能力。</td></tr>
+      <tr><td>阶段性 Review</td><td>捕捉可沉淀错误</td><td>把问题转成 Skills、检查点和自动验证。</td></tr>
+      <tr><td>循序提高并发</td><td>保护注意力</td><td>先管好一个 Agent，再管三个，再考虑十个。</td></tr>
+    </tbody>
+  </table>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

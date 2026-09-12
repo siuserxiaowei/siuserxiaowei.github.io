@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>问答与分歧｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="复杂系统控制、前端生成质量、产品经理交付方式和 Worktree 的关键分歧。">
+  <meta property="og:title" content="问答与分歧">
+  <meta property="og:description" content="复杂系统控制、前端生成质量、产品经理交付方式和 Worktree 的关键分歧。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html" aria-current="page">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Q&amp;A</p>
+    <h1>问答真正暴露的是边界：什么能交给 AI，什么必须由人收口</h1>
+    <p class="lede">会议后半段的价值在于具体问题：复杂系统看不懂怎么办、前端总改坏怎么办、产品经理如何交付、Worktree 到底值不值得用。这些问题比工具清单更接近真实工程。</p>
+    <div class="hero-meta"><span class="chip">复杂系统</span><span class="chip">前端质量</span><span class="chip">产品交付</span><span class="chip">Worktree 分歧</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Complexity</p>
+      <h2>AI 设计出看不懂的系统怎么办</h2>
+      <p>问题来自复杂 AgentOS / A2A 类系统的管理困惑。</p>
+    </div>
+    <div class="grid two">
+    <article class="card">
+      
+      <h3>回答的核心</h3>
+      <p>如果 AI 方案已经超出驱动者理解，很可能是过度设计或失控信号。不要追求“AI 做我完全做不了的复杂物”，而要选择自己能解释、能验收、能维护的方案。</p>
+    </article>
+    <article class="card">
+      
+      <h3>操作建议</h3>
+      <p>让 AI 给多个方案，挑自己理解范围内的最优方案；砍掉冗余抽象；把系统拆成可测试、可观测、可替换的小模块。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Frontend</p>
+      <h2>前端生成效果差、改动易破坏旧逻辑怎么办</h2>
+      <p>这个问题反复出现在 AI 编程实践中。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>不要让 AI 从零发明基础 UI</h3>
+      <p>用成熟组件库和设计系统兜底，基础控件越稳定，AI 越能把精力放在业务逻辑和页面状态。</p>
+    </article>
+    <article class="card">
+      
+      <h3>沉淀自有业务组件</h3>
+      <p>业务里反复出现的列表、表单、状态面板、工作流步骤要组件化。这样下一次不是重新生成，而是复用。</p>
+    </article>
+    <article class="card">
+      
+      <h3>保留视觉验收</h3>
+      <p>截图、移动端、长文本、交互状态和回归路径要人工检查。前端测试不能只看代码是否编译。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">PM</p>
+      <h2>产品经理在 AI 时代交付什么</h2>
+      <p>会议里的回答非常明确：只交 PRD 不够了。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>从文档到 MVP</h3>
+      <p>产品经理应尽量把 idea 做成能跑的 MVP，自己完成基础测试，再交给开发评审和工程化。</p>
+    </article>
+    <article class="card">
+      
+      <h3>反向生成说明文档</h3>
+      <p>让 AI 基于 MVP 代码生成说明文档，前后端开发再用自己的 Agent 评审、重构和部署。</p>
+    </article>
+    <article class="card">
+      
+      <h3>节省迭代时间</h3>
+      <p>这种方式可以减少传统 UI 评审、终审、开发、测试之间的等待，把讨论建立在可运行产品上。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Disagreements</p>
+      <h2>值得保留的分歧</h2>
+      <p>好的会议不是消灭分歧，而是把分歧变成判断框架。</p>
+    </div>
+    <table class="table">
+    <thead><tr><th>议题</th><th>立场 A</th><th>立场 B</th><th>整理后的判断</th></tr></thead>
+    <tbody>
+      <tr><td>Worktree</td><td>并行开发必须隔离工作树。</td><td>上下文污染和合并成本可能很高。</td><td>按项目复杂度和任务独立性选择，不默认。</td></tr>
+      <tr><td>Spec 完整度</td><td>越全越能减少返工。</td><td>写太久会拖慢启动。</td><td>85%-90% 更实际，保留 15% 变化空间。</td></tr>
+      <tr><td>设计工具</td><td>Figma/Sketch 可控性强。</td><td>早期验证可用 AI 图像和参考稿。</td><td>验证功能优先时不必追求像素级设计。</td></tr>
+      <tr><td>脚手架</td><td>脚手架是古法编程残留。</td><td>脚手架能降低重复和认知成本。</td><td>标准流程可脚手架化，创新部分保留灵活度。</td></tr>
+    </tbody>
+  </table>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

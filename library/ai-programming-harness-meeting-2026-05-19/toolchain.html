@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工具链与趋势｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="模型选择、前端设计工具、后端脚手架、技术栈演进和定期同步机制。">
+  <meta property="og:title" content="工具链与趋势">
+  <meta property="og:description" content="模型选择、前端设计工具、后端脚手架、技术栈演进和定期同步机制。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html" aria-current="page">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Toolchain</p>
+    <h1>工具链选择的原则：用领先模型，但不要把工具当答案</h1>
+    <p class="lede">会议对工具的态度很清醒：领先模型值得花钱，因为 Token 远低于人力成本；但真正决定质量的是组件库、脚手架、设计参考、测试闭环和团队规范。</p>
+    <div class="hero-meta"><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">Kimi</span><span class="chip">Gemini</span><span class="chip">Stitch</span><span class="chip">Go Zero</span><span class="chip">Rust</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Models</p>
+      <h2>模型选择：优先领先模型，持续重新评估</h2>
+      <p>模型能力变化很快，旧经验会过期。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>Token 成本低于人力成本</h3>
+      <p>会议里明确建议尽量使用领先模型。一个中级工程师的人力成本远高于模型订阅和 Token。</p>
+    </article>
+    <article class="card">
+      
+      <h3>按任务选模型</h3>
+      <p>Kimi 适合大面研究和设计方向铺开，Gemini 更适合追求事实细节，Codex/Claude Code 各自适合不同编码工作流。</p>
+    </article>
+    <article class="card">
+      
+      <h3>定期同步</h3>
+      <p>三个月可能就是模型两代变化。团队应定期分享模型跨过哪些门槛，而不是固守半年前的判断。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Frontend</p>
+      <h2>前端：先借成熟系统，再让 AI 做业务</h2>
+      <p>前端难点不是能不能生成页面，而是审美、状态、回归和多端一致性。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>组件库是地基</h3>
+      <p>Ant Design 等成熟组件库能把基础控件质量稳定下来，自有业务组件则减少重复生成和反复改坏。</p>
+    </article>
+    <article class="card">
+      
+      <h3>设计稿不必只靠 Figma</h3>
+      <p>早期验证可用 GPT 图像、Stitch、Dribbble/Behance 参考稿和站点 CSS 总结来形成风格约束。</p>
+    </article>
+    <article class="card">
+      
+      <h3>人仍要验收视觉</h3>
+      <p>模型对视觉理解有限。布局、长文本、移动端、状态切换和细节一致性仍需要人工检查。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Backend</p>
+      <h2>后端：脚手架不是落后，而是压缩认知成本</h2>
+      <p>后端可见性差，更依赖分层和稳定流程。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>分层开发</h3>
+      <p>把数据层、算法层和业务逻辑层分开，围绕关键流程节点推进，而不是让 Agent 在整套系统里自由游走。</p>
+    </article>
+    <article class="card">
+      
+      <h3>参考成熟框架</h3>
+      <p>Go Zero、现有优秀框架源码和旧项目都可以作为脚手架参考。让 AI 读懂关键节点，再迁移到新项目。</p>
+    </article>
+    <article class="card">
+      
+      <h3>未来语言选择会变化</h3>
+      <p>会议提到 Rust 等高性能语言可能随着模型能力提升变得更可用。语言选择不只看人会不会，也看模型能否稳定产出。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Trend</p>
+      <h2>行业趋势：认知债务会变成最大债务</h2>
+      <p>当模型会写代码后，真正昂贵的是表达不清和概念混乱。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>术语要精确</h3>
+      <p>变量、模块、角色、业务对象和行业术语越混乱，模型越容易生成貌似合理但方向错误的方案。</p>
+    </article>
+    <article class="card">
+      
+      <h3>默认答案会越来越好</h3>
+      <p>模型对标准后端、常见业务和公开知识领域会持续变强，冷启动脚手架会越来越接近最佳实践。</p>
+    </article>
+    <article class="card">
+      
+      <h3>创新领域仍需专家</h3>
+      <p>当领域知识未被大规模写入模型，或任务本身没有标准答案，专家判断和实验反馈仍不可替代。</p>
+    </article></div>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

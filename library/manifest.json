@@ -1,0 +1,538 @@
+[
+  {
+    "name": "2026-05-21-ai-obcnq3eg",
+    "title": "飞书妙搭进阶实战及 AI 开发理论分享",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-21-ai-obcnq3eg/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-21-ai-obcnq3eg/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-21-ai-obcnq3h5",
+    "title": "阿里云AI合伙人项目方案分享",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-21-ai-obcnq3h5/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-21-ai-obcnq3h5/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-23-feishu-minutes-obcnrxri",
+    "title": "硬件产品及合作情况分享",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-23-feishu-minutes-obcnrxri/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-23-feishu-minutes-obcnrxri/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-23-siuser-obcnrxfo",
+    "title": "对话机器人定制：语音、动作与硬件方案",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-23-siuser-obcnrxfo/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-23-siuser-obcnrxfo/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-25-feishu-minutes-obcntbzq",
+    "title": "机器人结构改版：3D 打印样品、穿线与模具",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-25-feishu-minutes-obcntbzq/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-25-feishu-minutes-obcntbzq/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-26-ai-obcntqdu",
+    "title": "AI 创新大赛路演：企业服务、出海与商业增长",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-26-ai-obcntqdu/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-26-ai-obcntqdu/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-26-feishu-minutes-obcntpp1",
+    "title": "AI 软硬件业务分工、B 端获客与合作",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-26-feishu-minutes-obcntpp1/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-26-feishu-minutes-obcntpp1/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-27-ai-obcnucp2",
+    "title": "AI 服务中转业务：商业模式、渠道与风险讨论",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-27-ai-obcnucp2/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-27-ai-obcnucp2/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-27-ai-obcnucwb",
+    "title": "AI不神秘黑客松活动项目分享会",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-27-ai-obcnucwb/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-27-ai-obcnucwb/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-27-feishu-minutes-obcnuci1",
+    "title": "三人行黑客松活动分工与流程规划",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-27-feishu-minutes-obcnuci1/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-27-feishu-minutes-obcnuci1/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-27-siuser-obcnup82",
+    "title": "机器人结构优化：传动、续航与量产设计",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-27-siuser-obcnup82/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-27-siuser-obcnup82/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-29-1-obcnv7p1",
+    "title": "线下活动礼品与签到安排",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-1-obcnv7p1/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-1-obcnv7p1/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-ai-obcnv71u",
+    "title": "AI 订阅产品的 LTV、留存与定价策略",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv71u/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv71u/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-ai-obcnv7zu",
+    "title": "线下活动联动与电商业务交流",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv7zu/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv7zu/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-ai-obcnv858",
+    "title": "跨境电商自动化：先自营验证，再做工具",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv858/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv858/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-ai-obcnv8g7",
+    "title": "AI 产品案例池、团队组织与用户习惯",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv8g7/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv8g7/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-29-ai-obcnv8oj",
+    "title": "软件外包报价与持续维护费用",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv8oj/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv8oj/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-ai-obcnv8w9",
+    "title": "跨境账户与资金往来的经验讨论",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-ai-obcnv8w9/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-ai-obcnv8w9/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-29-feishu-minutes-obcnv744",
+    "title": "公众号活动照片的发布范围沟通",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-feishu-minutes-obcnv744/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-feishu-minutes-obcnv744/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-feishu-minutes-obcnwc97",
+    "title": "代充值业务的渠道与收益模式讨论",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-feishu-minutes-obcnwc97/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-feishu-minutes-obcnwc97/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-29-soundcore-work-05-28-18-33-obcnv729",
+    "title": "语音产品的市场竞争与下架影响（片段）",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-29-soundcore-work-05-28-18-33-obcnv729/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-29-soundcore-work-05-28-18-33-obcnv729/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-31-1-obcnxibt",
+    "title": "自媒体适配、课程营销与内容引用讨论",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-1-obcnxibt/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-1-obcnxibt/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-31-2-obcnxjm8",
+    "title": "AI 服务成本与客户需求沟通",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-2-obcnxjm8/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-2-obcnxjm8/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-31-3-obcnxj3r",
+    "title": "开发者活动参与与会务安排",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-3-obcnxj3r/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-3-obcnxj3r/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-31-app-1-obcnxi75",
+    "title": "合作对象评估、资料分享与开票沟通",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-app-1-obcnxi75/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-app-1-obcnxi75/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-31-app-2-obcnxiqo",
+    "title": "海外视频生成、支付合作与电商业务",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-app-2-obcnxiqo/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-app-2-obcnxiqo/",
+    "files": 5
+  },
+  {
+    "name": "2026-05-31-feishu-minutes-obcnxhm8",
+    "title": "个人实力、社交分寸与自媒体曝光",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-feishu-minutes-obcnxhm8/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-feishu-minutes-obcnxhm8/",
+    "files": 2
+  },
+  {
+    "name": "2026-05-31-feishu-minutes-obcnxiqa",
+    "title": "业务边界与活动运营的零散讨论",
+    "theme": "内容创作与社群",
+    "url": "https://siuserxiaowei.github.io/library/2026-05-31-feishu-minutes-obcnxiqa/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-05-31-feishu-minutes-obcnxiqa/",
+    "files": 2
+  },
+  {
+    "name": "2026-06-01-siuser-obcnx3u5",
+    "title": "AI 盒子采购测试与团队设备沟通",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-01-siuser-obcnx3u5/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-01-siuser-obcnx3u5/",
+    "files": 5
+  },
+  {
+    "name": "2026-06-02-ai-obcnyst6",
+    "title": "戴雨森AI投资思考访谈",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-02-ai-obcnyst6/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-02-ai-obcnyst6/",
+    "files": 5
+  },
+  {
+    "name": "2026-06-02-aigc-workflow-obcnyp9p",
+    "title": "AIGC 杭州 workflow 讨论",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-02-aigc-workflow-obcnyp9p/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-02-aigc-workflow-obcnyp9p/",
+    "files": 2
+  },
+  {
+    "name": "2026-06-02-feishu-minutes-obcnytsq",
+    "title": "创业、永居等话题讨论",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-02-feishu-minutes-obcnytsq/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-02-feishu-minutes-obcnytsq/",
+    "files": 2
+  },
+  {
+    "name": "2026-06-03-aigc-workflow-obcnzgdi",
+    "title": "AIGC 业务框架同步与会议准备",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-03-aigc-workflow-obcnzgdi/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-03-aigc-workflow-obcnzgdi/",
+    "files": 5
+  },
+  {
+    "name": "2026-06-03-feishu-minutes-obcnzg28",
+    "title": "机器人模型堆叠：板卡布局与结构预留",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-03-feishu-minutes-obcnzg28/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-03-feishu-minutes-obcnzg28/",
+    "files": 2
+  },
+  {
+    "name": "2026-06-04-ai-obcnz695",
+    "title": "AI时代企业与个人发展访谈—王磊",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-04-ai-obcnz695/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-04-ai-obcnz695/",
+    "files": 5
+  },
+  {
+    "name": "2026-06-05-feishu-minutes-obcn1ka2",
+    "title": "设备测试重置、合作对接与资料整理",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-05-feishu-minutes-obcn1ka2/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-05-feishu-minutes-obcn1ka2/",
+    "files": 2
+  },
+  {
+    "name": "2026-06-08-1-obcn4b83",
+    "title": "工作生活及学习情况讨论_分段1",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-08-1-obcn4b83/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-08-1-obcn4b83/",
+    "files": 5
+  },
+  {
+    "name": "2026-06-08-feishu-minutes-obcn3p28",
+    "title": "机器人结构设计：布线、舵机限位与电池",
+    "theme": "智能硬件与产品交付",
+    "url": "https://siuserxiaowei.github.io/library/2026-06-08-feishu-minutes-obcn3p28/",
+    "originalUrl": "https://siuserxiaowei.github.io/2026-06-08-feishu-minutes-obcn3p28/",
+    "files": 2
+  },
+  {
+    "name": "ai-business-roundtable-2026-05-16",
+    "title": "复盘 AI 产品、增长、独立开发与商业模式的圆桌讨论。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/ai-business-roundtable-2026-05-16/",
+    "originalUrl": "https://siuserxiaowei.github.io/ai-business-roundtable-2026-05-16/",
+    "files": 8
+  },
+  {
+    "name": "ai-meetup-0805",
+    "title": "2026-08-05 10:00 产品沟通会纪要 · 缺席者导读：AI 智能体盒子教程优化与澳门理工拜访筹备",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/ai-meetup-0805/",
+    "originalUrl": "https://siuserxiaowei.github.io/ai-meetup-0805/",
+    "files": 1
+  },
+  {
+    "name": "ai-pojucj",
+    "title": "整理杭州 AI 破局大会的分享内容，按主题、方法和行动项复盘。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/ai-pojucj/",
+    "originalUrl": "https://siuserxiaowei.github.io/ai-pojucj/",
+    "files": 5
+  },
+  {
+    "name": "ai-product-feishu-breakdowns-20260510",
+    "title": "独立 GitHub Pages：2026-05-10 三篇飞书 AI 产品纪要的道法术器势拆解",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/ai-product-feishu-breakdowns-20260510/",
+    "originalUrl": "https://siuserxiaowei.github.io/ai-product-feishu-breakdowns-20260510/",
+    "files": 16
+  },
+  {
+    "name": "ai-programming-harness-meeting-2026-05-19",
+    "title": "AI 编程 Harness 会议归档：记录 Codex、Claude Code、agent workflow 和测试体系相关讨论。",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/",
+    "originalUrl": "https://siuserxiaowei.github.io/ai-programming-harness-meeting-2026-05-19/",
+    "files": 12
+  },
+  {
+    "name": "aliyun-ai-partner-qoder-2026-05-21",
+    "title": "阿里云 AI Partner/Qoder 会议资料：沉淀 AI 编程、云服务和开发者工具的会议记录。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/aliyun-ai-partner-qoder-2026-05-21/",
+    "originalUrl": "https://siuserxiaowei.github.io/aliyun-ai-partner-qoder-2026-05-21/",
+    "files": 11
+  },
+  {
+    "name": "caojuege-ai-labs-0805",
+    "title": "草诀歌AI Labs闭门会（2026-08-05 晚）深度拆解：出海增长实战 × 长程Agent认知 · 给未参会同学的自学文档（道法术器势框架 + 外部事实核实）",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/caojuege-ai-labs-0805/",
+    "originalUrl": "https://siuserxiaowei.github.io/caojuege-ai-labs-0805/",
+    "files": 1
+  },
+  {
+    "name": "chatgpt-recharge-guide-2026",
+    "title": "ChatGPT 订阅购买指南",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/chatgpt-recharge-guide-2026/",
+    "originalUrl": "https://siuserxiaowei.github.io/chatgpt-recharge-guide-2026/",
+    "files": 9
+  },
+  {
+    "name": "chuhai-chengdu-meetup-0719",
+    "title": "成都AI出海需求挖掘与合规分享会（2026-07-19）道法术器势拆解：给未参会同学的自学文档",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/chuhai-chengdu-meetup-0719/",
+    "originalUrl": "https://siuserxiaowei.github.io/chuhai-chengdu-meetup-0719/",
+    "files": 1
+  },
+  {
+    "name": "chuhai-meeting-0719",
+    "title": "整理 2026 年 7 月 19 日 AI 出海项目运营经验分享会，供缺席者按方法、案例与行动项自学。",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/chuhai-meeting-0719/",
+    "originalUrl": "https://siuserxiaowei.github.io/chuhai-meeting-0719/",
+    "files": 1
+  },
+  {
+    "name": "claude-tag-ep144",
+    "title": "Claude Tag EP144 中文逐字稿、产品哲学深度拆解与公众号写作方案",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/claude-tag-ep144/",
+    "originalUrl": "https://siuserxiaowei.github.io/claude-tag-ep144/",
+    "files": 8
+  },
+  {
+    "name": "codex-app-meeting-report",
+    "title": "Codex App 会议报告：把会议记录、AI 摘要和 PDF 工作流整理成可复盘的资料包。",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/codex-app-meeting-report/",
+    "originalUrl": "https://siuserxiaowei.github.io/codex-app-meeting-report/",
+    "files": 3
+  },
+  {
+    "name": "codex-practice-class-notes",
+    "title": "小伟的 Codex 实战课：从 5.6 到 6，给缺席者的课程学习纪要、踩坑复盘、开发流程与上下文实践。",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/codex-practice-class-notes/",
+    "originalUrl": "https://siuserxiaowei.github.io/codex-practice-class-notes/",
+    "files": 7
+  },
+  {
+    "name": "ezremove-watermark-remove-growth-research",
+    "title": "EzRemove 增长研究",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/ezremove-watermark-remove-growth-research/",
+    "originalUrl": "https://siuserxiaowei.github.io/ezremove-watermark-remove-growth-research/",
+    "files": 57
+  },
+  {
+    "name": "gpt56-meeting-report",
+    "title": "20 Agent 道法术器势拆解 GPT-5.6 使用经验交流会",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/gpt56-meeting-report/",
+    "originalUrl": "https://siuserxiaowei.github.io/gpt56-meeting-report/",
+    "files": 4
+  },
+  {
+    "name": "guangzhou-founder-roundtable-2026",
+    "title": "广州 AI 创业者圆桌资料：整理 founder roundtable 会议内容、创业生态观察和增长讨论的静态页面。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/guangzhou-founder-roundtable-2026/",
+    "originalUrl": "https://siuserxiaowei.github.io/guangzhou-founder-roundtable-2026/",
+    "files": 6
+  },
+  {
+    "name": "hanghaijia-night-talk-breakdown",
+    "title": "航海家夜话拆解站：把公开分享内容整理成可浏览的 GitHub Pages 复盘页和资料索引。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/hanghaijia-night-talk-breakdown/",
+    "originalUrl": "https://siuserxiaowei.github.io/hanghaijia-night-talk-breakdown/",
+    "files": 2
+  },
+  {
+    "name": "interview-breakdown",
+    "title": "复盘访谈中的模型选择、Token 使用、工作流与成本取舍；访谈数字属于原材料主张。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/interview-breakdown/",
+    "originalUrl": "https://siuserxiaowei.github.io/interview-breakdown/",
+    "files": 1
+  },
+  {
+    "name": "meeting-0715-ai-agent",
+    "title": "学习 AI Agent 如何进入企业转型流程，查阅会议要点、逐段解读和实践启发。",
+    "theme": "AI 编程与 Agent",
+    "url": "https://siuserxiaowei.github.io/library/meeting-0715-ai-agent/",
+    "originalUrl": "https://siuserxiaowei.github.io/meeting-0715-ai-agent/",
+    "files": 1
+  },
+  {
+    "name": "meeting-deconstruct",
+    "title": "复盘 AI 与一人公司创业落地的方法、案例和行动清单。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/meeting-deconstruct/",
+    "originalUrl": "https://siuserxiaowei.github.io/meeting-deconstruct/",
+    "files": 3
+  },
+  {
+    "name": "meeting-deconstruction",
+    "title": "集中阅读 GPT 使用与系统优化、半导体技术方向、AI 与具身智能三份拆解。",
+    "theme": "综合交流与学习",
+    "url": "https://siuserxiaowei.github.io/library/meeting-deconstruction/",
+    "originalUrl": "https://siuserxiaowei.github.io/meeting-deconstruction/",
+    "files": 4
+  },
+  {
+    "name": "miaoji-s-meeting-minutes-wiki-2026",
+    "title": "妙记+S 会议纪要 Wiki：把会议记录整理成可浏览、可复盘的 GitHub Pages 知识站。",
+    "theme": "综合交流与学习",
+    "url": "https://siuserxiaowei.github.io/library/miaoji-s-meeting-minutes-wiki-2026/",
+    "originalUrl": "https://siuserxiaowei.github.io/miaoji-s-meeting-minutes-wiki-2026/",
+    "files": 6
+  },
+  {
+    "name": "moneyhunter-learning-hub",
+    "title": "MoneyHunter 学习资料",
+    "theme": "综合交流与学习",
+    "url": "https://siuserxiaowei.github.io/library/moneyhunter-learning-hub/",
+    "originalUrl": "https://siuserxiaowei.github.io/moneyhunter-learning-hub/",
+    "files": 18
+  },
+  {
+    "name": "new-game-seo-playbook",
+    "title": "新游戏 SEO 培训深度学习版：道势法术器、7 天 SOP 与互动选词评分卡",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/new-game-seo-playbook/",
+    "originalUrl": "https://siuserxiaowei.github.io/new-game-seo-playbook/",
+    "files": 3
+  },
+  {
+    "name": "poju-breakdown-site",
+    "title": "破局案例拆解站：沉淀商业案例、增长策略和复盘分析。",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/poju-breakdown-site/",
+    "originalUrl": "https://siuserxiaowei.github.io/poju-breakdown-site/",
+    "files": 8
+  },
+  {
+    "name": "scai-meeting-minutes-wiki-2026",
+    "title": "生财联合办公分享会 Wiki：把深圳与广州分享会纪要整理成可检索的静态复盘站。",
+    "theme": "综合交流与学习",
+    "url": "https://siuserxiaowei.github.io/library/scai-meeting-minutes-wiki-2026/",
+    "originalUrl": "https://siuserxiaowei.github.io/scai-meeting-minutes-wiki-2026/",
+    "files": 6
+  },
+  {
+    "name": "stripe-solo-operators-report",
+    "title": "独立创业者产品研究",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/stripe-solo-operators-report/",
+    "originalUrl": "https://siuserxiaowei.github.io/stripe-solo-operators-report/",
+    "files": 6
+  },
+  {
+    "name": "wechat-workshop-field-notes",
+    "title": "微信开发者创新工坊深圳站：给缺席者的深度学习手册",
+    "theme": "出海、增长与商业化",
+    "url": "https://siuserxiaowei.github.io/library/wechat-workshop-field-notes/",
+    "originalUrl": "https://siuserxiaowei.github.io/wechat-workshop-field-notes/",
+    "files": 14
+  },
+  {
+    "name": "yangge-business-mindset-pages",
+    "title": "洋哥商业心法系列妙记拆解：按术法道器势整理智能总结、文字记录、课堂资料和补充模板的 GitHub Pages 站点",
+    "theme": "创业、经营与合作",
+    "url": "https://siuserxiaowei.github.io/library/yangge-business-mindset-pages/",
+    "originalUrl": "https://siuserxiaowei.github.io/yangge-business-mindset-pages/",
+    "files": 76
+  }
+]

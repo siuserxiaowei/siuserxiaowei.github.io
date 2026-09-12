@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阿里云 AI 合伙人 Qoder 方案｜2026-05-21</title>
+  <meta name="description" content="阿里云 AI 合伙人项目方案分享整理：Qoder、QoderWork、QoderWake 的客户作战地图、案例库和合伙人行动清单。">
+  <meta property="og:title" content="阿里云 AI 合伙人 Qoder 方案">
+  <meta property="og:description" content="一页看懂 Qoder 全家桶：客户是谁、卖什么、怎么演示、今天怎么开始。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/aliyun-ai-partner-qoder-2026-05-21/assets/slides/02-full-coverage.png">
+  <style>
+    :root{
+      --bg:#050706;
+      --panel:#0b100d;
+      --panel-2:#111914;
+      --ink:#f5f7ee;
+      --muted:#a9b6ad;
+      --soft:#d9e4dc;
+      --line:rgba(245,247,238,.16);
+      --green:#65d77c;
+      --mint:#a8f5bf;
+      --cyan:#66c9e8;
+      --amber:#f2be62;
+      --red:#ed7568;
+      --shadow:0 26px 80px rgba(0,0,0,.42);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:320px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(101,215,124,.18), transparent 430px),
+        radial-gradient(circle at 88% 8%, rgba(102,201,232,.14), transparent 400px),
+        linear-gradient(180deg,#050706 0%,#09100c 44%,#050706 100%);
+      color:var(--ink);
+      font-family:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif;
+      letter-spacing:0;
+    }
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    p,h1,h2,h3,h4,figure{margin:0}
+    .skip{
+      position:absolute;
+      top:-80px;
+      left:18px;
+      z-index:50;
+      background:var(--mint);
+      color:#041008;
+      padding:10px 14px;
+      text-decoration:none;
+      font-weight:800;
+    }
+    .skip:focus{top:18px}
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:16px 42px;
+      border-bottom:1px solid var(--line);
+      background:rgba(5,7,6,.78);
+      backdrop-filter:blur(18px);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:900;
+    }
+    .brand-mark{
+      width:28px;
+      height:28px;
+      border:1px solid rgba(168,245,191,.8);
+      background:linear-gradient(135deg,var(--green),var(--cyan));
+      box-shadow:0 0 30px rgba(101,215,124,.38);
+    }
+    .nav-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      border:1px solid transparent;
+      padding:8px 10px;
+      font-size:13px;
+    }
+    .nav-links a:hover{color:var(--ink);border-color:var(--line);background:rgba(255,255,255,.04)}
+    main{overflow:hidden}
+    .section,.hero{padding-left:42px;padding-right:42px}
+    .wrap{max-width:1240px;margin:0 auto}
+    .hero{
+      min-height:84vh;
+      display:grid;
+      align-items:center;
+      padding-top:58px;
+      padding-bottom:42px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);
+      gap:34px;
+      align-items:center;
+    }
+    .eyebrow,.kicker,.label,.mono{
+      font-family:Menlo,Consolas,monospace;
+      letter-spacing:0;
+    }
+    .eyebrow{
+      color:var(--mint);
+      font-size:13px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    h1{
+      max-width:790px;
+      font-family:Georgia,"Songti SC",serif;
+      font-size:74px;
+      line-height:1.02;
+      letter-spacing:0;
+    }
+    .lede{
+      max-width:740px;
+      margin-top:22px;
+      color:var(--soft);
+      font-size:22px;
+      line-height:1.7;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      border:1px solid var(--line);
+      padding:0 16px;
+      text-decoration:none;
+      font-weight:900;
+      background:rgba(255,255,255,.03);
+    }
+    .button.primary{
+      color:#031006;
+      border-color:var(--green);
+      background:var(--green);
+    }
+    .hero-media{
+      position:relative;
+      border:1px solid rgba(101,215,124,.34);
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      padding:10px;
+    }
+    .hero-media::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      border:1px solid rgba(102,201,232,.2);
+      transform:translate(10px,10px);
+    }
+    .hero-media img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .signal-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      margin-top:10px;
+      background:var(--line);
+    }
+    .signal-strip span{
+      background:#07100b;
+      padding:12px;
+      min-height:76px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .signal-strip b{display:block;color:var(--amber);font-size:20px;margin-bottom:6px}
+    .section{padding-top:76px;padding-bottom:76px}
+    .section.alt{background:rgba(255,255,255,.025)}
+    .section-head{
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:28px;
+      align-items:start;
+      margin-bottom:30px;
+    }
+    .kicker{
+      color:var(--green);
+      text-transform:uppercase;
+      font-size:12px;
+      padding-top:8px;
+    }
+    h2{
+      max-width:920px;
+      font-family:Georgia,"Songti SC",serif;
+      font-size:46px;
+      line-height:1.12;
+      letter-spacing:0;
+    }
+    .section-note{
+      max-width:850px;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.75;
+    }
+    .thesis-grid,.product-grid,.case-grid,.talk-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+    }
+    .card,.product,.case,.talk,.source-panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.018));
+      box-shadow:0 16px 50px rgba(0,0,0,.22);
+    }
+    .card,.product,.case,.talk{padding:22px;min-height:260px}
+    .num{
+      display:inline-block;
+      color:var(--cyan);
+      font-weight:900;
+      font-size:34px;
+      margin-bottom:24px;
+    }
+    .card h3,.product h3,.case h3,.talk h3,.source-panel h3{
+      font-size:25px;
+      line-height:1.25;
+      margin-bottom:12px;
+    }
+    .card p,.product p,.case p,.talk p,.source-panel p,.source-panel li{
+      color:var(--soft);
+      line-height:1.72;
+      font-size:16px;
+    }
+    .product{
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      overflow:hidden;
+    }
+    .product::after{
+      content:"";
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      width:74px;
+      height:74px;
+      border:1px solid rgba(101,215,124,.28);
+      background:radial-gradient(circle,rgba(101,215,124,.18),transparent 64%);
+    }
+    .label{
+      color:var(--amber);
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .product .fit{margin-top:auto;padding-top:22px;color:var(--mint);font-weight:900}
+    .matrix{
+      display:grid;
+      gap:10px;
+    }
+    .matrix-row{
+      display:grid;
+      grid-template-columns:220px 180px minmax(0,1fr);
+      gap:1px;
+      background:var(--line);
+      border:1px solid var(--line);
+    }
+    .matrix-row > div{
+      background:#07100b;
+      padding:16px;
+      min-height:100px;
+    }
+    .matrix-row.head > div{
+      min-height:auto;
+      color:#041008;
+      background:var(--green);
+      font-weight:900;
+    }
+    .matrix-row strong{display:block;font-size:20px;margin-bottom:7px}
+    .matrix-row span{color:var(--muted);line-height:1.6}
+    .matrix-row em{font-style:normal;color:var(--cyan);font-weight:900}
+    .case{
+      min-height:250px;
+      display:flex;
+      flex-direction:column;
+    }
+    .case .delta{
+      margin-top:auto;
+      padding-top:18px;
+      color:var(--amber);
+      font-size:24px;
+      font-weight:900;
+    }
+    .split{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(360px,.88fr);
+      gap:18px;
+      align-items:start;
+    }
+    .playbook{
+      border:1px solid rgba(101,215,124,.26);
+      background:#07100b;
+    }
+    .playbook-item{
+      display:grid;
+      grid-template-columns:110px minmax(0,1fr);
+      gap:18px;
+      padding:22px;
+      border-bottom:1px solid var(--line);
+    }
+    .playbook-item:last-child{border-bottom:0}
+    .playbook-item b{color:var(--green);font-size:26px}
+    .playbook-item p{color:var(--soft);line-height:1.65}
+    .quote-panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(242,190,98,.12),rgba(255,255,255,.025));
+      padding:28px;
+      min-height:100%;
+    }
+    .quote-panel blockquote{
+      margin:0;
+      font-family:Georgia,"Songti SC",serif;
+      font-size:31px;
+      line-height:1.38;
+    }
+    .quote-panel cite{
+      display:block;
+      margin-top:18px;
+      color:var(--muted);
+      font-style:normal;
+      line-height:1.6;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    .shot{
+      border:1px solid var(--line);
+      background:#070a08;
+      padding:10px;
+    }
+    .shot img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .shot figcaption{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      padding:12px 2px 2px;
+    }
+    .source-panel{
+      padding:28px;
+    }
+    .source-panel ul{margin:14px 0 0;padding-left:20px}
+    .footer{
+      border-top:1px solid var(--line);
+      padding:28px 42px;
+      color:var(--muted);
+      background:#040605;
+    }
+    .footer .wrap{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    @media (max-width:1060px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      .hero-media{order:-1}
+      h1{font-size:60px}
+      .matrix-row{grid-template-columns:1fr}
+      .matrix-row > div{min-height:auto}
+    }
+    @media (max-width:860px){
+      .nav{position:static;align-items:flex-start;flex-direction:column;padding:16px 22px}
+      .section,.hero{padding-left:22px;padding-right:22px}
+      .section-head{grid-template-columns:1fr;gap:10px}
+      .thesis-grid,.product-grid,.case-grid,.talk-grid,.gallery{grid-template-columns:1fr}
+      .signal-strip{grid-template-columns:1fr}
+      h1{font-size:46px}
+      h2{font-size:34px}
+      .lede{font-size:19px}
+      .quote-panel blockquote{font-size:25px}
+    }
+    @media (max-width:520px){
+      .section{padding-top:56px;padding-bottom:56px}
+      .hero{padding-top:32px}
+      h1{font-size:38px}
+      .playbook-item{grid-template-columns:1fr}
+      .card,.product,.case,.talk{min-height:auto}
+      .footer{padding-left:22px;padding-right:22px}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="返回顶部"><span class="brand-mark"></span><span>Qoder Partner Brief</span></a>
+    <nav class="nav-links" aria-label="页面导航">
+      <a href="#brief">核心判断</a>
+      <a href="#stack">产品栈</a>
+      <a href="#customers">客户地图</a>
+      <a href="#cases">案例</a>
+      <a href="#action">行动</a>
+      <a href="#slides">截图</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">2026-05-21 · Aliyun AI Partner Field Dossier</p>
+          <h1>把 Qoder 全家桶，卖成客户能立刻体验的工作场景。</h1>
+          <p class="lede">这场分享的重点不是“又一个 AI 工具”，而是合伙人怎么判断客户、怎么选择 Qoder / QoderWork / QoderWake、怎么用 5 分钟演示把需求从兴趣推进到试用。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#action">今天就做什么</a>
+            <a class="button" href="#customers">先看客户地图</a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="assets/slides/02-full-coverage.png" alt="Qoder、QoderWork、QoderWake 三条产品线覆盖编程、办公和数字员工">
+          <div class="signal-strip" aria-label="核心信号">
+            <span><b>3 条线</b>编程、办公、自动化，不再分散买工具。</span>
+            <span><b>2 类任务</b>一次性交给 Work，持续性交给 Wake。</span>
+            <span><b>1 个动作</b>先跑客户真实场景，再谈合伙人成交。</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section alt" id="brief">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Brief</p>
+          <div>
+            <h2>这场会压缩成 3 个判断。</h2>
+            <p class="section-note">如果只转给别人一屏，先转这三条：客户结构在变、工具需求在收敛、销售动作要从演示场景开始。</p>
+          </div>
+        </div>
+        <div class="thesis-grid">
+          <article class="card">
+            <span class="num">01</span>
+            <h3>客户正在从 OPC 走向 OPT</h3>
+            <p>一人公司要用 AI 撑起设计、内容、开发和客服；三五人团队希望干出三五十人的产出。客户买的不是“助手”，而是能覆盖工作流的工具栈。</p>
+          </article>
+          <article class="card">
+            <span class="num">02</span>
+            <h3>分散工具会输给全家桶</h3>
+            <p>客户真实痛点不是少一个聊天框，而是编程、办公、自动化割裂。Qoder 的卖点是一个账号体系覆盖开发、文件、浏览器、表格和持续值守。</p>
+          </article>
+          <article class="card">
+            <span class="num">03</span>
+            <h3>成交从 5 分钟体验开始</h3>
+            <p>合伙人不用先讲宏大愿景，而是拿客户已有任务做短演示：报价、网站、合同、日报、故障、重构。客户看见结果，下一步才自然。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Stack</p>
+          <div>
+            <h2>一个平台，三种能力：谁来干什么。</h2>
+            <p class="section-note">纪要里有不同转写版本，公开页统一按截图口径：Qoder 负责编程，QoderWork 负责一次性办公任务，QoderWake 负责持续值守。</p>
+          </div>
+        </div>
+        <div class="product-grid">
+          <article class="product">
+            <p class="label">Qoder · AI 编程平台</p>
+            <h3>让 AI 自主写代码、改 Bug、做重构。</h3>
+            <p>适合开发者、泛开发者和有研发需求的软件 / SaaS 公司。核心卖点是 agentic coding、工程知识理解和全球 SOTA 模型调用。</p>
+            <p class="fit">推荐口径：客户有开发需求，就先推 Qoder。</p>
+          </article>
+          <article class="product">
+            <p class="label">QoderWork · AI 办公搭子</p>
+            <h3>你说一句话，它做完整件事。</h3>
+            <p>适合报价、网页生成、合同抽取、方案整理、Excel 台账等一次性任务。它在本地执行，能操作文件、浏览器和表格。</p>
+            <p class="fit">推荐口径：客户说“帮我做个 XX”，推 Work。</p>
+          </article>
+          <article class="product">
+            <p class="label">QoderWake · 24 小时数字员工</p>
+            <h3>你不在，它还在持续干活。</h3>
+            <p>适合每日竞品扫描、凌晨故障定位、长期代码迁移等持续性任务。重点是自动触发、7x24 运行和专岗值守。</p>
+            <p class="fit">推荐口径：客户说“每天 / 随时 / 自动 XX”，推 Wake。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="customers">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Battle Map</p>
+          <div>
+            <h2>作战地图：你的客户在哪，应该先推什么。</h2>
+            <p class="section-note">这不是泛泛的“AI 适合所有人”。先按客户类型选择切入口，再用一句话把价值说到对方工作里。</p>
+          </div>
+        </div>
+        <div class="matrix" role="table" aria-label="客户作战地图">
+          <div class="matrix-row head" role="row">
+            <div role="columnheader">客户类型</div>
+            <div role="columnheader">先推产品</div>
+            <div role="columnheader">一句话切入</div>
+          </div>
+          <div class="matrix-row" role="row">
+            <div role="cell"><strong>软件 / SaaS 公司</strong><span>有研发、交付和 Bug 修复压力。</span></div>
+            <div role="cell"><em>Qoder + QoderWork</em></div>
+            <div role="cell"><span>“你们开发和非技术 AI 工具分开买挺浪费的，这套可以从代码到办公一起覆盖。”</span></div>
+          </div>
+          <div class="matrix-row" role="row">
+            <div role="cell"><strong>数字化转型企业</strong><span>流程多、工具多、自动化需求散。</span></div>
+            <div role="cell"><em>全产品线</em></div>
+            <div role="cell"><span>“你们 AI 工具花了多少？一个平台覆盖编程、办公、自动化，账号和管理都更统一。”</span></div>
+          </div>
+          <div class="matrix-row" role="row">
+            <div role="cell"><strong>售前 / 咨询团队</strong><span>方案定制、客户画像、材料生成频繁。</span></div>
+            <div role="cell"><em>QoderWork</em></div>
+            <div role="cell"><span>“售前一个月能出几个方案？用这个产能可以翻 10 倍。”</span></div>
+          </div>
+          <div class="matrix-row" role="row">
+            <div role="cell"><strong>小团队 / 创业者</strong><span>人少、任务杂、希望快速验证业务。</span></div>
+            <div role="cell"><em>QoderWork + Qoder</em></div>
+            <div role="cell"><span>“3 个人干 30 人的活，靠的就是这种工具。”</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Proof</p>
+          <div>
+            <h2>案例不要讲多，讲到客户脑子里有画面。</h2>
+            <p class="section-note">每个案例都对应一个可演示的客户任务。合伙人真正要准备的是“客户给我什么材料，我现场跑出什么结果”。</p>
+          </div>
+        </div>
+        <div class="case-grid">
+          <article class="case">
+            <p class="label">QoderWork</p>
+            <h3>医药集团上云报价</h3>
+            <p>把报价所需信息交给 AI 办公搭子，自动整理、匹配、计算并输出报价结果。</p>
+            <p class="delta">3-5 天 → 30 分钟</p>
+          </article>
+          <article class="case">
+            <p class="label">QoderWork</p>
+            <h3>品牌网站生成</h3>
+            <p>给出品牌参考和需求，一次性生成可看的品牌网站，用来替代初稿外包。</p>
+            <p class="delta">7 天 + 2-5 万 → 22 分钟</p>
+          </article>
+          <article class="case">
+            <p class="label">QoderWork</p>
+            <h3>合同关键条款提取</h3>
+            <p>读取 50 份 PDF 合同，自动提取关键字段，输出 Excel 台账。</p>
+            <p class="delta">10-15 分钟出表</p>
+          </article>
+          <article class="case">
+            <p class="label">QoderWake</p>
+            <h3>竞品日报</h3>
+            <p>每天 8 点扫描竞品产品发布和价格调整，整理简报后推送到工作群。</p>
+            <p class="delta">每日自动触发</p>
+          </article>
+          <article class="case">
+            <p class="label">QoderWake</p>
+            <h3>凌晨故障定位</h3>
+            <p>告警后自动拉日志、查 diff、看监控曲线、定位根因，早上给出报告。</p>
+            <p class="delta">2 点故障 → 7 点报告</p>
+          </article>
+          <article class="case">
+            <p class="label">QoderWake + Qoder</p>
+            <h3>200+ 模块代码重构</h3>
+            <p>例如 Java 8 到 17 迁移，系统持续执行、自动校验，并标记无法自动修复的部分。</p>
+            <p class="delta">持续跑数小时</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="action">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Action</p>
+          <div>
+            <h2>今天就做：别先等完美话术，先跑场景。</h2>
+            <p class="section-note">这部分是给合伙人的行动清单：先自己熟，再找客户试，再收集能复用的演示素材。</p>
+          </div>
+        </div>
+        <div class="split">
+          <div class="playbook" aria-label="行动清单">
+            <div class="playbook-item">
+              <b>现在</b>
+              <p>打开电脑下载 Qoder，并到云市场下单开通。先把产品跑起来，不要只靠转述。</p>
+            </div>
+            <div class="playbook-item">
+              <b>今天</b>
+              <p>花 30 分钟亲自跑一遍产品核心场景：报价、合同提取、网站生成或代码修复任选一个。</p>
+            </div>
+            <div class="playbook-item">
+              <b>本周</b>
+              <p>找 3 个客户做“5 分钟体验演示”，只演示一个真实任务，演完记录对方下一句问题。</p>
+            </div>
+          </div>
+          <aside class="quote-panel">
+            <blockquote>一次性推 Work，持续性推 Wake，开发场景推 Qoder。</blockquote>
+            <cite>合伙人最容易记住的产品判断规则：客户说“帮我做个 XX”，先用 QoderWork；客户说“每天 / 随时 / 自动 XX”，先用 QoderWake；客户有研发交付压力，就从 Qoder 切入。</cite>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Talk Track</p>
+          <div>
+            <h2>三套 5 分钟演示话术。</h2>
+            <p class="section-note">不要把产品讲成课程，讲成客户眼前的一件事。</p>
+          </div>
+        </div>
+        <div class="talk-grid">
+          <article class="talk">
+            <p class="label">给老板</p>
+            <h3>“我拿你们一个重复任务，现场跑给你看。”</h3>
+            <p>目标不是解释模型，而是让老板看到人效变化：原来几天，现在半小时；原来外包，现在先出初稿。</p>
+          </article>
+          <article class="talk">
+            <p class="label">给业务负责人</p>
+            <h3>“你们最烦的表格 / 合同 / 方案，先交给它。”</h3>
+            <p>让对方提供真实文件，演示读取、整理、输出。业务负责人关心交付结果，不关心技术参数。</p>
+          </article>
+          <article class="talk">
+            <p class="label">给技术团队</p>
+            <h3>“先让它读仓库，再让它改一个明确问题。”</h3>
+            <p>技术团队更在意可控性：能理解项目、能改代码、能跑检查、能留痕，才会愿意进入试用。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="slides">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Slides</p>
+          <div>
+            <h2>现场截图整理。</h2>
+            <p class="section-note">截图保留原始表达，页面上方已经按合伙人转介绍逻辑重新组织。</p>
+          </div>
+        </div>
+        <div class="gallery">
+          <figure class="shot"><img src="assets/slides/01-client-shift.png" alt="客户从 OPC 到 OPT 的变化"><figcaption>客户正在变成 OPC / OPT，对“全能工具栈”的需求变强。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/02-full-coverage.png" alt="Qoder 全场景覆盖"><figcaption>Qoder、QoderWork、QoderWake 覆盖编程、办公和数字员工。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/03-platform-three-abilities.png" alt="Qoder 全家桶三个能力"><figcaption>一个平台三种能力：编程、办公、数字员工。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/04-qoderwork-cases.png" alt="QoderWork 应用案例"><figcaption>QoderWork 适合一次性任务：报价、网站、合同抽取。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/05-qoderwake-cases.png" alt="QoderWake 应用案例"><figcaption>QoderWake 适合持续任务：日报、故障定位、长期重构。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/06-demo-contracts.png" alt="合同处理演示截图"><figcaption>合同批量处理演示：把材料交给 AI 办公搭子完成抽取。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/07-battle-map.png" alt="客户作战地图"><figcaption>按客户类型选择产品切入口，避免泛泛而谈。</figcaption></figure>
+          <figure class="shot"><img src="assets/slides/08-action-plan.png" alt="今天就做行动清单"><figcaption>行动节奏：现在开通，今天体验，本周演示。</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap source-panel">
+        <h3>来源与整理说明</h3>
+        <p>本页基于 2026-05-21「阿里云 AI 合伙人项目方案分享」飞书智能纪要和 8 张现场截图整理。页面删除了飞书内部临时图片链接和妙记跳转链接，只保留可公开传播的会议要点、客户口径和行动清单。</p>
+        <ul>
+          <li>纪要中部分产品名存在语音转写差异，本页统一按截图口径使用 Qoder / QoderWork / QoderWake。</li>
+          <li>飞书智能纪要由 AI 生成，个别数字和表述仍建议在正式对外商务材料中二次核对。</li>
+          <li>页面用途：给合伙人快速复盘、转介绍和准备客户演示。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>阿里云 AI 合伙人 Qoder 方案 · 2026-05-21</span>
+      <span class="mono">GitHub Pages field dossier</span>
+    </div>
+  </footer>
+</body>
+</html>
+

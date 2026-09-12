@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>访谈深度拆解 · 月烧 900 亿 token 的人怎么用 AI</title>
+<style>
+  :root{
+    --paper:#f6f4ef; --card:#fffdf9; --ink:#23262d; --ink-2:#555a64; --ink-3:#8a8f98;
+    --accent:#9a3412; --accent-soft:#f3e4da; --line:#e4dfd4; --blue:#1e3a5f;
+    --serif:"Noto Serif SC","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+  .layout{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;gap:48px}
+  main{max-width:780px;min-width:0;flex:1}
+
+  /* ---------- Hero ---------- */
+  header.hero{border-bottom:1px solid var(--line);padding:72px 0 48px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:20px}
+  h1{font-family:var(--serif);font-size:clamp(30px,4.6vw,46px);font-weight:900;line-height:1.3;letter-spacing:.01em}
+  h1 em{font-style:normal;color:var(--accent)}
+  .subtitle{margin-top:18px;font-size:17px;color:var(--ink-2);max-width:640px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 14px}
+  .chip b{color:var(--ink);font-weight:600}
+  /* ---------- TOC ---------- */
+  nav.toc{position:sticky;top:56px;align-self:flex-start;width:200px;flex-shrink:0;padding-top:64px;display:none}
+  @media(min-width:1120px){nav.toc{display:block}}
+  nav.toc .toc-title{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-3);margin-bottom:14px}
+  nav.toc a{display:block;font-size:13.5px;color:var(--ink-2);text-decoration:none;padding:6px 0 6px 14px;border-left:2px solid var(--line);transition:.15s}
+  nav.toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+
+  /* ---------- Sections ---------- */
+  section{padding:56px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:32px}
+  .sec-no{font-family:var(--serif);font-size:15px;color:var(--accent);font-weight:700;white-space:nowrap}
+  h2{font-family:var(--serif);font-size:28px;font-weight:900;letter-spacing:.02em}
+  .sec-head .sec-en{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-3)}
+  h3{font-family:var(--serif);font-size:19px;font-weight:700;margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+  h3::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:2px;flex-shrink:0}
+  p{margin:12px 0;color:var(--ink)}
+  p.dim{color:var(--ink-2)}
+  ul{margin:10px 0 10px 1.2em}
+  li{margin:7px 0}
+  li::marker{color:var(--accent)}
+  b,strong{font-weight:650}
+  .lead{font-size:17.5px;color:var(--ink-2)}
+
+  /* ---------- Cards & grids ---------- */
+  .grid{display:grid;gap:14px;margin:22px 0}
+  .grid.c2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .grid.c3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--ink-2);margin:6px 0}
+  .stat-num{font-family:var(--serif);font-size:38px;font-weight:900;color:var(--accent);line-height:1.15}
+  .stat-label{font-size:13px;color:var(--ink-3);margin-top:4px}
+  .card.accent{background:var(--accent-soft);border-color:#e0c9b8}
+
+  /* ---------- Quotes ---------- */
+  blockquote{margin:20px 0;padding:18px 22px;background:var(--card);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;font-family:var(--serif);font-size:16.5px;color:var(--ink)}
+  blockquote .ts{display:block;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:8px;letter-spacing:.05em}
+
+  /* ---------- Tables ---------- */
+  .table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+  th{font-family:var(--serif);font-size:13.5px;text-align:left;padding:12px 16px;background:#efe9dd;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  tr:last-child td{border-bottom:none}
+  td:first-child{font-weight:650;color:var(--ink);white-space:nowrap}
+  .score{font-family:var(--serif);font-weight:900;color:var(--blue);font-size:16px}
+  .score.hi{color:var(--accent)}
+
+  /* ---------- Flow ---------- */
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:24px 0}
+  .flow-step{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow-step+.flow-step{margin-left:34px}
+  .flow-step+.flow-step::before{content:"→";position:absolute;left:-27px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:700}
+  .flow-step .fs-role{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.08em;margin-bottom:4px}
+  .flow-step .fs-name{font-weight:700;font-size:14.5px}
+  .flow-step p{font-size:13px;color:var(--ink-2);margin:4px 0 0}
+  @media(max-width:760px){.flow{flex-direction:column}.flow-step+.flow-step{margin-left:0;margin-top:26px}.flow-step+.flow-step::before{left:50%;top:-22px;transform:translateX(-50%) rotate(90deg)}}
+
+  .note{margin:24px 0;padding:16px 20px;background:#fbf3e8;border:1px solid #ecd9b8;border-radius:10px;font-size:14px;color:#7a5a1e}
+  .tag{display:inline-block;font-size:11.5px;font-family:var(--mono);padding:2px 9px;border-radius:5px;background:var(--accent-soft);color:var(--accent);margin-right:6px;letter-spacing:.03em}
+
+  footer{margin-top:80px;border-top:1px solid var(--line);padding:32px 0 56px;font-size:13px;color:var(--ink-3)}
+  footer a{color:var(--accent);text-decoration:none}
+  ::selection{background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc">
+  <div class="toc-title">目录 · CONTENTS</div>
+  <a href="#overview">〇 三十秒速览</a>
+  <a href="#bill">壹 Token 账单</a>
+  <a href="#dao">贰 道 · 底层认知</a>
+  <a href="#fa">叁 法 · 方法论</a>
+  <a href="#shu">肆 术 · 实操技巧</a>
+  <a href="#qi">伍 器 · 模型武器库</a>
+  <a href="#shi">陆 势 · 趋势判断</a>
+  <a href="#quotes">柒 语录墙</a>
+  <a href="#risk">捌 阅读须知</a>
+</nav>
+
+<main>
+
+<header class="hero">
+  <div class="kicker">内部调研纪要 · 深度拆解 · 2026-08-14</div>
+  <h1>一个月烧 <em>900 亿 token</em> 的人，<br>是怎么用大模型的</h1>
+  <p class="subtitle">对一场 63 分钟一对一用户访谈的匿名化拆解：聚焦 Codex / Claude / DeepSeek / Kimi 的任务分工、使用成本与国产模型格局判断。</p>
+  <div class="meta-row">
+    <span class="chip">形式 · <b>一对一用户访谈</b></span>
+    <span class="chip">时长 · <b>约 63 分钟</b></span>
+    <span class="chip">调研主题 · <b>Token 使用习惯 × 大模型评价</b></span>
+    <span class="chip">拆解框架 · <b>道 · 法 · 术 · 器 · 势</b></span>
+  </div>
+</header>
+
+<!-- ================= 0 ================= -->
+<section id="overview">
+  <div class="sec-head"><span class="sec-no">第〇章</span><h2>三十秒速览</h2><span class="sec-en">TL;DR</span></div>
+  <p class="lead">访谈方（从提问看，像是在为 DeepSeek 做深度用户调研）只关心三件事：<b>你的 token 花在哪、你怎么评价各家模型、你未来会用谁更多</b>。而嘉宾给出的回答，是一份罕见的、用真金白银换来的模型选型地图。</p>
+  <div class="grid c3">
+    <div class="card"><h4>使用特征</h4><p>30 天消耗约 900 亿 token，主要用于多 Agent 调度、研究与开发；其中约 96% 集中在 Codex。</p></div>
+    <div class="card"><h4>分析重点</h4><p>关注模型能力边界、缓存成本、任务分层、工具链可靠性，以及新模型在真实任务中的表现。</p></div>
+    <div class="card accent"><h4>最核心的判断</h4><p>DeepSeek 将成国内龙头（份额看 40%）；终局剩约六家；竞争从刷榜转向分层路由；能力若趋同，价格定胜负。</p></div>
+  </div>
+</section>
+
+<!-- ================= 1 ================= -->
+<section id="bill">
+  <div class="sec-head"><span class="sec-no">第壹章</span><h2>Token 账单：900 亿去了哪</h2><span class="sec-en">THE BILL</span></div>
+  <div class="grid c3">
+    <div class="card"><div class="stat-num">900亿+</div><div class="stat-label">30 天总 token 消耗</div></div>
+    <div class="card"><div class="stat-num">96%</div><div class="stat-label">消耗集中在 Codex 的 project 上；Kimi 约 30 亿（3%）</div></div>
+    <div class="card"><div class="stat-num">~70%</div><div class="stat-label">用于公开数据整理 + SEO/流量研究，其余为开发与日常对话</div></div>
+    <div class="card"><div class="stat-num">96%</div><div class="stat-label">Codex 缓存命中率——「还是挺省钱的」</div></div>
+    <div class="card"><div class="stat-num">~90%</div><div class="stat-label">Kimi 侧消耗里缓存读取的占比：长任务反复复读上下文</div></div>
+    <div class="card"><div class="stat-num">多 Agent</div><div class="stat-label">规划、并行执行与验收分层协作</div></div>
+  </div>
+  <h3>钱具体花在什么任务上</h3>
+  <ul>
+    <li><b>并行 Agent 调度</b>：长期项目不断复刻出大量子 Agent，研究、复核、汇总，消耗最大。</li>
+    <li><b>SEO/流量研究</b>：分析公开页面、搜索流量结构、外链与转化路径。</li>
+    <li><b>公开数据整理</b>：批量收集、清洗和归档可用于后续研究的数据。</li>
+    <li><b>知识管理自动化</b>：把会议纪要等信息自动提取、结构化并沉淀到资料库。</li>
+  </ul>
+  <div class="note"><b>关键洞察：他烧的不是对话，是缓存。</b>Kimi 约 90% 的消耗来自长任务反复复读上下文。选模型时，缓存命中率和缓存计价方式比单价更重要——这是他账单里藏得最深的一课。</div>
+</section>
+
+<!-- ================= 3 道 ================= -->
+<section id="dao">
+  <div class="sec-head"><span class="sec-no">第贰章</span><h2>道 · 底层认知</h2><span class="sec-en">PRINCIPLES</span></div>
+  <p class="lead">「道」回答的是：他相信什么。这六条认知是他的操作系统，后面所有的方法都是它们的应用。</p>
+
+  <h3>1. 能力优先，价格次之</h3>
+  <p>选模型的排序是 <b>能力 &gt; 价格 &gt; 速度/稳定性</b>。他不用 DeepSeek 做主力开发，不是嫌贵，而是「Codex 怎么样都比 DP 强」。「能力」在他这涵盖速度、稳定性等所有实际体感。</p>
+  <div class="note">访谈结论：预算允许时优先选择能力更强、在真实任务中更稳定的模型。</div>
+
+  <h3>2. 模型是大脑，Harness 是身体和工作环境</h3>
+  <p>评价 DeepSeek 前一天发布的 Harness 时，他给出全场最完整的认知框架：<b>模型负责「谁在干活、怎么决策」；Harness 负责「给它什么环境、工具、权限、运行机制」</b>。他还特意考证了词源：harness 原指马具——「把马的力量组织起来连接到车」；软件工程里也早有 test harness（测试支架）——不是被测的算法本身，而是为运行测试准备的数据和环境。</p>
+
+  <h3>3. 「万物皆可插件」的价值在平台和企业，不在个人</h3>
+  <p>文件系统、终端这些基础能力，Claude Code 已经打磨得很好，个人开发者没必要为了架构先进去迁移、去重新造轮子。但企业场景完全不同：同一个任务，有人在本机跑、有人在远程 Docker 跑；有人允许读写整个仓库、有人只让读几个目录；还有审计、权限、内部 MCP、私有工具链——<b>对 Agent 来说都是「调用终端」，底层实现千差万别</b>。把这一层做成标准可替换的扩展点、又不用改 Agent 的决策逻辑，才是 Harness 的真正价值。他的结论非常克制：</p>
+  <blockquote>「普通开发者现在还用不上……但做 Agent 的、做平台的、做企业系统的人，这种架构思路很值得研究。」<span class="ts">36:32 – 37:05</span></blockquote>
+
+  <h3>4. 榜单是生意，实测才是真相</h3>
+  <blockquote>「榜单其实也是一门生意，他们很多刷榜的。你自己实际开发实际用的时候，其实还是能感觉到的。」<span class="ts">53:11</span></blockquote>
+  <p>每出一个新模型（GLM 新款、DP V4、Flash 他都测过），他就拿<b>自己历史真实任务</b>做回归测试；跑不过现有组合，就不深入、不迁移。</p>
+
+  <h3>5. AI 的能力边界由开源生态决定</h3>
+  <p>为什么 AI 写代码强？因为软件开源语料多。为什么 AI 在硬件上帮助很小？因为硬件生态不开源。但在<b>嵌入式软件/固件</b>上帮助很大。</p>
+
+  <h3>6. 竞争是用户的红利</h3>
+  <blockquote>「国产模型变强，逼着 Codex、Claude Code 一直降价……Luna 降了 93%。鹬蚌相争，我们得利。」<span class="ts">56:59 – 01:01:43</span></blockquote>
+</section>
+
+<!-- ================= 4 法 ================= -->
+<section id="fa">
+  <div class="sec-head"><span class="sec-no">第叁章</span><h2>法 · 方法论</h2><span class="sec-en">METHODS</span></div>
+  <p class="lead">「法」回答的是：他怎么组织工作。核心是一套「贵模型思考、便宜模型干活」的多 Agent 流水线。</p>
+
+  <h3>主工作流：规划 → 并行执行 → 验收合并</h3>
+  <div class="flow">
+    <div class="flow-step"><div class="fs-role">规划层</div><div class="fs-name">Sonnet / Codex</div><p>出 plan、出 PRD、方案审查，制定完整开发计划</p></div>
+    <div class="flow-step"><div class="fs-role">执行层</div><div class="fs-name">Luna Max × N</div><p>按功能拆分给多个子 Agent 并行开发，「非常丝滑、非常划算」</p></div>
+    <div class="flow-step"><div class="fs-role">收口层</div><div class="fs-name">Sonnet / Codex</div><p>验收、合并、候选；验收合格立即回收对应 Agent</p></div>
+  </div>
+  <p class="dim">成本逻辑：Luna 按 API 计价约为 DP V4 Pro 的 6 倍，但<b>订阅制</b>下「跑一天才消耗百分之几」，反而远便宜——所以子 Agent 全用 Luna Max 是「最便宜的方式」。</p>
+
+  <h3>访谈中的工作流提示词</h3>
+  <blockquote>「我不懂这个领域 → 先喂给你官方信息 → 你自己思考，用 50 个 Agent 去研究 → 后续全由你自主规划任务、持续开发 → 不需要请示，所有权限开放 → 用 plan 制定完整开发计划 → 每个功能分配子 Agent 并行开发 → 验收合格立即回收对应 Agent。」<span class="ts">03:13 – 04:01 · 提示词结构还原</span></blockquote>
+  <p>900 亿消耗的根源正在于此：几个长期项目不断复刻出大量 Agent，Agent 的研究、复核、汇总层层放大 token 用量。</p>
+
+  <h3>新模型评估法</h3>
+  <ul>
+    <li>不看榜单、不看参数——榜单「是一门生意」。</li>
+    <li>每出新模型，拿<b>自己以前的真实任务</b>跑回归测试。</li>
+    <li>测不过「现有模型搭配」就放弃，保证「能力范围内用最好的」。</li>
+  </ul>
+
+</section>
+
+<!-- ================= 5 术 ================= -->
+<section id="shu">
+  <div class="sec-head"><span class="sec-no">第肆章</span><h2>术 · 实操技巧与坑</h2><span class="sec-en">TACTICS</span></div>
+  <p class="lead">「术」是可以直接抄走的细节，包括他踩过的坑。</p>
+
+  <h3>Flash 类便宜模型：能用，但三个坑</h3>
+  <ul>
+    <li><b>定位</b>：批处理、测试修补、低风险子任务、不用人验收的高频执行层。便宜，所以「可以多跑几轮」。</li>
+    <li><b>坑一·错误扩散</b>：没有 define 边界、没有 schema、没有回滚时，「多跑几轮只会把错误扩散得更快」。</li>
+    <li><b>坑二·假长上下文</b>：标称 1M 只是容量规格，不代表能从几十万 token 里稳定揪出每个关键约束。</li>
+    <li><b>坑三·首次通过率低</b>：视觉是缺口；对开发而言首次通过率很重要。</li>
+  </ul>
+
+  <h3>Pro 类大模型：强在规划，坑在过度思考</h3>
+  <ul>
+    <li><b>适合</b>：复杂规划、修改前影响分析、疑难 bug 排查计划、数据迁移、权限兼容性设计、长文档、架构问题。中文工程性价比高、判断密度高。</li>
+    <li><b>坑</b>：过度思考——「为了减少错误，只增加了等待和输出 token，不一定保证质量」。小任务上 Pro 的额外思考没有收益，用 Flash 反而高效。</li>
+  </ul>
+
+  <h3>工具链的暗坑</h3>
+  <p>他实测 DP Flash：第一轮能正常调用 Agent 工具，第二轮因上下文丢失直接报 400，后面的子 Agent 全部断掉——「Agent 的工具链不够完善」。另外视觉搜索、浏览器模式、OCR 这些能力，模型能输出函数调用，但 API 不自带搜索索引。<b>「强模型配上错误的回复，就会表现为不会调用工具」</b>——能力受工具协议和 Harness 适配的制约。</p>
+</section>
+
+<!-- ================= 6 器 ================= -->
+<section id="qi">
+  <div class="sec-head"><span class="sec-no">第伍章</span><h2>器 · 模型武器库</h2><span class="sec-en">TOOLBOX</span></div>
+  <p class="lead">「器」是他对 11 款模型的分工定位与亲测打分。这是全场信息密度最高的部分。</p>
+
+  <h3>分工定位表</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>模型</th><th>在他工作流里的位置</th><th>一句话评价</th></tr>
+    <tr><td>Codex</td><td>主力：高风险工程、结构化执行、复杂任务闭环</td><td>消耗占比约 96%；工具生态与工程闭环最好</td></tr>
+    <tr><td>Claude Sonnet</td><td>规划层：出 plan、出 PRD，最后合并收口</td><td>能力 9 分全场最高；与 Luna 搭配性价比最优</td></tr>
+    <tr><td>Luna (Max)</td><td>执行层主力：批量子 Agent</td><td>低成本，适合规模化执行</td></tr>
+    <tr><td>Kimi</td><td>前端、长上下文任务、网站诊断监控、多模态</td><td>前端能力约持平 Sonnet 4.5；1M 上下文</td></tr>
+    <tr><td>DeepSeek Flash</td><td>批处理、低风险子任务</td><td>低成本执行「跨过了可用的标准线」</td></tr>
+    <tr><td>DeepSeek Pro</td><td>复杂规划、难 bug、数据迁移、兼容性设计</td><td>复杂规划好，但慢（过度思考）</td></tr>
+    <tr><td>Claude</td><td>写作、架构讨论、需求澄清、review、图片/PDF</td><td>需求澄清与细致审查能力突出</td></tr>
+    <tr><td>Gemini</td><td>多模态 + 谷歌生态入口</td><td>「没落了」，能力没跟上 Codex/Claude</td></tr>
+    <tr><td>千问 Qwen</td><td>本地/私有化部署、OCR、定制</td><td>部署便宜、生态开放；缺点是版本更新太频繁</td></tr>
+    <tr><td>智谱 GLM</td><td>中文 PRD、规范类、长文本工程规划、结构化输出</td><td>适合国内业务与中文表达</td></tr>
+    <tr><td>MiniMax</td><td>视频与多模态场景</td><td>不卷 coding 的差异化样本</td></tr>
+  </table>
+  </div>
+
+  <h3>访谈评分（10 分制 · 价格分越高越便宜）</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>模型</th><th>能力</th><th>价格</th><th>速度</th><th>解读</th></tr>
+    <tr><td>DeepSeek Flash</td><td class="score">6.5</td><td class="score hi">9</td><td class="score">8.5</td><td>便宜快，能力刚跨过可用线</td></tr>
+    <tr><td>DeepSeek Pro</td><td class="score">7.5</td><td class="score hi">9</td><td class="score">7</td><td>规划强，速度慢半拍</td></tr>
+    <tr><td>Claude Sonnet</td><td class="score hi">9</td><td class="score">6.5</td><td class="score">7</td><td>能力天花板，价格也最贵</td></tr>
+    <tr><td>Luna</td><td class="score">8</td><td class="score hi">9</td><td class="score">7</td><td>性价比之王，执行层首选</td></tr>
+    <tr><td>Kimi</td><td class="score">8.5</td><td class="score">6</td><td class="score">8</td><td>前端与长上下文值回票价</td></tr>
+  </table>
+  </div>
+  <p class="dim">补充：访谈里对 DP 最大的期待是<b>多模态</b>——「有了多模态，它就能跟很多模型在实际开发中碰一碰，不是说那些指标榜单」。</p>
+</section>
+
+<!-- ================= 7 势 ================= -->
+<section id="shi">
+  <div class="sec-head"><span class="sec-no">第陆章</span><h2>势 · 趋势判断</h2><span class="sec-en">THE FUTURE</span></div>
+  <p class="lead">「势」是他对未来 6 个月到 3 年的行业判断——访谈方最关心、他也答得最干脆的部分。</p>
+  <div class="grid c2">
+    <div class="card accent"><h4>判断一 · DeepSeek 国内份额 → 40%</h4><p>理由：国家扶持力度（党政背书、华为、国家电网）+ 模型自身争气 + 公司不差钱。「肯定留下来，而且是龙头、是老大。」</p></div>
+    <div class="card accent"><h4>判断二 · 采用率有望提升</h4><p>前提是多模态、上下文与工具调用补齐；届时 DeepSeek 可以承接更多原本交给其他执行模型的任务。</p></div>
+    <div class="card"><h4>判断三 · 终局约六家</h4><p>DeepSeek（龙头）、千问、智谱、Kimi、MiniMax、豆包（靠用户基数）。腾讯混元「能力太差，很难留下」。厂商会转向细分赛道：多模态、桌面 Agent、办公等。</p></div>
+    <div class="card"><h4>判断四 · 竞争形态变了</h4><p>从「单模型总榜竞争」转向<b>任务类、风险类、模态类、成本、部署方式的分层路由竞争</b>。一家刚在某领域拿第一，马上被追上——「谁第一的状态很短很短」。</p></div>
+    <div class="card"><h4>判断五 · 能力不会真正趋同</h4><p>各家一起上升，部分能力持平，但不可能所有能力持平；中国模型在供给、成本、采购选择权上持续给美国同行压力。</p></div>
+    <div class="card"><h4>判断六 · 若能力持平，价格定胜负</h4><p>「如果最后大家模型能力都差不多，能决定你用谁的，那就是价格。」</p></div>
+  </div>
+  <blockquote>「他（DeepSeek）是以一种取之不尽的生态在这里……我觉得最强的肯定是 DP。」<span class="ts">01:02:13</span></blockquote>
+</section>
+
+<!-- ================= 7 语录 ================= -->
+<section id="quotes">
+  <div class="sec-head"><span class="sec-no">第柒章</span><h2>语录墙</h2><span class="sec-en">QUOTES</span></div>
+  <p class="dim">以下均为逐字稿原文（保留口语质感），可直接引用。</p>
+  <blockquote>「我其实是一直在验证这个 AI 的边界能力是在哪里。」<span class="ts">02:07</span></blockquote>
+  <blockquote>「最便宜的方式就是：主模型规划好整个 PRD，所有子 Agent 都用 Luna Max——非常丝滑，非常划算。」<span class="ts">21:18</span></blockquote>
+  <blockquote>「榜单其实也是一门生意，他们很多刷榜的。」<span class="ts">53:11</span></blockquote>
+  <blockquote>「标称 1M 上下文只是容量规格——能读很多，不代表能稳定找出分散在几十万 token 里的每个关键约束。」<span class="ts">30:09 · 评 Flash</span></blockquote>
+  <blockquote>「它只是增加了等待和输出 token，不一定保证任务质量。小任务用 Pro 没有收益，用 Flash 更高效。」<span class="ts">31:26 · 评过度思考</span></blockquote>
+  <blockquote>「AI 写代码强是因为开源语料多；硬件生态不开源，所以 AI 在硬件上帮助非常少。」<span class="ts">08:09</span></blockquote>
+  <blockquote>「一个强模型配上错误的回复，就会表现为不会调用工具。」<span class="ts">55:35 · 评工具链</span></blockquote>
+  <blockquote>「鹬蚌相争，我们得利。我是相信 DP 会越来越好的。」<span class="ts">57:10</span></blockquote>
+  <blockquote>「如果最后大家模型能力都差不多，能决定你用谁的，那就是价格。」<span class="ts">01:03:19</span></blockquote>
+</section>
+
+<!-- ================= 8 风险 ================= -->
+<section id="risk">
+  <div class="sec-head"><span class="sec-no">第捌章</span><h2>阅读须知</h2><span class="sec-en">DISCLAIMER</span></div>
+  <ul>
+    <li><b>转写失真</b>：原始材料为语音识别逐字稿，错别字较多。本文已按上下文还原（如 code s → Codex，售/瘦 → Sonnet，底气/DP → DeepSeek，质谱 → 智谱，可乐 → Claude，君子兰 → Gemini，A准 → Agent，honest → Harness）；个别名称（如「露娜/Luna」型号归属）无法完全确认，数字引用前请与录音核对。</li>
+    <li><b>一家之言</b>：所有模型评价与行业预测均为嘉宾个人体感。这是一份真实的一手用户视角，而非客观结论。</li>
+  </ul>
+</section>
+
+<footer>
+  <p>素材：2026-08-14 13:56 访谈逐字稿 · 拆解框架：道法术器势 · 本文由 AI 基于逐字稿全文整理</p>
+  <p>仓库：<a href="https://github.com/siuserxiaowei/interview-breakdown">github.com/siuserxiaowei/interview-breakdown</a></p>
+</footer>
+
+</main>
+</div>
+</body>
+</html>

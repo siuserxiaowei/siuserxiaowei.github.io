@@ -1,0 +1,1857 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stripe 独立创业者产品学习地图</title>
+    <meta
+      name="description"
+      content="把 Stripe Sessions 2026 公开转述中的 indie/solo founder 案例拆成可学习的出海产品路线、产品链接库和行动清单。"
+    />
+    <link rel="canonical" href="https://siuserxiaowei.github.io/library/stripe-solo-operators-report/" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/share-card.png" />
+    <meta name="theme-color" content="#f4efe5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://siuserxiaowei.github.io/library/stripe-solo-operators-report/" />
+    <meta property="og:title" content="Stripe 独立创业者产品学习地图" />
+    <meta
+      property="og:description"
+      content="拆解 34 个 indie/solo founder 产品，整理产品链接库、出海路线和 90 天验证动作。"
+    />
+    <meta property="og:image" content="https://siuserxiaowei.github.io/library/stripe-solo-operators-report/assets/share-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Solo Product Study Map share card" />
+    <meta property="og:site_name" content="Solo Product Study Map" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stripe 独立创业者产品学习地图" />
+    <meta
+      name="twitter:description"
+      content="拆解 34 个 indie/solo founder 产品，整理产品链接库、出海路线和 90 天验证动作。"
+    />
+    <meta name="twitter:image" content="https://siuserxiaowei.github.io/library/stripe-solo-operators-report/assets/share-card.png" />
+    <style>
+      :root {
+        --ink: #15130f;
+        --muted: #6d655c;
+        --paper: #f4efe5;
+        --panel: #fffaf0;
+        --line: #d6c7b5;
+        --black: #20201d;
+        --blue: #245f9d;
+        --green: #28745a;
+        --red: #b5483c;
+        --amber: #b97823;
+        --mint: #e0eedc;
+        --sky: #dceaf2;
+        --rose: #f2dfdc;
+        --shadow: 0 16px 36px rgba(30, 24, 18, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(90deg, rgba(32, 32, 29, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(32, 32, 29, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 10% 8%, rgba(36, 95, 157, 0.14), transparent 32rem),
+          radial-gradient(circle at 86% 0%, rgba(181, 72, 60, 0.12), transparent 28rem),
+          var(--paper);
+        background-size: 24px 24px, 24px 24px, auto, auto, auto;
+        font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Noto Serif SC", serif;
+        line-height: 1.72;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgba(36, 95, 157, 0.55);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(32, 32, 29, 0.12);
+        background: rgba(244, 239, 229, 0.9);
+        backdrop-filter: blur(15px);
+      }
+
+      .topbar-inner {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: var(--black);
+        box-shadow: 4px 4px 0 var(--blue);
+      }
+
+      .nav {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+        border-color: rgba(32, 32, 29, 0.22);
+        background: rgba(255, 255, 255, 0.46);
+      }
+
+      .hero {
+        min-height: calc(100svh - 64px);
+        display: grid;
+        grid-template-columns: minmax(0, 0.94fr) minmax(320px, 0.56fr);
+        align-items: center;
+        gap: clamp(28px, 6vw, 74px);
+        padding: clamp(42px, 7vw, 88px) 0 44px;
+      }
+
+      .eyebrow,
+      .kicker,
+      .mono,
+      .tag,
+      .filter,
+      .copy,
+      .link-pill {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 18px;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: var(--green);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 22px;
+        font-size: clamp(46px, 8.7vw, 116px);
+        line-height: 0.9;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .lede {
+        max-width: 760px;
+        margin-bottom: 28px;
+        color: #3a332c;
+        font-size: clamp(18px, 2.1vw, 25px);
+        line-height: 1.58;
+      }
+
+      .hero-actions,
+      .contact-actions,
+      .filters,
+      .quick-links,
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        border: 1px solid var(--black);
+        color: #fff;
+        background: var(--black);
+        box-shadow: 5px 5px 0 rgba(36, 95, 157, 0.45);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .button:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 rgba(36, 95, 157, 0.45);
+      }
+
+      .button.secondary {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: none;
+      }
+
+      .brief {
+        padding: 22px;
+        border: 1px solid var(--black);
+        background: rgba(255, 250, 240, 0.82);
+        box-shadow: var(--shadow);
+      }
+
+      .brief h2 {
+        margin-bottom: 12px;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.02;
+      }
+
+      .brief-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .brief-list li {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        padding: 11px 0;
+        border-top: 1px solid rgba(32, 32, 29, 0.12);
+      }
+
+      .brief-list b {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        color: #fff;
+        background: var(--black);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+        align-items: end;
+        gap: 28px;
+        margin-bottom: 26px;
+      }
+
+      .kicker {
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 7px 0 0;
+        font-size: clamp(32px, 5.2vw, 68px);
+        line-height: 0.98;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .lesson {
+        min-height: 250px;
+        padding: 18px;
+        border: 1px solid rgba(32, 32, 29, 0.2);
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 10px 24px rgba(30, 24, 18, 0.06);
+      }
+
+      .lesson-num {
+        display: inline-grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 16px;
+        color: #fff;
+        background: var(--black);
+      }
+
+      .lesson h3 {
+        margin-bottom: 9px;
+        font-size: 24px;
+        line-height: 1.18;
+      }
+
+      .lesson p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .study-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .study {
+        display: flex;
+        min-height: 306px;
+        flex-direction: column;
+        padding: 16px;
+        border: 1px solid rgba(32, 32, 29, 0.22);
+        background: rgba(255, 250, 240, 0.72);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .study:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .study .tag {
+        align-self: flex-start;
+        margin-bottom: 12px;
+        padding: 4px 7px;
+        border: 1px solid currentColor;
+        color: var(--blue);
+        font-size: 11px;
+      }
+
+      .study h3 {
+        margin-bottom: 8px;
+        font-size: 23px;
+        line-height: 1.16;
+      }
+
+      .study p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .study .links {
+        margin-top: auto;
+      }
+
+      .link-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 5px 8px;
+        border: 1px solid rgba(32, 32, 29, 0.16);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.48);
+        font-size: 11px;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      .link-pill:hover {
+        color: #fff;
+        background: var(--black);
+      }
+
+      .routes {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        border: 1px solid var(--black);
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .route {
+        min-height: 255px;
+        padding: 16px;
+        border-right: 1px solid rgba(32, 32, 29, 0.22);
+      }
+
+      .route:last-child {
+        border-right: 0;
+      }
+
+      .route h3 {
+        min-height: 58px;
+        margin-bottom: 10px;
+        font-size: 22px;
+        line-height: 1.18;
+      }
+
+      .route p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .route strong {
+        color: var(--blue);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .filter {
+        min-height: 36px;
+        padding: 7px 11px;
+        border: 1px solid rgba(32, 32, 29, 0.22);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.48);
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .filter.active,
+      .filter:hover {
+        color: #fff;
+        background: var(--black);
+      }
+
+      .search {
+        width: min(320px, 100%);
+        min-height: 38px;
+        padding: 8px 12px;
+        border: 1px solid rgba(32, 32, 29, 0.25);
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .search-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .clear-search {
+        min-height: 38px;
+        padding: 8px 11px;
+        border: 1px solid rgba(32, 32, 29, 0.22);
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .clear-search:hover,
+      .clear-search:focus-visible {
+        color: #fff;
+        background: var(--black);
+      }
+
+      .directory-status {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .no-results {
+        grid-column: 1 / -1;
+        padding: 22px;
+        border: 1px dashed rgba(32, 32, 29, 0.28);
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .directory {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .entry {
+        display: flex;
+        min-height: 242px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        border: 1px solid rgba(32, 32, 29, 0.2);
+        background: rgba(255, 255, 255, 0.48);
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .entry h3 {
+        margin: 0;
+        font-size: 21px;
+        line-height: 1.18;
+      }
+
+      .handle {
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .entry p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .entry .links {
+        margin-top: auto;
+      }
+
+      .confidence {
+        align-self: flex-start;
+        flex: 0 0 auto;
+        padding: 4px 6px;
+        border: 1px solid currentColor;
+        color: var(--green);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      .confidence.medium {
+        color: var(--amber);
+      }
+
+      .confidence.low {
+        color: var(--red);
+      }
+
+      .playbook {
+        display: grid;
+        grid-template-columns: 0.32fr 0.68fr;
+        gap: 18px;
+      }
+
+      .scorecard,
+      .steps {
+        border: 1px solid rgba(32, 32, 29, 0.2);
+        background: rgba(255, 250, 240, 0.66);
+      }
+
+      .scorecard {
+        padding: 18px;
+      }
+
+      .scorecard h3 {
+        font-size: 26px;
+      }
+
+      .scorecard ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .scorecard li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 10px;
+        border: 1px solid rgba(32, 32, 29, 0.14);
+        background: rgba(255, 255, 255, 0.5);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 16px;
+        padding: 16px;
+        border-bottom: 1px solid rgba(32, 32, 29, 0.16);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .step strong {
+        color: var(--blue);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .step h3 {
+        margin-bottom: 4px;
+        font-size: 22px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .reading-note {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .warn {
+        padding: 14px;
+        border: 1px solid rgba(32, 32, 29, 0.18);
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .warn b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--red);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .warn p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.62fr) minmax(240px, 0.38fr);
+        gap: 18px;
+        align-items: stretch;
+        border: 1px solid var(--black);
+        background: rgba(255, 250, 240, 0.78);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-copy {
+        padding: clamp(22px, 4vw, 34px);
+      }
+
+      .contact-copy h2 {
+        margin-bottom: 14px;
+      }
+
+      .contact-copy p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .contact-id {
+        display: inline-flex;
+        margin-top: 10px;
+        padding: 9px 11px;
+        border: 1px solid rgba(32, 32, 29, 0.22);
+        background: rgba(255, 255, 255, 0.58);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .copy-contact {
+        display: inline-flex;
+        align-items: center;
+        min-height: 39px;
+        margin-top: 10px;
+        padding: 8px 11px;
+        border: 1px solid var(--black);
+        color: #fff;
+        background: var(--black);
+        cursor: pointer;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .qr-card {
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        border-left: 1px solid rgba(32, 32, 29, 0.2);
+        background: #fff;
+      }
+
+      .qr-card img {
+        width: min(100%, 280px);
+        height: auto;
+        display: block;
+      }
+
+      .goal {
+        border: 1px solid var(--black);
+        background: #11100e;
+        color: #eee9dd;
+        box-shadow: 10px 10px 0 rgba(36, 95, 157, 0.38);
+        overflow: hidden;
+      }
+
+      .goal-bar {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .copy {
+        min-height: 34px;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #eee9dd;
+        background: transparent;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      pre {
+        margin: 0;
+        padding: 20px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.62;
+      }
+
+      .footer {
+        padding: 34px 0 44px;
+        border-top: 1px solid rgba(32, 32, 29, 0.16);
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 18;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--black);
+        color: #fff;
+        background: var(--black);
+        cursor: pointer;
+        box-shadow: 4px 4px 0 rgba(36, 95, 157, 0.45);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1080px) {
+        .hero,
+        .section-head,
+        .playbook {
+          grid-template-columns: 1fr;
+        }
+
+        .lesson-grid,
+        .directory {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .study-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .routes {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .route {
+          border-bottom: 1px solid rgba(32, 32, 29, 0.22);
+        }
+
+        .route:nth-child(3n) {
+          border-right: 0;
+        }
+
+        .reading-note {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .qr-card {
+          border-top: 1px solid rgba(32, 32, 29, 0.2);
+          border-left: 0;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .wrap {
+          width: min(100% - 22px, 1180px);
+        }
+
+        .topbar-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 12px 0;
+        }
+
+        .nav {
+          width: 100%;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 34px;
+        }
+
+        h1 {
+          font-size: clamp(36px, 12vw, 58px);
+        }
+
+        .lesson-grid,
+        .study-grid,
+        .routes,
+        .directory,
+        .reading-note {
+          grid-template-columns: 1fr;
+        }
+
+        .route,
+        .route:nth-child(3n) {
+          border-right: 0;
+        }
+
+        .toolbar {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .search {
+          width: 100%;
+        }
+
+        .search-wrap,
+        .clear-search {
+          width: 100%;
+        }
+
+        .step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <div class="brand">
+          <span class="brand-mark">S</span>
+          <span>Solo Product Study Map</span>
+        </div>
+        <nav class="nav" aria-label="页面导航">
+          <a href="#learn">能学什么</a>
+          <a href="#study">先看谁</a>
+          <a href="#routes">出海路线</a>
+          <a href="#directory">产品链接库</a>
+          <a href="#playbook">90 天动作</a>
+          <a href="#contact">联系</a>
+          <a href="#goal">/goal</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div>
+          <p class="eyebrow">把案例变成作业，而不是把名单变成八卦</p>
+          <h1>这 34 个人真正值得看的，是他们怎么把小产品变成收钱系统。</h1>
+          <p class="lede">
+            这篇文章最有价值的地方，不是“谁被 Stripe 放上 PPT”，而是它给了一个出海产品库：
+            目录、平台增强、AI 工作流、职业身份、分发工具、模板、API、portfolio。你要学的不是产品表面，而是“用户是谁、痛点多高频、怎么收钱、怎么获客、能否自动交付”。
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#directory">直接看产品链接</a>
+            <a class="button secondary" href="#study">看优先研究样本</a>
+            <a class="button secondary" href="#contact">加微信交流</a>
+          </div>
+        </div>
+
+        <aside class="brief">
+          <h2>阅读这篇文章时，先抓 4 个问题。</h2>
+          <ul class="brief-list">
+            <li><b>1</b><span>这个产品卖给谁？创始人、运营、客服、销售、开发者、设计师，还是普通消费者？</span></li>
+            <li><b>2</b><span>用户买的是软件，还是一个明确结果？比如“职业头像”“客服降本”“别漏销售线索”。</span></li>
+            <li><b>3</b><span>它借了哪个生态？Slack、Notion、Tailwind、macOS、X、Stripe、Google Sheets、SEO。</span></li>
+            <li><b>4</b><span>它的获客能不能复利？内容、免费工具、目录页、marketplace、build in public、模板传播。</span></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section id="learn" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">What to learn</span>
+            <h2>看完这篇文章，最该学到 9 件事。</h2>
+          </div>
+          <p class="note">不要抄“AI 头像”“AI chatbot”“link in bio”这些表皮。真正该抄的是结构：痛点、生态、分发、交付、定价。</p>
+        </div>
+
+        <div class="lesson-grid">
+          <article class="lesson">
+            <span class="lesson-num mono">01</span>
+            <h3>卖结果，不卖技术。</h3>
+            <p>HeadshotPro 卖职业形象，Chatbase 卖客服降本，AI2SQL 卖“不会 SQL 也能查数据”。产品名和落地页都要让用户 5 秒内知道结果。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">02</span>
+            <h3>先借生态，再造品牌。</h3>
+            <p>HelpKit 借 Notion，Simple Poll 借 Slack，Tailscan 借 Tailwind，BoltAI 借 macOS。已有生态等于已有用户、已有习惯、已有预算。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">03</span>
+            <h3>分发不是附属品。</h3>
+            <p>Tweet Hunter、Taplio、SuperX、Memelord 的产品本身就服务分发。你越能帮别人增长，你自己的获客叙事越天然。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">04</span>
+            <h3>目录和数据库仍然能赚钱。</h3>
+            <p>Nomad List、Remote OK、BetaList、JobBoardSearch 证明：把混乱信息标准化、筛选化、可搜索化，本身就是产品。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">05</span>
+            <h3>Portfolio 比孤注一掷更适合普通人。</h3>
+            <p>Pieter、Tony、Marc Lou、Wilbert、Charlie 都是组合拳。一个产品赚现金流，一个产品做流量，一个产品练能力，一个产品等待出售。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">06</span>
+            <h3>小功能也可以大生意。</h3>
+            <p>Simple Poll 只是 Slack 投票，HelpKit 只是 Notion 发布，Checkout Page 只是支付页。小不是问题，低频、无预算、无分发才是问题。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">07</span>
+            <h3>AI wrapper 不是原罪，泛化才是。</h3>
+            <p>Chatbase、PDF.ai、SetterAI、Okara 都不是“万能助手”，而是绑定岗位和流程。越具体，越容易收费。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">08</span>
+            <h3>自动交付决定天花板。</h3>
+            <p>API、模板、SaaS、AI agent、目录、macOS app 都可以低边际成本扩张。人工服务能起步，但要尽快产品化。</p>
+          </article>
+          <article class="lesson">
+            <span class="lesson-num mono">09</span>
+            <h3>先收一笔小钱，再谈宏大叙事。</h3>
+            <p>第一阶段不是“做成 Stripe PPT 上的人”，而是让一个陌生人掏 $10、$49、$99。钱比点赞诚实。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="study" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Study first</span>
+            <h2>如果时间有限，先研究这 12 个样本。</h2>
+          </div>
+          <p class="note">每个样本都给你一个观察角度。点进去看落地页怎么写、价格怎么放、CTA 怎么设计、免费入口在哪里。</p>
+        </div>
+
+        <div class="study-grid" id="studyGrid"></div>
+      </section>
+
+      <section id="routes" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Routes</span>
+            <h2>从这些产品里，普通人最能抄的是 6 条路线。</h2>
+          </div>
+          <p class="note">“抄”不是照搬功能，而是复用选题结构。你可以先用 no-code、手工交付或 AI coding 做最窄版本。</p>
+        </div>
+
+        <div class="routes">
+          <article class="route">
+            <h3>目录 / 数据库 / 垂直搜索</h3>
+            <p><strong>参考：</strong>Nomad List、Remote OK、BetaList、JobBoardSearch。</p>
+            <p>适合出海新手：先整理信息、做 SEO、做筛选标准，再卖会员、赞助、提交费或数据包。</p>
+          </article>
+          <article class="route">
+            <h3>平台增强插件</h3>
+            <p><strong>参考：</strong>HelpKit、Simple Poll、Tailscan、BoltAI、Checkout Page。</p>
+            <p>找一个用户已经在用的平台，补一个高频小痛点。不要教育市场，增强现有习惯。</p>
+          </article>
+          <article class="route">
+            <h3>AI 降低专业门槛</h3>
+            <p><strong>参考：</strong>AI2SQL、Chatbase、PDF.ai、SetterAI、Okara。</p>
+            <p>把客服、销售、法务、财务、数据分析、营销里的专业动作压缩成流程，不做泛泛的 AI 助手。</p>
+          </article>
+          <article class="route">
+            <h3>职业身份和商业面子</h3>
+            <p><strong>参考：</strong>HeadshotPro、PhotoAI、Testimonial、Memelord。</p>
+            <p>商业世界会为“看起来可信、专业、有影响力”付费。头像、证言、media kit、品牌内容都属于这个方向。</p>
+          </article>
+          <article class="route">
+            <h3>创作者和分发工具</h3>
+            <p><strong>参考：</strong>Tweet Hunter、Taplio、SuperX、Post Bridge、Pallyy。</p>
+            <p>服务创作者的人，自己必须懂分发。先做内容、案例和免费工具，再卖效率。</p>
+          </article>
+          <article class="route">
+            <h3>卖启动速度</h3>
+            <p><strong>参考：</strong>ShipFast、CodeFast、DataFast、StartKit.AI。</p>
+            <p>模板、工具包、课程可以赚钱，但前提是你先证明自己真的跑通过，不然只是在卖焦虑。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="directory" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Product directory</span>
+            <h2>产品链接库：点开看，比听故事有用。</h2>
+          </div>
+          <p class="note">这里尽量给产品页。找不到稳定产品页时，给创始人页、App Store、GitHub 或资料页。收入数字不放在主位，避免把注意力带偏。</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" aria-label="筛选产品类型">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="directory">目录/搜索</button>
+            <button class="filter" data-filter="platform">平台增强</button>
+            <button class="filter" data-filter="ai">AI 工作流</button>
+            <button class="filter" data-filter="distribution">分发/内容</button>
+            <button class="filter" data-filter="portfolio">Portfolio</button>
+          </div>
+          <div class="search-wrap">
+            <input class="search" id="search" type="search" placeholder="搜产品、handle、学习点" />
+            <button class="clear-search" id="clearSearch" type="button">清空</button>
+          </div>
+        </div>
+
+        <p class="directory-status" id="directoryStatus"></p>
+        <div class="directory" id="directoryGrid"></div>
+      </section>
+
+      <section id="playbook" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">90-day playbook</span>
+            <h2>你要做出海，下一步不是收藏，是验证。</h2>
+          </div>
+          <p class="note">把这些案例变成自己的作业：一周找痛点，两周做收费 MVP，一个月跑渠道，三个月决定继续还是砍。</p>
+        </div>
+
+        <div class="playbook">
+          <aside class="scorecard">
+            <h3>选题评分卡</h3>
+            <ul>
+              <li><span>用户清晰</span><b>0-5</b></li>
+              <li><span>痛点高频</span><b>0-5</b></li>
+              <li><span>已有付费</span><b>0-5</b></li>
+              <li><span>自动交付</span><b>0-5</b></li>
+              <li><span>英文市场</span><b>0-5</b></li>
+              <li><span>单渠道可打</span><b>0-5</b></li>
+            </ul>
+          </aside>
+          <div class="steps">
+            <article class="step">
+              <strong>Day 1-7</strong>
+              <div>
+                <h3>写 20 个痛点，只留 3 个。</h3>
+                <p>每个痛点必须能写成：“我帮某类人用几分钟完成什么，避免什么，每月收多少钱”。写不出就删。</p>
+              </div>
+            </article>
+            <article class="step">
+              <strong>Day 8-14</strong>
+              <div>
+                <h3>做落地页，不急着做产品。</h3>
+                <p>放价格按钮、案例截图、交付承诺。找 30 个潜在用户私聊，只看愿不愿意付款或深聊。</p>
+              </div>
+            </article>
+            <article class="step">
+              <strong>Day 15-30</strong>
+              <div>
+                <h3>做一个能收费的核心动作。</h3>
+                <p>能手工就手工，能半自动就半自动。先交付结果，别先做完整后台、权限、团队协作。</p>
+              </div>
+            </article>
+            <article class="step">
+              <strong>Day 31-60</strong>
+              <div>
+                <h3>只打一个渠道。</h3>
+                <p>目录打 SEO，开发者工具打 X，B2B 明确岗位打冷邮件，平台插件打 marketplace。每天让 10 个真实用户看到你。</p>
+              </div>
+            </article>
+            <article class="step">
+              <strong>Day 61-90</strong>
+              <div>
+                <h3>按钱和复购判断，不按情绪判断。</h3>
+                <p>看付费、复购、退款、渠道来源和用户原话。没有付费信号就转向或关闭，把学到的东西复用到下一枪。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Read with caution</span>
+            <h2>这篇文章仍然有用，但别误读。</h2>
+          </div>
+          <p class="note">这几条提醒只是为了防止读者被数字和光环带偏。主线还是学习产品结构。</p>
+        </div>
+
+        <div class="reading-note">
+          <article class="warn">
+            <b>不是正式名单</b>
+            <p>这组 handle 更稳的表述是公开转述/社媒线索，不是 Stripe 官网发布的正式名单。</p>
+          </article>
+          <article class="warn">
+            <b>不是全部一人公司</b>
+            <p>Ghost、Chatbase、Simple Poll、Leave Me Alone 等都有团队、合伙人或非营利结构。</p>
+          </article>
+          <article class="warn">
+            <b>收入会变</b>
+            <p>MRR/ARR 多来自自述、第三方数据库或访谈，适合当方向感，不适合当精确财务报表。</p>
+          </article>
+          <article class="warn">
+            <b>别低级模仿</b>
+            <p>看到 AI headshot 就做 AI headshot，是最差的抄法。要抄“职业身份 + 付费意愿 + 自动交付”。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="wrap">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <span class="kicker">Contact</span>
+            <h2>想继续交流出海产品，可以加我微信。</h2>
+            <p>
+              如果你也在拆这些独立产品、验证英文市场、做 AI 工具或小 SaaS，可以扫码添加。备注一下你正在做的方向，会更容易对上话。
+            </p>
+            <div class="contact-actions">
+              <span class="contact-id">微信：siuserxiaowei</span>
+              <button class="copy-contact" id="copyWechat" type="button">复制微信号</button>
+            </div>
+          </div>
+          <div class="qr-card">
+            <img src="assets/wechat-qr-siuserxiaowei.png" alt="siuserxiaowei 微信二维码" />
+          </div>
+        </div>
+      </section>
+
+      <section id="goal" class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">/goal command</span>
+            <h2>更新后的 /goal 命令。</h2>
+          </div>
+          <p class="note">后续如果继续迭代，就用这个方向：少做考据墙，多做学习地图和链接库。</p>
+        </div>
+
+        <div class="goal">
+          <div class="goal-bar">
+            <span>/goal · solo-product-study-map</span>
+            <button class="copy" id="copyGoal" type="button">复制</button>
+          </div>
+          <pre id="goalText">/goal 生成一个中文网页《Stripe 独立创业者产品学习地图》。
+
+核心目标：
+把文章里提到的 indie hackers / solo founders / 小团队产品，拆成读者能学习和行动的出海产品地图，而不是主要做事实核验。
+
+页面必须包含：
+1. 读者能学到什么：总结 8-10 条可迁移的产品/分发/定价/交付规律。
+2. 优先研究样本：挑 10-12 个最值得点开的产品，说明应该看它的落地页、定价、获客入口、产品结构还是生态位。
+3. 产品链接库：按人物列出产品链接，尽量给官网；没有官网时给创始人页、App Store、GitHub 或资料页。
+4. 出海路线：目录/数据库、平台增强、AI 工作流、职业身份、分发工具、模板/工具包。
+5. 行动清单：用 90 天节奏指导读者从选题、落地页、收费 MVP、渠道验证到复盘。
+
+页面语气：
+中文，直接、锋利、可执行。不要把重点放在“这是否为 Stripe 官方名单”，只在阅读说明里提醒：名单是公开转述线索，收入数字会变，很多案例不是严格一人公司。
+
+设计要求：
+像一张商业情报地图和产品拆解手册。第一屏要让读者知道：点开这些产品、拆它们的结构，比羡慕它们的收入更重要。
+
+技术要求：
+单页静态 HTML/CSS/JS，可直接打开，可部署 GitHub Pages。产品链接支持搜索和类型筛选。</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>Updated 2026-05-04. 联系方式：siuserxiaowei。 这是一份产品学习地图，不是投资建议，也不是收入排行榜。链接和产品状态会变化，请以原页面为准。</p>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="返回顶部">↑</button>
+
+    <script>
+      const studyItems = [
+        {
+          title: "Chatbase",
+          tag: "AI + 客服",
+          why: "看它如何把“聊天机器人”包装成客服、知识库、降本和企业工作流，而不是泛泛的 AI 聊天。",
+          inspect: "重点看：目标用户、用例页、定价层级、企业信任元素。",
+          links: [{ label: "chatbase.co", url: "https://chatbase.co" }],
+        },
+        {
+          title: "HeadshotPro",
+          tag: "AI + 职业身份",
+          why: "看它如何把 AI 图片从玩具变成职场刚需：LinkedIn、团队头像、简历、销售页面。",
+          inspect: "重点看：前后对比、信任背书、一次性付费路径。",
+          links: [{ label: "headshotpro.com", url: "https://headshotpro.com" }],
+        },
+        {
+          title: "HelpKit",
+          tag: "Notion 增强",
+          why: "极好的平台增强样本：不要求用户迁移，只把 Notion 文档变成正式 help center。",
+          inspect: "重点看：Notion 用户语言、SEO、集成和 onboarding。",
+          links: [{ label: "helpkit.so", url: "https://helpkit.so" }],
+        },
+        {
+          title: "TypingMind",
+          tag: "自用工具产品化",
+          why: "看 Tony Dinh 如何把自己每天用的 AI 工作台做成付费产品，并通过 portfolio 承接流量。",
+          inspect: "重点看：功能组合、一次性/订阅定价、用户控制感。",
+          links: [{ label: "typingmind.com", url: "https://typingmind.com" }],
+        },
+        {
+          title: "Nomad List / Remote OK",
+          tag: "目录和数据库",
+          why: "看 Pieter 如何把生活方式、数据和搜索需求变成长期内容资产。",
+          inspect: "重点看：筛选维度、SEO 页面、数据结构、社区感。",
+          links: [
+            { label: "Nomad List", url: "https://nomadlist.com" },
+            { label: "Remote OK", url: "https://remoteok.com" },
+          ],
+        },
+        {
+          title: "ShipFast / CodeFast",
+          tag: "卖启动速度",
+          why: "看 Marc Lou 如何卖“更快开始赚钱”，以及如何用个人分发给模板、课程、工具导流。",
+          inspect: "重点看：承诺文案、套餐、证明、创始人人设。",
+          links: [
+            { label: "ShipFast", url: "https://shipfa.st" },
+            { label: "CodeFast", url: "https://codefa.st" },
+          ],
+        },
+        {
+          title: "SuperX",
+          tag: "分发工具",
+          why: "看一个人如何先吃透 X 增长，再把自己的能力做成分析工具。",
+          inspect: "重点看：免费试用、指标展示、用户案例、创始人内容。",
+          links: [{ label: "superx.so", url: "https://superx.so" }],
+        },
+        {
+          title: "Bannerbear",
+          tag: "API 自动化",
+          why: "看 API 产品如何服务少量但高价值用户，把重复视觉生产自动化。",
+          inspect: "重点看：模板、API 文档、用例、价格锚点。",
+          links: [{ label: "bannerbear.com", url: "https://bannerbear.com" }],
+        },
+        {
+          title: "Simple Poll",
+          tag: "Slack 小插件",
+          why: "提醒你小功能可以是大现金流。生态位正确，产品不需要宏大。",
+          inspect: "重点看：Slack marketplace 思维、低摩擦安装、团队场景。",
+          links: [{ label: "simplepoll.rocks", url: "https://simplepoll.rocks" }],
+        },
+        {
+          title: "Liinks / Thiings",
+          tag: "审美 + 小工具组合",
+          why: "看 Charlie Clark 如何在普通赛道里靠审美、模板和持续 shipping 做出差异。",
+          inspect: "重点看：视觉一致性、免费资源、低价一次性购买。",
+          links: [
+            { label: "Liinks", url: "https://liinks.co" },
+            { label: "Thiings", url: "https://thiings.co" },
+          ],
+        },
+        {
+          title: "JobBoardSearch",
+          tag: "Boring business",
+          why: "最适合普通人参考：不性感，但信息整理、SEO、垂直搜索可以先做起来。",
+          inspect: "重点看：分类、筛选、提交入口、长尾关键词。",
+          links: [{ label: "jobboardsearch.com", url: "https://jobboardsearch.com" }],
+        },
+        {
+          title: "Checkout Page",
+          tag: "支付基础设施旁路",
+          why: "看一个微型工具如何站在 Stripe/payment 生态旁边，服务“想快速收钱的人”。",
+          inspect: "重点看：支付页模板、低门槛创建、用例选择。",
+          links: [{ label: "checkoutpage.co", url: "https://checkoutpage.co" }],
+        },
+      ];
+
+      const directory = [
+        {
+          name: "Pieter Levels",
+          handle: "@levelsio",
+          type: ["directory", "ai", "portfolio", "distribution"],
+          confidence: "high",
+          lesson: "把自己的生活方式和长期观察产品化：目录、远程工作、AI 图片，一组产品互相供流量。",
+          links: [
+            ["Nomad List", "https://nomadlist.com"],
+            ["Remote OK", "https://remoteok.com"],
+            ["PhotoAI", "https://photoai.com"],
+            ["InteriorAI", "https://interiorai.com"],
+            ["Pieter.com", "https://pieter.com"],
+          ],
+        },
+        {
+          name: "Marc Köhlbrugge",
+          handle: "@marckohlbrugge",
+          type: ["directory", "distribution", "portfolio"],
+          confidence: "high",
+          lesson: "占住创业者启动前后的流量节点：早期产品发现、maker 社区、创业岗位。",
+          links: [
+            ["BetaList", "https://betalist.com"],
+            ["WIP", "https://wip.co"],
+            ["Startup Jobs", "https://startup.jobs"],
+            ["Marc.io", "https://marc.io"],
+          ],
+        },
+        {
+          name: "Jack Friks",
+          handle: "@jackfriks",
+          type: ["distribution", "platform"],
+          confidence: "medium",
+          lesson: "社媒发布是持续痛点，工具越靠近创作者日常动作，越容易解释价值。",
+          links: [["Post Bridge", "https://postbridge.com"]],
+        },
+        {
+          name: "Yasser Elsaid",
+          handle: "@yasser_elsaid_",
+          type: ["ai", "platform"],
+          confidence: "high",
+          lesson: "AI wrapper 要绑定企业刚需。Chatbase 的本质不是聊天，而是客服和知识库工作流。",
+          links: [["Chatbase", "https://chatbase.co"]],
+        },
+        {
+          name: "John O'Nolan",
+          handle: "@JohnONolan",
+          type: ["platform", "distribution"],
+          confidence: "high",
+          lesson: "独立不等于一个人。Ghost 值得看的是开源、非营利、订阅出版基础设施。",
+          links: [["Ghost", "https://ghost.org"]],
+        },
+        {
+          name: "Erwin",
+          handle: "@erwin_AI",
+          type: ["platform", "ai"],
+          confidence: "medium",
+          lesson: "开发者工具和垂直 AI 都适合嵌入已有专业场景，而不是凭空造市场。",
+          links: [
+            ["Tailscan", "https://tailscan.com"],
+            ["Lexboost", "https://www.lexboost.com"],
+          ],
+        },
+        {
+          name: "Marc Lou",
+          handle: "@marclou",
+          type: ["portfolio", "distribution"],
+          confidence: "high",
+          lesson: "卖启动速度：模板、课程、数据工具、发票工具都服务同一批想更快 ship 的人。",
+          links: [
+            ["ShipFast", "https://shipfa.st"],
+            ["CodeFast", "https://codefa.st"],
+            ["DataFast", "https://datafa.st"],
+            ["ZenVoice", "https://zenvoice.io"],
+            ["TrustMRR", "https://trustmrr.com/founder/marclou"],
+          ],
+        },
+        {
+          name: "Minh-Phuc Tran",
+          handle: "@phuctm97",
+          type: ["portfolio", "distribution"],
+          confidence: "medium",
+          lesson: "小产品、出售、复盘，适合学习如何把产品当资产而不是只当项目。",
+          links: [
+            ["Phuc site", "https://phuctm97.com"],
+            ["Acquire story", "https://blog.acquire.com/startup-acquisition-episode-56/"],
+          ],
+        },
+        {
+          name: "Dominik Sobe",
+          handle: "@sobedominik",
+          type: ["platform"],
+          confidence: "high",
+          lesson: "不要叫用户迁移，叫用户增强。Notion 文档到 help center 是非常干净的生态位。",
+          links: [["HelpKit", "https://helpkit.so"]],
+        },
+        {
+          name: "Shaurya Gupta",
+          handle: "@madebyshaurya",
+          type: ["ai", "portfolio"],
+          confidence: "medium",
+          lesson: "新生代 builder 样本：先做小工具、开源、社媒传播，再观察是否有商业化空间。",
+          links: [
+            ["Personal site", "https://www.shauryag.com"],
+            ["SpendSmart App Store", "https://apps.apple.com/us/app/spendsmart-ai-receipt-tool/id6745190294"],
+          ],
+        },
+        {
+          name: "Tony Dinh",
+          handle: "@tdinh_me",
+          type: ["ai", "portfolio", "platform"],
+          confidence: "high",
+          lesson: "自用工具产品化。先解决自己每天的痛，再卖给和自己相似的人。",
+          links: [
+            ["TypingMind", "https://typingmind.com"],
+            ["DevUtils", "https://devutils.com"],
+            ["Xnapper", "https://xnapper.com"],
+            ["My Indie Book", "https://myindiebook.com"],
+          ],
+        },
+        {
+          name: "Mustafa Ergisi",
+          handle: "@mustafaergisi",
+          type: ["ai"],
+          confidence: "medium",
+          lesson: "自然语言转专业操作，适合数据、广告、财务、法务等门槛型岗位。",
+          links: [
+            ["AI2SQL", "https://ai2sql.io"],
+            ["CrewClaw", "https://crewclaw.com"],
+          ],
+        },
+        {
+          name: "Danny Postma",
+          handle: "@dannypostma",
+          type: ["ai", "distribution"],
+          confidence: "high",
+          lesson: "AI 图片最好的商业化路径，是绑定身份、职业、销售和品牌，而不是单纯好玩。",
+          links: [
+            ["HeadshotPro", "https://headshotpro.com"],
+            ["Postcrafts archive", "https://convertwell.io"],
+          ],
+        },
+        {
+          name: "Jon Yongfook",
+          handle: "@yongfook",
+          type: ["platform"],
+          confidence: "high",
+          lesson: "API 产品适合小团队：用户少但客单高，交付自动化，文档就是销售的一部分。",
+          links: [["Bannerbear", "https://bannerbear.com"]],
+        },
+        {
+          name: "Tibo",
+          handle: "@tibo_maker",
+          type: ["distribution", "portfolio", "ai"],
+          confidence: "high",
+          lesson: "服务创作者增长的人，自己必须先懂增长。分发能力就是产品壁垒。",
+          links: [
+            ["Tweet Hunter", "https://tweethunter.io"],
+            ["Taplio", "https://taplio.com"],
+            ["Revid", "https://revid.ai"],
+            ["Feather", "https://feather.so"],
+            ["SuperX", "https://superx.so"],
+          ],
+        },
+        {
+          name: "Tim Bennetto",
+          handle: "@Timb03",
+          type: ["distribution", "platform"],
+          confidence: "medium",
+          lesson: "社媒管理赛道很卷，但免费工具、细分体验和长期 SEO 仍然能打。",
+          links: [["Pallyy", "https://pallyy.com"]],
+        },
+        {
+          name: "Ky Zo",
+          handle: "@kyzo_io / @ky__zo",
+          type: ["portfolio", "ai"],
+          confidence: "medium",
+          lesson: "适合看 portfolio 和快速 shipping；handle 在转述中可能有拼写差异。",
+          links: [["Kyzo.io", "https://kyzo.io"]],
+        },
+        {
+          name: "Leo / Loai Bassam",
+          handle: "@loaibassam",
+          type: ["ai", "platform"],
+          confidence: "medium",
+          lesson: "自由职业者/小团队工作流很适合 AI agent 化：项目、任务、发票、客户沟通。",
+          links: [["Plutio", "https://plutio.com"]],
+        },
+        {
+          name: "Damon Chen",
+          handle: "@damengchen",
+          type: ["ai", "platform", "portfolio"],
+          confidence: "medium",
+          lesson: "信任资产和文档效率都靠近企业付费：testimonial 帮转化，PDF.ai 帮处理知识。",
+          links: [
+            ["Testimonial", "https://testimonial.to"],
+            ["PDF.ai", "https://pdf.ai"],
+          ],
+        },
+        {
+          name: "James Ivings",
+          handle: "@jamesivings",
+          type: ["platform", "ai"],
+          confidence: "high",
+          lesson: "简单痛点也能强烈：帮用户摆脱邮件噪音，是清晰到不需要教育的价值。",
+          links: [
+            ["Leave Me Alone", "https://leavemealone.com"],
+            ["Ellie", "https://ellieai.com"],
+            ["StartKit.AI", "https://startkit.ai"],
+          ],
+        },
+        {
+          name: "Danielle Johnson",
+          handle: "@dinkydani21",
+          type: ["platform"],
+          confidence: "high",
+          lesson: "极小团队/伴侣创业样本。重点学生活方式、现金流和产品边界，而不是神化单人。",
+          links: [["Leave Me Alone", "https://leavemealone.com"]],
+        },
+        {
+          name: "Daniel Nguyen",
+          handle: "@daniel_nguyenx",
+          type: ["ai", "platform", "portfolio"],
+          confidence: "high",
+          lesson: "macOS 原生体验仍有价值。避开网页 AI 工具红海，用深度系统集成收费。",
+          links: [
+            ["BoltAI", "https://boltai.com"],
+            ["KTool", "https://ktool.io"],
+            ["PDFPals", "https://pdfpals.com"],
+          ],
+        },
+        {
+          name: "Wilhelm Klopp",
+          handle: "@wilhelmklopp",
+          type: ["platform"],
+          confidence: "high",
+          lesson: "Slack 小插件不是小市场。团队协作里的高频动作，足够支撑长期现金流。",
+          links: [["Simple Poll", "https://simplepoll.rocks"]],
+        },
+        {
+          name: "Fatima Rizwan",
+          handle: "@fatimarizwan",
+          type: ["ai", "distribution"],
+          confidence: "medium",
+          lesson: "营销不是写文案，而是把 SEO、Reddit、内容、AI search 等动作变成一组 agent。",
+          links: [["Okara", "https://okara.ai"]],
+        },
+        {
+          name: "Jason Levin",
+          handle: "@iamjasonlevin",
+          type: ["distribution", "ai"],
+          confidence: "medium",
+          lesson: "meme 是低成本品牌战。看它如何把文化感和营销工具结合。",
+          links: [["Memelord", "https://memelord.com"]],
+        },
+        {
+          name: "Christopher Dengsø",
+          handle: "@chrisdengso",
+          type: ["platform", "portfolio"],
+          confidence: "medium",
+          lesson: "API 工具 + 垂直 marketplace 是两种资产：一个卖效率，一个撮合供需。",
+          links: [
+            ["Moderation API", "https://moderationapi.com"],
+            ["Cueup", "https://cueup.io"],
+          ],
+        },
+        {
+          name: "Rodrigo Rocco",
+          handle: "@rrmdp",
+          type: ["directory", "ai", "portfolio"],
+          confidence: "medium",
+          lesson: "最适合普通人参考的 boring business：目录、垂直搜索、小 AI 工具，不性感但能收钱。",
+          links: [
+            ["JobBoardSearch", "https://jobboardsearch.com"],
+            ["PropertyDescriptionAI", "https://propertydescriptionai.com"],
+            ["ReviewReplyAI", "https://reviewreplyai.com"],
+          ],
+        },
+        {
+          name: "Wilbert Liu",
+          handle: "@wilbertliu",
+          type: ["portfolio", "platform"],
+          confidence: "medium",
+          lesson: "小产品退出流。不是每个项目都要做世界第一，能卖掉也是能力。",
+          links: [
+            ["Personal site", "https://wilbertliu.com"],
+            ["Browserhub", "https://browserhub.io"],
+            ["Feedbackpaw", "https://feedbackpaw.com"],
+          ],
+        },
+        {
+          name: "Robleh Jama",
+          handle: "@robjama",
+          type: ["portfolio", "ai"],
+          confidence: "medium",
+          lesson: "产品工作室型样本。重点学产品品味、团队 leverage 和 AI-native studio 的组织方式。",
+          links: [["Tomorrow Studio", "https://www.tomorrowstudio.ai"]],
+        },
+        {
+          name: "Rexan Wong",
+          handle: "@rexan_wong",
+          type: ["ai", "distribution"],
+          confidence: "medium",
+          lesson: "新一代 AI 原生 builder。看速度、视觉传播和小工具如何带来用户。",
+          links: [
+            ["Personal site", "https://rexanwong.com"],
+            ["Brandthetics", "https://brandthetics.com"],
+            ["Text Behind Image", "https://textbehindimage.rexanwong.xyz"],
+            ["GitHub repo", "https://github.com/RexanWONG/text-behind-image"],
+          ],
+        },
+        {
+          name: "Sander Visser",
+          handle: "@sanderfish",
+          type: ["platform"],
+          confidence: "medium",
+          lesson: "支付页是收钱工具，也是商业基础设施旁路。服务的是“想快速卖东西的人”。",
+          links: [["Checkout Page", "https://checkoutpage.co"]],
+        },
+        {
+          name: "Josef Büttgen",
+          handle: "@josefbuettgen",
+          type: ["ai"],
+          confidence: "medium",
+          lesson: "AI voice + speed-to-lead：服务业最怕漏单，越靠近收入越好收费。",
+          links: [
+            ["SetterAI", "https://setterai.com"],
+            ["GoLeadSetter", "https://goleadsetter.com"],
+          ],
+        },
+        {
+          name: "Charlie Clark",
+          handle: "@clarkcharlie03",
+          type: ["distribution", "portfolio", "ai"],
+          confidence: "medium",
+          lesson: "普通赛道也能靠审美、免费资源、模板和持续迭代打出差异。",
+          links: [
+            ["Liinks", "https://liinks.co"],
+            ["Thiings", "https://thiings.co"],
+            ["Blogg", "https://blogg.so"],
+            ["Colors", "https://colors.club"],
+            ["Wallpaper", "https://wallpaper.fm"],
+          ],
+        },
+        {
+          name: "Rob Hallam",
+          handle: "@robj3d3",
+          type: ["distribution", "platform"],
+          confidence: "medium",
+          lesson: "先打穿 X 分发，再把自己的增长方法产品化。能力就是产品原型。",
+          links: [["SuperX", "https://superx.so"]],
+        },
+      ];
+
+      function linkPill(link) {
+        const label = Array.isArray(link) ? link[0] : link.label;
+        const url = Array.isArray(link) ? link[1] : link.url;
+        return `<a class="link-pill" href="${url}" target="_blank" rel="noreferrer">${label}</a>`;
+      }
+
+      function renderStudy() {
+        document.querySelector("#studyGrid").innerHTML = studyItems
+          .map(
+            (item) => `
+              <article class="study">
+                <span class="tag">${item.tag}</span>
+                <h3>${item.title}</h3>
+                <p>${item.why}</p>
+                <p><strong>拆解点：</strong>${item.inspect}</p>
+                <div class="links">${item.links.map(linkPill).join("")}</div>
+              </article>
+            `,
+          )
+          .join("");
+      }
+
+      const grid = document.querySelector("#directoryGrid");
+      const search = document.querySelector("#search");
+      const clearSearch = document.querySelector("#clearSearch");
+      const directoryStatus = document.querySelector("#directoryStatus");
+      const filterButtons = Array.from(document.querySelectorAll(".filter"));
+      let activeFilter = "all";
+
+      function confidenceLabel(value) {
+        if (value === "high") return "高置信";
+        if (value === "medium") return "中置信";
+        return "待核";
+      }
+
+      function renderDirectory() {
+        const query = search.value.trim().toLowerCase();
+        const filtered = directory.filter((entry) => {
+          const matchesFilter = activeFilter === "all" || entry.type.includes(activeFilter);
+          const haystack = `${entry.name} ${entry.handle} ${entry.lesson} ${entry.type.join(" ")} ${entry.links
+            .map((link) => link.join(" "))
+            .join(" ")}`.toLowerCase();
+          return matchesFilter && (!query || haystack.includes(query));
+        });
+
+        directoryStatus.textContent = `当前显示 ${filtered.length} / ${directory.length} 个案例，产品/资料链接共 ${directory.reduce(
+          (total, entry) => total + entry.links.length,
+          0,
+        )} 个。`;
+
+        if (!filtered.length) {
+          grid.innerHTML = `<div class="no-results">没有匹配结果。换个关键词，或者点“清空”回到完整产品库。</div>`;
+          return;
+        }
+
+        grid.innerHTML = filtered
+          .map(
+            (entry) => `
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>${entry.name}</h3>
+                    <div class="handle">${entry.handle}</div>
+                  </div>
+                  <span class="confidence ${entry.confidence}">${confidenceLabel(entry.confidence)}</span>
+                </div>
+                <p>${entry.lesson}</p>
+                <div class="links">${entry.links.map(linkPill).join("")}</div>
+              </article>
+            `,
+          )
+          .join("");
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+          renderDirectory();
+        });
+      });
+
+      search.addEventListener("input", renderDirectory);
+      clearSearch.addEventListener("click", () => {
+        search.value = "";
+        activeFilter = "all";
+        filterButtons.forEach((item) => item.classList.toggle("active", item.dataset.filter === "all"));
+        renderDirectory();
+        search.focus();
+      });
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+
+      document.querySelector("#copyWechat").addEventListener("click", async () => {
+        try {
+          await copyText("siuserxiaowei");
+          document.querySelector("#copyWechat").innerText = "已复制";
+          setTimeout(() => (document.querySelector("#copyWechat").innerText = "复制微信号"), 1400);
+        } catch {
+          document.querySelector("#copyWechat").innerText = "请手动复制";
+          setTimeout(() => (document.querySelector("#copyWechat").innerText = "复制微信号"), 1600);
+        }
+      });
+
+      document.querySelector("#copyGoal").addEventListener("click", async () => {
+        try {
+          await copyText(document.querySelector("#goalText").innerText);
+          document.querySelector("#copyGoal").innerText = "已复制";
+          setTimeout(() => (document.querySelector("#copyGoal").innerText = "复制"), 1400);
+        } catch {
+          document.querySelector("#copyGoal").innerText = "请手动复制";
+          setTimeout(() => (document.querySelector("#copyGoal").innerText = "复制"), 1600);
+        }
+      });
+
+      const backToTop = document.querySelector("#backToTop");
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 680);
+      });
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      renderStudy();
+      renderDirectory();
+    </script>
+  </body>
+</html>

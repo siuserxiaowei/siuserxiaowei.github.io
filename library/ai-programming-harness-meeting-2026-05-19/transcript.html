@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公开逐字稿｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="AI 编程与 Harness 工程研讨会公开逐字稿整理版，优先保留命名发言者和时间戳。">
+  <meta property="og:title" content="公开逐字稿">
+  <meta property="og:description" content="AI 编程与 Harness 工程研讨会公开逐字稿整理版，优先保留命名发言者和时间戳。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html" aria-current="page">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Transcript</p>
+    <h1>公开逐字稿整理版</h1>
+    <p class="lede">本页优先使用用户补充的本地命名逐字稿，保留 Weiyang、林诚、kyo、船长等发言者名称和时间戳；飞书说话人编号版也保存在 sources 目录中。</p>
+    <div class="hero-meta"><span class="chip">命名发言者</span><span class="chip">时间戳</span><span class="chip">全文公开</span><span class="chip">可回溯</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Full Transcript</p>
+      <h2>逐字稿</h2>
+      <p>以下内容用于回溯原始语境；建议先读总览和专题页，再用本页核对细节。</p>
+    </div>
+    <div class="transcript-list">
+    
+      <article class="transcript-item" id="t1">
+        <div class="stamp"><span>00:00:00</span><strong>Weiyang</strong></div>
+        <p>然后还需要很多那个年后还出来很多这种 agent framework 像拍 mono 是最比较早的，然后像 open cloud 和爱马仕是最近比较火一些。然后还有一些用于开发的工具就纯壳子，纯外壳的东西就是单纯说有点像，如果就很纠结于这个纯外壳的话，有点玩物丧志，但是一个好的外壳，它会能够很大程度上的去加速开发的进度，然后还看到了一些很好的看板工具，像 multica，然后很多朋友都在提，就是说有一个好的看板，就像把一个 notion 融入到我们的这个自动化开发里面，所以好好玩的工具肯定不止我刚才提这几个，但是我刚才提这几个应该覆盖了95%甚至98以上，然后现在就是想还是说请。</p>
+      </article>
+      <article class="transcript-item" id="t2">
+        <div class="stamp"><span>00:00:56</span><strong>Weiyang</strong></div>
+        <p>看看有没有朋友，比如说那个林城是也是带个小团队吧，在厦门先看看林成哥能不能先分享，就是最近半年的一个开发心得吧，尤其是最近三个月到半年的。这个 harness 的心得就是议题，也就是围绕着海报上的六个议题，然后其他议题可以随便加对，然后开放麦大概给每个人大概给个20分钟，我们看一下。</p>
+      </article>
+      <article class="transcript-item" id="t3">
+        <div class="stamp"><span>00:01:28</span><strong>林诚</strong></div>
+        <p>对大家好，我是明成是 agent 的创始人，我们在做 agent 的基础的一些工具。我们团队这半年，特别是这三个月去使用这个编码工具哈，那感觉是比。这个半年前还是有比较大的一个差别，那特别是我们做这种项目吧，自动化去编码，其实我们半年前已经开始了。原来是需要很多靠人工在后面去驱动的，包括说人需要去做很多架构设计，那他。这种人的注意力的投入是比较多的，那想要去做好一个比较复杂的工具。他不是说这个一两天就可以把这个事情完成的，那其实现在去对比的话，效率上面是差了10倍。甚至更多的，那这也是受益于这个 cloudcore 的4.7的4.6以后的能力的一个提升嘛。那我们。去使用这一套自动化编码，那它能够产出的这个代码质量其实已经能够达到说可用的一个水准了。</p>
+      </article>
+      <article class="transcript-item" id="t4">
+        <div class="stamp"><span>00:03:16</span><strong>林诚</strong></div>
+        <p>那现在我们所探讨的 harmless，我们更多的是说人怎么去把自己的经历去解放出来？那这里面哈，首先要做的是一个心态上面的一个转变，就很多人其实这个并发上不去。是有一些原因的，因为他其实还没有足够的去信任这一个编码工具。包括说我们去看到说这个 clock out 包括 conda 开始，包括国产的一些模型，它的编码能力。已经超过了我们程序员他的本身的一个专业性的，那为什么我们还不敢放手把？这个整个工程的事情交给他去做了，它有点类似什么哈，有点类似是这个能力很强的哈，可能是拿了这个编码竞赛的一个。</p>
+      </article>
+      <article class="transcript-item" id="t5">
+        <div class="stamp"><span>00:04:32</span><strong>林诚</strong></div>
+        <p>这个金奖的获得者，他对我们的这个项目，他并不是很了解，因为 agent 它是无状态的嘛，那每一次会话。那他其实都是等于说是从零开始的，那等于说是一个新人刚来到我们公司里面，那他要参与到项目，那我们要把这个整个项目交给他。那这个其实是涉及到一个管理的问题，我们其实需要把 agent 当做团队里面的一个真实的成员来考虑。帮他去更好的参与到整个环节里面的一个工作，那第一件事情肯定是我们要告诉他这个项目的一个规范。我们要给一些最佳实践，我们要给他一些整个项目的一些背景知识，整个架构设计。那他有了足够的信息之后，那他才能够对接下来要做的事情是比较了解的，所以。我们在这个项目里面去做这个上下文的构建，包括说每一次任务起来的信息的一个构建，它就变得至关重要了。因为我们的目的是希望说新人他能够从头到尾的能够遵循我们的一个意图，他能够把事情给他干完。</p>
+      </article>
+      <article class="transcript-item" id="t6">
+        <div class="stamp"><span>00:06:28</span><strong>林诚</strong></div>
+        <p>那这样子我们作为领导是可以比较放心的把手上的工作给他交给他，那只有说把自己定位成这样子的一个领导，有点像是。技术小组长，或者说技术总监身份的一个转变之后，那我们才有精力。去做更多的并发，因为我们的注意力释放出来了，这可能是很多人还是把自己。定位为一个副驾员，就是这可能是大家使用这个 himless 里面的一个并发量起不来的一个原因吧。这是我的一个理解吧！</p>
+      </article>
+      <article class="transcript-item" id="t7">
+        <div class="stamp"><span>00:07:29</span><strong>林诚</strong></div>
+        <p>那其实说到这个 IDE，就我们用用的这些编码工具哈，其实目前还是有比较多的一个痛点，因为现有的这些 IDE 它更多的是以人从副驾的模式来设计的。当你转变为管理者的时候，那看板就变得特别重要了，因为它就变得不是说去盯着具体的一个代码的情况了。目前我们看到的一些产品，它是纯看板的，它其实也是有缺失的，其实在盯任务完成的时候，我们其实也需要去深入细节。去看它具体的去执行情况，那有点像是每个阶段性任务完成之后我们要进行一个代码 review。那这个代码 review 这个事情是特别重要的，因为其实这个代码 review 能够沉淀出来的这些经验其实是不多的，它其实就是编码领域里面，这个经典传下来的那些原则。</p>
+      </article>
+      <article class="transcript-item" id="t8">
+        <div class="stamp"><span>00:08:47</span><strong>林诚</strong></div>
+        <p>那我们通过这个代码 review 我们去发现问题，那我们把这些问题我们是希望说这些新人嘛，他进来之后不要再放，那我们要把他总结为技能。那这个技能包括说我们这个项目里面的一些规则，我们要给它沉淀下来，那后续就可以通过自动验证。来把重复犯的这些错误给它解决掉。而且随着你的这个项目的进行，能够找出的问题，它是越来越少的，那这样子，你投入的这个代码 review 因为你这个新人已经被你带出来了。你的注意力你是被释放出来了，那其实你是可以去牵头更多的项目的，所以这个是一个很重要的原则。我们是需要去找到这些 agent，他干活干不好的地方。我们要持续的去迭代它。</p>
+      </article>
+      <article class="transcript-item" id="t9">
+        <div class="stamp"><span>00:10:00</span><strong>林诚</strong></div>
+        <p>4.6之后 cloud code4.6之后这个 agent 的架构能力，它已经上来了，就原来我们以为说像类似这些架构的这些事情需要人来做。agent 他干的比你还好，那只不过是说我们得给他足够的。这种信任，另外一个就是说我们得给他界定好范围，因为这里面还是工程项目它存在一个。程度的一个问题，那我们面向的软用户群体它需要一个什么样子的一个软件，它到底是一个比较简单的设计，还是一个比较复杂的一些设计？这其实我们在前期跟 agent 对齐的时候，我们得界定清晰。他们就是 agent 他特别他在做项目的时候，他是最大的问题，他是过度设计，然后会引入很多这些。</p>
+      </article>
+      <article class="transcript-item" id="t10">
+        <div class="stamp"><span>00:11:18</span><strong>林诚</strong></div>
+        <p>架构的冗余，包括实现的冗余，那我们通过这个前期已经告诉他说，我们不是去做一个复杂的功能的产品。那可以避免一些后续的一些冗余的一些设计，这是前期的一些工作。它在实现完之后，它是难免的，因为我们在用这些劳拉夫循环还是这个 global，他们是为了实现这些目标，他是不择手段的嘛哈，他是尽可能去完成，但是中间是存在很多。很多这种代码不复用，它可能有一些我们的一些公共类，他没有去复用，他自己又造了一堆轮子，那这些问题。其实就是通过后面的自动验证自动校验，去把这些问题自动化的给它处理掉了。所以基本上前面的整个流程，它是一个发散的过程，就是我们说的这个三针，就它把整个我们的想法给它落地完之后。我们就要开始对工程的质量代码进行治理了，那治理它是一个删减的一个收敛的一个过程，我们是尽可能的把整个代码库的。这质量包包括代码的一个简洁度，给它优化到我们觉得比较好的一个程度。那它这里面遵循的原则就是简洁代码的一个原则，包括说我们在驱动这些。</p>
+      </article>
+      <article class="transcript-item" id="t11">
+        <div class="stamp"><span>00:13:23</span><strong>林诚</strong></div>
+        <p>agent 干活的时候有很重要的两个原则，一个是 KISS keep it simple stupid 还有一个是 DIY。尽可能让他们去复用，那其实目的都是想让整个代码是比较清晰的。不说对人去看这个代码是比较可读的，对于 agent 来说。他在接手这个项目的时候，他也能够很快的上手去做他的事情比。比对人来说，它来得更重要，因为人其实对项目了解之后，他这种人对项目的理解，他是可以沉淀下来的。但是 agent 它是无状态的，它每次对它来说都是全新的，所以说它的重要性是比之前要来得更高的。</p>
+      </article>
+      <article class="transcript-item" id="t12">
+        <div class="stamp"><span>00:14:33</span><strong>林诚</strong></div>
+        <p>然后我觉得通过对这个 agent 的一个定位的差别。我们把他当做一个员工当做跟我们一样的人来执行的话。其实我们已经可以把使用这个工具的效率给它提上来了，现在并发这个事情。并发事这个事情其实它是一个学习的过程，它就有点类似做技术管理。刚开始做技术管理的时候就很多初学管理，他其实需要解决的就是说怎么去。去规划这个人的一些工作，然后怎么给他去做这个代码 review 包括说。包括说，因为每个人他的管理的这个瓶颈是有的，你只有把一个人管好了，你才有办法去管两个人，那管两个人之后，你才会想着说，我现在要管三个人管四个人，那甚至更多，它是一个慢慢进阶的过程。所以这个其实是急不来的，但对每个人来说，它都是一个学习的过程，但这里面就是还是回到前面的，就是说我们要把这些。整整体这个编码所有需要注意的这些事项全部落到纸面上来，那它是可以。节省我们的管理成本的。你只有说这种我们的注意力的投入足够低，那才能够用到更多的 agent 帮忙去干活。</p>
+      </article>
+      <article class="transcript-item" id="t13">
+        <div class="stamp"><span>00:16:48</span><strong>林诚</strong></div>
+        <p>然后。其他的群里面有没有想要了解的，因为我这边只是去分享一些大的方向的一些。我们可以开放来讨论一下。</p>
+      </article>
+      <article class="transcript-item" id="t14">
+        <div class="stamp"><span>00:17:05</span><strong>Weiyang</strong></div>
+        <p>行，谢谢谢林成哥分享，刚才我听了几个点，就是我觉得比较重要，就是说，这个 harness 它的并发度就是说你一个人只有管管理好一个 agent 才能管理好三个你管理好三个才能管理好10个。然后还有一个事情就是说在管理的过程中，你慢慢自己沉淀下来，一套一套经验，而且比较关键的是 DRY 原则就是 do not repeat yourself 就不要做重复的事情，你碰到。碰到一个问题的话，那问题有一些解决方案是适合这个模块的，适合这个 repo 的，然后适合你所有的 repo，甚至说你适合所你所有的项目的，然后这样的问题不要去再犯，然后你做同类项目的时候，你就可以完全参考自己已经已有项目的优秀经验，你就一直有精力去研究一个新的项目，我听下来循序渐进的把这个并发度给拉上去。</p>
+      </article>
+      <article class="transcript-item" id="t15">
+        <div class="stamp"><span>00:18:10</span><strong>Weiyang</strong></div>
+        <p>和一直在做 do not repeat yourself 这件事情我觉得比较重要，有朋友想发言吗？就直接开放麦有什么问题吗？就直接开麦就可以。马上想问林成哥或者怎么样。</p>
+      </article>
+      <article class="transcript-item" id="t16">
+        <div class="stamp"><span>00:18:32</span><strong>瞿得光</strong></div>
+        <p>林老师你好，我想提一个问题就是第一个是。关于进行这样编程的时候，这个模型的一个选，因为现在国内的话，可能主要是选用一些主流的模型，但是这个模型之间的差异还是蛮大的，就是关于模型的选择这一块，我想请您。</p>
+      </article>
+      <article class="transcript-item" id="t17">
+        <div class="stamp"><span>00:18:56</span><strong>瞿得光</strong></div>
+        <p>点评一下，这是第一个，然后第二个的话就是对于一些涉及到界面就是开发的这个内容涉及到界面的这种时候，单纯的让这个编程工具它去做的时候总是感觉会。就比较难达到自己预想的这种效果，尤其是生成的过程中，还涉及到一些 AI 应用的一些调用的话，就过程就很容易你。</p>
+      </article>
+      <article class="transcript-item" id="t18">
+        <div class="stamp"><span>00:19:16</span><strong>bruce-只文字</strong></div>
+        <p>电影版。</p>
+      </article>
+      <article class="transcript-item" id="t19">
+        <div class="stamp"><span>00:19:29</span><strong>瞿得光</strong></div>
+        <p>花了挺长时间调试，然后让他再改一下，以后又把之前的好多的已经改好的，又弄坏了，就是有比较多的一些重复的工作。我不知道我的问题表达清楚没有我就两个问题！您好，谢谢。</p>
+      </article>
+      <article class="transcript-item" id="t20">
+        <div class="stamp"><span>00:19:45</span><strong>林诚</strong></div>
+        <p>对你好，是这样子的哈，就是说就对我们来说是尽可能用最领先的模型。因为就目前 token，它还是算是比较便宜的，就我们去看这个 conda 开始还是 cloud code 嘛，它200美金换算为人民币，它就1000多块钱一个月。我们首先得意识到说人的成本他是非常高的，那你随便一个中级的程序员，他都是一两万的工资。在 token 上面去舍得花费，这是性价比非常高的一个事情，那你只有用了最好的模型，那你才能够用最新最最前沿的这个方式去驱动的一个 agent 嘛哈，这个是能力上面确实差距是有一些的。</p>
+      </article>
+      <article class="transcript-item" id="t21">
+        <div class="stamp"><span>00:20:54</span><strong>林诚</strong></div>
+        <p>那第二个问题是说到前端这一块哈，那前端这一块想要比较好的解决，其实它相比后端来说难度会更大一点，因为后端我们只要去做好这个测试覆盖，其实它已经能够解决很多问题了，起码这个7% 80的一个问题了。但前端的话，它视觉这一块模型对视觉它有一些理解能力，但是它并不是特别强，但是在说前端的这个这些界面，它其实并不是说特别多。你这个一个项目就可能二三十个界面，那再多就33350个他靠人去盯一盯，其实是能够解决的，但这里面我们怎么去。</p>
+      </article>
+      <article class="transcript-item" id="t22">
+        <div class="stamp"><span>00:21:51</span><strong>林诚</strong></div>
+        <p>提高前端项目的一个生成的质量，那我们会去用一些成熟的一些组件库。那尽可能这些组件库，它提供的一些基础组件是比较多的，那我们是直接去复用的话，它其实是省掉了很多事情，那接下来就是说我们得有意识的去沉淀我们自己能够复用的这些组件，那把这些基础组件。给它打磨清楚，在做到这些业务界面的时候，我们只要去关注这些业务逻辑就刚好。这个智能体它去做这些业务逻辑还是比较擅长的，所以说我们想要去节省精力的话，还是要去打磨自己的一套组件库，那是我这边的一些观点。</p>
+      </article>
+      <article class="transcript-item" id="t23">
+        <div class="stamp"><span>00:22:56</span><strong>Weiyang</strong></div>
+        <p>还有哪些朋友有问题？</p>
+      </article>
+      <article class="transcript-item" id="t24">
+        <div class="stamp"><span>00:22:56</span><strong>瞿得光</strong></div>
+        <p>谢谢。</p>
+      </article>
+      <article class="transcript-item" id="t25">
+        <div class="stamp"><span>00:22:57</span><strong>张晨曦Nature</strong></div>
+        <p>老师，我有个问题，就是我在用，就我们在开发的是 a to a 和 A OS 这个东西。然后我感受到在用 AI 的时候，AI 对我来讲是一个极大的杠杆那但比如说我们现在设计一个比较很复杂的哈里斯系统，让 AI 能够全自主的去做一些开发。但是这个问题就是当我在做一个这样的复杂系统的时候，它是远远超出了，比如说设计水平，或者是说它有点类似于已经超出了，就比如它设计出来的东西很多，我是看不懂，但我又需要，我又要怎么讲，就要这么一个系统，能够保持到我想要的状态。</p>
+      </article>
+      <article class="transcript-item" id="t26">
+        <div class="stamp"><span>00:23:37</span><strong>张晨曦Nature</strong></div>
+        <p>程度就你你会怎么去管理？当 AI 在做一你看不懂，而且是你做不了，但你又需要 AI 去做的东西的时候，你你是怎么管理这种东西的，我经常会感觉好像它已经完全超出我的控制范围了，但是我又需要它去完成这个东西，因为我们的工作可能更多的，如果只是取代掉一些，我们本来是自己能做，然后让 AI 去做。我感觉这个东西产生的增量也比较少，一定是拿 AI 去做那些你自己做不了的事情，但是自己做不了的事情，又就是很像，很难评出一个标准的感觉就是。</p>
+      </article>
+      <article class="transcript-item" id="t27">
+        <div class="stamp"><span>00:24:12</span><strong>张晨曦Nature</strong></div>
+        <p>我不知道老师是遇到有没有遇到这种情况，或者是怎么去解决的。</p>
+      </article>
+      <article class="transcript-item" id="t28">
+        <div class="stamp"><span>00:24:17</span><strong>林诚</strong></div>
+        <p>我们刚好也在做这个 harmless 嘛哈 AGENT OS 这一块的工作。那 AI 其实它给的方案它不会超出我们驱动者的这一个理解水平的这个东西，因为你它超出了我们的理解其实是不可控的。我们也不知道说它出来的这个东西效果是好还是坏，所以我们在做一个方案的时候，他给出这样子的一个方案，我们就得深入的去理解这个方案，我们要从多个方案里面去挑出一个，我们在我们理解范围内，我们觉得是最好的一个方案出来了。当你不试图去理解的话，全部都委托给 agent 去做的话，那整个项目它其实是失控的。因为你很多点都叠加进来，那这一个点不理解，另外一个点不理解，那最后其实是整个项目是脱脱离我们掌控的。</p>
+      </article>
+      <article class="transcript-item" id="t29">
+        <div class="stamp"><span>00:25:31</span><strong>林诚</strong></div>
+        <p>我的建议是说我们人要花更多的时间去跟上 AI 的一个节奏的。</p>
+      </article>
+      <article class="transcript-item" id="t30">
+        <div class="stamp"><span>00:25:42</span><strong>张晨曦Nature</strong></div>
+        <p>对我遇到的情况就是，其实我们设计出来这个系统，每一步都是我设计，我和 AI 一起设计的，就是每一个点都会能够理解到，但是最后可能比如说这个设计比较大，然后它展出了一些细节，比如说它具体的字段之间的一些就是匹配之类的东西就可能就很复杂了，我经常感觉到是这样的一个状态。</p>
+      </article>
+      <article class="transcript-item" id="t31">
+        <div class="stamp"><span>00:26:03</span><strong>林诚</strong></div>
+        <p>那我给的建议你如果觉得复杂，那这些设计以后它是可以被删掉的，就一个好的系统，它不是越来越复杂的一个好的系统是越来越简洁的。所以我们可以就 AI 它给的方案，它看起来都合理，但是它就是在上面垒东西。然后我是觉得说把它垒出来的这些东西我们砍掉其实是没关系的。</p>
+      </article>
+      <article class="transcript-item" id="t32">
+        <div class="stamp"><span>00:26:44</span><strong>张晨曦Nature</strong></div>
+        <p>明白，谢谢老师！</p>
+      </article>
+      <article class="transcript-item" id="t33">
+        <div class="stamp"><span>00:27:03</span><strong>Weiyang</strong></div>
+        <p>好的也是多谢林晨哥的分享对，然后我可能会开一下共享屏幕。然后如果大家感觉到卡的话，可以跟我讲一下对，然后我也分享一下我最近的议题，然后除了我和那个林生哥分享的话，后面的话就是请大家有愿意要分享的话，就直接转到开放麦分享就 OK 了对。我也大概控制一下时间，我分享的话大概是时间点差不多也就15分钟。然后我可能要想比较想下东西比较多，就是不会太去占用大家太久时间，然后对就基本上一个屏幕就差不多了，稍等。</p>
+      </article>
+      <article class="transcript-item" id="t34">
+        <div class="stamp"><span>00:27:57</span><strong>Weiyang</strong></div>
+        <p>稍等我看一下，现在有人能看见我那个共享屏幕吗？就是有一个宽屏的共享屏幕。如果就是看不到共享屏幕的话，就跟我讲一下，我可能会调整一下，对，然后现在是这样，就是意识到这件事，这个 harness 意识到这件事的时候，就是一开始不知道他叫这个名字。然后去年大概去年五月份就是一年前的我大概就是在用 S 的4.0在10行20行的去学习这个 typescript，首先我是一个100%的 typescript 的外行，然后在去年这个时间点。然后会有一些自动化的开发工具，然后后面的话随着模型能力不断提高，比如说 opus4.0出来了，然后还有一个比较大的提升的就是 codex5.2然后不知道大家有没有感觉，就是真正的第一个你能听说过的一个案例，一个长城工作的一个案例，它是 harness 的，但他当时不叫这个名字，当时是会被被当成 openai 的一个案例被被拿出来了，大家有可能听过，就是有一个哥们。自己一个人用7天写了一个浏览器，然后它这个浏览器是拿 rust 的语言写的就是到处都是 bug。甚至网友嘲讽他说只有他自己能编译，通过其他人都搞不定，我认为就是。</p>
+      </article>
+      <article class="transcript-item" id="t35">
+        <div class="stamp"><span>00:29:36</span><strong>Weiyang</strong></div>
+        <p>第一次就是有一个象征性的里程碑，就是他已经把一个完整的浏览器拆成小块儿的工作，然后这小块儿的工作可能每一小块儿。都是独立完成的，它就像一个树一样，从小块拼成中块，拼成大块，再拼成浏览器，那我也调研了一下，就是浏览器的工作和。</p>
+      </article>
+      <article class="transcript-item" id="t36">
+        <div class="stamp"><span>00:30:05</span><strong>Weiyang</strong></div>
+        <p>和其他一些工作浏览器的工作大概就是代码量差不多在几千万行这样一个水平，如果你想开发一个操作系统的话，大概是在几亿行水平。你想开发一个操作完整生态，比如说你，你想复刻一个苹果宇宙的话，在几十亿甚至更多的。然后如果你就从理想状态来说，你有一个好的 harness。</p>
+      </article>
+      <article class="transcript-item" id="t37">
+        <div class="stamp"><span>00:30:33</span><strong>Weiyang</strong></div>
+        <p>其实你有一个好的 harness 的话，其实我们说的心想事成屋，它不就直接都能够全自动给开发完成吗？但肯定不是这么回事了？因为有很多东西它不是按照你预期运行的 agent 和 agent 之间工作打架就是你会获得很多乐高的块，然后你在真实拼这个乐高的块的时候。你发现就是块和块之间街街上是还需要付出一份工作的，也这两个 agent 之间，它是在各自的局部去自做自己的东西，然后彼此没有商量过，没有协调过。那这个马上就会说了，我有这个乐高块块和块是怎么拼的，你得有一个一个协调的标准协调的规范就是不能说 spec 这个概念在去年七八月份就有了。包括 AWS 那个开发工具，但你不能说我 spec 完了之后，然后我就直接一键梭完了之后就它就指望着它能自动化的组装，它里面还会有很多。需要落在文档里面的这个协议性的东西，然后第一次5.5.2拿5.2开发这个开发浏览器的人就勇气可嘉，但实际上我们是团队是在二三月份嘛，当时线下有一个小的讨论会还不是讨论这个 harness 的，但当时有一个就是做前端的女生嘛，也很聪明。</p>
+      </article>
+      <article class="transcript-item" id="t38">
+        <div class="stamp"><span>00:32:08</span><strong>Weiyang</strong></div>
+        <p>小曹同学，然后他是先找到了，因为当时有一个说 peter stanberg 的工工作流程是怎么样的，我们只是想。学习一下，就是能达到 peter stanberg 这个工作这种模式的几分之几，就是虽然他写的都是就他什么东西都是拿 typescript 写就导致那个性能就很垃圾，你不可能是什么都拿 typescript 写的，你后端管理，还有一些安安全和性能东西，你可能会用 rust，他什么都用 typescript 写就很垃圾，但是他那个工就是设计理念是对的，所以2月整个2月份我们在玩一些，agent framework 就是龙虾这样的东西，然后3月份是真正的把那个真正的把 harness 这条路就自己踩通了。然后后面的话我左边这个网页。是那个艳君也是一个女女生在 work 的一个项目，就是说我们可以看到就是在这个榜上就是有兴趣的，真是可以自己去检查一下自己的那个就并发度，他提了两个东西就是说，一个是你的消耗的 token，然后他提了一个倍率的这样概念，这个倍率是在你的。</p>
+      </article>
+      <article class="transcript-item" id="t39">
+        <div class="stamp"><span>00:33:28</span><strong>Weiyang</strong></div>
+        <p>一个你的 agent 在帮你工作的时候就平行有几个 agent 在帮帮你工作，然后有一些收口的项目，你可能就是单并发的，要去收，就是你不断的在解决 agent 和 agent 就产出之间，他们没有一个协议去对齐代码对齐接口对齐规范的，甚至是对齐命名的问题，他没有解决这个问题。然后一旦没有解决问题，就说你前面可能说开开30并发50并发我最多可能说70到100吧，都开过，但是一旦你发现有那样的问题存在的时候。</p>
+      </article>
+      <article class="transcript-item" id="t40">
+        <div class="stamp"><span>00:34:05</span><strong>Weiyang</strong></div>
+        <p>你你必须是要有一个人在那盯着的就是要有人在那收口的，有些东西测试的自动化根本没有闭环。比如说我最近在那个 MAC OS 上去搞那个 windows11和乌邦图24.04的这个多端的开发，就是我希望它是自动化测试闭环的，那这就闭不了。然后刚才这个讨论组里面也有说前端已死，自动化测试闭环。我觉得这个还早，我这还早。就是现在的这个前端测试化闭测试的自动化闭环。最简单的就是你配色，你你自己截图你能看 UI 你自己截图你能看？但是 ux 的话，你你你最快也得，比如说你要检查一个 ux 是不是如你设计的那般让如你的这个要求的那般去设计的，有的人说觉得比较用土的方法可能录一段视频直接发过去，那这个 kimi 是可以接受录视频的，然后那个你你你如果拿。或者是 call 的话，他还可以接接受你的截图去看你的设计。但是如果说有一些自动化工具是不够的话，你一定是人人在闭环，然后我的理解就是。</p>
+      </article>
+      <article class="transcript-item" id="t41">
+        <div class="stamp"><span>00:35:23</span><strong>Weiyang</strong></div>
+        <p>所有的自动化测试，导致自动化测试不封口的问题出在哪里，它一定是出在你的观察工具。是不够强的，你的观察工具是需要拿到一个更大的范围，你要在更一个更大的范围里去用一组更多的资源来去检验你这个产出成果，是不是如你？说的那样，一旦有这样的工作变多了，那你的倍率就是直接就往下降了，你就下不来了。你就上不去了。所以我觉得开发工具的话 IDE 我其实现在 vs code 其实很少开大部分时间。在 CLI 里面，然后小部分时间就是有一些轻度的工作，我会放在龙虾里面，那有人他会觉得 vs code 就是看文件比较不舒服嘛，然后。对于我来讲，我的所有的文件的格式都是 markdown 就是这个 markdown 就不是我可读这个东西是 AI 可读。就我可读其实根本不重要，对我可读其实根本不太重要的，然后我会让 AI 可读，然后让所有的 markdown 作为就是 agent 和 agent 沟通的一个至少得有一个留痕的东西吧，就是你俩协调之后，中间要留一个 markdown 来说明你们两个。</p>
+      </article>
+      <article class="transcript-item" id="t42">
+        <div class="stamp"><span>00:36:53</span><strong>Weiyang</strong></div>
+        <p>是怎么协调的，你其实这个180天这个代码分类，也可以看到，就是我刚才有一个朋友问那个问题，就是说如果 AI 设计的东西超过了自己的能力会怎么办？然后我的方式都是就是一概一概通行，因为我认为这个东西是认知债。我认为东西认知债就是我听我这辈子从来没有听说的东西是最大的认知债务，有的东西是 AI 当场。告诉我给我讲了，我要马上去补这个债务，这然后补这个债务的过程，就是从我个人的脑子的工作状态来讲，就是一种 do not repeat yourself 的一个过程，就是说我如果对一个认知有什么东西，我有的东西肯定是从浅入深的，然后他到一个非常深入。状态的时候，他一定不是今天能解决的，但这个债务它迟早要在未来一个月，三个月和6个月要补的，但是很多东西就已经。已经上去了，就这个东西它达达不到上线的标准，但它可以去达到一个测试的标准，就是说我们在这个上面去看就是，然后不会的话会马上去跟 AI 去问，就说你设计的东西是什么，就是连有的时候连是什么都不知道。但是只要你跟他沟通，你跟 AI 沟通的话就没有歧义，然后 AI 跟 AI 的沟通也没有歧义的一个过程，基本上就是无损的，然后这里面有损的就是。</p>
+      </article>
+      <article class="transcript-item" id="t43">
+        <div class="stamp"><span>00:38:32</span><strong>Weiyang</strong></div>
+        <p>人会在命名的时候有歧义，就是任职债务第一大的体现形式，就是你没有用这个行业这个领域里面所规定的。术语来去描述一种现象描述一种技术，如果你不用这个行不尊重这个行业的历史的话，那你在这个开发的这个领域也没什么未来可言。因为你每次都会给11个已经训练好的模型引入新的歧义，所以我说变量命名的歧义术语使用的歧义，这个是第一个认知债，我觉得后面的认知债其实都好对，就是从不知道到知道从从从不懂术语到懂，然后到后面非常规范的使用术语，能够精准的描述问题，你从精准描述问题。</p>
+      </article>
+      <article class="transcript-item" id="t44">
+        <div class="stamp"><span>00:39:20</span><strong>Weiyang</strong></div>
+        <p>到精准的获得一个答案。这两件事之间已经只剩下几美分，几美元的这个 gap 了。所以你只能说人从解决认知债的角度来说，就只能是你精准的描述问题，然后把这个债补上。然后就说你能够掌控这个技术掌控技能。对然后多 a 阵的看板的话，我觉得挺有意思的，然后也看了几个吧，如果后面有人想分享的话，我也欢迎大家分享我对多 agent 的看板的未来的理解就是。大家也可以看我的线儿的一个开就开源，其实早早早就开源了，就没有几个人在看我自己刀 feeding 了，就是自己给自己做了一套 harness skills，然后我认为这几个 skills 是非常有用的，比如说我在有一个 spec 的时候。我要去执行，然后我在没有 spec 的时候，我要先去研究别人的项目，比如说我研究了那个 pi pi mono 和那个爱马仕的 agent？他的每一个文件出现在那儿和每一个文件夹组织怎么组织的，为什么那么组织的其实就是多问为什么，也就是先把一个完整的项目能够研究下来。再去找到一些优化的方法，我会让几个 agent 你围绕拍或者围绕爱马仕 agent 你你给我提几十个优化的点在哪些优化的点上，还能继续优化，这个也是。</p>
+      </article>
+      <article class="transcript-item" id="t45">
+        <div class="stamp"><span>00:40:51</span><strong>Weiyang</strong></div>
+        <p>多个模型，然后去统一思想，然后包括 debate 这个 skill 也是，然后当你从别人就是学习好了别人的一个项目，然后得到了自己的你自己认为你想设计什么样的软件，你有一个蓝图的时候，然后这个蓝图可能融合了很多工具了。</p>
+      </article>
+      <article class="transcript-item" id="t46">
+        <div class="stamp"><span>00:41:09</span><strong>Weiyang</strong></div>
+        <p>比如说你，你调用网页 CDP。那个 chrome dev，playwright 你通过这个去调你的 gemini 去给你做一些 deep research 甚至 deep think 这样一些工作，然后把 gemini 就 gemini 的 facts 能力比较强嘛。然后你把这些认知整合到你的仓库的文档里面，然后。他最后用用 AI，最后给你整合出来一个 spec，就这个 spec 可能说我要干这个项目大概需要1000个拼图，那这1000个拼图我可能有大的分块的话可能6个分块，我这6个分块的话并发把这个东西做完拿6个 worker，甚至是几十个 worker，把这个把这东西做完就行了。所以如果大家都说 spec 好用，但是实际上你怎么去得到那个 spec 怎么得到一个你自己很信得过的，而且你自己能看得懂的 spec 这个前面的时间其实我觉得也占用了50.70%的人类的时间。</p>
+      </article>
+      <article class="transcript-item" id="t47">
+        <div class="stamp"><span>00:42:07</span><strong>Weiyang</strong></div>
+        <p>你要让东西知道 spark 是可信的，然后从 spark 到从 spec 到一堆乐高的拼块。这个东西的流程是高度标准化的，也就是之前说的 harness engineering，但它实际上标准化流程 SOP，那你就不太去关心，然后你你从1000个乐高块再得到一个非拼接的非常好的一个工程。那你需要的就是说块和块之间怎么去协调以及他做出来的东西和你人眼之间是怎么协调的。我刚才说了这个前端的观测工具是远远不够的，你要想让前端的观测工具好的话，那你就可能你就要自己设计一个 typescript 你自己设计一个 typescript 语言，或者你自己做一个浏览器，你做这两件事是为了补，弥补这个前端观测能力不足的，当然肯不肯定不止我说的这几块，可能还会有其他的块提高。</p>
+      </article>
+      <article class="transcript-item" id="t48">
+        <div class="stamp"><span>00:43:08</span><strong>Weiyang</strong></div>
+        <p>提高观测能力，提高这个自动化测试的能力，这个本身也是另外一个工程的命题，只不过我们现在就很多时间将就吧，然后 spec 前面大概花60%的时间，然后中间的话就是种菜收菜，得到乐高块这个时间差不多20%的时间，而且人的参与度很低，后面20%的时间就是人在验收的时间，就是你看上去那后面的20%时间在跟 harness 相比，你只花了1% token，但是实际上你花的时间是跟它一样多的你前面自动化开发花了100份 token，后面两天你去验收就是自动化验收不了东西，你去验收你还是要。两天时间，因为很多东西你跟之前根本就没有照顾到，然后再说一下，就是之前林哥林晨哥这个他没有就是数据没有登录这个艳军同学做的这个 agent board 这个网站他。全生命周期是在第六，我自己第一就是我也检查了一下，就是我的生产力都不是说最近180天我的生产力可能就是最近90天在往上去涨，然后我的一个。</p>
+      </article>
+      <article class="transcript-item" id="t49">
+        <div class="stamp"><span>00:44:18</span><strong>Weiyang</strong></div>
+        <p>纯代码的，我已经把什么研究别人的项目，还有我自己给我自己项目做文档，我那些行数我都给删了，而且这个是从我的账号提交的就那些东西我都不管，然后有个参考差不多就是我的代码行数和我的文档加上研究别人的项目的文档的行数差不多是1:1，就是可以认为过去180天差不多就是六600万行，就是本着 do not repeat yourself 然后做点没用的小玩具，给自己用以外的话就是包括六端开发，我说的六端开发就是 windows mac 和 linux，然后还有。这个网页端，还有两个移动端，这些东西都算上有些东西就是偷懒了。到最后的话有些东西是历史原因就是说，比如说那个像 cloud4.6和当时很急，就是3月份还参加了一个黑客松比赛，当时5.4x high 和 cloud4.6我觉得做那个。</p>
+      </article>
+      <article class="transcript-item" id="t50">
+        <div class="stamp"><span>00:45:22</span><strong>Weiyang</strong></div>
+        <p>苹果的原生的开发我觉得都不是很顺手，就是很气，三月份的时候非常气，但实际上现在也根本不是问题了？因为我们也知道这个模型50天一代迭代的非常快，所以我们快速的就是说，我们测试用于测试的工具，包括 shell 肯定会稳定测试的工具可能 python 的测试会越来越少。我的 go go long 的部分随着它对系统要求越来越高，我 go long 的部分可能会随时转到 rust 上去做开发我的 kotlin 和我的 swift 可能是。变少不了这两个东西就是绑定了一个双端的开发生态保不齐，我们这些人未来会有。会有保不齐，未来会有我们这些人里面会有做操作系统，做真实的操作系统，就你做操作系统的时候，是在打通。硬件和你的信息，这样一个隔阂就是你的软件，它是主要信息的，你操作系统比较文件系统，然后还有它的应用生态。保不齐，我这些人就会做，因为现在我觉得你大的操作系统做不了，比如说你想重新做一个 linux 操作系统做不了，但你完全可以从小的操作系统，比如我们最近团队内部就讨论就是22210linux 这个东西你可以把它的功能砍掉5% 60，你支持的这个主板，还有芯片不用不需要那么多，只支持一小部分支持一个子集，但是你做一个精简版的减值版的二20linux 这个东西可能也300300300万. 1000万，原原原始的代码。</p>
+      </article>
+      <article class="transcript-item" id="t51">
+        <div class="stamp"><span>00:47:13</span><strong>Weiyang</strong></div>
+        <p>你会有人感知到这个问题，就是等到我们现在10token 在翻10倍的时候，会有人感知到这个问题。然后我还发现一个，我还发现问题就是如果你是多开的话，如果你是多开 cloud code 的话，那你你你这个东西不算 hardness，就是你依然还是手搓的多开的极限。我和我团队同事也测试过就是真有小年轻去测试的，就你多开的话，一个人上限就是不会超过1b 就不会超过10亿的 token。而且这10亿 token 里面还有大量的就是 cash hit 嘛。你根本花不了多少钱，那你但是当你想到就是我脱离手搓，你要去放权，你要去敢于让这个 AI 在你睡觉的时候也做东西，然后你睡醒了它都已经。他都已经就是有一些不是线上的东西，他已经提 PR 了，那是可以这么做的，对我个人对于我的生产力的就是一直在找乘三的办法就是我自己手搓的话，上限就是每天五亿。</p>
+      </article>
+      <article class="transcript-item" id="t52">
+        <div class="stamp"><span>00:48:14</span><strong>Weiyang</strong></div>
+        <p>但是我找到了睡觉的时候，就是开发的办法的话，我上线差不多是150亿，其实我们从五亿到150亿的话，你可以看到我进化的次数不是很多，就是我对这个定义就是每次翻三倍。当我达到一个目标的时候，我就觉得是我依然要对这个东西收口，我要进行，我要对他负责我多的时候，我可能50倍，但是我平均来讲仍然就只有3.5倍。</p>
+      </article>
+      <article class="transcript-item" id="t53">
+        <div class="stamp"><span>00:48:46</span><strong>Weiyang</strong></div>
+        <p>收口的东西就是做完了之后得收口，这件事情是天然把这个速度拉下来就不管我一天爆发的很快吧，那个是代表我的上限，但是我的下限是 human in the loop。决定的他会把我的下限拉到很低，这个东西是没有办法的，所以大家也可以自己尝试吧。剩下的模型锁定这个会后的话我觉得也。是畅所欲言，我主要是也基本上能用的也都试过，然后像 memory skills rules rules 的话，这个可能刚才林成哥已经讲过一句，就是说 agentic 之。现在的 agentic 其实是没有什么生命周期可言的，就是他可能执行完了一个，他自己负责那个任务，他最多，自己看了跑 go 的话就是 codas 那个 go 嘛，就目标的话，那 go 话。可能最多能跑一天不跑，它够的话可能最多就是一两个小时，两三个小时就停了。它生命周期就是两三个小时，你可能就给他 clear 了。它自己满了的话，它就压缩的话，这里面你也不知道丢了什么有用的东西你还不如不压，就是你给认为它这生命周期就是。</p>
+      </article>
+      <article class="transcript-item" id="t54">
+        <div class="stamp"><span>00:50:01</span><strong>Weiyang</strong></div>
+        <p>能够以一个公共的256k 上文把你的下文128k 的东西做好了，这就是一个 agent 的生命周期。剩下 agent 跟 agent 去协调的东西都在文件系统里。都在 markdown 里面，你你用 markdown 协调肯定要比任何一个一种文件格式协调都要方便的，因为 markdown 没有什么冗余。</p>
+      </article>
+      <article class="transcript-item" id="t55">
+        <div class="stamp"><span>00:50:26</span><strong>Weiyang</strong></div>
+        <p>然后前一阵还有人说拿 HTML 去做协调是一派胡言那东西给人看的，不是给不是 agent 跟 agent 去讨论的那个，凡是说拿 HTM 去维护项目文档的这个东西，我根本就不会跟他讨论了。可能就翻篇了，都是你你出来跟领导汇报或者那可以用就跟人接触可以用，但是它肯定不是一个 harness to，harness 里面 agents to agent 的一个。</p>
+      </article>
+      <article class="transcript-item" id="t56">
+        <div class="stamp"><span>00:50:55</span><strong>Weiyang</strong></div>
+        <p>一个逻辑对，是我过去半年吧，然后像就分享一点是零敲碎打的有一些很散。很散的东西，但是至少说我 harness 我差不多总结了5个，我觉得超过这5个也没有太多了，我自己用的比较舒服的，然后来监控 harness 就是。除非我有这个 agent board 这个朋友做的这个工具，我是没有办法去量化的定义我的 harness 能力，所以确实需要有这样一个工具来去监控我的倍率的。上涨和下跌，我下跌的时候可能就一一倍1.2倍上涨的时候可能30倍平均可能就不超过10，对，这个是对于我的一个监控，然后对于我生产力代码分类的一个监控就是。</p>
+      </article>
+      <article class="transcript-item" id="t57">
+        <div class="stamp"><span>00:51:47</span><strong>Weiyang</strong></div>
+        <p>负责任的把自己之前做过的项目能成功推上线给线上的同事，包括运维，包括 SEO 的迭代，这些交就是平稳的交接给他们。是我过去半年基本上就是我感觉有价值的东西没有超过这几张图。</p>
+      </article>
+      <article class="transcript-item" id="t58">
+        <div class="stamp"><span>00:52:12</span><strong>Weiyang</strong></div>
+        <p>然后有没有说上麦的，可以说讨论一下的，然后后面的话我们就开放嘛，那开放到5点半，刚刚就是有没有讨论？对我关一下屏幕。</p>
+      </article>
+      <article class="transcript-item" id="t59">
+        <div class="stamp"><span>00:52:27</span><strong>李志伟</strong></div>
+        <p>喂，你好听，听得到吗？</p>
+      </article>
+      <article class="transcript-item" id="t60">
+        <div class="stamp"><span>00:52:30</span><strong>Weiyang</strong></div>
+        <p>听得到。</p>
+      </article>
+      <article class="transcript-item" id="t61">
+        <div class="stamp"><span>00:52:31</span><strong>李志伟</strong></div>
+        <p>是这样的，我刚才就是首先感谢刚才分享我有两个问题，就一个就是你刚刚说的那个收口，你具体指的是什么，就是有具体的问题，就是你会去看所有 AI 写的代码吗？然后因为我自己可能在写的过程就我用 AI 也是让他干很久，然后最后产出来那个代码量可能就是我看不完，对，就会遇到这些问题，然后第二个就是说。一开始会设计 spec 那个 spec 里面就是有很多的任务，那任务你就会去拆分它的颗粒度的大小嘛，对，然后这个可能涉及到第三个问题，就是说可能一开始你设下 spec 之后是最开始的出版，那后来还有很多的维护工作，那在维护工作里面，harness 你们会有一些什么设计吗？</p>
+      </article>
+      <article class="transcript-item" id="t62">
+        <div class="stamp"><span>00:53:19</span><strong>Weiyang</strong></div>
+        <p>我给分享的就是最开始的就最早的项目就 harness 还没有出现的时候，我们那个 spac 可能要做一个月。就包括手手动的去调研，从从各个渠道用用各种的搜索引擎或者是大模型去，这样一开始是要做一个月的，现在我把这个 spec 的工作量是缩减到2.3天，就是我希望这个研究是负责任的，然后我希望这个研究覆盖的方向是比较全面的，因为有些你比如说我为什么也不喜欢看这些公众号了。公众号上面写的东西它都是有偏颇的，就真正重要的，但是不得不存在的东西是没有人讲，然后这些东西我需要是非常全面的调研，它和非常全面的检查你一个项目的安全和非常全面的检查你项目的一个一个项目的性能。</p>
+      </article>
+      <article class="transcript-item" id="t63">
+        <div class="stamp"><span>00:54:22</span><strong>Weiyang</strong></div>
+        <p>全面的扫描，它的本质的工作量是一样的，就是要做全面的扫描，只不过是你要做全面的 spec 的话，还有大量的 web search 或 deep 就是外接的 deep research 工作量。所以我现在还有听说我朋有一些朋友，他们做一个 spec 需要两周，但是我觉得。也不至于要把一些收集信息的这样的工作量，你去勇于去尝试，就让他可以三开一个 debate，然后让他去。拉这个清单，然后让这个清单里的网页也好，信息也好，让他去 CDP 可以触达，就相当于你自己给自己就是紧紧紧的围绕你当前的这样一个任务，自己给自己搭建了一套拿自己的小零件给自己搭建了一套 deep research deep research 这样东西我们知道现在很多厂商它提供 deep research 这个服务，你最早的 perplexity 什么 minus，还有 D 还有 gemini 它都是提供的这个东西，然后它是作为一个。作为一个就比如说检查多少轮网页，然后 debate 多少轮，然后花了多少 token think think 多少对它这个东西都是给你提前预设好的，它有的时候为为了给你节省 token，它就不给你往下干了，但是你一个项目你要做到多多全面的话，这个度你是去可以是去自己掌握的就是这个东西有多详细，也可以说自己掌握，我觉得一个 spec 的完善程度大概在90% 85%左右85.90%左右，我是可以接受的，就是我最终我能够合理的预计。</p>
+      </article>
+      <article class="transcript-item" id="t64">
+        <div class="stamp"><span>00:56:03</span><strong>Weiyang</strong></div>
+        <p>到后面，就比如说到接下来的三三个月吧，我不说多了，这接1hardness 一共都没有三个月，然后接下来的3.6个月里面这件事情就是在这个。Spec 这个文档上面它多出来的项不会超过原来的15%我觉得这件事儿就是合理的，因为后面你再补的话，你可以开发阶段一二再补模块儿吧，它跟软件迭代是。</p>
+      </article>
+      <article class="transcript-item" id="t65">
+        <div class="stamp"><span>00:56:30</span><strong>Weiyang</strong></div>
+        <p>一个逻辑，然后刚才我说的这一点里面有一个盲点，就是说你你在没有做之前，你你是不太可能合理的预计的就第一次你可能少预计50%。但是随着你接触的程序语言越来越多，你开发的项目面越来越广，形态越来越广，你慢慢的会有一个比较合理的预期就是你自己心里对这个东西。打多少分，比如什么东西是大概六六七十分就可以接受，然后后面再去找专业的人来去专业的同事来去再优化一轮说怎么我觉得合理预计一个 spec，然后把后面的。</p>
+      </article>
+      <article class="transcript-item" id="t66">
+        <div class="stamp"><span>00:57:11</span><strong>Weiyang</strong></div>
+        <p>很突发性的东西就是控制在15%是有意义的，我之前还碰见过一些问题，我之前碰见过。项目是，比如说加加什么，开发一个几天吧，开发了一个流程，可能是说加50000-40000加50000-40000这样的开发逻辑就是说从一开始你这个项目就没有设计好，然后就中间就会被 refacter 了，就被彻底的 refacter 了。Refector 会导致你的 additions 和 deletions 这两个东西是特别高，所以我觉得在你自己开发每一个项目的过程中，你可以检查自己的提交或者 AI 帮你的提交，就是这个。Additions 和 delicious delicious 占 additions 的12.15%是比较健康的，百分之30以上肯定发发发生了局部整体的一个 reflect 是非常不健康的。如果是5% 6%就是你的 delicious 5% 6%。说明你你有可能没有排除掉那个文档，或者说你这纯代码，你就是做的很好，就是没有什么可 refector 的地方，你的 delicious 占 additions 就是。</p>
+      </article>
+      <article class="transcript-item" id="t67">
+        <div class="stamp"><span>00:58:26</span><strong>Weiyang</strong></div>
+        <p>百分之几就这些指标对我来说是它是可以被被量化的，但到最后每个人每一个程序语言和每一个项目。前前后后的不同的阶段，这些指标，它这些比例它都是有所浮动的，我觉得找到适合自己的这个东西是最重要的吧，就是你你一直是可以去靠一些量化的指标来去监控自己的东西，但是我是倾向于还是说在大面上还是放手去做的约束条件就是 agent 和 agent 之间。自己是协调，然后他自己协调，这个牵涉到另外一个逻辑就是也想过我觉得挺重要，而且我自己也没有想好，我一直还是想跟人家讨论，就是到底要不要做 work tree。</p>
+      </article>
+      <article class="transcript-item" id="t68">
+        <div class="stamp"><span>00:59:18</span><strong>Weiyang</strong></div>
+        <p>这件事我现在 worktree 可以做成什么样子，就说我是一个崭新的空白的项目，然后就只搭了一个框架，脚手架里面30个功能都没做。那我这30个功能就直接往 main 里去干，就是它就上文就会被一直就是一个 agent 的上文会一直被另外的一些 agent 的。</p>
+      </article>
+      <article class="transcript-item" id="t69">
+        <div class="stamp"><span>00:59:42</span><strong>Weiyang</strong></div>
+        <p>的提交所污染，但是有可能不是污染，人家提交的东西很好，你来了一个新的模块，它在那个 agent 在，比如说1号 agent 在2号5号6号推了工作之后，它会自适应的看我看看二五，2号5号6号的 worker 干了啥，那我现在。适应性的去在这个代码的基础上再去改，是 work tree 的一个逻辑，这种 work tree 的逻辑就是说到最后这几十个东西的协调，你可能会。会有一个 cn2的协调，就你你建了30个乐高，你做了30个乐高的模块。你发现他俩两两拼不起来，就这是一个非常扯的点就是两两拼不起来，就特别恶心。然后这个是你不用 work tree 的一个不好的地方，然后用 work tree 的。我之前说林晨哥说不用 work tree 我之前那个龙虾我明确告诉龙虾，我说你直接干吧，不用 work tree。然后我现在自己有一些项目，我想看看 work tree 我能拿到多少好处，那他就是一个一个的去干。然后他比如说6个 worker 干了30个模块，干完30个模块之后，我会有一轮特别长的一个 go。</p>
+      </article>
+      <article class="transcript-item" id="t70">
+        <div class="stamp"><span>01:00:55</span><strong>Weiyang</strong></div>
+        <p>就是我会一个的去把卧室里面的东西拿过来合并，然后它这个合并过程就比较长了，就比如30块，我大概要合并四个小时，就是每新进来一块，它就要不断在上文里去检查，它跟别的块乐高块是不是有冲突的，然后这种模式我的感觉是。你在最后一次这个 go 里面，它可能会比较省 token，比较那个比较能够 catch hit 那个命中率再大一些，但是你的代价就是最后这轮你把大家都吸收进来，那个你会花四个小时的 token，然后一个单并发的 token，然后一直在一直在看。这个项目的代码，我觉得这两种模式，第一种模式可能说 catch hit 比例会差一点点，它会差一点。然后第二种模式的话可以是 kate 的率会高一点点，然后第一种模式的话，可能进度会快点，那就是它最终是帮你省省时间。因为很多东西都是我上文污染了，没关系，那不叫污染，我重新围绕新的上文，然后围绕一个没有 k**的一个上文，我去调整一下，我此时此刻我这个 agent。</p>
+      </article>
+      <article class="transcript-item" id="t71">
+        <div class="stamp"><span>01:02:14</span><strong>Weiyang</strong></div>
+        <p>需要配合其他 agent 已经完成的工作去做什么东西，所以怎么样去用 workfil 我觉得是也是分歧比较大吧，最近我两边都试了，然后我也没有说。</p>
+      </article>
+      <article class="transcript-item" id="t72">
+        <div class="stamp"><span>01:02:26</span><strong>Weiyang</strong></div>
+        <p>特别好的结论！</p>
+      </article>
+      <article class="transcript-item" id="t73">
+        <div class="stamp"><span>01:02:28</span><strong>李志伟</strong></div>
+        <p>你刚刚这个场景是说你们有一个 spect，然后有30个功能，你现在想让一个这个你你我不知道你刚刚那场景是一次性发起多个 agent 去同时去开发，就用什么 agent teams 就去开发。</p>
+      </article>
+      <article class="transcript-item" id="t74">
+        <div class="stamp"><span>01:02:44</span><strong>Weiyang</strong></div>
+        <p>是的，碍事的，这可以。</p>
+      </article>
+      <article class="transcript-item" id="t75">
+        <div class="stamp"><span>01:02:47</span><strong>李志伟</strong></div>
+        <p>是这样一个场景是吧，然后你。</p>
+      </article>
+      <article class="transcript-item" id="t76">
+        <div class="stamp"><span>01:02:48</span><strong>船长</strong></div>
+        <p>我可以发言吗？我提出一些不同意见就是微阳可能对这个 worktree 有一些疑虑。我说一下我自己的一些实践吧，我在春节左右的时候，那时候我的那个 cloud 账号还没被封。那阵我使的比较，那个比较猛，就基本上一天是几百兆 token 那种，我那会儿就是用 worktree 去干的，其实说白了就是你要如果你想加快开发进度的话，你可能就得需要用多个 worktree 同时去开发多个 feature，这样的话才能让你的那个速度更快一点，否则的话就是因为你，你多个 worktree 它解决的就是一个问题，其实就是你多个 worktree 的话，每个 worktree 其实它对应一个分支嘛，对应一个分支，然后的话，你这个分支就可以，就是就，就比如说都改同一个文件。这样的话就将来就墨汁的话就比较好。所以我现在我当时的方法是这样的，我当时方法是我自己写了一个就是在 cloud code 里面做了一个就是自己写了几个 skill 或者是就用 command command 的方式，然后我写死了几个 work tree 就那个 work tree，就我就叫 feature a feature2feature3这种 feature123。然后就是那个我开发的方式是这样的，就是我会把那个一些想法和功能点，我都直接在 github 上建上那个 issue，然后我每个去开发的时候，我就有一个 command，就是说是有一个 skill 吧，就是说，我直接把这个 issue 拉出来，然后就开始。</p>
+      </article>
+      <article class="transcript-item" id="t77">
+        <div class="stamp"><span>01:04:26</span><strong>船长</strong></div>
+        <p>分配到一个 work tree 里边，然后去做这个开发。对开发完成之后，他自己再提交一个 PR，一般情况下他提交 PR 前，我其实是这步，我是手动的，就是我会先 check1遍，包括这个里边的工作流也会去要求他去做。比如说自己去设计 plan 的时候要求他去做，必须得做验证。plan 里边必须得包含验证。包含那个单元测试，至少要包含单元测试，如果有前端的，我甚至要求他去做那个 E TO E 的测试，所以我觉得这样的话就能保证了我的那个开发的这个速度，然后是他开发完之后就提交 p2之后，然后我会。单独再开，单独在主分支那再开一个或者多个窗口，就这个窗口，我就专门负责 review 这个 code review code review 这个他的这个就是其他的那个其他的进程提交其他的 class code 的进程提交的这个 PR，然后 review 完了之后有问题。就等于是有问题会直接在加一个评论，然后再回去那个分支，再去做，再那根据那评论再去做修改。直到这个 code review 通过之后，然后再合并这个 PR 合并之后，然后基本上这样的话，我就会就是就那几天基本上是这个工作的进展推进的就非常快。</p>
+      </article>
+      <article class="transcript-item" id="t78">
+        <div class="stamp"><span>01:05:53</span><strong>船长</strong></div>
+        <p>我觉得这个才是一个比较，就是我是感觉这种方式可能是一个更好的一个一个方式吧，当然后来那个 cloud code 他们后来又升级的版本，他们自己加了一个对 work ray 的支持了。然后我没有用他们的，我用我自己的，因为我还专门评估了一下，用这个也是跟 opus 讨论了一下。要不要用它的功能还是用我自己的这个开发的这个 skill，结果讨论完之后就还是决定用我自己的这个我基本上这个观点。</p>
+      </article>
+      <article class="transcript-item" id="t79">
+        <div class="stamp"><span>01:06:23</span><strong>Weiyang</strong></div>
+        <p>对船长哥我听下来就是因为我用 worktree，其实我用那个 codex cli 自带的就是如果当我没有显示的要求是这么做，事情的话，它是会给我自动的去安排的。然后我听下来反正是您刚才说的拿 issues 去1:1映射的就是我，我感觉你你也是拿 issues 当看板了，就是这个看板，就本地有一个看板，它收集各方各面的意见，比如说从从团队内部收集意见，从用户端收集意见，从从用户邮件收集意见和从 github issues 收集意见他。他这个意见源是多元的，但是我听下来就是感觉一个支持多多元的看板，这个是非常重要的，然后这个看板也是支持 work tree 的那但到最后是用哪个版本的 work tree，甚至是不用 work tree 我觉得这个东西，从我现在内心角度来讲，我觉得这个自由肯定是交给用户吧，就是不会是去强迫用户就跟他说一定是哪个最好，因为现在的习惯来说确实还非常不一样，对，只要是持续把。</p>
+      </article>
+      <article class="transcript-item" id="t80">
+        <div class="stamp"><span>01:07:34</span><strong>Weiyang</strong></div>
+        <p>就是有一个稳定的就是有一个标准化流程吧，我觉得这个流程是标准化的就是用用 work trade 和不用 work trade，或者说用不同版本的 work trade。然后从这个 work trade 的这个来源是哪？是有可能是你新一版你的新一版 spec 新一版 PRD 可能是 github 对这来源也特别不一样。我觉得这。我觉得今天可能说最大的共识可能是看板对的非常重要。</p>
+      </article>
+      <article class="transcript-item" id="t81">
+        <div class="stamp"><span>01:08:01</span><strong>船长</strong></div>
+        <p>我的主要观点就是它 worktree 主要是解决的还是并行开发的问题，就是因为你如果不用 worktree 的话，它可能会多个进程同时操作一个文件，这样可能就会乱，所以它解决的是这个问题，然后另外就是其实践中会有很多问题，就比如说我，我当时用多多 worktree1开始没去想那个事儿，一个最明显的问题就是假设你这服务器，你这个工程有前端有后端，假设比如说你现在都要起个那个 vue 的就前端的 vue 的，然后后端是什么的，它就会有一个端口分配的问题，一个非常简单的你假设你要。</p>
+      </article>
+      <article class="transcript-item" id="t82">
+        <div class="stamp"><span>01:08:03</span><strong>kyo</strong></div>
+        <p>非常同意看板这个事情。</p>
+      </article>
+      <article class="transcript-item" id="t83">
+        <div class="stamp"><span>01:08:43</span><strong>船长</strong></div>
+        <p>是都起这个前后端进程，那你这窝就是你是不同的窝 walk tree，你就得做一个端口分配对，所以就是也会有这样的问题，不过这些都是小问题，都也都很容易解决吧。</p>
+      </article>
+      <article class="transcript-item" id="t84">
+        <div class="stamp"><span>01:08:55</span><strong>kyo</strong></div>
+        <p>不好意思，我想提个问，因为刚刚一直在说 worktree 跟 spac 这两件事情，我理解这两个它本身不冲突，但是如果说用 worktree 这一类的，我自己现在跑下来可能这个东西会不会区分项目，比如说，因为我这边的那个项目一般都是商业化的，就比如说给大 B 端客户去提供一些类似于 saas 软件的这种情况，它会包含比如说 saas 平台端以及像商家端每个商家端底下有不同 models。类似于这种类型的结构，然后我本身是产品，我一般来说是有一个可能没有你们那么详细的 spec 我不知道到大家的那个 spec 的那个大概的行数的情况。就我这边的话大概都是从口述大概20分钟左右的时间，然后跟比如说 opus 去聊出一个完整的 spec 文件夹里面可能会有对应的表结构和 API 文档主要的业务叙事，还有前端的一些页面结构功能清单等等这些东西。</p>
+      </article>
+      <article class="transcript-item" id="t85">
+        <div class="stamp"><span>01:10:05</span><strong>kyo</strong></div>
+        <p>开多 agent 来去做迭代。这边的话我会分成，首先有一个规划的 agent，在这规划 agent 的这里面，他会自己去做那个 SECHON 和 SECHON 之间的一些传递。就这个 agent 它只用来做规划，然后 coding agent 这边可能会有自己，比如说我同时去开3.4批可能中间完全不同的一些。任务，然后让他重新去跑，然后跑完之后，然后再把那些有依赖的再继续跑那分批跑下去，估计一套大系统大概在三个小时左右。能够把那些比如说像普通端以及每个端里面的一些前后端模块，比如说先干页面再干那个 API 等等大概三个小时左右能够跑出来 APP 等于说。说我们把教授加到，然后我这边现在就会特别痛苦，在发完这个之后，我就会的部位都要去精修，我没有办法说我这个东西我就按照这个方式跑完之后。后他就能自己忘了可能会比如说像登录路由有问题页面路由映射有问题，权限有问题等等这样的一些问题，所以我理解就我不太清楚大家的那个开发情况是什么样子，至少我在。</p>
+      </article>
+      <article class="transcript-item" id="t86">
+        <div class="stamp"><span>01:11:26</span><strong>kyo</strong></div>
+        <p>通过这一类的开发时候，就比如说我期望让背景的自己去修这些 bug，一般来说都会去找出更多的问题。</p>
+      </article>
+      <article class="transcript-item" id="t87">
+        <div class="stamp"><span>01:11:38</span><strong>kyo</strong></div>
+        <p>不管我去使用那个 oppo4.64.7还是说我把它去转到可能更智能的一些 agent 里面去做这个事情就会陷入到我自己来去干，按人工去修，我去重新去定义，比如说我11个单独的 models 里面的业务模块是怎么样子的，要或者说它的表结构字大是否正确，以及说它的 API 是否正确等等。大家会有这么一件事情，就会花费我很多的人工在这上，所以我一个系统写完大概是在40亿 token 左右，然后整体的花费的时间可能在2.3天。</p>
+      </article>
+      <article class="transcript-item" id="t88">
+        <div class="stamp"><span>01:12:16</span><strong>Weiyang</strong></div>
+        <p>那我觉得还那什么，就我也可以分享一个数字，我们之前有一个就 TOC 的，我觉得之前我们做那个 TOC 的是比后面做的 TOB 的，要就是说散落的点，或者说那些小的细节点要照顾的点，它可能有些点。是纯业务的点，就是不得在为了对业务有帮助，然后当时的话那个东那个整个一套做下来是差不多20b，然后剩下后面我做 TOB 的确实是就是没有几 B 就差不多就已经做完了。然后我是觉得因为。就是第一个大大型的 TOC 项目的话，你关注的点其实是非常散，非常多，甚至有的东西是来不及做，它只能是留在 spec 里，这个东西可能是下一个大版本再去做一个好的 TOC 的 spec，就你后面再做 TOB 的话，你从好的 toc spec 里面需要关注的点多少方面，其实是越来越完善的，就是从后面就是说你你再起一个新项目的话，从从你之前做过的项目，你认为是这个项目的 spec 需要关注的很多大方向是它的超级，你找一个是它的超级，你说你你从超级里面给筛出来一套资。我觉得这个也算是一种 do not repeat yourself 就是就相当于从自己过去的工作量里面，再把这个新项目的 spec，就是说你你哪怕说不会准确到这个。</p>
+      </article>
+      <article class="transcript-item" id="t89">
+        <div class="stamp"><span>01:13:50</span><strong>Weiyang</strong></div>
+        <p>这个 spec 的每一行，你之前那个项目可能弄个 spec 修修补补可能都有几百上千行了，你你这个可能就200行，但他关注的方向是有几个方向，那个方向大方向是不会错的，或者说把它叫做 meta spec 也行，那你照顾到那个方向之后，他就会像压缩包一样展开，就我当我换了一个换了项目，但是我依然要关注安全，依然要关注性能，依然要关注什么用户体验，然后用户留存这些乱码七糟的东西的时候，你你你会发现。他还是说那我需要关注的话，那还是方向是定的还是说先是多少轮 deep research，然后那个多少轮调研，比如说同类竞品或者接近的他们的最佳实践调研完了之后整合到适合自己的，然后有所取舍嘛，就有所不为嘛，然后找找一套适合自己的这些东西来做。</p>
+      </article>
+      <article class="transcript-item" id="t90">
+        <div class="stamp"><span>01:14:45</span><strong>Weiyang</strong></div>
+        <p>大大概可能说都是说你之前做过超级后面你再做子集的话，其实几乎是不会再就是除除了除了就是从 metaspect 生成 spect 的上面有点工作量，但是 metaspect 你会。你会考虑的很周到，就是不太会遗漏大方向。</p>
+      </article>
+      <article class="transcript-item" id="t91">
+        <div class="stamp"><span>01:15:02</span><strong>kyo</strong></div>
+        <p>理解 OK，我感觉 TOC 和 TOB 可能还不太一样，因为在 TOB 的时候，我明确感觉到可能我跟我之前管团队有比较像的一个情况，就是公司里面，大家去做 TOB 其实都是尽量去做组件抽象，以及说像一些子系统抽象方便去做复用，就会在迭代过程中，比如说像第一版本本身就是完全为了业务趋势能跑通，然后去出现了一套系统，然后到第二个版本的时候，或者说，其实我们在中间其实已经更新，比如说三四十个版本了，然后会发现这个东西我需要拆开来，然后把它拆成不同的项目可能。甚至是不同的 repo，然后每个项目会有自己的 spec 就大概会变成一个这样的情况，就比如说像刚刚说一个 saas 类的，那可能平台管理我会单独变成一个项目，那它可以去复用在其他的不同的商家管理端，因为它就是去做租户订单。以及像角色菜单权限等等这样的一些东西，比如说商家端 merchant 这一块后面也可以单独变成一个独立框架，就类似于 boss job 加上一些账号管理，权限管理，甚至加一些 AI 的东西。</p>
+      </article>
+      <article class="transcript-item" id="t92">
+        <div class="stamp"><span>01:16:16</span><strong>kyo</strong></div>
+        <p>那就会不断的去衍生出一些新的抽象出来的子项目，那可能在去做新的里面的，比如说业务系统的创新的时候，那我理解在 spec 上面没有太多可以去复用的东西，除了像刚刚讲的，比如说用户体验，代码安全，以及像那个一些比如说 as 加密等等这样的一些基础性原则。这些是可以复用的，以外就其他的都是偏业务叙事的，那比如说用户交互流程等这种东西就自己想完之后口喷，然后发现哪里有问题，可能做完一版之后再去看怎么改，所以我理解比较难，一开始就给到一个特别全的东西。现在比较快的可能还是做完一版，看完之后修修修完之后可能自己再想看哪里需要去做抽象大概是这么一个过程。</p>
+      </article>
+      <article class="transcript-item" id="t93">
+        <div class="stamp"><span>01:17:05</span><strong>船长</strong></div>
+        <p>我有一点不同的看法，就是你刚才提到的你你把做那个 space 吧，那个文档，space 文档里边就是你提到了它里边既有功能，又有甚至里边有那个表结构这些东西。</p>
+      </article>
+      <article class="transcript-item" id="t94">
+        <div class="stamp"><span>01:17:13</span><strong>kyo</strong></div>
+        <p>它会在不同的那个文档里面就是产品的业务是业务的，然后开发是开发的，里面也会有表结构，API 文档等等。但它也不属于在同一个文件里。</p>
+      </article>
+      <article class="transcript-item" id="t95">
+        <div class="stamp"><span>01:17:18</span><strong>船长</strong></div>
+        <p>那在我看。对，就是我的意见就是我是认为它是算在，就是不同开发阶段的就是理论上来讲，你前面是就前面你比如说你跟那个 opus 你你提到的跟 opus 去头脑风暴那个事就是其实是我。</p>
+      </article>
+      <article class="transcript-item" id="t96">
+        <div class="stamp"><span>01:17:45</span><strong>kyo</strong></div>
+        <p>大概会有20分钟时间去聊聊出来这个东西。</p>
+      </article>
+      <article class="transcript-item" id="t97">
+        <div class="stamp"><span>01:17:48</span><strong>船长</strong></div>
+        <p>对我认为是前面是专注跟他讨论那个产品方面的需求等产品方面讨论清楚之后再去讨论那个表结构，我不知道你是不是这么做的，如果你是两个一块讨论的话，我觉得这样可能会非常容易乱。</p>
+      </article>
+      <article class="transcript-item" id="t98">
+        <div class="stamp"><span>01:18:03</span><strong>kyo</strong></div>
+        <p>会有污染，这肯定是先聊完业务叙事，比如说我们先把核心流程这个东西拎出来，然后我们来去结合模块之后才有主数据嘛，有主数据才有表结构大概是这么一个过程。因为这一块主要是一些，比如说像传统中台项目，举个例子，像 CHAT BI 类的或者是像常规的 ERP 等等，或者 A CRM 我现在主要是这一类型的项目，然后这种的话我理解产品的需求还是比较标准的，然后就是去定义，比如说里面的一些表结构开发规范，甚至看是不是要去接到同一开放平台里面等等。</p>
+      </article>
+      <article class="transcript-item" id="t99">
+        <div class="stamp"><span>01:18:41</span><strong>船长</strong></div>
+        <p>对，但是我感觉就是现在模型能力很强了，就是表结构那些细节你要跟他讨论，有的时候你跟他说的越多，反而限制了他的发挥，就感觉就是跟他讨论大方向就行。</p>
+      </article>
+      <article class="transcript-item" id="t100">
+        <div class="stamp"><span>01:18:53</span><strong>kyo</strong></div>
+        <p>一开始让他去开胖麦可能还好。这一点会有。</p>
+      </article>
+      <article class="transcript-item" id="t101">
+        <div class="stamp"><span>01:18:58</span><strong>船长</strong></div>
+        <p>就我觉得就是跟他讨论大方向就然后如果那些细节，比如说哪个字段什么什么，就是怎么设索引，那些东西我觉得就没必要讨论，然后，但是具体有哪些表表的关系这块我觉得是可能是需要讨论清楚的。</p>
+      </article>
+      <article class="transcript-item" id="t102">
+        <div class="stamp"><span>01:19:13</span><strong>kyo</strong></div>
+        <p>需要的对就纠结某个字段，这个事情只有在比如说举个例子，我们现在说要去搞个会员主数据，那其实他可能开始没有考虑 one id 的事情，那说明一下，可能我们要 update 一下我们的业务场景是什么样子。就至少在那个 TOB 这一个领域里面，我感觉很难去。有就刚刚说的就是这个量级的 token 的消耗，我感觉有很多的时间被放在了。</p>
+      </article>
+      <article class="transcript-item" id="t103">
+        <div class="stamp"><span>01:19:46</span><strong>kyo</strong></div>
+        <p>人工确认一些业务趋势上可能会有一些，比如说像那 agent 在 work 去里面自己跑歪的一些点，比如说他觉得这里面需要加一个分组，但我们不需要这个分组功能。</p>
+      </article>
+      <article class="transcript-item" id="t104">
+        <div class="stamp"><span>01:20:00</span><strong>Weiyang</strong></div>
+        <p>然后刚才是 Q 这位朋友就是发言吧，就我也想分享一下，我当我在。被迫重构项目的时候，我可能会发现就是分层的拆，就是把 TOB 和 TOC 这不同的东西，按照同一种分分层的逻辑去拆，比如说大大功能区，小功能点，然后后面的技术点，然后中间的一些接口，把这个东西分层的去整理到这个文档里面，这样的话再发，即使是发生重构的话，它也不会地震，它说那个中间的中台就都能复用了，就有点像之前自己老是搞人人的中台嘛，就是人是可以自由的去排列组合去那啥。</p>
+      </article>
+      <article class="transcript-item" id="t105">
+        <div class="stamp"><span>01:20:47</span><strong>kyo</strong></div>
+        <p>对。</p>
+      </article>
+      <article class="transcript-item" id="t106">
+        <div class="stamp"><span>01:20:51</span><strong>Weiyang</strong></div>
+        <p>然后我开发进度就每一个开发进度从上到下大概都会有，就是偏偏功能和偏业务，然后力度大和小，大概我会分大概3.4层吧，四层可能有点多了，分三层差不多了，就是哪些东西是偏技术的，哪些东西是偏业务的，然后下层是怎么样服务上层的，如果说真的是被迫发生了大的 refactor。那是 spec 和代码跟着一起改，或者说随着业务趋势，你被迫的突然加加了一组模块，然后让这组模块就是以比较小的代价比较小的比例，让他去融融入现有这套系统吧。</p>
+      </article>
+      <article class="transcript-item" id="t107">
+        <div class="stamp"><span>01:21:33</span><strong>Weiyang</strong></div>
+        <p>我觉得水平分层做一些水平分层的东西！</p>
+      </article>
+      <article class="transcript-item" id="t108">
+        <div class="stamp"><span>01:21:39</span><strong>kyo</strong></div>
+        <p>理解这一块，我理解这个可能跟原来就在产业 team 里面，大家去管那个，比如说组建抽象这些会非常有关系，目前也是在自己的项目文件夹里面差不多，这样去积累一些中间件，或者说像有一些可复用的系统框架中。</p>
+      </article>
+      <article class="transcript-item" id="t109">
+        <div class="stamp"><span>01:21:53</span><strong>Weiyang</strong></div>
+        <p>对所以我分层的逻辑就是说就最最底下那层我能跟最懂模型自部署的这些同事去聊聊一些聊一些前沿模型对，然后最上层的那一层就是都是文档留底，然后那个自动化的去生成一部分东西，最最上面那层除了有一些。</p>
+      </article>
+      <article class="transcript-item" id="t110">
+        <div class="stamp"><span>01:22:19</span><strong>Weiyang</strong></div>
+        <p>快速的业务测试，比如说像前置工程师自己拿到很少的文文档的信息，他就能马上帮帮别人调试，就是拿到这些信息以外，在最上层还会给还会直接就在我们的管理平台给这些前置工程师角色的这些人给他业务口径上的建议，就是说，你用那种话术，客户是能听懂的，因为你跟客户讲技术他也听不懂，就是会用用，就是做 TOB 的话，就底层跟要跟技术聊天上层要怎么怎么怎么样去跟客户沟通，然后让客户快速买单，就是说这些。</p>
+      </article>
+      <article class="transcript-item" id="t111">
+        <div class="stamp"><span>01:22:59</span><strong>Weiyang</strong></div>
+        <p>工作，如果说 stack 发生变化的话，就是从上层到底层就全部都同同时的平行都做了一遍，所以整体来讲就是就没有说浪费时间，一块一块做这个东西都是端到端，就直接做好。</p>
+      </article>
+      <article class="transcript-item" id="t112">
+        <div class="stamp"><span>01:23:14</span><strong>kyo</strong></div>
+        <p>理解感觉你们 spec 文档这个写的非常的写的详细，并且齐全，我没有那么详细，很多时候就是聊20分钟，我觉得大概框是这些，那我就让他先写了就可能。</p>
+      </article>
+      <article class="transcript-item" id="t113">
+        <div class="stamp"><span>01:23:14</span><strong>Weiyang</strong></div>
+        <p>这是 TOB 的逻辑。</p>
+      </article>
+      <article class="transcript-item" id="t114">
+        <div class="stamp"><span>01:23:28</span><strong>Weiyang</strong></div>
+        <p>因为我们还碰到了一些这样的情况，我们的模型包括图的模型也好，我们的语言大模型也好，包括一些提示词也好，他们其实都需要被管理，甚至都需要被版本控制。</p>
+      </article>
+      <article class="transcript-item" id="t115">
+        <div class="stamp"><span>01:23:47</span><strong>kyo</strong></div>
+        <p>是肯定的，我也是。</p>
+      </article>
+      <article class="transcript-item" id="t116">
+        <div class="stamp"><span>01:23:47</span><strong>Weiyang</strong></div>
+        <p>就是对所以这块儿的话就是你你会看到，虽然说分层是一棵树，然后这棵树上面就它可能要比那个树的维度再多一维，在时间轴上再多一维就树可以看到树上的每一个节点，它其实也有它的历史变化，就相当于一个树在一个时间轴上去发展的，所以这个东西，我们之前管理平台做得很烂，甚至说根本不重视，我们可能说去年。去年八月份我们管理平台是非常烂，但是现在说所有项目甚至新起的项目就都要以同样的标准去起管理平台这样子。</p>
+      </article>
+      <article class="transcript-item" id="t117">
+        <div class="stamp"><span>01:24:31</span><strong>kyo</strong></div>
+        <p>我也是先有一个项目注册，然后注册里面之后去分层，每一层里面会区分 vision vision 里面再去切不同的项目子文档的文件夹路径，这些东西，然后让 agent 自己去根据 handoff 的情况来去读。不做这种东西就后面一定会乱掉。</p>
+      </article>
+      <article class="transcript-item" id="t118">
+        <div class="stamp"><span>01:24:48</span><strong>Weiyang</strong></div>
+        <p>是我就我觉得。我觉得听听你听你分享，我觉得对我有也有一些帮助，或者说可能说有一些您这边考虑到的，我之前没考虑到，或者说大家同在不同的项目里面，但是走到了同一套方法论的话，我觉得可能是可以交互交叉确认一下，对有什么东西有效的可以交叉确认一下。</p>
+      </article>
+      <article class="transcript-item" id="t119">
+        <div class="stamp"><span>01:25:16</span><strong>Weiyang</strong></div>
+        <p>还有哪些朋友想上麦去做一下分享吗？</p>
+      </article>
+      <article class="transcript-item" id="t120">
+        <div class="stamp"><span>01:25:22</span><strong>林桢杰</strong></div>
+        <p>我这边也分享一下吧，就是我最近的一些心得，因为之前用 AI 写写前端的话，总是发现这个前端写的非常糟糕，或者说你用一些 scale 来做的话，其实效果也不咋地，然后目前为止的话，其实我的前端主要就是说或者说我的需求其实都是围绕着前端来做，比如我先我是要做一个产品或者功能，除了这个外的功能点之外，我会先把我具体的外做好，然后把这个大模。</p>
+      </article>
+      <article class="transcript-item" id="t121">
+        <div class="stamp"><span>01:25:23</span><strong>Weiyang</strong></div>
+        <p>0202。</p>
+      </article>
+      <article class="transcript-item" id="t122">
+        <div class="stamp"><span>01:26:02</span><strong>林桢杰</strong></div>
+        <p>喂给 kimi，然后直接让 kimi 去出这种前端的设计稿，然后包括 UI UX 都是在 kimi 上面调的，然后直接把 kimi 的。直接在 kimi 上面做好之后直接淡 down 下来，就剩下的其实就是拉通的问题了，先说一下这个前方。</p>
+      </article>
+      <article class="transcript-item" id="t123">
+        <div class="stamp"><span>01:26:27</span><strong>林桢杰</strong></div>
+        <p>前端的一些一些点嘛，前端的点是主要是第一个是要设检查点就是基本上像哈 honey's 或者说前后端项目在自动化跑的时候。完我这边的话，我先说我个人情况，我这块是比较关注检查点的，就其实我在整个项目中我会设非常多的，要检查的点及要关注的点，然后这些检查的点通常都是一些比较。通用的设计就是比比一点，就比如说前端能不能直接改文件系统或者前端能不能去做某些操作。像这样的检查点，其实是会列的很多的，包括数据库层面可能会说，禁止用外键。用户 id 统一或者说是什么类型，这些比较细的检查点列出来之后，在整个项目拉通以后。再串起来效率会比较高，反正这块是我自己做的先跑一轮，然后前后端都跑一个雏形。</p>
+      </article>
+      <article class="transcript-item" id="t124">
+        <div class="stamp"><span>01:27:42</span><strong>林桢杰</strong></div>
+        <p>然后再围绕着前端的功能，把链条拉通，就是围绕每个点一条一条的把链条拉出来，这个是反我目前为止我个人是这么做的吧，感觉还行。比较多的时间，其实就是花在了最后的测试上面，这个是可能花的时间比较多的。有一些点，也可以让 AI 去做测试，不过它有还是有一些地方会检查不到的。得点一下，它就都是一些细节问题，然后我这块是有做一些个人的品味的 skill。你把你自己的一些个人偏好，然后把一些架构设计上面的一些点全全都丢给这个 scale，然后这个 scale 就是相当于它是一个决策树。决策树，然后你在什么情况下会 if else 把这个提示词用脚本的方式给回到你的主位认的里头。就看你怎么去控制你这个 skill 的释放了，就是把16做成一个决策树这块。用的还是比较少的？</p>
+      </article>
+      <article class="transcript-item" id="t125">
+        <div class="stamp"><span>01:29:16</span><strong>kyo</strong></div>
+        <p>我理解，我不太清楚你们的情况，那我自己在用 skill 这一块，我觉得没有那么靠谱，就至少在比如说 contact 积累到特别多的情况下，没有办法去依赖，比如说靠 skill 去做软约束。</p>
+      </article>
+      <article class="transcript-item" id="t126">
+        <div class="stamp"><span>01:29:36</span><strong>林桢杰</strong></div>
+        <p>这块是有硬约束的，有一些特殊的检查点，就比如说，之前在做一个算法项目的时候，就会发现像大模型，它可能会偏向于说给你搞低卡机，或者说你有一些比较，它让它调用规则引擎的时候，它可能会用多重的 for 循环。然后像这些，你就得说设计一些比较细的检查点，就比如说强制要求你的算法复杂度，比如 for 循环里面你最多是。OON 最多是或者说是 log log on 的这种的复杂度。</p>
+      </article>
+      <article class="transcript-item" id="t127">
+        <div class="stamp"><span>01:30:26</span><strong>Weiyang</strong></div>
+        <p>林哥林林林哥刚才提到了一个很重要的点，就是我觉得包括那个工具里面还有跟 agent framework 里面，很少被提到的点，但是我基本上确定那个 pymono 其实是有的，就是它里面会有一个模块叫资源感知，然后这资源感知其实包括 web coding harness 很少有人提，然后这个是我们实际工作里面我们碰到的一个问题就是碰到的真实的情况就是有些工作它不是你去烧 lm token。烧完了就能做出来了，有些东西是需要 CPU 资源，有些需要 GPU 资源，那 G 最简单的 GPU 资源就是像那个拉开源模型全自动部署嘛，我可能说我拉，我要拉20个模型。然后我平行部署，然后或者是一个一个的去部署，然后我要测对，然后有一些特很非常特殊的工作是必须要 CPU 甚至 CPU 集群，然后还有我在。我在线上线下行为表现不一致的时候，就是因为线上线下的 CPU 和 IO 的资源非常不一样，然后还有我在这个。</p>
+      </article>
+      <article class="transcript-item" id="t128">
+        <div class="stamp"><span>01:31:40</span><strong>Weiyang</strong></div>
+        <p>项目开发的时候有很多我 mac mini 现在已经乱的不成样子了，你可能有好几个项目吧，然后每一个项目。它涉及到的端口，可能说有的要占两三个端口，有的占10来二十几20个，然后我在本机全局是有一个端口。端口管理就是不能这很多你新开一个 agent 或者新开一个什么窗口，它上来就把你抢占了把之前老的都给杀掉吧，新的给抢占了这个端口抢占是端端口资源是有限资源嘛。所以感觉自然感知这个东西你推广来讲，你刚才说的那个复杂度，他是跟你线下开发线上开发都相关的就是你跑起来了之后你你线下测试觉得性能没有问题，线上测试性性能就直接就挂了，把自己数据库跑死了。然后就是没有提前为为自己的资源去做规划，去做感知，但是你一旦知道有资源这么回事的时候，你其实用一个 markdown 去维护这个资源列表，然后。我觉得这样不管是在线上线下就都会顺很多，就是把自己能用到资源给管理起来，如果你只开发一个项目的话其实很你很难想到这件事就是一个项目，不就那几个端口嘛，然后你开发两两三个可能就会。</p>
+      </article>
+      <article class="transcript-item" id="t129">
+        <div class="stamp"><span>01:33:09</span><strong>Weiyang</strong></div>
+        <p>乱起来了，资源管感知是拍 mono 里面的一个，因为拍拍 model 也管那个大模型部署嘛，模型部署对它那里面有一个比较细节的点，但是我是觉得现在像什么。Codex app CL CLI 这些他们都不管，他都不管了，我觉得是盲点，就是 agent framework 做的比较好，但是像。自诩为 coding 工具，他们往往忽略这些东西就是 corner cases 他们都忽略随随着随着大家就是同时能并发做两个项目，那你你你以后可能同时手经手5个项目的模块？然后两个项目，你是主力三个项目，你是辅助资源感知这些东西我觉得都蛮需要的。</p>
+      </article>
+      <article class="transcript-item" id="t130">
+        <div class="stamp"><span>01:34:05</span><strong>kyo</strong></div>
+        <p>我不知道你们有没有一种这种感觉就是假设你同时在做三个项目，我觉得个人的判断还是蛮重要的，因为我其实没有办法去完全让它自动化，因为其实我觉得就刚那问题，我自己的 bug 文档没有那么齐全，它一定会在中间，比如说让到，比如说第10个版本的时候，它肯定会拖线，它肯定会出现问题。</p>
+      </article>
+      <article class="transcript-item" id="t131">
+        <div class="stamp"><span>01:34:28</span><strong>kyo</strong></div>
+        <p>在这个情况下，我自己的个人的状态就变成了这个东西的最大瓶颈，比如说我当时是不是能够过得过来有这么多的精力去想里面的一些子模块的设计是不是合理，或者是像。就可能我当时状态，比如说我精力不够，或者是像我像肚子比较饿，有点低血糖，那我的给出来的一些指令，其实它就会去影响到就会污染模型，然后让模型可能在一些稍微偏远的地方，然后它会偏得更远，因为后面它自己去自动化去做了，然后可能因为我之前的一些，用词问题，或者是像我的态度更激进，然后他去继承了一些这样激进的态度，然后就反正中间会需要去纠正过来的。token 会消耗的越来越多。</p>
+      </article>
+      <article class="transcript-item" id="t132">
+        <div class="stamp"><span>01:35:16</span><strong>Weiyang</strong></div>
+        <p>有一种可能就是他跟其实跟领域是有关系，就是有些领域是相信专家更相信专家一点，就是因为他公开数据可查，可以复核的东西，他没有那么多公开数据可查，然后都有一些 domain knowledge，甚至都有一些碎片化的知识，甚至比你比如说亚文化这个东西，你你想做一个你想做亚文化的，比如说爱好者的同的东西，如果他没有公开可查实的就是被录入大模型的这个东西的话，可能你就。</p>
+      </article>
+      <article class="transcript-item" id="t133">
+        <div class="stamp"><span>01:35:53</span><strong>Weiyang</strong></div>
+        <p>你就可能要偏向于相信专家，比如说我们之前有一些纯后端的问题，包括 go long 加上 postgre 这些问题，有的时候我就是图省事，我说你你告诉我 openai 是怎么做的，我觉得 openai 做的还行，做挺好的吧。然后他这套东西，你把他的最佳实践，全方位的给我捋一遍，然后我把我自己的东西查缺补漏，公开可查证的东西。它离最佳时间有多远，然后我自己个人是感觉有一些很偏的一些领域，你打比方说那个半导体领域就是你，你查大模型，它有的时候它。他给你说出来那个东西纯幻觉，包括行业，包括这个发展纯患者也没法用，还不如说你这个东西的准确率还不如顶你在这个行业里面工作个35年可能懂得多，所以那些情况的话，我还倾向于问一些以前的同事什么的对。所以他是完全跟这个领域有多少知识被录入了大模型也有太多关系的，有的时候就是有的时候是你就凭你直觉，有的时候是你就。你就找一个好的范本，就说你看哪个大厂是怎么做的嘛，他做的到底优不优雅，简洁，功能强大，就差不多了，然后还有的就是你完全不能相信他的东西就是可能跟领域来讲就差的确实比较大。</p>
+      </article>
+      <article class="transcript-item" id="t134">
+        <div class="stamp"><span>01:37:31</span><strong>Weiyang</strong></div>
+        <p>然后还有一些就是跟任务差的比较大，你像 go long 的问题，我感觉5.5.3coco dex5.3已经做得很好了，然后可能就是。一，他说功能做的很好，然后有些性能可能会遗漏，然后你要是拿以前的 glm 就是国内的质谱也做的很好。就是有一些勾浪了，但是你你要拿 rust 的话，那可能就是你你拿最好的模型，它可能也就给你做成那个样子，也是跟语言跟所处的行业。什么的，然后跟业务都差的都蛮多的，所以它会影响你的标准流程。就是 harness engineering 嘛，这是你的标准流程，它会一部分影响你的标准流程，也会一部分影响你在整理 spec 的时候的速度和准确性。就是为什么我觉得一个 spec 整理一个月我也不会特别吃惊。</p>
+      </article>
+      <article class="transcript-item" id="t135">
+        <div class="stamp"><span>01:38:08</span><strong>kyo</strong></div>
+        <p>理解对。</p>
+      </article>
+      <article class="transcript-item" id="t136">
+        <div class="stamp"><span>01:38:33</span><strong>Weiyang</strong></div>
+        <p>就是他有时候他觉得他整理出来的东西，大模型帮他整理的东西，他不可信，然后他还要再去自己去整理，然后有的东西你像我自己有些东西我觉得一个 spec 超。没有必要超过两天，那东西又不是啥高精尖的东西，就是一些 APP 开发的东西，安安卓 IOS 的东西，我觉得就。就是相信就那他做不好的话，那肯定是因为数据对有的时候做不好，因为数据飞轮不行吗？那 IOS 已经存在这么多年了，就3月份就做的都不好，然后我觉得5月份就做的好，那我5月份做。就3月份我怎么改都改不好，就纯纯在那瞎改的东西，5月份我觉得就是 swap 已经列的非常清了，他的 hardness engineer 做的还不好，我觉得也有跟那个模型能力相关的东西，所以很多东西说做不好的话就没有那么着急，就是也不是说。</p>
+      </article>
+      <article class="transcript-item" id="t137">
+        <div class="stamp"><span>01:39:32</span><strong>Weiyang</strong></div>
+        <p>非得着急去做我因为我知道他有一天数据，飞轮会刚好卡着那条线会让你能去做这件事情就是你卡着那条线，把这个东西。作为全球吧，就同类的软件团队，你你是前3%做出来的，我觉得差不多，你别等到所有人都能做了，你也能做，那就只能练手了，你你要感知到这个模型能力的前沿的话，也就是经常试嘛，经常去测测测试一下。</p>
+      </article>
+      <article class="transcript-item" id="t138">
+        <div class="stamp"><span>01:40:03</span><strong>kyo</strong></div>
+        <p>是这样能明显感觉到他让知识域在一些领域里面就不太行，那你可以把这个东西抽出来，就有一部分你会觉得，比如说假设我们现在就去做账号权限这些东西，这就非常标准。你不用想什么，你就跟他说一句话，他怎么着都能做个八九不离十，但是你要去做一些创新型的，原来在原来的系统里面用，就基本上不会有过这种架构的。</p>
+      </article>
+      <article class="transcript-item" id="t139">
+        <div class="stamp"><span>01:40:24</span><strong>Weiyang</strong></div>
+        <p>你现在这个情况一句话能让他做到八九不离十的，你像 python javascript 的，还有 shell 这种都是没有什么太大问题的。以后，因为最近那个 rust 的进度也卡住了，没有怎么往前推了。所以就最新的模型这个就是表现怎么样，实际计算之前有个特别好玩儿的，就是我之前改造过 open cloud 的一些模块儿。</p>
+      </article>
+      <article class="transcript-item" id="t140">
+        <div class="stamp"><span>01:40:32</span><strong>kyo</strong></div>
+        <p>对 java 的会好很多。</p>
+      </article>
+      <article class="transcript-item" id="t141">
+        <div class="stamp"><span>01:40:59</span><strong>Weiyang</strong></div>
+        <p>然后我对 rust 就是你研究连研究去改，然后1:1去复刻，然后比较，然后再比较不同，然后再把不同的就是那个 gap 给填上，我3月份拿5.3codes 去写 rust 我就觉得特别不满意，我就觉得到处是 gap 那当时我就觉得 go long 就很好，然后 python 我就不愿意写。因为他拍 python 可能就太简单了，但是从上个月的一个我有一个朋友嘛，就是他说那个把一个 rust 的问题之前是手托 rust 老法师，然后给。他解决不了的问题，给 kimi kimi 两个小时解决不了，然后5.4x high 来了5分钟，然后他从那以后就感觉是还是可以的，估计就是从5.5开始就是重度使用那个 codex 去开发 rust 就是就你。</p>
+      </article>
+      <article class="transcript-item" id="t142">
+        <div class="stamp"><span>01:41:53</span><strong>Weiyang</strong></div>
+        <p>越到了你到了一定的刚好到了一定的门槛，就突然会突然越过那条线，你会打你的这个工具也好，会打动更多的人，在那之前其实不就是比较不愿意尝试的人，第一反应都是不信，比如说像那个 kimi 去做前端，包括 kimi 在前端做的一些。它有一个 kimi 的集群，然后包括我之前让 kimi 在做大面上的一些。一些一些一些一些研究对我，因为我知道很多的细节就是你要追求 facts 这件事你要追求 fast 的话，你你你大概率最后还是会回到 JVM 那去做。</p>
+      </article>
+      <article class="transcript-item" id="t143">
+        <div class="stamp"><span>01:42:27</span><strong>kyo</strong></div>
+        <p>agent team。</p>
+      </article>
+      <article class="transcript-item" id="t144">
+        <div class="stamp"><span>01:42:39</span><strong>Weiyang</strong></div>
+        <p>但是你没有那么细的 fax 你在 fax 更高一层。你说这个 fax 它是有几个大类的方向，我不要求细节准，我只需要大的方向比较全面的话。kimi 也不会看漏太多的，这会有一些朋友说为什么你觉得 kimi 是可信的，就是他不愿意相信一个一个他没有用过，或者他没有测试过的产品，就是，所以现在这些东西就是说。也没有什么说谁教谁的，基本上就是都是讨论出来的就是人和人的精力是有限的，人和人一直在做不同的方向，只能说，我反正挺愿意，可能说两三个月去有一个。</p>
+      </article>
+      <article class="transcript-item" id="t145">
+        <div class="stamp"><span>01:43:24</span><strong>Weiyang</strong></div>
+        <p>小慧去下一下东西三个月差不多就大模型两版时间三个月同步一次是够的，对，如果说刚好有哪个模型特别牛逼，突然跨过了某条线的话，那个东西一定是会口口相传，大家都知道了，剩下不是口口相传的。一些东西就是靠就靠定期去同步定期去 share，比较健康的，就是像我说五50天就是50天 AI 大学的教材会换一代，那我就去上 AI 大学就好了。</p>
+      </article>
+      <article class="transcript-item" id="t146">
+        <div class="stamp"><span>01:43:55</span><strong>Weiyang</strong></div>
+        <p>大家都是学生嘛？</p>
+      </article>
+      <article class="transcript-item" id="t147">
+        <div class="stamp"><span>01:43:58</span><strong>kyo</strong></div>
+        <p>理解那像这种的之前比如说 hunter alpha 刚刚发的时候，那时候有一点这种感觉在后面比如说 opus4.7出来就没有感觉很惊艳，而且就在项目实践里面，我感觉。特别是跑多 agent，在，比如说自己自我复制这一点上，包括4.7不能管好自己的一些 subagent 或者跟他同级的 agent。它的编排能力我自己跑下来可能相对较弱，也有可能是我提示出问题，但是用4.6就不会有这个问题，所以我现在还一直是长期在用那个 office4.6来去跑。</p>
+      </article>
+      <article class="transcript-item" id="t148">
+        <div class="stamp"><span>01:44:39</span><strong>船长</strong></div>
+        <p>我想请教一个问题，就是我现在做一个网站的改版，我就想请教一下大家就是在页面设计这块，大家有什么好用的工具推荐吗？</p>
+      </article>
+      <article class="transcript-item" id="t149">
+        <div class="stamp"><span>01:44:59</span><strong>Weiyang</strong></div>
+        <p>这我能分享一下，我是先做一个横版，一个竖版，然后就是让这两个统一的风格，UI 风格吧。然后拿 gpt1没着二来做，然后让它生成六端的那个六端的一个稿吧，这个前端的一个草稿，然后再让 AI 来去仿对，然后让你让他从零开始全全自动生成的话就 codex 很烂。然后 cloud 会好一些，但是 AI 味很全。但是你直接去生图，然后让他去模仿图的话，会好一些。然后这个东西可控性它是肯定不如 figma 和 stitch 的，但是这不着急嘛，有的时候着急的话就是。着急也就着急了，不会说我一定要去把 figma 和 switch 调的牛逼，然后我才能开始去做这个东西，也是我们从我们现在进度感觉来讲，也是没有必要。我们同事我们是那个团队是 figma 有两个年费席位就去年五月，因为 mac 上线了去定了这个东西，然后今年是正好就用完一年就直接就退订了，就是也没有必要太去依赖这个东西了，但是你说能不能把它就是。</p>
+      </article>
+      <article class="transcript-item" id="t150">
+        <div class="stamp"><span>01:46:10</span><strong>船长</strong></div>
+        <p>今年是。</p>
+      </article>
+      <article class="transcript-item" id="t151">
+        <div class="stamp"><span>01:46:18</span><strong>Weiyang</strong></div>
+        <p>替代掉 figma 有一个很好的控有控制力的这个工具可能可以试试 stitch google stitch，但是也可以直接用 gpt image 二，你我。超快猛的就是在很早期。更愿意验证功能，而不是验证设计的话，我可能就会这么干。</p>
+      </article>
+      <article class="transcript-item" id="t152">
+        <div class="stamp"><span>01:46:42</span><strong>kyo</strong></div>
+        <p>我从实干方面讲一下我自己的流程，我就找参考，就是我刚刚在群里发了。那我们很早，比如说我们14年15年去开发 APP 的时候，其实当时也是大家会有很多的那个。</p>
+      </article>
+      <article class="transcript-item" id="t153">
+        <div class="stamp"><span>01:46:45</span><strong>Weiyang</strong></div>
+        <p>还有 in in pactable。</p>
+      </article>
+      <article class="transcript-item" id="t154">
+        <div class="stamp"><span>01:46:56</span><strong>kyo</strong></div>
+        <p>参考站，那国内的话用站那国外的话，大家用 jibo 或者是那个 behance 现在一样的你在 jibo 或者 behance 上去找那个飞机稿去找，你觉得那个你希望让 AI 去抽的那种，飞机搞风格，然后你你让他去做复刻这个事情，现在我自己跑下来还是比较稳的，所以基本上都能复刻，比如说你要里面的一些细节的风格，以及它里面的一些设计规范，你可以让他去总结，然后保持多页面的一致性，甚至多端的一致性。再恶心一点，你可以直接去找一些站点，可能你直接把他的 URL 丢给他，然后让 AI 那边自己去总结，比如说里面 CSS S 的一些情况。</p>
+      </article>
+      <article class="transcript-item" id="t155">
+        <div class="stamp"><span>01:47:42</span><strong>Weiyang</strong></div>
+        <p>刚才咱们那个群聊里面有群友嘛。antiimage 有敌法师嘛，请教一下那个杰哥说后端。后端的东西就能不能下一下后端的东西对？</p>
+      </article>
+      <article class="transcript-item" id="t156">
+        <div class="stamp"><span>01:48:01</span><strong>林桢杰</strong></div>
+        <p>行，我首先分分几层讲，先讲一讲，我个人觉得前端跟后端的区别在什么地方，就因为我是前端基本上不怎么会的，然后我挑前端的话基本上也都是 V coding 对接后端的话，其实我都是以这个前端给的接口为准，因为你前端要数据什么的，最好说是你集中一个文件，或者说你把这个 mock 数据都做出来，然后结构给定下来，然后基本上你前端设计好之后，剩下的就是交给后端来拉通。然后后端这块的话，因为后端对于前端来说，基本上是不可见的，你要去看后端的这种效果跟流程的话，我最主要的是几个方法，第一个是做这种分层的开发，然后分层的开发的话，基本上我会把。</p>
+      </article>
+      <article class="transcript-item" id="t157">
+        <div class="stamp"><span>01:49:02</span><strong>林桢杰</strong></div>
+        <p>数据层，算法层以及业务逻辑层做区分，其中有一个比较关键的就是脚手架。像以前没有 AI 开发的时候，市面上其实已经有了很多脚脚手架。然后其实脚手架它其实是一个对于 AI 来说，我们来说，它其实都是一个比较好的通用的设计。所以我这块基本上用后端的框架的话，我会比如像 go，我是用那个 go zero。我基本上就用 go zero 来开发，把算法层跟数据层剥离出来之后，就直接让他把里面的设计出到 spark 里面。然后像 spark 层的话，我除了会说参考我以前的项目或者说，比如搜索推荐，那其实可能会去会直接去找现有市面上已经比较不错的框架直接拉过来。</p>
+      </article>
+      <article class="transcript-item" id="t158">
+        <div class="stamp"><span>01:50:11</span><strong>林桢杰</strong></div>
+        <p>然后一个是做参考开发的话，参考的也说它的这种流程链路的上面的节点。就比如说我们要参考一个 agent 的工具，那我可能就直接把 codex 源码拉出来，然后拉的话拉出来之后让 AI 读一遍，然后把。具体的关键流程节点梳理出来，后续开发的时候就是围绕这些关键的流程几点，比如数据是什么格式，然后通没通。</p>
+      </article>
+      <article class="transcript-item" id="t159">
+        <div class="stamp"><span>01:50:47</span><strong>林桢杰</strong></div>
+        <p>其实核心比较不好做的，可能是算法这一块可能有的时候它这块可能还是需要有点积累吧，你知道这个东西得用什么算法？就但这个可能搜一搜大概也知道了，就是说，具体的数据库的话，这一层其实反正就是独立分装嘛，独立分装，然后 API 是 API，然后数据是数据，然后做还有一个比较。</p>
+      </article>
+      <article class="transcript-item" id="t160">
+        <div class="stamp"><span>01:51:20</span><strong>林桢杰</strong></div>
+        <p>有一个比较好的地地板，就是你其实完全是可以去参考一些脚手架的源代码，就比如像 go zero，它本身的这个脚手架的质量是比较高的，其实你是可以去参考它的脚手架去写一个其他模块的脚手架。就等于说你让 AI 写脚手架，然后再用脚手架来帮助 AI 来开发，然后但这些点主要是针对一些比较固化的部分，然后非固化的部分。或者说有涉及到 AI 的部分的话，我更多是看关键点，然后拉通以后做这种信息反馈处理，然后把 mock 数据干掉。就基本上是这些，然后基本上串下来之后基本上都通了，剩下就调优的问题了嘛，调优的问题就是单单单独是单独调优的问题了。基本上就这样就感觉也不是怎么说，感觉还是也是挺费人的。</p>
+      </article>
+      <article class="transcript-item" id="t161">
+        <div class="stamp"><span>01:52:38</span><strong>Weiyang</strong></div>
+        <p>林林哥，刚才你说那个脚手架那个东西我还提出一个那啥抬下杠，就是现在这个脚手架你你你给项目初始化给他定大概什么程序员开发，他基本上自己也搭出来一套了，因为他是惯性的，就是说别人的项目偏最佳实践大概是怎么样的，自己会搭一些，一搭一部分出来，你把程序语言定下来，基本上架子搭的。大差不差，如果你再不相信的话，就从自己旧的项目里面复刻，当然也可以。</p>
+      </article>
+      <article class="transcript-item" id="t162">
+        <div class="stamp"><span>01:53:12</span><strong>林桢杰</strong></div>
+        <p>对也是基本上都是这个逻辑就是.. 就是也没有说一定吧，就是反正脚手架我觉得就是也是有用的嘛，就是用来延伸用的就是你有一些通用的东西，你可以把它。丢到脚手架里，反正就不用费这个 token，然后后后面要开发的时候你就可以直接用这个脚手架直接上。主要点就是比如数据库连接池，就这些老掉牙的东西就是没有必要说你用让人家开发。就分离一下就好了。</p>
+      </article>
+      <article class="transcript-item" id="t163">
+        <div class="stamp"><span>01:53:53</span><strong>船长</strong></div>
+        <p>我感觉脚手架理论上来讲应该算古法编程的残留的东西。</p>
+      </article>
+      <article class="transcript-item" id="t164">
+        <div class="stamp"><span>01:54:02</span><strong>Weiyang</strong></div>
+        <p>只是它是 spec 更值钱的一点点，我觉得就是包括这个 spec 出来之后，其实那个文件就是就真实代码的文件夹和你那个项目文档那个。只装文档那个目录树，就它们两个东西是就是同时出现的，到最后生成就是大差不差，就是说你做这一步其实也是不太相信它端到端能生成的很好，你中间补一步很全面，很完善的，然后至少在中间补的这一步，能够说达到一个满意的效果，然后再往下去推进度嘛，但基本上来说，我基本上我可以说就是你有你这个项目是覆盖了什么什么前后端覆盖了什么什么东西的项目定下来了，项目方向定下来了。大概要做的方向定下来了，程序员定下来了，你就会发现到最后那目录数做的大差不差，这个东西去年五月份是肯定做不了的，但现在是没什么太大问题去年55月份？基本上就是你让他从零开始搭一个框架搭不出来，我觉得这个也是有点时代因素吧，就是 web coding 来的早的反而。他会对去年这个时候 web coding 有多难用他会有一个认知，所以他有的时候他还不如刚接触两周的玩了转，就是刚接触两周的，他会觉得什么约束都不加我的表现也非常好。</p>
+      </article>
+      <article class="transcript-item" id="t165">
+        <div class="stamp"><span>01:55:37</span><strong>Weiyang</strong></div>
+        <p>会有这种情况，所以就是完全取决于你大模型，你做一个工作嘛，不管是做一个设计还是做一个实施的工作，你你你触发这个项目冷启动，让他给你搭一个架子，请求你触发的时候，他当时这个请求会有个温度，然后这个温度以及这个模型本身训了什么东西，他要给你吐吐一个默认答案，这个默认答案其实也是。在往越来越好那个方向去走的，这默认答案也会往标准答案去往上去，靠的，除非没有标准答案，你像设计就是没有标准答案的设计，这个东西如果没有标准答案的话，它默认那个答案吐出来就。非常烂，非常拉，大家会觉得 AI AI 味非常重。但是你要让他拿做后端的话就是起手吧，起手就不会太差。</p>
+      </article>
+      <article class="transcript-item" id="t166">
+        <div class="stamp"><span>01:56:37</span><strong>Weiyang</strong></div>
+        <p>好好那个还有。</p>
+      </article>
+      <article class="transcript-item" id="t167">
+        <div class="stamp"><span>01:56:53</span><strong>Weiyang</strong></div>
+        <p>还有朋友分享一下吗？</p>
+      </article>
+      <article class="transcript-item" id="t168">
+        <div class="stamp"><span>01:57:00</span><strong>吴希以</strong></div>
+        <p>喂，你好，我是吴欣，然后我目前是在南京，我想分享一下的是从一个产品经理的角度去看现在的一个 vibe coding，就是因为刚刚大家分享，我都一直在听嘛，大家的技术水平都很高，都是主要的开发人员。</p>
+      </article>
+      <article class="transcript-item" id="t169">
+        <div class="stamp"><span>01:57:01</span><strong>Weiyang</strong></div>
+        <p>诶，你好！</p>
+      </article>
+      <article class="transcript-item" id="t170">
+        <div class="stamp"><span>01:57:18</span><strong>吴希以</strong></div>
+        <p>然后我作为一个产品经理，其实我遇到最大的问题就是如何快速的做一个原型出来，然后这一点上，我是通过学习大家 web coding 的方式，然后大概能够通过，不管是通过 stitch 通过什么也能够快速的手做一个原型，但我其实会感到困惑的点，就是我如何高效的把我的原型以及文档就是整理下来，发送给后端，让后端看到这个时候能高效的帮我做一个工程化，就是我这边只做海盗的事情，而工程师只做工程师的事情。</p>
+      </article>
+      <article class="transcript-item" id="t171">
+        <div class="stamp"><span>01:57:49</span><strong>吴希以</strong></div>
+        <p>我不太清楚大家作为一个程序的视角是如何提出这样的一种要求的，因为之前传统开发的时候，不过就是产品经理交付一个文档和原型就可以了，但现在我觉得在 AI 时代可能需要交付的更多。</p>
+      </article>
+      <article class="transcript-item" id="t172">
+        <div class="stamp"><span>01:58:05</span><strong>Weiyang</strong></div>
+        <p>之前有一种说法是，产品经理的需求快速变少，是因为产品经理能够自己去先做一个类似于 MVP 的东西，然后他会发通过自己的使用，发现哪个地方靠谱，哪个地方不靠谱，就是如果就我刚才听下来，如果你那边是说没有在碰那个直接碰技术的话，我觉得就是因为 github 上会有很多开源的 spacs，他们会把一些 spacs 直接就转化成这个 skills，这个 skills 就是为了给你搭。一个项目的框架的，比如说有的是给前端去搭框架的，然后有的是给游戏打框架的，那当然后端的肯定也有，而且后端它其实会比。比前端还要简单，所以对，所以我觉得你提了一个东西或者提了一个方向，能做不能做是两回事嘛。</p>
+      </article>
+      <article class="transcript-item" id="t173">
+        <div class="stamp"><span>01:58:53</span><strong>kyo</strong></div>
+        <p>标准很多。</p>
+      </article>
+      <article class="transcript-item" id="t174">
+        <div class="stamp"><span>01:59:02</span><strong>Weiyang</strong></div>
+        <p>能做具体怎么做，大概的就是大大概的工作量解耦，然后让这个技术能够服服务于这个业务的话，我觉得就是。</p>
+      </article>
+      <article class="transcript-item" id="t175">
+        <div class="stamp"><span>01:59:13</span><strong>Weiyang</strong></div>
+        <p>Github 是会有很多这样的 skills，就是这个 skills 本身就是 spec，就帮你生成 spec，尤其是在几乎一无所知的情况下。帮你去生成 step，这个是可以用这用也会在如果说真的是说一无所知状态下就是可以用一边用，然后一边实及时的跟咱们技术人员做一个反馈，然后我自己现在团队里面就是包括从从产品和。产品和前两版嘛，就前两版原测试原型的实现，甚至说有的已经能做到8%八九十了，然后最后收口可能。</p>
+      </article>
+      <article class="transcript-item" id="t176">
+        <div class="stamp"><span>01:59:53</span><strong>Weiyang</strong></div>
+        <p>线上负责缺口的同事来去做，从我的角度来讲，有一个做游戏的 spec，那是一组 skills 和 spec。对我觉得比较有比较优化的解就是 github 搜一份，然后和再和 gpt 讨论一下，你就直接问他说。比如说美国最好的软件工程类似的这个赛道的最好的软件工程，他们有什么最佳实践，你围绕着最佳实践，你给他列10个点20个点就最佳实践是什么样做的，然后我们现在团队成员的这个水平，人人能够管理的水平是怎么样做的，你可以去迁就他，你可以让 AI 去迁就你项项目的当前状况和当前团队同事的当前水平，你可以去迁就他。然后去换一些技术站在这两个东西能保证的时候，然后最佳实践加上 github 吧，就差不多！</p>
+      </article>
+      <article class="transcript-item" id="t177">
+        <div class="stamp"><span>02:00:55</span><strong>kyo</strong></div>
+        <p>我讲一个可能我在团队里面的一个情况，因为我也是产品，那只不过我可能干的时间久一点，在2月份的时候我在前团队，因为我在前团队，我是产业负责人，然后我干了一件恶心点的事情就是几乎把所有人都转成全站。就这一件事情就在当时看其实是比较恶心的。所以我要求产品它会先出，刚刚说 MVP 产品不是写文档，就是产品现在出文档其实，no make S sense，包括2月份2月底的时候我跟阿里的一些，比如说无影零购之类的团队去聊，也是样子，产品自己先出 MVP。然后产品出来的 VIP 不一定它代码质量靠谱，因为其实产品基本上看不懂代码，在这个情况下，比如说产品觉得说这个东西绕通了自己，每个东西都测到位了，就觉得 OK 给业务用也 OK，然后再找开发来去评审反向评审。</p>
+      </article>
+      <article class="transcript-item" id="t178">
+        <div class="stamp"><span>02:01:53</span><strong>kyo</strong></div>
+        <p>让 AI 基于自己写的这套代码，然后写一套说明文档，这个是给 I 给开发那边的 AI 去用的一套说明文档。大概是这么一个流程，就等于说产品自己先开发完了 MVP 然后拆解出来大概三套文档，然后给对应的后端前端那边去做评审，然后后端前端去核代码，大概这么一套流程可以去节省你原来可能比如说正常 UI 评审，然后终审，再正常走迭代，然后再测试，你能节省一半以上的时间。</p>
+      </article>
+      <article class="transcript-item" id="t179">
+        <div class="stamp"><span>02:02:35</span><strong>吴希以</strong></div>
+        <p>谢谢我们现在基本上我们自己的开发模式，其实可能类似于说首先有一个 idea，然后开个会，开完会之后，产品经理会直接把会议纪要整理成 PRD，然后做 MVP，然后在做 MVP 的过程中，会根据我们的开发实践中我们形成的开发规范，比如说 tdd，比如说测试覆盖率95%以上去做这个事情，然后把 MVP 交付给我们的技术那边去做进一步的一个优化部署，包括它的一个审核吧。</p>
+      </article>
+      <article class="transcript-item" id="t180">
+        <div class="stamp"><span>02:03:09</span><strong>kyo</strong></div>
+        <p>我理解这套流程，现在如果能在团队内部让通的话是在成熟项目上跑的最快的一种方法，你你产品这边反正基本上都做完了，然后给开发那边去做归档的，主要是看开发规范到底 O 不 OK，你说有一些可能产品没办法自己去判断的一些点，那开发可能用自己的 agent 来去协同判断。</p>
+      </article>
+      <article class="transcript-item" id="t181">
+        <div class="stamp"><span>02:03:37</span><strong>吴希以</strong></div>
+        <p>谢谢！</p>
+      </article>
+      <article class="transcript-item" id="t182">
+        <div class="stamp"><span>02:04:05</span><strong>Weiyang</strong></div>
+        <p>的 OK OK，还有哪些朋友想分享，我觉得今天时间也不早了，马上6点了，就晚饭时间，然后非常感谢今天大家参会，然后后续的话那个有一些朋友也有我的那个微信，然后我把那个录音转出来，然后还有一些在我群里面，然后。也可以联系我进群嘛，就是群基本上就只聊 harness 和平时工作，然后闲聊也有一些是个小群，一100人出头，基本上是比较重度的，在搞这些的，然后今天就到这，今天到这，然后我把那个几个方向不同的。讨论，然后我会就是分分成分成一题的方向，直接总总结出来就再总结出来，再整理一版，然后就是给大家 share 一下对，然后我的微信是一盘散沙，那个拼音的一盘散沙，然后。反正今天就到这吧，也很高兴认识新认识一些朋友嘛，对，然后昨天是那个朋友有狂热 AI，他从群里面介绍了几个这方面叫 har harness engineering 玩的比较赚的朋友对我今天聊了一下也比较有收获吧。未来三个月大家的 token 消耗量会有一个新的阶段，会今天的思考可能会变成明天的结果。</p>
+      </article>
+      <article class="transcript-item" id="t183">
+        <div class="stamp"><span>02:05:40</span><strong>Weiyang</strong></div>
+        <p>行感谢大家这个参会我们就两个半小时，差不多就结束了，今天就到这了，谢谢大家参会！</p>
+      </article>
+  </div>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

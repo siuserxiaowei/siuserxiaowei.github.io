@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>草诀歌 AI Labs 闭门会 · 深度拆解：出海增长实战 × 长程 Agent 认知</title>
+<style>
+  :root {
+    --ink: #1a2332;
+    --ink-2: #4a5568;
+    --line: #e2e8f0;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --warn: #b45309;
+    --warn-soft: #fffbeb;
+    --ok: #059669;
+    --bad: #dc2626;
+    --deep: #0f766e;
+    --deep-soft: #f0fdfa;
+    --dao: #b45309;
+    --fa: #2563eb;
+    --shu: #059669;
+    --qi: #7c3aed;
+    --shi: #dc2626;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero { border-bottom: 3px solid var(--ink); padding-bottom: 28px; margin-bottom: 36px; }
+  .hero .tag {
+    display: inline-block; font-size: 13px; letter-spacing: .12em;
+    color: var(--accent); border: 1px solid var(--accent);
+    border-radius: 999px; padding: 2px 14px; margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 28px; line-height: 1.45; letter-spacing: .02em; }
+  .hero .meta { margin-top: 12px; color: var(--ink-2); font-size: 14px; }
+  .tldr {
+    background: var(--accent-soft); border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 0 0 40px; font-size: 15.5px;
+  }
+  .tldr strong { color: var(--accent); }
+  nav.toc {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 24px; margin-bottom: 44px; font-size: 14.5px;
+  }
+  nav.toc b { display: block; margin-bottom: 8px; font-size: 15px; }
+  nav.toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; }
+  nav.toc li { margin: 4px 0; }
+  nav.toc a { color: var(--accent); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  section { margin-bottom: 48px; }
+  h2 {
+    font-size: 21px; display: flex; align-items: center; gap: 10px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 18px;
+  }
+  h2 .no {
+    flex: none; width: 28px; height: 28px; border-radius: 8px;
+    background: var(--ink); color: #fff; font-size: 14px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  h2 .no.dao { background: var(--dao); }
+  h2 .no.fa { background: var(--fa); }
+  h2 .no.shu { background: var(--shu); }
+  h2 .no.qi { background: var(--qi); }
+  h2 .no.shi { background: var(--shi); }
+  h3 { font-size: 16.5px; margin: 22px 0 8px; }
+  h4 { font-size: 15px; margin: 16px 0 6px; color: var(--ink-2); }
+  p { margin: 10px 0; }
+  ul, ol { margin: 8px 0 14px 22px; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--accent); }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 22px; margin: 14px 0;
+  }
+  .seg {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 22px; margin: 16px 0;
+  }
+  .seg .time {
+    display: inline-block; font-size: 12.5px; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft);
+    border-radius: 6px; padding: 1px 10px; margin-bottom: 8px;
+  }
+  .seg h3 { margin-top: 4px; }
+  blockquote {
+    background: var(--warn-soft); border-left: 4px solid var(--warn);
+    border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 12px 0;
+    color: var(--warn); font-size: 14.5px;
+  }
+  blockquote .who { display: block; margin-top: 6px; font-size: 12.5px; color: #92610a; }
+  .deep {
+    background: var(--deep-soft); border-left: 4px solid var(--deep);
+    border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0;
+    font-size: 14px; color: #115e59;
+  }
+  .deep b.tag-deep {
+    display: inline-block; font-size: 12px; letter-spacing: .08em;
+    color: #fff; background: var(--deep); border-radius: 5px;
+    padding: 0 8px; margin-right: 8px;
+  }
+  .deep a { color: var(--deep); }
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14.5px;
+    background: var(--card); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #f1f5f9; font-size: 13.5px; letter-spacing: .03em; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  .deadline { color: var(--bad); font-weight: 600; white-space: nowrap; }
+  .done { color: var(--ok); font-weight: 600; }
+  .todo { color: var(--bad); font-weight: 600; }
+  .q { color: var(--accent); }
+  code { background: #eef2f7; padding: 1px 6px; border-radius: 5px; font-size: .92em; }
+  .small { font-size: 13.5px; color: var(--ink-2); }
+  .src { font-size: 13px; color: var(--ink-2); }
+  .src a { color: var(--deep); }
+  footer {
+    margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--ink-2); font-size: 13px; text-align: center;
+  }
+  @media (max-width: 640px) { nav.toc ol { columns: 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="tag">闭门会纪要 · 缺席者深度导读</span>
+  <h1>草诀歌 AI Labs 闭门会（2026-08-05 晚）<br>出海增长实战 × 长程 Agent 的一线认知</h1>
+  <p class="meta">主讲：郑忠炜（产品出身，出海连续创业者，正做一款 Reddit 营销 Agent 产品）· 主持：David · 时长约 65 分钟<br>整理自完整逐字稿（docx）。机器转写误写较多，本文已逐一校正，无法确认的标注「存疑」</p>
+</header>
+
+<div class="tldr">
+  <strong>一句话总结：</strong>这是一场以「真金白银踩坑」为主线的分享——如何在已验证 PMF 的红海旁，用「需求平移」找到疗愈×娱乐的蓝海；用几百万投流费换来「素材是灵魂、H5 测首日 ROI」的出海增长打法；最后落在他正在做的 Reddit 营销 Agent 上：<strong>2026 年的 Agent 已经不是 function call 对话机器人，而是能连续工作 1~3 个月的长程任务数字员工</strong>，其技术本质只有两条——上下文控制 + 文档协同。
+</div>
+
+<nav class="toc">
+  <b>目录</b>
+  <ol>
+    <li><a href="#s1">会议基本信息</a></li>
+    <li><a href="#s2">人物与转写校正</a></li>
+    <li><a href="#s3">道 · 底层认知（6 条）</a></li>
+    <li><a href="#s4">法 · 可带走的方法论（5 套）</a></li>
+    <li><a href="#s5">术 · 一线操作细节</a></li>
+    <li><a href="#s6">器 · 提到的平台与工具</a></li>
+    <li><a href="#s7">势 · 趋势判断（5 个）</a></li>
+    <li><a href="#s8">会议逐段还原（12 段）</a></li>
+    <li><a href="#s9">Q&amp;A 全记录（7 问）</a></li>
+    <li><a href="#s10">背景深挖（外部资料核实）</a></li>
+    <li><a href="#s11">给不同角色的行动清单</a></li>
+    <li><a href="#s12">术语表</a></li>
+  </ol>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">1</span>会议基本信息</h2>
+  <table>
+    <tr><th>项目</th><th>内容</th></tr>
+    <tr><td>时间</td><td>2026-08-05（周三）20:14 – 21:19，约 65 分钟</td></tr>
+    <tr><td>形式</td><td>草诀歌 AI Labs 闭门会（线上）：主题分享约 40 分钟 + 白板收集问题 Q&amp;A 约 20 分钟</td></tr>
+    <tr><td>主讲</td><td><b>郑忠炜</b>——产品出身，曾在大厂 AI 团队（转写为「光年」，推断为光年之外，见<a href="#s10">深挖③</a>）做产品；正职之外带 4~5 人副业团队连续做出海项目（AI 社交 → AI 视频工具），现为创业者，正在做一款 <b>Reddit 营销 Agent</b> 产品（转写为 Barrier / Beaver / Berriz，拼写存疑）</td></tr>
+    <tr><td>主持</td><td>David（草诀歌 AI Labs 组织者）</td></tr>
+    <tr><td>发言者</td><td>刘文津（提问）：在做「AI + 数学」的网页端 AI 工作流产品，国内主做小红书种草</td></tr>
+    <tr><td>内容主线</td><td>① 蓝海赛道怎么选（疗愈 × 娱乐）→ ② 两个踩坑项目复盘（AI 社交、AI 视频工具）→ ③ 几百万投流费换来的增长打法 → ④ 在做的 Reddit 营销 Agent 与长程 Agent 技术认知 → ⑤ Q&amp;A</td></tr>
+    <tr><td>会上福利</td><td>在 Reddit 增长上有<b>真实需求且自己踩过坑</b>的朋友，可找郑忠炜要 Agent 产品内测码（前期控制用户与成本，白名单制）</td></tr>
+  </table>
+  <p class="small">整理说明：原始材料为会议实时转写 docx（机器识别，仅供参考）。转写中口语重复、语气词已清理；误写词已校正（见下表）；仍无法确认的一律标注「存疑」，不做臆测。</p>
+</section>
+
+<section id="s2">
+  <h2><span class="no">2</span>人物与转写校正（读原文前必看）</h2>
+  <p>机器转写把大量术语写成了同音字。下表是校正对照，后文一律使用校正后的写法：</p>
+  <table>
+    <tr><th>转写原文</th><th>实际含义</th></tr>
+    <tr><td>su</td><td>SEO（搜索引擎优化）</td></tr>
+    <tr><td>ql / qc</td><td>KOL / KOC（关键意见领袖 / 关键意见消费者）</td></tr>
+    <tr><td>inside</td><td>insight（洞察）</td></tr>
+    <tr><td>ins</td><td>Instagram（投流信息流场景）</td></tr>
+    <tr><td>contest</td><td>context（上下文）</td></tr>
+    <tr><td>pro</td><td>prompt（提示词）</td></tr>
+    <tr><td>setting front</td><td>system prompt（系统提示词）</td></tr>
+    <tr><td>ready / redis</td><td>Reddit（海外论坛）</td></tr>
+    <tr><td>cloud code</td><td>Claude Code</td></tr>
+    <tr><td>open cloud</td><td>存疑：上下文指某开源 coding agent（OpenClaw 或同类）</td></tr>
+    <tr><td>op4.6（25 年 12 月）</td><td>Opus 4.5（2025-11）与 Opus 4.6（2026-02）的混合记忆，考据见<a href="#s10">深挖①</a></td></tr>
+    <tr><td>barrier / beaver / Berriz</td><td>其 Agent 产品名，三种写法音近，准确拼写存疑</td></tr>
+    <tr><td>11v 一</td><td>1v1（一对一付费陪聊的社交产品模式）</td></tr>
+    <tr><td>a 证</td><td>agent</td></tr>
+    <tr><td>手入 ri / 手镯 2y / 首页 ROI / OA / ry</td><td>首日 ROI / ROI</td></tr>
+    <tr><td>VTR / VCR</td><td>CTR（点击率）/ CVR（转化率）</td></tr>
+    <tr><td>h5 棋盘</td><td>H5 起盘（用 H5 页面先跑起来验证）</td></tr>
+    <tr><td>TT</td><td>TikTok</td></tr>
+    <tr><td>16 人格里的「屁」</td><td>MBTI 16 型人格中的 P 型（Perceiving，感知型）</td></tr>
+    <tr><td>OPC</td><td>One Person Company，一人公司 / 独立开发者</td></tr>
+    <tr><td>微信问</td><td>微信「问一问」</td></tr>
+    <tr><td>光年</td><td>推断为「光年之外」：王慧文 2023 年创立的 AI 公司，同年被美团收购（见<a href="#s10">深挖③</a>）</td></tr>
+  </table>
+</section>
+
+<section id="s3">
+  <h2><span class="no dao">道</span>道 · 底层认知：这场分享真正想让你想明白的 6 件事</h2>
+  <p class="small">「道」是所有具体打法背后的第一性原理。这 6 条是从 65 分钟分享里提炼的，按会上强调程度排序。</p>
+
+  <div class="card">
+    <h3>道 1 · 红海里的需求已被验证，往旁边「平移」就是蓝海</h3>
+    <p>不要在已验证 PMF 的红海里硬卷（他眼中 AI 陪伴就是红海）。正确姿势是问：<b>同一个底层需求，还能用什么新形态满足？</b>陪伴的底层需求是情绪价值——把它从「聊天」平移到「娱乐化疗愈」，就是蓝海。判断依据是海外的付费环境：国内对心理问题不太关注，海外疗愈市场是「比较大的」。</p>
+    <p>平移时要敢于做减法：数字分身 / 亲人复刻这个方向他明确<b>不做</b>——「非常定制化、要求特别高的产品」，规模化的反面。</p>
+  </div>
+
+  <div class="card">
+    <h3>道 2 · 团队承载力决定产品形态：别让低配团队做创新</h3>
+    <p>他用 3~4 个月换来的一句话：「<b>你做什么事儿，首先要判断自己团队能承载什么样的产品。</b>你不能让质量比较低的团队去做一个微信。」市面上没有的新东西需要创新，而创新非常耗成本——对人员配置要求极高。4 个不资深、不懂 AI 的人做创新项目，结局就是拖拉 3~4 个月、效果一般，而同期思路相同的竞品已经跑出来且收益不错。</p>
+  </div>
+
+  <div class="card">
+    <h3>道 3 · 素材是投流的灵魂，数据是投手的灵魂</h3>
+    <p>几百万投流费买来的排序：<b>素材 &gt; 投手 &gt; 产品转化</b>。「同样的产品，素材不同，整个数据差距都非常大。」而好投手的标准只有一条：能从 ROI、CTR、CVR 的涨跌里归纳出建议——「好的投手能根据数据看出你的产品好坏」。</p>
+  </div>
+
+  <div class="card">
+    <h3>道 4 · 增长没有秘诀：知道用户是谁、在哪，并出现在那里</h3>
+    <p>被问「有没有运营宣发的 skill」时他的回答很直白：没有万能钥匙。「本质就是你知道你用户是谁，你用户在哪，最好你能找到用户。」最好的渠道是<b>非主流媒体的用户聚集地</b>（某个群、某个频道），因为只有懂行的你才会去；其余通用渠道都是基本功，「需要不断去积累，以及花钱」。现在做产品很快，大家比拼的就是增长——而增长恰恰是很多团队做不好的老大难。</p>
+  </div>
+
+  <div class="card">
+    <h3>道 5 · Agent 的一切概念都是人为创造，本质只有「上下文控制」</h3>
+    <p>「不管 agent 做得多花哨，到模型那还是一大堆 prompt，模型给到一个输出。」memory、知识库、skills、tool、subagent——<b>这些全都是 prompt 的一部分</b>，是为了方便开发者分类理解、按 system prompt 结构插入而人为发明的概念。「从第一性原理开始的话，它并没有这些概念。」所以不要被名词绑架，要问的是：哪一段信息、在什么时机、以什么方式插进上下文。这正是 2025 年业界所说的 context engineering（见<a href="#s10">深挖⑥</a>）的一线口语版。</p>
+  </div>
+
+  <div class="card">
+    <h3>道 6 · 真 Agent = 长程任务 + 自我进化，不是 function call 对话机器人</h3>
+    <p>「现在 agent 产品已经很泛滥，是个人就会用 coding 做一个 agent 产品。但我说的 agent 不是加了一个 function call 的对话机器人。」真 agent 的标准：<b>做完能自己 review 效果、能自我进化</b>，像员工一样——「一个人光做事不反思，也不行」。机制上就是 ReAct：环境的输出会引导模型往更对的方向走，形成自我净化。25 年之前的 agent 基本都是 function call 机器人；现在「都叫 agent，但已经完全不是一个物种——有点像都叫 APP，这是个误解」。</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="no fa">法</span>法 · 可以带走的 5 套方法论</h2>
+
+  <div class="card">
+    <h3>法 1 · PMF 平移验证法：四步判断一个「平移赛道」靠不靠谱</h3>
+    <ol>
+      <li><b>提假设</b>：从已 PMF 的市场出发，用产品划分（人群 × 需求形态）画出象限，找到相邻的、逻辑上同需求的方向。象限「大概率能让你看到哪部分有机会」，仅此而已。</li>
+      <li><b>查证据</b>：去新赛道查——有没有对应产品？数量多少？各自数据大概什么水平？</li>
+      <li><b>读信号</b>：没人做 + 数据差 = 可能别人都探索过、都死了；需求多 + 其中一两家数据不错 + 赛道不拥挤 = 被你发现的机会。</li>
+      <li><b>迭代假设</b>：「我没法保证。产品就是这样——有个假设，去印证假设，再反过来调整假设。」平移无法被保证，只能被验证。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>法 2 · H5 起盘验证法：不确定行不行，先别做 APP</h3>
+    <ol>
+      <li><b>为什么 H5</b>：APP 涉及审核、周期长；H5 加上 AI 加持的工程化「很快就搞定」，适合快速试错。</li>
+      <li><b>放什么</b>：只放<b>最锋利的一个核心功能</b>。例：AI 视频工具的 H5，整个页面就是「AI 出视频」；AI 图片、虚拟人对话这些扩展功能一概不放。</li>
+      <li><b>看什么数</b>：<b>首日 ROI</b> 是否达到你行业的 benchmark，以及前端 CTR / CVR 是否健康。</li>
+      <li><b>benchmark 怎么定</b>：由<b>回款周期</b>决定。快消型产品 7 天回款（投 $10、7 天回 $10），首日 ROI 接受 0.5 左右；回款周期一个月、一年的产品，首日能接受的 ROI 完全不同。先算清自己的账。</li>
+      <li><b>下一步</b>：H5 的劣势是留存低；首日 ROI 和前端数据 OK，说明这事能做，「再做 APP 也不晚」——APP 的价值是拉长 LTV，这时再围绕目标用户横向扩功能（AI 图片、虚拟人对话……）。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>法 3 · 投流铁三角：素材 × 投手 × 产品转化</h3>
+    <table>
+      <tr><th>角</th><th>要点</th><th>怎么判断好坏</th></tr>
+      <tr><td>① 素材（灵魂）</td><td>第一档：调研竞品、直接抄——保证行业均值底线（如 ROI 1.5 的 benchmark 附近）。第二档：拆解爆款素材的「1、2、3 步」结构，<b>然后把它忘掉</b>，基于结构重新原创</td><td>同一人群包被多家竞品反复触达，纯抄/小改的素材用户会「皮」（素材疲劳），点击率必然平庸</td></tr>
+      <tr><td>② 投手</td><td>核心是盯策略、看数据</td><td>面试就考：ROI / CTR / CVR 涨跌时，他能不能归纳出「该怎么做」的建议。好投手能从数据看出产品好坏</td></tr>
+      <tr><td>③ 产品转化</td><td>链路能四步别五步；前 3 秒决定留人；进页面直接见产品主界面，点「生成」时才弹登录；前置登录别后置；$0.99/$1.99 低门槛起量</td><td>逐段盯 onboarding → 支付前 → 拒绝支付 → 续费，每一步都有优化空间</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>法 4 · 渠道—产品形态匹配矩阵：三种产品，三种设计思路</h3>
+    <table>
+      <tr><th>增长方式</th><th>产品形态</th><th>设计核心</th></tr>
+      <tr><td>SEO 驱动</td><td>工具型 SaaS 网页</td><td>landing page 体系 + 大量长尾关键词梳理 + 多页面 + 外链提交</td></tr>
+      <tr><td>APP（自然流/留存）</td><td>原生 APP</td><td>靠留存，产品链路围绕留存与 LTV 设计，可横向扩功能</td></tr>
+      <tr><td>投流（付费）</td><td>H5 落地页优先</td><td>转化链路最短化——用户从 Instagram 信息流点进来，「没兴趣立马走」，前 3 秒定生死，步骤能少一步是一步</td></tr>
+    </table>
+    <p class="small">他的复盘：团队之前做 APP 和自然流工具型 SaaS 出身，第一次做投流向娱乐产品，设计思路完全不同——这是隐形的转行成本。</p>
+  </div>
+
+  <div class="card">
+    <h3>法 5 · 长程 Agent 架构法：session 无状态 + 文档协同</h3>
+    <ol>
+      <li><b>承认限制</b>：上下文本质上有限（几百万 token 也是有限），且 context 越多、模型智能与注意力越下降——「跟人差不多，看书时间长了前面的就忘了」。</li>
+      <li><b>任务拆多步</b>：不要让一个任务撑爆一个上下文；上下文不应基于 session 延续。</li>
+      <li><b>session 无状态隔离</b>：一个任务一个 session，session A 不知道 session B 的任何东西。</li>
+      <li><b>文档协同</b>：A 把任务的 insight 和结果同步到文档，B、C 从文档里按需读取——「大家共通的是通过文档去对话，而不是通过 session 的记忆去对话」。这就是长程任务（连续跑 1~3 个月）的本质。</li>
+      <li><b>渐进加载</b>：像开卷考试——不用一开始把整本书铺开，先给目录，考到哪个知识点再去查哪本书。本质是省 token。</li>
+      <li><b>抽象业务实体</b>：在「上下文控制 + 渐进加载」两个本质之上，可以自己造概念。他造了两个：<b>复盘经验</b>（定期对项目经验复盘，agent 在适合的时候读取）、<b>目标</b>（派 agent 拿数据监控目标是否达成）。技术实现无非：从一堆 prompt 里抽出一个实体，用代码逻辑判断满足什么条件时插回主 prompt。</li>
+      <li><b>功能克制</b>：需要什么加什么。「场景用不上 memory，听说有 memory 就非得加，大概率不是好事。能满足场景的就是好架构，没有最优解。」</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="no shu">术</span>术 · 一线操作细节（原话级干货）</h2>
+
+  <h3>投流之术</h3>
+  <ul>
+    <li><b>前置登录为什么必要</b>（AB 测过的结论，别后置到支付时绑邮箱）：① 登录本身是门槛，帮你筛掉「过来点点点」的用户——他们若直通支付页，会白嫖你的免费额度、抬高成本；② 投流平台前端会取你的打点数据喂模型，前期支付样本少时，<b>注册/登录人数是模型学习人群的关键信号</b>——「注册人数越多，理论上证明广告给你推的人群越准」。</li>
+    <li><b>降交易门槛喂模型</b>：一上来订阅 $10/$20/$30/$50，付费人数少 → 模型学习慢。挂一个 $0.99 / $1.99，先让用户证明「他是你的目标用户」，投流模型学得更快。</li>
+    <li><b>滚雪球算账</b>：ROI = 2 且一天回本时，第一天投 1 块回 2 块，第二天投 2 块回 4 块——「ROI 正的话其实不需要太多预算」，投流是技术活；自然流则是更长远的事。</li>
+    <li><b>页面结构</b>：用户路径是「刷信息流 → 看到广告觉得有意思 → 点进来 → 1、2、3 步操作」。他点进来那一刻的前 3 秒决定留存；落地页第一件事就是要让他看到产品主页面，而不是登录墙。</li>
+  </ul>
+
+  <h3>市场与组织之术（行情参考价）</h3>
+  <table>
+    <tr><th>事项</th><th>会上给出的行情</th></tr>
+    <tr><td>Reddit 代运营 agency</td><td>小机构 <b>$3,000/月起</b>；大机构 $10,000 ~ $20,000/月都有</td></tr>
+    <tr><td>投流 agency</td><td>按消耗抽点，<b>3% ~ 8%</b> 不等</td></tr>
+    <tr><td>自建海外运营团队</td><td>1 个资深 + 若干实习生/应届生做执行，北京约 <b>5 万人民币/月</b></td></tr>
+    <tr><td>海外增长人才画像</td><td>投流、KOL/KOC、SEO 三类；约 80% 的人只专通一项，懂两项的靠机缘巧合，三项都懂的极少——这就是企业增长的结构性痛点</td></tr>
+    <tr><td>agency 评价</td><td>「坑蒙拐骗的水比较深」；大 agency 靠谱些但招的也是同样那些人。他们合作过几家，效果都不太好</td></tr>
+  </table>
+
+  <h3>Agent 工程之术</h3>
+  <ul>
+    <li><b>一定要亲手从 0 到 1 build 一个 agent</b>：动手前你知道它是什么、能干什么（这对产品经理够了）；动手后你才知道它表现不好时是 system、memory 还是编排的问题，才知道它在你业务里的<b>边界</b>——「看 Claude 的文章也能知道，但你不知道边界」。知道本质逻辑，才能做市面上没有的工程化创新。</li>
+    <li><b>prompt 调试的递进顺序</b>：先放 system prompt 看看行不行 → 不行就把关键内容提到最上面 → 实在不行，在用户每轮的 user prompt 里拼接预置提示词，「每次对话都带着，注意力肯定会增加」。</li>
+    <li><b>好的 user case 比较重要</b>：没有真实好用的 case，你大概率不知道 prompt 该怎么调。</li>
+    <li><b>警惕功能膨胀</b>：功能不是越多越好——context 变多对模型治理和注意力都是负担。「需要什么加什么。」</li>
+  </ul>
+</section>
+
+<section id="s6">
+  <h2><span class="no qi">器</span>器 · 会上提到的平台、工具与概念（及各自的角色定位）</h2>
+  <table>
+    <tr><th>器</th><th>会上给它的定位</th></tr>
+    <tr><td><b>Reddit</b></td><td>他 Agent 产品的切入点。论坛形态：无数 subreddit 频道、各有规则；扁平时间流、没有 KOL/KOC 层级；图文模态成熟（视频模态的 TikTok / Instagram「还差点事」）。对账号要求极严，「一旦涉及你是 AI，封号特别严重」，企业很难 in-house 做——他们声称有技术方案解决。可做的事：自动发帖、按需求精准找人（用户发的牢骚和帖子）、监控竞品、监测相关话题帖子做评论引流、执行品牌推广计划。对 Google 和 ChatGPT 都是高权重语料，利于 SEO 与 GEO（数据见<a href="#s10">深挖②⑤</a>）</td></tr>
+    <tr><td><b>Claude Code / Cursor</b></td><td>coding agent 代表。「25 年之前用 Claude Code 还不如 Cursor 好用」；25 年底模型推理能力质变后，Claude Code 能端到端跑长任务——从自己干 2 小时，到现在 2~3 天、甚至两个月</td></tr>
+    <tr><td><b>Instagram / TikTok</b></td><td>投流主战场（信息流广告 → H5 落地页的典型路径）；也是视频模态营销阵地，AI 化程度还不如图文</td></tr>
+    <tr><td><b>Google</b></td><td>海外搜索占整个流量盘子约 50%，所以海外做 SEO 默认就是做 Google</td></tr>
+    <tr><td><b>小红书</b></td><td>国内「新搜索」主阵地之一。既有种草打法，也有 SEO 打法：摸清楚用户会提什么问题，铺对应关键词的笔记，让搜索能命中你</td></tr>
+    <tr><td><b>知乎 / B站</b></td><td>在百度权重高——「没必要做百度的 SEO，往知乎、B站发几篇文章、发个视频，搜对应关键词你就在前面」</td></tr>
+    <tr><td><b>微信公众号 / 问一问</b></td><td>微信生态搜索入口，国内 SEO 迁移阵地之一</td></tr>
+    <tr><td><b>character 类产品</b></td><td>AI 陪伴红海代表（二次元 / IP 形象）。他的差异化尝试是用 AI 生成「看不出是 AI」的真人形象做社交</td></tr>
+    <tr><td><b>陌陌 / 探探 / 1v1 陪聊</b></td><td>他 AI 社交产品借鉴的商业模式原型：真人资料卡 + 等级解锁（2 级要照片、3~4 级视频通话）+ 每句聊天扣积分 + 送礼物加热好感度——把「真人」换成 AI</td></tr>
+  </table>
+</section>
+
+<section id="s7">
+  <h2><span class="no shi">势</span>势 · 他押注的 5 个趋势判断</h2>
+
+  <div class="card">
+    <h3>势 1 · 长程任务已可用：Agent 从玩具变成员工（2026 年 4 月是分水岭）</h3>
+    <p>「25 年的时候 agent 其实是一个玩具，做出来是 demo，无法完成用户需求。但今年随着模型推理能力进步、整个 harness 进步，agent 可以端到端替代一个人了。」给一个 brief，它能从 0 到 1 出方案、拆任务、<b>持续执行 1~3 个月</b>——「长程任务变得可能，这个时间就是今年 4 月份」。外部量化数据与他的体感吻合（METR：可完成任务长度约每 7 个月翻倍，见<a href="#s10">深挖④</a>）。</p>
+  </div>
+
+  <div class="card">
+    <h3>势 2 · 「都叫 agent」是这个时代最大的误解之一</h3>
+    <p>function call 对话机器人（2025 年之前的主流）与长程任务 agent（2026 年的新物种）同名不同种。25 年 12 月前后模型推理能力出现「量变到质变」（转写为 Opus 4.6，考据见<a href="#s10">深挖①</a>），直接点燃了 Claude Code 这一模式的爆发。判断一个「agent 产品」值不值得看，先问它能不能自己 review、自己进化。</p>
+  </div>
+
+  <div class="card">
+    <h3>势 3 · 陪伴是红海，疗愈 × 娱乐是平移蓝海（尤其在海外）</h3>
+    <p>AI 陪伴/社交已经拥挤；而「以娱乐化的方式做疗愈」相对蓝海——海外对心理健康的关注度和付费意愿远高于国内。产品形态上他的答案是：<b>游戏化 UI + 世界观包裹的「在场感」</b>——疗愈涉及空间概念，要让用户进入一个与现实毫无关系的新领域，才能抽离出来、放下防备去跟角色聊天；系统同时判断用户状态，适时触发游戏环节互动。</p>
+  </div>
+
+  <div class="card">
+    <h3>势 4 · 增长人才断层 + agency 水深 = 营销数字员工的结构性机会</h3>
+    <p>运营是强执行、吃人力、效率不高的重复劳动；人才市场三画像（投流 / KOL·KOC / SEO）彼此割裂，80% 的人只会一项；招人要 5 万/月、agency 水深效果差。他的解法是 agent 切整个 marketing 市场，先切最垂的 Reddit：模态成熟（图文）、渠道水最深（封号严、企业没法自己做）、且自带 GEO 红利。</p>
+  </div>
+
+  <div class="card">
+    <h3>势 5 · 国内搜索已被 App 分食：SEO 的本质没变，阵地全换</h3>
+    <p>「国内的搜索现在并不在百度，也并不在 Google。」搜索行为分散在小红书、微信（公众号 / 问一问）、知乎、B站等 App 里。SEO 的本质不变——用户问什么问题时能搜到你（关键词匹配）；变的是阵地：小红书铺关键词笔记、知乎和 B站借百度高权重占位、微信生态卡入口。做国内增长，先问「我的用户在哪个 App 里搜索」。</p>
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="no">8</span>会议逐段还原（按时间戳，12 段）</h2>
+
+  <div class="seg">
+    <span class="time">20:14 – 20:16</span>
+    <h3>第 1 段 · 选题：从红海平移到蓝海，定了「疗愈 × 娱乐」</h3>
+    <ul>
+      <li>数字分身 / 亲人复刻：「非常定制化、要求特别高的产品」——判断<b>不做</b>。</li>
+      <li>AI 陪伴相对红海也不做；相对蓝海的是<b>疗愈 + 娱乐</b>：国内对心理问题不太关注，海外这块「看下来是一个比较大的市场」，整个思路就是「以娱乐化的方式去做疗愈」。</li>
+      <li>产品设计两个支柱：① 整个 APP 用<b>游戏化 UI 画风</b>（因为娱乐化）；② 围绕一个<b>世界观</b>打开——疗愈涉及「在场」的空间概念，要让用户进入一个跟现实毫无关系的新领域，才能从现实抽离、放下防备，跟角色聊天说出一些东西；系统同时判断用户状态，触发适当的游戏环节互动。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:16 – 20:22</span>
+    <h3>第 2 段 · 踩坑一（2024 年底）：AI 社交——用错误的人做创新的事</h3>
+    <ul>
+      <li>分享的核心问题意识：「看到一个已经 PMF 的市场，怎么通过产品划分，找到同样需求下平移的蓝海。」</li>
+      <li>2024 年底做 AI 社交：市面上基本是第一个做<b>真人形象</b>的（当时 character 类产品多是二次元/IP）。当时 AI 生图已能做到「让人看不出来是 AI」。</li>
+      <li>商业模式借鉴 1v1 陪聊行业：资料卡 + 等级体系（2 级解锁要照片、3~4 级解锁视频通话）+ 每聊一句扣积分 + 送礼物加热好感度——把真人换成 AI。</li>
+      <li>团队 4 人（2 技术 + 1 设计 + 1 产品），预估 1~2 个月，实际拖了 <b>3~4 个月</b>且效果一般。复盘：「我用了一个比较错误的人去做对应的创新的事」——市面上没有的东西需要创新，创新非常耗成本、对人员配置要求非常高。</li>
+      <li>后话：今天看，市面上思路相同的产品已经跑出来、收益不错——方向没错，死在团队承载力。「你不能让质量比较低的团队去做一个微信。」</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:22 – 20:25</span>
+    <h3>第 3 段 · 踩坑二（2025 上半年）：AI 视频工具 + 补投流能力</h3>
+    <ul>
+      <li>AI 社交失败后，带大家转向 AI 视频类工具——从原项目里抽出的一个单点：「视频玩法」。增长路线主要走<b>投流</b>，目的是把自己不会的投流能力补上。</li>
+      <li>「整体我们投流也有几百万了吧（人民币）……这个钱买出来一些 insight。」</li>
+      <li>三种产品设计思路的差异（他是产品出身，深有体会）：<b>SEO 驱动</b>（landing page + 长尾关键词 + 多页面 + 外链）/ <b>APP</b>（靠留存，链路围绕留存设计）/ <b>投流</b>（一开始他们设计成 H5）。做惯 APP 和自然流工具 SaaS 的团队，第一次做投流向娱乐产品，思路完全不同。</li>
+      <li>投流产品逻辑：<b>链路越简单越好，能四步别五步</b>。用户路径：Instagram 刷信息流 → 看到广告觉得有意思 → 点进来 → 1、2、3 步操作。「觉得没兴趣就立马走」——点进来这一刻的<b>前 3 秒</b>能不能留住人最关键。</li>
+      <li>反面教材：SaaS 式 landing page 进来第一步先登录，很难留人。投流产品应该一进去就看到产品主页面，点「生成」时才弹登录。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:25 – 20:28</span>
+    <h3>第 4 段 · 投流第一件事：素材是灵魂</h3>
+    <ul>
+      <li>为什么排第一：「同样的产品，素材不同，整个数据差距都非常大。」</li>
+      <li>及格线做法：找有些经验的素材同学，调研大量竞品素材直接抄——能保证行业均值底线（比如行业 benchmark ROI 1.5，能平到平均值）。</li>
+      <li>优秀做法：理解你的目标用户，把竞品爆款拆得很细——它为什么爆？1、2、3 步分别是什么？<b>然后把它忘掉</b>，基于这个结构重新设计你的全新素材。</li>
+      <li>为什么不能纯抄：竞品不止你一家，同一人群包被反复触达，「大家都是这个素材，用户就皮了，他也不会点击」。修修补补的小改效果也一般。</li>
+      <li>注意：原创级素材对人要求更高、更慢，得根据团队配置来。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:28 – 20:32</span>
+    <h3>第 5 段 · 投流第二、三件事：投手与产品转化</h3>
+    <ul>
+      <li><b>投手</b>：核心是盯策略、看对数据的理解。招聘就考一点——ROI、CTR、CVR 涨跌时，他能不能归纳出建议。「好的投手是能根据数据看出你的产品好坏。」具体看什么数据，得自己实践才有体感。</li>
+      <li><b>前置登录的必要性</b>（他们 AB 测过「后置到支付时绑邮箱」）：① 登录门槛帮你筛目标用户，挡住「过来点点点」的白嫖流量，保护免费额度成本；② 投流平台会取你的打点数据喂前端模型，前期支付少时，<b>注册人数是模型学习人群的重要信号</b>——注册越多，说明广告推的人群越准。</li>
+      <li><b>降低交易门槛</b>：订阅一上来 $10~$50，付费人数少、模型学习慢。挂 $0.99 / $1.99，先证明「他是你的目标用户」，让投流模型更快学会你的目标人群。</li>
+      <li>转化是系统工程：onboarding → 支付前 → 拒绝支付 → 续费，每一步都有优化空间（会上未展开）。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:32 – 20:34</span>
+    <h3>第 6 段 · H5 起盘验证法与首日 ROI</h3>
+    <ul>
+      <li>新产品不确定行不行：建议先用 <b>H5 起盘</b>——APP 涉及审核周期长，H5 加上 AI 工程化「很快就搞定」。</li>
+      <li>H5 阶段看<b>首日 ROI</b>：能不能达到你行业的 benchmark。他举例自己的行业属「快消」——回款周期 7 天（投 $10，7 天回来 $10）；有的工具产品回款周期一个月、一年，各不相同。</li>
+      <li>回款周期决定首日能接受的 ROI：比如你能接受 0.5，H5 测试首日 ROI 到 0.5 或以上，这事大概率就能做。</li>
+      <li>H5 的劣势是留存低；首日 ROI + 前端 CTR/CVR 都 OK，说明这事能做，再跑 APP 不晚。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:34 – 20:42</span>
+    <h3>第 7 段 · 现在在做什么：Reddit 营销 Agent（数字员工）</h3>
+    <ul>
+      <li>动机：他自评 MBTI 里的 P 人，「特别不喜欢运营型的事」——运营是强执行、吃人力、效率不高的重复劳动，但又必须有。这是他们做投流产品时的切身痛点。</li>
+      <li>人才市场观察：海外增长三画像——投流、KOL/KOC、SEO，约 80% 的人只专通一项（简历写投流的，下一份大概率还是投流），懂两项靠机缘巧合，三项都懂的极少。</li>
+      <li>企业现有两个解法都难受：招人（资深 + 实习生，北京约 5 万/月）/ 找 agency（「坑蒙拐骗水比较深」，大机构招的也是那些人——他们合作过几家，效果都不太好）。</li>
+      <li>时机判断：25 年 agent 是玩具/demo；<b>今年（2026）模型推理能力 + harness 进步，agent 能端到端替代一个人</b>——给一个 brief，从 0 到 1 出方案、拆任务，持续执行 1~3 个月。「长程任务变得可能，就是今年 4 月份。」</li>
+      <li>为什么先切 Reddit：① 论坛形态，频道各有规则，用户自己很难判断该去哪个频道；② 扁平时间流，没有 KOL/KOC 层级；③ 图文模态成熟（TikTok / Instagram 的视频模态还差点事）；④ 水非常深——对账号要求严格，涉及 AI 封号严重，企业无法 in-house 做，「但我们想有一些技术方案能把它搞定」。</li>
+      <li>它能干什么：正常自动发帖；按需求精准找人（Reddit 活跃用户体量大——原话「日活三个亿」，校正数据见<a href="#s10">深挖②</a>——谁有需求、谁在发牢骚都能查到）；监控竞品动作；监测产品相关话题帖子做评论引流；把品牌推广计划以发帖形式执行到社区。</li>
+      <li>附加红利：Reddit 对 Google、对 ChatGPT 这类 AI 都是高权重语料，「对 GEO、SEO 都是比较有利的」。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:43 – 20:49</span>
+    <h3>第 8 段 · Agent 技术心得（上）：为什么要亲手 build，以及两个本质</h3>
+    <ul>
+      <li>他坦承：在大厂时偏产品，没真正从 coding 层做过 agent 设计；这次从 0 到 1 自己搭了一遍，「这个事儿一定要自己动手做」。</li>
+      <li>动手前 vs 动手后：动手前知道 agent 是什么、有哪些（对产品经理够用）；动手后才知道它表现不好时是 system、memory 还是编排的问题，才知道它在你场景里的<b>边界</b>，才能做市面上没有的工程化创新。「建议大家有条件的话，从头去自己搭建一个 agent。」</li>
+      <li><b>本质一：agent 架构就是上下文控制。</b>「不管做得多花哨，到模型那还是一大堆 prompt。」所谓 harness 的本质，就是把上下文控制得非常精准——哪一段该给什么信息，动态插入。</li>
+      <li>memory、知识库、skills、tool、subagent「其实都是 prompt 的一部分」——这些概念是人为创造的，为了好分类、让开发者知道往 system prompt 的哪里插。「从第一性原理开始，它并没有这些概念。」</li>
+      <li><b>本质二：渐进加载就是省 token。</b>像开卷考试：不用一开始把整本书铺开，考哪个知识点再去查哪本书——先给目录，用到再加载。</li>
+      <li>基于两个本质可以自己抽象概念：他抽象了<b>复盘经验</b>（定期对项目经验复盘，agent 在适合的时候读取）和<b>目标</b>（派 agent 拿数据监控目标是否达成）。「实体就是从一堆 prompt 里抽出来，代码逻辑判断满足什么条件时，触发它插到主 prompt 里——就这么简单。」</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:49 – 20:56</span>
+    <h3>第 9 段 · Agent 技术心得（下）：长程任务的本质与实操细节</h3>
+    <ul>
+      <li>真 agent ≠ 加了 function call 的对话机器人，而是<b>长程任务</b>：做完能自己 review 效果、自我进化——「这样才可以作为一个员工」。人光做事不反思也不行；机制上就是 ReAct——环境的输出引导模型往更对的方向走，自我净化。</li>
+      <li>分水岭：25 年前的 agent 基本是 function call agent；25 年 12 月前后模型（转写「op4.6」，考据见<a href="#s10">深挖①</a>）推理能力「量变到质变」，Claude Code 模式随之火了。之前用 Claude Code 还不如 Cursor；之后能端到端自己干 2 小时，「当时看就很惊讶」；现在 2~3 天、两个月基本没问题。「都叫 agent，但已经完全不是一个物种了——有点像都叫 APP，是个误解。」</li>
+      <li><b>长程任务的本质：session 无状态 + 文档协同。</b>上下文有限（几百万 token 也是有限），且 context 越多智能越下降——「跟人看书时间长了前面就忘了一样」。所以任务要拆多步：session 之间隔离（A 不知道 B 的任何事），让 B 知道 A 的方式是<b>把 insight 和结果同步到文档</b>，通过文档对话、动态加载，而不是靠 session 记忆。</li>
+      <li>实操细节：关键内容先放 system prompt 试试；不行放最上面；再不行就拼进每轮 user prompt，「每次对话都带着，注意力肯定会增加」。</li>
+      <li>好的 user case 很重要：没有它，大概率不知道 prompt 怎么调。</li>
+      <li>踩坑提醒：功能不是越多越好，需要什么加什么；context 越多对模型治理和注意力都不好。「场景用不上 memory 就别硬加。能满足场景的就是好架构，没有最优解。」</li>
+      <li>收尾：在 Reddit 上探索过、踩过坑且有真实需求的朋友，可以找他要<b>内测码</b>（前期控制用户和成本）；也欢迎创业伙伴多交流，「我们这边也在持续找同路的人」。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">20:56 – 21:01</span>
+    <h3>第 10 段 · 串场：demo 未遂，问题收进白板</h3>
+    <ul>
+      <li>David 请忠炜展示产品 demo / 视频，因主讲电脑卡顿、网络不佳作罢：「我不共享了吧，如果有需要的可以找我。」</li>
+      <li>David 让大家把问题提进微信群里的白板，共收集到 4~5 个问题。David 评价：「忠炜非常全面——从产品到工程到增长都有自己经验；出海有经验的（人）其实蛮少。」</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">21:01 – 21:09</span>
+    <h3>第 11 段 · 白板 Q&amp;A（上）：PMF 平移、agency 报价、OPC 渠道</h3>
+    <ul>
+      <li>Q1 平移后如何保证还在 PMF 范围 → 无法保证，只能查数据佐证 + 假设迭代（详见 <a href="#s9">Q&amp;A 区</a>）。</li>
+      <li>Q2 出海增长 agency 报价体系 → Reddit 代运营 $3,000/月起；投流抽点 3%~8%。</li>
+      <li>Q3 独立开发者是不是主要靠 SEO → 不一定，看 ROI 和回款周期，投流可以滚雪球。</li>
+      <li>Q4 其产品每个任务消耗多少 token → 「不太好评估，每个任务都不一样」。</li>
+      <li>Q5 H5 验证 OK 再做 APP 的验收细节 → H5 只放最锋利的核心单功能；APP 为拉 LTV 再横向扩。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">21:10 – 21:19</span>
+    <h3>第 12 段 · 白板 Q&amp;A（下）与收尾：增长本质、国内 SEO 新解</h3>
+    <ul>
+      <li>Q6 有没有运营宣发的 skill → 没有万能 skill；产品现在谁都能做，比拼的是增长；增长的本质是知道用户是谁、在哪。</li>
+      <li>Q7（刘文津）国内早期产品，小红书种草 vs SEO 的精力分配 → 引出全场金句之一：「国内的搜索并不在百度，也并不在 Google……已经被各大 App 分食得很严重。」SEO 本质是关键词匹配，阵地要换到小红书 / 微信 / 知乎 / B站（详见 Q&amp;A 区）。</li>
+      <li>收尾：David 推荐有出海产品 Reddit 增长需求的同学找忠炜要内测账号（「我之前被封了好几个号，reddit 是很难做的平台」）。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s9">
+  <h2><span class="no">9</span>Q&amp;A 全记录（7 问）</h2>
+
+  <div class="card">
+    <h3><span class="q">Q1</span> 陪伴疗愈是竞品的 PMF，平移之后怎么保证还在 PMF 范围内？</h3>
+    <p><b>答：</b>最好的验证是看市场数据：新赛道能不能查到对应产品？数量多少？数据大概什么水平？——没人且数据差，可能别人都探索过、都死了；需求多、其中一两家数据不错、赛道不拥挤，就是被你发现的机会。至于「保证」：「<b>我没法保证。</b>画出那个象限，大概率能让你看到哪部分有机会，但你需要印证这个假设。产品就是这样——有个假设，去印证假设，再反过来调整假设。」（David 补充：象限左下是已验证的竞品 PMF，跨象限做事就要接受不确定性。）</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q2</span> 出海增长 agency 的报价体系大概什么样？</h3>
+    <p><b>答：</b>Reddit 代运营：小机构 <b>$3,000/月起</b>，大机构 $10,000、$20,000/月都有。投流类 agency：基本按消耗抽点，有抽 8% 的、有抽 3% 的，各不相同。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q3</span> 独立开发者（OPC）是不是主要还是靠 SEO？</h3>
+    <p><b>答：</b>不一定。「投流的本质其实是看你的 ROI——ROI 是正的，你干嘛不能投？」一看 ROI，二看<b>回款周期</b>：一年才回本，资金有限就没法一直投；但如果一天、三天、七天就回本——ROI = 2 时，第一天投 1 块回 2 块，第二天投 2 块回 4 块。「ROI 正的话其实不需要太多预算。」投流是个技术活，能带来的增量比自然流快；自然流是更长远的事。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q4</span> 你的 Agent 产品每个任务大概消耗多少 token？</h3>
+    <p><b>答：</b>「这个我不太好评估，因为每个任务都不一样。」（David 最后也提醒内测用户「省着点用，估计会比较费 token」。）</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q5</span> 「H5 验证 OK 再做 APP」能详细讲讲验收细节吗？</h3>
+    <p><b>答：</b>H5 承载的是产品的<b>核心功能</b>——你觉得最能打到用户的那个功能。拿 AI 视频工具举例：用 H5 验证，给到用户的整个页面就是「AI 出视频」。做 APP 是因为 APP 能拉长 LTV——这时除了 AI 视频，才横向扩展 AI 图片、虚拟人对话等功能。用 H5 做投流验证，就单独一个最锋利的功能，能验证就行。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q6</span> 有没有运营宣发的 skill？</h3>
+    <p><b>答：</b>「这个比较笼统，没法说——每个产品对应的宣发流程都不一样。」该补的课得补，不能指望一个 skill 解决增长。现在产品不是问题（谁都能快速做出来），大家比拼的是增长，而增长是很多团队做不好的老大难。本质就一条：<b>知道用户是谁、用户在哪，最好能找到他们</b>——如果用户聚集在某个非主流的群或频道，只有懂行的你才会去，那就是最好的渠道；其他通用渠道都是基本功，需要不断积累，以及花钱。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="q">Q7</span>（刘文津）国内做早期产品：小红书种草 vs 做 SEO，精力怎么分配？</h3>
+    <p><b>背景：</b>刘文津做「AI + 数学」网页工作流产品，小红书账号每天发「AI 辅助老师做课件 / 可视化」的内容，评论区有人问工具，他发网址截图，有人直接用起来了；他自己做 SEO（站内优化 + Google 关键词更新）感觉 ROI 比小红书种草低不少。</p>
+    <p><b>答（郑忠炜）：</b>先回归本质——<b>SEO 的本质是「用户问什么问题时能搜到你」，关键词匹配</b>。海外做 SEO 默认做 Google，因为 Google 占海外流量盘子约 50%；但「国内的搜索现在并不在百度，也并不在 Google」——已经被各大 App 分食。所以国内的打法是：</p>
+    <ul>
+      <li><b>小红书本身就有 SEO 打法</b>：摸清楚你的用户会提什么问题，针对这些问题铺对应关键词的笔记/文章，让搜索命中。（刘文津回应：正打算做爬虫去抓高热度问题和关键词。）</li>
+      <li><b>微信生态</b>：公众号、「问一问」都是搜索入口。</li>
+      <li><b>百度的高权重渠道</b>：知乎、B站——「你没必要做百度的 SEO，往知乎发几篇文章、往 B站发几个视频，搜对应关键词你就在前面」。</li>
+    </ul>
+    <p>一句话：你的体感（小红书 ROI 高于传统 SEO）与这个判断一致——国内「SEO」的主战场本来就已经搬进小红书们了。</p>
+  </div>
+</section>
+
+<section id="s10">
+  <h2><span class="no">10</span>背景深挖：对会上关键事实的外部核实</h2>
+  <p class="small">以下 6 条是对分享中事实性说法的独立核实与补充（检索于 2026-08-05）。结论分两类：<b>校正</b>（原话与公开事实有出入）与<b>佐证</b>（公开数据支持原话）。</p>
+
+  <div class="deep">
+    <b class="tag-deep">深挖① · 校正</b><b>「25 年 12 月 Opus 4.6 出来」是两次发布的混合记忆。</b>2025 年底让 Claude Code「突然好用」的是 <b>Claude Opus 4.5</b>（2025-11-24 发布，Anthropic 官方定位「最适合 coding、agents 与 computer use 的模型」）；<b>Opus 4.6</b> 真实存在，但发布于 <b>2026-02-05</b>（首个 1M token 上下文的 Opus 级模型）。发言人把时间记混了，但「推理能力质变 → Claude Code 模式爆发」的因果链与社区共识一致。
+    <p class="src">来源：<a href="https://www.anthropic.com/news/claude-opus-4-5">anthropic.com/news/claude-opus-4-5</a> · <a href="https://www.anthropic.com/news/claude-opus-4-6">anthropic.com/news/claude-opus-4-6</a></p>
+  </div>
+
+  <div class="deep">
+    <b class="tag-deep">深挖② · 校正</b><b>「Reddit 日活三个亿」夸大了约 1.5 倍，三亿更接近周活口径。</b>Reddit Q4 2025 财报（2026-02 发布）：全球 <b>DAUq 1.214 亿</b>（同比 +19%，美国 5250 万 / 国际 6890 万），<b>WAUq 4.716 亿</b>（同比 +24%）；2025 全年营收 22 亿美元（+69%）。体量依然巨大，「能精准找到有需求的人」的判断不受影响——但引用数字时建议用财报口径。
+    <p class="src">来源：<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Fourth-Quarter-and-Full-Year-2025-Results-Announces-1-Billion-Share-Repurchase-Program/default.aspx">Reddit Q4 2025 Results（investor.redditinc.com）</a></p>
+  </div>
+
+  <div class="deep">
+    <b class="tag-deep">深挖③ · 佐证</b><b>「光年」推断为「光年之外」。</b>王慧文 2023-02-13 宣布创立北京光年之外科技有限公司（个人出资 5000 万美元，目标「中国版 OpenAI」，团队约 70 人）；2023-06-29 美团公告以总对价 <b>2.85 亿美元</b>全资收购（含 2.34 亿美元现金 + 承接债务），是当时中国大模型领域最大并购案。主讲「一直在光年工作、更偏产品」的履历与这一背景吻合。
+    <p class="src">来源：<a href="https://companies.caixin.com/2023-06-29/102070664.html">财新：美团收购光年之外</a></p>
+  </div>
+
+  <div class="deep">
+    <b class="tag-deep">深挖④ · 佐证</b><b>「agent 能干 2 小时 → 2~3 天 → 1~3 个月」有量化研究背书。</b>METR《Measuring AI Ability to Complete Long Tasks》（2025-03，arXiv 2503.14499）提出「50% 任务完成时间跨度」指标：2019–2025 年该指标约<b>每 7 个月翻倍</b>（2024 年后还在加速）。最新读数：Claude Opus 4.5 约 <b>4 小时 49 分</b>（2025-12），Opus 4.6 约 <b>14.5 小时</b>（2026-02，METR 注明任务集接近饱和、噪声大）。会上「长程任务今年 4 月变得可能」的体感，与这条翻倍曲线完全同向。
+    <p class="src">来源：<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">metr.org（论文博客）</a> · <a href="https://metr.org/time-horizons/">metr.org/time-horizons（最新数据）</a></p>
+  </div>
+
+  <div class="deep">
+    <b class="tag-deep">深挖⑤ · 佐证</b><b>「Reddit 对 Google 和 AI 是高权重语料」有硬依据。</b>GEO（Generative Engine Optimization，生成式引擎优化）一词出自论文《GEO: Generative Engine Optimization》（Aggarwal 等，2023-11 提交 arXiv，KDD 2024 发表）：引用、统计数据等手法可将内容在生成式引擎中的可见度提升最多 40%。Reddit 的权重依据：① 2024-02 公布的 <b>Google–Reddit 数据授权协议</b>（约 6000 万美元/年，Google 获实时 Data API 访问）；② Semrush（2025-11，23 万提示词、1 亿+ 引用）与 Peec AI（2026，3000 万来源）两项研究均显示 <b>Reddit 是 ChatGPT / AI Mode / Perplexity 等 AI 回答中被引最多的域名之一</b>（ChatGPT 峰值约 60% 回答引用 Reddit）。在 Reddit 做品牌内容 = 同时布局 SEO 与 GEO，这是该产品最聪明的一处设计。
+    <p class="src">来源：<a href="https://arxiv.org/abs/2311.09735">arXiv:2311.09735</a> · <a href="https://www.reuters.com/technology/reddit-ai-content-licensing-deal-with-google-sources-say-2024-02-22/">Reuters：Google–Reddit 协议</a> · <a href="https://www.semrush.com/blog/most-cited-domains-ai/">Semrush 研究</a></p>
+  </div>
+
+  <div class="deep">
+    <b class="tag-deep">深挖⑥ · 佐证</b><b>「agent 架构本质是上下文控制」正是 2025 年两个行业热词的一线版。</b><b>Harness</b>：2025 年由 LangChain 以公式「Agent = Model + Harness」推广（"If you're not the model, you're the harness"）——模型之外的全部代码、配置与执行逻辑（系统提示、工具、循环、状态/记忆、沙箱、护栏）。<b>Context engineering（上下文工程）</b>：2025-06 由 Shopify CEO Tobi Lütke 发推提出、Andrej Karpathy 同周背书（"the delicate art and science of filling the context window with just the right information for the next step"），Anthropic 2025-09 工程博客将其固化为主流框架。会上「memory / skills / tool / subagent 都是 prompt 的一部分，都是人为创造的分类」这一说法，比行业主流论述更激进，但方向一致。
+    <p class="src">来源：<a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">LangChain: The Anatomy of an Agent Harness</a> · <a href="https://simonwillison.net/2025/jun/27/context-engineering/">Simon Willison: Context engineering 出处梳理</a></p>
+  </div>
+</section>
+
+<section id="s11">
+  <h2><span class="no">11</span>给不同角色的行动清单</h2>
+  <table>
+    <tr><th>如果你是</th><th>这场会里最该带走的东西</th></tr>
+    <tr><td>独立开发者 / OPC</td><td>别急着做 APP：H5 起盘、只放最锋利的核心功能、看首日 ROI；订阅挂 $0.99/$1.99 低价喂投流模型；ROI 为正且回款快，投流可以滚雪球——SEO 不是唯一出路</td></tr>
+    <tr><td>出海创业者</td><td>立项前先评估「团队承载力」，创新业务必须配高配的人；用「PMF 平移四步法」找相邻蓝海，用数据印证假设；记住行情价：Reddit 代运营 $3,000/月起、投流 agency 抽点 3%~8%、自建团队约 5 万/月</td></tr>
+    <tr><td>产品经理</td><td>亲手从 0 到 1 搭一个 agent——不动手就永远不知道它的边界；记住两个本质（上下文控制 + 渐进加载）后，可以按业务造自己的「实体」；功能克制，需要什么加什么</td></tr>
+    <tr><td>增长 / 运营</td><td>素材方法论：抄竞品只能保均值，拆爆款「123 步 → 忘掉 → 原创」才能超越；前置登录别后置（筛用户 + 喂模型信号）；做国内业务就把 SEO 阵地搬到小红书 / 知乎 / B站 / 微信问一问</td></tr>
+    <tr><td>想做 Reddit 增长的人</td><td>这是一个「水很深」的渠道：频道规则复杂、AI 封号严重、agency $3,000/月起。有真实需求且自己踩过坑的，可以找郑忠炜要其 Agent 产品的内测码（白名单制）</td></tr>
+  </table>
+</section>
+
+<section id="s12">
+  <h2><span class="no">12</span>术语表</h2>
+  <table>
+    <tr><th>术语</th><th>一句话解释</th></tr>
+    <tr><td>PMF</td><td>Product-Market Fit，产品与市场契合——产品真正满足了某个市场的真实需求</td></tr>
+    <tr><td>PMF 平移</td><td>本场核心概念：把已验证的需求，用新的产品形态/人群组合在相邻赛道重新满足一遍</td></tr>
+    <tr><td>ROI / 首日 ROI</td><td>投入产出比；首日 ROI = 投放当天收回的钱 ÷ 当天花费，是投流产品的生死线</td></tr>
+    <tr><td>回款周期</td><td>投出去的钱多久能收回来（本场例子：快消型 7 天，工具型一个月到一年）；决定你能接受的首日 ROI</td></tr>
+    <tr><td>CTR / CVR</td><td>点击率（Click-Through Rate）/ 转化率（Conversion Rate）</td></tr>
+    <tr><td>benchmark</td><td>行业基准值，如「行业 ROI benchmark 1.5」</td></tr>
+    <tr><td>素材疲劳</td><td>同一人群反复看到同质素材后不再点击的现象（会上原话「用户就皮了」）</td></tr>
+    <tr><td>投流</td><td>付费买流量（信息流广告等）并优化投放模型的增长方式；与之相对的是自然流</td></tr>
+    <tr><td>KOL / KOC</td><td>关键意见领袖 / 关键意见消费者，达人营销的两种角色</td></tr>
+    <tr><td>SEO</td><td>搜索引擎优化；会上金句：本质是「用户问什么问题时能搜到你」</td></tr>
+    <tr><td>GEO</td><td>Generative Engine Optimization，生成式引擎优化——让内容被 ChatGPT 等 AI 搜索/回答引用（出处见深挖⑤）</td></tr>
+    <tr><td>H5 起盘</td><td>先用移动网页（而非 APP）把产品跑起来做验证，成本低、迭代快、无审核周期</td></tr>
+    <tr><td>LTV</td><td>用户生命周期价值；APP 相对 H5 的核心优势就是拉长 LTV</td></tr>
+    <tr><td>onboarding</td><td>新用户引导流程，转化链路的第一环</td></tr>
+    <tr><td>agent / harness</td><td>能自主完成任务的 AI 系统 / 模型之外支撑它运行的全部工程结构（提示词、工具、循环、护栏等）</td></tr>
+    <tr><td>function call agent</td><td>2025 年之前的主流形态：对话机器人外挂若干函数调用；会上用它对照「长程任务 agent」</td></tr>
+    <tr><td>长程任务（long-horizon task）</td><td>需要数小时到数月持续执行的任务；2026 年 4 月起被会上视为 agent 能力的分水岭（佐证见深挖④）</td></tr>
+    <tr><td>ReAct</td><td>Reasoning + Acting 的 agent 范式：模型在「推理—行动—观察环境反馈」的循环中自我修正</td></tr>
+    <tr><td>session 无状态 + 文档协同</td><td>会上给出的长程任务解法：会话之间不共享记忆，靠把成果写入文档、按需加载来接力</td></tr>
+    <tr><td>渐进加载</td><td>先给目录、用到再查的信息加载策略，本质是省 token（类比开卷考试）</td></tr>
+    <tr><td>1v1（陪聊模式）</td><td>一种陌生人社交付费模式：等级解锁照片/视频、按句扣积分、送礼物涨好感度</td></tr>
+    <tr><td>数字分身</td><td>用 AI 复刻真人形象/声音/记忆的产品方向；会上因「太定制化」被明确排除</td></tr>
+    <tr><td>OPC</td><td>One Person Company，一人公司 / 超级个体</td></tr>
+    <tr><td>subreddit</td><td>Reddit 的细分频道，各有主题与规则，是 Reddit 营销的基本单元</td></tr>
+  </table>
+</section>
+
+<footer>
+  <p>草诀歌 AI Labs 闭门会（2026-08-05 晚）· 缺席者深度导读<br>
+  整理自机器实时转写（仅供参考），人名与产品名存疑处均已标注；外部事实核实截至 2026-08-05。<br>
+  仓库：<a href="https://github.com/siuserxiaowei/caojuege-ai-labs-0805">github.com/siuserxiaowei/caojuege-ai-labs-0805</a></p>
+</footer>
+
+</div>
+</body>
+</html>

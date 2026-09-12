@@ -101,3 +101,7 @@ For collaboration on AI tools, content automation, SEO, private-domain growth, o
 **关键词 / Keywords**: AI portfolio, personal website, GitHub Pages, AI tools, AI tools, AI automation, GitHub Pages, SEO
 
 <!-- SIUSER-CONTACT:END -->
+
+## 会议与专题资料
+
+[会议与专题资料库](https://siuserxiaowei.github.io/library/)：按真实主题阅读集中保存的会议与研究材料。

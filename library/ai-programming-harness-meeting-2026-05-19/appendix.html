@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>附录｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="AI 编程与 Harness 工程研讨会术语、行动清单、指标和来源链接。">
+  <meta property="og:title" content="附录">
+  <meta property="og:description" content="AI 编程与 Harness 工程研讨会术语、行动清单、指标和来源链接。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html" aria-current="page">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+    <p class="eyebrow">Appendix</p>
+    <h1>把会议变成可执行清单</h1>
+    <p class="lede">附录把会议中的术语、指标、工具和下一步动作压缩成可复制的工作表，方便团队直接拿去改自己的流程。</p>
+    <div class="hero-meta"><span class="chip">术语表</span><span class="chip">行动清单</span><span class="chip">指标表</span><span class="chip">来源</span></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Glossary</p>
+      <h2>术语表</h2>
+      <p>会议里的关键词很多，这里给出公开版解释。</p>
+    </div>
+    <table class="table">
+    <thead><tr><th>术语</th><th>解释</th></tr></thead>
+    <tbody>
+      <tr><td>Harness Engineering</td><td>围绕 Agent 自动化开发、测试、验收、上线和反馈回收建立的一套工程组织方式。</td></tr>
+      <tr><td>副驾模式</td><td>人盯着模型写代码，主要关注局部补全和修改。</td></tr>
+      <tr><td>管理者模式</td><td>人定义目标、上下文、边界、验收和沉淀机制，把 Agent 当可管理成员。</td></tr>
+      <tr><td>Meta Spec</td><td>跨项目复用的通用规范底座，包含安全、性能、资源、测试、体验等维度。</td></tr>
+      <tr><td>Worktree</td><td>Git 的多工作树机制，可让多个分支在不同目录并行开发。</td></tr>
+      <tr><td>认知债务</td><td>术语、边界、变量、业务对象表达不清造成的长期理解成本。</td></tr>
+      <tr><td>资源感知</td><td>对端口、CPU、GPU、外部服务、线上线下差异等工程资源进行显式记录和管理。</td></tr>
+    </tbody>
+  </table>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Actions</p>
+      <h2>团队行动清单</h2>
+      <p>从明天就可以开始做的事情。</p>
+    </div>
+    <div class="grid two">
+    <article class="card">
+      
+      <h3>建立 Agent 入职包</h3>
+      <p>整理项目背景、目录说明、架构图、复用原则、禁区、常用命令和测试方式。</p>
+    </article>
+    <article class="card">
+      
+      <h3>把看板作为任务入口</h3>
+      <p>所有 Agent 任务进入看板，卡片写清目标、范围、验收和资源要求。</p>
+    </article>
+    <article class="card">
+      
+      <h3>定义 Worktree 使用规则</h3>
+      <p>列出适用条件、命名规则、端口分配、合并流程和废弃回收方式。</p>
+    </article>
+    <article class="card">
+      
+      <h3>Review 后更新 Skills</h3>
+      <p>每次 Review 把重复错误沉淀成检查点、Skill、模板或自动测试。</p>
+    </article>
+    <article class="card">
+      
+      <h3>维护资源表</h3>
+      <p>用 Markdown 记录项目端口、CPU/GPU、服务依赖、账号和线上线下差异。</p>
+    </article>
+    <article class="card">
+      
+      <h3>定期模型复盘</h3>
+      <p>每 2-3 个月同步模型能力变化，更新默认模型、工具和工作流判断。</p>
+    </article></div>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Metrics</p>
+      <h2>指标表</h2>
+      <p>指标不是 KPI，而是判断工程系统是否健康的仪表盘。</p>
+    </div>
+    <table class="table">
+    <thead><tr><th>指标</th><th>建议观察</th><th>解释</th></tr></thead>
+    <tbody>
+      <tr><td>并发 Agent 数</td><td>1 → 3 → 10 逐级提升</td><td>每一级都应能稳定验收，再提高并发。</td></tr>
+      <tr><td>Deletions / Additions</td><td>12%-15% 较健康，超过 30% 警惕</td><td>过高可能代表不必要重构或 Agent 失控。</td></tr>
+      <tr><td>Spec 变化率</td><td>新增项尽量不超过 15%</td><td>说明前期 Spec 覆盖了主要方向，同时保留迭代空间。</td></tr>
+      <tr><td>重复 Review 问题数</td><td>应逐轮下降</td><td>不下降说明经验没有变成自动约束。</td></tr>
+      <tr><td>PR 可合并率</td><td>越高越好</td><td>衡量任务边界、测试和 Review 流程是否清晰。</td></tr>
+    </tbody>
+  </table>
+  </section><section class="section">
+    <div class="section-head">
+      <p class="kicker">Sources</p>
+      <h2>来源链接</h2>
+      <p>公开资料入口。</p>
+    </div>
+    <div class="card">
+    <ul>
+      <li>飞书智能纪要：<a href="https://vi8r050ecuz.feishu.cn/docx/ZJubd5uCPopKKzxRbu9ckkLpnFe" target="_blank" rel="noreferrer">自动化开发工具使用经验讨论 2026年5月19日</a></li>
+      <li>飞书文字记录：<a href="https://vi8r050ecuz.feishu.cn/docx/XYKndOXkqoyleSx7TmycZVmUnuQ" target="_blank" rel="noreferrer">文字记录：自动化开发工具使用经验讨论</a></li>
+      <li>飞书妙记：<a href="https://vi8r050ecuz.feishu.cn/minutes/obcnps9561u841udh1852g3b" target="_blank" rel="noreferrer">自动化开发工具使用经验讨论</a></li>
+      <li>本仓库 sources 目录保存清洗后的 Markdown/JSON 导出。</li>
+    </ul>
+  </div>
+  </section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

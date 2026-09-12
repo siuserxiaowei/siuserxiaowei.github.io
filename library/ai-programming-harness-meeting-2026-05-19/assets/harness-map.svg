@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Harness Engineering 会议知识地图</title>
+  <desc id="desc">从管理者心态、Spec、看板、Worktree、Review、资源感知到公开文档的关系图。</desc>
+  <rect width="960" height="720" fill="#fffaf0"/>
+  <g fill="none" stroke="#15201d" stroke-opacity=".16">
+    <path d="M80 120H880M80 240H880M80 360H880M80 480H880M80 600H880"/>
+    <path d="M160 70V650M320 70V650M480 70V650M640 70V650M800 70V650"/>
+  </g>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="330" y="278" width="300" height="118" rx="8" fill="#15201d"/>
+    <text x="480" y="326" fill="#fffaf0" font-size="28" font-weight="800" text-anchor="middle">Harness Engineering</text>
+    <text x="480" y="362" fill="#d8e4de" font-size="18" text-anchor="middle">管理 Agent 的工程系统</text>
+    <g fill="#fffaf0" stroke="#15201d" stroke-width="2">
+      <rect x="80" y="96" width="230" height="96" rx="8"/>
+      <rect x="650" y="96" width="230" height="96" rx="8"/>
+      <rect x="80" y="510" width="230" height="96" rx="8"/>
+      <rect x="650" y="510" width="230" height="96" rx="8"/>
+      <rect x="365" y="90" width="230" height="88" rx="8"/>
+      <rect x="365" y="520" width="230" height="88" rx="8"/>
+    </g>
+    <g fill="#15201d" font-size="22" font-weight="800" text-anchor="middle">
+      <text x="195" y="135">管理者心态</text>
+      <text x="765" y="135">Spec 契约</text>
+      <text x="195" y="550">看板与 Worktree</text>
+      <text x="765" y="550">Review 沉淀</text>
+      <text x="480" y="127">资源感知</text>
+      <text x="480" y="557">公开复盘</text>
+    </g>
+    <g fill="#65736d" font-size="15" text-anchor="middle">
+      <text x="195" y="164">从写代码转向分派与验收</text>
+      <text x="765" y="164">让任务边界可执行</text>
+      <text x="195" y="579">控制并发与冲突成本</text>
+      <text x="765" y="579">把错误变成 Skills</text>
+      <text x="480" y="154">端口 CPU GPU 上下文</text>
+      <text x="480" y="584">把经验变成团队资产</text>
+    </g>
+    <g stroke-width="3" fill="none">
+      <path d="M310 146 C380 190 410 230 438 278" stroke="#0a6f68"/>
+      <path d="M650 146 C580 190 548 230 522 278" stroke="#245e85"/>
+      <path d="M310 548 C382 500 412 452 443 396" stroke="#b64b36"/>
+      <path d="M650 548 C578 500 548 452 518 396" stroke="#a57b21"/>
+      <path d="M480 178V278" stroke="#5d558f"/>
+      <path d="M480 396V520" stroke="#0a6f68"/>
+    </g>
+  </g>
+</svg>

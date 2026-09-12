@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-08-05 10:00 会议纪要 · 缺席者详细导读</title>
+<style>
+  :root {
+    --ink: #1a2332;
+    --ink-2: #4a5568;
+    --line: #e2e8f0;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --warn: #b45309;
+    --warn-soft: #fffbeb;
+    --ok: #059669;
+    --bad: #dc2626;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero { border-bottom: 3px solid var(--ink); padding-bottom: 28px; margin-bottom: 36px; }
+  .hero .tag {
+    display: inline-block; font-size: 13px; letter-spacing: .12em;
+    color: var(--accent); border: 1px solid var(--accent);
+    border-radius: 999px; padding: 2px 14px; margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 29px; line-height: 1.4; letter-spacing: .02em; }
+  .hero .meta { margin-top: 12px; color: var(--ink-2); font-size: 14px; }
+  .tldr {
+    background: var(--accent-soft); border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 0 0 40px; font-size: 15.5px;
+  }
+  .tldr strong { color: var(--accent); }
+  nav.toc {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 24px; margin-bottom: 44px; font-size: 14.5px;
+  }
+  nav.toc b { display: block; margin-bottom: 8px; font-size: 15px; }
+  nav.toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; }
+  nav.toc li { margin: 4px 0; }
+  nav.toc a { color: var(--accent); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  section { margin-bottom: 48px; }
+  h2 {
+    font-size: 21px; display: flex; align-items: center; gap: 10px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 18px;
+  }
+  h2 .no {
+    flex: none; width: 28px; height: 28px; border-radius: 8px;
+    background: var(--ink); color: #fff; font-size: 14px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  h3 { font-size: 16.5px; margin: 22px 0 8px; }
+  h4 { font-size: 15px; margin: 16px 0 6px; color: var(--ink-2); }
+  p { margin: 10px 0; }
+  ul, ol { margin: 8px 0 14px 22px; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--accent); }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 22px; margin: 14px 0;
+  }
+  .seg {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 22px; margin: 16px 0;
+  }
+  .seg .time {
+    display: inline-block; font-size: 12.5px; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft);
+    border-radius: 6px; padding: 1px 10px; margin-bottom: 8px;
+  }
+  .seg h3 { margin-top: 4px; }
+  blockquote {
+    background: var(--warn-soft); border-left: 4px solid var(--warn);
+    border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 12px 0;
+    color: var(--warn); font-size: 14.5px;
+  }
+  blockquote .who { display: block; margin-top: 6px; font-size: 12.5px; color: #92610a; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14.5px;
+    background: var(--card); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #f1f5f9; font-size: 13.5px; letter-spacing: .03em; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  .deadline { color: var(--bad); font-weight: 600; white-space: nowrap; }
+  .done { color: var(--ok); font-weight: 600; }
+  .todo { color: var(--bad); font-weight: 600; }
+  .q { color: var(--accent); }
+  code { background: #eef2f7; padding: 1px 6px; border-radius: 5px; font-size: .92em; }
+  .small { font-size: 13.5px; color: var(--ink-2); }
+  footer {
+    margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--ink-2); font-size: 13px; text-align: center;
+  }
+  @media (max-width: 640px) { nav.toc ol { columns: 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="tag">会议纪要 · 缺席者详细导读</span>
+  <h1>2026-08-05（周三）10:00 产品沟通会<br>AI 智能体盒子 · 教程优化与澳门理工拜访筹备</h1>
+  <p class="meta">时长约 49 分钟 · 整理自完整逐字稿（docx）与思维导图（jpg）· 时间戳为会议相对时间，可回录音定位原声<br>转写质量一般，人名、产品名存在谐音误写，本文已逐一校正并标注存疑处</p>
+</header>
+
+<div class="tldr">
+  <strong>一句话总结：</strong>产品功能基本就绪（Telegram 已测通、飞书待测）。接下来四条主线——① <strong>教程改小白友好版</strong>（五分钟速览卡 + 术语白话化 + 断点续作）；② <strong>8/6（周四）下班前交出给澳门理工的 1~2 页 PPT 初版</strong>；③ <strong>8/10（周一）内部演练</strong>；④ <strong>8/11（周二）上午正式拜访</strong>。
+</div>
+
+<nav class="toc">
+  <b>目录</b>
+  <ol>
+    <li><a href="#s1">会议基本信息</a></li>
+    <li><a href="#s2">人物对照</a></li>
+    <li><a href="#s3">会议逐段还原（14 段）</a></li>
+    <li><a href="#s4">产品进展清单</a></li>
+    <li><a href="#s5">教程优化需求（重点）</a></li>
+    <li><a href="#s6">两大客户问题与标准口径</a></li>
+    <li><a href="#s7">竞品对比明细</a></li>
+    <li><a href="#s8">多用户与额度管理详解</a></li>
+    <li><a href="#s9">PPT 要求详解</a></li>
+    <li><a href="#s10">行动项与时间线</a></li>
+    <li><a href="#s11">待确认 / 开放问题</a></li>
+    <li><a href="#s12">术语表</a></li>
+  </ol>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">1</span>会议基本信息</h2>
+  <table>
+    <tr><th>项目</th><th>内容</th></tr>
+    <tr><td>时间</td><td>2026-08-05（周三）10:00，约 49 分钟</td></tr>
+    <tr><td>参会方</td><td>产品方（盒子团队）× 销售/合作方（对接澳门理工客户的团队）线上沟通</td></tr>
+    <tr><td>核心议题</td><td>① 上次线上会议后的产品优化进展与测试反馈；② 教程/话术文档改进；③ 为拜访澳门理工准备 1~2 页 PPT（应用场景 + 差异化优势）；④ 多用户、额度、收费等客户可能问到的问题对口径</td></tr>
+    <tr><td>最终交付</td><td>给澳门理工客户的 1~2 页 PPT，<b>8/6（周四）下班前</b>提供初版，周五整合，周一演练，周二拜访</td></tr>
+  </table>
+</section>
+
+<section id="s2">
+  <h2><span class="no">2</span>人物对照（转写有误写，已尽量校正）</h2>
+  <table>
+    <tr><th>称呼</th><th>角色（据上下文推断）</th></tr>
+    <tr><td>小周老师</td><td>销售/合作方对接人：负责实际测试盒子（Telegram 已测），并对销售话术、新手提示词文档提修改意见</td></tr>
+    <tr><td>爱马仕</td><td><b>不是人</b>——盒子里预装的两个智能体之一（另一处转写为"M4"）。会上提到"让爱马仕帮忙总结文档"、"跟着爱马仕一起讨论"</td></tr>
+    <tr><td>龙虾</td><td>盒子里预装的另一个智能体。单台盒子 = 龙虾 + 爱马仕，每个对应一个用户</td></tr>
+    <tr><td>小魏老师、小朱老师、小军哥</td><td>产品方同事：讲解产品架构、回答竞品优势、额度管理等问题（转写中"小魏""小朱"可能互有混淆）</td></tr>
+    <tr><td>赵总</td><td>会上提出"再加一点"：盒子是标准品，超出盒子的需求可定制（结尾感谢环节提到"谢谢曹总"，曹总应为对方负责人）</td></tr>
+    <tr><td>张老师、胡芳老师</td><td>参会同事，结尾被点名确认有无补充</td></tr>
+    <tr><td>李工（李峰）</td><td><b>澳门理工客户方</b>，即下周二的拜访对象。"拜访李峰"与"结合李工这个客户的需求场景"应指同一人</td></tr>
+  </table>
+  <p class="small">另：对方（客户侧）出席拜访会的将有：校准会秘书长、土地部、财政部、协调部等"各部门的部门头和团队的秘书长"——秘书长管理多个部门，级别不低，PPT 要讲得人话、讲出价值。</p>
+</section>
+
+<section id="s3">
+  <h2><span class="no">3</span>会议逐段还原（按时间戳，14 段）</h2>
+
+  <div class="seg">
+    <span class="time">00:00 – 01:08</span>
+    <h3>第 1 段 · 开场：拜访背景与双方意图</h3>
+    <ul>
+      <li>即将拜访客户（后文明确为澳门理工"李工"），对方参会阵容：<b>校准会秘书长 + 土地部 + 财政部 + 协调部</b>等，"大概几个部门的部门头和团队的秘书长"。</li>
+      <li>我方意图："把我们这边产品也包装一下"，整体介绍公司需要很多资料，先拿出 <b>1~2 章（页）</b> 的内容给对方讲解。</li>
+      <li>判断客户的 <b>实验室、学生、教务</b> 这几块"可能用得上"我们的产品；产品"都能做 POC"，也可以"做测试"。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">01:08 – 02:31</span>
+    <h3>第 2 段 · 上次会议后的优化进展同步</h3>
+    <p>自上次线上会议（与小周老师沟通）以来，产品方完成的优化：</p>
+    <ol>
+      <li><b>余额显示</b>优化；</li>
+      <li><b>用量显示</b>优化；</li>
+      <li><b>飞书接入</b>（转写误为"袜子"）——已接好；</li>
+      <li><b>Telegram 接入</b>——已接好；</li>
+      <li><b>销售话术</b>整理——已完成；</li>
+      <li><b>新手提示词</b>整理——已完成。</li>
+    </ol>
+  </div>
+
+  <div class="seg">
+    <span class="time">02:31 – 04:10</span>
+    <h3>第 3 段 · 小周老师的测试反馈</h3>
+    <ul>
+      <li><b>Telegram</b>："已经测试了 OK 的，没有问题，可以正常使用。"</li>
+      <li><b>飞书</b>："还没有看到它的接口，所以还没有测。"<span class="todo">→ 待办</span></li>
+      <li><b>话术文档</b>：昨天看过，也跟爱马仕（AI）讨论过。核心意见：<b>"写的还是过于专业了一点……不是很清楚怎么用的人，第一眼看会觉得比较复杂。"</b></li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">04:10 – 08:50</span>
+    <h3>第 4 段 · 教程改造主需求：五分钟速览卡 + 简易流程</h3>
+    <p>小周老师共享了一个参考文档（说会发到群里），边演示边讲，要点：</p>
+    <ul>
+      <li><b>为什么要改</b>："小白拿到这个东西，肯定要先完成一次比较简单的任务，这样你才能让他对你的产品有信心，他觉得有意思。"</li>
+      <li><b>改法一：加"五分钟速览卡"</b>——放在最前面，随便介绍一下产品，举几个简单例子。产品目前有六个功能单元（整理 PDF、做 Excel、拼接、生成图片等），速览卡里把这些功能亮出来。</li>
+      <li><b>改法二：快速跳转</b>——"比如我要做一份 PPT，他就可以直接跳到'第一天'做 PPT 那个地方。"即速览卡里按任务场景做入口，点一下直达对应教程。</li>
+      <li><b>改法三：简易流程</b>——新手不可能从 P0 一直做到 P6（太复杂、看不懂）。给一个简单流程，"P0、P1、P2 就可以搞定，输出一个你想要的、可能没那么完善的 PPT"；等用熟练了、摸清所有东西了，再去碰 P0~P6 的完整专业流程。</li>
+    </ul>
+    <blockquote>"你不可能一次性让他走到终点，这个估计有点难。他如果觉得生成的 PPT 不是很好，他就可能有兴趣再看是哪个地方要做设置、做限制……这是一个持续不断往上走的过程。"</blockquote>
+  </div>
+
+  <div class="seg">
+    <span class="time">08:50 – 11:54</span>
+    <h3>第 5 段 · 术语白话化 + 断点续作</h3>
+    <ul>
+      <li><b>术语问题</b>："加载总控什么的都太过于专业了……一般人可能看不懂，也不太想了解。"改法：大白话放前面，术语留括号里。例：
+        <ul>
+          <li>"P0 加载总控" → <b>"约定本次的工作模式（P0）"</b>；</li>
+          <li>"意图澄清" → <b>"想清楚你想做什么"</b>；</li>
+          <li>模式命名也照此："快速标准 / 完整模式"，跟速览卡同一逻辑。</li>
+        </ul>
+      </li>
+      <li><b>断点续作（"最重要"的缺失项）</b>：任务都从 P0 到 P6，但没写——假如任务进行到 P4，"我有事或者今天下班，明天才开始，我要如何再进行接下来的 P5、P6？这个是没有的，需要补充到教程里面去，可能也比较重要。"</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">11:54 – 14:25</span>
+    <h3>第 6 段 · 文档策略：新建简易版，先分后合</h3>
+    <ul>
+      <li>结论：<b>现有专业文档不改</b>（"这一篇文档是没有问题的，很专业"），降级为进阶教程；<b>重新建一个简易版文档</b>。</li>
+      <li>先把不同版本分开，确认后再看"是并到一个文档里面，还是仍然给几个"。</li>
+      <li>理由："给小白看的话，他一打开有这么大一大段，尽管最上面很简单……看到那么长的进度条他也怕。我第一次打开的时候也是，全是 P0 出来的，我让<b>爱马仕帮我总结了一下</b>才觉得好一点。没人总结的话，很难理清中间的逻辑。而且小白也不一定懂为什么要从 P0 开始、P0 是什么意思。"</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">14:25 – 17:09</span>
+    <h3>第 7 段 · PPT 需求正式提出（两个必答题）</h3>
+    <ul>
+      <li>背景："我们马上要拜访李峰（李工），想做 1~2 页的 PPT 方案去给员工介绍。"</li>
+      <li><b>问题一</b>：这个产品目前<b>卖出去成功的应用场景</b>有哪些？具体到企业或学校——客户买了能做到什么效果、可以干什么、最多人用它来做什么？</li>
+      <li><b>问题二</b>：现在智能体厂家很多、甚至有免费的（电脑上装个 WorkBuddy、Trae、Codex 也都是智能体平台），<b>这个产品相比它们的优势在哪里</b>？</li>
+      <li>时间：周四前有第一次 PPT 会议，"周四周五就需要"；产品方答：<b>周五给一版</b>。给两页纸差不多，"不能太多，因为需要一个总结，跟客户进行集中的交流"。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">17:09 – 21:59</span>
+    <h3>第 8 段 · 优势讨论（上）：禁售兜底与数据安全</h3>
+    <ul>
+      <li>竞品短板：WorkBuddy——数据都上传云端，数据安全是问题；Trae——生态不行；Codex——"很多人都用不了"。</li>
+      <li><b>兜底逻辑</b>：现在用的是国外模型，"国外模型对中国大陆包括港澳都是禁售的"，私人想用很麻烦——要有美国资源在当地购买许可，"对个人用户来说难度相当大"。我们的盒子能解决："你不需要考虑这个问题，有公司帮你兜底了。"</li>
+      <li><b>数据安全逻辑</b>：盒子有中转站，但"目前没有人去做中转储存"；数据是<b>打散了上传</b>的、不是整份上传；"分布式处理，只是一个流向，不会做中转储存"——而且"储存不了，量太大了"。</li>
+      <li>销售方当场复述口径并获确认：<b>"我们这个封装可以通过企业订单，一站式解决用到国外模型的问题；数据安全上，中转不做储存。"</b></li>
+      <li>补充："优势很明显，主要是封号太严重了"——个人账号被封就用不了大模型，而我们有公司兜底 + 后台有人运营 + 国内大模型做支撑兜底（"某一天都对中国大陆禁售了，我还有国内大模型，不是说完全没辙"）。对客户话术要简单明白："你可以免费享受到这部分模型的智能。"</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">21:59 – 26:25</span>
+    <h3>第 9 段 · 工作流沉淀（skill）与多用户隔离</h3>
+    <ul>
+      <li>客户关心的点（小军哥此前已介绍过）：教过一次后能不能<b>形成自己的工作流</b>，下次不用重复对话、直接调用？——答案：可以。让它做自动化工作流，"帮我形成一个 skill"，后续直接调用这个 skill。</li>
+      <li><b>多用户现状</b>：盒子里装了两个智能体——<b>一个龙虾、一个爱马仕，每个针对一个用户</b>。想多用户用，就放到群里当<b>群机器人</b> @使用。个人级别的独立 schedule"暂时还做不到"。</li>
+      <li>硬件限制："不能把它想得太复杂，首先它的硬件就是那样，不可能支持那么多并发。"一台盒子 ≈ 两个人用（两个 agent 相互独立，也可一人用两个）。</li>
+      <li>飞书接入的现状演示：控制台里飞书只有一个 ID，"谁使用，谁就申请这个飞书的 ID 放进去"，也只能由这个人把它丢到群里。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">26:25 – 32:14</span>
+    <h3>第 10 段 · 多台盒子的统一管理与「积分制」</h3>
+    <ul>
+      <li>客户场景：买 5 台盒子，能不能<b>统一管理</b>？——"应该不是什么问题"，需要定制：做一个管理页面，总管理端能看到<b>每台盒子消耗了多少 token</b>。</li>
+      <li>现状底子：目前已有很详细的额度统计——每天大概用多少钱、输入输出多少、每日趋势，都能看到。</li>
+      <li>费用模式：<b>预充值</b>（对应比如 30 美金看还剩多少），费用付给中转服务；具体怎么按项目结算"各个项目再去沟通协商……他想怎么给钱都可以，给我订单就行"。</li>
+      <li><b>积分制（重要口径）</b>：给客户展示时<b>不能显示真实金额</b>——"显示钱他就知道他给了多少钱、这里才多少钱"。改成积分：1 块钱 = 1 积分或 10 积分都行，"按积分都不显示金额"。客户只能看到"我有 1 万积分可以用"，跑一个任务大概花多少积分，这个呈现程度 OK。</li>
+      <li>边界：<b>真实消耗只有我们（维护方/中转侧）能看到，客户绝对不能看到</b>。"这跟个人自己去充值用是不一样的——个人充 10 块钱就是 10 块钱；合作模式里他出了 10 块钱是不能知道（明细）的。这是客户层面的事情，之前没想过这个问题，改起来很方便。"</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">32:14 – 38:28</span>
+    <h3>第 11 段 · 额度分配：权限不下放，后台代办</h3>
+    <ul>
+      <li>客户场景：咨询处部长有一笔经费，买 5 台盒子、总额度比如 2 万，<b>不平均分配</b>——能不能在页面上实时给不同人分配额度？（如 1 万积分里拆 5000 给做应用开发多的同事）</li>
+      <li>结论：<b>客户不能自己分</b>。密钥不可能下放给客户，"哪怕是分的也不可能给他"。流程：客户告知要怎么分 → 通过我们（维护单位）→ 我们在后台申请、修改。例：部门 10 个人里 5 个不怎么用，"本来就想调拨过去，这个没问题——他通过我们，告知我们以后，我们帮他去申请、去改就 OK 了"。</li>
+      <li>当前默认模式：买一个大盘子（总池子），大家都去用——"你买了 1 万积分总额度，所有人共用这一个池子"。<b>对话是隔开的，但额度是共用的</b>；要限制某人只能用多少，才需要单独拆 key（1 人 5000、1 人 2000 这样），这个由我们后台做。</li>
+      <li>风险考量：分配权限如果下放，"那不就是直接到我们的后台了吗"——所以只能后台对后台操作。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">38:28 – 43:42</span>
+    <h3>第 12 段 · 三种方案、产品定位与「24 小时在线」</h3>
+    <ul>
+      <li><b>三种 Agent 形态</b>：① 纯云端（"云龙虾"）——数据和推理都在云端；② 纯本地——大企业自购算力服务器、部署本地化模型，数据和推理都在本地；③ <b>我们（中间态）</b>——硬件盒子，<b>数据在本地、推理走云端模型</b>。</li>
+      <li><b>定位</b>："把这台盒子定义为<b>客户的第一台 AI 基础设施</b>。"客户自己买算力服务器或 Mac mini：价格不便宜；还得自己装 open 系列软件、有没有技术能力都是问题；还得配模型、找专家指导。选我们的盒子，这些全部囊括，还能提供专业服务。</li>
+      <li>skill/工程能力也是优势：模型聪明是一方面，"engine、控制上下文的能力、封装这些技术产品的能力"是另一方面——外面找的虽然都有，"可能没那么好用"。</li>
+      <li><b>安全把关</b>：帮客户把住"数据随便出去"这一关，学校、中小企业才放心；以服务的形式交付，"国企在这方面有一个安全背书"。</li>
+      <li><b>24 小时在线</b>：WorkBuddy 之类要专门一台电脑部署且不能关机——笔记本合上就不在线了。"我们的盒子只要连上网、接上电，摆在那边就 24 小时在线"；电脑端通讯窗口、<b>手机端</b>都能交互，更方便——"这也是可以去展示的优势场景"。</li>
+      <li>PPT 里要专门一页：相比市面上自己随便能下到的产品，<b>专门买这个盒子的优势是什么</b>。</li>
+    </ul>
+  </div>
+
+  <div class="seg">
+    <span class="time">43:42 – 47:08</span>
+    <h3>第 13 段 · PPT 内容框架当场敲定</h3>
+    <p>两页 PPT 要包含（赵总等现场补充）：</p>
+    <ol>
+      <li><b>产品定义</b>（第一台 AI 基础设施的定位）；</li>
+      <li><b>功能</b>（我们能干什么）；</li>
+      <li><b>应用场景</b>：实验室数据整理、科研数据/文档整理、教务教学——<b>要结合李工这个客户的需求场景重点讲</b>；</li>
+      <li><b>产品差异化优势</b>：数据安全/风险可控、可持续性（中断后还能继续）、定制化对接（客户有常用模型也可以对接）——"尽量往多方面靠，尽管把优势写多一点，场景和优势这一块永远是关注点"；</li>
+      <li><b>定制与 POC</b>：盒子是标准品，"再怎么去扩展也都是在这个盒子里面"——超出盒子之外的功能（澳门理工可能有的需求）也可以定制。客户有意向的话，提供产品做 <b>POC/免费试用</b>，"先用，有什么更硬的要求我们再完善"，建议给 1~2 台机器。</li>
+    </ol>
+    <blockquote>"对这个问题用户来说，他需要的不只是一台盒子，他需要的是能够在具体场景里的 AI 应用——我们要来解决他们应用的痛点。展示一个图：怎么帮他把 AI 的能力在他的具体场景里面落地。"</blockquote>
+  </div>
+
+  <div class="seg">
+    <span class="time">47:08 – 48:35</span>
+    <h3>第 14 段 · 时间线最终确认</h3>
+    <ul>
+      <li>"最晚<b>明天下班前（8/6 周四）</b>提供出来可以吗？"——可以。</li>
+      <li>周五我们要整合一下；下周二上午就过去（拜访），<b>下周一我们自己要先演示一下、练习一下</b>，最晚周五要确定。</li>
+      <li>张老师、胡芳老师无补充；其余问题"随时在群上"沟通。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">4</span>产品进展清单（截至本次会议）</h2>
+  <table>
+    <tr><th>事项</th><th>状态</th><th>备注</th></tr>
+    <tr><td>余额显示优化</td><td class="done">✔ 已完成</td><td>上次会议提出</td></tr>
+    <tr><td>用量显示优化</td><td class="done">✔ 已完成</td><td>上次会议提出</td></tr>
+    <tr><td>Telegram 接入</td><td class="done">✔ 已接入，已测试通过</td><td>小周老师实测 OK</td></tr>
+    <tr><td>飞书接入</td><td class="todo">⚠ 已接入，未测试</td><td>"还没看到接口"→ 待测</td></tr>
+    <tr><td>销售话术整理</td><td class="done">✔ 已完成</td><td>但被反馈"过于专业"，需改造（见第 5 节）</td></tr>
+    <tr><td>新手提示词整理</td><td class="done">✔ 已完成</td><td>同上，需配套改造</td></tr>
+    <tr><td>额度/用量统计</td><td class="done">✔ 已有</td><td>每日花费、输入输出、每日趋势均可查</td></tr>
+    <tr><td>skill 工作流沉淀</td><td class="done">✔ 支持</td><td>教一次即可复用，下次直接调用</td></tr>
+  </table>
+</section>
+
+<section id="s5">
+  <h2><span class="no">5</span>教程优化需求（本次会议最重的动手项）</h2>
+  <p>总原则：<b>初始使用与专业使用分开</b>——先让小白 5 分钟跑通一个任务建立信心，再引导他逐步深入；专业文档保留为进阶教程。</p>
+
+  <h3>5.1 新增「五分钟速览卡」（放在最前面）</h3>
+  <ul>
+    <li>大白话介绍产品能干什么：整理 PDF、做 Excel、拼接、生成图片等六个功能单元全部亮出来；</li>
+    <li>按任务场景做<b>快速入口</b>：比如"我要做 PPT"→ 点一下直达对应教程位置；</li>
+    <li>配简单例子，让新手先完成一次任务、"觉得神奇"，建立信心。</li>
+  </ul>
+
+  <h3>5.2 简易流程 vs 完整流程</h3>
+  <ul>
+    <li>新手版：P0~P2 即可出结果（可能不够完善，但能用）；</li>
+    <li>进阶版：P0~P6 完整专业流程，留给用熟练之后；</li>
+    <li>模式命名也用自然语言："快速标准 / 完整模式"。</li>
+  </ul>
+
+  <h3>5.3 术语白话化对照表</h3>
+  <table>
+    <tr><th>现在的写法</th><th>改成</th></tr>
+    <tr><td>P0 · 加载总控</td><td>约定本次的工作模式（括号保留 P0）</td></tr>
+    <tr><td>意图澄清</td><td>想清楚你想做什么</td></tr>
+    <tr><td>其他程序术语</td><td>一律先大白话、术语留括号——"让人一眼知道要干什么"</td></tr>
+  </table>
+
+  <h3>5.4 补充「断点续作」章节（被点名"最重要"）</h3>
+  <ul>
+    <li>场景：任务做到 P4 中断（有事/下班），第二天如何接着做 P5、P6——目前教程完全没写；</li>
+    <li>需补充：中断后如何恢复、如何继续未完成阶段。</li>
+  </ul>
+
+  <h3>5.5 文档形态策略</h3>
+  <ul>
+    <li><b>新建</b>一个简易版文档，现有专业版<b>不动</b>；</li>
+    <li>先分开发小周老师确认 → 再决定：合并成一个文档，还是保持多份；</li>
+    <li>小周老师会把参考文档发到群里，可对照参考。</li>
+  </ul>
+</section>
+
+<section id="s6">
+  <h2><span class="no">6</span>两大客户问题与标准口径（拜访必答）</h2>
+
+  <h3 class="q">Q1：这产品卖出去成功的应用场景有哪些？客户买了能干什么？</h3>
+  <ul>
+    <li>学校场景：<b>实验室数据整理、科研数据/文档整理、教务教学辅助</b>（本次拜访要<b>结合澳门理工的具体需求重点讲</b>）；</li>
+    <li>能力面：PDF 整理、Excel 处理、内容拼接、图片生成、做 PPT 等六个功能单元；</li>
+    <li>进阶玩法：教一次即可沉淀为 skill 工作流，后续自动复用，不用重复对话。</li>
+  </ul>
+
+  <h3 class="q">Q2：相比市面上免费的智能体（WorkBuddy / Trae / Codex），优势在哪？</h3>
+  <ul>
+    <li><b>合规与兜底</b>：国外模型对中国大陆（含港澳）禁售，个人很难买、账号说封就封；我们企业级封装一站式解决，公司兜底 + 后台有人运营 + 国内大模型托底，"不会因为某一个人账号被封就用不了"。</li>
+    <li><b>数据安全</b>：数据在本地，推理才走云端；中转<b>不做储存</b>，数据打散后分布式处理、"只是一个流向"。免费产品的云端链路你无法保证。</li>
+    <li><b>24 小时在线</b>：免费方案要专门一台电脑常驻部署、关机即下线；盒子通电联网就 24 小时在线，电脑端 + 手机端随时交互。</li>
+    <li><b>零门槛</b>：不用自购算力服务器/Mac mini，不用自己装软件、配模型、找专家——全部打包，还提供专业服务。</li>
+    <li><b>国企/机构背书</b>：以服务形式交付，帮客户把住数据外流的关，"国企在这方面有安全背书"。</li>
+    <li><b>可定制</b>：标准品之外的需求可定制开发；可免费提供 1~2 台机器做 POC 试用。</li>
+  </ul>
+</section>
+
+<section id="s7">
+  <h2><span class="no">7</span>竞品对比明细（会上点名）</h2>
+  <table>
+    <tr><th>方案</th><th>形态</th><th>会上指出的短板 / 我们的对比优势</th></tr>
+    <tr><td>WorkBuddy</td><td>电脑端部署</td><td>数据全部上传云端，安全存疑；要专门一台电脑且不能关机，笔记本合盖即下线</td></tr>
+    <tr><td>Trae</td><td>电脑端 IDE</td><td>"生态没有（我们的）好"——上下文控制、工程封装能力弱</td></tr>
+    <tr><td>Codex</td><td>云端服务</td><td>"很多人都用不了"（获取门槛）</td></tr>
+    <tr><td>云龙虾</td><td>纯云端 agent</td><td>数据和推理都在云端，数据安全不可控</td></tr>
+    <tr><td>纯本地部署</td><td>自购算力服务器 + 本地模型</td><td>价格贵、要自己会装会配、要找专家——只适合大企业</td></tr>
+    <tr><td><b>我们的盒子</b></td><td>中间态：数据在本地、推理走云端</td><td>兼顾安全与易用；24 小时在线；手机+电脑双端；公司兜底；可定制 + POC</td></tr>
+  </table>
+</section>
+
+<section id="s8">
+  <h2><span class="no">8</span>多用户与额度管理详解（客户问到就照这个口径答）</h2>
+
+  <h3>8.1 单台盒子的用户结构</h3>
+  <ul>
+    <li>一台盒子装两个智能体：<b>龙虾 + 爱马仕</b>，各对应一个用户，相互独立（也可以一人用两个）；</li>
+    <li><b>对话是隔离的，但额度是共用的</b>（同一个池子）；</li>
+    <li>更多人用：拉进群里当群机器人 @使用；或加盒子——5 台盒子 ≈ 10 个人；</li>
+    <li>个人级独立 schedule 暂不支持；硬件并发能力有限，"不能想得太复杂"。</li>
+  </ul>
+
+  <h3>8.2 多台统一管理（定制项）</h3>
+  <ul>
+    <li>需求：5 台盒子统一管理 → 定制一个<b>管理页面</b>，总管理端可看到每台盒子的 token 消耗；</li>
+    <li>底子现成：已有详细用量统计（每日花费、输入输出、每日趋势），做一个汇总页即可；</li>
+    <li>排期：客户确认需求后定制开发。</li>
+  </ul>
+
+  <h3>8.3 积分制（对外不显示金额）</h3>
+  <ul>
+    <li>客户只能看到<b>积分</b>：如"1 万积分可用"，跑个任务知道大概花多少积分——到此为止；</li>
+    <li>换算比例我们后台定（1 元 = 1 积分或 10 积分都行）；</li>
+    <li><b>真实金额消耗只有维护方/中转侧后台可见，客户绝对不能看到</b>（否则成本底牌暴露）；</li>
+    <li>改动量小，"改个模式、改个 token 显示就行"。</li>
+  </ul>
+
+  <h3>8.4 额度分配与调拨</h3>
+  <ul>
+    <li>默认：总池子共用，不分你我；</li>
+    <li>要限人限额（如 1 万积分拆 5000/2000）：<b>客户自己不能操作</b>——密钥不下放，避免触达我们后台；</li>
+    <li>流程：客户提出分配/调拨需求 → 告知我们 → 我们后台代办（"后台对后台"）；</li>
+    <li>典型场景：10 个人里 5 个用得少，把额度调给用得多的——没问题，找我们办。</li>
+  </ul>
+
+  <h3>8.5 收费模式</h3>
+  <ul>
+    <li>预充值制（如充 30 美金看余额消耗）；费用付给中转服务；</li>
+    <li>学校等机构通常是<b>预采购</b>、不是随时充钱——"按各个项目再去沟通协商……他想怎么给钱都可以，给我订单就行"；</li>
+    <li>目标客单：会上提到"1000 万、2000 万或者一个亿"的量级愿景（转写，量级口径存疑，供参考）。</li>
+  </ul>
+</section>
+
+<section id="s9">
+  <h2><span class="no">9</span>PPT 要求详解（1~2 页，给澳门理工）</h2>
+  <table>
+    <tr><th>板块</th><th>内容要点</th></tr>
+    <tr><td>① 产品定义</td><td>"客户的第一台 AI 基础设施"：三种 Agent 形态对比图（纯云端 / 纯本地 / 我们的中间态），突出数据在本地、推理走云端</td></tr>
+    <tr><td>② 功能展示</td><td>六个功能单元（PDF、Excel、拼接、图片生成、PPT 等）；飞书/钉钉/Telegram 多平台接入；24 小时在线、手机+电脑双端；skill 工作流沉淀</td></tr>
+    <tr><td>③ 应用场景</td><td>实验室数据整理、科研文档管理、教务教学辅助——<b>结合澳门理工（李工）的具体需求场景重点讲</b>；最好有一张"AI 能力如何在客户具体场景落地"的示意图</td></tr>
+    <tr><td>④ 差异化优势</td><td>数据安全/风险可控（中转不储存、打散上传）、合规兜底（禁售+封号问题一站式解决）、24 小时在线、国企安全背书、可持续（断点续作）、可定制对接（客户已有常用模型也可接）</td></tr>
+    <tr><td>⑤ 定制与 POC</td><td>标准品之外可定制开发；有意向可免费试用 1~2 台做 POC，"先用，有更硬的要求再完善"</td></tr>
+  </table>
+  <p>写作原则（会上原话精神）：</p>
+  <ul>
+    <li><b>"场景和优势永远是关注点"</b>——优势尽管多写、往多方面靠；</li>
+    <li>两页以内，不能太多——用于和客户集中交流，是"总结"不是说明书；</li>
+    <li>话术要简单明白："你可以免费享受到这部分模型的智能"这个级别的直白；</li>
+    <li>客户最容易想知道两个事：<b>你能做到什么 + 你相比别家的优势</b>。</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <h2><span class="no">10</span>行动项与时间线（精确到日）</h2>
+  <table>
+    <tr><th>时间</th><th>事项</th><th>分工</th></tr>
+    <tr><td class="deadline">8/6（周四）下班前</td><td><b>PPT 初版提供</b>（1~2 页，框架见第 9 节）</td><td>产品方做一版</td></tr>
+    <tr><td class="deadline">8/7（周五）</td><td>整合 PPT、最终确定（"最晚周五要确定"）</td><td>销售方整合</td></tr>
+    <tr><td class="deadline">8/10（周一）</td><td><b>内部演示演练</b>（自己先讲一遍、练习）</td><td>拜访团队</td></tr>
+    <tr><td class="deadline">8/11（周二）上午</td><td><b>正式拜访澳门理工</b>（对方：秘书长 + 多部门负责人）</td><td>全体，参会同学都去</td></tr>
+  </table>
+
+  <h3>其他行动项（无硬性日期，随优化推进）</h3>
+  <table>
+    <tr><th>事项</th><th>分工</th><th>状态/备注</th></tr>
+    <tr><td>教程简易版文档：五分钟速览卡 + 简易流程 + 术语白话化 + 断点续作章节</td><td>文档同学（<b>新建</b>文档，不动进阶版）</td><td class="todo">待启动，先给小周老师确认再定合并策略</td></tr>
+    <tr><td>飞书接口测试</td><td>小周老师侧</td><td class="todo">待测（Telegram 已测通）</td></tr>
+    <tr><td>参考文档发群里</td><td>小周老师</td><td class="todo">会后即发</td></tr>
+    <tr><td>额度页面金额 → 积分显示</td><td>产品/开发</td><td>改动小，按需排期</td></tr>
+    <tr><td>多台盒子统一管理页面</td><td>定制开发</td><td>客户确认需求后排期</td></tr>
+    <tr><td>POC 试用机准备（1~2 台）</td><td>产品方</td><td>客户有意向时免费提供</td></tr>
+  </table>
+</section>
+
+<section id="s11">
+  <h2><span class="no">11</span>待确认 / 开放问题</h2>
+  <ol>
+    <li><b>飞书接入的实际可用性</b>——接口还没测，拜访前最好测通，否则"多平台接入"这一页底气不足。</li>
+    <li><b>教程文档最终形态</b>——简易版与进阶版是合并还是分立，待小周老师确认。</li>
+    <li><b>断点续作的产品事实</b>——教程要写"中断后如何继续"，需产品侧先确认当前断点续作的真实行为（恢复到哪一步、如何触发），别写成教程承诺了产品做不到的事。</li>
+    <li><b>个人级独立 schedule</b>——客户可能追问，目前做不到，口径上怎么圆（群机器人/加盒子）。</li>
+    <li><b>收费与结算细节</b>——按项目逐个协商，暂无统一价目；客户付款方式以其为准。</li>
+    <li><b>统一管理页面的定制报价与排期</b>——会上只说了"问题不大"，未估工作量。</li>
+    <li><b>国内大模型托底的具体方案</b>——作为"极端禁售"的话术支撑，建议拜访前内部对齐细节。</li>
+  </ol>
+</section>
+
+<section id="s12">
+  <h2><span class="no">12</span>术语表</h2>
+  <table>
+    <tr><th>术语</th><th>含义</th></tr>
+    <tr><td>P0 ~ P6</td><td>任务从启动到交付的阶段节点（转写中亦出现"T4"，应即 P4 的误写）</td></tr>
+    <tr><td>五分钟速览卡</td><td>本次要新增的教程首页：大白话 + 功能入口 + 简单示例，5 分钟跑通第一个任务</td></tr>
+    <tr><td>断点续作</td><td>任务中断后（如下班），下次从断点（如 P4）继续执行后续阶段（P5、P6）</td></tr>
+    <tr><td>龙虾 / 爱马仕（M4）</td><td>盒子里预装的两个智能体，各服务一个用户</td></tr>
+    <tr><td>skill</td><td>教一次后沉淀的可复用工作流，之后直接调用，无需重复对话</td></tr>
+    <tr><td>群机器人</td><td>把盒子接进飞书/钉钉/Telegram 群，@它来使用（多人共享的方式）</td></tr>
+    <tr><td>中转站 / 中通</td><td>模型请求的中转服务（数据只"流过"不储存；费用付给它）</td></tr>
+    <tr><td>积分制</td><td>对外只显示积分不显示真实金额的额度展示方式</td></tr>
+    <tr><td>POC</td><td>概念验证（Proof of Concept）：免费提供 1~2 台机器给客户试用验证</td></tr>
+    <tr><td>云龙虾</td><td>纯云端 agent 方案（数据+推理都在云端），与我们盒子形态相对</td></tr>
+    <tr><td>第一台 AI 基础设施</td><td>产品定位：客户进入 AI 的第一站，打包算力、模型、部署与服务</td></tr>
+  </table>
+</section>
+
+<footer>
+  2026-08-05 10:00 会议纪要 · 缺席者详细导读 · 整理自逐字稿与思维导图<br>
+  转写存在谐音误写（如"袜子"=飞书、"中通"=中转站、"李峰/李工"同人），引用前建议回录音核对
+</footer>
+
+</div>
+</body>
+</html>

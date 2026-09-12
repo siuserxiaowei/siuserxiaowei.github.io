@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>总览｜AI 编程与 Harness 工程研讨会</title>
+  <meta name="description" content="AI 编程与 Harness 工程研讨会公开复盘：从副驾到管理者，用 Spec、看板、Worktree、Review 和资源感知管理多 Agent 工程。">
+  <meta property="og:title" content="总览">
+  <meta property="og:description" content="AI 编程与 Harness 工程研讨会公开复盘：从副驾到管理者，用 Spec、看板、Worktree、Review 和资源感知管理多 Agent 工程。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://siuserxiaowei.github.io/library/ai-programming-harness-meeting-2026-05-19/assets/harness-map.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Harness Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" aria-current="page">总览</a><a href="paradigm.html">范式</a><a href="operating-system.html">系统</a><a href="spec-playbook.html">Spec</a><a href="toolchain.html">工具链</a><a href="timeline.html">时间线</a><a href="qa.html">问答</a><a href="transcript.html">逐字稿</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero">
+    <div>
+      <p class="eyebrow">2026-05-19 · AI 编程与 Harness 工程研讨会</p>
+      <h1>从副驾到管理者，才是 AI 编程的真正拐点</h1>
+      <p class="lede">这场会的价值不在于又列了一批工具，而是把 AI 编程的重心从“让模型写代码”拉回到工程组织：怎么给 Agent 上下文，怎么拆任务，怎么并发，怎么验收，怎么把一次 Review 变成下一次自动避免的错误。</p>
+      <div class="hero-meta">
+        <span class="chip">约 2 小时 10 分钟</span>
+        <span class="chip">10 位左右发言者</span>
+        <span class="chip">18 段时间线</span>
+        <span class="chip">公开逐字稿</span>
+        <span class="chip">GitHub Pages 专题站</span>
+      </div>
+    </div>
+    <figure class="board"><img src="assets/harness-map.svg" alt="Harness Engineering 会议知识地图"></figure>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">Core</p>
+      <h2>会议浓缩成 3 句话</h2>
+      <p>如果只读这一页，先记住这三个判断。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      <span class="metric">01</span>
+      <h3>Agent 不是副驾，是需要管理的新成员</h3>
+      <p>模型能力已经足够可用，瓶颈转向上下文构建、任务分派、验收标准和工程治理。开发者角色从亲自写代码，变成技术负责人、Reviewer 和流程设计者。</p>
+    </article>
+    <article class="card">
+      <span class="metric">02</span>
+      <h3>并发不是堆窗口，而是建系统</h3>
+      <p>多 Agent 并发需要看板、Issue、分支/Worktree、自动测试、资源列表和收口机制。否则只是把一个人的混乱放大到多个进程。</p>
+    </article>
+    <article class="card">
+      <span class="metric">03</span>
+      <h3>经验必须沉淀成可执行约束</h3>
+      <p>Review 发现的问题不能停留在口头经验，要变成 Skills、检查点、模板、脚手架和自动验证。这样下一轮 Agent 才不会从零开始。</p>
+    </article></div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">Map</p>
+      <h2>专题入口</h2>
+      <p>这份在线文档按工程问题拆成多页，适合复盘、转发和后续训练团队。</p>
+    </div>
+    <div class="toc">
+    <a href="paradigm.html"><strong>范式转变</strong><span>副驾到管理者</span></a>
+    <a href="operating-system.html"><strong>多 Agent 操作系统</strong><span>看板 / Worktree / Review</span></a>
+    <a href="spec-playbook.html"><strong>Spec Playbook</strong><span>Meta Spec / 分层 / 资源</span></a>
+    <a href="toolchain.html"><strong>工具链与趋势</strong><span>模型 / 前端 / 后端</span></a>
+    <a href="timeline.html"><strong>时间线</strong><span>18 个章节带跳转</span></a>
+    <a href="qa.html"><strong>问答与分歧</strong><span>复杂系统 / PM / 前端</span></a>
+    <a href="transcript.html"><strong>公开逐字稿</strong><span>说话人 + 时间戳</span></a>
+    <a href="appendix.html"><strong>附录</strong><span>术语 / 指标 / 行动清单</span></a>
+  </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">Tension</p>
+      <h2>最大分歧：Worktree 是工具，不是信仰</h2>
+      <p>会议里最值得保留的不是“用不用 Worktree”的结论，而是做选择的判断框架。</p>
+    </div>
+    <div class="grid ">
+    <article class="card">
+      
+      <h3>支持 Worktree 的理由</h3>
+      <p>它能隔离并行开发，减少多个 Agent 同时改同一份文件的冲突，也天然适配 Issue 到分支、PR 到 Review 的标准流程。</p>
+    </article>
+    <article class="card">
+      
+      <h3>谨慎使用的理由</h3>
+      <p>它会增加合并成本、端口和资源分配问题，也可能让上下文污染和 Token 消耗变重。小项目或强耦合任务不一定划算。</p>
+    </article>
+    <article class="card">
+      
+      <h3>更稳妥的判断</h3>
+      <p>把 Worktree 当作并发放大器，而不是默认答案。先把单 Agent 管好，再拉到三个，再到十个；每一级都要有验收和回收机制。</p>
+    </article></div>
+  </section>
+  <section class="section"><blockquote class="quote">“一个人只有管理好一个 Agent，才可能管理好三个；管理好三个，才可能管理好十个。”<cite>会议核心判断，来自逐字稿与智能纪要交叉整理</cite></blockquote></section>
+  <section class="section tight"><p class="source-note">来源：飞书智能纪要、文字记录、妙记 AI 产物与用户提供摘要。内部临时媒体下载链接已移除；会议正文和逐字稿按公开资料整理。</p></section>
+  </main>
+  <footer class="footer">
+    <p>AI 编程与 Harness 工程研讨会 · 2026-05-19 · Public GitHub Pages dossier</p>
+  </footer>
+</body>
+</html>

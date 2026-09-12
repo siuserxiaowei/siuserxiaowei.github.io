@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会议详拆合集 · 道法术器势</title>
+<style>
+:root { --ink:#1f2328; --muted:#6a737d; --line:#e1e4e8; --accent:#2563eb; --bg:#f6f8fa; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       color:var(--ink); background:var(--bg); line-height:1.8; }
+header.site { background:#0f172a; color:#fff; padding:2.4rem 1.5rem 1.8rem; }
+header.site .wrap, main, .cards { max-width:880px; margin:0 auto; }
+header.site h1 { margin:0 0 .4rem; font-size:1.5rem; }
+header.site p.sub { margin:0; color:#94a3b8; font-size:.92rem; }
+nav.toc { background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+nav.toc .wrap { max-width:880px; margin:0 auto; display:flex; gap:.5rem; padding:.55rem 1rem; flex-wrap:wrap; }
+nav.toc a { text-decoration:none; color:var(--accent); font-size:.88rem; padding:.2rem .7rem;
+            border:1px solid var(--line); border-radius:999px; white-space:nowrap; }
+nav.toc a:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+nav.toc a.home { color:var(--muted); }
+nav.toc a.cur { background:var(--accent); color:#fff; border-color:var(--accent); }
+main { background:#fff; padding:1.8rem 2.2rem 3rem; margin-top:1.2rem; margin-bottom:1rem;
+       border:1px solid var(--line); border-radius:10px; }
+h1 { font-size:1.45rem; border-bottom:2px solid var(--line); padding-bottom:.4rem; }
+h2 { font-size:1.22rem; margin-top:2.4rem; padding:.45rem .8rem; background:var(--bg);
+     border-left:4px solid var(--accent); border-radius:0 8px 8px 0; }
+h3 { font-size:1.06rem; margin-top:1.8rem; color:#0f172a; }
+h3::before { content:""; display:inline-block; width:.55em; height:.55em; background:var(--accent);
+             border-radius:2px; margin-right:.45em; }
+h4 { font-size:.98rem; margin-top:1.5rem; color:#334155; background:#f8fafc; padding:.35rem .7rem;
+     border-left:3px solid #94a3b8; border-radius:0 6px 6px 0; }
+blockquote { margin:1rem 0; padding:.6rem 1rem; background:#fffbeb; border-left:4px solid #f59e0b;
+             color:#57534e; border-radius:0 8px 8px 0; font-size:.9rem; }
+blockquote p { margin:.2rem 0; }
+hr { border:none; border-top:1px dashed var(--line); margin:2.5rem 0; }
+a { color:var(--accent); }
+ul { padding-left:1.4rem; }
+li { margin:.25rem 0; }
+strong { color:#0f172a; }
+.pager { max-width:880px; margin:0 auto 2rem; display:flex; justify-content:space-between; gap:1rem; }
+.pager a { flex:1; text-decoration:none; background:#fff; border:1px solid var(--line); border-radius:10px;
+           padding:.9rem 1.1rem; color:var(--ink); font-size:.92rem; }
+.pager a:hover { border-color:var(--accent); }
+.pager a span { display:block; color:var(--muted); font-size:.78rem; margin-bottom:.15rem; }
+.pager a.next { text-align:right; }
+.pager a.disabled { visibility:hidden; }
+.cards { display:grid; gap:1.1rem; padding:1.6rem 1rem 2.5rem; }
+.card { display:block; text-decoration:none; background:#fff; border:1px solid var(--line); border-radius:12px;
+        padding:1.4rem 1.6rem; color:var(--ink); transition:box-shadow .15s,border-color .15s; }
+.card:hover { border-color:var(--accent); box-shadow:0 4px 18px rgba(37,99,235,.12); }
+.card .tag { font-size:.78rem; color:var(--muted); }
+.card h2 { margin:.3rem 0 .5rem; font-size:1.15rem; background:none; border:none; padding:0; }
+.card p { margin:0; color:#475569; font-size:.9rem; }
+.card .go { display:inline-block; margin-top:.7rem; color:var(--accent); font-size:.85rem; }
+.intro { max-width:880px; margin:1.4rem auto 0; padding:0 1rem; color:#475569; font-size:.95rem; }
+footer { text-align:center; color:var(--muted); font-size:.82rem; padding:1rem 0 2.5rem; }
+@media (max-width:640px){ main{padding:1.2rem 1rem;} .pager{flex-direction:column;} }
+</style></head><body>
+<header class="site"><div class="wrap">
+<h1>会议详拆合集 · 道法术器势</h1>
+<p class="sub">三场会议 · 基于逐字稿的加深版拆解 · 给未参会同事的学习资料 · 2026-08-02</p>
+</div></header>
+<p class="intro">每场会议一个独立页面：包含 <strong>会议速览 → AI 智能纪要精华 → 逐字稿全流程详细解读（按时间线分段）→ 道 / 法 / 术 / 器 / 势 五维拆解 → 对我们业务的启发 → 知识点扫盲</strong>。点击下面卡片进入：</p>
+<div class="cards">
+<a class="card" href="meeting1.html">
+  <span class="tag">2026-08-02 · 约 11 分钟</span>
+  <h2>① GPT 5.6 自我优化｜OpenAI 官方博客：GPT 5.6 是如何自己优化自己的</h2>
+  <p>AI 用 AI 做全栈推理优化：内核重写降本 20%、推测解码提效 15%、Agent 框架上下文工程。约 11 分钟分享，逐段精读。</p>
+  <span class="go">进入详拆 →</span>
+</a>
+<a class="card" href="meeting2.html">
+  <span class="tag">2026-07-20 · 约 78 分钟</span>
+  <h2>② 半导体四大赛道访谈｜半导体四大技术方向深度访谈</h2>
+  <p>超透镜 / 玻璃基板 / 混合键合 / 碳化硅四大赛道研判，外加 AI 工具使用纪律与创业方法论。78 分钟访谈，13 段全流程解读。</p>
+  <span class="go">进入详拆 →</span>
+</a>
+<a class="card" href="meeting3.html">
+  <span class="tag">2026-07-18 · 约 2.5 小时</span>
+  <h2>③ AI 与具身智能发布会｜AI 与具身智能相关主题发布会讨论</h2>
+  <p>具身智能趋势共识、荣耀 MagicOS 与 Robot Phone 战略、Agent OS 圆桌。2.5 小时峰会，15 段解读，已过滤闲聊。</p>
+  <span class="go">进入详拆 →</span>
+</a>
+</div>
+<footer>道（原理）· 法（方法论）· 术（技巧）· 器（工具）· 势（趋势） — 由 Kimi Code 基于飞书逐字稿整理</footer>
+</body></html>
