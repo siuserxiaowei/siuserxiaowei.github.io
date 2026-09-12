@@ -1,5 +1,15 @@
 # Hi, I'm 小伟
 
+## 先从目录找起
+
+[**项目总目录：用途、入口与状态**](https://siuserxiaowei.github.io/catalog/) · [**会议资料：按真实主题检索**](https://siuserxiaowei.github.io/catalog/#view=meetings)
+
+项目按「项目与网站 / Skills 与工具 / 会议与学习资料 / 实验与历史 / Fork 参考」整理。会议目录同时索引独立仓库与合集内部条目；时间戳标题补上主题，保留原始标题和出处。项目维护意愿未确认时明确标注，避免把“有代码”误认成“已经可以使用”。
+
+[逐项目说明](https://github.com/siuserxiaowei/siuserxiaowei.github.io/blob/main/catalog/项目说明.md) · [项目 CSV](https://siuserxiaowei.github.io/catalog/项目清单.csv) · [会议 CSV](https://siuserxiaowei.github.io/catalog/会议主题清单.csv)
+
+---
+
 AI tool builder, knowledge-system operator, and public-learning shipper.
 
 I turn chat logs, meeting notes, public web research, and rough product ideas into working tools, GitHub Pages learning hubs, and reusable agent skills.
@@ -8,8 +18,8 @@ I turn chat logs, meeting notes, public web research, and rough product ideas in
 [![GitHub](https://img.shields.io/badge/GitHub-siuserxiaowei-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/siuserxiaowei)
 [![AI Tools](https://img.shields.io/badge/Focus-AI%20tools-2563eb?style=flat-square)](#featured-gallery)
 [![Knowledge Systems](https://img.shields.io/badge/Focus-knowledge%20systems-0f766e?style=flat-square)](#operating-system)
-[![GitHub Pages](https://img.shields.io/badge/Public%20repos-120-111827?style=flat-square&logo=github)](https://github.com/siuserxiaowei?tab=repositories)
-[![Live Demos](https://img.shields.io/badge/Live%20links-93-f97316?style=flat-square)](https://siuserxiaowei.github.io/)
+[![Public catalog](https://img.shields.io/badge/Project%20catalog-按用途查找-111827?style=flat-square&logo=github)](https://siuserxiaowei.github.io/catalog/)
+[![Meeting index](https://img.shields.io/badge/Meeting%20index-按主题检索-f97316?style=flat-square)](https://siuserxiaowei.github.io/catalog/#view=meetings)
 
 > I like workflows that leave evidence: source links, runnable scripts, public pages, and notes that can be reused the next time.
 
