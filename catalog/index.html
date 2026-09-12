@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="小伟的项目与会议资料目录。按真实主题查找用途、阅读入口、代码仓库与当前状态。">
+  <title>项目与会议目录 · 小伟</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="catalog.css">
+  <script src="catalog-data.js" defer></script>
+  <script src="catalog.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#results">跳到目录结果</a>
+  <header class="topbar"><a href="../">小伟 / 作品集</a><span>个人项目档案</span><a href="https://github.com/siuserxiaowei">GitHub ↗</a></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">THE WORKING INDEX · 01</p><h1>把散落的东西，<br>放回能找到的地方。</h1><p class="lede">找一个能用的工具，回看一场有价值的讨论。<br>从用途、真实主题和明确入口开始。</p></div>
+      <aside class="edition"><span id="scope">公开目录</span><strong id="project-count">—</strong><span>个项目 · <b id="material-count">—</b> 条资料入口</span><small>核对于 <time id="checked-date">—</time><br>保留原仓库与原始标题，方便回查。</small></aside>
+    </section>
+    <nav class="tabs" aria-label="目录类型"><button type="button" data-mode="projects" aria-pressed="true">01 项目总目录</button><button type="button" data-mode="materials" aria-pressed="false">02 会议主题目录</button></nav>
+    <form id="search-form" role="search"><label for="search">你想找什么？</label><div class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="例如：硬件量产、Codex、App 出海、会议原来的名字"><kbd aria-hidden="true">/</kbd></div></form>
+    <div class="catalog-layout">
+      <aside class="filters" aria-label="筛选目录"><p id="filter-title" class="eyebrow">按项目类型</p><div id="facets"></div><label class="select-label" for="status-filter">当前状态</label><select id="status-filter"><option value="">全部状态</option></select><label class="select-label" for="sort">排列方式</label><select id="sort"><option value="date">日期由近到远</option><option value="title">按名称排列</option></select><button id="reset" type="button" class="reset">清除筛选 ↺</button><div class="downloads"><a id="csv-link" href="项目清单.csv" download>下载当前目录 CSV ↓</a><a href="项目说明.md">逐项目说明 ↗</a></div></aside>
+      <section class="results-panel" aria-labelledby="result-heading"><div class="result-head"><div><h2 id="result-heading">全部项目</h2><p id="result-count" role="status" aria-live="polite"></p></div><span class="index-label">用途 / 入口 / 状态</span></div><p id="context" class="context"></p><div id="results" tabindex="-1"></div><div class="pagination"><button type="button" id="previous">← 上一页</button><span id="page-info"></span><button type="button" id="next">下一页 →</button></div></section>
+    </div>
+    <section class="reading-note"><h2>怎样读这份目录</h2><p>“网页可访问”表示本次链接检查成功，不代表全部功能已验收。“有源码”“仅有说明”依据默认分支文件核对；维护意愿没有得到确认的项目标为“待确认”。资料中的版本、数字和观点仍应回到原文判断。</p><p>会议目录保留不同分段和整理版本，条目数不等于独立会议场数。时间戳标题优先换成原章节主题，并提供原始标题和依据；没有足够内容的记录会明确标记。</p></section>
+  </main>
+  <footer><span>小伟 · 持续构建，也持续整理。</span><a href="#">回到顶部 ↑</a></footer>
+  <noscript><p>浏览器未开启 JavaScript。可以直接阅读 <a href="项目说明.md">项目说明</a>，或下载 <a href="会议主题清单.csv">会议主题清单</a>。</p></noscript>
+</body>
+</html>
