@@ -10,7 +10,7 @@
       "title": "Claude Code / Codex 共享记忆库（Fork）",
       "originalTitle": "Agent Memory Vault: Shared Claude Code + Codex",
       "purpose": "参考面向 Claude Code 与 Codex 的共享记忆管理实现。",
-      "category": "上游 Fork",
+      "category": "会议与知识库",
       "topics": [
         "AI 编程与 Agent",
         "创业、经营与合作"
@@ -29,7 +29,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "会议与知识库",
+      "useGroup": "知识检索与记忆"
     },
     {
       "id": "Agent-Reach",
@@ -37,7 +40,7 @@
       "title": "Agent-Reach",
       "originalTitle": "Agent-Reach",
       "purpose": "Agent Reach 分叉仓库：为 AI agent 提供跨 Twitter、Reddit、YouTube、GitHub、B 站、小红书等平台的公开信息读取与搜索能力。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -55,7 +58,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "agent-task-spec",
@@ -63,7 +69,7 @@
       "title": "Agent Task Spec",
       "originalTitle": "Agent Task Spec",
       "purpose": "将模糊需求转换为包含范围、执行边界和验收条件的 Agent 任务说明。",
-      "category": "可复用 Skills",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent",
         "创业、经营与合作"
@@ -81,7 +87,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "ai-app-export-learning-hub",
@@ -89,7 +98,7 @@
       "title": "AI App 出海学习资料包",
       "originalTitle": "AI App 出海学习资料包",
       "purpose": "AI App 出海学习资料包：面向独立开发者和小团队的出海案例、学习路径、评分表与静态站。",
-      "category": "专题研究、课程与日常档案",
+      "category": "出海、增长与市场研究",
       "topics": [
         "出海、增长与商业化",
         "创业、经营与合作"
@@ -113,7 +122,10 @@
           "relation": "集中维护位置",
           "url": "https://github.com/siuserxiaowei/chuhai-xuexi/tree/main/collections/ai-app-export"
         }
-      ]
+      ],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "ai-coding-knowledge-framework",
@@ -121,7 +133,7 @@
       "title": "AI Coding Knowledge Framework",
       "originalTitle": "AI Coding Knowledge Framework",
       "purpose": "AI 编程知识框架：把 agentic coding、软件工程纪律和提示词工程整理成系统化学习框架。",
-      "category": "专题研究、课程与日常档案",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -144,7 +156,10 @@
           "relation": "集中维护位置",
           "url": "https://github.com/siuserxiaowei/hr-agent-reading-hub/tree/main/collections/ai-coding"
         }
-      ]
+      ],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "AI 编程学习资料"
     },
     {
       "id": "ai-directories",
@@ -152,7 +167,7 @@
       "title": "AI 产品提交目录清单（Fork）",
       "originalTitle": "List of AI Directories",
       "purpose": "查找可提交 AI 产品的导航站与目录。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -170,7 +185,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "AI-image-enlarge",
@@ -178,7 +196,7 @@
       "title": "AI Image Enlarger",
       "originalTitle": "AI Image Enlarger",
       "purpose": "图片放大工具的 Next.js 前端，提供页面交互；真实超分辨率模型接入尚未验收。",
-      "category": "产品、网站与代码工具",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -201,7 +219,10 @@
           "url": "https://github.com/siuserxiaowei/ImageEnlarge",
           "relation": "同方向仓库；一个仅有说明，一个有应用代码"
         }
-      ]
+      ],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "图片产品与历史版本"
     },
     {
       "id": "alive-writer-skill",
@@ -209,7 +230,7 @@
       "title": "Alive Writer Skill — 活人感写作技能",
       "originalTitle": "Alive Writer Skill — 活人感写作技能",
       "purpose": "活人感写作 Skill：把 AI 写作、文案改写和内容人味化流程沉淀成技能。",
-      "category": "可复用 Skills",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -226,7 +247,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "写作与改写"
     },
     {
       "id": "apd-core",
@@ -234,7 +258,7 @@
       "title": "公开数据集元信息仓库（Fork）",
       "originalTitle": "Awesome Public Datasets Core",
       "purpose": "参考公开数据集的元信息组织与贡献方式。",
-      "category": "上游 Fork",
+      "category": "数据与地图参考",
       "topics": [
         "创业、经营与合作"
       ],
@@ -252,7 +276,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "数据与地图参考",
+      "useGroup": "上游数据工具与资料"
     },
     {
       "id": "AQBot",
@@ -260,7 +287,7 @@
       "title": "AQBot",
       "originalTitle": "AQBot",
       "purpose": "跨平台 AI 对话与 AI 网关客户端（fork）：轻量高性能的桌面 AI 聊天入口。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "综合交流与学习"
       ],
@@ -278,7 +305,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "august-meeting-knowledge",
@@ -286,7 +316,7 @@
       "title": "八月会议知识场",
       "originalTitle": "八月会议知识场",
       "purpose": "2026 年 8 月飞书会议资料合集，供缺席者学习、会议复盘与知识复用。",
-      "category": "会议、分享与访谈资料",
+      "category": "会议与知识库",
       "topics": [
         "综合交流与学习"
       ],
@@ -303,7 +333,10 @@
       "isMeeting": true,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "会议、分享与访谈资料",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议纪要与分享资料"
     },
     {
       "id": "Automatically-save-form-input",
@@ -311,7 +344,7 @@
       "title": "数据救命神器 Chrome 扩展",
       "originalTitle": "数据救命神器 Chrome 扩展",
       "purpose": "自动保存表单输入：用于浏览器表单自动保存和用户体验改进。",
-      "category": "产品、网站与代码工具",
+      "category": "办公与系统工具",
       "topics": [
         "综合交流与学习"
       ],
@@ -328,7 +361,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "办公与系统工具",
+      "useGroup": "办公分析与文档处理"
     },
     {
       "id": "awesome-agent-skills",
@@ -336,7 +372,7 @@
       "title": "Agent Skills 资源清单（Fork）",
       "originalTitle": "Awesome Agent Skills",
       "purpose": "查找可复用 Agent Skills 及其项目来源。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -354,7 +390,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "awesome-ai-subscription",
@@ -362,7 +401,7 @@
       "title": "awesome-ai-subscription · 中文 AI 订阅完整指南",
       "originalTitle": "awesome-ai-subscription · 中文 AI 订阅完整指南",
       "purpose": "AI 订阅产品清单：整理 AI SaaS、订阅工具和产品参考。",
-      "category": "专题研究、课程与日常档案",
+      "category": "商业交易与销售",
       "topics": [
         "综合交流与学习"
       ],
@@ -379,7 +418,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "订阅、卡密与充值业务"
     },
     {
       "id": "awesome-ai-tools",
@@ -387,7 +429,7 @@
       "title": "AI 工具参考清单（Fork）",
       "originalTitle": "Awesome AI Tools",
       "purpose": "浏览按用途整理的 AI 工具与项目来源。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "综合交流与学习"
       ],
@@ -405,7 +447,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "awesome-codex-skills",
@@ -413,7 +458,7 @@
       "title": "Codex Skills 参考清单（Fork）",
       "originalTitle": "Open README.md and inspect the repository files for the relevant entry point.",
       "purpose": "Codex Skills 精选清单（fork）：整理可复用的 Codex CLI/API 自动化技能参考。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -431,7 +476,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "awesome-digital-nomads",
@@ -439,7 +487,7 @@
       "title": "数字游民工具与资源（Fork）",
       "originalTitle": "Awesome Digital Nomads",
       "purpose": "参考远程工作、签证、财务与数字游民生活资源。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -457,7 +505,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "awesome-digital-nomads-cbovis",
@@ -465,7 +516,7 @@
       "title": "数字游民资源精选（Fork）",
       "originalTitle": "Awesome Digital Nomads",
       "purpose": "参考数字游民工作与生活资源。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -483,7 +534,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "awesome-expat",
@@ -491,7 +545,7 @@
       "title": "海外生活资源（Fork）",
       "originalTitle": "Awesome Expat",
       "purpose": "参考海外居住与生活相关资源。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -509,7 +563,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "Awesome-Geospatial",
@@ -517,7 +574,7 @@
       "title": "地理空间工具与资源（Fork）",
       "originalTitle": "Awesome Geospatial",
       "purpose": "参考地理空间软件、数据处理与相关项目。",
-      "category": "上游 Fork",
+      "category": "数据与地图参考",
       "topics": [
         "综合交流与学习"
       ],
@@ -535,7 +592,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "数据与地图参考",
+      "useGroup": "上游数据工具与资料"
     },
     {
       "id": "awesome-gpt-image-2.5",
@@ -543,7 +603,7 @@
       "title": "Awesome GPT Image 2.5",
       "originalTitle": "Awesome GPT Image 2.5",
       "purpose": "整理图像提示词、中文排版、海报与电商案例，保留图片来源及每例模型证据。",
-      "category": "专题研究、课程与日常档案",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -560,7 +620,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "封面、动图与视觉资料"
     },
     {
       "id": "awesome-no-kyc",
@@ -568,7 +631,7 @@
       "title": "低身份验证要求服务清单（Fork）",
       "originalTitle": "Awesome No-KYC",
       "purpose": "参考对身份验证要求较少的服务；具体条款需到服务商核对。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -586,7 +649,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "awesome-openstreetmap",
@@ -594,7 +660,7 @@
       "title": "OpenStreetMap 项目参考（Fork）",
       "originalTitle": "Awesome OpenStreetMap",
       "purpose": "参考 OpenStreetMap 相关软件、数据与应用。",
-      "category": "上游 Fork",
+      "category": "数据与地图参考",
       "topics": [
         "综合交流与学习"
       ],
@@ -612,7 +678,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "数据与地图参考",
+      "useGroup": "上游数据工具与资料"
     },
     {
       "id": "blog",
@@ -620,7 +689,7 @@
       "title": "小伟的 AI 与独立构建博客",
       "originalTitle": "Astro Starter Kit: Minimal",
       "purpose": "记录 AI 工具、自动化和独立产品开发过程的博客工程；根 README 仍使用框架模板。",
-      "category": "产品、网站与代码工具",
+      "category": "个人主页与博客",
       "topics": [
         "综合交流与学习"
       ],
@@ -637,7 +706,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "个人主页与博客",
+      "useGroup": "个人展示与博客"
     },
     {
       "id": "CardBridge",
@@ -645,7 +717,7 @@
       "title": "数字商品发卡与代充值平台",
       "originalTitle": "数字商店 - 自动发卡 & ChatGPT Plus 代充值平台",
       "purpose": "管理数字商品销售、邮件发卡与代充值订单；仓库包含平台实现。",
-      "category": "产品、网站与代码工具",
+      "category": "商业交易与销售",
       "topics": [
         "创业、经营与合作"
       ],
@@ -662,7 +734,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "订阅、卡密与充值业务"
     },
     {
       "id": "chuhai-xuexi",
@@ -670,7 +745,7 @@
       "title": "出海学习",
       "originalTitle": "出海学习",
       "purpose": "出海学习库：镜像金山文档团队空间并生成互动学习页、飞书同步和资料索引。",
-      "category": "专题研究、课程与日常档案",
+      "category": "出海、增长与市场研究",
       "topics": [
         "出海、增长与商业化",
         "创业、经营与合作"
@@ -688,7 +763,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "cinematic-ai-visual-prompt-hub",
@@ -696,7 +774,7 @@
       "title": "电影级视觉提示词学习站",
       "originalTitle": "电影级视觉提示词学习站",
       "purpose": "把电影课里的镜头语言翻译成 AI 图片和 AI 视频都能用的视觉提示词学习站。",
-      "category": "专题研究、课程与日常档案",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -713,7 +791,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "封面、动图与视觉资料"
     },
     {
       "id": "clawhive-agent-sales-site",
@@ -721,7 +802,7 @@
       "title": "企业级 AI Agent 竞品销售话术库",
       "originalTitle": "企业级 AI Agent 竞品销售话术库",
       "purpose": "供销售和商务比较企业级 AI Agent 产品，查阅竞品差异与沟通话术。",
-      "category": "项目配套资产与发布仓库",
+      "category": "商业交易与销售",
       "topics": [
         "AI 编程与 Agent",
         "创业、经营与合作"
@@ -739,7 +820,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "项目配套资产与发布仓库",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "采购、销售与项目协作"
     },
     {
       "id": "Codex-Bugfire-Skin",
@@ -747,7 +831,7 @@
       "title": "BUGFIRE「补丁兽」：Codex Desktop 像素桌宠",
       "originalTitle": "BUGFIRE「补丁兽」：Codex Desktop 像素桌宠",
       "purpose": "可定制的 Codex Desktop 像素桌宠：六状态反馈、喷火除 Bug、本地 XP 成长、任务板、纪念卡与一键 Customizer Skill。",
-      "category": "产品、网站与代码工具",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -764,7 +848,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "codex-efficiency-skills",
@@ -772,7 +859,7 @@
       "title": "Codex Efficiency Skills",
       "originalTitle": "Codex Efficiency Skills",
       "purpose": "提供本地文档转 Markdown 与过度工程检查等 Codex 工作流。",
-      "category": "可复用 Skills",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -789,7 +876,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "codex-task-status-skill",
@@ -797,7 +887,7 @@
       "title": "Codex Task Status Skill",
       "originalTitle": "Codex Task Status Skill",
       "purpose": "Codex 多状态任务管理 Skill：七种生命周期状态、历史看板、待派发流程、提示音与可选常驻模式。",
-      "category": "可复用 Skills",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent",
         "创业、经营与合作"
@@ -815,7 +905,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "competition-radar-pages",
@@ -823,7 +916,7 @@
       "title": "AI 赛事雷达公开浏览页",
       "originalTitle": "competition-radar-pages",
       "purpose": "提供 AI 赛事雷达的公开浏览页面，展示可检索的赛事与来源信息。",
-      "category": "项目配套资产与发布仓库",
+      "category": "黑客松与赛事工具",
       "topics": [
         "综合交流与学习"
       ],
@@ -840,7 +933,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "项目配套资产与发布仓库",
+      "businessGroup": "黑客松与赛事工具",
+      "useGroup": "赛事发现与信息发布"
     },
     {
       "id": "content-creator-toolkit",
@@ -848,7 +944,7 @@
       "title": "内容创作系统 Content Creator Toolkit",
       "originalTitle": "内容创作系统 Content Creator Toolkit",
       "purpose": "内容创作者工具箱：聚合创作者监控、AI 分析和选题自动化能力。",
-      "category": "产品、网站与代码工具",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -865,7 +961,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "选题、内容研究与运营"
     },
     {
       "id": "cross-platform-top50",
@@ -873,7 +972,7 @@
       "title": "Cross-platform Top 50",
       "originalTitle": "Cross-platform Top 50",
       "purpose": "围绕主题开展跨平台研究，去重、核对证据并生成可追溯的排名报告。",
-      "category": "可复用 Skills",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -890,7 +989,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "daily-card-public",
@@ -898,7 +1000,7 @@
       "title": "Daily Learning Cards",
       "originalTitle": "Daily Learning Cards",
       "purpose": "日报知识卡片：公开输出 AI 摘要、知识卡片和内容设计实验。",
-      "category": "专题研究、课程与日常档案",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -915,7 +1017,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "公众号读取与群日报"
     },
     {
       "id": "daily-hotboard-studio",
@@ -923,7 +1028,7 @@
       "title": "AI讯息｜今天真的变了什么",
       "originalTitle": "AI讯息｜今天真的变了什么",
       "purpose": "对比每日 AI 信息快照，合并事件并核对证据，形成少量重点变化回执与内容素材。",
-      "category": "产品、网站与代码工具",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -940,7 +1045,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "选题、内容研究与运营"
     },
     {
       "id": "data-storytelling-cn",
@@ -948,7 +1056,7 @@
       "title": "Data Storytelling CN",
       "originalTitle": "Data Storytelling CN",
       "purpose": "把复杂经营数据变成可核验、可决策、可复述的 QBR、董事会和投资人叙事，适配千问办公、WorkBuddy、TRAE Work。",
-      "category": "可复用 Skills",
+      "category": "办公与系统工具",
       "topics": [
         "创业、经营与合作",
         "行业访谈与趋势"
@@ -966,7 +1074,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "办公与系统工具",
+      "useGroup": "办公分析与文档处理"
     },
     {
       "id": "deckroutes",
@@ -974,7 +1085,7 @@
       "title": "DeckRoutes",
       "originalTitle": "DeckRoutes",
       "purpose": "Balatro 种子与路线攻略内容站；含结构化数据、检索和持续更新脚本。",
-      "category": "产品、网站与代码工具",
+      "category": "教育与游戏",
       "topics": [
         "综合交流与学习"
       ],
@@ -991,7 +1102,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "教育与游戏",
+      "useGroup": "游戏与游戏攻略"
     },
     {
       "id": "eudk-awesome-ai-tools",
@@ -999,7 +1113,7 @@
       "title": "AI 工具分类大全（Fork）",
       "originalTitle": "Comprehensive List of AI Tools",
       "purpose": "浏览跨类别的 AI 工具、扩展与学习资源。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "综合交流与学习"
       ],
@@ -1017,7 +1131,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "evidence-decision-brief",
@@ -1025,7 +1142,7 @@
       "title": "Evidence Decision Brief（证据罗盘）",
       "originalTitle": "Evidence Decision Brief（证据罗盘）",
       "purpose": "证据罗盘：把多源材料整理为可复核、可追踪、可回放的版本化决策简报。",
-      "category": "可复用 Skills",
+      "category": "办公与系统工具",
       "topics": [
         "综合交流与学习"
       ],
@@ -1042,7 +1159,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "办公与系统工具",
+      "useGroup": "办公分析与文档处理"
     },
     {
       "id": "feishu-claude-code-bridge",
@@ -1050,7 +1170,7 @@
       "title": "Feishu-Claude-Code-Bridge",
       "originalTitle": "Feishu-Claude-Code-Bridge",
       "purpose": "飞书 Claude Code 桥接：连接飞书协作和 AI 编程工作流的团队自动化工具。",
-      "category": "产品、网站与代码工具",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent",
         "创业、经营与合作"
@@ -1068,7 +1188,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "fireworks-benny-chen-deep-dive",
@@ -1076,7 +1199,7 @@
       "title": "Fireworks × Benny Chen：开源、Token 与定制模型",
       "originalTitle": "Fireworks × Benny Chen：开源、Token 与定制模型",
       "purpose": "Benny Chen 对谈学习资料：完整逐字稿、深度拆解与交互式阅读页面。",
-      "category": "会议、分享与访谈资料",
+      "category": "会议与知识库",
       "topics": [
         "创业、经营与合作"
       ],
@@ -1093,7 +1216,10 @@
       "isMeeting": true,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "会议、分享与访谈资料",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议纪要与分享资料"
     },
     {
       "id": "geek-practice-archive",
@@ -1101,7 +1227,7 @@
       "title": "极客实战圈 · siuser小伟的分享",
       "originalTitle": "极客实战圈 · siuser小伟的分享",
       "purpose": "独立的群聊档案阅读页：关键词搜索、日期筛选与消息前后文。",
-      "category": "专题研究、课程与日常档案",
+      "category": "会议与知识库",
       "topics": [
         "综合交流与学习"
       ],
@@ -1118,7 +1244,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "会议与知识库",
+      "useGroup": "微信资料入库与群聊档案"
     },
     {
       "id": "generate-xiaowei-covers",
@@ -1126,7 +1255,7 @@
       "title": "Claim2Cover｜小伟 AI 封面证据链 Skill",
       "originalTitle": "Claim2Cover｜小伟 AI 封面证据链 Skill",
       "purpose": "一句话选题生成 COVER_PROMPT.md，并导出小红书 3:4 与公众号 21:9/1:1 高清封面的 Codex Skill。",
-      "category": "可复用 Skills",
+      "category": "图片视频与视觉设计",
       "topics": [
         "AI 编程与 Agent",
         "内容创作与社群"
@@ -1144,7 +1273,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "封面、动图与视觉资料"
     },
     {
       "id": "geolyze-replica",
@@ -1152,7 +1284,7 @@
       "title": "GEO Library",
       "originalTitle": "GEO Library",
       "purpose": "GEO/AI 搜索优化资料站，支持资料检索、数据构建与专题阅读，并集中保存增长研究资料。",
-      "category": "产品、网站与代码工具",
+      "category": "出海、增长与市场研究",
       "topics": [
         "出海、增长与商业化"
       ],
@@ -1169,7 +1301,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "getgiffgaff",
@@ -1177,7 +1312,7 @@
       "title": "giffgaff / GG 卡中文教程",
       "originalTitle": "giffgaff / GG 卡中文教程",
       "purpose": "GG 卡中文内容与购买服务站；含教程、商店路径、数据库迁移和部署配置。",
-      "category": "产品、网站与代码工具",
+      "category": "商业交易与销售",
       "topics": [
         "综合交流与学习"
       ],
@@ -1194,7 +1329,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "订阅、卡密与充值业务"
     },
     {
       "id": "heilcheng-awesome-agent-skills",
@@ -1202,7 +1340,7 @@
       "title": "Agent Skills 教程与目录（Fork）",
       "originalTitle": "Agent Skill Index",
       "purpose": "参考 Agent Skills 的教程、使用指南与项目目录。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1220,7 +1358,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "herclawai.com",
@@ -1228,7 +1369,7 @@
       "title": "HerClaw Product Intro",
       "originalTitle": "HerClaw Product Intro",
       "purpose": "展示 HerClaw 产品定位与功能的介绍网站。",
-      "category": "项目配套资产与发布仓库",
+      "category": "硬件与消费产品",
       "topics": [
         "综合交流与学习"
       ],
@@ -1245,7 +1386,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "项目配套资产与发布仓库",
+      "businessGroup": "硬件与消费产品",
+      "useGroup": "AI 硬件品牌与展示"
     },
     {
       "id": "hr-agent-reading-hub",
@@ -1253,7 +1397,7 @@
       "title": "AI Agent 架构与 HR 自动化阅读台",
       "originalTitle": "AI Agent 架构阅读台",
       "purpose": "AI Agent 架构学习站，整理工具调用、上下文、评估和 AI 编程；保留 HR 招聘案例。",
-      "category": "专题研究、课程与日常档案",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1270,7 +1414,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "AI 编程学习资料"
     },
     {
       "id": "indiehackers-steps",
@@ -1278,7 +1425,7 @@
       "title": "indiehackers-steps",
       "originalTitle": "indiehackers-steps",
       "purpose": "独立开发者指南（fork）：围绕一人公司与独立开发路径的资料整理。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "出海、增长与商业化"
       ],
@@ -1296,7 +1443,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "jacky-awesome-agent-skills",
@@ -1304,7 +1454,7 @@
       "title": "Awesome Agent Skills",
       "originalTitle": "Awesome Agent Skills",
       "purpose": "查找适用于 Cursor、Claude Code、GitHub Copilot 等工具的 AI Agent Skills。",
-      "category": "上游 Fork",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1322,7 +1472,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "kb-copilot-demo",
@@ -1330,7 +1483,7 @@
       "title": "企业知识库 Copilot Demo",
       "originalTitle": "企业知识库 Copilot Demo",
       "purpose": "知识库 Copilot 演示：展示 RAG、语义搜索和 AI 助手问答体验。",
-      "category": "产品、网站与代码工具",
+      "category": "会议与知识库",
       "topics": [
         "创业、经营与合作",
         "内容创作与社群"
@@ -1348,7 +1501,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "会议与知识库",
+      "useGroup": "知识检索与记忆"
     },
     {
       "id": "local-memory-rag-clean",
@@ -1356,7 +1512,7 @@
       "title": "Local Memory RAG",
       "originalTitle": "Local Memory RAG",
       "purpose": "在本机检索和复用工作记忆，为生产力 Agent 提供本地 RAG 能力。",
-      "category": "可复用 Skills",
+      "category": "会议与知识库",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1373,7 +1529,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "会议与知识库",
+      "useGroup": "知识检索与记忆"
     },
     {
       "id": "meeting-minutes-shu-fa-dao-qi-shi-pages",
@@ -1381,7 +1540,7 @@
       "title": "道法术器势会议拆解站（公开发布版）",
       "originalTitle": "道法术器势会议拆解站（公开发布版）",
       "purpose": "公开 GitHub Pages：道法术器势会议拆解站，含文章、维度索引、配置页和在线链接。",
-      "category": "会议、分享与访谈资料",
+      "category": "会议与知识库",
       "topics": [
         "综合交流与学习"
       ],
@@ -1398,7 +1557,10 @@
       "isMeeting": true,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "会议、分享与访谈资料",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议整理工具与主库"
     },
     {
       "id": "miaoji-decon",
@@ -1406,7 +1568,7 @@
       "title": "妙记拆解 · 道法术器势",
       "originalTitle": "妙记拆解 · 道法术器势",
       "purpose": "妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。",
-      "category": "产品、网站与代码工具",
+      "category": "会议与知识库",
       "topics": [
         "综合交流与学习"
       ],
@@ -1423,7 +1585,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议整理工具与主库"
     },
     {
       "id": "miaoji-s",
@@ -1431,7 +1596,7 @@
       "title": "妙记+S",
       "originalTitle": "妙记+S",
       "purpose": "妙记+S Skill：监控飞书会议并把会议纪要收口成结构化知识资产。",
-      "category": "可复用 Skills",
+      "category": "会议与知识库",
       "topics": [
         "智能硬件与产品交付"
       ],
@@ -1448,7 +1613,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议整理工具与主库"
     },
     {
       "id": "mideafind-germany-diy-store-data",
@@ -1456,7 +1624,7 @@
       "title": "MideaFind Germany DIY-store locations",
       "originalTitle": "MideaFind Germany DIY-store locations",
       "purpose": "保存源自 OpenStreetMap 的德国 DIY 商店位置数据、质量报告和版本元信息。",
-      "category": "项目配套资产与发布仓库",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -1473,7 +1641,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "项目配套资产与发布仓库",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "产品调研与门店数据"
     },
     {
       "id": "oil-subtitle",
@@ -1481,7 +1652,7 @@
       "title": "oil-subtitle · Xiaowei 分支",
       "originalTitle": "oil-subtitle · Xiaowei 分支",
       "purpose": "为本地视频转录、校对、预览并烧录中文字幕，支持章节进度和同时间轴英文字幕。",
-      "category": "上游 Fork",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -1499,7 +1670,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "视频、字幕与素材处理"
     },
     {
       "id": "opc-policy",
@@ -1507,7 +1681,7 @@
       "title": "OPC Gate · 一人公司政策与落地路线诊断",
       "originalTitle": "OPC Gate · 一人公司政策与落地路线诊断",
       "purpose": "OPC Gate｜InfiniSynapse × CSDN Vibe Coding 2026：一人公司政策与落地路线诊断。",
-      "category": "产品、网站与代码工具",
+      "category": "OPC 政策",
       "topics": [
         "综合交流与学习"
       ],
@@ -1524,7 +1698,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "OPC 政策",
+      "useGroup": "政策项目"
     },
     {
       "id": "opc-vibesocial-trust-agent",
@@ -1532,7 +1709,7 @@
       "title": "OPC 热点可信解读助手",
       "originalTitle": "OPC 热点可信解读助手",
       "purpose": "为 VibeSocial 内容起草提供证据检查和人工核验步骤的赛事实验。",
-      "category": "赛事实验与历史版本",
+      "category": "OPC 政策",
       "topics": [
         "内容创作与社群"
       ],
@@ -1549,7 +1726,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "赛事实验与历史版本",
+      "businessGroup": "OPC 政策",
+      "useGroup": "黑客松准备"
     },
     {
       "id": "opcgate-policy-content-ops",
@@ -1557,7 +1737,7 @@
       "title": "OPC Gate 空间匹配与申请助手",
       "originalTitle": "OPC Gate 空间匹配与申请助手",
       "purpose": "面向政策内容运营赛事的空间匹配与申请辅助原型。",
-      "category": "赛事实验与历史版本",
+      "category": "OPC 政策",
       "topics": [
         "内容创作与社群"
       ],
@@ -1574,7 +1754,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "赛事实验与历史版本",
+      "businessGroup": "OPC 政策",
+      "useGroup": "黑客松准备"
     },
     {
       "id": "pi-runtime-field-guide",
@@ -1582,7 +1765,7 @@
       "title": "Pi Runtime Field Guide",
       "originalTitle": "Pi Runtime Field Guide",
       "purpose": "源码级 Pi Agent 学习指南：Loop、工具管道、上下文、会话树、AgentHarness 与 DeepSeek Harness 对照。",
-      "category": "专题研究、课程与日常档案",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1599,7 +1782,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "AI 编程学习资料"
     },
     {
       "id": "policy-radar-agent",
@@ -1607,7 +1793,7 @@
       "title": "智策雷达",
       "originalTitle": "智策雷达",
       "purpose": "智策雷达：面向制造业与中小企业的 AI 政策搜索与申报助手。",
-      "category": "产品、网站与代码工具",
+      "category": "OPC 政策",
       "topics": [
         "创业、经营与合作"
       ],
@@ -1624,7 +1810,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "OPC 政策",
+      "useGroup": "政策项目"
     },
     {
       "id": "project-management",
@@ -1632,7 +1821,7 @@
       "title": "流量接单与中台分销项目管理",
       "originalTitle": "项目管理系统",
       "purpose": "管理流量接单和中台分销业务的项目、进度及协作事项。",
-      "category": "产品、网站与代码工具",
+      "category": "商业交易与销售",
       "topics": [
         "出海、增长与商业化",
         "创业、经营与合作"
@@ -1650,7 +1839,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "采购、销售与项目协作"
     },
     {
       "id": "psd-batch-tool",
@@ -1658,7 +1850,7 @@
       "title": "PSD 批量换图工作台",
       "originalTitle": "PSD 批量换图工作台",
       "purpose": "PSD 批处理工具：面向设计素材自动化、图片工作流和批量处理。",
-      "category": "产品、网站与代码工具",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -1675,7 +1867,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "视频、字幕与素材处理"
     },
     {
       "id": "qiaomu-blog-opensource",
@@ -1683,7 +1878,7 @@
       "title": "Qiaomu Blog Open Source",
       "originalTitle": "Qiaomu Blog Open Source",
       "purpose": "Cloudflare 博客模板（fork）：基于 OpenNext、Next.js、D1 和 R2 的开源博客参考。",
-      "category": "上游 Fork",
+      "category": "个人主页与博客",
       "topics": [
         "行业访谈与趋势"
       ],
@@ -1701,7 +1896,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "个人主页与博客",
+      "useGroup": "个人展示与博客"
     },
     {
       "id": "qun-riba",
@@ -1709,7 +1907,7 @@
       "title": "微信群日报公开输出",
       "originalTitle": "群日报",
       "purpose": "保存 wechat-obsidian-pipeline 生成的群日报，供在线阅读与回顾。",
-      "category": "专题研究、课程与日常档案",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -1732,7 +1930,10 @@
           "url": "https://github.com/siuserxiaowei/wechat-obsidian-pipeline",
           "relation": "生成工具与日报输出"
         }
-      ]
+      ],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "公众号读取与群日报"
     },
     {
       "id": "reference-driven-cinematic-video-skill",
@@ -1740,7 +1941,7 @@
       "title": "Reference Driven Cinematic Video",
       "originalTitle": "Reference Driven Cinematic Video",
       "purpose": "把产品材料和参考风格整理成分镜、配音、字幕与视频制作流程。",
-      "category": "可复用 Skills",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -1757,7 +1958,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "视频、字幕与素材处理"
     },
     {
       "id": "remote-ai-nomads-getgiffgaff",
@@ -1765,7 +1969,7 @@
       "title": "🌍 RemoteAI-Nomads | 全球数字游民实践指南",
       "originalTitle": "🌍 RemoteAI-Nomads | 全球数字游民实践指南",
       "purpose": "数字游民实用指南，汇集远程工作、出海生活及相关服务资料。",
-      "category": "上游 Fork",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -1783,7 +1987,10 @@
       "isPublic": true,
       "visibility": "公开",
       "related": [],
-      "upstream": "https://github.com/"
+      "upstream": "https://github.com/",
+      "repositoryKind": "上游 Fork",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "出海学习与独立开发"
     },
     {
       "id": "safe-disk-cleanup-skill",
@@ -1791,7 +1998,7 @@
       "title": "Safe Disk Cleanup Skill",
       "originalTitle": "Safe Disk Cleanup Skill",
       "purpose": "安全磁盘清理 Skill：面向 Windows 与 macOS 的保守扫描、清理计划和低风险缓存清理流程。",
-      "category": "可复用 Skills",
+      "category": "办公与系统工具",
       "topics": [
         "综合交流与学习"
       ],
@@ -1808,7 +2015,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "办公与系统工具",
+      "useGroup": "磁盘清理与安全检查"
     },
     {
       "id": "security-scan-skill",
@@ -1816,7 +2026,7 @@
       "title": "Security Scan Skill",
       "originalTitle": "Security Scan Skill",
       "purpose": "本地安全扫描 Skill：检查 npm 供应链、依赖风险和潜在密钥泄露。",
-      "category": "可复用 Skills",
+      "category": "办公与系统工具",
       "topics": [
         "综合交流与学习"
       ],
@@ -1833,7 +2043,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "办公与系统工具",
+      "useGroup": "磁盘清理与安全检查"
     },
     {
       "id": "seo-opportunity-audit",
@@ -1841,7 +2054,7 @@
       "title": "SEO Opportunity Audit",
       "originalTitle": "SEO Opportunity Audit",
       "purpose": "判断网站是否值得投入 SEO，核对公开站点信号并形成分阶段行动清单。",
-      "category": "可复用 Skills",
+      "category": "出海、增长与市场研究",
       "topics": [
         "出海、增长与商业化"
       ],
@@ -1858,7 +2071,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "siuser-agent-network-workbench",
@@ -1866,7 +2082,7 @@
       "title": "Siuser Agent Network Workbench",
       "originalTitle": "Siuser Agent Network Workbench",
       "purpose": "本机 Agent 调度工作台，组织素材、日报、写作与 Skill 维护任务。",
-      "category": "产品、网站与代码工具",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1883,7 +2099,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     },
     {
       "id": "siuser-ai-lab-archive",
@@ -1891,7 +2110,7 @@
       "title": "siuser小伟的AI实验室 · siuser小伟的分享",
       "originalTitle": "siuser小伟的AI实验室 · siuser小伟的分享",
       "purpose": "独立的群聊档案阅读页：关键词搜索、日期筛选与消息前后文。",
-      "category": "专题研究、课程与日常档案",
+      "category": "会议与知识库",
       "topics": [
         "综合交流与学习"
       ],
@@ -1908,7 +2127,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "会议与知识库",
+      "useGroup": "微信资料入库与群聊档案"
     },
     {
       "id": "siuserxiaowei",
@@ -1916,7 +2138,7 @@
       "title": "小伟的 GitHub 个人主页",
       "originalTitle": "Hi, I'm 小伟",
       "purpose": "GitHub 个人主页 README，介绍工作方向，并链接项目目录、作品集与联系入口。",
-      "category": "产品、网站与代码工具",
+      "category": "个人主页与博客",
       "topics": [
         "内容创作与社群"
       ],
@@ -1933,7 +2155,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "个人主页与博客",
+      "useGroup": "个人展示与博客"
     },
     {
       "id": "siuserxiaowei.github.io",
@@ -1941,7 +2166,7 @@
       "title": "小伟的作品集与项目导航",
       "originalTitle": "小白学 AI Portfolio",
       "purpose": "个人项目与资料总入口：浏览代码项目、按主题阅读会议资料，并查看作品展示。",
-      "category": "产品、网站与代码工具",
+      "category": "个人主页与博客",
       "topics": [
         "内容创作与社群"
       ],
@@ -1958,7 +2183,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "个人主页与博客",
+      "useGroup": "个人展示与博客"
     },
     {
       "id": "skills",
@@ -1966,7 +2194,7 @@
       "title": "skills — 自用 Agent Skill 合集",
       "originalTitle": "skills — 自用 Agent Skill 合集",
       "purpose": "集中维护自用 Agent Skills，涵盖调研、协作、设计与效率；安装前查看对应 Skill 说明。",
-      "category": "可复用 Skills",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "AI 编程与 Agent"
       ],
@@ -1983,7 +2211,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "技能集合与工具目录"
     },
     {
       "id": "spark-meetup-deep-dive",
@@ -1991,7 +2222,7 @@
       "title": "Spark 上海独立开发者分享会深度拆解",
       "originalTitle": "Spark 上海独立开发者分享会深度拆解",
       "purpose": "Spark 上海独立开发者分享会复盘，包含时间线、事实核查、补充研究与分层拆解。",
-      "category": "会议、分享与访谈资料",
+      "category": "会议与知识库",
       "topics": [
         "出海、增长与商业化"
       ],
@@ -2008,7 +2239,10 @@
       "isMeeting": true,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "会议、分享与访谈资料",
+      "businessGroup": "会议与知识库",
+      "useGroup": "会议纪要与分享资料"
     },
     {
       "id": "twitter-media-downloader",
@@ -2016,7 +2250,7 @@
       "title": "Twitter Media Downloader",
       "originalTitle": "Twitter Media Downloader",
       "purpose": "Twitter/X 媒体下载工具：为创作者资料归档和媒体素材整理提供下载入口。",
-      "category": "产品、网站与代码工具",
+      "category": "图片视频与视觉设计",
       "topics": [
         "内容创作与社群"
       ],
@@ -2033,7 +2267,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "视频、字幕与素材处理"
     },
     {
       "id": "upstream-procurement",
@@ -2041,7 +2278,7 @@
       "title": "上游采购渠道工具(内部私用)",
       "originalTitle": "上游采购渠道工具(内部私用)",
       "purpose": "上游采购与供应链协作：支持采购寻源、供应商协作和流程自动化。",
-      "category": "产品、网站与代码工具",
+      "category": "商业交易与销售",
       "topics": [
         "创业、经营与合作"
       ],
@@ -2058,7 +2295,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "商业交易与销售",
+      "useGroup": "采购、销售与项目协作"
     },
     {
       "id": "visual-taste-lab",
@@ -2066,7 +2306,7 @@
       "title": "Visual Taste Lab",
       "originalTitle": "Visual Taste Lab",
       "purpose": "视觉品味训练实验室：用 AI 先做视觉身份审计，再生成更少模板味的页面方案。",
-      "category": "可复用 Skills",
+      "category": "图片视频与视觉设计",
       "topics": [
         "综合交流与学习"
       ],
@@ -2083,7 +2323,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "图片视频与视觉设计",
+      "useGroup": "封面、动图与视觉资料"
     },
     {
       "id": "wang-lei-ai-opc-breakdown",
@@ -2091,7 +2334,7 @@
       "title": "王磊访谈术法道器拆解",
       "originalTitle": "王磊访谈术法道器拆解",
       "purpose": "王磊 AI OPC 案例拆解站：用 GitHub Pages 呈现一人公司与 AI 商业方法的结构化复盘。",
-      "category": "会议、分享与访谈资料",
+      "category": "OPC 政策",
       "topics": [
         "创业、经营与合作"
       ],
@@ -2108,7 +2351,10 @@
       "isMeeting": true,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "会议、分享与访谈资料",
+      "businessGroup": "OPC 政策",
+      "useGroup": "案例学习资料"
     },
     {
       "id": "web-research-hive",
@@ -2116,7 +2362,7 @@
       "title": "Web Research Hive",
       "originalTitle": "Web Research Hive",
       "purpose": "公开网页研究工作流：把搜索结果、网页文本和资料笔记整理成可审计的证据卡片与研究报告。",
-      "category": "可复用 Skills",
+      "category": "出海、增长与市场研究",
       "topics": [
         "综合交流与学习"
       ],
@@ -2133,7 +2379,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "wechat-backlink-guide",
@@ -2141,7 +2390,7 @@
       "title": "外链到底是什么，怎么判断值不值得做",
       "originalTitle": "外链到底是什么，怎么判断值不值得做",
       "purpose": "外链认知与判断资料包：Markdown、公众号排版 HTML、原创信息图与生成脚本，由 siuser小伟整理。",
-      "category": "专题研究、课程与日常档案",
+      "category": "出海、增长与市场研究",
       "topics": [
         "内容创作与社群"
       ],
@@ -2164,7 +2413,10 @@
           "relation": "集中维护位置",
           "url": "https://github.com/siuserxiaowei/geolyze-replica/tree/main/collections/backlinks"
         }
-      ]
+      ],
+      "repositoryKind": "专题研究、课程与日常档案",
+      "businessGroup": "出海、增长与市场研究",
+      "useGroup": "SEO 与产品机会研究"
     },
     {
       "id": "wechat-daily-report-skill",
@@ -2172,7 +2424,7 @@
       "title": "WeChat Daily Report Skill",
       "originalTitle": "WeChat Daily Report Skill",
       "purpose": "微信群日报 Skill：把微信群聊整理成社区运营日报和 AI 摘要报告。",
-      "category": "可复用 Skills",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -2189,7 +2441,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "公众号读取与群日报"
     },
     {
       "id": "wechat-obsidian-pipeline",
@@ -2197,7 +2452,7 @@
       "title": "wechat-obsidian-pipeline",
       "originalTitle": "wechat-obsidian-pipeline",
       "purpose": "微信到 Obsidian 知识流水线：把微信资料清洗、摘要并同步成本地 Markdown 知识库。",
-      "category": "产品、网站与代码工具",
+      "category": "会议与知识库",
       "topics": [
         "创业、经营与合作",
         "内容创作与社群"
@@ -2221,7 +2476,10 @@
           "url": "https://github.com/siuserxiaowei/qun-riba",
           "relation": "生成工具与日报输出"
         }
-      ]
+      ],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "会议与知识库",
+      "useGroup": "微信资料入库与群聊档案"
     },
     {
       "id": "wechat-to-obsidian",
@@ -2229,7 +2487,7 @@
       "title": "WeChat Obsidian Bridge",
       "originalTitle": "WeChat Obsidian Bridge",
       "purpose": "微信到 Obsidian 桥接工具：把微信资料沉淀为 Markdown、摘要和个人知识库素材。",
-      "category": "产品、网站与代码工具",
+      "category": "会议与知识库",
       "topics": [
         "内容创作与社群"
       ],
@@ -2246,7 +2504,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "会议与知识库",
+      "useGroup": "微信资料入库与群聊档案"
     },
     {
       "id": "weibo-sponsored-risk-gate",
@@ -2254,7 +2515,7 @@
       "title": "微博商单发布前风险门禁",
       "originalTitle": "微博商单发布前风险门禁",
       "purpose": "微博商单发布前检查 Skill，按固定规则检查风险并输出通过、修改或暂缓的依据。",
-      "category": "产品、网站与代码工具",
+      "category": "内容写作与社媒运营",
       "topics": [
         "综合交流与学习"
       ],
@@ -2271,7 +2532,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "选题、内容研究与运营"
     },
     {
       "id": "x-md-composer",
@@ -2279,7 +2543,7 @@
       "title": "X / Twitter Markdown 写作与排版工具",
       "originalTitle": "New Project 2",
       "purpose": "X/Twitter Markdown 写作工具：把 Markdown 草稿整理成适合发布的推文、长帖和媒体内容。",
-      "category": "产品、网站与代码工具",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -2296,7 +2560,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "产品、网站与代码工具",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "写作与改写"
     },
     {
       "id": "x-viral-lab-pages",
@@ -2304,7 +2571,7 @@
       "title": "X 内容实验公开展示页",
       "originalTitle": "X Viral Lab Pages",
       "purpose": "保存 X 内容实验的公开展示文件，供浏览输出与研究结果。",
-      "category": "项目配套资产与发布仓库",
+      "category": "内容写作与社媒运营",
       "topics": [
         "内容创作与社群"
       ],
@@ -2321,7 +2588,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "项目配套资产与发布仓库",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "选题、内容研究与运营"
     },
     {
       "id": "xhs-skills-hub",
@@ -2329,7 +2599,7 @@
       "title": "小红书一键生成 Skill",
       "originalTitle": "小红书一键生成 Skill",
       "purpose": "小红书 Skill 中心：沉淀小红书内容策略、增长方法和自动化技能。",
-      "category": "可复用 Skills",
+      "category": "内容写作与社媒运营",
       "topics": [
         "出海、增长与商业化",
         "内容创作与社群"
@@ -2347,7 +2617,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "内容写作与社媒运营",
+      "useGroup": "选题、内容研究与运营"
     },
     {
       "id": "xiaowei-goal",
@@ -2355,7 +2628,7 @@
       "title": "Goal Compiler｜需求编译器",
       "originalTitle": "Goal Compiler｜需求编译器",
       "purpose": "把模糊需求整理成带证据、验收条件和执行边界的任务，并用 CLI 校验和执行已授权步骤。",
-      "category": "可复用 Skills",
+      "category": "AI 工具与 Agent 开发",
       "topics": [
         "创业、经营与合作"
       ],
@@ -2372,7 +2645,10 @@
       "isMeeting": false,
       "isPublic": true,
       "visibility": "公开",
-      "related": []
+      "related": [],
+      "repositoryKind": "可复用 Skills",
+      "businessGroup": "AI 工具与 Agent 开发",
+      "useGroup": "Agent 调度与编程工具"
     }
   ],
   "materials": [
