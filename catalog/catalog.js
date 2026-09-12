@@ -3,7 +3,7 @@
   const data=window.CATALOG_DATA;
   const $=s=>document.querySelector(s);
   if(!data){$('#results').textContent='目录暂时无法读取，请刷新，或下载 CSV 清单。';return;}
-  const categories=['项目与网站','Skills 与自动化工具','会议与学习资料','实验、占位与历史','Fork 与上游参考'];
+  const categories=[...new Set(data.projects.map(p=>p.category))];
   const topicOrder=['AI 编程与 Agent','出海、增长与商业化','智能硬件与产品交付','创业、经营与合作','内容创作与社群','行业访谈与趋势','综合交流与学习'];
   const state={mode:'projects',facet:'',status:'',q:'',sort:'date',page:1};
   const size=20;

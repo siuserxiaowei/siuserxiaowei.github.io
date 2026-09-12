@@ -35,7 +35,7 @@ for key,filename in [('projects','项目清单.csv'),('materials','会议主题�
             w.writerow(map(safe_cell,[p['title'],p['purpose'],p['category'],' / '.join(p['topics']),p['status'],p['maintenance'],p['entryUrl'],p['repoUrl'],p['originalTitle'],p['sourceBasis'],p['archiveDate'] or p['updated']]))
 
 lines=['# 项目与会议资料目录','',f'核对日期：{data["checkedAt"]}。公开目录。','',f'{data["projectCount"]} 个项目，{data["materialCount"]} 条资料入口；包含不同分段和整理版本，不等于独立会议场数。','', '[搜索与筛选目录](https://siuserxiaowei.github.io/catalog/) · [会议主题目录](https://siuserxiaowei.github.io/catalog/#view=meetings)','']
-for cat in ['项目与网站','Skills 与自动化工具','会议与学习资料','实验、占位与历史','Fork 与上游参考']:
+for cat in dict.fromkeys(p['category'] for p in data['projects']):
     lines+=['',f'## {cat}','']
     for p in data['projects']:
         if p['category']!=cat:continue
