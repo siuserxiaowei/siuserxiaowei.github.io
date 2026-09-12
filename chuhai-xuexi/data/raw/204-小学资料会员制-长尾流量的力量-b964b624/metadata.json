@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1755431362,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "98d21bbd2815465a4afb7d451a56a47681e5de74",
+    "type": "sha1"
+  },
+  "id": "EYTj6NsFfxM4fqX7iQhjrx87NSZTWyuEh",
+  "link_id": "cn4NxhA1ALwA",
+  "link_url": "https://www.kdocs.cn/l/cn4NxhA1ALwA",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1755431362,
+  "name": "204：小学资料会员制-长尾流量的力量.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 1376011,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/204：小学资料会员制-长尾流量的力量.otl"
+}

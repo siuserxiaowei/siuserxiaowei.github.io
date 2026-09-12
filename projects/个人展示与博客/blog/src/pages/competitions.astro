@@ -1,0 +1,1510 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import { competitions, RADAR_UPDATED_AT, enrichCompetitions, getCompetitionCategories } from '../data/competitions.js';
+import { HERCLAW_PROFILE, PROJECT_PRESETS } from '../data/competition-project-presets.js';
+import { ACCESS_FILTERS, getCompetitionAccessSummary } from '../lib/competition-access.js';
+import { getCompetitionDeadlineInfo } from '../lib/competition-radar.js';
+import { getHerClawCompetitionFit, getMatchingProjectPresetIds } from '../lib/competition-project-fit.js';
+import { evaluateCompetitionIntake } from '../lib/competition-curation.js';
+
+const TODAY = new Date();
+const enriched = enrichCompetitions(competitions, TODAY);
+const expiredCount = enriched.filter(c => c.status.kind === 'expired').length;
+const urgentCount = enriched.filter(c => c.status.kind === 'urgent').length;
+const activeCount = enriched.length - expiredCount;
+const softwareCategories = new Set(['AI 软件', '开源开发', '数据算法', '安全攻防', '游戏创作', '创意 AI', '创业路演']);
+const softwareCount = enriched.filter(c => c.status.kind !== 'expired' && softwareCategories.has(c.cat)).length;
+const categories = getCompetitionCategories(enriched);
+const deadlineInfo = new Map(enriched.map(c => [c.id, getCompetitionDeadlineInfo(c)]));
+const accessByCompetition = new Map(enriched.map(c => [c.id, getCompetitionAccessSummary(c)]));
+const projectPresetIdsByCompetition = new Map(enriched.map(c => [c.id, getMatchingProjectPresetIds(c)]));
+const recommendationEligibilityByCompetition = new Map(enriched.map(c => [
+  c.id,
+  evaluateCompetitionIntake(c).decision === 'include',
+]));
+const projectPresetCounts = new Map(PROJECT_PRESETS.map(preset => [
+  preset.id,
+  enriched.filter(c => projectPresetIdsByCompetition.get(c.id)?.includes(preset.id)).length,
+]));
+const workbenchRecords = enriched.map(c => {
+  const deadline = deadlineInfo.get(c.id);
+  const herclawFit = getHerClawCompetitionFit(c);
+  return {
+    id: c.id,
+    name: c.name,
+    fullName: c.fullName,
+    org: c.org,
+    rel: c.rel,
+    loc: c.loc,
+    date: c.date,
+    tier: c.tier,
+    cat: c.cat,
+    match: c.match,
+    suit: c.suit,
+    desc: c.desc,
+    strategy: c.strategy,
+    audience: c.audience,
+    rewards: c.rewards,
+    pros: c.pros,
+    cons: c.cons,
+    winning: c.winning,
+    timeline: c.timeline,
+    sources: c.sources ?? [],
+    url: c.url,
+    deadline: deadline?.date ?? c.deadlineISO,
+    deadlineConfidence: deadline?.confidence ?? 'legacy',
+    deadlineType: deadline?.type ?? 'deadline',
+    deadlineLabel: deadline?.label ?? '关键截止',
+    calendarEligible: deadline?.calendarEligible ?? false,
+    recommendationEligible: recommendationEligibilityByCompetition.get(c.id) ?? true,
+    access: accessByCompetition.get(c.id),
+    projectPresetIds: projectPresetIdsByCompetition.get(c.id) ?? ['all'],
+    ...(herclawFit ? { herclawFit } : {}),
+  };
+});
+const serializedWorkbenchRecords = JSON.stringify(workbenchRecords)
+  .replaceAll('<', '\\u003c')
+  .replaceAll('>', '\\u003e')
+  .replaceAll('&', '\\u0026')
+  .replaceAll('\u2028', '\\u2028')
+  .replaceAll('\u2029', '\\u2029');
+const deadlineSortTime = (c) => {
+  const value = deadlineInfo.get(c.id)?.date ?? c.deadlineISO ?? '';
+  const time = Date.parse(value || '9999-12-31');
+  return Number.isNaN(time) ? Date.parse('9999-12-31') : time;
+};
+const todayStart = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate()).getTime();
+const sortedByDeadline = enriched.slice().sort((a, b) => {
+  const timeA = deadlineSortTime(a);
+  const timeB = deadlineSortTime(b);
+  const pastA = a.status.kind === 'expired' || timeA < todayStart;
+  const pastB = b.status.kind === 'expired' || timeB < todayStart;
+  if (pastA !== pastB) return pastA - pastB;
+  if (pastA) return timeB - timeA || b.match - a.match;
+  return timeA - timeB || b.match - a.match;
+});
+const initialCompetition = sortedByDeadline[0];
+const initialDeadline = initialCompetition ? deadlineInfo.get(initialCompetition.id) : null;
+const initialAccess = initialCompetition
+  ? accessByCompetition.get(initialCompetition.id)
+  : getCompetitionAccessSummary(null);
+const initialActionRecords = enriched
+  .filter(c => c.status.kind !== 'expired'
+    && deadlineInfo.get(c.id)?.calendarEligible
+    && recommendationEligibilityByCompetition.get(c.id)
+    && accessByCompetition.get(c.id)?.group !== 'blocked')
+  .sort((a, b) => (a.status.days ?? Number.POSITIVE_INFINITY) - (b.status.days ?? Number.POSITIVE_INFINITY) || b.match - a.match)
+  .slice(0, 5);
+---
+
+<BaseLayout title="AI 产品赛事雷达 · siuser小伟" description="面向 AI 软件、Agent、独立开发与轻硬件团队的赛事和行业活动看板。">
+  <Header />
+
+  <main class="flex-1">
+
+    <!-- Hero -->
+    <section class="mx-auto px-6 pt-16 pb-10 md:pt-24" style="max-width: var(--container-max);">
+      <div class="animate-fade-in stagger-1 flex items-center gap-3 mb-3">
+        <p class="section-kicker">Competition Radar</p>
+        <span class="text-[10px] tracking-wider" style="font-family: var(--font-mono); color: var(--text-secondary); opacity: 0.5;">// {RADAR_UPDATED_AT} · {enriched.length} items tracked</span>
+      </div>
+      <h1 class="animate-fade-in stagger-2 text-3xl md:text-5xl mb-4" style="font-family: var(--font-heading); color: var(--text);">
+        AI 产品 <span class="text-shimmer">赛事雷达</span>
+      </h1>
+      <p class="animate-fade-in stagger-3 text-base max-w-2xl leading-relaxed" style="color: var(--text-secondary);">
+        面向 AI 软件、Agent、算法、安全、独立游戏、创意 AI 与小团队创业的赛事数据库。同时追踪官方站、活动平台、公众号和社群海报；硬件只保留龙虾盒子、陪伴终端等小而轻的项目。
+      </p>
+      <div class="animate-fade-in stagger-3 divider-accent mt-6 mb-10"></div>
+
+      <!-- 四指标 -->
+      <div class="animate-fade-in stagger-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div class="metric-tile p-5">
+          <div class="text-[11px] uppercase tracking-[0.18em] mb-2" style="color: var(--text-secondary); font-family: var(--font-mono);">TOTAL</div>
+          <div class="text-3xl font-semibold" style="color: var(--text); font-family: var(--font-heading);">{enriched.length}</div>
+          <div class="mt-1 text-xs" style="color: var(--text-secondary);">机会 / 赛题记录</div>
+        </div>
+        <div class="metric-tile p-5">
+          <div class="text-[11px] uppercase tracking-[0.18em] mb-2" style="color: var(--text-secondary); font-family: var(--font-mono);">ACTIVE</div>
+          <div id="metric-active" class="text-3xl font-semibold" style="color: var(--color-accent); font-family: var(--font-heading);">{activeCount}</div>
+          <div class="mt-1 text-xs" style="color: var(--text-secondary);">现在可投 / 将开放</div>
+        </div>
+        <div class="metric-tile p-5 relative overflow-hidden">
+          <div class="text-[11px] uppercase tracking-[0.18em] mb-2" style="color: var(--text-secondary); font-family: var(--font-mono);">SOFTWARE</div>
+          <div id="metric-software" class="text-3xl font-semibold" style="color: var(--color-accent-2); font-family: var(--font-heading);">{softwareCount}</div>
+          <div class="mt-1 text-xs" style="color: var(--text-secondary);">活跃软件 / 算法 / 创意</div>
+        </div>
+        <div class="metric-tile p-5">
+          <div class="text-[11px] uppercase tracking-[0.18em] mb-2" style="color: var(--text-secondary); font-family: var(--font-mono);">URGENT</div>
+          <div id="metric-urgent" class="text-3xl font-semibold" style="color: var(--color-accent-2); font-family: var(--font-heading);">{urgentCount}</div>
+          <div class="mt-1 text-xs" style="color: var(--text-secondary);">14 天内截止</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目入口 -->
+    <section class="mx-auto px-6 pb-8" style="max-width: var(--container-max);">
+      <div class="project-picker glass-card gradient-border p-6 md:p-8">
+        <div class="project-picker-heading">
+          <div>
+            <p class="section-kicker mb-2">// 我手里有什么</p>
+            <h2 class="text-xl md:text-2xl" style="font-family: var(--font-heading); color: var(--text);">先选现有项目，再看能投什么</h2>
+          </div>
+          <p class="project-match-summary">当前组合 <strong id="project-match-count">{enriched.length}</strong> 条赛事</p>
+        </div>
+        <div class="project-preset-grid" role="group" aria-label="按现有项目筛选赛事">
+          {PROJECT_PRESETS.map((preset, index) => (
+            <button
+              type="button"
+              class:list={['project-preset', index === 0 && 'is-on']}
+              data-project={preset.id}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+              aria-describedby={`project-preset-description-${preset.id}`}
+            >
+              <span class="project-preset-title">{preset.title}</span>
+              <span id={`project-preset-description-${preset.id}`} class="project-preset-description">{preset.description}</span>
+              <span class="project-preset-count" aria-label={`${projectPresetCounts.get(preset.id) ?? 0} 条匹配`}>{projectPresetCounts.get(preset.id) ?? 0}</span>
+            </button>
+          ))}
+        </div>
+        <noscript>
+          <p class="workbench-note mt-4">项目筛选需要 JavaScript；下方仍保留全部赛事的独立详情链接。</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- 项目行动摘要 -->
+    <section class="mx-auto px-6 pb-10" style="max-width: var(--container-max);">
+      <div class="animate-fade-in glass-card gradient-border p-7 md:p-10 grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-8" style="border-radius: var(--radius-xl);">
+        <div>
+          <p class="section-kicker mb-4">// 项目行动摘要</p>
+          <h2 id="project-summary-title" class="text-2xl md:text-4xl mb-5 leading-tight" style="font-family: var(--font-heading); color: var(--text); letter-spacing: -0.005em;">全部项目的近期可行动机会</h2>
+          <p id="project-summary-description" class="text-sm md:text-base leading-relaxed" style="color: var(--text-secondary);">
+            这里只使用未过期且关键日期已经确认的记录；纯视频或纯音乐赛事默认不进入主动推荐，除非有官方证据表明奖励覆盖面高、获取门槛友好。
+          </p>
+          <div id="herclaw-profile" class="project-profile mt-6" hidden>
+            <p class="project-profile-title">HerClaw · {HERCLAW_PROFILE.positioning}</p>
+            <ul class="project-profile-points">
+              {HERCLAW_PROFILE.currentCapabilities.map(capability => <li>{capability}</li>)}
+            </ul>
+            <p class="project-profile-caveat">不作为已完成能力：{HERCLAW_PROFILE.notAssumed.join('；')}</p>
+          </div>
+          <div id="project-no-go" class="project-no-go mt-6" hidden>
+            <p class="section-kicker mb-2">// 明确降级</p>
+            <ul id="project-no-go-list" class="project-no-go-list"></ul>
+          </div>
+        </div>
+
+        <div class="border-t md:border-t-0 md:border-l pt-6 md:pt-0 md:pl-8" style="border-color: color-mix(in srgb, var(--border) 55%, transparent);">
+          <p class="section-kicker mb-4">// 现在先做</p>
+          <ol id="project-action-list" class:list={["space-y-2.5", initialActionRecords.length === 0 && "hidden"]}>
+            {initialActionRecords.map(c => (
+              <li>
+                <a href={`/competitions/${encodeURIComponent(c.id)}/`} data-action-jump={c.id} class="project-action-card">
+                  <span class="project-action-name">{c.name}</span>
+                  <span class="project-action-deadline">{c.status.label}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <div id="project-action-empty" class:list={["project-action-empty", initialActionRecords.length > 0 && "hidden"]}>
+            <p>当前项目没有日期可信且仍可行动的匹配项。</p>
+            <button type="button" data-project-reset class="summary-button">查看全部项目</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 筛选条 -->
+    <section class="mx-auto px-6 pb-8" style="max-width: var(--container-max);">
+      <div class="filter-rows">
+        <div class="radar-control-grid">
+          <label class="radar-field">
+            <span class="section-kicker filter-label">// 搜索</span>
+            <input id="radar-search" class="radar-input" type="search" placeholder="搜赛事、赛道、打法" autocomplete="off" />
+          </label>
+          <label class="radar-field">
+            <span class="section-kicker filter-label">// 状态</span>
+            <select id="radar-status" class="radar-select">
+              <option value="全部">全部状态</option>
+              <option value="urgent">紧急</option>
+              <option value="ongoing">进行中</option>
+              <option value="upcoming">即将开始</option>
+              <option value="expired">已过期</option>
+              <option value="unknown">待确认</option>
+            </select>
+          </label>
+          <label class="radar-field">
+            <span class="section-kicker filter-label">// 排序</span>
+            <select id="radar-sort" class="radar-select">
+              <option value="deadline-asc">截止近优先</option>
+              <option value="software-first">软件优先</option>
+              <option value="urgent-first">紧急优先</option>
+              <option value="match-desc">匹配度高优先</option>
+              <option value="tier-desc">等级高优先</option>
+            </select>
+          </label>
+        </div>
+        <div class="filter-row">
+          <span class="section-kicker filter-label">// 分类</span>
+          <div class="filter-group">
+            <button type="button" data-fcat="全部" class="filter-cat filter-chip is-on" aria-pressed="true">全部</button>
+            {categories.map(cat => (
+              <button type="button" data-fcat={cat} class="filter-cat filter-chip" aria-pressed="false">{cat}</button>
+            ))}
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="section-kicker filter-label">// 等级</span>
+          <div class="filter-group">
+            <button type="button" data-ftier="全部" class="filter-tier filter-chip is-on" aria-pressed="true">全部</button>
+            {['S','A','B'].map(t => (
+              <button type="button" data-ftier={t} class="filter-tier filter-chip" aria-pressed="false">{t} 级</button>
+            ))}
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="section-kicker filter-label">// 资格</span>
+          <div class="filter-group" role="group" aria-label="按大陆团队参赛资格筛选">
+            {ACCESS_FILTERS.map((filter, index) => (
+              <button
+                type="button"
+                data-faccess={filter.id}
+                class:list={['filter-access', 'filter-chip', index === 0 && 'is-on']}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              >{filter.label}</button>
+            ))}
+          </div>
+        </div>
+        <div class="workbench-row">
+          <div class="filter-group" aria-label="收藏筛选">
+            <button type="button" id="favorites-only" class="filter-chip workbench-toggle" aria-pressed="false">
+              <span aria-hidden="true">★</span>
+              只看收藏
+              <span id="favorite-count" class="favorite-count">0</span>
+            </button>
+            <button type="button" id="clear-favorites" class="filter-chip subtle-action">清空收藏</button>
+            <button type="button" id="clear-filters" class="filter-chip subtle-action">清除筛选</button>
+          </div>
+          <p class="workbench-note">收藏只保存在当前浏览器；筛选和当前赛事会同步到网址。</p>
+        </div>
+        <p id="radar-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </section>
+
+    <!-- 列表 + 详情 -->
+    <section class="mx-auto px-6 pb-20" style="max-width: var(--container-max);">
+      <div class="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-12">
+        <!-- 左侧列表 -->
+        <aside>
+          <div class="flex items-center justify-between px-1 mb-3">
+            <span class="section-kicker">// 列表</span>
+            <span id="list-count" class="text-xs" aria-live="polite" style="color: var(--text-secondary); font-family: var(--font-mono);">{enriched.length} items</span>
+          </div>
+          <div id="competition-list" class="competition-list space-y-5 lg:max-h-[1440px] lg:overflow-y-auto lg:pr-2">
+            {sortedByDeadline.map(c => (
+              <article
+                data-id={c.id}
+                data-status={c.status.kind}
+                data-access={accessByCompetition.get(c.id)?.group}
+                class="cp-list-item relative"
+              >
+                <a
+                  href={`/competitions/${encodeURIComponent(c.id)}/`}
+                  data-select-competition
+                  class="cp-list-select w-full text-left p-4"
+                  aria-current="false"
+                  aria-label={`在工作台查看 ${c.fullName}；无 JavaScript 时打开独立详情页`}
+                >
+                  <div class="flex items-start justify-between gap-3 mb-2 pr-9">
+                    <h3 class="text-base font-semibold leading-tight truncate" style="color: var(--text); font-family: var(--font-heading);">{c.name}</h3>
+                    <span class={`tier-tag tier-${c.tier}`}>{c.tier}</span>
+                  </div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class={`status-dot status-${c.status.kind}`}></span>
+                    <span data-status-label class="text-[11px]" style="color: var(--text-secondary); font-family: var(--font-mono);">{c.status.label}</span>
+                    <span class="text-[11px]" style="color: var(--text-secondary); opacity: 0.5;">·</span>
+                    <span class="text-[11px]" style="color: var(--text-secondary);">{c.cat}</span>
+                  </div>
+                  <div class="access-card-row">
+                    <span class={`access-badge access-${accessByCompetition.get(c.id)?.tone}`}>
+                      {accessByCompetition.get(c.id)?.displayLabel}
+                    </span>
+                    {accessByCompetition.get(c.id)?.gates.length > 0 && (
+                      <span class="access-card-gates">
+                        {accessByCompetition.get(c.id)?.gates.slice(0, 2).map(gate => gate.label).join(' · ')}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-xs leading-relaxed line-clamp-2 mb-3" style="color: var(--text-secondary);">{c.desc}</p>
+                  <div class="flex items-center justify-between pt-2 text-[11px]" style="border-top: 1px solid color-mix(in srgb, var(--border) 50%, transparent);">
+                    <span style="color: var(--text-secondary); font-family: var(--font-mono); letter-spacing: 0.08em;">MATCH</span>
+                    <span style="font-family: var(--font-heading); color: var(--color-accent); font-weight: 600; font-size: 14px;">{c.match.toFixed(1)}<span style="color: var(--text-secondary); font-size: 10px; font-weight: 400;"> / 10</span></span>
+                  </div>
+                </a>
+                <button
+                  type="button"
+                  data-favorite={c.id}
+                  class="favorite-button list-favorite"
+                  aria-label={`收藏 ${c.fullName}`}
+                  aria-pressed="false"
+                  title="收藏到当前浏览器"
+                ><span aria-hidden="true">☆</span></button>
+              </article>
+            ))}
+          </div>
+          <div id="competition-empty" class="empty-state hidden" role="status">
+            <p id="competition-empty-message">没有符合当前条件的赛事。</p>
+            <button type="button" data-empty-reset class="summary-button">清除筛选</button>
+          </div>
+          <noscript>
+            <p class="workbench-note mt-4">筛选与收藏需要 JavaScript；上方 {enriched.length} 条赛事链接仍可直接打开独立详情页。</p>
+          </noscript>
+        </aside>
+
+        <!-- 右侧详情 -->
+        <section id="competition-detail" class="space-y-8" aria-live="polite" aria-busy="false">
+          <div id="detail-workbench" class="detail-workbench" aria-label="当前赛事快捷操作">
+            <span class="section-kicker">// 当前赛事</span>
+            <div class="detail-workbench-actions">
+              <button
+                type="button"
+                id="detail-favorite"
+                data-favorite={initialCompetition?.id}
+                class="summary-button favorite-detail"
+                aria-label={`收藏 ${initialCompetition?.fullName ?? '当前赛事'}`}
+                aria-pressed="false"
+              ><span aria-hidden="true">☆</span><span data-favorite-label>收藏</span></button>
+              <button
+                type="button"
+                id="detail-export-ics"
+                data-export-ics={initialCompetition?.id}
+                class="summary-button"
+                disabled={!initialDeadline?.calendarEligible}
+                title={initialDeadline?.calendarEligible ? '下载关键截止日历' : '日期尚未确认，暂不提供日历'}
+              >加入日历</button>
+            </div>
+          </div>
+          <div id="detail-project-fit" class="detail-project-fit" hidden>
+            <div class="detail-project-fit-heading">
+              <span class="section-kicker">// HerClaw 匹配判断</span>
+              <span id="detail-project-fit-decision" class="pill-note"></span>
+            </div>
+            <p><strong>匹配角度</strong><span id="detail-project-fit-angle"></span></p>
+            <p><strong>硬门槛</strong><span id="detail-project-fit-gate"></span></p>
+            <p><strong>预计投入</strong><span id="detail-project-fit-effort"></span></p>
+          </div>
+          <section id="detail-access-summary" class={`detail-access-summary access-panel-${initialAccess?.tone}`} aria-labelledby="detail-access-heading">
+            <div class="detail-access-heading">
+              <div>
+                <span class="section-kicker">// 资格硬门槛</span>
+                <h3 id="detail-access-heading">大陆团队参赛判断</h3>
+              </div>
+              <span id="detail-access-badge" class={`access-badge access-${initialAccess?.tone}`}>{initialAccess?.displayLabel}</span>
+            </div>
+            <p id="detail-access-china" class="detail-access-china">大陆资格：{initialAccess?.chinaEligibility.label}</p>
+            <ul id="detail-access-gates" class="detail-access-gates">
+              {initialAccess?.gates.map(gate => (
+                <li><strong>{gate.label}</strong><span>{gate.value}</span></li>
+              ))}
+            </ul>
+            <p id="detail-access-empty" class:list={['detail-access-empty', initialAccess?.gates.length && 'hidden']}>
+              暂无可确认的结构化硬门槛；请在报名之前逐条核对官方规则。
+            </p>
+          </section>
+          <div id="detail-panel" class="detail-panel space-y-7">
+            <div class="glass-card gradient-border p-7 md:p-11" style="border-radius: var(--radius-xl);">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-8">
+                <div class="flex-1 min-w-0 space-y-3">
+                  <div class="flex flex-wrap items-center gap-2.5">
+                    <span id="detail-tier" class={`tier-tag tier-${initialCompetition?.tier ?? 'B'} tier-lg`}>{initialCompetition?.tier ?? '—'} 级</span>
+                    <span class="pill-note"><span id="detail-status-dot" class={`status-dot status-${initialCompetition?.status.kind ?? 'unknown'}`}></span><span id="detail-status">{initialCompetition?.status.label ?? '日期待确认'}</span></span>
+                    <span id="detail-reliability" class="pill-note">来源等级 {initialCompetition?.rel ?? '—'}</span>
+                    <span id="detail-category" class="pill-note">{initialCompetition?.cat ?? '未分类'}</span>
+                  </div>
+                  <h2 id="detail-title" class="text-2xl md:text-3xl leading-tight" style="font-family: var(--font-heading); color: var(--text); letter-spacing: -0.022em;">{initialCompetition?.fullName ?? '选择一项赛事查看详情'}</h2>
+                  <div class="flex flex-wrap gap-x-6 gap-y-1.5 text-sm" style="color: var(--text-secondary);">
+                    <span class="flex items-center gap-1.5"><span class="opacity-50">◎</span><span id="detail-location">{initialCompetition?.loc ?? '—'}</span></span>
+                    <span class="flex items-center gap-1.5"><span class="opacity-50">◷</span><span id="detail-date">{initialCompetition?.date ?? '—'}</span></span>
+                    <span class="flex items-center gap-1.5"><span class="opacity-50">◆</span><span id="detail-org">{initialCompetition?.org ?? '—'}</span></span>
+                  </div>
+                </div>
+
+                <div class="metric-tile px-5 py-4 flex flex-col items-center justify-center min-w-[120px]">
+                  <span class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-secondary); font-family: var(--font-mono);">Match</span>
+                  <span id="detail-match" class="text-5xl font-semibold leading-none mt-1" style="color: var(--color-accent); font-family: var(--font-heading);">{initialCompetition?.match.toFixed(1) ?? '—'}</span>
+                  <span class="text-[10px] mt-1" style="color: var(--text-secondary);">/ 10</span>
+                  <span id="detail-suit" class="text-[11px] mt-2 px-2 py-0.5 rounded-full" style="color: var(--color-accent-2); background: color-mix(in srgb, var(--color-accent-2) 12%, transparent);">{initialCompetition?.suit ?? '—'}</span>
+                </div>
+              </div>
+
+              <div class="mb-10">
+                <p class="section-kicker mb-5">// 关键时间节点</p>
+                <div class="timeline-track relative pt-2">
+                  <div class="absolute top-4 left-1.5 right-1.5 h-px" style="background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 30%, transparent), color-mix(in srgb, var(--border) 80%, transparent) 55%, transparent);"></div>
+                  <div id="detail-timeline" class="timeline-grid relative grid gap-2" style={`--timeline-count: ${initialCompetition?.timeline.length ?? 1}; grid-template-columns: repeat(${initialCompetition?.timeline.length ?? 1}, minmax(0, 1fr));`}>
+                    {initialCompetition?.timeline.map(n => {
+                      const past = new Date(n.date) < TODAY;
+                      const dotClass = past ? 'past' : n.critical ? 'critical' : 'normal';
+                      return (
+                        <div class="flex flex-col items-center text-center min-w-0 px-1">
+                          <div class={`timeline-dot ${dotClass}`}></div>
+                          <p class="mt-3 mb-1 text-[11px] font-medium leading-tight" style="color: var(--text-secondary); max-width: 100%;">{n.event}</p>
+                          <small class="text-[10px]" style="color: var(--text-secondary); opacity: 0.6; font-family: var(--font-mono);">{n.date}</small>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <p class="section-kicker mb-3">// 赛事定位</p>
+                  <p id="detail-description" class="text-sm leading-relaxed p-4 rounded-[14px]" style="color: var(--text-secondary); background: color-mix(in srgb, var(--surface) 55%, transparent); border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);">{initialCompetition?.desc ?? ''}</p>
+                </div>
+                <div>
+                  <p class="section-kicker mb-3">// 参赛打法</p>
+                  <p id="detail-strategy" class="text-sm leading-relaxed p-4 rounded-[14px]" style="color: var(--text); background: color-mix(in srgb, var(--color-accent) 7%, transparent); border: 1px solid color-mix(in srgb, var(--color-accent) 28%, transparent);">{initialCompetition?.strategy ?? ''}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                <div>
+                  <p class="section-kicker mb-3">// 核心奖励 / 资源</p>
+                  <div id="detail-rewards" class="flex flex-wrap gap-1.5">
+                    {initialCompetition?.rewards.map(item => <span class="reward-chip">{item}</span>)}
+                  </div>
+                </div>
+                <div>
+                  <p class="section-kicker mb-3">// 评审匹配点</p>
+                  <div id="detail-winning" class="flex flex-wrap gap-1.5">
+                    {initialCompetition?.winning.map(item => <span class="winning-chip">{item}</span>)}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="glass-card p-6" style="border-radius: var(--radius-lg);">
+                <p class="section-kicker mb-3" style="color: var(--color-accent-2);">// + 优势</p>
+                <ul id="detail-pros" class="space-y-2">
+                  {initialCompetition?.pros.map(item => <li class="detail-point detail-point-pro">{item}</li>)}
+                </ul>
+              </div>
+              <div class="glass-card p-6" style="border-radius: var(--radius-lg);">
+                <p class="section-kicker mb-3" style="color: var(--color-accent);">// ! 难点 / 风险</p>
+                <ul id="detail-cons" class="space-y-2">
+                  {initialCompetition?.cons.map(item => <li class="detail-point detail-point-con">{item}</li>)}
+                </ul>
+              </div>
+            </div>
+
+            <div class="glass-card p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6" style="border-radius: var(--radius-lg);">
+              <div class="flex-1 min-w-0">
+                <p class="section-kicker mb-2">// 适合谁</p>
+                <p id="detail-audience" class="text-sm leading-relaxed" style="color: var(--text-secondary);">{initialCompetition?.audience ?? ''}</p>
+                <div id="detail-sources" class="source-links">
+                  <span class="section-kicker source-label">// 参考来源</span>
+                  {initialCompetition?.sources?.map(source => (
+                    <a href={source.url} target="_blank" rel="noopener" class="source-link">
+                      <span>{source.title}</span>
+                      <small>{source.date}</small>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="detail-actions">
+                <a id="detail-permalink" href={`/competitions/${encodeURIComponent(initialCompetition?.id ?? '')}/`} class="summary-button">独立详情页</a>
+                <button id="detail-copy-summary" type="button" data-copy-summary={initialCompetition?.id} class="summary-button">复制参赛摘要</button>
+                <a id="detail-official-link" href={initialCompetition?.url} target="_blank" rel="noopener" class="cta-button">查看赛事页面 <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="text-center text-[11px] pt-12 mt-12 border-t" style="color: var(--text-secondary); border-color: color-mix(in srgb, var(--border) 50%, transparent); font-family: var(--font-mono); letter-spacing: 0.05em;">
+        人工整理 · 更新于 {RADAR_UPDATED_AT} · {enriched.length} 条记录 · 倒计时按访问当天自动计算；匹配点为编辑判断，所有资格、日期与奖励请在提交前复核赛事页面
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <script id="competition-data" type="application/json" set:html={serializedWorkbenchRecords}></script>
+  <script src="../lib/competition-workbench.js"></script>
+</BaseLayout>
+
+<style is:global>
+  /* ============ Project-first discovery ============ */
+  .project-picker {
+    border-radius: var(--radius-xl);
+  }
+
+  .project-picker-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-match-summary {
+    flex: 0 0 auto;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .project-match-summary strong {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+  }
+
+  .project-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .project-preset {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.32rem 0.65rem;
+    min-height: 88px;
+    padding: 0.9rem 0.95rem;
+    color: var(--text);
+    text-align: left;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-preset:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-accent) 46%, var(--border));
+  }
+
+  .project-preset.is-on {
+    border-color: color-mix(in srgb, var(--color-accent) 72%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 10%, var(--surface));
+    box-shadow: 0 16px 30px -26px color-mix(in srgb, var(--color-accent) 60%, transparent);
+  }
+
+  .project-preset-title {
+    align-self: center;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 650;
+  }
+
+  .project-preset-description {
+    grid-column: 1 / -1;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .project-preset-count {
+    display: inline-grid;
+    min-width: 1.65rem;
+    height: 1.65rem;
+    place-items: center;
+    padding: 0 0.38rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface-2) 78%, transparent);
+  }
+
+  .project-preset.is-on .project-preset-count {
+    color: var(--color-accent-ink);
+    background: var(--color-accent);
+  }
+
+  .project-profile,
+  .project-no-go,
+  .detail-project-fit {
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--border));
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-accent) 7%, var(--surface));
+  }
+
+  .project-profile-title {
+    margin-bottom: 0.55rem;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-weight: 650;
+  }
+
+  .project-profile-points,
+  .project-no-go-list {
+    display: grid;
+    gap: 0.38rem;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .project-profile-points li::before {
+    content: '·';
+    margin-right: 0.45rem;
+    color: var(--color-accent-2);
+  }
+
+  .project-profile-caveat {
+    margin-top: 0.7rem;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .project-no-go {
+    border-color: color-mix(in srgb, var(--border) 80%, transparent);
+    background: color-mix(in srgb, var(--surface-2) 58%, transparent);
+  }
+
+  .project-no-go-list li strong {
+    color: var(--text);
+  }
+
+  .project-action-card {
+    display: grid;
+    gap: 0.38rem;
+    width: 100%;
+    min-height: 58px;
+    padding: 0.7rem 0.8rem;
+    text-align: left;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-action-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 6%, var(--surface));
+    transform: translateX(2px);
+  }
+
+  .project-action-name {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+
+  .project-action-deadline,
+  .project-action-meta {
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .project-action-fit,
+  .project-action-gate {
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .project-action-fit strong,
+  .project-action-gate strong {
+    color: var(--text);
+    margin-right: 0.3rem;
+  }
+
+  .project-action-empty {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .project-action-empty.hidden {
+    display: none;
+  }
+
+  .detail-project-fit-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-project-fit {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .detail-project-fit[hidden] {
+    display: none;
+  }
+
+  .detail-project-fit p {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .detail-project-fit p strong {
+    color: var(--text);
+  }
+
+  @media (max-width: 900px) {
+    .project-preset-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .project-picker-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .project-preset-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============ Access gates ============ */
+  .access-card-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    margin-bottom: 0.65rem;
+  }
+
+  .access-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    max-width: 100%;
+    padding: 0.22rem 0.58rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .access-open {
+    color: var(--color-accent-2);
+    background: color-mix(in srgb, var(--color-accent-2) 10%, transparent);
+  }
+
+  .access-special {
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+
+  .access-unknown {
+    color: var(--text-secondary);
+    background: color-mix(in srgb, var(--surface-2) 72%, transparent);
+  }
+
+  .access-blocked {
+    color: #ff7b72;
+    background: color-mix(in srgb, #ff7b72 10%, transparent);
+  }
+
+  .access-card-gates {
+    min-width: 0;
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .detail-access-summary {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+  }
+
+  .detail-access-summary.access-panel-open {
+    border-color: color-mix(in srgb, var(--color-accent-2) 42%, var(--border));
+  }
+
+  .detail-access-summary.access-panel-special {
+    border-color: color-mix(in srgb, var(--color-accent) 50%, var(--border));
+  }
+
+  .detail-access-summary.access-panel-unknown {
+    border-style: dashed;
+  }
+
+  .detail-access-summary.access-panel-blocked {
+    border-color: color-mix(in srgb, #ff7b72 64%, var(--border));
+    background: color-mix(in srgb, #ff7b72 7%, var(--surface));
+  }
+
+  .detail-access-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .detail-access-heading h3 {
+    margin-top: 0.25rem;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+  }
+
+  .detail-access-china,
+  .detail-access-empty {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .detail-access-gates {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .detail-access-gates li {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, max-content) minmax(0, 1fr);
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .detail-access-gates strong {
+    color: var(--text);
+  }
+
+  .detail-access-empty.hidden {
+    display: none;
+  }
+
+  @media (max-width: 520px) {
+    .detail-access-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .detail-access-gates li {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+
+  /* ============ Filter rows ============ */
+  .filter-rows {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .radar-control-grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.3fr) minmax(160px, 0.7fr) minmax(180px, 0.8fr);
+    gap: 0.85rem;
+    align-items: end;
+  }
+
+  .radar-field {
+    display: grid;
+    gap: 0.45rem;
+    min-width: 0;
+  }
+
+  .radar-input,
+  .radar-select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    border-radius: var(--radius-md);
+    color: var(--text);
+    background: color-mix(in srgb, var(--surface) 62%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    padding: 0 0.85rem;
+    font-size: 13px;
+    line-height: 1.2;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .radar-input::placeholder {
+    color: color-mix(in srgb, var(--text-secondary) 78%, transparent);
+  }
+
+  .radar-select {
+    cursor: pointer;
+  }
+
+  .radar-input:focus,
+  .radar-select:focus {
+    border-color: color-mix(in srgb, var(--color-accent) 58%, var(--border));
+    background: color-mix(in srgb, var(--surface) 76%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 14%, transparent);
+  }
+
+  .filter-row {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .filter-label {
+    white-space: nowrap;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .workbench-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.2rem;
+  }
+
+  .workbench-note {
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.55;
+    text-align: right;
+  }
+
+  .workbench-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .favorite-count {
+    display: inline-grid;
+    min-width: 1.45rem;
+    height: 1.45rem;
+    place-items: center;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    color: inherit;
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    font-size: 10px;
+  }
+
+  .subtle-action {
+    background: transparent;
+  }
+
+  @media (max-width: 720px) {
+    .radar-control-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .workbench-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .workbench-note {
+      text-align: left;
+    }
+  }
+
+  /* ============ 列表项 ============ */
+  .cp-list-item {
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 90%, transparent), color-mix(in srgb, var(--surface-2) 82%, transparent));
+    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.24s cubic-bezier(.2,.7,.2,1), border-color 0.2s ease, box-shadow 0.24s ease, background 0.24s ease;
+    overflow-wrap: anywhere;
+  }
+
+  .cp-list-select {
+    display: block;
+    min-height: 44px;
+    border-radius: inherit;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .cp-list-select:focus-visible,
+  .favorite-button:focus-visible,
+  .project-preset:focus-visible,
+  .project-action-card:focus-visible,
+  .filter-chip:focus-visible,
+  .summary-button:focus-visible,
+  .cta-button:focus-visible,
+  .urgent-chip:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-accent) 68%, transparent);
+    outline-offset: 3px;
+  }
+
+  .cp-list-item:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--border));
+    box-shadow: 0 18px 36px -28px color-mix(in srgb, var(--color-accent) 32%, transparent);
+  }
+  .cp-list-item.is-active {
+    border-color: color-mix(in srgb, var(--color-accent) 70%, transparent) !important;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 8%, var(--surface)), color-mix(in srgb, var(--surface-2) 85%, transparent));
+    box-shadow: 0 22px 48px -30px color-mix(in srgb, var(--color-accent) 55%, transparent);
+    transform: translateY(-1px);
+  }
+  .cp-list-item.is-active h3 { color: var(--color-accent) !important; }
+  .cp-list-item[data-status="expired"] { opacity: 0.55; }
+  .cp-list-item[data-access="blocked"] {
+    border-color: color-mix(in srgb, #ff7b72 52%, var(--border));
+  }
+  .cp-list-item[data-access="unknown"] {
+    border-style: dashed;
+  }
+
+  .favorite-button {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--text-secondary);
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .favorite-button:hover,
+  .favorite-button[aria-pressed="true"] {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 54%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 10%, var(--surface));
+  }
+
+  .list-favorite {
+    position: absolute;
+    z-index: 2;
+    top: 0.7rem;
+    right: 0.55rem;
+  }
+
+  .empty-state {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1.4rem;
+    color: var(--text-secondary);
+    border: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 48%, transparent);
+  }
+
+  .empty-state.hidden {
+    display: none;
+  }
+
+  .detail-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 920px;
+  }
+
+  .detail-workbench {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 60px;
+    padding: 0.65rem 0.8rem 0.65rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 78%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .detail-workbench-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .detail-point {
+    display: flex;
+    gap: 0.625rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.625;
+  }
+
+  .detail-point-bullet {
+    flex: 0 0 auto;
+    margin-top: 0.125rem;
+  }
+
+  .detail-point-pro .detail-point-bullet {
+    color: var(--color-accent-2);
+  }
+
+  .detail-point-con .detail-point-bullet {
+    color: var(--color-accent);
+  }
+
+  /* ============ 等级标签 ============ */
+  .tier-tag {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+  }
+  .tier-tag.tier-lg {
+    padding: 4px 11px;
+    font-size: 11px;
+  }
+  .tier-S {
+    color: #1a130b;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 60%, transparent), 0 0 16px -4px color-mix(in srgb, var(--color-accent) 50%, transparent);
+  }
+
+  /* Dark ink on accent fills */
+  .tier-S,
+  .urgent-badge,
+  .filter-chip.is-on,
+  .cta-button {
+    color: var(--color-accent-ink);
+  }
+  .tier-A {
+    color: var(--color-accent-2);
+    background: color-mix(in srgb, var(--color-accent-2) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent-2) 42%, transparent);
+  }
+  .tier-B {
+    color: var(--text-secondary);
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  }
+
+  /* ============ 状态点 ============ */
+  .status-dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .status-dot.status-urgent {
+    background: var(--color-accent);
+    animation: status-pulse 1.8s infinite;
+  }
+  .status-dot.status-ongoing { background: var(--color-accent-2); }
+  .status-dot.status-upcoming { background: color-mix(in srgb, var(--text-secondary) 70%, transparent); }
+  .status-dot.status-expired { background: color-mix(in srgb, var(--text-secondary) 40%, transparent); }
+  @keyframes status-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 65%, transparent); }
+    70% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-accent) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent); }
+  }
+
+  /* ============ 紧急清单 chip ============ */
+  .urgent-chip {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .urgent-chip:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 6%, var(--surface));
+    transform: translateX(2px);
+  }
+  .urgent-badge {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: #1a130b;
+    background: var(--color-accent);
+  }
+
+  .dot-accent, .dot-accent2 {
+    display: inline-block; width: 6px; height: 6px; border-radius: 999px; margin-right: 2px;
+  }
+  .dot-accent { background: var(--color-accent); }
+  .dot-accent2 { background: var(--color-accent-2); }
+
+  /* ============ 时间轴点 ============ */
+  .timeline-dot {
+    width: 11px; height: 11px; border-radius: 999px;
+    background: color-mix(in srgb, var(--text-secondary) 50%, transparent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--border) 80%, transparent);
+    position: relative; z-index: 1;
+  }
+  .timeline-dot.past { background: color-mix(in srgb, var(--text-secondary) 40%, transparent); }
+  .timeline-dot.normal {
+    background: var(--color-accent-2);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent-2) 25%, transparent);
+  }
+  .timeline-dot.critical {
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 28%, transparent);
+    transform: scale(1.2);
+  }
+
+  .timeline-track {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  /* ============ 筛选按钮 ============ */
+  .filter-chip {
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    background: color-mix(in srgb, var(--surface) 55%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .filter-chip:hover {
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--color-accent) 45%, var(--border));
+  }
+  .filter-chip.is-on {
+    color: #1a130b;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 20px -12px color-mix(in srgb, var(--color-accent) 70%, transparent);
+  }
+
+  /* ============ 奖励 / 卖点 chip ============ */
+  .reward-chip {
+    font-size: 12px; padding: 5px 10px;
+    border-radius: var(--radius-md);
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 28%, transparent);
+    line-height: 1.5;
+  }
+  .winning-chip {
+    font-size: 12px; padding: 5px 10px;
+    border-radius: 999px;
+    color: var(--color-accent-2);
+    background: color-mix(in srgb, var(--color-accent-2) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent-2) 32%, transparent);
+    line-height: 1.5;
+  }
+
+  /* ============ CTA ============ */
+  .cta-button {
+    display: inline-flex; align-items: center; gap: 8px;
+    min-height: 44px;
+    padding: 12px 22px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-weight: 600; font-size: 14px;
+    color: #1a130b;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    box-shadow: 0 16px 28px -18px color-mix(in srgb, var(--color-accent) 52%, transparent);
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
+    justify-content: center;
+    min-width: 0;
+    text-align: center;
+  }
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 36px -18px color-mix(in srgb, var(--color-accent) 62%, transparent);
+  }
+
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    min-width: min(100%, 320px);
+  }
+
+  .source-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.95rem;
+    min-width: 0;
+  }
+
+  .source-label {
+    flex-basis: 100%;
+    font-size: 10px;
+  }
+
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    max-width: 100%;
+    padding: 0.38rem 0.65rem;
+    border-radius: var(--radius-md);
+    color: var(--text);
+    background: color-mix(in srgb, var(--surface) 62%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+    font-size: 12px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .source-link:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 44%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 7%, var(--surface));
+    transform: translateY(-1px);
+  }
+
+  .source-link small {
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+
+  .summary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    padding: 12px 18px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--text);
+    background: color-mix(in srgb, var(--surface) 58%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .summary-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.46;
+    transform: none;
+  }
+
+  .summary-button:hover {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 48%, var(--border));
+    background: color-mix(in srgb, var(--color-accent) 8%, var(--surface));
+    transform: translateY(-1px);
+  }
+
+  .summary-button.is-copied {
+    color: var(--color-accent-ink);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* ============ line-clamp ============ */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ============ 响应式微调 ============ */
+  @media (max-width: 768px) {
+    .competition-list {
+      max-height: min(68vh, 780px);
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      overscroll-behavior: contain;
+    }
+    .urgent-chip { min-height: 44px; padding: 10px; }
+    .timeline-grid {
+      min-width: max(420px, calc(var(--timeline-count, 4) * 104px));
+      padding-bottom: 0.5rem;
+    }
+    .detail-actions {
+      width: 100%;
+      justify-content: stretch;
+    }
+    .detail-actions > * {
+      width: 100%;
+    }
+    .source-link {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .detail-workbench {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .detail-workbench-actions > * {
+      flex: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .status-dot.status-urgent {
+      animation: none;
+    }
+
+    .cp-list-item,
+    .favorite-button,
+    .filter-chip,
+    .summary-button,
+    .cta-button,
+    .urgent-chip,
+    .source-link {
+      scroll-behavior: auto;
+      transition-duration: 0.01ms !important;
+      transform: none !important;
+    }
+  }
+</style>

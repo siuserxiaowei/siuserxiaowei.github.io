@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-12T04:50:01.986Z",
+  "comparedWith": "2026-09-11T04:57:11.036Z",
+  "decision": "SEND",
+  "decisionLabel": "发送变化回执",
+  "promise": "只推送经一手或原始来源核验、且相较上一期发生实质变化的 AI 事件；最多 3 条。",
+  "funnel": {
+    "signals": 471,
+    "events": 202,
+    "verified": 103,
+    "receipts": 3
+  },
+  "receipts": [
+    {
+      "id": "event-3wbrmp",
+      "status": "CHANGED",
+      "title": "csoai/gspc-ai-economy-index",
+      "summary": "数据集更新；标签：task_categories:other、language:en、license:cc-by-4.0、size_categories:n<1K、region:us、gspc",
+      "whyItMatters": "1 个原始来源确认事实已发生实质变化，值得更新原有判断。",
+      "verified": true,
+      "evidence": [
+        {
+          "title": "csoai/gspc-ai-economy-index",
+          "label": "HF Datasets",
+          "sourceType": "hf-datasets",
+          "tier": "primary",
+          "url": "https://huggingface.co/datasets/csoai/gspc-ai-economy-index",
+          "publishedAt": "2026-09-12T04:45:10.000Z",
+          "firstParty": true
+        }
+      ]
+    },
+    {
+      "id": "event-ut6ub8",
+      "status": "CHANGED",
+      "title": "dc-ai/Visualization2",
+      "summary": "数据集更新；标签：size_categories:1K<n<10K、modality:image、library:datasets、library:mlcroissant、region:us",
+      "whyItMatters": "1 个原始来源确认事实已发生实质变化，值得更新原有判断。",
+      "verified": true,
+      "evidence": [
+        {
+          "title": "dc-ai/Visualization2",
+          "label": "HF Datasets",
+          "sourceType": "hf-datasets",
+          "tier": "primary",
+          "url": "https://huggingface.co/datasets/dc-ai/Visualization2",
+          "publishedAt": "2026-09-12T02:10:45.000Z",
+          "firstParty": true
+        }
+      ]
+    },
+    {
+      "id": "event-1nzgsqq",
+      "status": "CHANGED",
+      "title": "AgentCrafter/RAg_gita",
+      "summary": "Space更新；标签：region:us",
+      "whyItMatters": "1 个原始来源确认事实已发生实质变化，值得更新原有判断。",
+      "verified": true,
+      "evidence": [
+        {
+          "title": "AgentCrafter/RAg_gita",
+          "label": "HF Spaces",
+          "sourceType": "hf-spaces",
+          "tier": "primary",
+          "url": "https://huggingface.co/spaces/AgentCrafter/RAg_gita",
+          "publishedAt": "2026-09-11T17:48:35.000Z",
+          "firstParty": true
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    {
+      "id": "event-xd2301",
+      "status": "UNVERIFIED",
+      "title": "菲尔兹奖得主称AI与数学正严重错位",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "菲尔兹奖得主称AI与数学正严重错位",
+          "label": "weibo",
+          "sourceType": "weibo",
+          "tier": "community",
+          "url": "https://s.weibo.com/weibo?q=%23%E8%8F%B2%E5%B0%94%E5%85%B9%E5%A5%96%E5%BE%97%E4%B8%BB%E7%A7%B0AI%E4%B8%8E%E6%95%B0%E5%AD%A6%E6%AD%A3%E4%B8%A5%E9%87%8D%E9%94%99%E4%BD%8D%23",
+          "publishedAt": "2026-09-12T04:47:53.760Z",
+          "firstParty": false
+        }
+      ]
+    },
+    {
+      "id": "event-ofth0e",
+      "status": "UNVERIFIED",
+      "title": "25位菲尔兹奖得主：AI正毁掉数学",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "25位菲尔兹奖得主：AI正毁掉数学",
+          "label": "toutiao",
+          "sourceType": "toutiao",
+          "tier": "community",
+          "url": "https://www.toutiao.com/trending/7683684464609755145/",
+          "publishedAt": "2026-09-12T04:44:40.493Z",
+          "firstParty": false
+        },
+        {
+          "title": "25位菲尔兹奖得主警告：AI正毁掉数学",
+          "label": "baidu",
+          "sourceType": "baidu",
+          "tier": "community",
+          "url": "https://www.baidu.com/s?wd=25%E4%BD%8D%E8%8F%B2%E5%B0%94%E5%85%B9%E5%A5%96%E5%BE%97%E4%B8%BB%E8%AD%A6%E5%91%8A%EF%BC%9AAI%E6%AD%A3%E6%AF%81%E6%8E%89%E6%95%B0%E5%AD%A6&sa=fyb_news&rsv_dl=fyb_news",
+          "publishedAt": "2026-09-12T04:32:12.241Z",
+          "firstParty": false
+        }
+      ]
+    },
+    {
+      "id": "event-1ddajyv",
+      "status": "UNVERIFIED",
+      "title": "月之暗面：网传关于创始人信息系造谣",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "月之暗面：网传关于创始人信息系造谣",
+          "label": "toutiao",
+          "sourceType": "toutiao",
+          "tier": "community",
+          "url": "https://www.toutiao.com/trending/7684489283150810670/",
+          "publishedAt": "2026-09-12T04:44:40.493Z",
+          "firstParty": false
+        }
+      ]
+    },
+    {
+      "id": "event-gax3h2",
+      "status": "UNVERIFIED",
+      "title": "AI客服“转人工”为何这样难",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "AI客服“转人工”为何这样难",
+          "label": "toutiao",
+          "sourceType": "toutiao",
+          "tier": "community",
+          "url": "https://www.toutiao.com/trending/7684102796324373002/",
+          "publishedAt": "2026-09-12T04:44:40.493Z",
+          "firstParty": false
+        }
+      ]
+    },
+    {
+      "id": "event-okwc4n",
+      "status": "UNVERIFIED",
+      "title": "DeepSeek开口说话",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "DeepSeek开口说话",
+          "label": "toutiao",
+          "sourceType": "toutiao",
+          "tier": "community",
+          "url": "https://www.toutiao.com/trending/7683365473766080554/",
+          "publishedAt": "2026-09-12T04:44:40.493Z",
+          "firstParty": false
+        }
+      ]
+    },
+    {
+      "id": "event-cbogeq",
+      "status": "UNVERIFIED",
+      "title": "让 AI 读代码画出架构图",
+      "summary": "尚未找到足够的一手证据。",
+      "whyItMatters": "当前只有社区或热榜信号，暂不作为事实推送。",
+      "verified": false,
+      "evidence": [
+        {
+          "title": "让 AI 读代码画出架构图",
+          "label": "hellogithub",
+          "sourceType": "hellogithub",
+          "tier": "community",
+          "url": "https://github.com/tt-a1i/archify",
+          "publishedAt": "2026-09-12T04:40:53.843Z",
+          "firstParty": false
+        }
+      ]
+    }
+  ],
+  "suppressed": 457,
+  "methodology": {
+    "comparison": "previous-snapshot",
+    "ranking": "correction-first, then evidence tier, source publication time and deterministic title; heat, Stars and ranks are never compared across sources",
+    "statuses": [
+      "NEW",
+      "CHANGED",
+      "CORRECTED",
+      "UNVERIFIED"
+    ]
+  }
+}

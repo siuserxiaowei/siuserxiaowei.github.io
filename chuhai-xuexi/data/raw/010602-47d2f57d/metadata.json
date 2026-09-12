@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1767681572,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "ae182a1a59e6237099318316899c3e8c341073c9",
+    "type": "sha1"
+  },
+  "id": "pBvWegMERxMBqqcyBtJD1x1jQXcVXUyda",
+  "link_id": "ce5MwKpfMYvP",
+  "link_url": "https://www.kdocs.cn/l/ce5MwKpfMYvP",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1767681572,
+  "name": "010602.otl",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 4757931,
+  "type": "file",
+  "version": 1,
+  "path": "010602.otl"
+}

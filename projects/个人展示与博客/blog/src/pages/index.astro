@@ -1,0 +1,1101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const posts = allPosts.slice(0, 3);
+const totalPosts = allPosts.length;
+
+const problems = [
+  {
+    index: '01',
+    title: '写下判断',
+    copy: '把产品、技术和学习里的真实判断写成公开日志，让想法经得起回看和修正。',
+    tag: 'Writing'
+  },
+  {
+    index: '02',
+    title: '做成工具',
+    copy: '把反复出现的小问题固定成浏览器里就能用的工具，少记、少搜、少绕路。',
+    tag: 'Building'
+  },
+  {
+    index: '03',
+    title: '持续推进',
+    copy: '把项目放到公开环境里持续迭代，用外部反馈和真实使用倒逼自己把事情做完。',
+    tag: 'Shipping'
+  }
+];
+
+const methodSteps = [
+  {
+    index: '01',
+    title: '从真实问题开始',
+    copy: '不从“该用什么模型”开始，先从一个确实卡住自己的高频动作开始。',
+    detail: '问题 / 场景 / 约束'
+  },
+  {
+    index: '02',
+    title: '先做能用的版本',
+    copy: '把复杂问题拆小，快速做出一个能亲自使用、能暴露问题的最小版本。',
+    detail: '原型 / 使用 / 反馈'
+  },
+  {
+    index: '03',
+    title: '把过程公开出来',
+    copy: '把关键判断、工具和项目进展放出来，让作品本身成为能被查看的说明。',
+    detail: '记录 / 工具 / 项目'
+  },
+  {
+    index: '04',
+    title: '根据使用继续迭代',
+    copy: '保留不确定性，根据真实使用、外部反馈和新的问题持续调整方向。',
+    detail: '复盘 / 修正 / 继续'
+  }
+];
+
+const systems = [
+  {
+    index: '01',
+    label: 'Voice agent',
+    title: 'AI 语音机器人',
+    subtitle: '多轮对话 / 企业外呼',
+    copy: '围绕真实电话沟通场景，持续探索大模型语音交互、话术设计与可用产品形态。',
+    deliverable: '语音交互 · 对话设计 · 真实场景',
+    href: '/projects'
+  },
+  {
+    index: '02',
+    label: 'Content workbench',
+    title: '内容工作台',
+    subtitle: '写作 / 工具 / 公开构建',
+    copy: '把文章、工具、项目和持续形成的判断组织成一个会自己生长的个人工作台。',
+    deliverable: '内容系统 · 轻量工具 · 公开记录',
+    href: '/projects'
+  },
+  {
+    index: '03',
+    label: 'Automation experiments',
+    title: '自动化实验',
+    subtitle: '监控 / 代理 / 小系统',
+    copy: '把重复动作连接成小而清晰的自动化流程，优先解决自己真的会反复遇到的问题。',
+    deliverable: '自动化代理 · 使用监控 · 迭代实验',
+    href: '/projects'
+  }
+];
+
+const proofs = [
+  {
+    index: '01',
+    label: '判断日志',
+    value: `${totalPosts} 篇公开文章`,
+    copy: '把技术、产品与业务判断写成能被回看的过程。',
+    href: '/blog'
+  },
+  {
+    index: '02',
+    label: '可用工具',
+    value: '60+ 浏览器工具',
+    copy: '把高频小问题固定成可以直接使用的入口。',
+    href: '/tools'
+  },
+  {
+    index: '03',
+    label: '公开构建',
+    value: '项目与流程拆解',
+    copy: '用可见的工作过程，而不是泛泛的能力标签建立信任。',
+    href: '/projects'
+  }
+];
+
+const nowItems = [
+  { index: '01', title: 'AI 语音机器人', copy: '多轮对话与企业外呼', href: '/projects' },
+  { index: '02', title: '内容工作台', copy: '写作、工具、公开构建', href: '/projects' },
+  { index: '03', title: '自动化实验', copy: '把重复动作连成流程', href: '/projects' }
+];
+
+const contactHref = 'mailto:hi@siuserxiaowei.com';
+---
+
+<BaseLayout
+  title="siuser小伟 · 独立工作台"
+  description="持续记录并公开构建 AI、自动化、产品工程与学习系统。"
+>
+  <Header />
+
+  <main class="flex-1">
+    <section id="home" class="container hero-section">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="animate-fade-in stagger-1 section-kicker">SIUSER 小伟 · AI / AUTOMATION / BUILD IN PUBLIC</p>
+
+          <h1 class="animate-fade-in stagger-2 hero-title display-serif">
+            把有用的 AI，<br />
+            做成<em>能被真正使用</em>的东西。
+          </h1>
+
+          <p class="animate-fade-in stagger-3 hero-lede">
+            这是我的公开工作台：记录 AI、自动化、产品工程和学习系统。
+            一部分写成文章，一部分做成工具，一部分继续推进到上线。
+          </p>
+
+          <div class="animate-fade-in stagger-4 hero-actions">
+            <a href="/projects" class="btn-primary">看正在构建的项目 <span>→</span></a>
+            <a href="/blog" class="btn-ghost">读最近文章 <span>→</span></a>
+          </div>
+
+          <p class="hero-note animate-fade-in stagger-5">
+            <span>写下判断</span>
+            <i></i>
+            <span>做成工具</span>
+            <i></i>
+            <span>持续推进</span>
+          </p>
+        </div>
+
+        <aside class="now-rail animate-fade-in stagger-3" aria-label="正在构建的方向">
+          <div class="now-head">
+            <span>NOW</span>
+            <span>2026</span>
+          </div>
+          <ol class="now-list">
+            {nowItems.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <span class="now-index">{item.index}</span>
+                  <span class="now-copy">
+                    <strong>{item.title}</strong>
+                    <small>{item.copy}</small>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <a href="/projects" class="now-link">查看项目台账 <span>↗</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work" class="container section-block problem-section">
+      <div class="section-heading narrow-heading">
+        <p class="section-kicker">HOW THIS SITE GROWS</p>
+        <h2 class="display-serif section-title">不是把个人经历摆出来。<br />是把<strong>正在做的事情持续放出来。</strong></h2>
+      </div>
+
+      <div class="problem-grid">
+        {problems.map((problem) => (
+          <article class="problem-card scroll-reveal">
+            <div class="problem-meta">
+              <span>{problem.index}</span>
+              <span>{problem.tag}</span>
+            </div>
+            <h3 class="display-serif">{problem.title}</h3>
+            <p>{problem.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="method" class="container section-block method-section">
+      <div class="section-heading method-heading">
+        <div>
+          <p class="section-kicker">BUILD LOOP</p>
+          <h2 class="display-serif section-title">把一个模糊想法，推进成<br /><em>能持续使用</em>的东西。</h2>
+        </div>
+        <p>我更在意从问题到使用的完整闭环：先做出来，再让真实反馈决定下一步，而不是把概念包装得很完整。</p>
+      </div>
+
+      <ol class="method-list">
+        {methodSteps.map((step) => (
+          <li class="method-step scroll-reveal">
+            <span class="method-index">{step.index}</span>
+            <div>
+              <h3 class="display-serif">{step.title}</h3>
+              <p>{step.copy}</p>
+            </div>
+            <span class="method-detail">{step.detail}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="projects" class="container section-block systems-section">
+      <div class="section-heading systems-heading">
+        <div>
+          <p class="section-kicker">CURRENT DIRECTIONS</p>
+          <h2 class="display-serif section-title">现在持续推进的<br />三个方向。</h2>
+        </div>
+        <p>它们不是包装用的能力标签，而是我正在反复做、反复使用、也会继续公开记录的长期主题。</p>
+      </div>
+
+      <div class="systems-list">
+        {systems.map((system) => (
+          <a href={system.href} class="system-card scroll-reveal">
+            <span class="system-index">{system.index}</span>
+            <div class="system-main">
+              <p class="system-label">{system.label}</p>
+              <h3 class="display-serif">{system.title}</h3>
+              <p class="system-subtitle">{system.subtitle}</p>
+              <p class="system-copy">{system.copy}</p>
+              <p class="system-deliverable"><span>关注点</span>{system.deliverable}</p>
+            </div>
+            <span class="system-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="systems-action">
+        <a href="/projects" class="text-link">查看项目台账 <span>→</span></a>
+        <a href="/tools" class="text-link muted">进入工具箱 <span>→</span></a>
+      </div>
+    </section>
+
+    <section id="proof" class="container section-block proof-section">
+      <div class="section-heading proof-heading">
+        <p class="section-kicker">PUBLIC WORKBENCH</p>
+        <h2 class="display-serif section-title">公开的东西不是装饰，<br />而是我持续工作的<strong>痕迹。</strong></h2>
+      </div>
+
+      <div class="proof-grid">
+        {proofs.map((proof) => (
+          <a href={proof.href} class="proof-card scroll-reveal">
+            <div class="proof-meta">
+              <span>{proof.index}</span>
+              <span>{proof.label}</span>
+            </div>
+            <strong class="display-serif">{proof.value}</strong>
+            <p>{proof.copy}</p>
+            <span class="proof-arrow">打开 <em>→</em></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="blog" class="container section-block writing-section">
+      <div class="section-heading writing-heading">
+        <div>
+          <p class="section-kicker">WRITING</p>
+          <h2 class="display-serif section-title">最近公开的判断与实验。</h2>
+        </div>
+        <a href="/blog" class="text-link">全部文章 <span>→</span></a>
+      </div>
+
+      <div class="blog-list">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date.toISOString()}
+            tags={post.data.tags}
+            slug={post.id}
+            image={post.data.image}
+          />
+        ))}
+      </div>
+    </section>
+
+    <section id="contact" class="container section-block contact-section">
+      <div class="contact-card">
+        <div class="contact-copy">
+          <p class="section-kicker">CONTACT</p>
+          <h2 class="display-serif section-title">做类似方向的，<br /><em>直接找我。</em></h2>
+          <p>AI、自动化、内容产品、学习工具这些方向都可以聊。希望结识一起做东西的人，而不只是交换名片。</p>
+        </div>
+        <div class="contact-action">
+          <a href={contactHref} class="btn-primary contact-primary">发邮件联系我 <span>→</span></a>
+          <ul aria-label="开始沟通前可以准备的材料">
+            <li><span>01</span>正在做或想做的一件事</li>
+            <li><span>02</span>一个确实卡住你的问题</li>
+            <li><span>03</span>你希望一起推进的方向</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .hero-section {
+    padding-top: clamp(5.5rem, 10vw, 8.5rem);
+    padding-bottom: clamp(3.75rem, 7vw, 6.5rem);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 0.62fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: end;
+  }
+
+  .hero-copy {
+    max-width: 47rem;
+  }
+
+  .hero-title {
+    margin-top: 1.15rem;
+    font-size: clamp(2.8rem, 6.4vw, 5.75rem);
+    line-height: 1.01;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .hero-title em,
+  .section-title em,
+  .section-title strong {
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: inherit;
+  }
+
+  .hero-lede {
+    max-width: 41rem;
+    margin-top: 1.55rem;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    line-height: 1.9;
+    text-wrap: pretty;
+  }
+
+  .hero-actions,
+  .systems-action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .hero-actions {
+    margin-top: 2rem;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 2.85rem;
+    padding: 0.65rem 1.1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  }
+
+  .btn-primary {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    color: var(--color-accent-ink);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--text);
+    color: var(--text);
+    transform: translateY(-1px);
+  }
+
+  .hero-note {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-note i {
+    width: 1.6rem;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .now-rail {
+    position: relative;
+    max-width: 20rem;
+    padding: 0.15rem 0 0.1rem 1.3rem;
+    border-left: 1px solid var(--border-strong);
+  }
+
+  .now-rail::before {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 3px;
+    height: 2.1rem;
+    background: var(--color-accent);
+    content: '';
+  }
+
+  .now-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .now-head span:first-child {
+    color: var(--color-accent);
+  }
+
+  .now-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .now-list li {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .now-list a {
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: 0.7rem;
+    padding: 0.85rem 0;
+    color: var(--text);
+    transition: color 0.16s ease, padding 0.16s ease;
+  }
+
+  .now-list a:hover {
+    padding-left: 0.25rem;
+    color: var(--color-accent);
+  }
+
+  .now-index {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+
+  .now-copy {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .now-copy strong {
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .now-copy small {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .now-link {
+    display: inline-flex;
+    gap: 0.42rem;
+    margin-top: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: border-color 0.16s ease, color 0.16s ease;
+  }
+
+  .now-link span {
+    color: var(--color-accent);
+  }
+
+  .now-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .section-block {
+    padding-top: clamp(4.75rem, 8vw, 7.75rem);
+    padding-bottom: clamp(1rem, 2.5vw, 2.5rem);
+  }
+
+  .section-heading {
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .narrow-heading {
+    max-width: 48rem;
+  }
+
+  .section-title {
+    margin-top: 0.75rem;
+    font-size: clamp(2rem, 4.1vw, 3.55rem);
+    line-height: 1.12;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+  }
+
+  .problem-card {
+    min-height: 18.5rem;
+    padding: 1.3rem clamp(1.05rem, 2.2vw, 1.65rem) 1.55rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.18s ease;
+  }
+
+  .problem-card:first-child {
+    border-left: 1px solid var(--border);
+  }
+
+  .problem-card:hover {
+    background: color-mix(in srgb, var(--surface) 78%, transparent);
+  }
+
+  .problem-meta,
+  .proof-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .problem-meta span:first-child,
+  .proof-meta span:first-child {
+    color: var(--color-accent);
+  }
+
+  .problem-card h3 {
+    margin-top: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+    line-height: 1.1;
+  }
+
+  .problem-card p {
+    margin-top: 0.85rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .method-section {
+    padding-top: clamp(5.5rem, 10vw, 9rem);
+  }
+
+  .method-heading,
+  .systems-heading,
+  .writing-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(17rem, 0.7fr);
+    gap: clamp(2rem, 7vw, 7rem);
+    align-items: end;
+  }
+
+  .method-heading > p,
+  .systems-heading > p {
+    max-width: 27rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .method-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .method-step {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr) minmax(10rem, 0.4fr);
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-index,
+  .system-index {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .method-step h3 {
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+  }
+
+  .method-step p {
+    max-width: 43rem;
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .method-detail {
+    justify-self: end;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.11em;
+    line-height: 1.5;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .systems-section {
+    padding-top: clamp(5.5rem, 10vw, 9rem);
+  }
+
+  .systems-list {
+    border-top: 1px solid var(--border);
+  }
+
+  .system-card {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    padding: 2.1rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .system-card:hover {
+    background: color-mix(in srgb, var(--surface) 68%, transparent);
+    color: var(--text);
+  }
+
+  .system-card:hover h3,
+  .system-card:hover .system-arrow {
+    color: var(--color-accent);
+  }
+
+  .system-label,
+  .system-subtitle,
+  .system-deliverable span {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .system-main h3 {
+    margin-top: 0.55rem;
+    font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+    line-height: 1.1;
+    transition: color 0.18s ease;
+  }
+
+  .system-subtitle {
+    margin-top: 0.45rem;
+  }
+
+  .system-copy {
+    max-width: 47rem;
+    margin-top: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.78;
+  }
+
+  .system-deliverable {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .system-deliverable span {
+    color: var(--color-accent);
+  }
+
+  .system-arrow {
+    align-self: center;
+    color: var(--text-muted);
+    font-size: 1.35rem;
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+
+  .system-card:hover .system-arrow {
+    transform: translateX(4px);
+  }
+
+  .systems-action {
+    margin-top: 1.5rem;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.16s ease, border-color 0.16s ease;
+  }
+
+  .text-link span {
+    color: var(--color-accent);
+    transition: transform 0.16s ease;
+  }
+
+  .text-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .text-link:hover span {
+    transform: translateX(3px);
+  }
+
+  .text-link.muted {
+    color: var(--text-secondary);
+  }
+
+  .proof-section {
+    padding-top: clamp(5.5rem, 10vw, 9rem);
+  }
+
+  .proof-heading {
+    max-width: 57rem;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+
+  .proof-card {
+    min-height: 16rem;
+    padding: 1.2rem;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.18s ease;
+  }
+
+  .proof-card:hover {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .proof-card strong {
+    display: block;
+    margin-top: clamp(2.75rem, 5vw, 4.5rem);
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    line-height: 1.15;
+  }
+
+  .proof-card p {
+    margin-top: 0.7rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .proof-arrow {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .proof-arrow em {
+    display: inline-block;
+    font-style: normal;
+    transition: transform 0.16s ease;
+  }
+
+  .proof-card:hover .proof-arrow em {
+    transform: translateX(3px);
+  }
+
+  .writing-section {
+    padding-top: clamp(5.5rem, 10vw, 9rem);
+  }
+
+  .writing-heading {
+    align-items: end;
+  }
+
+  .writing-heading > .text-link {
+    justify-self: end;
+    margin-bottom: 0.4rem;
+  }
+
+  .blog-list {
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-section {
+    padding-top: clamp(5.5rem, 10vw, 9rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    padding: clamp(1.5rem, 4.2vw, 3.2rem);
+    border: 1px solid var(--border-strong);
+    border-left: 4px solid var(--color-accent);
+    background: var(--surface);
+  }
+
+  .contact-copy > p:last-child {
+    max-width: 39rem;
+    margin-top: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .contact-action {
+    display: grid;
+    align-content: start;
+    gap: 1.35rem;
+  }
+
+  .contact-primary {
+    width: fit-content;
+  }
+
+  .contact-action ul {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contact-action li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.7rem;
+    align-items: baseline;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .contact-action li span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 920px) {
+    .hero-grid,
+    .method-heading,
+    .systems-heading,
+    .writing-heading,
+    .contact-card {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      gap: 2.5rem;
+    }
+
+    .now-rail {
+      width: 100%;
+      max-width: none;
+      padding: 1.1rem 0 0;
+      border-top: 1px solid var(--border-strong);
+      border-left: 0;
+    }
+
+    .now-rail::before {
+      top: -1px;
+      left: 0;
+      width: 2.1rem;
+      height: 3px;
+    }
+
+    .now-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .now-list li {
+      border-bottom: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .now-list li:first-child {
+      border-left: 0;
+    }
+
+    .now-list a {
+      min-height: 5.7rem;
+      grid-template-columns: 1.8rem minmax(0, 1fr);
+      padding: 0.9rem 0.75rem;
+    }
+
+    .method-heading > p,
+    .systems-heading > p {
+      margin: 0;
+    }
+
+    .writing-heading > .text-link {
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .problem-grid,
+    .proof-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .problem-card,
+    .problem-card:first-child {
+      min-height: 0;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .problem-card h3 {
+      margin-top: 2.5rem;
+    }
+
+    .method-step,
+    .system-card {
+      grid-template-columns: 3.4rem minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+
+    .method-detail,
+    .system-arrow {
+      grid-column: 2;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .system-arrow {
+      display: none;
+    }
+
+    .proof-card {
+      min-height: 13.5rem;
+    }
+
+    .proof-card strong {
+      margin-top: 2.25rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .container {
+      padding-right: 1.1rem;
+      padding-left: 1.1rem;
+    }
+
+    .hero-title br,
+    .section-title br {
+      display: none;
+    }
+
+    .hero-note {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      line-height: 1.55;
+    }
+
+    .hero-note i {
+      margin-top: 0.5rem;
+    }
+
+    .now-list {
+      grid-template-columns: 1fr;
+      border-bottom: 0;
+    }
+
+    .now-list li {
+      border-bottom: 1px solid var(--border);
+      border-left: 0;
+    }
+
+    .now-list a {
+      min-height: 0;
+      padding: 0.72rem 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    if (!revealElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach((element) => observer.observe(element));
+  })();
+</script>

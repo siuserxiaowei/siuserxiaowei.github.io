@@ -1,0 +1,2661 @@
+{
+  "content": {
+    "range_data": {
+      "detail": {
+        "rangeData": [
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "视频",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 0,
+            "originalCellValue": "视频",
+            "rowFrom": 0,
+            "rowTo": 0,
+            "understandableType": {
+              "type": "string",
+              "value": "视频"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "教学",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 0,
+            "originalCellValue": "教学",
+            "rowFrom": 0,
+            "rowTo": 0,
+            "understandableType": {
+              "type": "string",
+              "value": "教学"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单号",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 0,
+            "originalCellValue": "单号",
+            "rowFrom": 0,
+            "rowTo": 0,
+            "understandableType": {
+              "type": "string",
+              "value": "单号"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "布局",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 0,
+            "originalCellValue": "布局",
+            "rowFrom": 0,
+            "rowTo": 0,
+            "understandableType": {
+              "type": "string",
+              "value": "布局"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单天",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 0,
+            "originalCellValue": "单天",
+            "rowFrom": 0,
+            "rowTo": 0,
+            "understandableType": {
+              "type": "string",
+              "value": "单天"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "项目",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 1,
+            "originalCellValue": "项目",
+            "rowFrom": 1,
+            "rowTo": 1,
+            "understandableType": {
+              "type": "string",
+              "value": "项目"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "暴力",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 1,
+            "originalCellValue": "暴力",
+            "rowFrom": 1,
+            "rowTo": 1,
+            "understandableType": {
+              "type": "string",
+              "value": "暴力"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "暴利",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 1,
+            "originalCellValue": "暴利",
+            "rowFrom": 1,
+            "rowTo": 1,
+            "understandableType": {
+              "type": "string",
+              "value": "暴利"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "佣金",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 1,
+            "originalCellValue": "佣金",
+            "rowFrom": 1,
+            "rowTo": 1,
+            "understandableType": {
+              "type": "string",
+              "value": "佣金"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "秘密",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 1,
+            "originalCellValue": "秘密",
+            "rowFrom": 1,
+            "rowTo": 1,
+            "understandableType": {
+              "type": "string",
+              "value": "秘密"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "玩法",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 2,
+            "originalCellValue": "玩法",
+            "rowFrom": 2,
+            "rowTo": 2,
+            "understandableType": {
+              "type": "string",
+              "value": "玩法"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "训练营",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 2,
+            "originalCellValue": "训练营",
+            "rowFrom": 2,
+            "rowTo": 2,
+            "understandableType": {
+              "type": "string",
+              "value": "训练营"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "风口",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 2,
+            "originalCellValue": "风口",
+            "rowFrom": 2,
+            "rowTo": 2,
+            "understandableType": {
+              "type": "string",
+              "value": "风口"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "亲测",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 2,
+            "originalCellValue": "亲测",
+            "rowFrom": 2,
+            "rowTo": 2,
+            "understandableType": {
+              "type": "string",
+              "value": "亲测"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "闷声",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 2,
+            "originalCellValue": "闷声",
+            "rowFrom": 2,
+            "rowTo": 2,
+            "understandableType": {
+              "type": "string",
+              "value": "闷声"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "教程",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 3,
+            "originalCellValue": "教程",
+            "rowFrom": 3,
+            "rowTo": 3,
+            "understandableType": {
+              "type": "string",
+              "value": "教程"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "赚钱",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 3,
+            "originalCellValue": "赚钱",
+            "rowFrom": 3,
+            "rowTo": 3,
+            "understandableType": {
+              "type": "string",
+              "value": "赚钱"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "干货",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 3,
+            "originalCellValue": "干货",
+            "rowFrom": 3,
+            "rowTo": 3,
+            "understandableType": {
+              "type": "string",
+              "value": "干货"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "搞钱",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 3,
+            "originalCellValue": "搞钱",
+            "rowFrom": 3,
+            "rowTo": 3,
+            "understandableType": {
+              "type": "string",
+              "value": "搞钱"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "解密",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 3,
+            "originalCellValue": "解密",
+            "rowFrom": 3,
+            "rowTo": 3,
+            "understandableType": {
+              "type": "string",
+              "value": "解密"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "揭秘",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 4,
+            "originalCellValue": "揭秘",
+            "rowFrom": 4,
+            "rowTo": 4,
+            "understandableType": {
+              "type": "string",
+              "value": "揭秘"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "创业",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 4,
+            "originalCellValue": "创业",
+            "rowFrom": 4,
+            "rowTo": 4,
+            "understandableType": {
+              "type": "string",
+              "value": "创业"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "免费",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 4,
+            "originalCellValue": "免费",
+            "rowFrom": 4,
+            "rowTo": 4,
+            "understandableType": {
+              "type": "string",
+              "value": "免费"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "详解",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 4,
+            "originalCellValue": "详解",
+            "rowFrom": 4,
+            "rowTo": 4,
+            "understandableType": {
+              "type": "string",
+              "value": "详解"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "吸金",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 4,
+            "originalCellValue": "吸金",
+            "rowFrom": 4,
+            "rowTo": 4,
+            "understandableType": {
+              "type": "string",
+              "value": "吸金"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "变现",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 5,
+            "originalCellValue": "变现",
+            "rowFrom": 5,
+            "rowTo": 5,
+            "understandableType": {
+              "type": "string",
+              "value": "变现"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "掘金",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 5,
+            "originalCellValue": "掘金",
+            "rowFrom": 5,
+            "rowTo": 5,
+            "understandableType": {
+              "type": "string",
+              "value": "掘金"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "培训",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 5,
+            "originalCellValue": "培训",
+            "rowFrom": 5,
+            "rowTo": 5,
+            "understandableType": {
+              "type": "string",
+              "value": "培训"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "傻瓜式",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 5,
+            "originalCellValue": "傻瓜式",
+            "rowFrom": 5,
+            "rowTo": 5,
+            "understandableType": {
+              "type": "string",
+              "value": "傻瓜式"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "细分",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 5,
+            "originalCellValue": "细分",
+            "rowFrom": 5,
+            "rowTo": 5,
+            "understandableType": {
+              "type": "string",
+              "value": "细分"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "最新",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 6,
+            "originalCellValue": "最新",
+            "rowFrom": 6,
+            "rowTo": 6,
+            "understandableType": {
+              "type": "string",
+              "value": "最新"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "收入",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 6,
+            "originalCellValue": "收入",
+            "rowFrom": 6,
+            "rowTo": 6,
+            "understandableType": {
+              "type": "string",
+              "value": "收入"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "红利",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 6,
+            "originalCellValue": "红利",
+            "rowFrom": 6,
+            "rowTo": 6,
+            "understandableType": {
+              "type": "string",
+              "value": "红利"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单月",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 6,
+            "originalCellValue": "单月",
+            "rowFrom": 6,
+            "rowTo": 6,
+            "understandableType": {
+              "type": "string",
+              "value": "单月"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "教会",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 6,
+            "originalCellValue": "教会",
+            "rowFrom": 6,
+            "rowTo": 6,
+            "understandableType": {
+              "type": "string",
+              "value": "教会"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "轻松",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 7,
+            "originalCellValue": "轻松",
+            "rowFrom": 7,
+            "rowTo": 7,
+            "understandableType": {
+              "type": "string",
+              "value": "轻松"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "冷门",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 7,
+            "originalCellValue": "冷门",
+            "rowFrom": 7,
+            "rowTo": 7,
+            "understandableType": {
+              "type": "string",
+              "value": "冷门"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "打法",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 7,
+            "originalCellValue": "打法",
+            "rowFrom": 7,
+            "rowTo": 7,
+            "understandableType": {
+              "type": "string",
+              "value": "打法"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "教你",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 7,
+            "originalCellValue": "教你",
+            "rowFrom": 7,
+            "rowTo": 7,
+            "understandableType": {
+              "type": "string",
+              "value": "教你"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "解读",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 7,
+            "originalCellValue": "解读",
+            "rowFrom": 7,
+            "rowTo": 7,
+            "understandableType": {
+              "type": "string",
+              "value": "解读"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "操作",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 8,
+            "originalCellValue": "操作",
+            "rowFrom": 8,
+            "rowTo": 8,
+            "understandableType": {
+              "type": "string",
+              "value": "操作"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单日",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 8,
+            "originalCellValue": "单日",
+            "rowFrom": 8,
+            "rowTo": 8,
+            "understandableType": {
+              "type": "string",
+              "value": "单日"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "保姆式",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 8,
+            "originalCellValue": "保姆式",
+            "rowFrom": 8,
+            "rowTo": 8,
+            "understandableType": {
+              "type": "string",
+              "value": "保姆式"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "正规",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 8,
+            "originalCellValue": "正规",
+            "rowFrom": 8,
+            "rowTo": 8,
+            "understandableType": {
+              "type": "string",
+              "value": "正规"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "一单",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 8,
+            "originalCellValue": "一单",
+            "rowFrom": 8,
+            "rowTo": 8,
+            "understandableType": {
+              "type": "string",
+              "value": "一单"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "小白",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 9,
+            "originalCellValue": "小白",
+            "rowFrom": 9,
+            "rowTo": 9,
+            "understandableType": {
+              "type": "string",
+              "value": "小白"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "搭建",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 9,
+            "originalCellValue": "搭建",
+            "rowFrom": 9,
+            "rowTo": 9,
+            "understandableType": {
+              "type": "string",
+              "value": "搭建"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "解析",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 9,
+            "originalCellValue": "解析",
+            "rowFrom": 9,
+            "rowTo": 9,
+            "understandableType": {
+              "type": "string",
+              "value": "解析"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单人",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 9,
+            "originalCellValue": "单人",
+            "rowFrom": 9,
+            "rowTo": 9,
+            "understandableType": {
+              "type": "string",
+              "value": "单人"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "纯利润",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 9,
+            "originalCellValue": "纯利润",
+            "rowFrom": 9,
+            "rowTo": 9,
+            "understandableType": {
+              "type": "string",
+              "value": "纯利润"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "月入",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 10,
+            "originalCellValue": "月入",
+            "rowFrom": 10,
+            "rowTo": 10,
+            "understandableType": {
+              "type": "string",
+              "value": "月入"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "入门",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 10,
+            "originalCellValue": "入门",
+            "rowFrom": 10,
+            "rowTo": 10,
+            "understandableType": {
+              "type": "string",
+              "value": "入门"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "日入",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 10,
+            "originalCellValue": "日入",
+            "rowFrom": 10,
+            "rowTo": 10,
+            "understandableType": {
+              "type": "string",
+              "value": "日入"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "秘诀",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 10,
+            "originalCellValue": "秘诀",
+            "rowFrom": 10,
+            "rowTo": 10,
+            "understandableType": {
+              "type": "string",
+              "value": "秘诀"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "盘点",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 10,
+            "originalCellValue": "盘点",
+            "rowFrom": 10,
+            "rowTo": 10,
+            "understandableType": {
+              "type": "string",
+              "value": "盘点"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "收益",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 11,
+            "originalCellValue": "收益",
+            "rowFrom": 11,
+            "rowTo": 11,
+            "understandableType": {
+              "type": "string",
+              "value": "收益"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "流程",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 11,
+            "originalCellValue": "流程",
+            "rowFrom": 11,
+            "rowTo": 11,
+            "understandableType": {
+              "type": "string",
+              "value": "流程"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "案例",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 11,
+            "originalCellValue": "案例",
+            "rowFrom": 11,
+            "rowTo": 11,
+            "understandableType": {
+              "type": "string",
+              "value": "案例"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "每月",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 11,
+            "originalCellValue": "每月",
+            "rowFrom": 11,
+            "rowTo": 11,
+            "understandableType": {
+              "type": "string",
+              "value": "每月"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单店",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 11,
+            "originalCellValue": "单店",
+            "rowFrom": 11,
+            "rowTo": 11,
+            "understandableType": {
+              "type": "string",
+              "value": "单店"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "实战",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 12,
+            "originalCellValue": "实战",
+            "rowFrom": 12,
+            "rowTo": 12,
+            "understandableType": {
+              "type": "string",
+              "value": "实战"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "首发",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 12,
+            "originalCellValue": "首发",
+            "rowFrom": 12,
+            "rowTo": 12,
+            "understandableType": {
+              "type": "string",
+              "value": "首发"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "盈利",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 12,
+            "originalCellValue": "盈利",
+            "rowFrom": 12,
+            "rowTo": 12,
+            "understandableType": {
+              "type": "string",
+              "value": "盈利"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "爆品",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 12,
+            "originalCellValue": "爆品",
+            "rowFrom": 12,
+            "rowTo": 12,
+            "understandableType": {
+              "type": "string",
+              "value": "爆品"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "靠卖",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 12,
+            "originalCellValue": "靠卖",
+            "rowFrom": 12,
+            "rowTo": 12,
+            "understandableType": {
+              "type": "string",
+              "value": "靠卖"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "课程",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 13,
+            "originalCellValue": "课程",
+            "rowFrom": 13,
+            "rowTo": 13,
+            "understandableType": {
+              "type": "string",
+              "value": "课程"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "特训营",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 13,
+            "originalCellValue": "特训营",
+            "rowFrom": 13,
+            "rowTo": 13,
+            "understandableType": {
+              "type": "string",
+              "value": "特训营"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "普通人",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 13,
+            "originalCellValue": "普通人",
+            "rowFrom": 13,
+            "rowTo": 13,
+            "understandableType": {
+              "type": "string",
+              "value": "普通人"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "方法论",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 13,
+            "originalCellValue": "方法论",
+            "rowFrom": 13,
+            "rowTo": 13,
+            "understandableType": {
+              "type": "string",
+              "value": "方法论"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "答疑",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 13,
+            "originalCellValue": "答疑",
+            "rowFrom": 13,
+            "rowTo": 13,
+            "understandableType": {
+              "type": "string",
+              "value": "答疑"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "实操",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 14,
+            "originalCellValue": "实操",
+            "rowFrom": 14,
+            "rowTo": 14,
+            "understandableType": {
+              "type": "string",
+              "value": "实操"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "长期",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 14,
+            "originalCellValue": "长期",
+            "rowFrom": 14,
+            "rowTo": 14,
+            "understandableType": {
+              "type": "string",
+              "value": "长期"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "讲解",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 14,
+            "originalCellValue": "讲解",
+            "rowFrom": 14,
+            "rowTo": 14,
+            "understandableType": {
+              "type": "string",
+              "value": "讲解"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "打通",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 14,
+            "originalCellValue": "打通",
+            "rowFrom": 14,
+            "rowTo": 14,
+            "understandableType": {
+              "type": "string",
+              "value": "打通"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "SOP",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 14,
+            "originalCellValue": "SOP",
+            "rowFrom": 14,
+            "rowTo": 14,
+            "understandableType": {
+              "type": "string",
+              "value": "SOP"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "蓝海",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 15,
+            "originalCellValue": "蓝海",
+            "rowFrom": 15,
+            "rowTo": 15,
+            "understandableType": {
+              "type": "string",
+              "value": "蓝海"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "玩转",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 15,
+            "originalCellValue": "玩转",
+            "rowFrom": 15,
+            "rowTo": 15,
+            "understandableType": {
+              "type": "string",
+              "value": "玩转"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "实测",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 15,
+            "originalCellValue": "实测",
+            "rowFrom": 15,
+            "rowTo": 15,
+            "understandableType": {
+              "type": "string",
+              "value": "实测"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "偏门",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 15,
+            "originalCellValue": "偏门",
+            "rowFrom": 15,
+            "rowTo": 15,
+            "understandableType": {
+              "type": "string",
+              "value": "偏门"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "零基础",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 15,
+            "originalCellValue": "零基础",
+            "rowFrom": 15,
+            "rowTo": 15,
+            "understandableType": {
+              "type": "string",
+              "value": "零基础"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "无脑",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 16,
+            "originalCellValue": "无脑",
+            "rowFrom": 16,
+            "rowTo": 16,
+            "understandableType": {
+              "type": "string",
+              "value": "无脑"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "副业",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 16,
+            "originalCellValue": "副业",
+            "rowFrom": 16,
+            "rowTo": 16,
+            "understandableType": {
+              "type": "string",
+              "value": "副业"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "每日",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 16,
+            "originalCellValue": "每日",
+            "rowFrom": 16,
+            "rowTo": 16,
+            "understandableType": {
+              "type": "string",
+              "value": "每日"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "保底",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 16,
+            "originalCellValue": "保底",
+            "rowFrom": 16,
+            "rowTo": 16,
+            "understandableType": {
+              "type": "string",
+              "value": "保底"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "无门槛",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 4,
+            "colTo": 4,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 4,
+            "originRow": 16,
+            "originalCellValue": "无门槛",
+            "rowFrom": 16,
+            "rowTo": 16,
+            "understandableType": {
+              "type": "string",
+              "value": "无门槛"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "新手",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 17,
+            "originalCellValue": "新手",
+            "rowFrom": 17,
+            "rowTo": 17,
+            "understandableType": {
+              "type": "string",
+              "value": "新手"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "拆解",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 17,
+            "originalCellValue": "拆解",
+            "rowFrom": 17,
+            "rowTo": 17,
+            "understandableType": {
+              "type": "string",
+              "value": "拆解"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "操盘手",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 17,
+            "originalCellValue": "操盘手",
+            "rowFrom": 17,
+            "rowTo": 17,
+            "understandableType": {
+              "type": "string",
+              "value": "操盘手"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单条",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 17,
+            "originalCellValue": "单条",
+            "rowFrom": 17,
+            "rowTo": 17,
+            "understandableType": {
+              "type": "string",
+              "value": "单条"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "赛道",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 18,
+            "originalCellValue": "赛道",
+            "rowFrom": 18,
+            "rowTo": 18,
+            "understandableType": {
+              "type": "string",
+              "value": "赛道"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "底层",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 18,
+            "originalCellValue": "底层",
+            "rowFrom": 18,
+            "rowTo": 18,
+            "understandableType": {
+              "type": "string",
+              "value": "底层"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "单品",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 18,
+            "originalCellValue": "单品",
+            "rowFrom": 18,
+            "rowTo": 18,
+            "understandableType": {
+              "type": "string",
+              "value": "单品"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "低成本",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 18,
+            "originalCellValue": "低成本",
+            "rowFrom": 18,
+            "rowTo": 18,
+            "understandableType": {
+              "type": "string",
+              "value": "低成本"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "保姆级",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 0,
+            "colTo": 0,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 0,
+            "originRow": 19,
+            "originalCellValue": "保姆级",
+            "rowFrom": 19,
+            "rowTo": 19,
+            "understandableType": {
+              "type": "string",
+              "value": "保姆级"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "进阶",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 1,
+            "colTo": 1,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 1,
+            "originRow": 19,
+            "originalCellValue": "进阶",
+            "rowFrom": 19,
+            "rowTo": 19,
+            "understandableType": {
+              "type": "string",
+              "value": "进阶"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "攻略",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 2,
+            "colTo": 2,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 2,
+            "originRow": 19,
+            "originalCellValue": "攻略",
+            "rowFrom": 19,
+            "rowTo": 19,
+            "understandableType": {
+              "type": "string",
+              "value": "攻略"
+            }
+          },
+          {
+            "alignment": {
+              "horizontal": "haCenter",
+              "vertical": "vaCenter"
+            },
+            "cellText": "全攻略",
+            "cellValueType": "basic",
+            "cell_background_color": "#FFFFFFFF",
+            "colFrom": 3,
+            "colTo": 3,
+            "fonts": {
+              "color": "#FF000000",
+              "size": 11
+            },
+            "hasBorder": false,
+            "isCellPic": false,
+            "numFormat": "G/通用格式",
+            "originCol": 3,
+            "originRow": 19,
+            "originalCellValue": "全攻略",
+            "rowFrom": 19,
+            "rowTo": 19,
+            "understandableType": {
+              "type": "string",
+              "value": "全攻略"
+            }
+          }
+        ]
+      },
+      "result": "ok"
+    },
+    "sheets_info": {
+      "detail": {
+        "sheetsInfo": [
+          {
+            "colFrom": 0,
+            "colTo": 4,
+            "isEmpty": false,
+            "isProtected": false,
+            "isVisible": true,
+            "maxCol": 16383,
+            "maxRow": 1048575,
+            "rowFrom": 0,
+            "rowTo": 19,
+            "sheetId": 3,
+            "sheetIdx": 0,
+            "sheetName": "Sheet1",
+            "sheetType": "et"
+          }
+        ]
+      },
+      "result": "ok"
+    }
+  },
+  "content_format": "sheet_range",
+  "drive_id": "2524825563",
+  "file_id": "M8scz1QqH9MztyE1cAngrxkCZMRAUBBWb",
+  "name": "项目关联词汇.xlsx",
+  "status": "ok",
+  "suffix": ".xlsx",
+  "warnings": [
+    "未指定工作表名称，已默认读取第一张可解析的工作表；若需指定表请传入 sheet_name。"
+  ]
+}

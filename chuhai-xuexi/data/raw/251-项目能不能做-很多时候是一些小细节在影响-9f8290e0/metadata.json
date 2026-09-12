@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1760097621,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "84bbdf6911b9f2d23e27c1b592f832e244985fdb",
+    "type": "sha1"
+  },
+  "id": "eo6Yc8LVMrMTTBrxrt1vxxDgbbgippmWN",
+  "link_id": "ciWWD4pCiTfI",
+  "link_url": "https://www.kdocs.cn/l/ciWWD4pCiTfI",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1760097621,
+  "name": "251：项目能不能做，很多时候是一些小细节在影响.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 3148072,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/251：项目能不能做，很多时候是一些小细节在影响.otl"
+}

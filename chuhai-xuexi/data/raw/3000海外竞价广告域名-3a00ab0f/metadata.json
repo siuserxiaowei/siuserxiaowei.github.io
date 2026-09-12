@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1763625713,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "44c100662a853899359fcf9d8a571bbcc3e26abe",
+    "type": "sha1"
+  },
+  "id": "sKix8iCsjrMz9DrkBwte1xj7gKipiAr6j",
+  "link_id": "cnoI9UYes2f7",
+  "link_url": "https://www.kdocs.cn/l/cnoI9UYes2f7",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1763625713,
+  "name": "3000海外竞价广告域名.xlsx",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": true,
+    "copy_content": true,
+    "delete": false,
+    "download": true,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": true,
+    "rename": false,
+    "saveas": true,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": true,
+  "size": 283334,
+  "type": "file",
+  "version": 1,
+  "path": "3000海外竞价广告域名.xlsx"
+}

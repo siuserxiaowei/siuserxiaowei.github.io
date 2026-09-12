@@ -1,0 +1,24 @@
+GPT Image 2 on ChatGPT 
+
+Prompt;
+
+Create a premium square “reference-style transportation infographic” centered around {VEHICLE_NAME}, designed as a beautifully curated engineering handbook page rather than a commercial poster.
+
+The composition should feel like a modern visual encyclopedia mixed with a high-end industrial design manual and elite editorial infographic system.
+
+Visual Direction:
+
+• 1:1 square composition
+• Soft light-toned technical background with subtle blueprint textures and schematic overlays
+• Elegant muted palette using graphite gray, titanium silver, deep navy, steel blue, and soft white accents
+• Refined editorial typography hierarchy
+• Rounded modular information cards with clean spacing
+• Gentle realistic shadows and premium UI-style dividers
+• Minimal technical iconography
+• Extremely detailed central vehicle render viewed in dramatic three-quarter perspective
+• Thin precision annotation lines pointing toward engineering systems and structural details
+• Clean, organized “knowledge-first” layout with high information density but breathable spacing
+
+Main Subject Presentation:
+
+A stunning ultra-detailed realistic render of the {VEHICLE_NAME} placed at the cen

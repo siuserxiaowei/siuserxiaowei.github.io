@@ -1,0 +1,24 @@
+source_id	url	source_type	tier	status	access_date	owner_worker	title	notes
+SRC-001	https://luma.com/kwon9drc	official	required	verified	2026-08-09	factcheck	Indie Hackers Meetup in Shanghai	活动名、Marc Lou、Spark Lab、时间地点；379 Went 不等于实际到场人数
+SRC-002	https://x.com/marclou	social	required	verified	2026-08-09	factcheck	Marc Lou on X	本人活动帖；页面为时变快照
+SRC-003	https://x.com/damonchen	social	required	verified	2026-08-09	factcheck	Damon Chen on X	本人简介与活动当天帖
+SRC-004	https://marclou.com/	official	required	verified	2026-08-09	factcheck	Marc Lou Indie Page	作品与收入均为本人页面自报，非审计
+SRC-005	https://shipfa.st/	official	required	verified	2026-08-09	factcheck	ShipFast	产品用途、一次性价格和 Marc 自述
+SRC-006	https://datafa.st/	official	required	verified	2026-08-09	factcheck	DataFast	产品用途；收入归因与网站分析
+SRC-007	https://zenvoice.io/	official	required	verified	2026-08-09	factcheck	Zenvoice	Stripe 发票与 0.4% fee 主张
+SRC-008	https://trustmrr.com/	official	required	verified	2026-08-09	factcheck	TrustMRR	收入数据库与收购市场定位
+SRC-009	https://testimonial.to/	official	required	verified	2026-08-09	factcheck	Testimonial	Damon 产品与 Wall of Love 嵌入机制
+SRC-010	https://pdf.ai/	official	important	verified	2026-08-09	factcheck	PDF.ai	Damon 产品线交叉线索
+SRC-011	https://www.youtube.com/watch?v=eqgUjOByexc	media	important	verified	2026-08-09	factcheck	I failed 27 startups and made $1M as a SOLO developer	Marc 本人长视频；字幕只用于交叉核对叙事，收入仍属自述
+SRC-012	https://www.ycombinator.com/library/4D-yc-s-essential-startup-advice	official	important	verified	2026-08-09	strategy	YC's essential startup advice	支持尽早上线、谈用户、手工服务首批客户
+SRC-013	https://www.cdc.gov/sleep/about/index.html	official	important	verified	2026-08-09	strategy	About Sleep	成人睡眠与睡眠卫生公共健康建议
+SRC-014	https://pubmed.ncbi.nlm.nih.gov/12683469/	paper	important	verified	2026-08-09	strategy	Cumulative cost of additional wakefulness	受限睡眠随机实验
+SRC-015	https://docs.stripe.com/products-prices/pricing-models	docs	important	verified	2026-08-09	strategy	Recurring pricing models	固定、席位、阶梯与按量等定价模型
+SRC-016	https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business	official	important	verified	2026-08-09	strategy	CAN-SPAM Compliance Guide	美国商业邮件合规边界；不代表全球规则
+SRC-017	https://www.apa.org/topics/research/multitasking	official	important	verified	2026-08-09	strategy	Multitasking Switching Costs	任务切换研究综述
+SRC-018	https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program/nistir-8259-series	official	important	verified	2026-08-09	strategy	NISTIR 8259 Series	IoT 全生命周期安全能力与支持责任
+SRC-019	https://www.sequoiacap.com/article/pmf-framework/	official	important	verified	2026-08-09	strategy	PMF Framework	Hair on Fire、Hard Fact、Future Vision 三路径
+SRC-020	https://doi.org/10.1177/002224379303000203	paper	important	verified	2026-08-09	strategy	Pioneer Advantage Marketing Logic or Marketing Legend	先驱失败与早期领导者的历史研究
+SRC-021	https://doi.org/10.1287/mksc.2017.1066	paper	important	verified	2026-08-09	strategy	Field Experiments on Email Personalization	营销邮件个性化随机现场实验；不可直接外推所有 B2B 冷邮件
+SRC-022	https://doi.org/10.1287/mnsc.1110.1421	paper	important	verified	2026-08-09	strategy	Creating Social Contagion Through Viral Product Design	特定社交产品的病毒功能随机现场实验
+SRC-023	https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf	paper	important	verified	2026-08-09	strategy	AI Index Report 2025	AI 推理成本与能力商品化趋势

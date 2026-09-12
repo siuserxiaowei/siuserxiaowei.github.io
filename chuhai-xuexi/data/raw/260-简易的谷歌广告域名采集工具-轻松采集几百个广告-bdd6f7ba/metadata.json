@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1762959380,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "15c753f07b75a547c38586f096fc640afc8edb56",
+    "type": "sha1"
+  },
+  "id": "mNpoSzkAxrMxgAmtW3BvxxmD23XvE5vBA",
+  "link_id": "ceTYJ45Ijguv",
+  "link_url": "https://www.kdocs.cn/l/ceTYJ45Ijguv",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1762959380,
+  "name": "260：简易的谷歌广告域名采集工具-轻松采集几百个广告.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 930043,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/260：简易的谷歌广告域名采集工具-轻松采集几百个广告.otl"
+}

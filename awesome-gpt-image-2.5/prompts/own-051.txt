@@ -1,0 +1,17 @@
+[Event Information]
+- Event Name: Margins and Structures
+- Date & Time: October 12 – November 24, 2026
+- Venue: National Museum of Modern Art
+
+[Quality, Direction, and Composition Specifications]
+- Style: A poster for a contemporary art exhibition or modern design event, clean and minimalist editorial layout.
+- Visual Elements: A beautiful live-action composition conveying silence and intelligence, set against geometric abstract art objects or concrete and glass architectural spaces.
+- Typography Placement (For GPT-image / Nano Banana Pro): In the empty margins of the screen, the event name 'Margins and Structures', the date 'October 12 – November 24, 2026', and venue information 'National Museum of Modern Art' are beautifully laid out in a sophisticated, modern sans-serif font. The typography harmonizes without detracting from the beauty of the overall image.
+- Lighting & Color: A clean space based on white, cool natural light with soft gradients of light, neutral tones with accent colors (e.g., navy or dark gray).
+
+[Strict Layout and Output Constraints (Required)]
+- Output the completed design itself, filling the entire canvas. Scene descriptions inside the design (walls, spaces, shadows) may follow the text instructions.
+- Prohibited items: Photographs of the finished poster inside a frame, stuck to a wall, mockup photos placed on tables or paper, perspective distortion of paper edges, or drop shadows.
+- Output the finished flat 2D design itself, filling the entire canvas. Scene elements inside the design (walls, rooms, shadows) described above are allowed. Absolutely NO photo-of-a-poster mockups: no picture frames, no poster-on-wall or poster-on-desk shots, no perspective warp or drop shadow around the artwork's edges.
+
+- Aspect Ratio: --ar 3:4

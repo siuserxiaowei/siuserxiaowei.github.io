@@ -1,0 +1,25 @@
+Create image: A hyper-photorealistic shot of the same subject in the attached image.
+
+Main subject / quality details:
+Rosy complexion with dewy skin and korean pinkish glow, authentic skin texture with visible pores, glossy jelly lips with reflective shine, softly highlighted cheekbones, realistic under-eye texture, subtle nose highlight, visible skin sheen from direct indoor lighting.
+
+Expression or mood:
+Flirty playful Y2K bedroom selfie energy, exaggerated pout lips, one eye half closed in teasing expression, relaxed sleepy gaze. Mood feels feminine, internet-girl aesthetic and spontaneous.
+
+Camera settings:
+A hyper-realistic, ultra-sharp photograph taken on an iPhone 15 Pro, characterized by digital clarity, focal point eye subject but rendere the background sharp with soft blur characterized by high end smartphone, shot at ISO 100. 4k rendered, normal white balance, natural lighting, no cinematic color grading. sharp facial details. Bright bedroom lighting with soft phone flash bounce, realistic indoor white balance, slight grain from low-light smartphone processing.
+
+Hair:
+Dark brown hair dyed vivid pink with darker brown undertones visible near roots, sleek straight texture with inward upward curl near shoulders, two thin braided face strands framing cheeks, glossy synthetic-dye shine.
+
+Outfit:
+White fluffy Bratz bucket hat, pastel pink spaghetti strap tank top, silver heart pendant necklace, light washed denim jeans visible in foreground, glossy nude nails.
+
+Background:
+Minimal dim bedroom with dark curtains and faint computer monitor glow in far background, soft neutral walls, intimate late-night room atmosphere.
+
+Composition:
+Close half-body selfie framing. Bent knee occupies lower left foreground creating casual depth. Subject positioned slightly right-of-center. Hat creates rounded silhouette framing face. Leading lines from braids and shoulder straps direct focus toward lips and eyes.
+
+Negative prompt:
+cartoonish, AI-looking, plastic skin, distorted anatomy, over-smoothed face, blurry face, heavy bokeh, stiff pose, center-facing ID-photo style, unrealistic pink hair texture, waxy lips

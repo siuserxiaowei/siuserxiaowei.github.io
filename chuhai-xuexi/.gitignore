@@ -1,0 +1,5 @@
+.DS_Store
+*.log
+.kdocs-token*
+tmp/
+node_modules/

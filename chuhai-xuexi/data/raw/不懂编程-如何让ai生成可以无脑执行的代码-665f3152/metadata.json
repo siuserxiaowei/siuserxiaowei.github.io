@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1746011071,
+  "drive_id": "2524825563",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "0c745e438ac5d9a5b02664728a02d90a50ee706d",
+    "type": "sha1"
+  },
+  "id": "A57U1UCmF1MFUajTuWVK1xkHCaVT9SGxC",
+  "link_id": "cbpc0XW6X6WD",
+  "link_url": "https://www.kdocs.cn/l/cbpc0XW6X6WD",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1746011071,
+  "name": "不懂编程，如何让AI生成可以无脑执行的代码.otl",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 1216815,
+  "type": "file",
+  "version": 1,
+  "path": "不懂编程，如何让AI生成可以无脑执行的代码.otl"
+}

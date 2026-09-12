@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1763024648,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "09c298b9ccd072d72e4272374ad27134635a8b8b",
+    "type": "sha1"
+  },
+  "id": "PfQki7TUP1MT8bk3J25t1xtvALDvZaK5z",
+  "link_id": "cqWOCRbMa57W",
+  "link_url": "https://www.kdocs.cn/l/cqWOCRbMa57W",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1763024648,
+  "name": "261：小技巧-挖掘公众号里进入流量池的热门短文案.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": true,
+    "copy_content": true,
+    "delete": false,
+    "download": true,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": true,
+    "rename": false,
+    "saveas": true,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": true,
+  "size": 981360,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/261：小技巧-挖掘公众号里进入流量池的热门短文案.otl"
+}

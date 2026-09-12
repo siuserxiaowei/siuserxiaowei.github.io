@@ -1,0 +1,280 @@
+# 25年内容归类整理.otl
+
+> 在线互动学习页：https://siuserxiaowei.github.io/chuhai-xuexi/learn/25年内容归类整理-9cafeaa7/
+
+## 来源
+
+- 金山路径：25年内容归类整理.otl
+- 金山链接：https://www.kdocs.cn/l/ctKAtgvqf1q0
+- 文件 ID：`A6PvV8xUw1Mo5GMXBZhFrxzZ2L1VGHDuF`
+- GitHub Markdown：https://siuserxiaowei.github.io/chuhai-xuexi/content/25年内容归类整理-9cafeaa7.md
+
+## 学习入口
+
+打开互动学习页可以查看翻页式学习卡、提示词、清单、自测题和道法术器势拆解：
+
+https://siuserxiaowei.github.io/chuhai-xuexi/learn/25年内容归类整理-9cafeaa7/
+
+## 正文
+
+# 25年内容归类整理.otl
+
+- 来源路径：25年内容归类整理.otl
+- 金山链接：https://www.kdocs.cn/l/ctKAtgvqf1q0
+- 文件 ID：`A6PvV8xUw1Mo5GMXBZhFrxzZ2L1VGHDuF`
+25年内容归类整理  
+文档说明：  
+1：有些分享本身以群聊合集的方式发送，并没有专有链接，请在文档：[君言戏语VIP会员专属内容 - 群主分享 - 2025.otl](https://www.kdocs.cn/l/cujQakR1GnDz)中查找相应标题；  
+2：仅对光以标题无法简单了解内容的分享做简要说明或突出重点；  
+3：每个版块中的内容谨按标题长度排序，与重要性无关；  
+  
+PS：手机浏览可以在右下角点击“目录”选择篇幅。  
+  
+### 项目篇（31）：
+
+ps：应该研究/可以模仿的模式、需求；  
+
+| [210：他们在公众号这样卖老年人商品，这可能是一个人做出来的.otl](https://www.kdocs.cn/l/cbfUCHol1SGj)<br>一个公众号矩阵做淘客的模式~ | [243：有钱赚，钱还不少，但不能停的项目.otl](https://www.kdocs.cn/l/cuCqpICoqsDd)<br>优质小工具需求 | [178：给希望但并不一定解决问题的服务-压缩包密码破解.otl](https://www.kdocs.cn/l/cotvPB3LkE1G)<br>没有交付结果的服务 | [175：长尾模式 + 模板化内容 + 广告变现的典型案例.otl](https://www.kdocs.cn/l/crMdvMETLjL8)<br>软件类内容的长尾流量~ |
+| --- | --- | --- | --- |
+
+
+| [234：8年的数据采集站 - 单一的数据“大”，也有钱.otl](https://www.kdocs.cn/l/clXWqPsXl1Qh) | [196：依托线上专栏矩阵售卖动态资讯-再生资源信息.otl](https://www.kdocs.cn/l/crwTZWCQoFZw)<br>冷门信息 | [172：把公众号当朋友圈发的手机算命软件业务模式.otl](https://www.kdocs.cn/l/ce5cRY6Yqu1L)<br>无脑发布 | [176：这么简单的东西为什么也可以成为一种产品.otl](https://www.kdocs.cn/l/ci5JyWtIMtiy)<br>资讯内容公众号 |
+| --- | --- | --- | --- |
+
+
+| [201：又一个流量大、不起眼、业务单一的需求.otl](https://www.kdocs.cn/l/ckFIln4sZidN)<br>竞价查询业务 | [209：用大热门业务下的细分来做流量小生意.otl](https://www.kdocs.cn/l/clFvvQprS560)<br>细分需求 | [181：小红书连载《微信对话》的内容形式.otl](https://www.kdocs.cn/l/cuTaDyJNSayp)<br> | [180：闲鱼 + 企微 + 外卖cps 的组合模式.otl](https://www.kdocs.cn/l/cjis4VbiyCaj)<br>咸鱼低价引流模式 |
+| --- | --- | --- | --- |
+
+
+| [185：老项目在细分领域里寻找更大的商机.otl](https://www.kdocs.cn/l/cs18aIJGWpUg)<br>老项目细分人群 | [200：平平无奇的优质业务：空号检测服务.otl](https://www.kdocs.cn/l/cdWtxyhq3u1v)<br>api接口服务 | [235：利用贪G事件做内容，引流体制内人群，社群收费900元.otl](https://www.kdocs.cn/l/cbqCggFKo7QR)<br>ai洗稿新闻案例 | [160：细分人群矩阵微信群自动躺赚业务.otl](https://www.kdocs.cn/l/cs1WjyodjKKy)<br>矩阵卖微信群 |
+| --- | --- | --- | --- |
+
+
+| [163：有积累可持续的项目-找文机器人.otl](https://www.kdocs.cn/l/csgeblQO1NM3)<br>自动化模式 | [204：小学资料会员制-长尾流量的力量.otl](https://www.kdocs.cn/l/cn4NxhA1ALwA)<br>成熟的模式 | [237：一直看到的东西反而是你忽略的东西，但它一天能有近千营收.otl](https://www.kdocs.cn/l/chtA4HRNSur4)<br>不起眼的需求 | [157：自媒体平台改地址定位的业务.otl](https://www.kdocs.cn/l/cfvqEGtdkN4K) |
+| --- | --- | --- | --- |
+
+
+| [208：编一个生硬的故事骗我看广告.otl](https://www.kdocs.cn/l/coAlBhatAtzt) | [173：微信上的小生意-证件照打印.otl](https://www.kdocs.cn/l/csdZsLkJVEe0)<br>冷门的热需求 | [189：年轻人的小生意：真~id定制.otl](https://www.kdocs.cn/l/cmxe8JuMTv5m)<br>年轻人无所谓的娱乐钱 | [187：竞价业务-奥特曼资源合集.otl](https://www.kdocs.cn/l/cdjZFBdd40hH)<br> |
+| --- | --- | --- | --- |
+
+
+| 竞价业务-聊天截图生成器<br>稳定的小工具需求 | 抖音推广的小工具：证件照处理<br>需求量很大 | 百度竞价付费开通公众号<br>信息差买卖 | 小红书心理测试6.6万单<br>近期销量很大 |
+| --- | --- | --- | --- |
+
+
+| [165：老年人寿宴邀请函项目.otl](https://www.kdocs.cn/l/cnkrx2NLEL13?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018556710&traceparent=00-bcc0d5f56e3d1d3dbf94d18460ef1e63-c70debe326108e30-01-10)<br> | 驾考app的产业<br>暴利项目<br> | 一次性修复芝麻粉项目<br>优质虚拟产品 |  |
+| --- | --- | --- | --- |
+
+  
+### 案例篇（36）：
+
+ps：值得借鉴/学习别人想法的案例；  
+
+| [258：还是要做这种不变的需求，3年前的软文现在一天还有快2000的点击量.otl](https://www.kdocs.cn/l/ckSt9gAHZc0E?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767019054882&traceparent=00-0e0922158a2a5e96d0562c3f5bdfb8f1-2a6d8273af85ec9e-01-10)<br>知乎爆文 | [270：在百度搜索中占第一的特殊结果：结构化数据.otl](https://www.kdocs.cn/l/cifpMke1a5M2)<br>百度seo策略<br> | [273：大量的有一点点专业的内容就会成为收费门槛.otl](https://www.kdocs.cn/l/cb9452XCEmjH)<br>领域ip | [267：不会骗人的蛛丝马迹可以告诉你：能赚钱.otl](https://www.kdocs.cn/l/chbuleWDvTOd)<br>通过数据验证项目 |
+| --- | --- | --- | --- |
+
+
+| 闲鱼卖朋友圈防折叠功能- 一份一两百 | [240：一个小孩子的娱乐需求，这也能赚钱.otl](https://www.kdocs.cn/l/cahQgJ0MZTi4) | 不承担交付结果-征信查询类项目<br>风险项目 | 1天几千单的百度网盘不限速下载<br>通过数据分析收益 |
+| --- | --- | --- | --- |
+
+
+| 小红书用聊天记录展开软文营销  | 3篇文章10几年贡献1千万流量<br>10几年做一个小需求 | b站好物 流量远超 知乎好物<br>数据调研案例 | [171：安装包业务的静默操作套路.otl](https://www.kdocs.cn/l/caWdcLOhfEjT)<br> |
+| --- | --- | --- | --- |
+
+
+| [169：“春节倒计时”模板内容.otl](https://www.kdocs.cn/l/cciTfBfc4rf9) | 虚拟产品-得物订单截图 | [254：隐藏在灰C里的流量机制.otl](https://www.kdocs.cn/l/cvvsRXrF1kRl) | 星座类公众号付费文章 |
+| --- | --- | --- | --- |
+
+
+| 真实悬疑案件付费文章 | 公众号返佣商品内容号 | 公众号老年情感内容 | 煤价信息会员群模式 |
+| --- | --- | --- | --- |
+
+
+| [212：案例：知乎相亲引流的策略.otl](https://www.kdocs.cn/l/ce4gbGM8OjHR) | 苹果安卓查询业务 | 金数据卖实物表单 | 蚂蚁能量包月浇花 |
+| --- | --- | --- | --- |
+
+
+| [244：导航站的赚钱门道.otl](https://www.kdocs.cn/l/cqkyxDMDQfai)<br>导航站的变现 | [248：买一颗星星送给你.otl](https://www.kdocs.cn/l/ctIjyYJnq8tJ)<br>优质项目的特质 | 拼多多助力<br>1年时间能做8.5万单 | 闲鱼卖影视资源<br> |
+| --- | --- | --- | --- |
+
+
+| 三力测试纸质版 | ai梦境解析项目 | 小语种公众号 | wps共享会员 |
+| --- | --- | --- | --- |
+
+
+| 爆文公众号 | 寻物服务 | 跨年红包群 | 小红书版盲盒纸条 |
+| --- | --- | --- | --- |
+
+  
+### 思维篇（28）：
+
+ps：巧妙的思路、方式、操作，创新的想法；  
+
+| [206：通过数据图表来看出目标公众号流量来源于搜索的可能性.otl](https://www.kdocs.cn/l/cvSyxFtKR85l)<br>在模仿之前应该先判断流量类型 | [275：一天把几天的内容爆了，公众号推荐流量的一个经验.otl](https://www.kdocs.cn/l/cnFeCiE2E1An)<br>实操情况 | [268：一个很有想法的抖音账号引流方式-适合强需求业务.otl](https://www.kdocs.cn/l/cgXIQIY9A4LV?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767019071713&traceparent=00-83cdfb3dc098bd3b29e8b2347e23dbba-4d7da29b5f564390-01-10)<br>利用百科的创意引流 | [166：利用新榜导出功能收集小红书tiktok难民账号.otl](https://www.kdocs.cn/l/cq8uzDqXKyuf)<br> |
+| --- | --- | --- | --- |
+
+
+| [220：ima的7个运用示例(提供一份数据给大家研究).otl](https://www.kdocs.cn/l/cho2iPYun2CG) | [251：项目能不能做，很多时候是一些小细节在影响.otl](https://www.kdocs.cn/l/ciWWD4pCiTfI) | [219：借助ima知识库来处理关键词数据-归纳需求.otl](https://www.kdocs.cn/l/cbjXOEZWk3iL) | [221：怎么找到那些依靠直接访问流量的优质网站？.otl](https://www.kdocs.cn/l/ciJmQmnpwvoc)<br>用户行为特征的利用 |
+| --- | --- | --- | --- |
+
+
+| [可套用的思路：怎么寻找项目中的重要信息 ](https://mp.weixin.qq.com/s/KL-9ptlPZmGnruphOFMClQ)<br>挖掘项目的核心信息 | [242：看起来才投放半年的广告其实投放了四五年.otl](https://www.kdocs.cn/l/coFyfZc6SJwg)<br> | [236：有一个固定的模式可以写出好的软文广告.otl](https://www.kdocs.cn/l/clgv0iERiHLQ) | [184：如何挖掘指定年龄段人群的搜索需求？.otl](https://www.kdocs.cn/l/clgzZEBz0yaI) |
+| --- | --- | --- | --- |
+
+
+| [197：尝试用低成本的方式来测试某些业务.otl](https://www.kdocs.cn/l/cfsfZT2gQaxS?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018754864&traceparent=00-4890e67e1dfd9d237fd2a6a133f51ea9-0e827cc78462b1a4-01-10) | 公众号文章仿js效果-图片ppt轮播 | [217：不同平台的替代功能带来的商机.otl](https://www.kdocs.cn/l/ciL6GAiGB71Y?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018895462&traceparent=00-f7d18d2a39cfac2bcc96341e08a0a752-7e6fe2202d643ffe-01-10)<br> | 让AI基于数据来写创意性的内容 |
+| --- | --- | --- | --- |
+
+
+| [182：把旧产品转换为新服务的逻辑.otl](https://www.kdocs.cn/l/cqNwo6xuRD1H?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018585589&traceparent=00-37dba77ca501758c11dfbb6781e42646-c94ffc99316871ff-01-10)<br> | [222：同行的时间和钱花在哪.otl](https://www.kdocs.cn/l/cdf1q0vM98nO) | [235：一个实用小技巧.otl](https://www.kdocs.cn/l/cm9qW9DRm83o)<br>查询竞价广告流量 | 预防类需求<br>为未知的焦虑买单 |
+| --- | --- | --- | --- |
+
+
+| 日常培养自己对需求的理解 | 找特定竞价广告的思路 | 利用失效的品牌词截流 | [233：突发性需求的价值点.otl](https://www.kdocs.cn/l/cjShFt21BeBZ) |
+| --- | --- | --- | --- |
+
+
+| 搜索引擎排名小技巧 | 微信号截流的升级版 | 闲鱼商品起号 | seo排名的假量 |
+| --- | --- | --- | --- |
+
+  
+### 思考篇（15）：
+
+ps：值得引发思考的一些问题；  
+
+| [190：刚上的号第一天就有几千曝光，技巧是：选择.otl](https://www.kdocs.cn/l/ctTtBEbwslu3) | 记一次我与deepseek愉快的聊天~ | 南北方对“小生意”的不同理解 | 关于公众号推荐流量的一点理解 |
+| --- | --- | --- | --- |
+
+
+| [241：关注违规业务延伸的合法业务.otl](https://www.kdocs.cn/l/cqmHx14xglLV)<br>暴利的违规业务里也有合法的细分需求 | [162：“跨年群”可能的变现形式.otl](https://www.kdocs.cn/l/cpfOoKPCu9xv)<br> | [214：关与AI“合理”运用的逻辑.otl](https://www.kdocs.cn/l/cn24BfjNvdwl)<br> | [211：1比1复制别人的逻辑.otl](https://www.kdocs.cn/l/cs5OH8p75yeb)<br>模仿的精髓 |
+| --- | --- | --- | --- |
+
+
+| [161：再谈闲鱼“好商品”.otl](https://www.kdocs.cn/l/celt9EsDK7wi) | [199：AI爆文项目能不能做_.otl](https://www.kdocs.cn/l/ckzytxawSP4m) | 盘点导航类的内容模式 | [156：关于小绿书的想法.otl](https://www.kdocs.cn/l/cqcTAn3bQq5X) |
+| --- | --- | --- | --- |
+
+
+| [218：流量买卖模式思考.otl](https://www.kdocs.cn/l/cvaKcQa9uuM9) | [238：对新词的一点理解.otl](https://www.kdocs.cn/l/ckZrkU8ZWVDy) | seo排名的假量 |  |
+| --- | --- | --- | --- |
+
+  
+### 挖掘篇（14）：
+
+ps：实用的挖掘技术和方法，获得更多信息；  
+
+| [255：不止可以看到很多广告业务，你还可以看到它们的点击量.otl](https://www.kdocs.cn/l/cenqG9L4j26h)<br>挖掘广告和相应流量 | [259：简单的思路可以一次性获得大量现成的虚拟资源.otl](https://www.kdocs.cn/l/cvknzQokdY5c)<br> | [261：小技巧-挖掘公众号里进入流量池的热门短文案.otl](https://www.kdocs.cn/l/cqWOCRbMa57W)<br> | 关于“极致的挖掘自己领域的长尾词”工作<br>领域关键词极致挖掘 |
+| --- | --- | --- | --- |
+
+
+| [213：低成本挖掘小红书可变现内容的简单操作.otl](https://www.kdocs.cn/l/ceIAGmayxBKj) | [177：自动挖掘无限虚拟资源的另一种策略.otl](https://www.kdocs.cn/l/cjM4SgpIbpPB) | [272：虚拟资源挖掘-一次查询5000万资源.otl](https://www.kdocs.cn/l/chR5CRWlpevZ) | [252：怎么发现更多不知道的测试业务.otl](https://www.kdocs.cn/l/cocoaEEwBBf5) |
+| --- | --- | --- | --- |
+
+
+| 可能被忽视的百度ai导流站<br>百度ai导流大站 | [249：寻找可以优化GEO的站点.otl](https://www.kdocs.cn/l/cjDxR2DX0fwM)<br> | 百度AI的聊天记录<br>百度ai域名里隐藏的需求<br> | [239：哪些生意频繁的打开支付界面？.otl](https://www.kdocs.cn/l/ckIOmMr0U7ZX)<br>支付接口连接的业务 |
+| --- | --- | --- | --- |
+
+
+| 知乎广告挖掘 | [205：发现好的推文文案.otl](https://www.kdocs.cn/l/conVRiX2ds4L) | [010602.otl](https://www.kdocs.cn/l/ce5MwKpfMYvP)<br>年度会员专属文章 |  |
+| --- | --- | --- | --- |
+
+  
+### 海外篇（15）：
+
+ps：海外优秀站点、需求、产品；  
+
+| [257：对热点的极致反应，做出一天5000多流量的产品.otl](https://www.kdocs.cn/l/cbO1gbLGSxbo)<br> | [253：人性底层需求能撑起百万访问量的大站.otl](https://www.kdocs.cn/l/crkLu7j6cY3W) | [250：老业务另辟蹊径-两年内做出两个大站.otl](https://www.kdocs.cn/l/csv5ZVDBGI8Q)<br>20几年的小业务 | [246：海外站点案例-跨地域的信息差.otl](https://www.kdocs.cn/l/cd7m7YVNpP4a)<br>跨越文化的人性需求 |
+| --- | --- | --- | --- |
+
+
+| 海外多语言seo流量策略的案例<br>经典案例 | 老报纸的另一个需求-家族溯源<br>查询类需求 | 单一工具站创造页面的SEO思路<br>seo原创手段 | 海外需求-隐私政策生成器<br>小众需求 |
+| --- | --- | --- | --- |
+
+
+| [247：海外SEO流量站-取名业务.otl](https://www.kdocs.cn/l/caHuaUIBCN7d)<br> | [274：一天250美元打赏的需求.otl](https://www.kdocs.cn/l/ccuOpGSrhOyI?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767019083505&traceparent=00-792f171b1871577e95dd206ae5e1e761-e21f8d995ef258ac-01-10)<br>超级大需求 | 海外“变清晰”的需求<br>超级大需求 | 无所谓的钱-数字情书<br>娱乐类需求，在投流 |
+| --- | --- | --- | --- |
+
+
+| [256：文游指令的web变现.otl](https://www.kdocs.cn/l/cakz8zKihXvX) | 海外寻找墓地网站<br>近30年的站点，思想超前。 | 海外车辆查询业务<br>查询类需求 |  |
+| --- | --- | --- | --- |
+
+  
+### 产品篇（7）：
+
+ps：冷门、小众、创意的程序应用；  
+
+| [195：冷门小众的查询需求-潮汐表.otl](https://www.kdocs.cn/l/cj4fZ7gjXJLy?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018752017&traceparent=00-248d89b2791b7532926a38a9db0bf0c1-b0a5c06f5634aa04-01-10) | [203：撸广告收益的小应用-情头.otl](https://www.kdocs.cn/l/ca1tC9o8Vzxc) | 教粤语的自动收益小程序 | [164：简单直接的短剧搜索器.otl](https://www.kdocs.cn/l/cpXXyhVGFjdI) |
+| --- | --- | --- | --- |
+
+
+| 望舌检测小程序 | 道歉小人应用 | 在线打字软件 |  |
+| --- | --- | --- | --- |
+
+  
+### 程序篇（6）：
+
+ps：25年分享的脚步程序；  
+
+| [260：简易的谷歌广告域名采集工具-轻松采集几百个广告.otl](https://www.kdocs.cn/l/ceTYJ45Ijguv) | [分享一个公众号批量上传图片获取图片链接的脚本.otl](https://www.kdocs.cn/l/ckAexvQJCKNg) | [216：第一次零基础做个插件 ：一个提效小功能.otl](https://www.kdocs.cn/l/ccql28sDjZKq) | [公号模板文章生成器-完整版.otl](https://www.kdocs.cn/l/cpEkONr1qY7Z) |
+| --- | --- | --- | --- |
+
+
+| [159：提取同质词脚本程序.otl](https://www.kdocs.cn/l/ctxZ9QDZ4UTH?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018541314&traceparent=00-a14bcab543d1707d387f3cd7d6226884-00fe52f10054d15e-01-10) | [关键词聚类工具-轻松掌握一个词的所有商业需求.otl](https://www.kdocs.cn/l/clslzSoPRY0y) |  |  |
+| --- | --- | --- | --- |
+
+  
+### 工具篇（15）：
+
+ps：在官方功能的基础上，用不同角度，创造更多的工具价值；  
+
+| [188：工具使用-新榜_分钟级监测-研究账号流量倾向.otl](https://www.kdocs.cn/l/ccqojgVP4p08)<br> | [179：工具使用-新榜_按关键词导出作品_抖音.otl](https://www.kdocs.cn/l/cuKGGRvLdRKd)<br> | [155：工具使用-新榜_按关键词导出作品.otl](https://www.kdocs.cn/l/cs7EqVrYbz8i)<br> | 新榜声量通-项目的“赚钱指数”<br>通过指数判断业务含金量 |
+| --- | --- | --- | --- |
+
+
+| [207：分享一个免费自媒体采集插件.otl](https://www.kdocs.cn/l/cfKZ6wdd7JXj)<br>采集小红书和抖音 | 新榜按关键词查询作品总数<br>每天全网公众号的发布量 | [264：网页时光机的妙用.otl](https://www.kdocs.cn/l/chVm6shm8DpR)<br>观察同行付款页面的改动细节 | 新榜工具-自定义榜单<br>公众号流量变差时可以比对 |
+| --- | --- | --- | --- |
+
+
+| 谷歌广告的官方查询<br>挖掘谷歌投流广告 | 闲鱼用户昵称查询<br>通过特殊词汇找业务 | 新榜一次搜索200个公众号 | 新榜查询公众号<br>搜索技巧 |
+| --- | --- | --- | --- |
+
+
+| [167：什么类型的文章获得更多的赞赏.otl](https://www.kdocs.cn/l/cpAlBP5uU8EJ) | 利用AI计算自媒体标题特征 | 爱站竞价数据-5万个站点 |  |
+| --- | --- | --- | --- |
+
+  
+### 词汇篇（7）：
+
+ps：关键词或特殊词汇的一些使用或处理；  
+
+| [186：挖掘可以源源不断生产长尾性质内容的特殊词汇.otl](https://www.kdocs.cn/l/cf2c2glVCQf8)<br> | [193：合集类内容的另一种收集词汇.otl](https://www.kdocs.cn/l/cufuFhQ9FOdC?kmonFrom=k_Team_FileList&from=kdocs_pc_web&startTime=1767018749199&traceparent=00-5d2d80174756dbcb39b8f49c22a49733-ca6384dc79661cc9-01-10) | [192：统计关联词缀的通用方式.otl](https://www.kdocs.cn/l/csSFTrA2bmyE) | [关键词报告：面对1亿数据怎么提取需求.otl](https://www.kdocs.cn/l/cgM3BF6wtWns)<br>关键词报告，完整的处理流程 |
+| --- | --- | --- | --- |
+
+
+| [168：特殊词汇-元_次.otl](https://www.kdocs.cn/l/cbUGQ9vQqGxp) | 挖掘公众号广告推文关键词 | 特殊词汇：不成功不收 |  |
+| --- | --- | --- | --- |
+
+  
+### 数据篇（8）：
+
+ps：25年分享的数据文档；  
+
+| [3000海外竞价广告域名.xlsx](https://www.kdocs.cn/l/cnoI9UYes2f7)<br>特殊词汇搜集的广告域名 | [191：100个有“最新”需求的内容方向.otl](https://www.kdocs.cn/l/ctQURM3bD9r6)<br>可以不断输出内容的领域 | [公众号原文链接top500域名.xlsx](https://www.kdocs.cn/l/caaOBHhbyh8s)<br>阅读原文经常出现的链接 | [202：10几万个搜索结构.otl](https://www.kdocs.cn/l/cqc1Pdzhj1TG)<br>名词搜索结构 |
+| --- | --- | --- | --- |
+
+
+| [城市本地化需求词.xlsx](https://www.kdocs.cn/l/cqvcwlLVCcp7)<br> | [xx器app-4000.xlsx](https://www.kdocs.cn/l/ciUzGIhdTGTJ)<br>冷门app的词汇 | [10000App.xlsx](https://www.kdocs.cn/l/cmtSo01WwEwE)<br>1万个iOSapp的数据榜单 | [262：发卡平台合集.otl](https://www.kdocs.cn/l/cljGMWveUO3O)<br>关联大量业务的发卡平台域名 |
+| --- | --- | --- | --- |
+
+  
+### 问题集（5）：
+
+ps：回答会员的问题；  
+
+| [263：实操问题集-寻找海外订阅类蓝海需求的问题解答.otl](https://www.kdocs.cn/l/cai2AkSwQbOT)<br>工具类需求挖掘 | [265：实操问题集-能靠项目赚到钱，但没赚到大钱.otl](https://www.kdocs.cn/l/cvt68hj6c2Rr)<br>不同项目的性质差别 | [266：实操问题集-没有大哥在身边告诉我能赚钱.otl](https://www.kdocs.cn/l/cbTt4NZwaKGY)<br>项目决策的一些判断思路 | [271：实操问题集-寻找流量机会比发外链重要.otl](https://www.kdocs.cn/l/caBQ8TVnjcs2)<br>英文seo关键词 |
+| --- | --- | --- | --- |
+
+
+| [269：实操问题集-无关的经验同样很重要.otl](https://www.kdocs.cn/l/csVYkg2p1xDx)<br>行业常识的重要性 |  |  |  |
+| --- | --- | --- | --- |
+
+  

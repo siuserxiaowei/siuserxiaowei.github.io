@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoneyHunter Raw Archive</title>
+  <meta name="description" content="MoneyHunter 全量原始资料目录，支持路径、类型和目录筛选。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../site/styles.css">
+</head>
+<body data-page="raw" data-root-prefix="../">
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="../index.html"><span class="brand-mark">MH</span><span>MoneyHunter Raw Archive</span></a>
+      <div class="nav-links">
+        <a href="../index.html">学习库</a>
+        <a href="../site/links.html">链接库</a>
+        <a class="active" href="index.html">Raw</a>
+        <a href="https://github.com/siuserxiaowei/moneyhunter-learning-hub/tree/main/raw" target="_blank" rel="noreferrer">GitHub Raw</a>
+      </div>
+    </nav>
+    <section class="masthead">
+      <div>
+        <p class="eyebrow">Original Files</p>
+        <h1>MoneyHunter 原始资料目录</h1>
+      </div>
+      <p class="lede">152 个公开文件 · 保留原始目录结构和中文文件名</p>
+    </section>
+  </header>
+  <main>
+    <section class="raw-toolbar" aria-label="Raw 资料筛选">
+      <label class="search-box">
+        <span>路径搜索</span>
+        <input id="rawSearchInput" type="search" placeholder="输入文件名、目录、标签">
+      </label>
+      <label>
+        <span>文件类型</span>
+        <select id="rawTypeFilter"></select>
+      </label>
+      <span class="result-note" id="rawCount"></span>
+    </section>
+    <section class="raw-grid">
+      <aside class="side-rail">
+        <div class="section-head">
+          <h2>目录</h2>
+          <span id="rawTreeCount"></span>
+        </div>
+        <div class="tree compact-tree" id="rawDirectoryTree"></div>
+      </aside>
+      <div class="table-panel">
+        <div class="section-head">
+          <h2>全量文件</h2>
+          <a class="text-link" href="https://github.com/siuserxiaowei/moneyhunter-learning-hub/tree/main/raw" target="_blank" rel="noreferrer">GitHub Raw</a>
+        </div>
+        <div class="responsive-table">
+          <table class="raw-table">
+            <thead><tr><th>文件</th><th>类型</th><th>年份</th><th>标签</th><th>大小</th></tr></thead>
+            <tbody id="rawTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>MoneyHunter Learning Hub · Raw archive.</p>
+  </footer>
+  <script src="../site/moneyhunter-data.js"></script>
+  <script src="../site/app.js"></script>
+</body>
+</html>

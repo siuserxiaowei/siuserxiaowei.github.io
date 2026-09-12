@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1755431361,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "26f5cbaa228d527625a526b90205ad0b2b8909ae",
+    "type": "sha1"
+  },
+  "id": "vErp61EPh1MCbbUmfXge1xuJ19Hu971my",
+  "link_id": "ckZrkU8ZWVDy",
+  "link_url": "https://www.kdocs.cn/l/ckZrkU8ZWVDy",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1755431361,
+  "name": "238：对新词的一点理解.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 210914,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/238：对新词的一点理解.otl"
+}

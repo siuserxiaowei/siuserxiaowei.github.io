@@ -1,0 +1,17 @@
+# AI App 出海知识库
+
+面向 OPC、超级个体、独立开发者和小团队的 AI App 出海学习与实战站。
+
+## 核心页面
+
+- 首页与知识库：http://gptimage2.store/site/index.html
+- 来源登记：http://gptimage2.store/docs/knowledge-source-register.html
+- 研究证据：http://gptimage2.store/docs/research-evidence-register.html
+- 学习指南：http://gptimage2.store/docs/learning-guide.html
+- 案例学习册：http://gptimage2.store/docs/case-study-workbook.html
+
+## 使用边界
+
+- 不提供完整视频逐字稿或完整逐句翻译。
+- 不把法律、财税、医疗、心理、金融内容写成专业建议。
+- 政策和市场类内容需要按页面标注的核查日期复查。

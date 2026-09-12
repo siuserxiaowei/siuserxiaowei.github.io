@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>帝王蟹 ClawHive｜企业级 AI Agent 竞品销售话术库</title>
+  <meta name="description" content="面向销售和商务人员的企业级 AI Agent 竞品科普与话术库：ClawHive、腾讯 WorkBuddy/QClaw、字节 ArkClaw、智谱 AutoClaw 等。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <a class="brand" href="#top"><span class="brand-mark">🦀</span><span>ClawHive 竞品话术库</span></a>
+      <div class="nav-links">
+        <a href="#numbers">关键数字</a>
+        <a href="#lineage">龙虾 vs 帝王蟹</a>
+        <a href="#cards">竞品卡片</a>
+        <a href="#matrix">四家对比</a>
+        <a href="#persona">客户判断</a>
+        <a href="#decision">选型指南</a>
+        <a href="#objections">异议话术</a>
+        <a href="#facts">事实速查</a>
+      </div>
+    </nav>
+    <section id="top" class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">2026 企业级 AI Agent · 销售现场版</p>
+        <h1>三分钟讲清：各家产品差在哪，为什么还要谈帝王蟹。</h1>
+        <p class="lead">把技术报告压缩成销售可复述的话术：定位、优势、限制、对比切入点，一键复制给客户或会前备忘。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#cards">开始看竞品卡</a>
+          <button class="btn" id="copyElevator" type="button">复制 30 秒话术</button>
+          <a class="btn" href="#decision">直接看选型建议</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="panel-title">核心锚点</div>
+        <p class="quote">“龙虾很强，但企业需要帝王蟹。”</p>
+        <ul class="anchor-list">
+          <li><span>生态中立</span>不绑钉钉、飞书、企微或自建 IM</li>
+          <li><span>模型中立</span>不把客户锁死在单一大模型</li>
+          <li><span>管控中枢</span>权限、数据隔离、审计、合规一体化</li>
+        </ul>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <!-- 30 秒电梯话术（直接展示版） -->
+    <section class="section pitch-section">
+      <div class="section-head row-head">
+        <div>
+          <p class="eyebrow">逐字背熟 · 30 秒讲完</p>
+          <h2>电梯话术</h2>
+        </div>
+        <button class="btn small" id="copyElevatorBlock" type="button">复制这段话</button>
+      </div>
+      <blockquote class="pitch-block" id="pitchBlock"></blockquote>
+    </section>
+
+    <!-- 三大关键数字 -->
+    <section class="section" id="numbers">
+      <div class="section-head">
+        <p class="eyebrow">客户问就能说</p>
+        <h2>四个可交叉验证的关键数字</h2>
+      </div>
+      <div class="numbers-grid" id="numbersGrid"></div>
+    </section>
+
+    <!-- 销售现场判断 -->
+    <section class="section compact">
+      <div class="section-head">
+        <p class="eyebrow">先讲市场，再讲产品</p>
+        <h2>销售现场四个判断</h2>
+      </div>
+      <div class="fact-grid" id="factGrid"></div>
+    </section>
+
+    <!-- 市场地图 -->
+    <section class="section map-section">
+      <div class="section-head row-head">
+        <div>
+          <p class="eyebrow">配套市场地图</p>
+          <h2>2026 企业级 AI Agent 市场地图</h2>
+        </div>
+        <button class="btn small" id="toggleMap" type="button">展开 / 收起地图</button>
+      </div>
+      <div class="map-wrap" id="mapWrap">
+        <img src="assets/market-map.svg" alt="2026 中国企业级 AI Agent 市场地图" />
+      </div>
+    </section>
+
+    <!-- 龙虾 vs 帝王蟹 概念解释 -->
+    <section class="section" id="lineage">
+      <div class="section-head">
+        <p class="eyebrow">核心概念 · 必须先讲清</p>
+        <h2>OpenClaw 龙虾 vs ClawHive 帝王蟹</h2>
+        <p class="section-lead">客户经常把两者混为一谈，这一节把「能力」「局限」「定位」一次讲死。</p>
+      </div>
+      <div class="lineage-grid" id="lineageGrid"></div>
+    </section>
+
+    <!-- 三大安全事件 -->
+    <section class="section" id="incidents">
+      <div class="section-head">
+        <p class="eyebrow">为什么从「能用」到「敢用」</p>
+        <h2>三件已经发生的真实事故</h2>
+        <p class="section-lead">这是企业级管控平台的存在前提，也是客户「等等再说」最有效的反驳武器。</p>
+      </div>
+      <div class="incident-grid" id="incidentGrid"></div>
+    </section>
+
+    <!-- 竞品卡片 -->
+    <section class="section" id="cards">
+      <div class="section-head row-head">
+        <div>
+          <p class="eyebrow">竞品销售战斗卡</p>
+          <h2>选择一个竞品，直接拿话术</h2>
+        </div>
+        <div class="tools">
+          <label class="search-box"><span>搜索</span><input id="searchInput" type="search" placeholder="例如：腾讯、ArkClaw、强监管、RPA" autocomplete="off" /></label>
+          <label class="search-box select-box"><span>阵营</span><select id="categoryFilter"><option value="all">全部</option></select></label>
+        </div>
+      </div>
+      <div class="card-layout">
+        <aside class="product-list" id="productList"></aside>
+        <article class="battle-card" id="battleCard" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <!-- 四家对比 -->
+    <section class="section" id="matrix">
+      <div class="section-head">
+        <p class="eyebrow">核心四家快速横评</p>
+        <h2>ClawHive vs 腾讯 WorkBuddy vs ArkClaw vs AutoClaw</h2>
+      </div>
+      <div class="matrix-wrap"><table class="matrix" id="compareTable"></table></div>
+    </section>
+
+    <!-- 客户成熟度 -->
+    <section class="section" id="maturity">
+      <div class="section-head">
+        <p class="eyebrow">客户分层问法</p>
+        <h2>先问一句：“您这边 AI Agent 处于哪一级？”</h2>
+      </div>
+      <div class="maturity-grid" id="maturityGrid"></div>
+    </section>
+
+    <!-- 客户画像判断树 -->
+    <section class="section" id="persona">
+      <div class="section-head">
+        <p class="eyebrow">三个问题 · 定位客户</p>
+        <h2>客户画像快速判断树</h2>
+        <p class="section-lead">见客户坐下别先讲产品，按这三个问题往下问，自然就把帝王蟹切进去了。</p>
+      </div>
+      <div class="persona-list" id="personaList"></div>
+    </section>
+
+    <!-- 选型决策指南 -->
+    <section class="section" id="decision">
+      <div class="section-head">
+        <p class="eyebrow">六大典型场景</p>
+        <h2>企业选型决策指南</h2>
+        <p class="section-lead">客户场景对号入座，不强推帝王蟹 —— 该让位时就让位，反而更可信。</p>
+      </div>
+      <div class="decision-grid" id="decisionGrid"></div>
+    </section>
+
+    <!-- 异议话术 -->
+    <section class="section" id="objections">
+      <div class="section-head row-head">
+        <div>
+          <p class="eyebrow">客户异议</p>
+          <h2>常见质疑怎么回</h2>
+        </div>
+        <button class="btn small" id="copyAllObjections" type="button">复制全部异议话术</button>
+      </div>
+      <div class="objection-list" id="objectionList"></div>
+    </section>
+
+    <!-- 事实速查表 -->
+    <section class="section" id="facts">
+      <div class="section-head row-head">
+        <div>
+          <p class="eyebrow">客户当场追问 · 直接念这张表</p>
+          <h2>关键事实速查表</h2>
+        </div>
+        <button class="btn small" id="copyFactSheet" type="button">复制全表</button>
+      </div>
+      <div class="facts-table-wrap">
+        <table class="facts-table" id="factsTable"></table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>基于内部材料整理：销售战斗卡、竞品科普报告修订版、OpenClaw 生态深度分析报告。正式对外数据、报价、案例和 SLA 请以厂商官方确认为准。</p>
+    <p><a href="docs/竞品话术清单.md">查看 Markdown 版话术清单</a></p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

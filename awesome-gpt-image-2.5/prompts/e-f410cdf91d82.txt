@@ -1,0 +1,7 @@
+Photorealistic movie poster designed by a professional graphic designer with this concept:
+- The background is the venue, [Name of The Stadium, Location]
+- Main image showing Captain from [Country] Team: [Name] wearing national team jersey head to head with Captain from [Country] Team: [Name] wearing national team jersey
+- Main title is '[Country] vs [Country]'
+- Behind the title, waving flag of [Country] and [Country]
+- Below main title, text '[Name of The Stadium] - [Location], [Date]'
+- At the top, 'World Cup 2026' logo

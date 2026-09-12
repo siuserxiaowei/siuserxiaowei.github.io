@@ -1,0 +1,101 @@
+Create a clean educational FACS Action Unit expression grid featuring a realistic adult female character.
+
+Use minimal studio lighting, neutral white background, high readability, professional facial anatomy reference sheet aesthetic, realistic skin texture, consistent identity across all panels.
+
+COLOR SYSTEM:
+Use soft pastel color coding for categories while keeping the overall sheet minimal and elegant.
+
+Forehead & Brow AUs:
+soft pastel blue
+
+Eye & Eyelid AUs:
+soft pastel lavender
+
+Nose & Cheek AUs:
+soft pastel peach
+
+Lip & Mouth AUs:
+soft pastel pink
+
+Head Movement AUs:
+soft pastel mint
+
+Eye Direction AUs:
+soft pastel cyan
+
+Special / Misc AUs:
+soft pastel beige
+
+Apply the color subtly as:
+- panel background tint
+- thin borders
+- small label accents
+
+Keep colors soft, muted and professional.
+
+Include these Action Units:
+
+GROUPS:
+
+FOREHEAD & BROW
+AU1 Inner Brow Raiser
+AU2 Outer Brow Raiser
+AU4 Brow Lowerer
+AU71 Brow Furrow
+AU72 Brow Bulge
+
+EYE & EYELID
+AU5 Upper Lid Raiser
+AU7 Lid Tightener
+AU41 Lid Droop
+AU42 Slit Eyes
+AU43 Eyes Closed
+AU44 Squint
+AU45 Blink
+AU46 Wink
+
+NOSE & CHEEK
+AU6 Cheek Raiser
+AU9 Nose Wrinkler
+AU11 Nasolabial Deepener
+AU82 Nostril Dilator
+AU83 Nostril Compressor
+
+LIP & MOUTH
+AU10 Upper Lip Raiser
+AU12 Lip Corner Puller
+AU13 Sharp Lip Puller
+AU14 Dimpler
+AU15 Lip Corner Depressor
+AU16 Lower Lip Depressor
+AU17 Chin Raiser
+AU18 Lip Pucker
+AU20 Lip Stretcher
+AU22 Lip Funneler
+AU23 Lip Tightener
+AU24 Lip Pressor
+AU25 Lips Part
+AU26 Jaw Drop
+AU27 Mouth Stretch
+AU28 Lip Suck
+AU84 Tongue Up
+AU85 Tongue Out
+
+HEAD MOVEMENT
+AU51 Head Turn Left
+AU52 Head Turn Right
+AU53 Head Up
+AU54 Head Down
+AU55 Head Tilt Left
+AU56 Head Tilt Right
+AU57 Head Forward
+AU58 Head Back
+
+EYE DIRECTION
+AU61 Eyes Turn Left
+AU62 Eyes Turn Right
+AU63 Eyes Up
+AU64 Eyes Down
+
+SPECIAL / MISC
+AU81 Chewing

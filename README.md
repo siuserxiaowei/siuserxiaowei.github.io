@@ -1,107 +1,22 @@
-# 小白学 AI Portfolio
+# 个人主页与博客
 
-<!-- SIUSER-REPO-GUIDE:START -->
-## 项目介绍 / Project Introduction
+个人 GitHub 首页、作品站与博客。
 
-### 中文
-个人 AI 作品集：展示 AI 工具、内容系统、视觉设计、AI 视频提示词学习站和 GitHub Pages 项目。
+本业务集中管理 **4** 个项目或资料集合。子项目是完整文件目录，不使用子模块。
 
-### English
-Personal AI portfolio for AI tools, content systems, visual design, AI video prompt learning hubs, and GitHub Pages projects.
+## 项目入口
 
-## 使用方式 / Usage
+| 用途分类 | 项目 | 做什么 | 入口 / 状态 |
+|---|---|---|---|
+| 个人展示与博客 | [siuserxiaowei](projects/%E4%B8%AA%E4%BA%BA%E5%B1%95%E7%A4%BA%E4%B8%8E%E5%8D%9A%E5%AE%A2/siuserxiaowei/) | GitHub 个人主页 README，介绍工作方向，并链接项目目录、作品集与联系入口。 | 公开；未归档；本轮已查文件与说明，未运行功能验收 |
+| 个人展示与博客 | [siuserxiaowei.github.io](PRIMARY-README.md) | 个人项目与资料总入口：浏览代码项目、按主题阅读会议资料，并查看作品展示。 | 公开；未归档；本轮已查文件与说明，未运行功能验收 |
+| 个人展示与博客 | [blog](projects/%E4%B8%AA%E4%BA%BA%E5%B1%95%E7%A4%BA%E4%B8%8E%E5%8D%9A%E5%AE%A2/blog/) | 记录 AI 工具、自动化和独立产品开发过程的博客工程；根 README 仍使用框架模板。 | 公开；未归档；本轮已查文件与说明，未运行功能验收 |
+| 个人展示与博客 | [qiaomu-blog-opensource](projects/%E4%B8%AA%E4%BA%BA%E5%B1%95%E7%A4%BA%E4%B8%8E%E5%8D%9A%E5%AE%A2/qiaomu-blog-opensource/) | Cloudflare 博客模板（fork）：基于 OpenNext、Next.js、D1 和 R2 的开源博客参考。 | 公开；未归档；上游参考/贡献副本；未重新运行上游项目 |
 
-### 中文
-1. 优先打开在线入口或本地静态服务查看最终页面。
-2. 内容型仓库通常从 `README.md`、`docs/`、`data/` 或 `content/` 开始阅读。
-3. 更新资料后，重新生成或刷新静态页面，并检查链接、图片和文字是否正常。
+## 使用方式
 
-### English
-1. Start with the live link or a local static server to view the final page.
-2. For content repositories, begin with `README.md`, `docs/`, `data/`, or `content/`.
-3. After updating material, regenerate or refresh the static page and check links, images, and copy.
-
-## 入口与元信息 / Entry Points & Metadata
-
-- GitHub 仓库 / Repository: https://github.com/siuserxiaowei/siuserxiaowei.github.io
-- Live / 在线入口：https://siuserxiaowei.github.io/
-- 默认分支 / Default branch: `main`
-- 主要语言 / Primary language: `HTML`
-- 可见性 / Visibility: `public`
-- 仓库类型 / Repository type: `source`
-
-## 本地运行 / Local Run
-
-```bash
-git clone https://github.com/siuserxiaowei/siuserxiaowei.github.io.git
-cd siuserxiaowei.github.io
-python3 -m http.server 8000
-```
-
-## 仓库结构 / Repository Map
-
-| 路径 / Path | 中文说明 | English |
-| --- | --- | --- |
-| `README.md` | 项目入口说明，先读这里。 | Main project entry point and orientation. |
-| `index.html` | 静态站首页或页面入口。 | Static-site homepage or entry page. |
-| `assets` | 图片、样式、数据等资源。 | Images, styles, data, and other assets. |
-| `docs` | 文档或 GitHub Pages 输出目录。 | Documentation or GitHub Pages output. |
-| `ai-product-meetings-2026-05-10` | 项目文件或目录。 | Project file or directory. |
-| `chuhai-yanxishe-2026-qa-gefei-ai` | 项目文件或目录。 | Project file or directory. |
-| `.nojekyll` | 项目文件或目录。 | Project file or directory. |
-
-## 维护备注 / Maintenance Notes
-
-- 中文：当项目目标、在线入口、运行命令或目录结构变化时，同步更新本说明。
-- English: Keep this guide updated when the project purpose, live link, run commands, or structure changes.
-- 中文：修改代码、数据或生成页面后，优先运行相关构建、测试或校验命令。
-- English: After changing code, data, or generated pages, run the relevant build, test, or validation command.
-
-## 安全与隐私 / Safety & Privacy
-
-- 中文：不要提交 API key、token、密码、cookie、私有链接或内部账号资料。
-- English: Do not commit API keys, tokens, passwords, cookies, private URLs, or internal account data.
-- 中文：公开 GitHub Pages 前，确认资料已脱敏并允许公开。
-- English: Before publishing GitHub Pages output, confirm the material is redacted and cleared for public release.
-<!-- SIUSER-REPO-GUIDE:END -->
-
-
-
-<!-- SIUSER-SEO-INTRO:START -->
-
-## 项目介绍 / Project Introduction
-
-**中文介绍**：个人作品集主页，集中展示 AI 工具实验、内容系统、视觉设计、AI 视频提示词学习站和可公开访问的项目入口。
-
-**English**: A personal portfolio site for AI tool experiments, content systems, visual design work, AI video prompt learning hubs, and public project demos.
-
-**SEO 关键词 / SEO Keywords**: AI portfolio, personal website, GitHub Pages, AI tools, visual design, cinematic prompt, AI video prompts, 个人作品集
-
-<!-- SIUSER-SEO-INTRO:END -->
-
-Personal portfolio and learning lab for `siuserxiaowei`.
-
-- Site: https://siuserxiaowei.github.io/
-- Profile README: https://github.com/siuserxiaowei
-- Latest learning hub: https://siuserxiaowei.github.io/cinematic-ai-visual-prompt-hub/
-- Design language: `docs/design-language.md`
-
-This site is intentionally static: no build step, no tracking script, no external runtime dependency.
-
-<!-- SIUSER-CONTACT:START -->
-
-## 联系我 / Contact
-
-想交流 AI 工具、内容自动化、SEO、私域增长或项目合作，可以扫码加我微信。
-
-For collaboration on AI tools, content automation, SEO, private-domain growth, or product experiments, scan the WeChat QR code below.
-
-<img src="https://raw.githubusercontent.com/siuserxiaowei/siuserxiaowei/main/assets/contact/wechat-qrcode.jpg" width="180" alt="WeChat QR code / 微信二维码" />
-
-**关键词 / Keywords**: AI portfolio, personal website, GitHub Pages, AI tools, AI tools, AI automation, GitHub Pages, SEO
-
-<!-- SIUSER-CONTACT:END -->
-
-## 会议与专题资料
-
-[会议与专题资料库](https://siuserxiaowei.github.io/library/)：按真实主题阅读集中保存的会议与研究材料。
+- 根目录保留主要项目的运行结构；其他项目进入上表对应目录后，按各自 README 安装和启动。
+- 各项目的依赖、许可证、署名和原工作流分别保留，不将不同项目当成一个应用运行。
+- 原分支、标签和拉取请求引用保存在 `source-history/<原仓库>/...` 标签中。
+- `MIGRATION.json` 记录每个项目的原提交与新位置。
+- 子目录里的 GitHub Actions 不会自动运行；需按新项目路径配置工作流和密钥。原有线上部署并不等于迁移后已重新验收。

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoneyHunter 公开链接库</title>
+  <meta name="description" content="MoneyHunter 全量公开交互学习库，支持原文、附件、外链、目录和全文搜索。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="links" data-root-prefix="../">
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">MH</span>
+        <span>MoneyHunter Learning Hub</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">学习库</a>
+        <a class="active" href="links.html">链接库</a>
+        <a href="../docs/moneyhunter-overview.md">文档</a>
+        <a href="../raw/">Raw</a>
+        <a href="https://github.com/siuserxiaowei/moneyhunter-learning-hub" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </nav>
+    <section class="masthead">
+      <div>
+        <p class="eyebrow">Full Public Archive</p>
+        <h1>MoneyHunter 公开链接库</h1>
+      </div>
+      <div class="masthead-actions">
+        <a class="button primary" href="#explore">开始检索</a>
+        <a class="button secondary" href="../raw/">Raw</a>
+        <a class="button secondary" href="../docs/moneyhunter-overview.md">Docs</a>
+      </div>
+    </section>
+  </header>
+  <main>
+
+    <section class="link-summary">
+      <div>
+        <p class="eyebrow">Public Link Index</p>
+        <h1>MoneyHunter 完整链接库</h1>
+      </div>
+      <p class="lede">公开收录全部 URL，按域名、来源文件和主题标签检索。</p>
+    </section>
+    <section class="stats-strip" id="stats" aria-label="链接统计"></section>
+    <section class="link-toolbar" id="explore" aria-label="链接筛选">
+      <label class="search-box">
+        <span>搜索链接</span>
+        <input id="linkSearchInput" type="search" placeholder="域名、URL、来源文件、标签">
+      </label>
+      <label>
+        <span>域名</span>
+        <select id="domainFilter"></select>
+      </label>
+      <label>
+        <span>分组</span>
+        <select id="groupFilter"></select>
+      </label>
+      <span class="result-note" id="linkCount"></span>
+    </section>
+    <section class="link-domain-band">
+      <div class="section-head">
+        <h2>高频域名</h2>
+        <button class="ghost-button" id="clearLinkFilters" type="button">清空筛选</button>
+      </div>
+      <div class="chip-row" id="linkDomainChips"></div>
+    </section>
+    <section class="link-index">
+      <div class="section-head">
+        <h2>链接结果</h2>
+        <div class="pager" aria-label="链接分页">
+          <button class="ghost-button" id="linkPrev" type="button">上一页</button>
+          <span id="linkPager"></span>
+          <button class="ghost-button" id="linkNext" type="button">下一页</button>
+        </div>
+      </div>
+      <div class="link-list" id="linkTableBody"></div>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <p>MoneyHunter Learning Hub · 全量公开资料库 · GitHub Pages 静态站。</p>
+  </footer>
+  <script src="moneyhunter-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

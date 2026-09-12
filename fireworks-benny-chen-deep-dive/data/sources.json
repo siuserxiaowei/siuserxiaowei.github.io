@@ -1,0 +1,101 @@
+[
+  {
+    "id": "episode",
+    "title": "硅谷坐标 × Fireworks 联创 Benny Chen 陈宇飞：开源 vs 闭源 · token 流向与定制模型",
+    "publisher": "硅谷坐标 SV-Vector / 小宇宙",
+    "url": "https://www.xiaoyuzhoufm.com/episode/6a80b9d136641f136d88c76b",
+    "date": null,
+    "role": "节目官方页：标题、嘉宾、Show Notes、术语与精选原话",
+    "caveat": "页面在 2026-08-17 显示“2 天前”，未给出绝对发布日期；节目说明不是独立事实核验。"
+  },
+  {
+    "id": "team",
+    "title": "Fireworks Founding Team",
+    "publisher": "Fireworks AI",
+    "url": "https://fireworks.ai/team",
+    "date": null,
+    "role": "核对 Benny Chen 的联合创始人及前 Meta 广告基础设施负责人身份",
+    "caveat": "公司官方身份资料；未用于核实学历。"
+  },
+  {
+    "id": "series-d",
+    "title": "Announcing our Series D and $1B ARR",
+    "publisher": "Fireworks AI",
+    "url": "https://fireworks.ai/blog/series-d-announcement",
+    "date": "2026-07-15",
+    "role": "融资、估值、年化收入运行率、每日 token 与专属模型占比",
+    "caveat": "均为公司自报；annualized revenue run rate 不等同于经审计 ARR。"
+  },
+  {
+    "id": "harvey-lab",
+    "title": "Open-Sourcing Harvey’s Long Horizon Legal Agent Benchmark",
+    "publisher": "Harvey",
+    "url": "https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark",
+    "date": "2026-05-06",
+    "role": "LAB 的任务规模、领域覆盖、rubric 与 all-pass 评测方法",
+    "caveat": "数据集会继续演化；单次结果不能外推为普遍法律能力。"
+  },
+  {
+    "id": "harvey-fireworks",
+    "title": "How Harvey & Fireworks Beat Closed Source on Cost + Quality",
+    "publisher": "Fireworks AI",
+    "url": "https://fireworks.ai/blog/open-source-agents-frontier-advisors",
+    "date": "2026-06-03",
+    "role": "开放权重 worker、闭源 advisor 与后训练在 LAB 子集上的联合实验",
+    "caveat": "Fireworks 发布的合作研究/营销材料，只覆盖 100 个任务子集；不是独立复现。"
+  },
+  {
+    "id": "azure-partnership",
+    "title": "Introducing Fireworks on Microsoft Foundry",
+    "publisher": "Fireworks AI",
+    "url": "https://fireworks.ai/blog/fireworks-on-microsoft-foundry",
+    "date": "2026-03-08",
+    "role": "Fireworks 与 Azure / Microsoft Foundry 的公共预览合作",
+    "caveat": "合作与规模数字来自公司公告。"
+  },
+  {
+    "id": "azure-deploy",
+    "title": "Deploy and serve Fireworks AI models on Microsoft Foundry",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/startups/build/ai/deploy-fireworks",
+    "date": "2026-07-09",
+    "role": "合作方文档：Azure 原生部署、治理、计费与监控流程",
+    "caveat": "证明集成存在，不证明 Fireworks 的性能或成本宣传。"
+  },
+  {
+    "id": "custom-models-azure",
+    "title": "Import custom models with Fireworks",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/azure/foundry/how-to/fireworks/import-custom-models",
+    "date": "2026-06-04",
+    "role": "自有或微调开放权重进入 Microsoft Foundry 的实现边界",
+    "caveat": "LoRA adapter 与 speculative-decoding draft model 标为 preview，部分能力无 SLA。"
+  },
+  {
+    "id": "training-overview",
+    "title": "Training Overview",
+    "publisher": "Fireworks AI Docs",
+    "url": "https://docs.fireworks.ai/fine-tuning/finetuning-intro",
+    "date": null,
+    "role": "SFT、DPO、RL/RFT 的输入、训练与权重归属概念",
+    "caveat": "产品技术文档，不是独立质量证明。"
+  },
+  {
+    "id": "rft",
+    "title": "Reinforcement Fine-Tuning",
+    "publisher": "Fireworks AI Docs",
+    "url": "https://docs.fireworks.ai/fine-tuning/reinforcement-fine-tuning-models",
+    "date": null,
+    "role": "evaluator / reward function、rollout 与 RFT 适用条件",
+    "caveat": "产品能力说明；效果需用具体业务 eval 验证。"
+  },
+  {
+    "id": "custom-models",
+    "title": "Custom Models",
+    "publisher": "Fireworks AI Docs",
+    "url": "https://docs.fireworks.ai/models/uploading-custom-models",
+    "date": null,
+    "role": "模型上传、隐私、LoRA 与部署类型限制",
+    "caveat": "支持架构和部署限制会随产品更新。"
+  }
+]

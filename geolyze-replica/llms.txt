@@ -1,0 +1,72 @@
+# GEO Library
+
+Chinese-first GEO, AEO, and AI visibility reference library for researchers and operators.
+
+## Core Pages
+- [中文首页](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/)
+- [外部资源](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/resources/)
+- [工具分类](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/tools/)
+- [工作流比较](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/compare/)
+- [Field Guide](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/book/)
+
+## Guides
+- [指南索引](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/guides/)
+- Guides are original Chinese learning notes and practical workflows.
+
+## Library
+- [资料库索引](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/)
+- Top GEO article pages are selected by local geoScore, then newer updated/published dates, then title.
+- [GEO, LLMO, AEO… It’s All Just SEO](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-geo-is-just-seo/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/geo-is-just-seo/
+- [10x ChatGPT data, Gemini and Copilot indexes, see AI citations and more (July 2025)](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-new-features-july-2025/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/new-features-july-2025/
+- [Top Brand Visibility Factors in ChatGPT, AI Mode, and AI Overviews (75k Brands Studied)](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-ai-brand-visibility-correlations/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/ai-brand-visibility-correlations/
+- [How to Track AI Overviews: Mentions, Citations, Click Loss, and the Traffic Google Won't Show You](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-how-to-track-ai-overviews/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/how-to-track-ai-overviews/
+- [The 10 Most Mentioned Domains for ChatGPT, Perplexity, and AI Overviews Across 78.6M Searches](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-top-10-most-cited-domains-ai-assistants/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/top-10-most-cited-domains-ai-assistants/
+- [Generative Engine Optimization: Growth Strategies and Metrics For the AI Era](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-geo-generative-engine-optimization/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/geo-generative-engine-optimization/
+- [Connect Ahrefs to ChatGPT, AI citations charts, and more (October 2025)](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-new-features-oct-2025/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/new-features-oct-2025/
+- [What are the top generative engine optimization strategies for AI visibility?](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-what-are-the-top-generative-engine-optimization-strategies-for-ai-visibility/) — Semrush Blog; canonical source: https://www.semrush.com/blog/what-are-the-top-generative-engine-optimization-strategies-for-ai-visibility/
+- [86% of Top Mentioned Sources Are Not Shared Across ChatGPT, Perplexity, and AI Overviews](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-top-mentioned-sources-are-not-shared-across-ai-assistants/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/top-mentioned-sources-are-not-shared-across-ai-assistants/
+- [The 9 Best Generative Engine Optimization (GEO) Tools of 2026](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-best-generative-engine-optimization-tools/) — Semrush Blog; canonical source: https://www.semrush.com/blog/best-generative-engine-optimization-tools/
+- [On-Page AEO: 4 Writing Frameworks for Better AI Visibility](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-on-page-aeo/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/on-page-aeo/
+- [Are AI Mode and AI Overviews Just Different Versions of the Same Answer? (730K Responses Studied)](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-ai-overviews-vs-ai-mode/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/ai-overviews-vs-ai-mode/
+- [Google brings Preferred Sources to AI Overviews and AI Mode](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-google-preferred-sources-in-ai-experiences/) — Semrush Blog; canonical source: https://www.semrush.com/blog/google-preferred-sources-in-ai-experiences/
+- [Why 62% of AI citations don’t lead to brand mentions [Study]](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-the-ghost-citations-study/) — Semrush Blog; canonical source: https://www.semrush.com/blog/the-ghost-citations-study/
+- [We Tracked 1,885 Pages Adding Schema. AI Citations Barely Moved.](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-schema-ai-citations/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/schema-ai-citations/
+- [What Are AI Citations & How Do I Get Them?](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-ai-citations/) — Semrush Blog; canonical source: https://www.semrush.com/blog/ai-citations/
+- [AI visibility is a topic-level game: A study of 50,000 brands in ChatGPT [Study]](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-chatgpt-topic-authority-study/) — Semrush Blog; canonical source: https://www.semrush.com/blog/chatgpt-topic-authority-study/
+- [76% of AI Overview Citations Pull From the Top 10](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-search-rankings-ai-citations/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/search-rankings-ai-citations/
+- [Update: 38% of AI Overview Citations Pull From The Top 10](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/ahrefs-blog-ai-overview-citations-top-10/) — Ahrefs Blog; canonical source: https://ahrefs.com/blog/ai-overview-citations-top-10/
+- [Reddit's citations in ChatGPT fall from 3.8% to 0.5%](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/library/semrush-blog-reddits-citations-in-chatgpt-fall/) — Semrush Blog; canonical source: https://www.semrush.com/blog/reddits-citations-in-chatgpt-fall/
+
+## External GEO Resources
+- [资源地图](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/resources/)
+- External resources are listed as titles, categories, local notes, and outbound links only.
+- [GEO 改写提示词](https://ai.laoyao.cn/ylOfC2) — Prompt; prompt
+- [GEO 改写 Skill](https://ai.laoyao.cn/cqWRs3) — Skill; skill
+- [GEO 单篇内容特征标注演示](https://doc.laoyao.cn/00j3ps) — Demo; demo
+- [GEO Skills](https://github.com/yaojingang/yao-geo-skills) — GitHub; repository
+- [GEOFlow](https://github.com/yaojingang/GEOFlow) — GitHub; repository
+- [Meta skill](https://github.com/yaojingang/yao-meta-skill) — GitHub; repository
+- [《GEO 白皮书》](https://ai.laoyao.cn/g1) — Doc; whitepaper
+- [《GEO 红皮书》](https://ai.laoyao.cn/g2) — Doc; whitepaper
+- [《GEO 蓝皮书》](https://ai.laoyao.cn/g3) — Doc; whitepaper
+- [《AI 营销：从 SEO 到 GEO》提示词](https://ai.laoyao.cn/g4) — Prompt; prompt
+- [《GEO 内容工程操作手册与评估标准》](https://doc.laoyao.cn/9fl0bc) — Manual; manual
+- [《GEO 内容工程系统研究报告》](https://doc.laoyao.cn/t754wa) — Report; manual
+- [《GEO 内容工程方法体系与单篇内容实操教程》](https://doc.laoyao.cn/54yx5b) — Tutorial; manual
+- [《系统之美》《人人都该懂的工程学》](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/resources/#systems-thinking-books) — Book; book
+- [《GEO: Generative Engine Optimization》](https://doc.laoyao.cn/0elhy1) — Paper; paper
+- [《Generative Engine Optimization in digital repositories: optimizing visibility for generative AI》](https://doc.laoyao.cn/fnf30e) — Paper; paper
+- [《A Measurement Framework for Generative Engine Optimization Across AI Search Platforms》](https://doc.laoyao.cn/ykiktr) — Measurement; paper
+
+## Glossary
+- [术语表](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/glossary/)
+- Terms cover GEO, AEO, AI citations, answer engines, structured data, monitoring, and content citability.
+
+## Reports
+- [研究简报](https://siuserxiaowei.github.io/geolyze-replica/zh-cn/reports/)
+- Reports summarize trends from the local metadata index and link back to original publishers.
+
+## Scope
+- Published: metadata/local summaries, canonical source links, topic tags, source labels, freshness risk, and local classification.
+- Not published: third-party full text, copied article introductions, copied screenshots, downloaded brand assets, or paywalled material.
+- 中文边界：本站只发布公开来源的元数据和本地原创摘要，不发布第三方全文；文章版权归原发布方。

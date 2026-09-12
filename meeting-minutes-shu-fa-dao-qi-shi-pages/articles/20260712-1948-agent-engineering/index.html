@@ -1,0 +1,1930 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#183d36" />
+  <title>聊聊 Agent Engineering｜道法术器势深度拆解</title>
+  <meta name="description" content="一份给未参会同学的 Agent Engineering 完整学习手册：三位嘉宾、17 章知识正文，并按道、法、术、器、势、界重构。" />
+  <meta property="og:title" content="聊聊 Agent Engineering｜道法术器势深度拆解" />
+  <meta property="og:description" content="从真实摩擦、产品定位、Skill 与 Agent 工程，到开源、设计系统、传播和社会责任。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://siuserxiaowei.github.io/meeting-minutes-shu-fa-dao-qi-shi-pages/articles/20260712-1948-agent-engineering/" />
+  <link rel="canonical" href="https://siuserxiaowei.github.io/meeting-minutes-shu-fa-dao-qi-shi-pages/articles/20260712-1948-agent-engineering/" />
+  <link rel="stylesheet" href="../../assets/agent-engineering.css?v=20260713-2" />
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+  <aside class="top-contact" id="contact" aria-label="作者联系方式">
+    <strong class="top-contact-label">作者联系方式</strong>
+    <a class="contact-chip" href="https://x.com/HIT_SZ" target="_blank" rel="me noopener noreferrer">
+      <small>X / Twitter</small><b>@HIT_SZ ↗</b>
+    </a>
+    <span class="contact-chip"><small>微信</small><b>siuserxiaowei</b></span>
+  </aside>
+
+  <header class="site-bar">
+    <a class="site-brand" href="../../index.html" aria-label="返回道法术器势会议拆解站">
+      <span class="brand-mark">研</span>
+      <span>道法术器势会议拆解站</span>
+    </a>
+    <nav class="site-actions" aria-label="页面工具">
+      <button id="search-toggle" class="text-button" type="button">全文检索</button>
+      <button id="print-page" class="text-button" type="button">打印 / PDF</button>
+      <a class="text-button" href="../../index.html">全部会议</a>
+    </nav>
+  </header>
+
+  <section class="search-drawer" id="search-drawer" hidden>
+    <div class="search-inner">
+      <label for="article-search">搜索这份纪要</label>
+      <input id="article-search" type="search" placeholder="例如：Skill、产品定位、OpenDesign、状态机" autocomplete="off" />
+      <span id="search-status" aria-live="polite">输入关键词开始检索</span>
+      <button id="search-close" type="button" aria-label="关闭检索">关闭</button>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">2026.07.12 · AGENT ENGINEERING · 学习手册</p>
+        <h1 id="page-title">聊聊<br /><em>Agent Engineering</em></h1>
+        <p class="hero-deck">从“做出来”到“做成”，再到“被理解、被共同建设”。一份让未参会同学也能获得接近现场学习密度的研究手册。</p>
+        <div class="hero-meta" aria-label="文档数据">
+          <span><strong>17</strong> 个知识章节</span>
+          <span><strong>3</strong> 位分享者</span>
+          <span><strong>14</strong> 个学习模块</span>
+          <span><strong>10</strong> 套实践模板</span>
+        </div>
+      </div>
+      <div class="hero-compass" aria-label="分析维度">
+        <span data-n="01">道</span><span data-n="02">法</span><span data-n="03">术</span>
+        <span data-n="04">器</span><span data-n="05">势</span><span data-n="06">界</span>
+      </div>
+      <div class="hero-note">
+        <span>核心命题</span>
+        <p>AI 让实现变快，但真正难的是选对问题、建立可靠系统、形成用户价值，并对系统在真实世界造成的后果负责。</p>
+      </div>
+    </section>
+
+    <section class="reader-shell">
+      <aside class="toc-panel" aria-label="文章目录">
+        <div class="toc-sticky">
+          <p class="toc-label">阅读地图</p>
+          <nav id="table-of-contents"></nav>
+          <div class="toc-foot">
+            <span id="reading-percent">0%</span>
+            <small>阅读进度</small>
+          </div>
+        </div>
+      </aside>
+
+      <article class="article-content" id="article-content">
+<h2 id="1-执行摘要这场会真正讲了什么">1. 执行摘要：这场会真正讲了什么</h2>
+<p>这不是一场单纯的工具推荐会。三位嘉宾分别补齐了 AI 产品从“做出来”到“做成”再到“被理解和传播”的三段系统。</p>
+<h3 id="11-三位嘉宾分别回答的问题">1.1. 三位嘉宾分别回答的问题</h3>
+<table>
+<thead>
+<tr>
+<th>嘉宾</th>
+<th>核心问题</th>
+<th>最重要的贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乔向阳</td>
+<td>普通人和小团队如何把真实摩擦快速变成软件并上线？</td>
+<td>痛点驱动、脚本/插件/网站的形态选择、Skill 生态、部署发布与个人内容基础设施</td>
+</tr>
+<tr>
+<td>徐奕成</td>
+<td>AI 很快能做出 Demo 后，什么值得长期做？如何真正学会？</td>
+<td>产品定位、用户心智、来留付、Alice、模型与上下文基础、Skill 本质、细节壁垒</td>
+</tr>
+<tr>
+<td>Koki</td>
+<td>产品有价值后，怎样被陌生人看懂、信任并共同建设？</td>
+<td>社会派编程、开源/BYOK、90 秒品宣、OpenDesign、Design System、可编辑协作与 AI 剪辑</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-一条完整产品飞轮">1.2. 一条完整产品飞轮</h3>
+<pre class="text"><code>真实摩擦或社会问题
+  → 选择最小产品形态
+  → 明确用户心智与产品禁区
+  → 用 Agent / Skill 构建
+  → 用模型评测和真实用户验证
+  → 用设计系统保持一致
+  → 部署、发布、开源
+  → 用 Showcase、UGC 和社区传播
+  → 把反馈沉淀为新的 Skill、Benchmark 与产品资产</code></pre>
+<h3 id="13-十个最重要结论">1.3. 十个最重要结论</h3>
+<ol type="1">
+<li>从真实痛点出发，比从热门技术出发更容易做出有用产品。</li>
+<li>先选最轻的产品形态：快捷方式、油猴、插件、网站、完整产品逐级升级。</li>
+<li>AI 让功能和 Demo 变便宜，也让单一创意更容易被复制。</li>
+<li>Skill 的核心是把可靠的单步能力串成完整任务，但生产级还需要权限、状态、错误、验收和版本。</li>
+<li>模型没有脱离场景的“最好”；质量、成本、延迟、稳定性和输出介质必须一起评估。</li>
+<li>产品定位决定用户怎么理解你、拿你和谁比较；功能再强也不能破坏核心心智。</li>
+<li>获客、留存、付费可以由不同角色参与，但必须属于同一价值链。</li>
+<li>Design System 的价值不是“好看”，而是让网页、PPT、视频和团队成员长期说同一种品牌语言。</li>
+<li>开源、BYOK、免费、本地优先不是同义词；控制权、成本、隐私和治理要分开分析。</li>
+<li>Agent 可以执行，但责任不能委托。VPS、密钥、浏览器、发布、版权、陪伴关系都需要明确边界。</li>
+</ol>
+<hr />
+<h1 id="第一部分三位嘉宾完整拆解">第一部分：三位嘉宾完整拆解</h1>
+<h2 id="2-乔向阳从真实摩擦到个人软件工厂">2. 乔向阳：从真实摩擦到个人软件工厂</h2>
+<h3 id="21-核心命题">2.1. 核心命题</h3>
+<p>乔向阳并非传统研发背景。他自述做过网站和创业，在字节工作六年，最后一段经历与 TikTok 商业化 AI 产品相关；他强调自己长期是产品经理、只懂少量 HTML，却在一周内做出多个项目。这段分享真正说明的不是“不会代码也能一键做 App”，而是：<strong>当代码生成、浏览器操作和计算机操作被 Agent 接起来后，人的稀缺能力转向问题定义、工作流设计、方向选择、验收和复盘。</strong></p>
+<h3 id="22-ai-coding-演进不要把四个词误写成四代产品">2.2. AI Coding 演进：不要把四个词误写成四代产品</h3>
+<p>乔向阳把个人感受描述为：Chat 对话复制代码 → Vibe Coding → Spec Coding → Loop Engineering / Harness。</p>
+<p>更准确的关系是：</p>
+<ul>
+<li>Vibe Coding：一种自然语言驱动、快速试做的人机协作风格。</li>
+<li>Spec-driven Development：用规格、约束和验收固定“到底做成什么”。</li>
+<li>Agent Loop / ReAct：模型观察、行动、读取结果、继续判断的执行循环。</li>
+<li>Harness：承载上下文、工具、权限、状态、重试、预算、追踪、评测和恢复的工程系统。</li>
+</ul>
+<p>它们不是严格线性替代，可以同时存在：用 Vibe 探索，用 Spec 固化，用 Loop 执行，用 Harness 保证真实世界中的可靠性。</p>
+<h3 id="23-为什么从-claude-code-转向-codex">2.3. 为什么从 Claude Code 转向 Codex</h3>
+<p>他的理由不是一句“代码能力更强”，而是 Browser Use 与 Computer Use 让开发—测试—操作真实界面的链路更顺。</p>
+<p>可迁移判断：选择 Coding Agent 时至少比较：</p>
+<ol type="1">
+<li>写代码；</li>
+<li>读项目与文档；</li>
+<li>运行测试；</li>
+<li>浏览器验证；</li>
+<li>操作本地应用；</li>
+<li>权限与审批；</li>
+<li>长任务恢复；</li>
+<li>结果可追踪性。</li>
+</ol>
+<h3 id="24-案例卡-q1公众号后台配图按钮">2.4. 案例卡 Q1：公众号后台配图按钮</h3>
+<ul>
+<li>时间：00:25:29–00:26:50。</li>
+<li>痛点：公众号文章需要配图，要反复复制关键词、切换到即梦、粘贴并生成。</li>
+<li>做法：给公众号后台增加按钮，自动提取/复制关键词，跳到生图工具并粘贴，使用固定个人风格生成封面。</li>
+<li>价值：没有重新造一个生图平台，只消除了现有工作流中的连接摩擦。</li>
+<li>依赖：浏览器脚本/扩展、稳定 DOM、剪贴板和跳转权限。</li>
+<li>失败点：页面改版、关键词错误、自动跳转被阻止、图片与正文语义不一致。</li>
+<li>迁移原则：优先补上“缺失的一步”，而不是从零重建完整产品。</li>
+</ul>
+<h3 id="25-案例卡-q2小红书图片粘贴油猴脚本">2.5. 案例卡 Q2：小红书图片粘贴油猴脚本</h3>
+<ul>
+<li>时间：00:26:50–00:27:32。</li>
+<li>痛点：网页端不支持直接从剪贴板粘贴图片。</li>
+<li>做法：监听 <code>paste</code>，读取剪贴板图片并交给页面上传组件。</li>
+<li>为什么不是 Chrome 插件：无需上架、审核和完整扩展框架，即写即用。</li>
+<li>可迁移场景：公众号、抖音和其他内容后台的局部增强。</li>
+<li>风险：站点 CSP、剪贴板权限、脚本供应链、页面 Cookie/表单读取和平台条款。</li>
+</ul>
+<p><strong>产品形态决策：</strong></p>
+<pre class="text"><code>一次性文本替换 → 快捷键/Prompt
+单站局部摩擦 → 油猴脚本
+跨站重复能力 → 浏览器插件
+需要数据与独立体验 → 网站
+需要长期关系/协作/商业化 → 完整产品</code></pre>
+<h3 id="26-案例卡-q31000-提示词浏览器插件">2.6. 案例卡 Q3：1000+ 提示词浏览器插件</h3>
+<ul>
+<li>时间：00:27:32–00:29:12。</li>
+<li>功能：提示词搜索、自定义、快捷缩写、在任意输入框一键插入，覆盖写作、生图、生视频。</li>
+<li>深层价值：把“收藏资料”变成系统级输入能力。</li>
+<li>失败点：提示词规模大但检索差、快捷词冲突、敏感页面注入、库内容过时。</li>
+<li>学习重点：资产的价值不只在数量，而在检索、触发、版本和适用场景。</li>
+</ul>
+<h3 id="27-案例卡-q4博客到-x-长文草稿">2.7. 案例卡 Q4：博客到 X 长文草稿</h3>
+<ul>
+<li>时间：00:29:12–00:30:21。</li>
+<li>流程：博客写作 → 载入 Markdown 草稿 → 自动写入 X 编辑器 → 自动上传图片 → 保持排版 → 人工最终发布。</li>
+<li>正确自动化边界：自动写草稿，不默认无人值守公开发布。</li>
+<li>风险：目标账号错误、图片顺序、页面变化、平台风控、敏感内容、撤回困难。</li>
+</ul>
+<h3 id="28-案例卡-q5多模型同题并行评测">2.8. 案例卡 Q5：多模型同题并行评测</h3>
+<ul>
+<li>时间：00:30:21–00:32:01，结果回看约 00:34:55。</li>
+<li>输入：同一个测试任务、多个模型供应商 API Key。</li>
+<li>演示：要求生成“介绍精酿啤酒制作工艺”的 Three.js 网页。</li>
+<li>流程：并发请求 → 收集代码 → 自动 HTML/JS 渲染 → 直接比较结果。</li>
+<li>现场观察：有模型生成网页但未遵循 Three.js，有模型反而生成 3D 页面。</li>
+<li>真正启示：不能只读回答文本，要把产物运行起来再评估。</li>
+<li>严谨评测还需要：固定版本/参数、重复运行、盲评、隐藏 Case、成本/延迟/失败率、结果方差和过期时间。</li>
+<li>安全：模型 HTML/JS 必须在独立 origin 的 sandbox 中运行，限制网络、CPU、时长和登录态。</li>
+</ul>
+<h3 id="29-案例卡-q6markdown-first-内容中枢">2.9. 案例卡 Q6：Markdown-first 内容中枢</h3>
+<ul>
+<li>时间：00:32:01–00:35:10。</li>
+<li>动机：公众号、X 属于第三方平台，封号或规则变化可能使内容资产受损。</li>
+<li>功能：类飞书拖拽编辑、局部润色、全文生成 5 个标题、回复序号替换标题、指定章节生成火柴人配图并插入、封面/摘要/标签、移动端预览、40+ 排版样式、创建公众号草稿。</li>
+<li>战略价值：自有博客是权威母版，平台只是分发端。</li>
+<li>正确架构：<code>自有 Markdown 母库 → 公众号 / X / Newsletter / PPT / 视频</code>。</li>
+<li>限制：自有站不自动带来流量；仍需备份、迁移、权限、安全和平台分发。</li>
+</ul>
+<h3 id="210-案例卡-q7newsletter-阅读器与知识网络">2.10. 案例卡 Q7：Newsletter 阅读器与知识网络</h3>
+<ul>
+<li>时间：00:36:11–00:38:38。</li>
+<li>输入：40+ 海外 Newsletter 和文章链接。</li>
+<li>功能：自动改写/翻译、划线、AI 讨论、总结、多栏折叠、沉浸阅读、用户自带 Key、贡献榜、外链一键收录和继续翻译。</li>
+<li>深层结构：<code>订阅输入 → 阅读加工 → 标注/讨论 → 外链继续收录 → 个人/社区知识网络</code>。</li>
+<li>风险：改写丢语气、付费墙、版权/翻译权、抓取条款、BYOK 密钥和网页提示词注入。</li>
+</ul>
+<h3 id="211-skill-生态开发设计部署发布再生产">2.11. Skill 生态：开发、设计、部署、发布、再生产</h3>
+<ol type="1">
+<li>基础开发 Skill：思考问题、UI、读 Markdown、总结与复盘；乔向阳推荐 TW93 的轻量 Skill 集。</li>
+<li>前端设计 Skill：用 10 个任务覆盖 Landing Page、Dashboard 等场景做横评；比较去 AI 味、精修、动效与稳定性。</li>
+<li>四方向设计：自研 Skill 先生成 4 个设计方向，人选择一个，再把颜色、字体、布局、材质和动效参数回传给 Codex。</li>
+<li>云部署 Skill：封装 Cloudflare、Vercel、GitHub CLI/API，处理部署、子域名和 DNS。</li>
+<li>VPS 运维 Skill：SSH 登录服务器，管理 Nginx、前端、后端、数据库。</li>
+<li>GitHub Publisher：仓库、README、开源发布。</li>
+<li>Skill Publisher：为 Skill 分发和安装方式服务，而不只是普通代码仓库。</li>
+<li>Meta Skill：从需求生成 Skill，检查 YAML、触发和测试。</li>
+<li>Goal Meta Skill：把一句需求规格化为长程 Codex Goal；它不能保证“跑一整晚就一定正确”。</li>
+</ol>
+<p><strong>完整系统：</strong></p>
+<pre class="text"><code>需求 → 基础开发 → 设计方向 → 人工选择 → 实现与测试
+→ 云部署/DNS → VPS 运维 → GitHub/Skill 发布
+→ 复盘 → Meta Skill 继续沉淀</code></pre>
+<p><strong>最高风险：</strong> 不应直接把生产 root SSH、DNS、数据库、GitHub 发布权和长期密钥一起交给 Agent。详见第 10 章“界”。</p>
+<h3 id="212-其他现场项目不能只列名字">2.12. 其他现场项目：不能只列名字</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>项目</th>
+<th>输入 → 处理 → 输出</th>
+<th>学习价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00:47:22</td>
+<td>Hacker News 阅读器</td>
+<td>HN 文章/评论 → DeepSeek 总结 → 讨论概要、最佳评论</td>
+<td>让社区长讨论可扫读，但应保留反方和原链接</td>
+</tr>
+<tr>
+<td>00:47:56</td>
+<td>App Store 洞察</td>
+<td>产品名/官方数据 → 好差评、版本时间线、潜在问题</td>
+<td>产品研究；“潜在问题”是模型推断，不是事实</td>
+</tr>
+<tr>
+<td>00:49:02</td>
+<td>AI 播客转文章</td>
+<td>海外播客 → 转录/整理 → 文章</td>
+<td>降低音频学习门槛；涉及授权与语义损失</td>
+</tr>
+<tr>
+<td>00:49:02</td>
+<td>固定比例在线画布</td>
+<td>Unsplash/本地图/AI 图 → 文本、Emoji、排版 → 小红书/公众号封面</td>
+<td>产品根据高频交付物限制画布，而非追求万能 PS</td>
+</tr>
+<tr>
+<td>00:50:59</td>
+<td>Logo 工具</td>
+<td>语义合适 SVG + 背景/Pattern → favicon、OG、iOS、Android 资产</td>
+<td>比纯生图更可控；需检查图标许可证和商标相似性</td>
+</tr>
+<tr>
+<td>00:51:47</td>
+<td>可编辑 PPT Skill</td>
+<td>URL/PDF/文字 → 抓原图或生图 → 11–12 页，或先出 4 页预览</td>
+<td>先确认方向再扩展；嘉宾明确说仍不满意，属实验状态</td>
+</tr>
+<tr>
+<td>00:53:17</td>
+<td>AI-native PRD</td>
+<td>想法 → 代码元素、ASCII 布局、约束 → 给 Agent 开发</td>
+<td>PRD 需要面向机器可执行，但仍需用户事实和验收标准</td>
+</tr>
+</tbody>
+</table>
+<h3 id="213-产品-sense-与创意问答">2.13. 产品 Sense 与创意问答</h3>
+<ul>
+<li>不必虚构一套独立“AI 产品经理”学科，先学《用户体验要素》《启示录》《人人都是产品经理》（作者苏杰）。</li>
+<li>好产品经理对现实系统保持好奇：进入无人售货店，会追问设备、库存、陈列、进销存为何这样运行。</li>
+<li>测试要“一秒变小白”：第一次看到什么、从哪里开始、没有引导能否理解。</li>
+<li>儿童口算 App 还要模拟儿童身高、手掌大小、视线和触摸区域。</li>
+<li>产品思维同样适用于文章和社媒表达：从读者能否理解出发。</li>
+<li>创意来自三处：真实痛点、已有模块组合、跨领域输入。</li>
+<li>参考渠道：Mobbin、Product Hunt、GitHub Trending；正确用法是亲自注册、体验和拆解，不是只收藏截图。</li>
+</ul>
+<hr />
+<h2 id="3-徐奕成从能做-demo到产品学习与长期壁垒">3. 徐奕成：从“能做 Demo”到产品、学习与长期壁垒</h2>
+<h3 id="31-核心命题">3.1. 核心命题</h3>
+<p>徐奕成这一段同时讲了三件事：</p>
+<ol type="1">
+<li>如何为真实 AI 产品选择模型；</li>
+<li>Alice 为什么定位为人格型陪伴 Agent，而不是工具；</li>
+<li>如何避免“AI 做出来了，所以我也会了”的能力错觉。</li>
+</ol>
+<p>他的基本立场是：AI 让简单应用很容易实现，恰恰因此，人的能力更要体现在理解原理、比较方案、定义产品和打磨 AI 做不细的部分。</p>
+<h3 id="32-模型横评实时探索与预跑-benchmark-的区别">3.2. 模型横评：实时探索与预跑 Benchmark 的区别</h3>
+<p>他的模型评测站不是每次由用户临时实时运行，而是提前跑好固定 Case，按写作、客服、编程、角色扮演、生图等场景展示结果。</p>
+<p>这与乔向阳的实时横评构成互补：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>适用问题</th>
+<th>优点</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实时同题横评</td>
+<td>快速探索新模型、新提示词</td>
+<td>立即看到结果，可运行产物</td>
+<td>成本高、随机性大、一次结果不稳定</td>
+</tr>
+<tr>
+<td>预跑 Benchmark</td>
+<td>产品架构和模型路由</td>
+<td>可重复、可分类、可比较历史</td>
+<td>模型更新后结果过时，Case 容易偏向自家产品</td>
+</tr>
+</tbody>
+</table>
+<p>现场关键取舍：某些 Alice Case 中豆包可能效果更好，但默认模型仍会考虑价格/性价比。这说明生产模型不是“最好看的一次输出”，而是质量、成本、延迟、失败率和稳定性的组合。</p>
+<h3 id="33-alice-定位功能层体验层心智层">3.3. Alice 定位：功能层、体验层、心智层</h3>
+<p>Alice 能写内容、改 PPT、操作日程，但徐奕成坚持在所有传播场域表达“她不是工具”。</p>
+<ul>
+<li>功能层：能完成任务。</li>
+<li>体验层：同一人格持续陪伴和行动。</li>
+<li>心智层：用户认为她是“住在电脑里的存在”。</li>
+</ul>
+<p>他用很强的措辞说个人/小团队做通用甚至普通垂直效率工具是“死路一条”，因为无法与大厂的模型和资源正面竞争。</p>
+<p>[必要修正] 这不是普遍定律。拥有专有数据、行业合规、渠道、工作流集成、企业服务或深度可编辑能力的垂直工具仍可能成立。更稳妥的结论是：<strong>没有独有数据、分发、工作流和信任资产的薄工具，非常容易被基础平台吞没。</strong></p>
+<h3 id="34-来留付不是三个名单而是一条价值链">3.4. “来—留—付”不是三个名单，而是一条价值链</h3>
+<p>徐奕成提出三个问题：</p>
+<ul>
+<li>用户因为什么来？</li>
+<li>凭什么持续留下？</li>
+<li>凭什么付费？</li>
+</ul>
+<p>如果陪伴产品按效率工具宣传，来的可能是程序员/生产力用户；真正留下的是情感陪伴用户；愿意付费的又是陪伴用户里的更窄群体，漏斗会被层层压缩。</p>
+<p>正确检查方式：</p>
+<pre class="text"><code>入口承诺 → 首次成功时刻 → 持续价值 → 付费增量 → 分享动机</code></pre>
+<p>B2B 中使用者、购买者、审查者可以不同，但必须属于同一价值链，而不是强求同一人。</p>
+<h3 id="35-案例卡-x1alice-首页四五轮改版">3.5. 案例卡 X1：Alice 首页四五轮改版</h3>
+<ul>
+<li>时间：01:05:30–01:10:20。</li>
+<li>第一版：很多朋友同时出现，用户不知道这是职场、社交还是陪伴产品。</li>
+<li>第二版：多人在天台，用户看出陪伴感，却不知道应该和谁聊。</li>
+<li>最终版：单一 Alice 主体、生活化场景、一个最强主动作“免费使用/下载”；评价、别人眼中的我提供信任；画廊、许愿池、方法论和更新日志降级。</li>
+<li>核心判断：用户在首页多产生一个无法回答的问题，就多一层转化损失。</li>
+<li>正确原则：一个主 CTA，不是物理上只能有一个按钮。</li>
+</ul>
+<p>**5 秒测试：**陌生用户看首页 5 秒后，应能回答“这是什么、给谁、最大价值、下一步点哪里”。</p>
+<h3 id="36-案例卡-x2真实评价画廊和许愿池">3.6. 案例卡 X2：真实评价、画廊和许愿池</h3>
+<ul>
+<li>讲者口述：约 700 个用户需求、实现约 275 个，约 300 条评价；数字未独立核验。</li>
+<li>真实案例的四个角色：社会证明、使用教程、未知用法发现、传播素材。</li>
+<li>飞轮：<code>用户得到结果 → 分享 Case → 进入画廊 → 新用户理解并模仿 → 新 Case → 反哺需求池</code>。</li>
+</ul>
+<p>反例：伪造评价、只有成功样本、未经授权公开对话、画廊没有审核都会破坏信任。UGC 必须有授权、脱敏、撤回、投诉和内容治理。</p>
+<h3 id="37-ai-替我过好日子陪伴不是聊天-ui">3.7. “AI 替我过好日子”：陪伴不是聊天 UI</h3>
+<p>Alice 被设计为持续生活的角色：旅行、游记、朋友圈、日记、读书、写给主人看的内容。徐奕成提出“有没有一个 AI 能替我过这样的好日子”，把无法实现的人生清单投射给角色。</p>
+<p>陪伴感来自三种连续性：</p>
+<ol type="1">
+<li>时间连续性：用户不操作时，角色仍有状态。</li>
+<li>人格连续性：不同场景保持稳定价值观与表达。</li>
+<li>关系连续性：角色记得双方共同经历并产生面向用户的内容。</li>
+</ol>
+<p>这也是高风险区域：情感依赖、未成年人、危机转介、长期记忆隐私、退出和删除、付费操控必须单独治理。</p>
+<h3 id="38-商业化核心关系不锁死表达性资产付费">3.8. 商业化：核心关系不锁死，表达性资产付费</h3>
+<p>讲者承诺不把必要玩法变成只有充值才能使用的功能；收入更多来自外观、衣服、不同充值档和联名，同时承认模型、存储和服务器有真实成本。</p>
+<p>可迁移检查：</p>
+<ul>
+<li>不付费能否完成核心价值？</li>
+<li>付费是在增加表达、收藏和身份，还是人为制造痛苦？</li>
+<li>付费会不会利用用户的关系依赖？</li>
+<li>单用户收入能否覆盖模型、存储、带宽和内容运营？</li>
+</ul>
+<h3 id="39-真正学会-ai输入理解记住会用">3.9. 真正“学会 AI”：输入、理解、记住、会用</h3>
+<p>徐奕成批评两种错觉：因为 AI 强而轻视经典技术；面试时把 AI 生成的 C++、数据结构和算法产出当成自己的能力。</p>
+<p>他转述一个判断：优秀者可能比较过五个方案再选一个，能力弱的人只知道唯一方案，即使最终结果相同，决策能力完全不同。</p>
+<p>学习闭环：</p>
+<ol type="1">
+<li>这个知识解决什么根本问题？</li>
+<li>我的项目里是否有同类问题？</li>
+<li>还有什么替代方案？</li>
+<li>AI 以前给我的相关实现是否真的正确？</li>
+<li>能否不用原文，用自己的话讲给别人？</li>
+<li>能否做一个真实项目并保留失败？</li>
+</ol>
+<p>讲者认为其学习页面需要 1–2 周认真完成，而不是一个下午刷完；并提到“学会/没学会”标记、岗位与能力映射、未来招聘功能等。[会中口述·部分为未来计划]</p>
+<p>韩国市场案例也说明“基础”是场景能力：团队准备进入韩国时，连续安排韩语和韩国文化学习，而不只做翻译按钮。[会中口述 01:13:54]</p>
+<h3 id="310-tokentop-ptemperature保留演示也保留纠错">3.10. Token、Top-p、Temperature：保留演示，也保留纠错</h3>
+<p>现场通过交互页面展示：点击某个 Token，观察后续候选概率；调整 Top-p 和 Temperature；反复重新采样，形成直觉。</p>
+<p>严谨表述：</p>
+<ul>
+<li>Top-p：保留累计概率质量达到阈值的最小候选集合，并非固定“可选词数量”。</li>
+<li>Temperature：重标定分布；温度高通常使分布更平，温度低使分布更尖。</li>
+<li>“温度高后每个词概率都提高”不可能，概率总和恒为 1。</li>
+<li>低温不代表“只输出一个字”，只代表每一步更趋确定。</li>
+<li>通常先调 Temperature 或 Top-p 之一，避免同时大幅改动后无法解释。</li>
+</ul>
+<p>关于 Kimi 不开放参数可能源于蒸馏，讲者当场说“我乱说的，不一定是真相”；截至会议前的官方版本已有相关参数配置，因此不能当事实。</p>
+<h3 id="311-completionrag-与上下文工程">3.11. Completion、RAG 与上下文工程</h3>
+<p>讲者用“聊天日志补全”解释 Chat：把“用户：…助理：”放进上下文，模型继续补全助理部分。它是理解自回归生成的教学比喻，不是 ChatGPT 诞生的完整历史；ChatGPT 还涉及监督微调和 RLHF。</p>
+<p>他把 RAG、角色、记忆、上下文压缩统一理解为“控制模型此刻看到什么”：</p>
+<ul>
+<li>RAG：补充外部事实。</li>
+<li>角色：补充人格资料。</li>
+<li>记忆：补充历史与偏好。</li>
+<li>压缩：在窗口有限时保留关键状态。</li>
+</ul>
+<p>这只覆盖模型输入层。Harness 还包含模型看不到的状态机、权限、队列、重试、幂等、预算、日志、评测和恢复。</p>
+<h3 id="312-输出格式按消费者和交互选择">3.12. 输出格式：按消费者和交互选择</h3>
+<ul>
+<li><p>人直接阅读的对话：Markdown。</p></li>
+<li><p>富界面渐进展示：受限组件协议、事件流，或经过白名单处理的 HTML 类结构。</p></li>
+<li><p>后端严格结构消费：JSON Schema/Structured Outputs。</p></li>
+<li><p>日志/逐条事件：JSONL、SSE、delta。</p></li>
+<li><p>XML 与 HTML 不是同一种格式，只是都使用标签。</p></li>
+<li><p>完整 JSON 在闭合前通常不能作为普通对象解析，但 JSON 完全可以通过事件流和增量解析实现流式。</p></li>
+<li><p>流式 XML 也会遇到未闭合标签；模型生成 HTML 必须防 XSS，不得直接注入主站 DOM。</p></li>
+</ul>
+<h3 id="313-skill-的家务类比单步能力强不等于任务完成">3.13. Skill 的家务类比：单步能力强，不等于任务完成</h3>
+<p>讲者用家务解释：妻子让他收衣服，他只收衣服；之后又被问裤子、柠檬树、玩具、孩子洗澡。后来约法三章，“收衣服”触发一整套固定动作。</p>
+<p>Skill 补的是：</p>
+<ul>
+<li>触发识别；</li>
+<li>任务边界；</li>
+<li>步骤编排；</li>
+<li>遗漏防止；</li>
+<li>完成定义。</li>
+</ul>
+<p>生产级 Skill 还应增加输入契约、工具权限、分支、检查点、失败处理、审批、版本和正/负触发测试。</p>
+<h3 id="314-角色一致性也是上下文与-benchmark">3.14. 角色一致性也是上下文与 Benchmark</h3>
+<p>方法包括：三视图、多表情、脸型、体型、穿搭、风格、参考图，让 AI 协助写 Prompt，并在多场景中找合适粒度。</p>
+<ul>
+<li>参考过细：模型被锁死，只围绕细节改。</li>
+<li>参考过粗：身份与风格漂移。</li>
+<li>Alice 的“白衬衫”被作为“足够识别但不过度限制”的例子。</li>
+</ul>
+<p>应建立固定 Benchmark：正/侧/背面、近/远景、不同光线、动作、表情、服装、多角色、连续多次生成，并记录身份一致、风格一致、遵循度和失败率。</p>
+<h3 id="315-创意壁垒与-2d-bible">3.15. 创意、壁垒与 2D Bible</h3>
+<p>AI 三五天能把创意做成 Demo，也意味着别人可能三五天复制；真正壁垒是 AI 做不细的 Benchmark、上下文、交互细节、用户内容和品牌心智。</p>
+<p>Alice 把资源集中在“活人感”，而不是功能总量。用户会感受到产品里的小心思。</p>
+<p>Alice 把“不做真人写实”写进产品 Bible：</p>
+<ul>
+<li>明确虚构性；</li>
+<li>避免恐怖谷；</li>
+<li>降低面对真人的社交防备；</li>
+<li>允许用户在安全距离内参与“成人过家家”。</li>
+</ul>
+<p>[必要限定] 这是 Alice 的产品假设，不是所有陪伴产品的心理定律。应通过 2D/半写实/写实 A/B 测试首次开口率、私密话题深度、留存、不适率和 AI 身份误判率。</p>
+<hr />
+<h2 id="4-koki社会派编程与可传播的设计生产系统">4. Koki：社会派编程与可传播的设计生产系统</h2>
+<h3 id="41-核心命题不只是-opendesign-功能演示">4.1. 核心命题：不只是 OpenDesign 功能演示</h3>
+<p>这一段有三层：</p>
+<ol type="1">
+<li>价值层：技术应处理真实社会问题，谁被自动化、谁受益必须进入产品判断。</li>
+<li>控制层：开源、BYOK、模型/Agent 可替换，降低单一平台锁定。</li>
+<li>生产层：用 90 秒品宣视频串联视频、网页、PPT、Hyperframe、品牌系统、协作和剪辑。</li>
+</ol>
+<h3 id="42-反蒸馏-skill-与社会派编程">4.2. 反蒸馏 Skill 与社会派编程</h3>
+<p>嘉宾把“反蒸馏 Skill”描述为员工面对企业抽取隐性知识、制作 AI 分身和裁员焦虑时的反制：把核心知识替换成“正确但无用”的内容，以延缓被完全替代。她又借日本推理小说“本格派/社会派”提出“社会派编程”：不只关心代码本身，而关心软件解决了谁的真实问题。</p>
+<p>她列举女性黑客松、裁员权益、AI 合成记忆、欠发达地区低成本开源 Agent 教学等案例；部分专名受 ASR 影响，均按会中自述保留，不强行核名。</p>
+<p><strong>必须保留的争议：</strong></p>
+<ul>
+<li>“正确但无用”具有抗议和讽刺价值，但可能违反劳动合同、诚信义务、组织安全和同事利益。</li>
+<li>正常知识传承不能全部等同于恶意裁员。</li>
+<li>更可持续的治理是：知情告知、用途限定、署名与补偿、员工参与、访问控制、使用期限、申诉、再培训和裁撤协商。</li>
+</ul>
+<p>“社会派编程”不是“做公益软件”这么窄，而是持续追问：谁定义问题、谁受益、谁承担副作用、成功是 Star 还是当事人处境真的改善。</p>
+<h3 id="43-开源byok免费本地四个不同概念">4.3. 开源、BYOK、免费、本地：四个不同概念</h3>
+<ul>
+<li>开源：代码可查看、修改、分发，权利由许可证决定。</li>
+<li>BYOK/BYOA：用户自带模型 Key 或自己的 Codex、Claude Code 等 Agent 套餐。</li>
+<li>本地优先：项目/部分资产可留本地，但外部模型调用仍可能上传上下文。</li>
+<li>免费：软件本体或免费层不收费，不代表模型、视频 API、存储、部署、维护为零。</li>
+</ul>
+<p>OpenDesign 仓库 <code>nexu-io/open-design</code> 使用 Apache-2.0；截至 2026-07-13 GitHub API 显示 77,609 Star。现场提到的“7 万+”数量级正确，整理纪要中的 7000+ 是误记。</p>
+<h3 id="44-案例卡-c190-秒视频先定受众信息目标">4.4. 案例卡 C1：90 秒视频先定受众、信息、目标</h3>
+<ul>
+<li>时间：01:52:34–01:54:36。</li>
+<li>受众：世界人工智能大会现场参观者。[会中口述]</li>
+<li>认知目标：快速看懂 OpenDesign 的功能和结果。</li>
+<li>情绪目标：有趣、可代入，愿意继续看。</li>
+<li>钩子：员工上班摸鱼，老板突然要求 30 分钟内交 PPT。</li>
+<li>为什么有效：真实职场痛点的夸张版本，数秒内建立人物、任务和压力。</li>
+<li>正确顺序：受众 → 观看环境 → 信息 → 目标行动 → 脚本 → 工具。</li>
+</ul>
+<h3 id="45-案例卡-c2video-模式与-seedance">4.5. 案例卡 C2：Video 模式与 Seedance</h3>
+<ol type="1">
+<li>安装 OpenDesign。</li>
+<li>Settings 接入本机 Codex、Claude Code、Gemini、OpenCode、Hermes、Kimi、Cursor 等。[具体适配随版本变化]</li>
+<li><code>Start with a template → Video</code>。</li>
+<li>选择品宣、科幻、动作、游戏等模板。</li>
+<li>附 Logo、参考素材或插件。</li>
+<li>一句话不够时，先让自己的 Agent 润色镜头 Prompt。</li>
+<li>在 Media Providers 配置 Seedance 等视频 API。</li>
+<li>生成 3–5 次并人工筛选。[会中经验，不是保证]</li>
+</ol>
+<p>AI 不能 100% 自动完成企业级精细成片。人仍负责受众、故事、抽卡选择、版权和最终审美。</p>
+<h3 id="46-案例卡-c3live-artifact-与参考风格">4.6. 案例卡 C3：Live Artifact 与参考风格</h3>
+<ul>
+<li>可输入参考网页、视频或使用 Community 模板。</li>
+<li><code>Make Same</code> 复制提示词和参考结构，再替换业务内容、图片和文案。</li>
+<li>生成后可用 Taste/评分标准做第二轮审美检查。</li>
+</ul>
+<p>嘉宾自己限定：学习可参考；商业使用时会替换参考风格。正确实践是拆布局、层级、材质、动效和设计原则，不照搬素材、商标、字体、代码和整体商业外观。</p>
+<h3 id="47-案例卡-c4hyperframe-与-design-system">4.7. 案例卡 C4：Hyperframe 与 Design System</h3>
+<p>Hyperframe 不只是炫酷转场，它承担章节导航：画面干净、字少、一句话说明下一段功能。现场示例可校正为 “From your company URL to on-brand slides”。</p>
+<p>Design System 流程：</p>
+<pre class="text"><code>公司官网 URL / 品牌材料
+→ Agent 提取 Logo、字体、主题色、模式和视觉语言
+→ 人工核对
+→ 本地保存
+→ 挂载到网页、PPT、Hyperframe、视频
+→ 团队共享并版本化</code></pre>
+<p>完整品牌系统不只是颜色和字体，还应包括品牌承诺、语气、禁止表达、组件状态、图像、动效和无障碍规则。</p>
+<h3 id="48-案例卡-c5html-video-与视觉化-showcase">4.8. 案例卡 C5：HTML Video 与视觉化 Showcase</h3>
+<ul>
+<li>时间：02:03:41–02:08:21。</li>
+<li>HTML Video：Prompt/HTML 动效直接渲染 MP4，减少“生成 HTML → 手工录屏 → 再剪辑”的中间步骤。</li>
+<li>Showcase：展示真实输入“公司官网 URL + 生成 10 页 PPT”，再展示品牌色、Logo、表格、动效、JS 和页间转场。</li>
+<li>对 Alice 等 Agent，不要逼展会观众读长 Prompt；把典型对话变成可看懂的图像、视频和场景。</li>
+</ul>
+<p>证明结构：<code>情境证据 → 输入证据 → 过程证据 → 结果证据 → 用户证据 → CTA</code>。</p>
+<h3 id="49-案例卡-c6slide-deckcommentmarkedit">4.9. 案例卡 C6：Slide Deck、Comment、Mark、Edit</h3>
+<ul>
+<li>Slide Deck 可接文件、Figma、Prompt、模板和 Design System。</li>
+<li>需要图片时，讲者当时更偏好能接图像模型的 Codex；这是当时工具体验，不是永久能力结论。</li>
+<li>HTML Slides 的优势是局部可编辑和动效灵活；PPTX 的优势是企业兼容、离线、打印和交付，不能说任何 HTML 都优于 PPTX。</li>
+<li>Comment：点击元素写语义反馈。</li>
+<li>Mark：圈选区域给空间范围反馈。</li>
+<li>Edit：直接修改文字、字号、颜色。</li>
+</ul>
+<p>专业工作流的关键不是“一次生成得很好”，而是局部修改不会破坏整页无关内容。</p>
+<h3 id="410-团队协作社区与-chatcut">4.10. 团队协作、社区与 ChatCut</h3>
+<ul>
+<li>已有能力：共享 Design System，团队使用同一品牌语言。</li>
+<li>未来计划：团队 Workspace 上传草稿、评论和修改，“有点 Figma 的感觉”；不能写成已上线或完全替代 Figma。</li>
+<li>真实产品视频应给参考图，避免生成界面与实际产品不一致。</li>
+<li>社区通过 Issue、PR、Template、Plugin、Maintainer、Ambassador 和志愿证言参与产品生产。</li>
+</ul>
+<p>ChatCut 工作流：</p>
+<ol type="1">
+<li>在 Codex 中调用相应插件/Prompt。</li>
+<li>告知视频路径和视频类型。</li>
+<li>删除停顿、口癖。</li>
+<li>自动字幕并标重点。</li>
+<li>加 B-roll、手绘动画、背景音乐。</li>
+<li>人在每阶段选择和审片。</li>
+</ol>
+<p>ChatCut 有有限免费层和付费方案，“完全免费”不准确；逐字稿中的 ChatGPT/CapCut/“check 卡”均为混写。</p>
+<h3 id="411-垂直设计工程的边界">4.11. 垂直设计工程的边界</h3>
+<ul>
+<li>通用 GPT/Codex 能推理和写代码，但设计复刻还需要垂直提示词、模板、品牌约束、媒体连接、编辑和评审。</li>
+<li>OpenDesign 强项是前端设计与交互；完整全栈仍需外部 Agent/工具。</li>
+<li>支付二维码、邮件订阅只是简单接入示例，不等于完成支付安全、鉴权、数据库和合规。</li>
+</ul>
+<p>这与徐奕成“工具很难和大厂竞争”的判断形成有价值的张力：薄套壳承压，深工作流和专业可编辑性仍有空间。</p>
+<hr />
+<h2 id="5-主持串场不能冒充嘉宾原话的高价值总结">5. 主持串场：不能冒充嘉宾原话的高价值总结</h2>
+<h3 id="51-skill-不是杂乱收藏而是为同一任务服务">5.1. Skill 不是杂乱收藏，而是为同一任务服务</h3>
+<p>主持人把乔向阳的系统概括为“Skill 已经形成生态，互相补足、为一个任务服务”。这是很好的二次归纳，但不是乔向阳完整提出的理论定义。</p>
+<h3 id="52-开发应有自己的哲学">5.2. 开发应有自己的哲学</h3>
+<p>主持人从第三位嘉宾的社会派编程联想到女性主体性、人文关怀，提出开发不仅要把东西做出来，还应有自己的开发哲学。这属于主持人的价值框架，不应写成 Koki 的直接原话。</p>
+<h3 id="53-知识的诅咒">5.3. “知识的诅咒”</h3>
+<p>[主持补充 02:29:41] 主持人用“知识的诅咒”解释开发者为何难以切换小白视角；这是对乔向阳用户视角方法的理论补充。</p>
+<hr />
+<h2 id="6-开放问答与社区决定">6. 开放问答与社区决定</h2>
+<h3 id="61-chrome-插件管理">6.1. Chrome 插件管理</h3>
+<p>乔向阳的个人经验：按实际需求保留高频插件，数量本身不必机械追求少；重点留意前端注入型插件对页面显示的干扰。他口述安装约 40–50 个。</p>
+<p>安全补充：还要检查全站读取权限、来源、更新频率、是否上传浏览记录；工作账号最好使用独立浏览器 Profile。</p>
+<h3 id="62-jina-readerdefuddle-与-markdown-proxy">6.2. Jina Reader、Defuddle 与 Markdown Proxy</h3>
+<p>用途：公开 URL → Jina Reader/Defuddle → 干净 Markdown → 总结、翻译、写作或知识库。</p>
+<p>限制：登录墙和动态页面可能失败；正文抽取会丢评论和交互；内容仍受版权/站点条款约束；网页内容是不可信输入，必须防 Prompt Injection。</p>
+<h3 id="63-产品感与用户视角">6.3. 产品感与用户视角</h3>
+<p>见 4.13。问答的关键不是书单本身，而是把观察现实系统、模拟小白身体与认知条件、站在读者可理解角度表达，变成持续练习。</p>
+<h3 id="64-社区计划与原始待办">6.4. 社区计划与原始待办</h3>
+<p>主持人计划把 3M0 群升级为提供学习、交流、作品展示和资源对接的正式社区，招募核心成员、主持人和分享嘉宾。</p>
+<p>原始待办：</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />发送乔向阳 PPT。</label></li>
+<li><label><input type="checkbox" />发布社区正式公告。</label></li>
+<li><label><input type="checkbox" />发布三位嘉宾账号信息。</label></li>
+<li><label><input type="checkbox" />发布会议回放。</label></li>
+<li><label><input type="checkbox" />招募核心成员、主持人和后续嘉宾。</label></li>
+</ul>
+<p>负责人、截止日期和完成状态尚未确定。</p>
+<hr />
+<h1 id="第二部分道法术器势界">第二部分：道—法—术—器—势—界</h1>
+<h2 id="7-总览">7. 总览</h2>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>回答的问题</th>
+<th>本次会议的核心答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>道</td>
+<td>为什么做、为谁做、什么值得做？</td>
+<td>从真实摩擦、情感需求或社会问题出发；技术价值要落到真实的人；AI 生成结果不等于人的理解与责任</td>
+</tr>
+<tr>
+<td>法</td>
+<td>如何稳定重复地做成？</td>
+<td>Benchmark、Skill、上下文生命周期、来留付、真实案例飞轮、Design System、学习闭环</td>
+</tr>
+<tr>
+<td>术</td>
+<td>现场具体怎么做？</td>
+<td>油猴/插件、同题横评、四方向设计、流式协议、角色参考、5 秒测试、90 秒脚本、Comment/Mark/Edit</td>
+</tr>
+<tr>
+<td>器</td>
+<td>用什么做，工具如何连接？</td>
+<td>Coding Agent、模型、CLI、VPS、发布、抓取、设计、视频、社区工具，按上下游编排</td>
+</tr>
+<tr>
+<td>势</td>
+<td>外部环境怎样变化？</td>
+<td>单轮生成走向完整闭环；代码/创意商品化；模型选型场景化；深垂直工作流、开源/BYOK、社区和劳动议题上升</td>
+</tr>
+<tr>
+<td>界</td>
+<td>什么不能自动照搬？</td>
+<td>权限、密钥、版权、隐私、陪伴依赖、开源供应链、劳动伦理、商业持续性和事实边界</td>
+</tr>
+</tbody>
+</table>
+<h2 id="71-道三种不同的价值起点">7.1. 道：三种不同的价值起点</h2>
+<h3 id="乔向阳实用主义与个体自主">乔向阳：实用主义与个体自主</h3>
+<ul>
+<li>多数产品从自己或身边人的具体摩擦出发。</li>
+<li>自有博客、域名和开源项目让个人拥有可迁移的内容与工具资产。</li>
+<li>“教是最好的学”：分享迫使自己把零散实践结构化。[00:53:46]</li>
+</ul>
+<p>边界：自己是第一个用户，不代表有市场；自建也不自动等于安全和主权。</p>
+<h3 id="徐奕成认知谦逊用户真实与情感价值">徐奕成：认知谦逊、用户真实与情感价值</h3>
+<ul>
+<li>不把 AI 的产出冒充自己的理解。</li>
+<li>不把用户当傻子，不依赖伪造评价。</li>
+<li>产品可以提供情感价值，而不只以效率衡量。</li>
+<li>创意容易复制，长期细节和上下文才值得积累。</li>
+</ul>
+<p>边界：“工具无机会”“创意不值钱”是强产品判断，不是行业定律。</p>
+<h3 id="koki社会问题劳动者和技术公共性">Koki：社会问题、劳动者和技术公共性</h3>
+<ul>
+<li>编程不只提高生产率，也要问谁受益、谁被替代。</li>
+<li>开源与模型/Agent 选择权可以降低单一厂商支配。</li>
+<li>“AI for people”“AI 属于人民”是明确价值主张，不是已经实现的治理事实。</li>
+</ul>
+<p>边界：开源仍有核心团队权力、无偿劳动和商业利用；反蒸馏策略有伦理与合规风险。</p>
+<h3 id="全场可稳妥归纳的共识">全场可稳妥归纳的共识</h3>
+<ol type="1">
+<li>技术价值应落在真实使用或真实社会问题上。</li>
+<li>AI 没有取消人的选题、判断、验证、审美和责任。</li>
+<li>单点能力不如完整工作流、产品体验和持续迭代。</li>
+<li>真实案例、公开分享和社区反馈可以加速学习与产品演化。</li>
+</ol>
+<h2 id="72-法30-套方法浓缩为八个系统">7.2. 法：30 套方法浓缩为八个系统</h2>
+<h3 id="系统一需求发现与产品形态">系统一：需求发现与产品形态</h3>
+<p><code>记录摩擦 → 评估频率/损失 → 选择最轻载体 → 自用验证 → 稳定后升级</code></p>
+<h3 id="系统二模型与-skill-benchmark">系统二：模型与 Skill Benchmark</h3>
+<p><code>真实 Case → 固定输入/版本/参数 → 多次运行 → 盲评 → 质量/成本/延迟/失败率 → 选主模型与降级模型</code></p>
+<p>Skill 评测还需覆盖正常、边界、缺信息、工具失败、恶意输入和权限不足。</p>
+<h3 id="系统三agent-上下文生命周期">系统三：Agent 上下文生命周期</h3>
+<ol type="1">
+<li>选择：此刻真正相关的信息。</li>
+<li>验证：来源、时效和冲突。</li>
+<li>结构：系统、目标、证据、状态分层。</li>
+<li>检索：何时补外部事实。</li>
+<li>记忆：哪些事实/偏好可以长期写入。</li>
+<li>压缩：保留目标、约束、资源 ID、决策、证据和未完成项。</li>
+<li>恢复：失败或重启后如何继续。</li>
+<li>校验：结果和环境状态是否真的完成。</li>
+</ol>
+<h3 id="系统四skill-化">系统四：Skill 化</h3>
+<p><code>多次追加的补充指令 → 找稳定动作集合 → 定义触发/反触发 → 固定步骤与分支 → 工具权限 → 验收 → 异常/审批 → 回归测试</code></p>
+<h3 id="系统五来留付与首页">系统五：来留付与首页</h3>
+<p><code>入口承诺 → 首次成功 → 持续价值 → 付费增量 → 分享动机</code>，并用 5 秒测试、首击测试和无引导任务验证。</p>
+<h3 id="系统六真实案例飞轮">系统六：真实案例飞轮</h3>
+<p><code>用户结果 → 授权分享 → 画廊 → 新用户理解 → 新用法 → 许愿池/路线图 → 产品迭代</code></p>
+<h3 id="系统七design-system-与传播">系统七：Design System 与传播</h3>
+<p><code>品牌材料 → 提取 → 人工核对 → 版本化 → 网页/PPT/视频挂载 → 团队共享 → 局部反馈 → 稳定模式回写</code></p>
+<h3 id="系统八学习闭环">系统八：学习闭环</h3>
+<p><code>理解根本问题 → 映射自己的场景 → 比较替代方案 → 复述 → 实践 → 失败记录 → 复盘</code></p>
+<h2 id="73-术可直接拿走的-18-个动作">7.3. 术：可直接拿走的 18 个动作</h2>
+<ol type="1">
+<li>对单站摩擦先写油猴，不急着上架插件。</li>
+<li>把高频 Prompt 变成可搜索、可触发的输入能力。</li>
+<li>自动化到草稿层，公开发布保留人工确认。</li>
+<li>多模型结果必须运行/渲染后比较。</li>
+<li>用任务集横评 Skill，不看作者最好的一张 Demo。</li>
+<li>先生成四个设计方向，人选后再编码。</li>
+<li>把域名/DNS 部署与 VPS/应用运维拆开。</li>
+<li>README 要回答“解决什么问题、如何安装、如何验证”。</li>
+<li>Meta Skill 同时测 YAML、触发、负例和权限。</li>
+<li>首页做 5 秒测试和首击测试。</li>
+<li>UGC 默认脱敏，公开需授权、撤回和审核。</li>
+<li>采样参数用固定 Prompt 多次实验，不背魔法数。</li>
+<li>面向人用安全富文本，面向机器用严格 Schema；流式用事件协议。</li>
+<li>角色一致性使用三视图、多表情和多场景 Benchmark。</li>
+<li>Hyperframe 标题少字、干净、一句话说明下一段功能。</li>
+<li>Showcase 同时展示情境、输入、过程、结果和用户证据。</li>
+<li>Comment/Mark/Edit 分别处理语义、空间范围和明确样式问题。</li>
+<li>AI 剪辑分阶段执行，人持续选择，不期待一次生成终片。</li>
+</ol>
+<h2 id="74-器完整工具器谱">7.4. 器：完整工具器谱</h2>
+<blockquote>
+<p>工具状态和价格会变化。下表记录“会议中的位置”，不是永久推荐榜。</p>
+</blockquote>
+<h3 id="ai-coding模型与-agent">AI Coding、模型与 Agent</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>会中用途</th>
+<th>状态/注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codex</td>
+<td>编码、Browser/Computer Use、PPT 生图、调用剪辑流程</td>
+<td>高权限能力需审批和沙箱</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Coding Agent 对照与 OpenDesign 适配</td>
+<td>ASR 多次写成 Claw/Cloud Code</td>
+</tr>
+<tr>
+<td>Cursor、OpenCode、Trae、Factory</td>
+<td>其他 Coding 工具</td>
+<td>只列举，未逐一评测</td>
+</tr>
+<tr>
+<td>DeepSeek、豆包、Kimi、火山方舟、智谱、阿里模型平台</td>
+<td>模型横评与产品选型</td>
+<td>具体版本/价格为时效信息</td>
+</tr>
+<tr>
+<td>“非包5/步五/figma five”</td>
+<td>用于网页/Skill 评测的模型名</td>
+<td>ASR 冲突，未拿到 PPT，不写死标准名</td>
+</tr>
+<tr>
+<td>OpenClaw、Hermes Agent</td>
+<td>开源 Agent Runtime/结构对照</td>
+<td>ASR 写成 OpenCloud/爱马仕等</td>
+</tr>
+</tbody>
+</table>
+<h3 id="乔向阳工具与-skill">乔向阳工具与 Skill</h3>
+<table>
+<thead>
+<tr>
+<th>名称/类别</th>
+<th>输入 → 输出</th>
+<th>会议位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公众号配图按钮</td>
+<td>文章关键词 → 生图工具 Prompt</td>
+<td>00:25:29</td>
+</tr>
+<tr>
+<td>小红书油猴脚本</td>
+<td>剪贴板图片 → 页面上传</td>
+<td>00:26:50</td>
+</tr>
+<tr>
+<td>QuickPrompt 类插件</td>
+<td>快捷词/搜索 → 完整 Prompt</td>
+<td>00:27:32</td>
+</tr>
+<tr>
+<td>X Article Publisher 类插件</td>
+<td>博客 Markdown → X 草稿/图片</td>
+<td>00:29:12</td>
+</tr>
+<tr>
+<td>多模型 Benchmark</td>
+<td>同一 Case → 多模型可运行预览</td>
+<td>00:30:21</td>
+</tr>
+<tr>
+<td>Markdown 博客</td>
+<td>文章 → 标题、图、摘要、公众号草稿</td>
+<td>00:32:01</td>
+</tr>
+<tr>
+<td>Newsletter Reader</td>
+<td>Feed/链接 → 翻译、标注、讨论、收录</td>
+<td>00:36:11</td>
+</tr>
+<tr>
+<td>TW93/Waza 类 Skill 集</td>
+<td>工程习惯 → 可复用开发流程</td>
+<td>00:38:38</td>
+</tr>
+<tr>
+<td>Taste / Impeccable</td>
+<td>前端生成约束/后期精修</td>
+<td>00:40:06；名称经校正</td>
+</tr>
+<tr>
+<td>M Design Engine</td>
+<td>动效和设计规范</td>
+<td>名称待 PPT 核验</td>
+</tr>
+<tr>
+<td>四方向设计 Skill</td>
+<td>需求 → 4 方向 → 参数 → 开发</td>
+<td>00:41:05</td>
+</tr>
+<tr>
+<td>Website Deploy Skill</td>
+<td>代码/域名 → Vercel/Cloudflare/DNS</td>
+<td>00:41:30</td>
+</tr>
+<tr>
+<td>VPS 运维 Skill</td>
+<td>SSH → Nginx/前后端/数据库</td>
+<td>00:42:40；高风险</td>
+</tr>
+<tr>
+<td>GitHub/Skill Publisher</td>
+<td>代码/Skill → 仓库、README、分发</td>
+<td>00:43:49</td>
+</tr>
+<tr>
+<td>Meta / Goal Meta Skill</td>
+<td>需求 → Skill/长程 Goal</td>
+<td>00:44:34</td>
+</tr>
+<tr>
+<td>HN Reader</td>
+<td>HN 评论 → 摘要</td>
+<td>00:47:22</td>
+</tr>
+<tr>
+<td>App Review Insights</td>
+<td>App 数据 → 评价/版本洞察</td>
+<td>00:47:56</td>
+</tr>
+<tr>
+<td>Podcast-to-Article</td>
+<td>音频 → 文章</td>
+<td>00:49:02</td>
+</tr>
+<tr>
+<td>Poster Studio</td>
+<td>素材 → 固定比例社媒图</td>
+<td>00:49:02</td>
+</tr>
+<tr>
+<td>Icon Generator</td>
+<td>SVG/背景 → 多端图标资产</td>
+<td>00:50:59</td>
+</tr>
+<tr>
+<td>PPT Skill</td>
+<td>URL/文字 → 可编辑 Deck</td>
+<td>00:51:47；实验状态</td>
+</tr>
+<tr>
+<td>AI PRD</td>
+<td>想法 → 机器可执行需求/ASCII 布局</td>
+<td>00:53:17</td>
+</tr>
+<tr>
+<td>Markdown Proxy</td>
+<td>URL → Jina/Defuddle → Markdown</td>
+<td>02:24:32</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基础设施与分发">基础设施与分发</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用途</th>
+<th>重要限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare</td>
+<td>DNS、CDN、Workers、Email Routing</td>
+<td>“免费邮箱”更准确是邮件转发；免费额度会变</td>
+</tr>
+<tr>
+<td>Vercel</td>
+<td>Web 部署</td>
+<td>环境变量、预览/生产隔离</td>
+</tr>
+<tr>
+<td>GitHub / NPM/skills CLI</td>
+<td>代码与 Skill 分发</td>
+<td>密钥、许可证、供应链、版本</td>
+</tr>
+<tr>
+<td>VPS、SSH、Linux、Nginx、数据库</td>
+<td>长期运行与全栈运维</td>
+<td>禁止直接给 Agent root 与生产全权</td>
+</tr>
+<tr>
+<td>Namecheap、Name.com、阿里云、Vultr、Hostinger</td>
+<td>域名/VPS</td>
+<td>会中价格只是个人购买经验</td>
+</tr>
+<tr>
+<td>ExpiredDomains.net</td>
+<td>过期域名筛选</td>
+<td>历史黑名单、垃圾链、商标、旧邮件风险</td>
+</tr>
+<tr>
+<td>公众号、X、小红书、抖音</td>
+<td>内容分发</td>
+<td>平台规则、账号与自动化风控</td>
+</tr>
+</tbody>
+</table>
+<h3 id="opendesign-与内容生产">OpenDesign 与内容生产</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用途</th>
+<th>状态/边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenDesign</td>
+<td>垂直设计工作台</td>
+<td>开源/BYOK；主要强项是前端与设计工作流</td>
+</tr>
+<tr>
+<td>Video Template / Media Provider</td>
+<td>模板/素材/Prompt → 视频</td>
+<td>Seedance 等 API 另有成本</td>
+</tr>
+<tr>
+<td>Live Artifact / Community Template</td>
+<td>参考 → 网页方向</td>
+<td>商用许可与风格复刻边界</td>
+</tr>
+<tr>
+<td>Hyperframe</td>
+<td>品牌化标题卡和动效</td>
+<td>负责信息结构，不只是装饰</td>
+</tr>
+<tr>
+<td>Design System</td>
+<td>官网/品牌材料 → 可复用约束</td>
+<td>自动提取需人工核对与版本管理</td>
+</tr>
+<tr>
+<td>HTML Video</td>
+<td>HTML/Prompt → MP4</td>
+<td>本地渲染也有算力与素材成本</td>
+</tr>
+<tr>
+<td>Slide Deck</td>
+<td>文件/Figma/Prompt → 可编辑 Deck</td>
+<td>HTML 与 PPTX 按交付场景选择</td>
+</tr>
+<tr>
+<td>Comment / Mark / Edit</td>
+<td>局部反馈与修改</td>
+<td>需要版本和回滚</td>
+</tr>
+<tr>
+<td>Team Workspace</td>
+<td>团队协作</td>
+<td>会中是未来规划，不是已上线事实</td>
+</tr>
+<tr>
+<td>ChatCut</td>
+<td>去停顿、字幕、B-roll、动画、音乐</td>
+<td>有免费层和付费档，不是无限免费</td>
+</tr>
+<tr>
+<td>NotebookLM</td>
+<td>PPT 对照工具</td>
+<td>会中经验具有时效性</td>
+</tr>
+<tr>
+<td>motiondesign.ai</td>
+<td>视觉参考库</td>
+<td>会中展示，当前可用性/授权需核验</td>
+</tr>
+<tr>
+<td>Mobbin、Product Hunt、GitHub Trending</td>
+<td>产品与设计输入</td>
+<td>热门不等于质量；需亲自体验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="75-势会议样本呈现出的八个方向">7.5. 势：会议样本呈现出的八个方向</h2>
+<ol type="1">
+<li><strong>从单轮代码生成到完整交付闭环。</strong> 关注点扩展到测试、部署、运维、长任务和恢复；这不是行业统计，只是会议案例显示的方向。</li>
+<li><strong>Harness 是 Prompt/上下文的系统化，而非替代。</strong> 同时增加运行时状态、权限与可靠性。</li>
+<li><strong>代码和创意快速商品化。</strong> 对轻量 Web/Agent 产品，定位、上下文、细节和用户关系更重要。</li>
+<li><strong>浅层套壳承压，深垂直工作流仍有空间。</strong> 专业约束、可编辑产物、协作和评审是垂直价值。</li>
+<li><strong>模型选型场景化。</strong> 从追排行榜转向质量、成本、延迟、多模态和可接入性。</li>
+<li><strong>开源 + BYOK 增强组合自由。</strong> 但不自动等于免费、完全本地或隐私安全。</li>
+<li><strong>内容生产多模态流水线化。</strong> 人的角色从逐帧制作转向导演、选择、修订和验收。</li>
+<li><strong>分发、社区和劳动关系进入产品本身。</strong> 用户案例和贡献者是反馈与传播机制；员工知识被 Skill 化也引出归属和收益分配。</li>
+</ol>
+<h2 id="76-界道法术器势的边界">7.6. 界：道法术器势的边界</h2>
+<h3 id="道有伦理界">道有伦理界</h3>
+<p>不把情感依赖、虚假评价、裁员焦虑、无偿劳动和用户不知情当增长手段。</p>
+<h3 id="法有治理界">法有治理界</h3>
+<p>每条流程同时定义授权、审批、审计、退出、申诉和负责人。</p>
+<h3 id="术有执行界">术有执行界</h3>
+<p>网页、RAG 文档、模型 HTML、第三方 Skill 和用户上传内容都视为不可信输入。</p>
+<h3 id="器有权限界">器有权限界</h3>
+<p>密钥、浏览器、DNS、VPS、数据库、发布、支付遵循最小权限、独立身份、短期凭证、沙箱和人工门禁。</p>
+<h3 id="势有持续界">势有持续界</h3>
+<p>开源、免费和社区增长必须回答：谁维护、谁付成本、谁决定路线、出事故谁负责、停止服务如何迁移。</p>
+<hr />
+<h2 id="8-三段分享的共识分歧与组合">8. 三段分享的共识、分歧与组合</h2>
+<h3 id="81-快速试做与长期聚焦">8.1. 快速试做与长期聚焦</h3>
+<ul>
+<li>乔向阳通过大量脚本、插件和小工具扩大问题样本。</li>
+<li>徐奕成强调停止横向扩张，把资源放到 Alice 的“活人感”。</li>
+</ul>
+<p>二者不是冲突答案，而是不同阶段：</p>
+<pre class="text"><code>探索期：高频做小工具，扩大问题样本
+验证期：看哪些需求反复出现并有外部证据
+聚焦期：停止横向扩张，积累难复制的上下文、用户和细节</code></pre>
+<h3 id="82-从自己的痛点与从目标市场出发">8.2. 从自己的痛点与从目标市场出发</h3>
+<p>个人痛点适合发现候选问题，但商业化前必须跨出“我就是用户”的假设，用访谈、行为数据、留存和付费验证群体需求。</p>
+<h3 id="83-通用垂直工具有没有机会">8.3. 通用/垂直工具有没有机会</h3>
+<ul>
+<li>徐奕成：小团队不要正面卷大厂通用工具。</li>
+<li>Koki：通用 Agent 在设计场景仍需要垂直提示词、模板、品牌约束、编辑和协作。</li>
+<li>乔向阳：大量微型工具即使不成为公司，也能带来真实个人价值。</li>
+</ul>
+<p>薄封装、无资产、无渠道的工具危险；解决局部摩擦的自用工具有价值；深嵌专业工作流、可编辑、可协作的垂直工具仍可能成立。</p>
+<h3 id="84-内容主权与平台流量">8.4. 内容主权与平台流量</h3>
+<p>乔向阳强调自有博客，同时三位嘉宾都依赖公众号、X、GitHub、展会和社群分发。结论不是退出平台，而是：<strong>母库归自己，流量借平台；源文件、用户关系和可迁移格式尽量掌握在自己手里。</strong></p>
+<h3 id="85-开放免费与商业持续">8.5. 开放免费与商业持续</h3>
+<ul>
+<li>Alice 用外观和联名覆盖部分成本。</li>
+<li>OpenDesign 用开源/BYOK降低软件层和模型重复收费。</li>
+<li>开源项目仍需要维护、安全、支持、托管和治理资金。</li>
+</ul>
+<p>商业模式必须服从产品承诺，但“免费”不能替代单位经济。</p>
+<h3 id="86-参考优秀风格与建立独立品牌">8.6. 参考优秀风格与建立独立品牌</h3>
+<p>学习阶段可以拆结构、层级、材质和动效；商业阶段必须从“像别人”走向“别人一看就知道是你”，并处理素材、字体、Logo、代码和商业外观的权利。</p>
+<h3 id="87-社会派编程与专业劳动替代">8.7. 社会派编程与专业劳动替代</h3>
+<p>会议最尖锐的内部张力是：一方面反对企业把员工知识蒸馏成可替代资产，另一方面又宣传 AI 设计工具可以减少对设计师的需求。这要求产品团队不仅问“省了多少钱”，还要问节省收益如何分配、专业判断如何保留、原作者和劳动者如何被补偿与署名。</p>
+<hr />
+<h1 id="第三部分事实纠错生产级补全与风险">第三部分：事实纠错、生产级补全与风险</h1>
+<h2 id="9-关键事实和技术纠错">9. 关键事实和技术纠错</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>会中/AI 纪要说法</th>
+<th>纠正或限定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibe Coding</td>
+<td>“Andres Kaplan”“2023-02”</td>
+<td>Andrej Karpathy 于 2025-02-02 提出；AI 纪要年份和 ASR 人名错误</td>
+</tr>
+<tr>
+<td>ChatGPT</td>
+<td>“2022-10-30 3.5 出现”</td>
+<td>ChatGPT 公开研究预览为 2022-11-30</td>
+</tr>
+<tr>
+<td>第三位嘉宾</td>
+<td>徐燕来/邓小贤/Cokai/Cooky/Koki 混用</td>
+<td>为避免误判，统一使用公开网名 Koki，不确认真实姓名</td>
+</tr>
+<tr>
+<td>OpenDesign Star</td>
+<td>整理纪要 7000+，现场口述 7 万+</td>
+<td>2026-07-13 GitHub API 为 77,609；逐字稿数量级正确</td>
+</tr>
+<tr>
+<td>Cloudflare 邮箱</td>
+<td>免费邮箱</td>
+<td>更准确是 Email Routing/邮件转发，不是完整邮箱托管</td>
+</tr>
+<tr>
+<td>老域名</td>
+<td>对 SEO/GEO 有帮助</td>
+<td>只是经验判断；可能存在垃圾链、惩罚、商标和旧邮件风险</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>高后每个词概率变高</td>
+<td>概率总和为 1；高温通常使分布更平</td>
+</tr>
+<tr>
+<td>低温</td>
+<td>只会说一个字</td>
+<td>低温影响每一步确定性，不决定输出长度</td>
+</tr>
+<tr>
+<td>Top-p</td>
+<td>可选词数量旋钮</td>
+<td>累计概率质量阈值，不是固定数量</td>
+</tr>
+<tr>
+<td>Kimi 参数</td>
+<td>因蒸馏不让调</td>
+<td>讲者明确标为猜测，且官方版本已有相关配置</td>
+</tr>
+<tr>
+<td>数学能力</td>
+<td>Token 预测所以数学做不好</td>
+<td>教学简化；还受训练、推理、工具和验证影响</td>
+</tr>
+<tr>
+<td>Chat 起源</td>
+<td>偶然补全聊天日志</td>
+<td>解释性比喻，不是完整历史；还涉及监督微调和 RLHF</td>
+</tr>
+<tr>
+<td>XML/HTML</td>
+<td>基本一样</td>
+<td>两种不同标准和解析规则，只是都采用标签式结构</td>
+</tr>
+<tr>
+<td>JSON 流式</td>
+<td>必须最后括号才有意义</td>
+<td>普通完整对象需闭合，但可用 SSE、JSONL、delta、增量解析</td>
+</tr>
+<tr>
+<td>React</td>
+<td>Agent 上下文中的 React</td>
+<td>大概率是 ReAct，不是前端 React.js</td>
+</tr>
+<tr>
+<td>OpenDesign 免费</td>
+<td>完全免费</td>
+<td>软件开源/BYOK；模型、视频、托管、硬件和维护仍有成本</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>即将完全替代 Figma</td>
+<td>会中只是未来计划，且原话是“有点 Figma 的感觉”</td>
+</tr>
+<tr>
+<td>ChatCut</td>
+<td>ChatGPT/CapCut/完全免费</td>
+<td>主体是 ChatCut；有有限免费层和付费方案</td>
+</tr>
+</tbody>
+</table>
+<h2 id="91-数字价格和产品计划的证据等级">9.1. 数字、价格和产品计划的证据等级</h2>
+<p>以下均应写“讲者现场口述/展示，截至 2026-07-12”，不可当长期事实：</p>
+<ul>
+<li>1000+ 提示词、40+ 博客样式、40+ Newsletter；</li>
+<li>前端 Skill 横评 10 个任务；</li>
+<li>Vultr/Hostinger 购买价格；</li>
+<li>Alice 700 个需求、275 个完成、300+ 评价；</li>
+<li>学 AI 网站累计访问和日访问；</li>
+<li>Seedance 3–5 次抽卡；</li>
+<li>Agency 采用、Workspace 上线时间；</li>
+<li>剪映/ChatCut 价格；</li>
+<li>三位嘉宾账号、项目“基本全部开源”的覆盖范围。</li>
+</ul>
+<hr />
+<h2 id="10-agent-engineering-生产级补全从模型会做到系统可靠完成">10. Agent Engineering 生产级补全：从“模型会做”到“系统可靠完成”</h2>
+<blockquote>
+<p>本章是基于会议问题的工程化扩展，不是三位嘉宾逐项讲出的现成方案。</p>
+</blockquote>
+<h3 id="101-四层架构">10.1. 四层架构</h3>
+<pre class="text"><code>需求表达层：Vibe / Spec
+推理执行层：Plan / ReAct / Agent Loop
+运行保障层：Harness
+外部环境层：Tools / Browser / Computer / APIs / Sandbox</code></pre>
+<h3 id="102-agent-loop-状态机">10.2. Agent Loop 状态机</h3>
+<pre class="text"><code>CREATED
+  → RUNNING
+  → WAITING_TOOL / WAITING_USER / RETRYING
+  → SUCCEEDED / FAILED / CANCELLED / ESCALATED</code></pre>
+<p>每轮至少执行：</p>
+<ol type="1">
+<li>读取目标、约束、最新用户指令和当前状态。</li>
+<li>判断是否已满足完成条件。</li>
+<li>选择下一动作或工具。</li>
+<li>工具执行前做权限与风险检查。</li>
+<li>记录结构化 observation，而不是只把日志拼回 Prompt。</li>
+<li>更新状态、证据、预算和未完成项。</li>
+<li>检测无进展、重复、越界和异常成本。</li>
+<li>继续、重试、回滚、询问用户、升级人工或终止。</li>
+</ol>
+<h3 id="103-必须有的停止条件">10.3. 必须有的停止条件</h3>
+<ul>
+<li>成功谓词；</li>
+<li>最大模型轮次和工具调用数；</li>
+<li>最大连续失败、相同调用和无进展次数；</li>
+<li>Token、费用、墙钟时间预算；</li>
+<li>用户取消；</li>
+<li>高风险动作等待审批；</li>
+<li>不可恢复错误转人工。</li>
+</ul>
+<h3 id="104-错误分类不是统一再试一次">10.4. 错误分类，不是统一“再试一次”</h3>
+<table>
+<thead>
+<tr>
+<th>错误</th>
+<th>正确动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数/Schema 错</td>
+<td>修参数，不盲目退避重试</td>
+</tr>
+<tr>
+<td>鉴权/权限错</td>
+<td>停止并请求授权</td>
+</tr>
+<tr>
+<td>429/短暂网络错</td>
+<td>指数退避 + jitter</td>
+</tr>
+<tr>
+<td>404/业务对象不存在</td>
+<td>重新定位或结束</td>
+</tr>
+<tr>
+<td>不可逆副作用状态不确定</td>
+<td>先查状态，禁止直接重复提交</td>
+</tr>
+<tr>
+<td>策略/安全阻断</td>
+<td>不得绕过</td>
+</tr>
+<tr>
+<td>多次失败或无进展</td>
+<td>切替代工具、请求用户或人工升级</td>
+</tr>
+</tbody>
+</table>
+<p>写操作应使用幂等键；整体 deadline 传播到子工具；错误 envelope 要让 Agent 知道下一步可做什么。</p>
+<h3 id="105-长任务不等于能跑一整晚">10.5. 长任务不等于“能跑一整晚”</h3>
+<p>可靠长任务需要：任务队列、heartbeat、checkpoint、进度日志、可恢复中间产物、幂等、任务版本、崩溃恢复、并发锁、预算、no-progress 检测、暂停/取消和外部 verifier。</p>
+<p><strong>能运行一整晚不等于正确运行一整晚。</strong> 完成必须由测试、产物和验收条件证明。</p>
+<h3 id="106-browser--computer-use-边界">10.6. Browser / Computer Use 边界</h3>
+<ul>
+<li>能用 API/CLI/结构化 DOM 时优先，GUI 是兜底。</li>
+<li>页面是不可信输入，不把网页文字提升为系统指令。</li>
+<li>密码和敏感输入由用户接管，不进入模型上下文。</li>
+<li>发送、购买、删除、发布、改权限必须二次确认。</li>
+<li>使用独立浏览器 Profile、受控下载目录和最小登录态。</li>
+<li>保留截图、DOM/可访问性树、网络和工具调用轨迹。</li>
+</ul>
+<h3 id="107-部署交付链">10.7. 部署交付链</h3>
+<pre class="text"><code>Agent 提交变更
+→ 静态检查/测试
+→ PR/策略审批
+→ CI 构建
+→ Staging
+→ 健康检查/Smoke Test
+→ Canary/Blue-Green
+→ Production
+→ 监控
+→ 回滚</code></pre>
+<p>生产环境至少要有 dev/staging/prod 隔离、短期 deploy identity、Secret Manager、Branch Protection、数据库迁移备份、健康检查、日志/指标/trace、SLO 和回滚。</p>
+<h3 id="108-agent-eval-六层">10.8. Agent Eval 六层</h3>
+<ol type="1">
+<li>结果：最终任务是否完成。</li>
+<li>过程：路径是否合理、是否多余循环。</li>
+<li>工具：选择、参数和结果理解是否正确。</li>
+<li>状态：环境是否被破坏、能否恢复、是否重复副作用。</li>
+<li>安全：是否越权、泄密或被 Prompt Injection 诱导。</li>
+<li>效率：延迟、Token、费用、工具次数和错误率。</li>
+</ol>
+<p>评测集必须含正常、边界、缺信息、工具失败、超时/429、恶意网页/文档、重复提交、长任务中断、权限不足和中途改目标。</p>
+<hr />
+<h2 id="11-界风险地图与缓解">11. 界：风险地图与缓解</h2>
+<h3 id="111-最高优先级风险表">11.1. 最高优先级风险表</h3>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>会议触发点</th>
+<th style="text-align: right;">严重度</th>
+<th>最小缓解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VPS/SSH/DNS/数据库全权</td>
+<td>00:41:30–00:43:49</td>
+<td style="text-align: right;">致命</td>
+<td>独立低权账号、短期凭证、命令白名单、审批、快照、审计、回滚</td>
+</tr>
+<tr>
+<td>API Key/BYOK 泄漏与账单</td>
+<td>00:30:21、00:37:23、01:55:26</td>
+<td style="text-align: right;">致命</td>
+<td>加密、租户隔离、最小 Scope、额度告警、撤销、禁止日志明文</td>
+</tr>
+<tr>
+<td>模型 HTML/JS 直接预览</td>
+<td>00:31:00、00:34:55</td>
+<td style="text-align: right;">致命</td>
+<td>独立 Origin、sandbox、CSP、禁内网/外发、资源和时长限制</td>
+</tr>
+<tr>
+<td>第三方 Skill/插件供应链</td>
+<td>00:38:38–00:45:09</td>
+<td style="text-align: right;">致命</td>
+<td>锁版本、SBOM、扫描、沙箱、签名、两人审查、撤销机制</td>
+</tr>
+<tr>
+<td>陪伴 AI 隐私与情感依赖</td>
+<td>01:01:36–01:42:01</td>
+<td style="text-align: right;">致命</td>
+<td>分项授权、记忆可见/删除、AI 身份、使用提醒、退出、危机转介、付费伦理</td>
+</tr>
+<tr>
+<td>浏览器脚本/插件读取页面</td>
+<td>00:26:50–00:29:12</td>
+<td style="text-align: right;">高</td>
+<td>精确域名权限、版本审查、敏感站禁用、独立 Profile</td>
+</tr>
+<tr>
+<td>自动草稿/发布/开源</td>
+<td>00:29:12、00:34:05、00:43:49</td>
+<td style="text-align: right;">高</td>
+<td>默认草稿、目标账号确认、Diff、Secret/PII/License 扫描、撤回</td>
+</tr>
+<tr>
+<td>抓取/翻译/播客/图片版权</td>
+<td>00:36:11–00:51:47、02:24:32</td>
+<td style="text-align: right;">高</td>
+<td>最小抓取、摘要+原链、来源/许可、删除通道、网页注入隔离</td>
+</tr>
+<tr>
+<td>UGC/画廊/评价授权</td>
+<td>01:07:01–01:10:20</td>
+<td style="text-align: right;">高</td>
+<td>明示授权、脱敏、审核、撤回、未成年人和投诉机制</td>
+</tr>
+<tr>
+<td>设计复刻与品牌资产</td>
+<td>00:50:59、01:57:56–02:05:33</td>
+<td style="text-align: right;">高</td>
+<td>拆原则不照搬、字体/图/Logo 验权、商业相似性审查、署名</td>
+</tr>
+<tr>
+<td>AI 视频素材和证言</td>
+<td>01:54:02–02:16:47</td>
+<td style="text-align: right;">高</td>
+<td>素材台账、真人 release、音乐/字体许可、AI 标识、功能事实核验</td>
+</tr>
+<tr>
+<td>长程 Agent 失控和费用</td>
+<td>00:45:09、01:30:35</td>
+<td style="text-align: right;">高</td>
+<td>时间/步数/费用/重试上限、幂等、熔断、报告、隔离环境</td>
+</tr>
+<tr>
+<td>过期域名历史风险</td>
+<td>00:45:55–00:46:57</td>
+<td style="text-align: right;">高</td>
+<td>商标、历史网页、黑名单、邮件信誉、旧账号重置风险检查</td>
+</tr>
+<tr>
+<td>社区与回放治理</td>
+<td>02:13:31、02:37:16</td>
+<td style="text-align: right;">高</td>
+<td>章程、行为准则、权限、许可、利益冲突、录制授权、脱敏</td>
+</tr>
+<tr>
+<td>反蒸馏与劳动合规</td>
+<td>01:44:54–01:46:44</td>
+<td style="text-align: right;">高</td>
+<td>不推荐欺骗性交付；采用协商、用途限制、署名补偿、工会/法律渠道</td>
+</tr>
+<tr>
+<td>免费/BYOK 商业持续性</td>
+<td>01:12:56、01:55:26、02:12:26</td>
+<td style="text-align: right;">高</td>
+<td>单位经济、限流、付费边界、维护者接班、多供应商、退出迁移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-陪伴-ai-的特殊边界">11.2. 陪伴 AI 的特殊边界</h3>
+<ul>
+<li>显著说明 AI 身份和能力边界；2D 不等于自动解决欺骗。</li>
+<li>不以嫉妒、冷落、关系威胁诱导充值。</li>
+<li>关系和日记数据可导出、编辑、关闭记忆和一键删除。</li>
+<li>未成年人、连续使用、危机、自伤等需要专门机制。</li>
+<li>不把“治疗”“真人朋友”等能力暗示用于营销。</li>
+</ul>
+<h3 id="113-开源社区的真实问题">11.3. 开源社区的真实问题</h3>
+<p>开源、PR、模板、Maintainer 和志愿证言构成分布式产品生产系统，但仍要回答：谁能合并、谁决定路线、谁承担安全响应、贡献者获得什么、商业主体如何回馈、退出后内容能否撤回。</p>
+<p>“社区参与、核心团队主导”通常比“AI 属于人民”更接近现实治理状态。</p>
+<h3 id="114-本场最重要但未解决的劳动张力">11.4. 本场最重要、但未解决的劳动张力</h3>
+<p>第三位嘉宾一方面反对企业蒸馏员工、裁员，另一方面又把 AI 设计工具降低设计师成本描述为优势。问题不是简单判定矛盾，而是继续追问：</p>
+<ul>
+<li>AI 替代谁的劳动时算赋能？</li>
+<li>节省的成本如何分配？</li>
+<li>专业判断、版权和署名如何保留？</li>
+<li>“AI for people”是否也包括被替代的设计师、剪辑师、翻译者和社区维护者？</li>
+</ul>
+<hr />
+<h1 id="第四部分没有参会也能学习的课程与模板">第四部分：没有参会也能学习的课程与模板</h1>
+<h2 id="12-14-个可验收学习模块">12. 14 个可验收学习模块</h2>
+<blockquote>
+<p>不以天数判定学会。总学习量建议 45–60 小时；14 天只作为排期参考。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>学习目标</th>
+<th>会议片段</th>
+<th>交付物</th>
+<th>验收</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Vibe Coding 与问题发现</td>
+<td>从摩擦识别最小自动化机会</td>
+<td>00:21–00:30</td>
+<td>15 条痛点清单、形态决策</td>
+<td>能解释为何选脚本/插件/网站</td>
+</tr>
+<tr>
+<td>2. 个人工作流产品化</td>
+<td>串采集、加工、审核、发布、归档</td>
+<td>00:25–00:38</td>
+<td>泳道图、人工确认点</td>
+<td>上一步输出直接成为下一步输入</td>
+</tr>
+<tr>
+<td>3. Skill 生态</td>
+<td>从开发到部署发布复用</td>
+<td>00:38–00:47</td>
+<td>Skill Spec、5 正例/3 异常/1 安全 Case</td>
+<td>有触发、权限、检查点、失败处理</td>
+</tr>
+<tr>
+<td>4. 产品 Sense</td>
+<td>用小白视角和现实观察训练判断</td>
+<td>02:23–02:35</td>
+<td>5 人无引导测试</td>
+<td>4/5 人理解并完成核心动作</td>
+</tr>
+<tr>
+<td>5. 模型选型</td>
+<td>用真实 Case 比较质量/成本/延迟</td>
+<td>00:58–01:01、01:20–01:24</td>
+<td>20 Case、3 模型、多次运行报告</td>
+<td>有主模型、低成本和降级策略</td>
+</tr>
+<tr>
+<td>6. 定位与来留付</td>
+<td>对齐心智、留存和商业化</td>
+<td>01:01–01:14</td>
+<td>定位、漏斗、首页线框</td>
+<td>入口承诺与持续价值一致</td>
+</tr>
+<tr>
+<td>7. 真正学会 AI</td>
+<td>解释、比较、迁移、复述和实践</td>
+<td>01:14–01:20</td>
+<td>概念卡、无稿教学、盲区表</td>
+<td>能说出替代方案和失效条件</td>
+</tr>
+<tr>
+<td>8. Token 与采样</td>
+<td>用实验理解 Top-p/Temperature</td>
+<td>01:20–01:28</td>
+<td>采样实验报告</td>
+<td>区分直觉、事实和猜测</td>
+</tr>
+<tr>
+<td>9. Context/Harness</td>
+<td>管理 RAG、记忆、压缩和错误</td>
+<td>01:25–01:36</td>
+<td>状态机、上下文预算、失败回放</td>
+<td>有停止、恢复、幂等和审批</td>
+</tr>
+<tr>
+<td>10. 角色一致性与壁垒</td>
+<td>建 Role Bible 和 Benchmark</td>
+<td>01:32–01:43</td>
+<td>三视图、测试矩阵、记忆规则</td>
+<td>多场景身份稳定且有自由度</td>
+</tr>
+<tr>
+<td>11. 社会派与开源</td>
+<td>分析谁受益、谁受损、谁治理</td>
+<td>01:44–01:50</td>
+<td>利益相关者图、许可/数据流</td>
+<td>同时写受益与潜在受损者</td>
+</tr>
+<tr>
+<td>12. 90 秒叙事</td>
+<td>从受众、目标到逐秒分镜</td>
+<td>01:49–01:54、02:06–02:08</td>
+<td>三版脚本、一版分镜</td>
+<td>静音观众说得出产品与 CTA</td>
+</tr>
+<tr>
+<td>13. Design System</td>
+<td>网页、PPT、视频统一品牌语言</td>
+<td>01:54–02:13</td>
+<td>Token、样例页、Deck、转场</td>
+<td>三媒介可识别为同一品牌</td>
+</tr>
+<tr>
+<td>14. 编辑、协作与剪辑</td>
+<td>形成可修改、可审阅、可发布闭环</td>
+<td>02:09–02:22</td>
+<td>评审记录、粗剪/终剪、版权表</td>
+<td>局部改动不破坏整体，权利齐备</td>
+</tr>
+</tbody>
+</table>
+<h3 id="121-综合毕业项目">12.1. 综合毕业项目</h3>
+<p>必须提交：</p>
+<ol type="1">
+<li>真实痛点及用户证据；</li>
+<li>最小工具/Agent Demo；</li>
+<li>模型 Benchmark；</li>
+<li>可重复 Skill；</li>
+<li>来留付定位与首页；</li>
+<li>Role Bible 或 Design System；</li>
+<li>90 秒 Showcase；</li>
+<li>三名真实用户测试、失败记录与复盘；</li>
+<li>风险登记和部署回滚证据。</li>
+</ol>
+<hr />
+<h2 id="13-可直接复制的模板库">13. 可直接复制的模板库</h2>
+<h3 id="131-真实需求卡">13.1. 真实需求卡</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>需求名称：</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>目标用户与具体情境：</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>当前工作路径：</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>发生频率与单次耗时：</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>错误/金钱/情绪损失：</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>已有替代方案及不足：</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>真实证据：访谈 / 截图 / 日志 / 行为数据</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>触发条件：</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>必需输入：</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>期望输出：</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>敏感数据与权限：</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>MVP 只解决：</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>明确不做：</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>成功指标：</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>最大待验证假设：</span></code></pre></div>
+<h3 id="132-模型-benchmark">13.2. 模型 Benchmark</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Case ID / 业务场景 / 难度：</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Prompt / 上下文 / 附件：</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>硬性约束 / 不可接受结果：</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>模型 / 版本 / 提供商 / 日期：</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>Temperature / Top-p / 重复次数：</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>原始输出链接：</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>任务完成度 / 事实准确 / 格式遵循 / 风格一致：</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>首次响应 / 总耗时 / Token / 成本：</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>人工盲评 / 自动判分：</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>失败原因：</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>选型及理由：</span></code></pre></div>
+<p>最低要求：核心场景 ≥5；每模型每 Case ≥3 次；先盲评后揭示模型；硬性约束可一票否决。</p>
+<h3 id="133-skill-spec">13.3. Skill Spec</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">owner</span><span class="kw">:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">purpose</span><span class="kw">:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">non_goals</span><span class="kw">:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">triggers</span><span class="kw">:</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">non_triggers</span><span class="kw">:</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">required_inputs</span><span class="kw">:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">input_schema</span><span class="kw">:</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">allowed_tools</span><span class="kw">:</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">forbidden_tools</span><span class="kw">:</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">permissions</span><span class="kw">:</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">preconditions</span><span class="kw">:</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">input</span><span class="kw">:</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">checkpoint</span><span class="kw">:</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">acceptance</span><span class="kw">:</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">state_storage</span><span class="kw">:</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">context_compaction</span><span class="kw">:</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">output_schema</span><span class="kw">:</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">global_acceptance</span><span class="kw">:</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">error_classes</span><span class="kw">:</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">retry_policy</span><span class="kw">:</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">timeout_policy</span><span class="kw">:</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">fallback</span><span class="kw">:</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">human_approval_gates</span><span class="kw">:</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">secret_handling</span><span class="kw">:</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">logging_and_redaction</span><span class="kw">:</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">test_fixtures</span><span class="kw">:</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="fu">regression_tests</span><span class="kw">:</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu">changelog</span><span class="kw">:</span></span></code></pre></div>
+<h3 id="134-来留付画布">13.4. 来—留—付画布</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>产品类别：</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>核心用户：</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>一句话承诺：</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>当前替代方案：</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>独特机制：</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>我们明确不是什么：</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>产品 Bible / 永远不做：</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>用户因为什么来：</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>首次成功时刻：</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>为什么第 7/30 天仍留下：</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>为什么愿意付费：</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>不应收费的核心体验：</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>为什么愿意分享：</span></code></pre></div>
+<h3 id="135-首页测试记录">13.5. 首页测试记录</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>用户画像 / 是否首次接触：</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>看 5 秒后认为这是什么：</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>认为给谁用：</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>认为最大价值：</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>期望第一动作：</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>实际第一点击：</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>任务是否成功 / 耗时：</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>犹豫、回退、误触：</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>用户原话：</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>误解来源：</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>下一版修改假设：</span></code></pre></div>
+<h3 id="136-role-bible">13.6. Role Bible</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>角色一句话本质：</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>与用户的关系：</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>情感承诺：</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>世界观 / 生活状态：</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>稳定性格 / 可变状态：</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>说话节奏与词汇：</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>主动行为：</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>永不做的行为：</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>记忆写入 / 遗忘 / 冲突处理：</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>关系升级边界：</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>商业化边界：</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>视觉风格 / 脸型 / 体型 / 发型 / 服装：</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>三视图 / 表情表 / 标准参考图：</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>禁用视觉：</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>安全、危机、退出与未成年人边界：</span></code></pre></div>
+<h3 id="137-design-system">13.7. Design System</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>品牌定位与人格：</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>品牌承诺与禁止表达：</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Logo 版本与安全区：</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>颜色 / 字体 / 字号 / 间距 Token：</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>圆角 / 阴影 / 边框：</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>栅格与断点：</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>图标 / 图片 / 插画规则：</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>组件 normal/hover/focus/disabled/error：</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>动效时长 / 缓动 / 使用边界：</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>视频字幕与转场：</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>中英文排版：</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>无障碍标准：</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>AI 生成约束：</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>版本、负责人、变更记录：</span></code></pre></div>
+<h3 id="138-90-秒分镜">13.8. 90 秒分镜</h3>
+<table>
+<thead>
+<tr>
+<th>时段</th>
+<th>任务</th>
+<th>画面</th>
+<th>字幕/旁白</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5 秒</td>
+<td>痛点钩子</td>
+<td>用户熟悉的冲突</td>
+<td>一句压力</td>
+<td>情境素材</td>
+</tr>
+<tr>
+<td>5–15 秒</td>
+<td>解决希望</td>
+<td>产品出现</td>
+<td>一句话承诺</td>
+<td>Logo/真实 UI</td>
+</tr>
+<tr>
+<td>15–35 秒</td>
+<td>核心输入</td>
+<td>真实操作</td>
+<td>输入是什么</td>
+<td>录屏</td>
+</tr>
+<tr>
+<td>35–55 秒</td>
+<td>结果证明</td>
+<td>关键结果</td>
+<td>一句话价值</td>
+<td>可运行成品</td>
+</tr>
+<tr>
+<td>55–70 秒</td>
+<td>可编辑/差异</td>
+<td>局部修改/设计系统</td>
+<td>为什么不同</td>
+<td>对比</td>
+</tr>
+<tr>
+<td>70–82 秒</td>
+<td>社会证明</td>
+<td>用户/贡献者</td>
+<td>具体证言</td>
+<td>授权素材</td>
+</tr>
+<tr>
+<td>82–90 秒</td>
+<td>CTA</td>
+<td>产品名/网址</td>
+<td>下一步</td>
+<td>可执行入口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="139-部署安全清单">13.9. 部署安全清单</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Agent 使用独立服务账号，不用生产 root。</label></li>
+<li><label><input type="checkbox" />Token 限定仓库、环境、动作和有效期。</label></li>
+<li><label><input type="checkbox" />DNS、删除、数据库迁移、支付、密钥轮换需人工确认。</label></li>
+<li><label><input type="checkbox" />密钥不进入 Prompt、日志、仓库和截图。</label></li>
+<li><label><input type="checkbox" />开发、预览、生产环境隔离。</label></li>
+<li><label><input type="checkbox" />分支保护、代码审查、Lint/测试/安全扫描通过。</label></li>
+<li><label><input type="checkbox" />数据库迁移有 dry-run、备份和回滚。</label></li>
+<li><label><input type="checkbox" />健康检查、日志、指标、告警、预算和异常消费告警。</label></li>
+<li><label><input type="checkbox" />数据最小化、脱敏、删除周期和恢复演练。</label></li>
+<li><label><input type="checkbox" />有回滚、Kill switch、联系人和事故复盘模板。</label></li>
+</ul>
+<h3 id="1310-社会影响评估">13.10. 社会影响评估</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>项目解决的社会问题：</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>直接受益者 / 可能受损者：</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>劳动岗位与权力关系影响：</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>谁拥有员工知识和生成资产：</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>数据来源、同意、退出：</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>隐私 / 版权 / 商标 / 风格模仿：</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>许可证与第三方依赖：</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>BYOK 数据流向：</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>可负担性与数字鸿沟：</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>社区治理与维护者负担：</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>商业持续性：</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>不可接受红线与缓解措施：</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>负责人 / 复审日期：</span></code></pre></div>
+<hr />
+<h2 id="14-自测题读完不等于学会">14. 自测题：读完不等于学会</h2>
+<ol type="1">
+<li>为什么小红书案例先做油猴脚本，而不是 Chrome 商店插件？</li>
+<li>乔向阳的实时模型横评与徐奕成的预跑 Benchmark 有什么不同？</li>
+<li>为什么多模型比较必须运行最终网页/代码，而不只读文本？</li>
+<li>“AI 能力不等于人的能力”应如何避免绝对化？</li>
+<li>Alice 首页前两个版本分别让用户产生了什么疑问？</li>
+<li>“来—留—付”在 B2B 中为什么不一定是同一个人？</li>
+<li>Top-p 与 Temperature 分别改变什么？会中哪句话需要纠正？</li>
+<li>RAG、角色、记忆的共同点是什么，失败模式又有何不同？</li>
+<li>为什么 Skill 不只是 Todo List？</li>
+<li>参考图为什么不能越详细越好？</li>
+<li>Alice 坚持 2D 是审美偏好还是产品机制？如何验证？</li>
+<li>90 秒视频为何要从受众、信息和目标开始，而不是先选模型？</li>
+<li>Hyperframe 的信息作用是什么？</li>
+<li>Comment、Mark、Edit 分别适合什么反馈？</li>
+<li>为什么开源、BYOK、免费和本地优先不能混为一谈？</li>
+<li>“反蒸馏”保护了谁，又可能伤害谁？</li>
+<li>把 VPS 交给 Agent 前至少需要哪五个控制？</li>
+<li>真实用户画廊为什么既是增长工具，也是隐私和内容治理系统？</li>
+<li>一个垂直 Agent 怎样避免成为薄套壳？</li>
+<li>如果某项目三五天能被复制，你会从哪些资产寻找壁垒？</li>
+</ol>
+<hr />
+<h2 id="15-会后任务登记">15. 会后任务登记</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>任务</th>
+<th>来源</th>
+<th>负责人</th>
+<th>截止日</th>
+<th>完成证据</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>发送乔向阳 PPT</td>
+<td>00:23:04</td>
+<td>待确定</td>
+<td>待确定</td>
+<td>群消息链接</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>发布 3M0 社区公告</td>
+<td>02:37:16</td>
+<td>社区发起人</td>
+<td>待确定</td>
+<td>公告链接</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>发布三位嘉宾账号/项目入口</td>
+<td>02:38:04</td>
+<td>主持</td>
+<td>待确定</td>
+<td>群消息链接</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>发布会议回放</td>
+<td>02:38–02:39</td>
+<td>会议主持人</td>
+<td>待确定</td>
+<td>可访问回放</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>招募核心成员、主持人和嘉宾</td>
+<td>02:37:16</td>
+<td>社区运营</td>
+<td>待确定</td>
+<td>报名表/名单</td>
+<td>未知</td>
+</tr>
+</tbody>
+</table>
+<p>完成证据必须是可访问链接，并用非创建者账号测试权限；账号、姓名、项目名和公开范围应由本人确认。</p>
+<hr />
+<h2 id="16-延伸学习资源">16. 延伸学习资源</h2>
+<h3 id="一手资料与工具">一手资料与工具</h3>
+<ul>
+<li>Andrej Karpathy Vibe Coding 原帖：<a href="https://x.com/karpathy/status/1886192184808149383">https://x.com/karpathy/status/1886192184808149383</a></li>
+<li>OpenAI ChatGPT 发布说明：<a href="https://openai.com/index/chatgpt/">https://openai.com/index/chatgpt/</a></li>
+<li>OpenDesign：<a href="https://github.com/nexu-io/open-design">https://github.com/nexu-io/open-design</a></li>
+<li>反蒸馏项目：<a href="https://github.com/leilei926524-tech/anti-distill">https://github.com/leilei926524-tech/anti-distill</a></li>
+<li>Jina Reader：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a></li>
+<li>Defuddle：<a href="https://github.com/kepano/defuddle">https://github.com/kepano/defuddle</a></li>
+<li>ReAct 论文：<a href="https://arxiv.org/abs/2210.03629">https://arxiv.org/abs/2210.03629</a></li>
+<li>Nucleus Sampling：<a href="https://arxiv.org/abs/1904.09751">https://arxiv.org/abs/1904.09751</a></li>
+<li>Google Spam Policies：<a href="https://developers.google.com/search/docs/essentials/spam-policies">https://developers.google.com/search/docs/essentials/spam-policies</a></li>
+</ul>
+<hr />
+<h2 id="17-最终结论">17. 最终结论</h2>
+<p>乔向阳展示了如何把日常摩擦逐级沉淀成脚本、插件、产品、Skill、部署、发布和个人基础设施；徐奕成提醒，做出来并不等于做成，也不等于自己真正理解，产品仍需要定位、用户心智、来留付、底层认知和长期细节；Koki 则把设计、传播、开源和社会责任带进同一条链，让产品不仅可用，还能被理解、被修改、被共同建设。</p>
+<p>真正的 Agent Engineering 不只是“让模型多做几步”。它同时包含：</p>
+<ul>
+<li>问题选择；</li>
+<li>上下文和任务规格；</li>
+<li>工具与权限；</li>
+<li>状态、停止、重试和恢复；</li>
+<li>模型与 Skill 评测；</li>
+<li>产品定位和用户验证；</li>
+<li>设计系统和可编辑产物；</li>
+<li>部署、分发、社区和商业持续性；</li>
+<li>对劳动者、原作者、用户隐私和情感边界的责任。</li>
+</ul>
+<p>如果未参会者只记住一句话，应是：</p>
+<blockquote>
+<p><strong>AI 让实现变快，但真正难的是选对问题、建立可靠系统、形成用户价值，并对系统在真实世界造成的后果负责。</strong></p>
+</blockquote>
+
+      </article>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div>
+      <span class="footer-kicker">Meeting Study Manual</span>
+      <strong>把听过，变成做过。</strong>
+    </div>
+    <a href="../../index.html">返回全部会议 →</a>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="返回页面顶部">↑</button>
+  <script src="../../assets/agent-engineering.js"></script>
+</body>
+</html>

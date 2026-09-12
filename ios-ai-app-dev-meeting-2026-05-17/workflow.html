@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>开发与上架流程｜iOS AI App 开发分享</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>iOS AI App Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="workflow.html" aria-current="page">流程</a><a href="business.html">商业</a><a href="growth.html">推广</a><a href="qa-risks.html">问答风险</a><a href="timeline.html">时间线</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <p class="eyebrow">Workflow</p>
+      <h1>从 idea 到 App Store 的实操路径</h1>
+      <p class="lede">分享者的经验不是“学 Swift 再开发”，而是把个人变成 AI coding 的产品负责人：用真实痛点喂给模型，用 Xcode 验收，用 App Store Connect 完成发布。</p>
+    </section>
+
+    <section class="section steps">
+      <aside class="rail" aria-label="页内导航">
+        <a href="#idea">01 找 idea</a>
+        <a href="#ai">02 交给 AI</a>
+        <a href="#setup">03 准备环境</a>
+        <a href="#xcode">04 Xcode 测试</a>
+        <a href="#archive">05 打包上传</a>
+        <a href="#store">06 上架资料</a>
+      </aside>
+
+      <div class="stack">
+        <article class="step" id="idea">
+          <span class="step-number">1</span>
+          <h2>找 idea：从真实反馈开始</h2>
+          <p>不要只凭“我觉得这个产品不错”就动手。分享者给出的 idea 来源有四类：自己的工作难题、社群里的吐槽、成熟产品评论区、小红书问题帖和 X 上的产品反馈。</p>
+          <div class="grid two">
+            <div class="card"><h3>工作痛点</h3><p>自己每天遇到的重复劳动、难用流程和信息处理问题，是最容易判断价值的第一手需求。</p></div>
+            <div class="card"><h3>社群吐槽</h3><p>用户抱怨某个产品“不好用”“缺某功能”“流程麻烦”，往往比泛泛调研更接近购买动机。</p></div>
+            <div class="card"><h3>小红书反馈</h3><p>可以看成熟产品评论区，也可以发问题帖，例如“出国会遇到什么难题”，让真实用户讲签证、语言、机场、填表等场景。</p></div>
+            <div class="card"><h3>X 产品信号</h3><p>X 上能看到新产品资讯和用户对已有产品的反馈，适合捕捉海外需求和同行做法。</p></div>
+          </div>
+        </article>
+
+        <article class="step" id="ai">
+          <span class="step-number">2</span>
+          <h2>交给 AI：先跑框架，再迭代细节</h2>
+          <p>分享者不建议一开始写十几个规划文档。更实用的做法是把初始想法丢给 AI，让它分析可行性、约束和工程路径，然后通过多轮对话产出需求文档、规则文件、Swift UI 和工程文件。</p>
+          <blockquote class="quote">
+            <p>“我希望是说它先给我做出来一个框架，我再不断地去迭代。”</p>
+            <cite>约 01:01:33</cite>
+          </blockquote>
+          <ul class="list-clean">
+            <li>可以先让 AI 判断“这个想法能不能做，有什么系统限制”。</li>
+            <li>PRD 不一定要手写，AI 生成的 Markdown 需求文件就是后续开发记忆。</li>
+            <li>如果产物缺少 Xcode project、上架工程文件，要明确要求它补齐。</li>
+            <li>界面可以给截图、线框图或功能描述，让 AI 先做设计，再在效果上迭代。</li>
+          </ul>
+        </article>
+
+        <article class="step" id="setup">
+          <span class="step-number">3</span>
+          <h2>准备环境：Mac、Xcode、账号和 AI 工具</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>要素</th><th>分享者判断</th><th>实施提醒</th></tr></thead>
+              <tbody>
+                <tr><td>Mac</td><td>iOS 开发必须有 Mac，因为 Xcode 是打包、调试、上架必要工具。</td><td>可考虑二手 Mac、Mac mini 或轻量版 Mac，降低启动成本。</td></tr>
+                <tr><td>Xcode</td><td>负责打开项目、选签名账号、跑模拟器/真机、Archive 打包。</td><td>看到 `.xcodeproj` 基本说明项目进入可被 Xcode 打开的状态。</td></tr>
+                <tr><td>Apple ID</td><td>需要普通 Apple ID 和开发者账号，开发者账号 99 美金。</td><td>最好准备国区和美区账号，便于调试和上架后测试。</td></tr>
+                <tr><td>AI coding 工具</td><td>推荐 ClawCoder/Claude Code、Codex；新手可先 Cursor，成手可直接用更强工具。</td><td>分享者认为 VS Code 本体不重要，关键是背后的模型和插件链路。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="step" id="xcode">
+          <span class="step-number">4</span>
+          <h2>Xcode 测试：模拟器能跑，订阅要真机</h2>
+          <p>打开 Xcode 后选择已有项目，进入 `.xcodeproj`，检查项目名称、target、最低 iOS 版本、Bundle、版本号和 Build 号。点击运行按钮可以选择模拟器或真实 iPhone。</p>
+          <div class="callout">
+            如果报错，不要硬猜：复制运行日志、构建报错或截图，贴回 AI coding 工具，让它根据当前项目上下文修。
+          </div>
+          <p>付费订阅、相册权限、设备能力等场景，模拟器和真机表现可能不同。分享者特别提醒订阅调试最好用真机，因为他曾在这里花很长时间。</p>
+        </article>
+
+        <article class="step" id="archive">
+          <span class="step-number">5</span>
+          <h2>打包上传：Clean Build Folder -> Build -> Archive</h2>
+          <p>打包前先清理缓存，然后 Build，再 Archive。打包时可能需要访问本地证书并输入电脑密码。一般应用不大时，打包耗时约一两分钟。</p>
+          <ul class="list-clean">
+            <li>Archive 可以选择直接上传 App Store，或上传到 TestFlight。</li>
+            <li>上传后在 App Store Connect 的 TestFlight 或版本构建处选择新的 Build。</li>
+            <li>Build 号没递增、证书权限、截图尺寸、隐私声明等都可能报错，报错继续交给 AI 排查。</li>
+          </ul>
+        </article>
+
+        <article class="step" id="store">
+          <span class="step-number">6</span>
+          <h2>上架资料：截图、描述、隐私政策、关键词</h2>
+          <p>App Store Connect 里要填名称、副标题、分类、年龄结构、截图、描述、关键词、技术支持链接、隐私政策和订阅/定价信息。分享者的经验是：大部分文字都可以让 Claude Code 或 Codex 生成，再人工检查粘贴。</p>
+          <div class="grid two">
+            <div class="card"><h3>技术支持和隐私政策</h3><p>不一定必须是独立网站，开放访问的腾讯文档也可承载隐私政策和联系我们等内容。</p></div>
+            <div class="card"><h3>关键词</h3><p>App Store 搜索是重要流量入口，名称、副标题、描述、关键词都要围绕真实搜索词优化。</p></div>
+            <div class="card"><h3>多语言</h3><p>至少中英双语。多语言文本可由 AI 翻译，但要检查西班牙语、葡萄牙语等长文本撑坏按钮或布局。</p></div>
+            <div class="card"><h3>图标与截图</h3><p>图标和部分展示截图可以让 AI 生成，但 App Store 截图尺寸坑较多，最好单独沉淀模板。</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">流程页 · 来源：智能纪要、逐字稿 00:13:41-01:40:15 校对</footer>
+</body>
+</html>
+

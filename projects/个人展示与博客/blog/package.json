@@ -1,0 +1,34 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test:data": "node --test tests/*.test.mjs",
+    "radar:check": "node scripts/competition-audit.mjs",
+    "radar:review": "node scripts/competition-review-queue.mjs",
+    "radar:links": "node scripts/competition-link-audit.mjs",
+    "radar:watch": "node scripts/competition-source-watch.mjs",
+    "radar:monitor": "node scripts/competition-radar-monitor.mjs",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=siuserxiaowei-blog --branch=main"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.3",
+    "js-yaml": "4.1.1",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "remark-stringify": "11.0.0",
+    "tailwindcss": "^4.2.2",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.1.0"
+  }
+}

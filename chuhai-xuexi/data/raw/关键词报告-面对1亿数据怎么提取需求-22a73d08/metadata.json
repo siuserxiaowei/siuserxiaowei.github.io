@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1766459884,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "8b84675327316986dcbb62790c2ef181cc7c8390",
+    "type": "sha1"
+  },
+  "id": "dyyHhSPLvrMVedLChjUB1xrUs5XU9CmAa",
+  "link_id": "cgM3BF6wtWns",
+  "link_url": "https://www.kdocs.cn/l/cgM3BF6wtWns",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1766566273,
+  "name": "关键词报告：面对1亿数据怎么提取需求.otl",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": true,
+    "copy_content": true,
+    "delete": false,
+    "download": true,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": true,
+    "rename": false,
+    "saveas": true,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": true,
+  "size": 2910733,
+  "type": "file",
+  "version": 2,
+  "path": "关键词报告：面对1亿数据怎么提取需求.otl"
+}

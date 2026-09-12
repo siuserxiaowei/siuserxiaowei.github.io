@@ -1,0 +1,1046 @@
+const state = {
+  data: null,
+  routeData: null,
+  query: "",
+  archetype: "all",
+  tag: "all",
+  activeSeed: null
+};
+
+const formatNumber = new Intl.NumberFormat("zh-CN");
+
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function getSource(id) {
+  return state.data.sources[id] || { label: id, url: "#" };
+}
+
+function getEvidence(id) {
+  return (state.data.evidenceSources || []).find((item) => item.id === id) || null;
+}
+
+function findSeed(seedCode) {
+  return state.data.seeds.find((seed) => seed.seed.toLowerCase() === String(seedCode).toLowerCase()) || null;
+}
+
+function renderSeedLink(seedCode) {
+  const seed = findSeed(seedCode);
+  if (!seed) {
+    const tag = el("span", "seed-tag seed-tag-muted", seedCode);
+    tag.title = "站内路线待补";
+    return tag;
+  }
+
+  const button = el("button", "seed-tag seed-tag-button", seed.seed);
+  button.type = "button";
+  button.title = `打开 ${seed.seed} 的牌局流程`;
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    showRoute(seed, true);
+  });
+  return button;
+}
+
+function sourceLinks(sourceIds) {
+  const fragment = document.createDocumentFragment();
+  (sourceIds || []).forEach((id, index) => {
+    const source = getSource(id);
+    const link = el("a", "source-link", index === 0 ? "来源" : `来源 ${index + 1}`);
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.title = source.label;
+    fragment.append(link);
+  });
+  return fragment;
+}
+
+function sourceHost(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "external source";
+  }
+}
+
+function renderRouteSources(sourceIds) {
+  const box = $("#routeSources");
+  const ids = [...new Set(sourceIds || [])];
+  box.replaceChildren();
+
+  if (!ids.length) {
+    box.hidden = true;
+    return;
+  }
+
+  box.hidden = false;
+  box.append(el("h4", "", "来源证据"));
+  const grid = el("div", "route-source-grid");
+  ids.forEach((id) => {
+    const source = getSource(id);
+    const link = el("a", "route-source-card");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.append(el("span", "route-source-label", source.label || id));
+    link.append(el("span", "route-source-host", sourceHost(source.url)));
+    grid.append(link);
+  });
+  box.append(grid);
+}
+
+function flattenQueueTables(queueTables = []) {
+  return queueTables.flatMap((table) => [
+    table.title || "",
+    table.boss || "",
+    table.voucher || "",
+    table.routeUse || "",
+    ...(table.tags || []),
+    ...(table.shopQueue || []),
+    ...(table.packs || [])
+  ]);
+}
+
+function appendQueueField(root, label, value, type = "list") {
+  if (!value || (Array.isArray(value) && value.length === 0)) return;
+
+  const isWide = Array.isArray(value) && type !== "tags";
+  const item = el("div", isWide ? "route-queue-field route-queue-field-wide" : "route-queue-field");
+  item.append(el("span", "route-queue-label", label));
+
+  if (Array.isArray(value)) {
+    if (type === "tags") {
+      const tags = el("div", "route-queue-tags");
+      value.forEach((line) => tags.append(el("span", "route-queue-tag", line)));
+      item.append(tags);
+    } else {
+      const list = document.createElement(type === "ordered" ? "ol" : "ul");
+      list.className = "route-queue-lines";
+      value.forEach((line) => list.append(el("li", "", line)));
+      item.append(list);
+    }
+  } else {
+    item.append(el("p", "route-queue-copy", value));
+  }
+
+  root.append(item);
+}
+
+function renderRouteQueueTables(queueTables = []) {
+  const box = $("#routeQueue");
+  const tables = queueTables.filter((table) => table && (table.shopQueue?.length || table.packs?.length));
+  box.replaceChildren();
+
+  if (!tables.length) {
+    box.hidden = true;
+    return;
+  }
+
+  box.hidden = false;
+  box.append(el("h4", "", "Ante / 路线节点表"));
+  box.append(
+    el(
+      "p",
+      "route-queue-note",
+      "这里展示的是来源可复核的商店队列、牌包或作者流程节点；它们不等同于完整逐帧复盘，优先看 Boss、Tags、关键小丑、Packs 和节点边界。"
+    )
+  );
+
+  const list = el("div", "route-queue-list");
+  tables.forEach((table, index) => {
+    const details = el("details", "route-queue-stage");
+    if (index === 0) details.open = true;
+    const anteLabel = formatRouteQueueAnte(table.ante, index);
+
+    const summary = el("summary", "route-queue-summary");
+    const title = el("span", "route-queue-summary-main");
+    title.append(el("span", "route-queue-ante", anteLabel));
+    title.append(el("strong", "", table.title || anteLabel));
+    summary.append(title);
+    summary.append(el("span", "route-queue-summary-meta", [table.boss, table.voucher].filter(Boolean).join(" · ")));
+    details.append(summary);
+
+    const body = el("div", "route-queue-body");
+    appendQueueField(body, "Boss", table.boss);
+    appendQueueField(body, "Voucher", table.voucher);
+    appendQueueField(body, "Tags", table.tags, "tags");
+    appendQueueField(body, "路线用途", table.routeUse);
+    appendQueueField(body, "Shop Queue", table.shopQueue, "ordered");
+    appendQueueField(body, "Packs", table.packs);
+    details.append(body);
+    list.append(details);
+  });
+
+  box.append(list);
+}
+
+function formatRouteQueueAnte(ante, index) {
+  const raw = String(ante || index + 1).trim();
+  if (/^(?:Ante\s*)?\d+(?:-\d+)?$/i.test(raw)) return `Ante ${raw.replace(/^Ante\s*/i, "")}`;
+  return raw;
+}
+
+function renderRouteEvidenceImages(images = []) {
+  const box = $("#routeEvidenceImages");
+  const items = images.filter((image) => image?.url);
+  box.replaceChildren();
+
+  if (!items.length) {
+    box.hidden = true;
+    return;
+  }
+
+  box.hidden = false;
+  box.append(el("h4", "", "图片证据"));
+  const grid = el("div", "route-evidence-grid");
+  items.forEach((image, index) => {
+    const card = el("a", "route-evidence-card");
+    card.href = image.url;
+    card.target = "_blank";
+    card.rel = "noreferrer";
+
+    const img = document.createElement("img");
+    img.src = image.url;
+    img.alt = image.alt || `${image.label || "路线图片证据"} ${index + 1}`;
+    img.loading = "lazy";
+    img.referrerPolicy = "no-referrer";
+    img.addEventListener("error", () => {
+      card.classList.add("route-evidence-card-unloaded");
+      img.hidden = true;
+    });
+    card.append(img);
+
+    const body = el("span", "route-evidence-body");
+    body.append(el("strong", "", image.label || `图片 ${index + 1}`));
+    if (image.note) body.append(el("span", "", image.note));
+    body.append(el("span", "route-evidence-open", "打开原图查看"));
+    card.append(body);
+    grid.append(card);
+  });
+  box.append(grid);
+}
+
+function mergeRouteData() {
+  if (!state.routeData) return;
+
+  state.data.sources = {
+    ...state.data.sources,
+    ...(state.routeData.sourceAdditions || {})
+  };
+
+  const existing = new Map(state.data.seeds.map((seed) => [seed.seed, seed]));
+  (state.routeData.additionalSeeds || []).forEach((seed) => {
+    if (!existing.has(seed.seed)) {
+      state.data.seeds.push(seed);
+      existing.set(seed.seed, seed);
+    }
+  });
+
+  state.data.seeds.forEach((seed) => {
+    seed.detail = state.routeData.seedDetails?.[seed.seed] || null;
+  });
+
+  const seedStat = state.data.stats.find((item) => item.label === "已整理种子");
+  if (seedStat) {
+    seedStat.value = String(state.data.seeds.length);
+    seedStat.note = "含可点击牌局流程与待复盘队列";
+  }
+}
+
+function renderStats() {
+  const grid = $("#statsGrid");
+  grid.replaceChildren(
+    ...state.data.stats.map((item) => {
+      const card = el("div", "stat-item");
+      card.append(el("div", "stat-value", item.value));
+      card.append(el("div", "stat-label", item.label));
+      card.append(el("p", "stat-note", item.note));
+      return card;
+    })
+  );
+}
+
+function renderFilters() {
+  const archetypes = [...new Set(state.data.seeds.map((seed) => seed.archetype))].sort((a, b) =>
+    a.localeCompare(b, "zh-CN")
+  );
+  const select = $("#archetypeFilter");
+  archetypes.forEach((archetype) => {
+    const option = el("option", "", archetype);
+    option.value = archetype;
+    select.append(option);
+  });
+
+  const tagCount = new Map();
+  state.data.seeds.forEach((seed) => {
+    seed.tags.forEach((tag) => tagCount.set(tag, (tagCount.get(tag) || 0) + 1));
+  });
+  const tags = [...tagCount.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-CN"));
+  const row = $("#tagFilters");
+  row.append(createTagButton("all", "全部"));
+  tags.slice(0, 18).forEach(([tag]) => row.append(createTagButton(tag, tag)));
+}
+
+function createTagButton(value, label) {
+  const button = el("button", "tag-chip", label);
+  button.type = "button";
+  button.dataset.tag = value;
+  button.addEventListener("click", () => {
+    state.tag = value;
+    renderSeeds();
+  });
+  return button;
+}
+
+function seedMatches(seed) {
+  const query = state.query.trim().toLowerCase();
+  const haystack = [
+    seed.seed,
+    seed.title,
+    seed.deck,
+    seed.archetype,
+    seed.difficulty,
+    seed.summary,
+    ...seed.tags,
+    ...seed.route,
+    seed.detail?.completeness || "",
+    ...(seed.detail?.flow || []).flatMap((stage) => [stage.stage, ...(stage.actions || [])]),
+    ...(seed.detail?.evidenceImages || []).flatMap((image) => [image.label, image.note, image.url]),
+    ...flattenQueueTables(seed.detail?.queueTables || [])
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  const queryMatch = !query || haystack.includes(query);
+  const archetypeMatch = state.archetype === "all" || seed.archetype === state.archetype;
+  const tagMatch = state.tag === "all" || seed.tags.includes(state.tag);
+  return queryMatch && archetypeMatch && tagMatch;
+}
+
+function routeStatus(seed) {
+  const detail = seed.detail;
+  if (!detail) return { label: "待补", action: "查看摘要" };
+
+  const completeness = detail.completeness || "待补";
+  const text = [detail.completeness, detail.sourceMode, detail.videoStatus].filter(Boolean).join(" ");
+  const claimsComplete = /完整流程|可照做完整|完整到\s*(?:ante\s*)?8|playable/i.test(completeness);
+  const hasDraftLanguage = /近完整|候选|待|节点型|部分完整|队列样本|决策待验证|复盘|OCR|摘要|描述/.test(text);
+
+  if (claimsComplete && !hasDraftLanguage) return { label: "完整路线", action: "查看完整路线" };
+  if (/队列/.test(text)) return { label: "队列样本", action: "查看队列详情" };
+  if (/候选|待|复盘|OCR|摘要|描述|短节点/.test(text)) return { label: "候选节点", action: "查看节点详情" };
+  if (/近完整|节点/.test(completeness)) return { label: "节点路线", action: "查看节点路线" };
+  return { label: "路线详情", action: "查看路线详情" };
+}
+
+function renderSeeds() {
+  const grid = $("#seedGrid");
+  const template = $("#seedCardTemplate");
+  const seeds = state.data.seeds.filter(seedMatches);
+
+  $("#resultCount").textContent = seeds.length;
+  $$("#tagFilters .tag-chip").forEach((button) => {
+    button.classList.toggle("active", button.dataset.tag === state.tag);
+  });
+
+  if (!seeds.length) {
+    const empty = el("div", "signal-card");
+    empty.append(el("h3", "", "没有匹配结果"));
+    empty.append(el("p", "", "换一个种子代码、Joker 名称或标签试试。"));
+    grid.replaceChildren(empty);
+    return;
+  }
+
+  grid.replaceChildren(
+    ...seeds.map((seed) => {
+      const node = template.content.cloneNode(true);
+      const article = $(".seed-card", node);
+      $(".seed-card-image", node).src = seed.image;
+      $(".seed-card-image", node).alt = `${seed.title} 封面图`;
+      $(".seed-code", node).textContent = seed.seed;
+      $("h3", node).textContent = seed.title;
+      const badge = $(".flow-badge", node);
+      const status = routeStatus(seed);
+      badge.textContent = `${status.label}：${seed.detail?.completeness || "待补"}`;
+      badge.dataset.status = status.label;
+      $(".seed-summary", node).textContent = seed.summary;
+      $('[data-field="deck"]', node).textContent = seed.deck;
+      $('[data-field="archetype"]', node).textContent = seed.archetype;
+      $('[data-field="difficulty"]', node).textContent = seed.difficulty;
+
+      const routeList = $(".route-list", node);
+      seed.route.forEach((step) => routeList.append(el("li", "", step)));
+
+      const tags = $(".tag-list", node);
+      seed.tags.forEach((tag) => tags.append(el("span", "seed-tag", tag)));
+
+      const sources = $(".source-list", node);
+      sources.append(sourceLinks(seed.sources));
+
+      const detailButton = $(".detail-button", node);
+      detailButton.textContent = status.action;
+      detailButton.addEventListener("click", () => showRoute(seed, true));
+
+      article.classList.toggle("has-flow", Boolean(seed.detail));
+      article.addEventListener("click", (event) => {
+        if (event.target.closest("button, a")) return;
+        showRoute(seed, true);
+      });
+
+      const copy = $(".copy-button", node);
+      copy.addEventListener("click", async () => {
+        copy.textContent = "已复制";
+        await copySeed(seed.seed);
+        window.setTimeout(() => {
+          copy.textContent = "复制";
+        }, 1200);
+      });
+
+      return article;
+    })
+  );
+}
+
+function showRoute(seed, shouldScroll = false) {
+  state.activeSeed = seed.seed;
+  const viewer = $("#routeViewer");
+  const detail = seed.detail || {
+    completeness: "待补",
+    sourceMode: "暂无可读流程",
+    videoStatus: "",
+    flow: [
+      {
+        stage: "待补流程",
+        actions: ["这个种子目前只有摘要，还没有抓到可复现的逐阶段路线。"]
+      }
+    ],
+    mistakes: ["不要把只有标题或热度的种子当作完整攻略。"]
+  };
+
+  $("#routeTitle").textContent = `${seed.seed} · ${seed.title}`;
+  $("#routeSubtitle").textContent = seed.summary;
+
+  const metaItems = [
+    ["完整度", detail.completeness || "待补"],
+    ["牌组", seed.deck],
+    ["流派", seed.archetype],
+    ["来源状态", detail.sourceMode || "来源待补"]
+  ];
+  if (detail.videoStatus) metaItems.push(["视频/字幕", detail.videoStatus]);
+  $("#routeMeta").replaceChildren(
+    ...metaItems.map(([label, value]) => {
+      const item = el("div", "route-meta-item");
+      item.append(el("span", "", label));
+      item.append(el("strong", "", value));
+      return item;
+    })
+  );
+
+  $("#routeFlow").replaceChildren(
+    ...(detail.flow || []).map((stage) => {
+      const node = el("section", "flow-stage");
+      const body = el("div");
+      body.append(el("h4", "", stage.stage));
+      const list = el("ul");
+      (stage.actions || []).forEach((line) => list.append(el("li", "", line)));
+      body.append(list);
+      node.append(body);
+      return node;
+    })
+  );
+
+  renderRouteQueueTables(detail.queueTables || []);
+  renderRouteEvidenceImages(detail.evidenceImages || []);
+
+  const mistakeBox = $("#routeMistakes");
+  mistakeBox.replaceChildren();
+  const mistakes = detail.mistakes || seed.warnings || [];
+  if (mistakes.length) {
+    mistakeBox.append(el("h4", "", "常见坑 / 复盘备注"));
+    const list = el("ul");
+    mistakes.forEach((line) => list.append(el("li", "", line)));
+    mistakeBox.append(list);
+    mistakeBox.hidden = false;
+  } else {
+    mistakeBox.hidden = true;
+  }
+
+  const queueSourceIds = (detail.queueTables || []).flatMap((table) => table.sourceIds || []);
+  const sourceIds = [...new Set([...(seed.sources || []), ...(detail.sources || []), ...queueSourceIds])];
+  renderRouteSources(sourceIds);
+  viewer.hidden = false;
+  if (shouldScroll) {
+    history.replaceState(null, "", `#seed-${seed.seed}`);
+    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function maybeOpenRouteFromHash() {
+  const match = decodeURIComponent(window.location.hash).match(/^#(?:seed|route)-(.+)$/);
+  if (!match) return;
+  const seed = state.data.seeds.find((item) => item.seed.toLowerCase() === match[1].toLowerCase());
+  if (seed) showRoute(seed, true);
+}
+
+async function copySeed(seed) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(seed);
+      return;
+    } catch {
+      // Browser permission policies can block Clipboard API in automated checks.
+    }
+  }
+  const input = document.createElement("textarea");
+  input.value = seed;
+  input.setAttribute("readonly", "");
+  input.style.position = "fixed";
+  input.style.opacity = "0";
+  document.body.append(input);
+  input.select();
+  try {
+    document.execCommand("copy");
+  } catch {
+    // The UI still exposes the seed value and gives immediate feedback.
+  }
+  input.remove();
+}
+
+function renderStrategies() {
+  const grid = $("#strategyGrid");
+  grid.replaceChildren(
+    ...state.data.strategies.map((item) => {
+      const card = el("article", "strategy-card");
+      const image = el("img");
+      image.src = item.image;
+      image.alt = `${item.title} 封面图`;
+      const content = el("div", "strategy-content");
+      content.append(el("h3", "", item.title));
+      content.append(el("p", "", item.body));
+      const list = el("ul");
+      item.checklist.forEach((line) => list.append(el("li", "", line)));
+      content.append(list);
+      const sources = el("div", "source-list");
+      sources.append(sourceLinks(item.sources));
+      content.append(sources);
+      card.append(image, content);
+      return card;
+    })
+  );
+}
+
+function renderSeoClusters() {
+  const grid = $("#seoClusterGrid");
+  if (!grid) return;
+  const clusters = state.data.seoClusters || [];
+
+  if (!clusters.length) {
+    const empty = el("div", "signal-card");
+    empty.append(el("h3", "", "SEO 专题待补"));
+    empty.append(el("p", "", "当前数据文件还没有 seoClusters 字段。"));
+    grid.replaceChildren(empty);
+    return;
+  }
+
+  grid.replaceChildren(
+    ...clusters.map((cluster) => {
+      const card = el("article", "seo-cluster-card");
+      card.dataset.priority = cluster.priority || "";
+      card.dataset.status = cluster.status || "";
+
+      const top = el("div", "seo-cluster-top");
+      top.append(el("span", "priority", cluster.priority || "P"));
+      top.append(el("span", "seo-status", cluster.status || "待定"));
+      card.append(top);
+
+      card.append(el("h3", "", cluster.title));
+      card.append(el("p", "seo-intent", cluster.searchIntent));
+
+      const meta = el("dl", "seo-meta");
+      [
+        ["页面类型", cluster.pageType],
+        ["证据等级", cluster.evidenceStrength],
+        ["CTA", cluster.cta]
+      ].forEach(([label, value]) => {
+        const group = el("div", "");
+        group.append(el("dt", "", label));
+        group.append(el("dd", "", value));
+        meta.append(group);
+      });
+      card.append(meta);
+
+      const routeTypes = el("div", "seo-route-types");
+      (cluster.routeTypes || []).forEach((type) => routeTypes.append(el("span", "route-type-chip", type)));
+      card.append(routeTypes);
+
+      const keywords = el("div", "seo-keywords");
+      (cluster.targetKeywords || []).slice(0, 6).forEach((keyword) => keywords.append(el("span", "seed-tag", keyword)));
+      card.append(keywords);
+
+      if ((cluster.supportingSeeds || []).length) {
+        const seeds = el("div", "seo-linked-seeds");
+        seeds.append(el("span", "seo-block-label", "关联 seed"));
+        const seedRow = el("div", "tag-list");
+        cluster.supportingSeeds.forEach((seed) => seedRow.append(renderSeedLink(seed)));
+        seeds.append(seedRow);
+        card.append(seeds);
+      }
+
+      if ((cluster.evidenceIds || []).length) {
+        const evidenceBox = el("div", "seo-evidence-links");
+        evidenceBox.append(el("span", "seo-block-label", "证据"));
+        const links = el("div", "queue-evidence-links");
+        cluster.evidenceIds.slice(0, 6).forEach((id) => {
+          const evidence = getEvidence(id);
+          const link = el("a", "queue-evidence-link", evidence?.title || id);
+          link.href = evidence?.url || "#";
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.title = evidence?.platform || id;
+          links.append(link);
+        });
+        evidenceBox.append(links);
+        card.append(evidenceBox);
+      }
+
+      if ((cluster.sourceIds || []).length) {
+        const sources = el("div", "source-list seo-source-list");
+        sources.append(sourceLinks(cluster.sourceIds.slice(0, 6)));
+        card.append(sources);
+      }
+
+      const guardrails = el("div", "seo-guardrails");
+      guardrails.append(el("span", "seo-block-label", "禁止承诺"));
+      const guardList = el("ul", "");
+      (cluster.doNotClaim || []).forEach((line) => guardList.append(el("li", "", line)));
+      guardrails.append(guardList);
+      card.append(guardrails);
+
+      const next = el("p", "seo-next");
+      next.append(el("strong", "", "下一步："));
+      next.append(document.createTextNode(cluster.nextAction || "待补"));
+      card.append(next);
+
+      return card;
+    })
+  );
+}
+
+function renderResearchRound() {
+  const box = $("#researchRound");
+  if (!box) return;
+  const round = (state.data.researchRounds || [])[0];
+
+  if (!round) {
+    box.replaceChildren();
+    return;
+  }
+
+  const head = el("div", "research-head");
+  const titleBox = el("div", "");
+  titleBox.append(el("p", "section-kicker", "Research Round"));
+  titleBox.append(el("h3", "", round.title));
+  titleBox.append(el("p", "research-status", `${round.date} · ${round.candidates?.length || 0} 个候选来源`));
+  head.append(titleBox);
+  head.append(el("p", "research-channel", round.channelStatus));
+
+  const questions = el("div", "research-chip-block");
+  questions.append(el("span", "seo-block-label", "研究问题"));
+  const questionRows = el("div", "research-chip-row");
+  (round.questions || []).forEach((question) => questionRows.append(el("span", "research-chip", question)));
+  questions.append(questionRows);
+
+  const terms = el("div", "research-chip-block");
+  terms.append(el("span", "seo-block-label", "搜索词"));
+  const termRows = el("div", "research-chip-row");
+  (round.searchTerms || []).forEach((term) => termRows.append(el("span", "research-chip", term)));
+  terms.append(termRows);
+
+  const tableWrap = el("div", "research-table-wrap");
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  ["来源", "访问限制", "seed / 牌组", "初步价值", "映射资产"].forEach((label) => headerRow.append(el("th", "", label)));
+  thead.append(headerRow);
+  table.append(thead);
+
+  const tbody = document.createElement("tbody");
+  (round.candidates || []).forEach((candidate) => {
+    const row = document.createElement("tr");
+
+    const sourceCell = el("td", "");
+    const link = el("a", "plain-link", candidate.title);
+    link.href = candidate.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    sourceCell.append(link);
+    sourceCell.append(el("div", "stat-note", `${candidate.platform} · ${candidate.evidenceStrength} · ${candidate.tool}`));
+    row.append(sourceCell);
+
+    row.append(el("td", "", candidate.access));
+
+    const seedCell = el("td", "");
+    if ((candidate.seeds || []).length) {
+      const seedRow = el("div", "tag-list");
+      candidate.seeds.forEach((seed) => seedRow.append(renderSeedLink(seed)));
+      seedCell.append(seedRow);
+    } else {
+      seedCell.append(el("span", "seed-tag seed-tag-muted", "非 seed 来源"));
+    }
+    seedCell.append(el("div", "stat-note", `${candidate.deck} · ${candidate.version}`));
+    row.append(seedCell);
+
+    row.append(el("td", "", candidate.initialValue));
+
+    const mapped = el("td", "");
+    (candidate.mappedAssets || []).forEach((asset) => mapped.append(el("span", "research-asset", asset)));
+    row.append(mapped);
+
+    tbody.append(row);
+  });
+  table.append(tbody);
+  tableWrap.append(table);
+
+  box.replaceChildren(head, questions, terms, tableWrap);
+}
+
+function renderVideos() {
+  const rows = $("#videoRows");
+  rows.replaceChildren(
+    ...state.data.videos.map((video) => {
+      const tr = document.createElement("tr");
+      tr.append(el("td", "", video.topic));
+      const title = el("td");
+      const link = el("a", "plain-link", video.title);
+      link.href = video.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      title.append(link);
+      title.append(el("div", "stat-note", `${video.platform} · ${video.author}`));
+      tr.append(title);
+      tr.append(el("td", "metric", formatNumber.format(video.views)));
+      tr.append(el("td", "metric", video.favorites ? formatNumber.format(video.favorites) : "未取到"));
+      tr.append(el("td", "", video.platform));
+      return tr;
+    })
+  );
+}
+
+function renderPlatformStatus() {
+  const grid = $("#platformStatus");
+  if (!grid) return;
+  const platforms = state.data.platformStatus || [];
+
+  if (!platforms.length) {
+    const empty = el("div", "signal-card");
+    empty.append(el("h3", "", "平台状态待补"));
+    empty.append(el("p", "", "当前数据文件还没有 platformStatus 字段。"));
+    grid.replaceChildren(empty);
+    return;
+  }
+
+  grid.replaceChildren(
+    ...platforms.map((item) => {
+      const card = el("article", "platform-card");
+      const top = el("div", "platform-card-top");
+      top.append(el("h3", "", item.platform));
+      const status = el("span", "status-pill", item.status);
+      status.dataset.usable = item.usableNow ? "true" : "false";
+      top.append(status);
+      card.append(top);
+
+      const access = el("p", "platform-line");
+      access.append(el("strong", "", "接入："));
+      access.append(document.createTextNode(item.accessMethod || "待补"));
+      card.append(access);
+
+      const limit = el("p", "platform-line");
+      limit.append(el("strong", "", "限制："));
+      limit.append(document.createTextNode(item.limitation || "暂无"));
+      card.append(limit);
+
+      const next = el("p", "platform-next", item.nextAction || "等待后续接入。");
+      card.append(next);
+      return card;
+    })
+  );
+}
+
+function renderEvidenceSources() {
+  const grid = $("#evidenceSources");
+  if (!grid) return;
+  const evidence = state.data.evidenceSources || [];
+
+  if (!evidence.length) {
+    const empty = el("div", "signal-card");
+    empty.append(el("h3", "", "证据池待补"));
+    empty.append(el("p", "", "当前数据文件还没有 evidenceSources 字段。"));
+    grid.replaceChildren(empty);
+    return;
+  }
+
+  grid.replaceChildren(
+    ...evidence.map((item) => {
+      const card = el("article", "evidence-card");
+      const meta = el("div", "evidence-meta");
+      meta.append(el("span", "", item.platform || "未知平台"));
+      const confidence = el("span", "confidence-pill", item.confidence || "待定");
+      confidence.dataset.confidence = item.confidence || "待定";
+      meta.append(confidence);
+      card.append(meta);
+
+      const title = el("h3");
+      const link = el("a", "", item.title || item.id);
+      link.href = item.url || "#";
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      title.append(link);
+      card.append(title);
+
+      const seeds = item.seeds || [];
+      if (seeds.length) {
+        const seedRow = el("div", "evidence-seeds");
+        seeds.forEach((seed) => seedRow.append(renderSeedLink(seed)));
+        card.append(seedRow);
+      }
+
+      const facts = el("ul", "evidence-facts");
+      (item.facts || []).forEach((fact) => facts.append(el("li", "", fact)));
+      card.append(facts);
+
+      if (item.useInSite) {
+        const use = el("p", "evidence-use");
+        use.append(el("strong", "", "站内用途："));
+        use.append(document.createTextNode(item.useInSite));
+        card.append(use);
+      }
+
+      const footer = el("div", "evidence-foot");
+      footer.append(el("span", "", item.contentType || "来源"));
+      footer.append(el("span", "", item.retrievedAt || state.data.meta.asOf));
+      card.append(footer);
+      return card;
+    })
+  );
+}
+
+function renderReviewQueue() {
+  const grid = $("#reviewQueue");
+  if (!grid) return;
+  const queue = state.data.reviewQueue || [];
+
+  if (!queue.length) {
+    const empty = el("div", "signal-card");
+    empty.append(el("h3", "", "复盘队列待补"));
+    empty.append(el("p", "", "当前数据文件还没有 reviewQueue 字段。"));
+    grid.replaceChildren(empty);
+    return;
+  }
+
+  grid.replaceChildren(
+    ...queue.map((item) => {
+      const card = el("article", "queue-card");
+      card.dataset.priority = item.priority || "";
+      card.dataset.status = item.status || "";
+
+      const top = el("div", "queue-card-top");
+      const titleBox = el("div");
+      titleBox.append(el("span", "queue-platform", item.platform || "未分平台"));
+      titleBox.append(el("h3", "", item.title || item.id));
+      top.append(titleBox);
+
+      const pills = el("div", "queue-pills");
+      const priority = el("span", "queue-priority", item.priority || "P");
+      priority.dataset.priority = item.priority || "";
+      pills.append(priority);
+      const status = el("span", "queue-status", item.status || "待定");
+      status.dataset.status = item.status || "";
+      pills.append(status);
+      top.append(pills);
+      card.append(top);
+
+      const meta = el("div", "queue-meta");
+      meta.append(el("span", "", item.ownerMode || "待分派"));
+      meta.append(el("span", "", item.updatedAt || state.data.meta.asOf));
+      card.append(meta);
+
+      if ((item.targetSeeds || []).length) {
+        const seeds = el("div", "queue-seeds");
+        item.targetSeeds.forEach((seed) => seeds.append(renderSeedLink(seed)));
+        card.append(seeds);
+      }
+
+      if (item.blocker) {
+        const blocker = el("p", "queue-blocker");
+        blocker.append(el("strong", "", "阻塞："));
+        blocker.append(document.createTextNode(item.blocker));
+        card.append(blocker);
+      }
+
+      const next = el("p", "queue-action");
+      next.append(el("strong", "", "下一步："));
+      next.append(document.createTextNode(item.nextAction || "待补"));
+      card.append(next);
+
+      const validation = el("p", "queue-validation");
+      validation.append(el("strong", "", "验收："));
+      validation.append(document.createTextNode(item.validation || "待补"));
+      card.append(validation);
+
+      if ((item.evidenceIds || []).length) {
+        const evidenceBox = el("div", "queue-evidence");
+        evidenceBox.append(el("span", "queue-evidence-label", "证据"));
+        const links = el("div", "queue-evidence-links");
+        item.evidenceIds.forEach((id) => {
+          const evidence = getEvidence(id);
+          const link = el("a", "queue-evidence-link", evidence?.title || id);
+          link.href = evidence?.url || "#";
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.title = evidence?.platform || id;
+          links.append(link);
+        });
+        evidenceBox.append(links);
+        card.append(evidenceBox);
+      }
+
+      if ((item.sourceIds || []).length) {
+        const sourceBox = el("div", "queue-source-list");
+        sourceBox.append(sourceLinks(item.sourceIds));
+        card.append(sourceBox);
+      }
+
+      return card;
+    })
+  );
+}
+
+function renderSignals() {
+  const grid = $("#siteSignals");
+  grid.replaceChildren(
+    ...state.data.sites.map((site) => {
+      const card = el("article", "signal-card");
+      card.append(el("div", "card-meta", site.type));
+      const title = el("h3");
+      const link = el("a", "", site.name);
+      link.href = site.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      title.append(link);
+      card.append(title);
+      card.append(el("p", "", site.signal));
+      card.append(el("p", "", `机会：${site.opportunity}`));
+      return card;
+    })
+  );
+}
+
+function renderDomains() {
+  const grid = $("#domainGrid");
+  grid.replaceChildren(
+    ...state.data.domains.map((domain) => {
+      const card = el("article", "domain-card");
+      card.append(el("span", "priority", domain.priority));
+      card.append(el("h3", "", domain.domain));
+      card.append(el("p", "", domain.fit));
+      card.append(el("div", "domain-status", domain.status));
+      return card;
+    })
+  );
+}
+
+function renderFutureGames() {
+  const grid = $("#futureGrid");
+  grid.replaceChildren(
+    ...state.data.futureGames.map((game) => {
+      const card = el("article", "future-card");
+      const badge = el("span", "priority", `${game.priority} 级`);
+      badge.dataset.priority = game.priority;
+      card.append(badge);
+      card.append(el("h3", "", game.name));
+      card.append(el("p", "", game.why));
+      const list = el("ul");
+      game.contentAngles.forEach((angle) => list.append(el("li", "", angle)));
+      card.append(list);
+      const sources = el("div", "source-list");
+      sources.append(sourceLinks(game.sources));
+      card.append(sources);
+      return card;
+    })
+  );
+}
+
+function bindEvents() {
+  $("#seedSearch").addEventListener("input", (event) => {
+    state.query = event.target.value;
+    renderSeeds();
+  });
+
+  $("#archetypeFilter").addEventListener("change", (event) => {
+    state.archetype = event.target.value;
+    renderSeeds();
+  });
+
+  $("#resetFilters").addEventListener("click", () => {
+    state.query = "";
+    state.archetype = "all";
+    state.tag = "all";
+    $("#seedSearch").value = "";
+    $("#archetypeFilter").value = "all";
+    renderSeeds();
+  });
+
+  $("#closeRouteViewer").addEventListener("click", () => {
+    state.activeSeed = null;
+    $("#routeViewer").hidden = true;
+    history.replaceState(null, "", "#seeds");
+  });
+
+  window.addEventListener("hashchange", maybeOpenRouteFromHash);
+}
+
+async function boot() {
+  const [siteResponse, routeResponse] = await Promise.all([
+    fetch("assets/data/site-data.json"),
+    fetch("assets/data/route-data.json")
+  ]);
+  if (!siteResponse.ok) throw new Error(`Failed to load data: ${siteResponse.status}`);
+  if (!routeResponse.ok) throw new Error(`Failed to load route data: ${routeResponse.status}`);
+  state.data = await siteResponse.json();
+  state.routeData = await routeResponse.json();
+  mergeRouteData();
+
+  $("#asOf").textContent = state.data.meta.asOf;
+  renderStats();
+  renderFilters();
+  renderSeeds();
+  renderStrategies();
+  renderSeoClusters();
+  renderResearchRound();
+  renderVideos();
+  renderPlatformStatus();
+  renderEvidenceSources();
+  renderReviewQueue();
+  renderSignals();
+  renderDomains();
+  renderFutureGames();
+  bindEvents();
+  maybeOpenRouteFromHash();
+}
+
+boot().catch((error) => {
+  console.error(error);
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    '<div class="domain-status" role="alert">数据加载失败，请刷新或检查 assets/data/site-data.json。</div>'
+  );
+});

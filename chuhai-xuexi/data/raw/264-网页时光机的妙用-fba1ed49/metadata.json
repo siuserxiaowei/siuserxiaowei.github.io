@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1763555512,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "7146903c78376ff9a405615a8d678d9abcad7054",
+    "type": "sha1"
+  },
+  "id": "jTHGok6tbxMWPPqfbFndrx8WqcM8kFv4X",
+  "link_id": "chVm6shm8DpR",
+  "link_url": "https://www.kdocs.cn/l/chVm6shm8DpR",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1763555512,
+  "name": "264：网页时光机的妙用.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": true,
+    "copy_content": true,
+    "delete": false,
+    "download": true,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": true,
+    "rename": false,
+    "saveas": true,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": true,
+  "size": 480593,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/264：网页时光机的妙用.otl"
+}

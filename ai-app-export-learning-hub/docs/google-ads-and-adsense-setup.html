@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Ads 与 AdSense 接入说明 · AI App 出海知识库</title>
+  <meta name="description" content="Google Ads 与 AdSense 接入说明，AI App 出海知识库文档页。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../site/styles.css">
+</head>
+<body class="doc-body">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="doc-header">
+    <nav class="doc-nav" aria-label="文档导航">
+      <a class="brand" href="../site/index.html">
+        <span class="brand-mark">AI</span>
+        <span>AI App 出海知识库</span>
+      </a>
+      <div class="doc-nav-links">
+        <a href="../site/index.html#knowledge">知识库</a>
+        <a href="../site/index.html#downloads">资料库</a>
+        <a href="index.html">文档索引</a>
+      </div>
+    </nav>
+    <div class="doc-hero">
+      <p class="eyebrow">Rendered Document</p>
+      <h1>Google Ads 与 AdSense 接入说明</h1>
+      <p>已渲染为 HTML 页面，来源文件：<code>docs/google-ads-and-adsense-setup.md</code></p>
+    </div>
+  </header>
+  <main class="doc-shell" id="main">
+    <article class="doc-article">
+<h1 id="google-ads-与-adsense-接入说明">Google Ads 与 AdSense 接入说明</h1>
+<p>本文用于把 <code>AI App Export Learning Hub</code> 接入 Google AdSense 展示广告和 Google Ads 买量推广。当前阶段只完成可接入结构，不写入假的 publisher ID、conversion ID 或 conversion label。</p>
+<h2 id="当前状态">当前状态</h2>
+<div class="doc-table-wrap"><table><thead><tr><th>项目</th><th>状态</th></tr></thead><tbody><tr><td>GitHub 仓库</td><td>已公开</td></tr><tr><td>GitHub Pages</td><td>已从 <code>main</code> 分支根目录发布</td></tr><tr><td>自有域名</td><td>计划使用 <code>https://gptimage2.store/</code></td></tr><tr><td>AdSense publisher ID</td><td>暂无</td></tr><tr><td>Google Ads conversion ID</td><td>暂无</td></tr><tr><td><code>ads.txt</code></td><td>暂不生成，仅保留 <code>ads.txt.template</code></td></tr><tr><td>Auto ads script</td><td>暂不插入</td></tr><tr><td>Google Ads tracking</td><td>已有 no-op 框架，默认关闭</td></tr></tbody></table></div>
+<h2 id="1-先完成域名和-pages">1. 先完成域名和 Pages</h2>
+<p>GitHub Pages 站点应先绑定自有域名并能通过 HTTPS 访问：</p>
+<pre><code class="language-text">https://gptimage2.store/</code></pre>
+<p>DNS 记录建议：</p>
+<pre><code class="language-text">@    A      185.199.108.153
+@    A      185.199.109.153
+@    A      185.199.110.153
+@    A      185.199.111.153
+@    AAAA   2606:50c0:8000::153
+@    AAAA   2606:50c0:8001::153
+@    AAAA   2606:50c0:8002::153
+@    AAAA   2606:50c0:8003::153
+www  CNAME  siuserxiaowei.github.io</code></pre>
+<p>如果 DNS 面板里已有旧的 A 记录，例如 <code>34.216.117.25</code>、<code>54.149.79.189</code>，应删除后再添加 GitHub Pages 记录。</p>
+<p>验证命令：</p>
+<pre><code class="language-bash">dig +short gptimage2.store A
+dig +short gptimage2.store AAAA
+dig +short www.gptimage2.store CNAME
+curl -I -L https://gptimage2.store/</code></pre>
+<h2 id="2-adsense-展示广告流程">2. AdSense 展示广告流程</h2>
+<ol>
+<li>注册或登录 Google AdSense。</li>
+<li>在 AdSense 中添加站点：</li>
+</ol>
+<pre><code class="language-text">https://gptimage2.store/</code></pre>
+<ol>
+<li>按 AdSense 后台要求完成站点验证和审核。</li>
+<li>审核通过并拿到 <code>ca-pub-...</code> publisher ID 后，把根目录的 <code>ads.txt.template</code> 复制为 <code>ads.txt</code>。</li>
+<li>把 <code>pub-YOUR_PUBLISHER_ID</code> 替换为真实 publisher ID。</li>
+<li>访问并确认：</li>
+</ol>
+<pre><code class="language-text">https://gptimage2.store/ads.txt</code></pre>
+<ol>
+<li>AdSense 后台站点状态变为 Ready 后，再插入 Auto ads script。</li>
+</ol>
+<p>不要在审核前写假 ID，也不要在页面上出现鼓励点击广告、把广告伪装成导航或承诺广告收益的文案。</p>
+<h2 id="3-auto-ads-script-放置位置">3. Auto ads script 放置位置</h2>
+<p>审核通过后，在 <code>site/index.html</code> 的 <code>&lt;/head&gt;</code> 前加入 AdSense 后台给出的脚本，形式通常类似：</p>
+<pre><code class="language-html">&lt;script async src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></pre>
+<p>只替换为 AdSense 后台给出的真实 ID。不要使用上面的占位 ID。</p>
+<h2 id="4-google-ads-买量推广流程">4. Google Ads 买量推广流程</h2>
+<ol>
+<li>注册或登录 Google Ads。</li>
+<li>创建 Website conversion actions。</li>
+<li>初始只追踪低成本学习行为：</li>
+</ol>
+<div class="doc-table-wrap"><table><thead><tr><th>事件</th><th>页面动作</th><th><code>data-conversion</code></th></tr></thead><tbody><tr><td>开始学习</td><td>点击首页「开始学习」</td><td><code>startLearning</code></td></tr><tr><td>下载评分表</td><td>点击首页「下载评分表」或评分表资源</td><td><code>downloadScorecard</code></td></tr><tr><td>打开 GitHub</td><td>点击页脚 GitHub 链接</td><td><code>openGithub</code></td></tr><tr><td>打开 OPC 剧本</td><td>点击 OPC 方向剧本资源</td><td><code>openOpcPlaybook</code></td></tr></tbody></table></div>
+<ol>
+<li>复制 <code>site/google-ads-config.example.js</code> 为 <code>site/google-ads-config.js</code>。</li>
+<li>填入真实 <code>AW-...</code> conversion ID 和 conversion labels。</li>
+<li>将 <code>enabled</code> 改为 <code>true</code>。</li>
+<li>用 Google Tag Assistant 或 Google Ads 后台诊断确认事件触发。</li>
+</ol>
+<h2 id="5-当前代码如何保持-no-op">5. 当前代码如何保持 no-op</h2>
+<p>当前 <code>site/google-ads-config.js</code> 默认关闭：</p>
+<pre><code class="language-js">enabled: false</code></pre>
+<p><code>site/tracking.js</code> 会读取配置。只有 <code>enabled === true</code> 且配置里存在真实 <code>conversionId</code> 时，才会加载 Google tag。默认状态不会加载 Google tag，也不会发送转化事件。</p>
+<h2 id="6-文档页广告化边界">6. 文档页广告化边界</h2>
+<p>当前 <code>docs/*.md</code> 已通过 <code>scripts/render_markdown_pages.py</code> 生成对应的 <code>docs/*.html</code> 渲染页。第一阶段仍优先只在 HTML 静态站首页接入广告和追踪；如果后续要在文档页放广告，应在生成模板里统一加入广告位和隐私提示。</p>
+<p>如果后续希望文档页也展示广告，应新增 HTML 文档渲染层：</p>
+<ul>
+<li>保留 Markdown 源文件。</li>
+<li>新增 <code>site/docs.html</code> 或生成式 HTML wrapper。</li>
+<li>广告脚本只放在 HTML 页面，不放进 Markdown 源文件。</li>
+</ul>
+    </article>
+    <aside class="doc-side">
+      <nav class="doc-toc" aria-label="本文目录"><strong>目录</strong><a class="toc-level-2" href="#当前状态">当前状态</a><a class="toc-level-2" href="#1-先完成域名和-pages">1. 先完成域名和 Pages</a><a class="toc-level-2" href="#2-adsense-展示广告流程">2. AdSense 展示广告流程</a><a class="toc-level-2" href="#3-auto-ads-script-放置位置">3. Auto ads script 放置位置</a><a class="toc-level-2" href="#4-google-ads-买量推广流程">4. Google Ads 买量推广流程</a><a class="toc-level-2" href="#5-当前代码如何保持-no-op">5. 当前代码如何保持 no-op</a><a class="toc-level-2" href="#6-文档页广告化边界">6. 文档页广告化边界</a></nav>
+      <div class="doc-meta">
+        <strong>页面信息</strong>
+        <span>最后核查：2026-06-02</span>
+        <a href="../site/index.html">返回知识库首页</a>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1755431361,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "25d5e1648c6b0a2dfadf5fd4d2c87be4697f00e1",
+    "type": "sha1"
+  },
+  "id": "vnjxRA3Gc1MKtB7nJGdB1xHUzWTtNDSth",
+  "link_id": "cvSyxFtKR85l",
+  "link_url": "https://www.kdocs.cn/l/cvSyxFtKR85l",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1755431361,
+  "name": "206：通过数据图表来看出目标公众号流量来源于搜索的可能性.otl",
+  "parent_id": "E5CAmuwtbxM6HRY9iuoFrxxa4zFr6Z2UB",
+  "permission": {
+    "comment": false,
+    "copy": true,
+    "copy_content": true,
+    "delete": false,
+    "download": true,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": true,
+    "rename": false,
+    "saveas": true,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": true,
+  "size": 1945678,
+  "type": "file",
+  "version": 1,
+  "path": "单条分享/206：通过数据图表来看出目标公众号流量来源于搜索的可能性.otl"
+}

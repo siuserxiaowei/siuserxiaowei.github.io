@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI Export Meeting Deconstruction Implementation Plan | miaoji-decon</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="AI Export Meeting Deconstruction Implementation Plan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。" />
+<meta property="og:description" content="用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。" />
+<link rel="canonical" href="https://siuserxiaowei.github.io/miaoji-decon/superpowers/plans/2026-06-28-ai-export-meeting-decon.html" />
+<meta property="og:url" content="https://siuserxiaowei.github.io/miaoji-decon/superpowers/plans/2026-06-28-ai-export-meeting-decon.html" />
+<meta property="og:site_name" content="miaoji-decon" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AI Export Meeting Deconstruction Implementation Plan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。","headline":"AI Export Meeting Deconstruction Implementation Plan","url":"https://siuserxiaowei.github.io/miaoji-decon/superpowers/plans/2026-06-28-ai-export-meeting-decon.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/miaoji-decon/assets/css/style.css?v=6b8efbad724bee2ddd04b8ff75811bfffc60d655">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/miaoji-decon/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://siuserxiaowei.github.io/miaoji-decon/">miaoji-decon</a></h1>
+      
+
+      <h1 id="ai-export-meeting-deconstruction-implementation-plan">AI Export Meeting Deconstruction Implementation Plan</h1>
+
+<blockquote>
+  <p><strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (<code class="language-plaintext highlighter-rouge">- [ ]</code>) syntax for tracking.</p>
+</blockquote>
+
+<p><strong>Goal:</strong> Upgrade <code class="language-plaintext highlighter-rouge">miaoji-decon</code> so pasted meeting text and AI export/X creator meetings are handled explicitly, safely, and verifiably.</p>
+
+<p><strong>Architecture:</strong> This remains a static skill repository. The main skill owns behavior, references own detailed workflow/template rules, and a dependency-free Python validator enforces privacy and structure. Real meeting content stays out of the public repo.</p>
+
+<p><strong>Tech Stack:</strong> Markdown skill docs, static HTML, Python 3.9 standard library, <code class="language-plaintext highlighter-rouge">unittest</code>, <code class="language-plaintext highlighter-rouge">git</code>, <code class="language-plaintext highlighter-rouge">rg</code>.</p>
+
+<h2 id="global-constraints">Global Constraints</h2>
+
+<ul>
+  <li>Do not commit the pasted meeting transcript, real private deconstruction output, Feishu private URLs, or decrypted content.</li>
+  <li>Do not modify <code class="language-plaintext highlighter-rouge">docs/enc.json</code>.</li>
+  <li>Do not add npm, Python package, framework, or generated dependency lock files.</li>
+  <li>Keep real examples private; public examples may only be synthetic or explanatory.</li>
+  <li><code class="language-plaintext highlighter-rouge">lark-cli</code> remains the Feishu integration boundary.</li>
+  <li><code class="language-plaintext highlighter-rouge">docs/index.html</code> must keep <code class="language-plaintext highlighter-rouge">noindex, nofollow, noarchive, nosnippet</code>.</li>
+  <li>All worker tasks must stay inside their assigned file ownership.</li>
+</ul>
+
+<hr />
+
+<h2 id="file-structure">File Structure</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/SKILL.md</code>: trigger modes, scene taxonomy, command boundaries, return contract.</li>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/workflow.md</code>: operational details for scan/manual URL/pasted text, failure compensation, command caveats.</li>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/template.md</code>: visible digest structure and scene-specific extraction prompts.</li>
+  <li><code class="language-plaintext highlighter-rouge">scripts/validate_repo.py</code>: static validator with no third-party dependencies.</li>
+  <li><code class="language-plaintext highlighter-rouge">tests/test_validate_repo.py</code>: unit tests for validator behavior using temporary files.</li>
+  <li><code class="language-plaintext highlighter-rouge">README.md</code>: human-facing overview, pasted-text mode, validation command.</li>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/examples/README.md</code>: public example policy.</li>
+</ul>
+
+<h2 id="task-1-add-repository-validator">Task 1: Add Repository Validator</h2>
+
+<p><strong>Files:</strong></p>
+<ul>
+  <li>Create: <code class="language-plaintext highlighter-rouge">scripts/validate_repo.py</code></li>
+  <li>Create: <code class="language-plaintext highlighter-rouge">tests/test_validate_repo.py</code></li>
+</ul>
+
+<p><strong>Interfaces:</strong></p>
+<ul class="task-list">
+  <li>Produces: command <code class="language-plaintext highlighter-rouge">python3 scripts/validate_repo.py</code></li>
+  <li>Produces: importable functions <code class="language-plaintext highlighter-rouge">read_text(path: Path) -&gt; str</code>, <code class="language-plaintext highlighter-rouge">validate_repo(root: Path) -&gt; list[str]</code>, and <code class="language-plaintext highlighter-rouge">main() -&gt; int</code></li>
+  <li>
+    <p>Consumes: repository files listed in File Structure</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 1: Write failing tests</strong></li>
+</ul>
+
+<p>Create <code class="language-plaintext highlighter-rouge">tests/test_validate_repo.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">scripts.validate_repo</span> <span class="kn">import</span> <span class="n">validate_repo</span>
+
+
+<span class="k">class</span> <span class="nc">ValidateRepoTests</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">make_repo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">missing_template_heading</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">public_real_example</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="p">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/references"</span><span class="p">).</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/examples"</span><span class="p">).</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"docs"</span><span class="p">).</span><span class="n">mkdir</span><span class="p">()</span>
+
+        <span class="n">skill</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/SKILL.md"</span>
+        <span class="n">skill</span><span class="p">.</span><span class="n">write_text</span><span class="p">(</span><span class="s">"pasted-text</span><span class="se">\n</span><span class="s">出海</span><span class="se">\n</span><span class="s">自媒体运营</span><span class="se">\n</span><span class="s">--owner-ids me</span><span class="se">\n</span><span class="s">--page-size 30</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+
+        <span class="n">headings</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s">"## ⏱ 如果只读 10 分钟"</span><span class="p">,</span>
+            <span class="s">"## 🎯 这篇真正能学什么"</span><span class="p">,</span>
+            <span class="s">"## 🧭 道法术器势（→ 你可以怎么用）"</span><span class="p">,</span>
+            <span class="s">"## 📚 深挖：N 个值得单独学的知识点"</span><span class="p">,</span>
+            <span class="s">"## 🛠 可直接复用的方法（含</span><span class="se">\"</span><span class="s">不要误读成</span><span class="se">\"</span><span class="s">）"</span><span class="p">,</span>
+            <span class="s">"## 📅 7 天作业"</span><span class="p">,</span>
+            <span class="s">"## 🤔 回到自己业务的追问"</span><span class="p">,</span>
+            <span class="s">"## 👥 关键人物与资源（这桌人能给你什么）"</span><span class="p">,</span>
+            <span class="s">"## 💬 金句"</span><span class="p">,</span>
+            <span class="s">"## ⚠️ 来源边界"</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">missing_template_heading</span><span class="p">:</span>
+            <span class="n">headings</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/references/template.md"</span><span class="p">).</span><span class="n">write_text</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">headings</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/references/workflow.md"</span><span class="p">).</span><span class="n">write_text</span><span class="p">(</span>
+            <span class="s">"--owner-ids me</span><span class="se">\n</span><span class="s">--page-size 30</span><span class="se">\n</span><span class="s">pasted text</span><span class="se">\n</span><span class="s">failures.jsonl</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">example_text</span> <span class="o">=</span> <span class="s">"真实复盘内容"</span> <span class="k">if</span> <span class="n">public_real_example</span> <span class="k">else</span> <span class="s">"真实复盘仅存于私有 Obsidian 库"</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"skills/miaoji-decon/examples/README.md"</span><span class="p">).</span><span class="n">write_text</span><span class="p">(</span><span class="n">example_text</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"docs/index.html"</span><span class="p">).</span><span class="n">write_text</span><span class="p">(</span><span class="s">"noindex, nofollow, noarchive, nosnippet"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s">"docs/enc.json"</span><span class="p">).</span><span class="n">write_text</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">root</span>
+
+    <span class="k">def</span> <span class="nf">test_valid_repo_has_no_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tmp</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">make_repo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">addCleanup</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">cleanup</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">validate_repo</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="p">[])</span>
+
+    <span class="k">def</span> <span class="nf">test_missing_template_heading_is_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tmp</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">make_repo</span><span class="p">(</span><span class="n">missing_template_heading</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">addCleanup</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">cleanup</span><span class="p">)</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="n">validate_repo</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="s">"来源边界"</span> <span class="ow">in</span> <span class="n">error</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_public_real_example_is_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tmp</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">make_repo</span><span class="p">(</span><span class="n">public_real_example</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">addCleanup</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">cleanup</span><span class="p">)</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="n">validate_repo</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="s">"public examples"</span> <span class="ow">in</span> <span class="n">error</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="p">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 2: Run test and verify it fails</strong></li>
+</ul>
+
+<p>Run: <code class="language-plaintext highlighter-rouge">python3 -m unittest tests.test_validate_repo -v</code></p>
+
+<p>Expected: FAIL with <code class="language-plaintext highlighter-rouge">ModuleNotFoundError: No module named 'scripts.validate_repo'</code>.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 3: Implement validator</strong></li>
+</ul>
+
+<p>Create <code class="language-plaintext highlighter-rouge">scripts/validate_repo.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="n">REQUIRED_TEMPLATE_HEADINGS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"## ⏱ 如果只读 10 分钟"</span><span class="p">,</span>
+    <span class="s">"## 🎯 这篇真正能学什么"</span><span class="p">,</span>
+    <span class="s">"## 🧭 道法术器势（→ 你可以怎么用）"</span><span class="p">,</span>
+    <span class="s">"## 📚 深挖：N 个值得单独学的知识点"</span><span class="p">,</span>
+    <span class="s">"## 🛠 可直接复用的方法（含</span><span class="se">\"</span><span class="s">不要误读成</span><span class="se">\"</span><span class="s">）"</span><span class="p">,</span>
+    <span class="s">"## 📅 7 天作业"</span><span class="p">,</span>
+    <span class="s">"## 🤔 回到自己业务的追问"</span><span class="p">,</span>
+    <span class="s">"## 👥 关键人物与资源（这桌人能给你什么）"</span><span class="p">,</span>
+    <span class="s">"## 💬 金句"</span><span class="p">,</span>
+    <span class="s">"## ⚠️ 来源边界"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">REQUIRED_SKILL_PHRASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"pasted-text"</span><span class="p">,</span>
+    <span class="s">"出海"</span><span class="p">,</span>
+    <span class="s">"自媒体运营"</span><span class="p">,</span>
+    <span class="s">"--owner-ids me"</span><span class="p">,</span>
+    <span class="s">"--page-size 30"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">REQUIRED_WORKFLOW_PHRASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"--owner-ids me"</span><span class="p">,</span>
+    <span class="s">"--page-size 30"</span><span class="p">,</span>
+    <span class="s">"pasted text"</span><span class="p">,</span>
+    <span class="s">"failures.jsonl"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">PRIVATE_EXAMPLE_WARNING</span> <span class="o">=</span> <span class="s">"真实复盘仅存于私有 Obsidian 库"</span>
+<span class="n">ROBOTS_META</span> <span class="o">=</span> <span class="s">"noindex, nofollow, noarchive, nosnippet"</span>
+
+
+<span class="k">def</span> <span class="nf">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">path</span><span class="p">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">relative</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="n">relative</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"missing required file: </span><span class="si">{</span><span class="n">relative</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+
+<span class="k">def</span> <span class="nf">require_phrases</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phrases</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">phrase</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s"> missing required phrase: </span><span class="si">{</span><span class="n">phrase</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_repo</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">skill_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"skills/miaoji-decon/SKILL.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">workflow_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"skills/miaoji-decon/references/workflow.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">template_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"skills/miaoji-decon/references/template.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">examples_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"skills/miaoji-decon/examples/README.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">index_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"docs/index.html"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">enc_path</span> <span class="o">=</span> <span class="n">require_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s">"docs/enc.json"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">errors</span>
+
+    <span class="n">require_phrases</span><span class="p">(</span><span class="n">read_text</span><span class="p">(</span><span class="n">skill_path</span><span class="p">),</span> <span class="n">REQUIRED_SKILL_PHRASES</span><span class="p">,</span> <span class="s">"SKILL.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">require_phrases</span><span class="p">(</span><span class="n">read_text</span><span class="p">(</span><span class="n">workflow_path</span><span class="p">),</span> <span class="n">REQUIRED_WORKFLOW_PHRASES</span><span class="p">,</span> <span class="s">"workflow.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">require_phrases</span><span class="p">(</span><span class="n">read_text</span><span class="p">(</span><span class="n">template_path</span><span class="p">),</span> <span class="n">REQUIRED_TEMPLATE_HEADINGS</span><span class="p">,</span> <span class="s">"template.md"</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+
+    <span class="n">examples_text</span> <span class="o">=</span> <span class="n">read_text</span><span class="p">(</span><span class="n">examples_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">PRIVATE_EXAMPLE_WARNING</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">examples_text</span><span class="p">:</span>
+        <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"public examples must warn that real deconstructions stay private"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s">"真实复盘内容"</span> <span class="ow">in</span> <span class="n">examples_text</span><span class="p">:</span>
+        <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"public examples must not contain real meeting deconstruction content"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ROBOTS_META</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">read_text</span><span class="p">(</span><span class="n">index_path</span><span class="p">):</span>
+        <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"docs/index.html must keep noindex/noarchive robots meta"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">enc_path</span><span class="p">.</span><span class="n">stat</span><span class="p">().</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">errors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"docs/enc.json must not be empty"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">errors</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">__file__</span><span class="p">).</span><span class="n">resolve</span><span class="p">().</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="n">validate_repo</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"ERROR: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"miaoji-decon repository validation passed"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nb">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 4: Run tests and validator</strong></li>
+</ul>
+
+<p>Run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> unittest tests.test_validate_repo <span class="nt">-v</span>
+python3 scripts/validate_repo.py
+</code></pre></div></div>
+
+<p>Expected: all tests pass and validator prints <code class="language-plaintext highlighter-rouge">miaoji-decon repository validation passed</code>.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 5: Commit</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add scripts/validate_repo.py tests/test_validate_repo.py
+git commit <span class="nt">-m</span> <span class="s2">"test: add miaoji-decon repo validator"</span>
+</code></pre></div></div>
+
+<h2 id="task-2-update-main-skill-behavior">Task 2: Update Main Skill Behavior</h2>
+
+<p><strong>Files:</strong></p>
+<ul>
+  <li>Modify: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/SKILL.md</code></li>
+</ul>
+
+<p><strong>Interfaces:</strong></p>
+<ul class="task-list">
+  <li>Produces: explicit <code class="language-plaintext highlighter-rouge">pasted-text</code> mode used by the validator</li>
+  <li>Produces: first-class <code class="language-plaintext highlighter-rouge">出海</code> and <code class="language-plaintext highlighter-rouge">自媒体运营</code> scene routing</li>
+  <li>
+    <p>Consumes: existing workflow references and template structure</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 1: Add pasted-text trigger and mode</strong></li>
+</ul>
+
+<p>In <code class="language-plaintext highlighter-rouge">触发方式</code> and <code class="language-plaintext highlighter-rouge">工作模式</code>, add a Mode D named <code class="language-plaintext highlighter-rouge">粘贴文本 / 本地附件草稿模式</code> with the literal marker <code class="language-plaintext highlighter-rouge">pasted-text</code>. It must say:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### 模式 D：粘贴文本 / 本地附件草稿模式（pasted-text）</span>
+
+用户直接贴出会议纪要、逐字稿，或提供本地 <span class="sb">`.txt/.md`</span> 附件时，先读完所有附件，再进入 draft-only 处理：
+<span class="p">
+-</span> 不要求 <span class="sb">`minute_token`</span>。
+<span class="p">-</span> 不调用 <span class="sb">`minutes +search`</span> 或 <span class="sb">`vc +notes`</span>。
+<span class="p">-</span> 不写飞书 Base/Doc，不 push GitHub。
+<span class="p">-</span> 输出仍按 <span class="sb">`references/template.md`</span> 的学习复盘结构。
+<span class="p">-</span> 来源边界写明：基于用户提供的粘贴文本/附件，未连接飞书妙记原始记录。
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 2: Add scenes</strong></li>
+</ul>
+
+<p>Extend the scene table with:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 出海 | 海外产品/支付/定价/增长/SEO/社媒/客服/合规 | 道、法、势重；术要落到验证动作 |
+| 自媒体运营 | X/推特/公众号/小红书/内容涨粉/商单/联盟营销 | 法、术、信号重；必须拆冷启动、内容格式、转化路径 |
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 3: Add AI export meeting extraction rule</strong></li>
+</ul>
+
+<p>Near the learning digest section, add a short rule:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>创业分享/出海/X 自媒体类会议，额外检查五类资产：产品机会、分发渠道、冷启动动作、变现路径、误读风险。没有逐字稿支撑时，把它写成“可验证假设”，不要写成事实。
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 4: Run validator</strong></li>
+</ul>
+
+<p>Run: <code class="language-plaintext highlighter-rouge">python3 scripts/validate_repo.py</code></p>
+
+<p>Expected: pass after Task 1 is present.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 5: Commit</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add skills/miaoji-decon/SKILL.md
+git commit <span class="nt">-m</span> <span class="s2">"feat: document pasted text deconstruction mode"</span>
+</code></pre></div></div>
+
+<h2 id="task-3-update-workflow-and-template-references">Task 3: Update Workflow And Template References</h2>
+
+<p><strong>Files:</strong></p>
+<ul>
+  <li>Modify: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/workflow.md</code></li>
+  <li>Modify: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/template.md</code></li>
+</ul>
+
+<p><strong>Interfaces:</strong></p>
+<ul class="task-list">
+  <li>Produces: workflow text containing literal <code class="language-plaintext highlighter-rouge">pasted text</code></li>
+  <li>Produces: template support for entrepreneurial/X-media meetings</li>
+  <li>
+    <p>Consumes: Mode D from Task 2</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 1: Update workflow</strong></li>
+</ul>
+
+<p>Add a section after the <code class="language-plaintext highlighter-rouge">lark-cli</code> caveats:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## 粘贴文本 / 本地附件输入（pasted text）</span>
+
+当输入来自用户粘贴文本或本地 <span class="sb">`.txt/.md`</span> 附件，而不是飞书 URL/token：
+<span class="p">
+1.</span> 先读完所有用户指定文件。
+<span class="p">2.</span> 将文件名、录音日期、会议主题写入草稿 frontmatter；没有的信息写 <span class="sb">`unknown`</span>，不要猜。
+<span class="p">3.</span> 跳过 <span class="sb">`minutes +search`</span>、<span class="sb">`vc +notes`</span>、Base、Doc、GitHub push。
+<span class="p">4.</span> 只生成 draft-only 学习复盘，并在 <span class="sb">`⚠️ 来源边界`</span> 写明“基于用户提供文本，未连接飞书原始妙记”。
+<span class="p">5.</span> 如果后续用户补充 Feishu URL/token，再按手动单条妙记流程补齐三端归档。
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 2: Update template</strong></li>
+</ul>
+
+<p>Add a subsection after <code class="language-plaintext highlighter-rouge">框架基准</code>:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## 出海 / 自媒体运营会议的额外提取清单</span>
+
+遇到 AI 出海、独立开发者、X/推特自媒体、商单/联盟营销类分享，深挖时额外检查：
+<span class="p">
+-</span> <span class="gs">**产品机会**</span>：讲者实际验证过什么需求，哪些只是观点。
+<span class="p">-</span> <span class="gs">**分发渠道**</span>：SEO、社媒、Handle 曝光、大 V 转发、社群、广告分别承担什么角色。
+<span class="p">-</span> <span class="gs">**冷启动动作**</span>：第一篇内容、第一批背书、第一轮用户如何拿到。
+<span class="p">-</span> <span class="gs">**变现路径**</span>：订阅、商单、联盟营销、课程/社群、创作者收益分别适合什么条件。
+<span class="p">-</span> <span class="gs">**误读风险**</span>：不要把个体结果误读成普遍规律，不要把平台红利误读成能力闭环。
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 3: Run validator</strong></li>
+</ul>
+
+<p>Run: <code class="language-plaintext highlighter-rouge">python3 scripts/validate_repo.py</code></p>
+
+<p>Expected: pass after Task 1 is present.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 4: Commit</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add skills/miaoji-decon/references/workflow.md skills/miaoji-decon/references/template.md
+git commit <span class="nt">-m</span> <span class="s2">"docs: add export creator meeting workflow guidance"</span>
+</code></pre></div></div>
+
+<h2 id="task-4-update-readme-and-public-example-policy">Task 4: Update README And Public Example Policy</h2>
+
+<p><strong>Files:</strong></p>
+<ul>
+  <li>Modify: <code class="language-plaintext highlighter-rouge">README.md</code></li>
+  <li>Modify: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/examples/README.md</code></li>
+</ul>
+
+<p><strong>Interfaces:</strong></p>
+<ul class="task-list">
+  <li>Produces: README mention of pasted text mode and validation command</li>
+  <li>
+    <p>Consumes: validator command from Task 1</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 1: Add README workflow note</strong></li>
+</ul>
+
+<p>In <code class="language-plaintext highlighter-rouge">能做什么</code>, add a bullet:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> 支持用户粘贴会议纪要/逐字稿或提供本地文本附件，进入 draft-only 学习复盘模式；没有 Feishu token 时不写 Base/Doc、不 push GitHub。
+</code></pre></div></div>
+
+<p>In <code class="language-plaintext highlighter-rouge">Run Or View Locally</code>, add:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 scripts/validate_repo.py
+python3 <span class="nt">-m</span> unittest discover <span class="nt">-s</span> tests <span class="nt">-v</span>
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 2: Tighten example policy</strong></li>
+</ul>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/examples/README.md</code> with:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Examples Policy</span>
+
+真实复盘仅存于私有 Obsidian 库与内部飞书。请勿在公开仓库放真实会议内容、逐字稿、私人 URL、真实人物关系图或未清洗的会议结论。
+
+允许放在这里的只有：
+<span class="p">
+-</span> 完全虚构的 synthetic 示例。
+<span class="p">-</span> 不含真实人物、公司、token、链接的格式说明。
+<span class="p">-</span> 用来测试模板结构的最小 Markdown 片段。
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 3: Run validation</strong></li>
+</ul>
+
+<p>Run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 scripts/validate_repo.py
+python3 <span class="nt">-m</span> unittest discover <span class="nt">-s</span> tests <span class="nt">-v</span>
+python3 <span class="nt">-m</span> compileall <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Expected: all pass.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><strong>Step 4: Commit</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add README.md skills/miaoji-decon/examples/README.md
+git commit <span class="nt">-m</span> <span class="s2">"docs: document pasted text draft workflow"</span>
+</code></pre></div></div>
+
+<h2 id="final-integration">Final Integration</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Run <code class="language-plaintext highlighter-rouge">git log --oneline --decorate -8</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Run <code class="language-plaintext highlighter-rouge">python3 -m unittest discover -s tests -v</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Run <code class="language-plaintext highlighter-rouge">python3 scripts/validate_repo.py</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Run <code class="language-plaintext highlighter-rouge">python3 -m compileall .</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Run <code class="language-plaintext highlighter-rouge">rg -n "token|secret|password|access_key|authorization|appSecret|accessToken" .</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Review <code class="language-plaintext highlighter-rouge">git diff main...HEAD --stat</code>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Confirm <code class="language-plaintext highlighter-rouge">docs/enc.json</code> is unchanged.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

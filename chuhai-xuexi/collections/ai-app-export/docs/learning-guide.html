@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小团队做 AI App 出海：系统课程讲义 · AI App 出海知识库</title>
+  <meta name="description" content="小团队做 AI App 出海：系统课程讲义，AI App 出海知识库文档页。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../site/styles.css">
+</head>
+<body class="doc-body">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="doc-header">
+    <nav class="doc-nav" aria-label="文档导航">
+      <a class="brand" href="../site/index.html">
+        <span class="brand-mark">AI</span>
+        <span>AI App 出海知识库</span>
+      </a>
+      <div class="doc-nav-links">
+        <a href="../site/index.html#knowledge">知识库</a>
+        <a href="../site/index.html#downloads">资料库</a>
+        <a href="index.html">文档索引</a>
+      </div>
+    </nav>
+    <div class="doc-hero">
+      <p class="eyebrow">Rendered Document</p>
+      <h1>小团队做 AI App 出海：系统课程讲义</h1>
+      <p>已渲染为 HTML 页面，来源文件：<code>docs/learning-guide.md</code></p>
+    </div>
+  </header>
+  <main class="doc-shell" id="main">
+    <article class="doc-article">
+<h1 id="小团队做-ai-app-出海-系统课程讲义">小团队做 AI App 出海：系统课程讲义</h1>
+<p>适合人群：独立开发者、AI 产品经理、超级个体、小团队创业者、准备做海外 App/SaaS 的创作者</p>
+<p>课程定位：帮助学习者建立 AI App 出海的判断框架，选出一个更值得验证的方向。</p>
+<p>学习产出：一个具体用户、一个具体任务、一个可验证 MVP、一个低成本获客假设。</p>
+<blockquote>使用说明：这是一份面向学习和实操的课程讲义，基于“雷子思考笔记：小团队做 AI 应用出海的真相”视频观点、公开行业资料和竞品案例整理。本文只做教学化转述、框架提炼和案例分析，不复现原视频长文本，也不做逐句对照翻译。</blockquote>
+<h2 id="课程学习目标">课程学习目标</h2>
+<p>学完这份讲义后，你应该能完成 5 件事：</p>
+<ol>
+<li>解释为什么 AI App 出海不是“翻译一个产品”。</li>
+<li>用 LTV、CAC、留存和复购判断一个方向是否可能赚钱。</li>
+<li>区分“AI 单点功能”和“AI 工作流产品”。</li>
+<li>用 7 个问题筛掉不适合小团队的方向。</li>
+<li>写出一个可执行的 7 天验证计划，并知道第一版 MVP 应该做什么、不做什么。</li>
+</ol>
+<p>建议学习方式：</p>
+<ul>
+<li>第一次阅读时，只抓住核心认知和判断框架。</li>
+<li>第二次阅读时，带着自己的产品想法填写作业模板。</li>
+<li>如果用于社群或训练营，可以搭配 <code>docs/7-day-learning-plan.md</code> 做每日打卡。</li>
+</ul>
+<h2 id="课程地图">课程地图</h2>
+<p>这门课可以拆成 5 个模块：</p>
+<div class="doc-table-wrap"><table><thead><tr><th>模块</th><th>主题</th><th>你要带走的问题</th></tr></thead><tbody><tr><td>模块 1</td><td>关键认知</td><td>为什么出海不是翻译，AI 功能也不等于产品？</td></tr><tr><td>模块 2</td><td>机会判断</td><td>一个 AI App 方向是否值得做，应该看哪些信号？</td></tr><tr><td>模块 3</td><td>方向选择</td><td>小团队优先研究哪些方向，避开哪些方向？</td></tr><tr><td>模块 4</td><td>MVP 设计</td><td>第一版产品要交付什么结果，边界在哪里？</td></tr><tr><td>模块 5</td><td>验证路线</td><td>7 天和 90 天内分别要验证什么？</td></tr></tbody></table></div>
+<h2 id="模块-1-5-个关键认知">模块 1：5 个关键认知</h2>
+<h3 id="认知-1-出海不是翻译-而是重新进入用户工作流">认知 1：出海不是翻译，而是重新进入用户工作流</h3>
+<p>很多人以为出海就是：</p>
+<ul>
+<li>把中文界面翻成英文。</li>
+<li>支持 Stripe 或 Apple 内购。</li>
+<li>上架 App Store / Google Play。</li>
+<li>投一点海外广告。</li>
+</ul>
+<p>这些只是进入市场的基础动作，不是出海能力本身。</p>
+<p>真正的本地化至少包括：</p>
+<div class="doc-table-wrap"><table><thead><tr><th>维度</th><th>要回答的问题</th></tr></thead><tbody><tr><td>语言</td><td>文案是否像本地产品，而不是中文直译？</td></tr><tr><td>审美</td><td>UI、图片、字体、示例是否符合目标市场习惯？</td></tr><tr><td>支付</td><td>订阅、退款、税务、价格展示是否清楚自然？</td></tr><tr><td>合规</td><td>隐私、数据删除、AI 内容边界、订阅说明是否可信？</td></tr><tr><td>习惯</td><td>用户愿不愿意按你的流程完成任务？</td></tr><tr><td>信任</td><td>用户为什么敢把文件、照片、声音或业务数据交给你？</td></tr></tbody></table></div>
+<p>学习重点：</p>
+<pre><code class="language-text">不要问“怎么把中文产品翻译成英文”。
+要问“这个海外用户原本怎么完成这件事，我能不能让他更快、更省钱、更安心”。</code></pre>
+<p>课堂练习：</p>
+<pre><code class="language-text">我想服务的海外用户是：
+他们现在完成这件事的常用流程是：
+我的产品会改变其中哪一步：
+这一步为什么值得改变：</code></pre>
+<h3 id="认知-2-海外流量不便宜-正-roi-才是核心">认知 2：海外流量不便宜，正 ROI 才是核心</h3>
+<p>海外用户更习惯为软件付费，但海外获客渠道也更成熟、更贵。</p>
+<p>你要先理解一个基本公式：</p>
+<pre><code class="language-text">能不能长期赚钱 = LTV 是否大于 CAC</code></pre>
+<ul>
+<li>CAC：获得一个付费用户要花多少钱。</li>
+<li>LTV：这个用户生命周期能贡献多少收入。</li>
+</ul>
+<p>如果一个低价 C 端订阅 App 每月收费 6.99 美元，但用户第一个月就流失，那么你几乎没有空间去买量。下载量、播放量、等待名单都可能好看，但只要 LTV 覆盖不了 CAC，增长越快，亏损越快。</p>
+<p>小团队更适合从这些渠道起步：</p>
+<ul>
+<li>SEO 长尾关键词。</li>
+<li>YouTube 教程。</li>
+<li>TikTok/Reels 结果展示。</li>
+<li>Reddit 细分社区。</li>
+<li>Product Hunt。</li>
+<li>Hacker News。</li>
+<li>Twitter/X build in public。</li>
+<li>冷邮件触达小 B 用户。</li>
+<li>小众创作者 affiliate。</li>
+</ul>
+<p>学习重点：</p>
+<pre><code class="language-text">不要一开始就设计一个必须靠大规模投放才能成立的产品。
+优先找能靠内容、社区、模板、案例、冷启动销售起步的方向。</code></pre>
+<h3 id="认知-3-ai-产品正在从-单点工具-变成-结果工作流">认知 3：AI 产品正在从“单点工具”变成“结果工作流”</h3>
+<p>早期 AI 产品常常是：</p>
+<ul>
+<li>输入一句 prompt，生成一段文字。</li>
+<li>上传一张图，生成一张图。</li>
+<li>上传一个 PDF，生成摘要。</li>
+<li>输入一个主题，生成标题或脚本。</li>
+</ul>
+<p>这些能力有价值，但越来越容易被通用平台吸收。</p>
+<p>更强的产品会直接完成一个工作流：</p>
+<div class="doc-table-wrap"><table><thead><tr><th>不够强的功能</th><th>更值得做的工作流</th></tr></thead><tbody><tr><td>帮你写商品标题</td><td>帮 Etsy 卖家生成上架素材、广告文案和短视频脚本</td></tr><tr><td>帮你总结合同</td><td>帮自由职业者识别付款、版权、违约和交付风险</td></tr><tr><td>帮你练英语</td><td>帮非英语母语求职者完成软件工程师面试训练</td></tr><tr><td>帮你写视频脚本</td><td>帮课程创作者把长内容拆成短视频、邮件和社媒帖</td></tr></tbody></table></div>
+<p>学习重点：</p>
+<pre><code class="language-text">AI 功能的价值是省一步。
+AI 工作流的价值是交付一个用户愿意付费的结果。</code></pre>
+<h3 id="认知-4-热闹指标不是答案-付费和留存才是答案">认知 4：热闹指标不是答案，付费和留存才是答案</h3>
+<p>新手容易被这些指标迷惑：</p>
+<ul>
+<li>下载量。</li>
+<li>注册量。</li>
+<li>页面访问量。</li>
+<li>等待名单人数。</li>
+<li>短视频播放量。</li>
+</ul>
+<p>这些指标只能说明“有人看见了你”，不能说明“方向成立”。</p>
+<p>对小团队更关键的是：</p>
+<ul>
+<li>用户是否完成核心动作。</li>
+<li>用户是否愿意付费。</li>
+<li>用户是否第 7 天回来。</li>
+<li>用户是否愿意推荐。</li>
+<li>获取一个用户的成本是否低于用户带来的收入。</li>
+</ul>
+<p>学习重点：</p>
+<pre><code class="language-text">一个稳定每月赚 1 万美元的小工具，比一个下载很多但留不住人的 App 更有价值。</code></pre>
+<h3 id="认知-5-小团队要避开巨头主战场">认知 5：小团队要避开巨头主战场</h3>
+<p>这些方向很诱人，但大多数 OPC 不适合正面硬刚：</p>
+<ul>
+<li>通用 AI Chat。</li>
+<li>泛图片生成。</li>
+<li>泛视频生成。</li>
+<li>泛 PDF 对话。</li>
+<li>泛笔记工具。</li>
+<li>泛 PPT 生成。</li>
+</ul>
+<p>因为这些市场会被这些玩家持续挤压：</p>
+<ul>
+<li>ChatGPT。</li>
+<li>Gemini。</li>
+<li>Claude。</li>
+<li>Perplexity。</li>
+<li>Canva。</li>
+<li>Adobe。</li>
+<li>CapCut。</li>
+<li>Notion。</li>
+<li>Microsoft Office。</li>
+</ul>
+<p>学习重点：</p>
+<pre><code class="language-text">不要做“更小的通用工具”。
+要做“更懂某一类人的专业工作流”。</code></pre>
+<h2 id="模块-2-7-问机会判断框架">模块 2：7 问机会判断框架</h2>
+<p>你可以用下面 7 个问题判断一个 AI App 出海方向是否值得继续验证。</p>
+<p>建议评分方式：</p>
+<ul>
+<li>0 分：暂时说不清，或者证据很弱。</li>
+<li>1 分：有初步判断，但还没有用户证据。</li>
+<li>2 分：有用户访谈、竞品、搜索量、付费或使用证据支撑。</li>
+</ul>
+<p>总分 10 分以上，可以进入轻量验证；总分 8 分以下，优先调整用户、任务或渠道假设。</p>
+<h3 id="问题-1-用户是谁">问题 1：用户是谁？</h3>
+<p>不够具体的答案：</p>
+<ul>
+<li>所有人。</li>
+<li>创作者。</li>
+<li>学生。</li>
+<li>小商家。</li>
+</ul>
+<p>更好的答案：</p>
+<ul>
+<li>Etsy 上卖手工饰品的个人卖家。</li>
+<li>准备美国软件工程师面试的非英语母语求职者。</li>
+<li>每周给客户写 proposal 的自由职业顾问。</li>
+<li>想把中文课程卖给英语用户的知识创作者。</li>
+</ul>
+<p>判断标准：</p>
+<pre><code class="language-text">用户越具体，产品越容易做，文案越容易写，渠道越容易找。</code></pre>
+<h3 id="问题-2-用户现在怎么解决">问题 2：用户现在怎么解决？</h3>
+<p>你要找到用户当前的替代方案：</p>
+<ul>
+<li>自己手工做。</li>
+<li>找外包。</li>
+<li>用 Canva、CapCut、ChatGPT 拼。</li>
+<li>用 Excel、Notion、Google Docs 手动整理。</li>
+<li>干脆不做，因为太麻烦。</li>
+</ul>
+<p>如果用户现在没有任何解决方式，也没有强烈痛苦，这个方向可能是假需求。</p>
+<h3 id="问题-3-ai-能把流程压缩多少">问题 3：AI 能把流程压缩多少？</h3>
+<p>值得做的方向，AI 最好能带来明显压缩：</p>
+<pre><code class="language-text">原来 2 小时 -&gt; 现在 5 分钟
+原来 200 美元外包 -&gt; 现在 9.99 美元生成
+原来需要 5 个工具 -&gt; 现在一个流程完成</code></pre>
+<p>如果 AI 只是让页面更炫，但没有明显省时、省钱、提高收入，就不够强。</p>
+<h3 id="问题-4-结果是否可展示">问题 4：结果是否可展示？</h3>
+<p>容易传播的产品，通常有可展示结果：</p>
+<ul>
+<li>一张前后对比图。</li>
+<li>一条生成的视频。</li>
+<li>一份漂亮报告。</li>
+<li>一封改好的邮件。</li>
+<li>一份更专业的 proposal。</li>
+<li>一段发音对比。</li>
+</ul>
+<p>结果越容易展示，越适合短视频、SEO、案例页和用户分享。</p>
+<h3 id="问题-5-用户为什么会持续回来">问题 5：用户为什么会持续回来？</h3>
+<p>一次性工具很难做订阅。你要判断它是否有复用场景：</p>
+<ul>
+<li>每天记录。</li>
+<li>每周发布。</li>
+<li>每次接客户都用。</li>
+<li>每次上新产品都用。</li>
+<li>每次面试前都练。</li>
+<li>每次做广告都生成。</li>
+</ul>
+<p>如果用户只用一次，应该考虑按次付费、导出付费、credit 包，而不是强行订阅。</p>
+<h3 id="问题-6-有没有低成本分发渠道">问题 6：有没有低成本分发渠道？</h3>
+<p>适合独立开发者的渠道包括：</p>
+<ul>
+<li>SEO 长尾关键词。</li>
+<li>YouTube 教程。</li>
+<li>TikTok/Reels 结果展示。</li>
+<li>Reddit 细分社区。</li>
+<li>Product Hunt。</li>
+<li>Hacker News。</li>
+<li>Twitter/X build in public。</li>
+<li>冷邮件联系小 B 用户。</li>
+<li>小众创作者 affiliate。</li>
+</ul>
+<p>如果一个产品只能靠 Facebook/Google 大额投放起量，对 OPC 风险很高。</p>
+<h3 id="问题-7-合规风险高不高">问题 7：合规风险高不高？</h3>
+<p>以下方向要谨慎：</p>
+<ul>
+<li>医疗诊断。</li>
+<li>心理治疗。</li>
+<li>法律意见。</li>
+<li>金融投资建议。</li>
+<li>儿童相关。</li>
+<li>深度伪造。</li>
+<li>版权音乐、视频、图片。</li>
+<li>个人敏感数据。</li>
+</ul>
+<p>不是不能做，而是要明确边界。更适合小团队的表达通常是辅助、整理、建议、教育，而不是替代专业结论。</p>
+<h2 id="模块-3-方向建议">模块 3：方向建议</h2>
+<h3 id="优先研究的-10-个方向">优先研究的 10 个方向</h3>
+<div class="doc-table-wrap"><table><thead><tr><th>方向</th><th>目标用户</th><th>核心任务</th><th>MVP 建议</th><th>主要风险</th></tr></thead><tbody><tr><td>跨境卖家商品素材自动化</td><td>Etsy、Shopify、TikTok Shop、Amazon 小卖家</td><td>把商品图变成标题、描述、广告图、短视频脚本、上架素材</td><td>上传 3 张商品图，生成 5 个标题、5 条卖点、3 个短视频脚本、1 套广告文案</td><td>输出同质化，平台规则变化</td></tr><tr><td>英文面试练习与反馈</td><td>非英语母语求职者、留学生、转码人群</td><td>模拟面试，评价答案结构、发音、语气、内容完整度</td><td>选择岗位，完成 5 轮问答，给评分和改写答案</td><td>留存难，需要持续训练机制</td></tr><tr><td>自由职业者 proposal 生成器</td><td>设计师、顾问、独立营销人、小代理公司</td><td>把客户需求记录变成 proposal、报价、时间线、风险说明和跟进邮件</td><td>粘贴客户沟通记录，生成 proposal、3 档报价和 PDF</td><td>模板质量要高，不能像套话</td></tr><tr><td>长视频/播客内容再利用</td><td>课程创作者、播客主、YouTuber、知识博主</td><td>把长内容拆成短视频、标题、摘要、newsletter、社交媒体帖</td><td>上传视频或音频，提取 5 个亮点，生成多平台内容</td><td>竞争激烈，不能做完整剪辑器</td></tr><tr><td>合同风险解释助手</td><td>创作者、自由职业者、小代理公司</td><td>解释付款、交付、版权、违约、独家条款</td><td>上传合同，输出风险摘要、谈判建议和回复邮件</td><td>法律合规，不能宣称替代律师</td></tr><tr><td>Amazon Listing QA</td><td>Amazon/Shopify 卖家</td><td>检查 listing 标题、卖点、图片、关键词、违规风险</td><td>粘贴 listing，上传图片，输出优化清单和改写版本</td><td>平台规则变化，需要领域知识</td></tr><tr><td>睡眠/情绪日志教练</td><td>高压力知识工作者</td><td>记录情绪、睡眠、压力源，生成每周复盘</td><td>每日 3 分钟记录，每周总结，给轻量建议</td><td>留存和健康合规</td></tr><tr><td>开发者错误日志助手</td><td>独立开发者、小 SaaS 团队</td><td>把报错、日志、文档链接整理成修复步骤</td><td>粘贴错误日志，识别框架，给排查路径和修复步骤</td><td>容易被通用编程助手覆盖</td></tr><tr><td>创作者视频本地化</td><td>YouTuber、课程创作者、知识付费作者</td><td>把原视频脚本转成目标市场脚本、字幕和配音草稿</td><td>上传脚本，生成英文或西语版本、字幕文件和配音稿</td><td>声音版权、翻译质量、视频成本</td></tr><tr><td>健身饮食拍照记录</td><td>减脂新手、健身用户</td><td>拍照记录饮食，估算热量和宏量营养</td><td>拍照、估算、用户修正、生成日报和趋势</td><td>准确性、健康声明、退款、竞争</td></tr></tbody></table></div>
+<h3 id="如果只能先选-3-个方向">如果只能先选 3 个方向</h3>
+<h4 id="第一名-跨境卖家素材自动化">第一名：跨境卖家素材自动化</h4>
+<p>优先原因：</p>
+<ul>
+<li>目标用户明确。</li>
+<li>付费理由强。</li>
+<li>输出结果可展示。</li>
+<li>可以从 Web MVP 做起。</li>
+<li>有 SEO、短视频、社群渠道。</li>
+</ul>
+<p>第一版不要做成大平台，只做：</p>
+<pre><code class="language-text">上传商品图 -&gt; 生成英文标题、卖点、广告脚本和短视频分镜</code></pre>
+<h4 id="第二名-英文面试练习与反馈">第二名：英文面试练习与反馈</h4>
+<p>优先原因：</p>
+<ul>
+<li>求职动机强。</li>
+<li>非英语母语人群大。</li>
+<li>有持续练习场景。</li>
+<li>可以做移动端体验。</li>
+</ul>
+<p>第一版只做一个岗位：</p>
+<pre><code class="language-text">Software Engineer Behavioral Interview Practice</code></pre>
+<p>不要一上来覆盖所有职业。</p>
+<h4 id="第三名-自由职业者-proposal-生成器">第三名：自由职业者 proposal 生成器</h4>
+<p>优先原因：</p>
+<ul>
+<li>直接影响成交。</li>
+<li>小 B 愿意付费。</li>
+<li>技术复杂度低。</li>
+<li>可以通过模板和案例传播。</li>
+</ul>
+<p>第一版只做一个细分人群：</p>
+<pre><code class="language-text">给独立设计师生成客户 proposal 和报价方案</code></pre>
+<h2 id="模块-4-mvp-边界设计">模块 4：MVP 边界设计</h2>
+<p>MVP 不是“功能少一点的完整产品”，而是“用最小成本验证一个付费结果”。</p>
+<h3 id="mvp-要先回答-5-个问题">MVP 要先回答 5 个问题</h3>
+<pre><code class="language-text">用户输入什么：
+AI 处理哪一步：
+最终输出什么：
+用户愿意为什么付费：
+哪些功能第一版坚决不做：</code></pre>
+<h3 id="好-mvp-的特征">好 MVP 的特征</h3>
+<ul>
+<li>输入门槛低：拍照、上传、粘贴、选择模板，最好不要让用户先配置复杂流程。</li>
+<li>输出结果清楚：用户一眼知道能不能用。</li>
+<li>付费点自然：导出、批量、品牌化、历史记录、团队协作、更多 credits。</li>
+<li>可人工兜底：前 10 个用户可以半自动交付，先验证价值，再追求自动化。</li>
+<li>可被传播：结果能截图、对比、分享或写成案例。</li>
+</ul>
+<h3 id="第一版常见误区">第一版常见误区</h3>
+<ul>
+<li>一开始就做移动端、Web 端、插件和 API。</li>
+<li>同时覆盖太多用户和场景。</li>
+<li>用模型能力掩盖产品流程不清。</li>
+<li>把订阅当成默认商业模式。</li>
+<li>只做生成，不做审核、编辑、导出和复用。</li>
+</ul>
+<h2 id="模块-5-验证路线">模块 5：验证路线</h2>
+<h3 id="7-天轻量验证">7 天轻量验证</h3>
+<p>7 天内不需要写完整产品，重点是验证“用户、任务、结果、渠道”是否说得通。</p>
+<pre><code class="language-text">第 1 天：建立认知，写下为什么要出海。
+第 2 天：收窄具体用户。
+第 3 天：拆竞品和旧流程。
+第 4 天：写产品一句话。
+第 5 天：定义 MVP 边界。
+第 6 天：选择第一个渠道。
+第 7 天：做继续、调整或停止判断。</code></pre>
+<p>详细执行表见 <code>docs/7-day-learning-plan.md</code>。</p>
+<h3 id="90-天验证路线">90 天验证路线</h3>
+<div class="doc-table-wrap"><table><thead><tr><th>阶段</th><th>时间</th><th>目标</th><th>关键产出</th></tr></thead><tbody><tr><td>用户和任务验证</td><td>第 1-14 天</td><td>确认具体用户和真实痛点</td><td>20 个目标用户名单，5 次访谈，旧流程记录</td></tr><tr><td>页面和 demo 验证</td><td>第 15-30 天</td><td>验证结果表达是否吸引用户</td><td>一个 landing page，一个可演示结果，第一批邮箱</td></tr><tr><td>MVP 验证</td><td>第 31-50 天</td><td>验证用户是否完成核心动作</td><td>可用 MVP，10 个试用用户，关键行为数据</td></tr><tr><td>渠道验证</td><td>第 51-70 天</td><td>找到一个可重复触达用户的渠道</td><td>10 篇内容或 100 封冷邮件，一组转化数据</td></tr><tr><td>付费和留存验证</td><td>第 71-90 天</td><td>验证付费意向和复用场景</td><td>3-10 个付费用户，第 7 天回访，退款/流失原因</td></tr></tbody></table></div>
+<p>进入开发前，至少要满足：</p>
+<ul>
+<li>你能说清楚具体用户是谁。</li>
+<li>至少 5 个目标用户愿意聊。</li>
+<li>至少 1-3 个用户表达明确付费意向。</li>
+<li>你知道第一个渠道和第一个付费点。</li>
+</ul>
+<h2 id="作业模板">作业模板</h2>
+<h3 id="作业-1-用户定义">作业 1：用户定义</h3>
+<pre><code class="language-text">我的目标用户是：
+他们每周会遇到的具体任务是：
+这个任务现在怎么完成：
+他们为什么不满意现在的方式：
+他们为什么可能愿意付费：</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>用户不能写成“所有创作者”“所有学生”“所有商家”。</li>
+<li>至少能说出一个能找到这类用户的渠道。</li>
+<li>至少能写出一个他们正在使用的替代方案。</li>
+</ul>
+<h3 id="作业-2-产品一句话">作业 2：产品一句话</h3>
+<pre><code class="language-text">我帮助 [具体用户] 在 [具体场景] 中，用 AI 更快完成 [具体结果]。</code></pre>
+<p>示例：</p>
+<pre><code class="language-text">我帮助 Etsy 饰品卖家用 3 张商品图生成 TikTok Shop 短视频广告素材。</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>有具体用户。</li>
+<li>有具体场景。</li>
+<li>有可交付结果。</li>
+<li>不使用“提升效率”“智能化管理”这类空泛表达。</li>
+</ul>
+<h3 id="作业-3-竞品拆解">作业 3：竞品拆解</h3>
+<pre><code class="language-text">竞品名称：
+它服务谁：
+它替代了什么旧流程：
+它把哪一步变快了：
+它为什么能收费：
+它靠什么获客：
+哪些地方不适合我直接模仿：
+我能迁移的一点是：</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>不只记录功能和价格。</li>
+<li>必须写出旧流程和获客方式。</li>
+<li>必须写出一个自己不该模仿的地方。</li>
+</ul>
+<h3 id="作业-4-mvp-定义">作业 4：MVP 定义</h3>
+<pre><code class="language-text">用户输入：
+AI 处理：
+最终输出：
+第一个付费点：
+第一版不做的功能：
+人工兜底方式：</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>输出结果能被用户直接判断好坏。</li>
+<li>第一版不超过 1 个主要工作流。</li>
+<li>不把“做一个完整平台”写成 MVP。</li>
+</ul>
+<h3 id="作业-5-渠道验证">作业 5：渠道验证</h3>
+<pre><code class="language-text">我准备测试的第一个渠道：
+我准备发布的第一条内容/消息：
+目标转化动作：
+预计触达多少人：
+如何判断这个渠道有效：</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>渠道能真实触达目标用户。</li>
+<li>转化动作清楚，例如留下邮箱、预约访谈、上传素材、付费试用。</li>
+<li>有一个可以在 7 天内完成的小实验。</li>
+</ul>
+<h3 id="作业-6-继续-调整-停止判断">作业 6：继续/调整/停止判断</h3>
+<pre><code class="language-text">我是否继续这个方向：
+继续的证据是：
+最大的风险是：
+下一步要验证的是：
+如果调整，要改用户、任务、结果还是渠道：</code></pre>
+<p>验收标准：</p>
+<ul>
+<li>结论基于用户、竞品、渠道或付费证据。</li>
+<li>不用“我觉得有机会”作为主要理由。</li>
+<li>能说清楚下一步最小行动。</li>
+</ul>
+<h2 id="给独立开发者的-8-条建议">给独立开发者的 8 条建议</h2>
+<ol>
+<li>不要先问“我能做什么 AI 功能”，先问“谁有一个足够痛的任务”。</li>
+<li>不要做通用工具，做垂直工作流。</li>
+<li>不要先追求下载量，先追求愿意付费的 10 个用户。</li>
+<li>不要一开始就做 App，很多方向可以先用网页、表单、Notion、人工服务验证。</li>
+<li>不要迷信模型能力，真正的产品力在流程、结果、信任和分发。</li>
+<li>不要用中文思维写英文产品，至少要让文案、定价、隐私和客服像本地产品。</li>
+<li>不要做高合规风险承诺，尤其是医疗、法律、金融、心理治疗。</li>
+<li>不要怕市场小。对 OPC 来说，一个能做到 $5K-$20K MRR 的小市场已经值得认真。</li>
+</ol>
+<h2 id="参考来源">参考来源</h2>
+<ul>
+<li>Sensor Tower, State of AI Apps Report 2025: <a href="https://sensortower.com/blog/state-of-ai-apps-market-overview-2025" target="_blank" rel="noreferrer">https://sensortower.com/blog/state-of-ai-apps-market-overview-2025</a></li>
+<li>RevenueCat, State of Subscription Apps 2026 Social &amp; Lifestyle: <a href="https://www.revenuecat.com/state-of-subscription-apps-2026-social-and-lifestyle/" target="_blank" rel="noreferrer">https://www.revenuecat.com/state-of-subscription-apps-2026-social-and-lifestyle/</a></li>
+<li>RevenueCat, State of Subscription Apps 2026 Productivity: <a href="https://www.revenuecat.com/state-of-subscription-apps-2026-productivity/" target="_blank" rel="noreferrer">https://www.revenuecat.com/state-of-subscription-apps-2026-productivity/</a></li>
+<li>Apple App Review Guidelines: <a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noreferrer">https://developer.apple.com/app-store/review/guidelines/</a></li>
+<li>Google Play AI-Generated Content policy: <a href="https://support.google.com/googleplay/android-developer/answer/14094294" target="_blank" rel="noreferrer">https://support.google.com/googleplay/android-developer/answer/14094294</a></li>
+<li>Superwall Cal AI Case Study: <a href="https://superwall.com/case-studies/cal-ai" target="_blank" rel="noreferrer">https://superwall.com/case-studies/cal-ai</a></li>
+<li>TechCrunch Cal AI profile: <a href="https://techcrunch.com/2025/03/16/photo-calorie-app-cal-ai-downloaded-over-a-million-times-was-built-by-two-teenagers/" target="_blank" rel="noreferrer">https://techcrunch.com/2025/03/16/photo-calorie-app-cal-ai-downloaded-over-a-million-times-was-built-by-two-teenagers/</a></li>
+<li>Lovart public launch: <a href="https://www.lovart.ai/actions/news/lovart-design-agent-public-launch-chatcanvas" target="_blank" rel="noreferrer">https://www.lovart.ai/actions/news/lovart-design-agent-public-launch-chatcanvas</a></li>
+<li>HeyGen enterprise page: <a href="https://www.heygen.com/enterprise" target="_blank" rel="noreferrer">https://www.heygen.com/enterprise</a></li>
+</ul>
+    </article>
+    <aside class="doc-side">
+      <nav class="doc-toc" aria-label="本文目录"><strong>目录</strong><a class="toc-level-2" href="#课程学习目标">课程学习目标</a><a class="toc-level-2" href="#课程地图">课程地图</a><a class="toc-level-2" href="#模块-1-5-个关键认知">模块 1：5 个关键认知</a><a class="toc-level-3" href="#认知-1-出海不是翻译-而是重新进入用户工作流">认知 1：出海不是翻译，而是重新进入用户工作流</a><a class="toc-level-3" href="#认知-2-海外流量不便宜-正-roi-才是核心">认知 2：海外流量不便宜，正 ROI 才是核心</a><a class="toc-level-3" href="#认知-3-ai-产品正在从-单点工具-变成-结果工作流">认知 3：AI 产品正在从“单点工具”变成“结果工作流”</a><a class="toc-level-3" href="#认知-4-热闹指标不是答案-付费和留存才是答案">认知 4：热闹指标不是答案，付费和留存才是答案</a><a class="toc-level-3" href="#认知-5-小团队要避开巨头主战场">认知 5：小团队要避开巨头主战场</a><a class="toc-level-2" href="#模块-2-7-问机会判断框架">模块 2：7 问机会判断框架</a><a class="toc-level-3" href="#问题-1-用户是谁">问题 1：用户是谁？</a><a class="toc-level-3" href="#问题-2-用户现在怎么解决">问题 2：用户现在怎么解决？</a><a class="toc-level-3" href="#问题-3-ai-能把流程压缩多少">问题 3：AI 能把流程压缩多少？</a><a class="toc-level-3" href="#问题-4-结果是否可展示">问题 4：结果是否可展示？</a><a class="toc-level-3" href="#问题-5-用户为什么会持续回来">问题 5：用户为什么会持续回来？</a><a class="toc-level-3" href="#问题-6-有没有低成本分发渠道">问题 6：有没有低成本分发渠道？</a><a class="toc-level-3" href="#问题-7-合规风险高不高">问题 7：合规风险高不高？</a><a class="toc-level-2" href="#模块-3-方向建议">模块 3：方向建议</a><a class="toc-level-3" href="#优先研究的-10-个方向">优先研究的 10 个方向</a><a class="toc-level-3" href="#如果只能先选-3-个方向">如果只能先选 3 个方向</a><a class="toc-level-2" href="#模块-4-mvp-边界设计">模块 4：MVP 边界设计</a><a class="toc-level-3" href="#mvp-要先回答-5-个问题">MVP 要先回答 5 个问题</a><a class="toc-level-3" href="#好-mvp-的特征">好 MVP 的特征</a><a class="toc-level-3" href="#第一版常见误区">第一版常见误区</a><a class="toc-level-2" href="#模块-5-验证路线">模块 5：验证路线</a></nav>
+      <div class="doc-meta">
+        <strong>页面信息</strong>
+        <span>最后核查：2026-06-02</span>
+        <a href="../site/index.html">返回知识库首页</a>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

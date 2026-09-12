@@ -1,0 +1,15 @@
+{
+  "type": "image_prompt",
+  "title": "Tokyo revengers propaganda poster",
+  "subject": {
+    "character": " Takemichi Hanagaki",
+    "source": Tokyo revengera",
+    "focus": "iconic propaganda-style artistic reinterpretation"
+  },
+  "composition": {
+    "structure": {
+      "top_section": {
+        "description": "Large iconic visual of  Takemichi Hanagaki head, facial features, mask-like framing or half-body silhouette",
+        "purpose": "dominant symbolic focal point"
+      },
+      "middl

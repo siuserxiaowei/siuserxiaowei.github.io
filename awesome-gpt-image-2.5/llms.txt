@@ -1,0 +1,55 @@
+# GPT Image 2.5 Prompt Gallery — Image Atlas
+
+> GPT Image 提示词作品图鉴：用于按类别浏览图像案例、阅读完整提示词、核对作者与来源。
+
+## 用途
+
+- 静态站点：https://siuserxiaowei.github.io/awesome-gpt-image-2.5/
+- 案例浏览：https://siuserxiaowei.github.io/awesome-gpt-image-2.5/explore/；分类入口：https://siuserxiaowei.github.io/awesome-gpt-image-2.5/categories/
+- 使用指南：https://siuserxiaowei.github.io/awesome-gpt-image-2.5/guides/
+- 当前构建收录 1635 个案例（上游 1561 个，本项目记录 74 个）。
+- 详情页提供提示词、输入要求、媒体和来源链接；上游收录与本项目生成记录分开标注。
+
+## 模型状态
+
+- 页面按仓库记录显示模型：GPT Image 2；Sora；GPT-4o；GPT Image 2.5（投稿者报告，版本未独立确认）；GPT 内置生图（image_gen；具体型号未返回）
+- 模型字段来自来源或投稿者记录；未独立确认的版本会在页面明确标注，不代表未来输出保证。
+
+## 机器访问
+
+- Sitemap：https://siuserxiaowei.github.io/awesome-gpt-image-2.5/sitemap.xml
+- English guide: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/en/
+- ChatGPT Images 2.5: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/gpt-image-2.5/
+- Flare vs Sunburst (official positioning, not measured results): https://siuserxiaowei.github.io/awesome-gpt-image-2.5/en/flare-vs-sunburst/
+- Reported project runs: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/data/project-runs.json
+- Community prompt archive (collected, not verified runs): https://siuserxiaowei.github.io/awesome-gpt-image-2.5/prompt-library/
+- Search index and prompt shard names: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/data/prompt-library/index.json
+- Actual tests of community prompts: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/prompt-library/runs/
+- Original authors, collection licenses and source-only entries: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/prompt-library/sources/
+- Independently verified 2.5 only (currently empty): https://siuserxiaowei.github.io/awesome-gpt-image-2.5/data/cases.2.5.json
+- Do not relabel imported references or contributor-reported versions as verified results. Cite individual case URLs and preserve creator attribution.
+
+## Selected cases
+
+- [森林提灯钩织玩偶](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/f-0507/)
+- [烤肉商业摄影六宫格](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-1472110e811c/)
+- [水墨双重曝光人物海报](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/f-0359/)
+- [抹茶品牌触点系统视觉板](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/f-0362/)
+- [立体刺绣小鸟花枝](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/f-0346/)
+- [暖色人物角色设定与表情表](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/f-0372/)
+- [Urban Alley Mural Artist](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0000a4451a73/)
+- [New Intelligence Editorial Poster](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0004e91587b9/)
+- [Douyin Livestream Screenshot](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-007bc059aaf9/)
+- [Argentina Number 10 Sports Poster](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-00ae75190cd3/)
+- [Luxury chocolate campaign system](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-00df6e1d317d/)
+- [16-Pose Dance Combat Reference Sheet](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0176360ed394/)
+- [Young Woman in Sequin Dress on Stairs](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-01776ba95564/)
+- [Restaurant POV Change Comparison](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0212722de46c/)
+- [Passport Worlds Atlas Scene](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-026de383d443/)
+- [Empire Inferno Burger Poster](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0283d34bde0d/)
+- [Ray-Ban Giant Aviator Ad](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-0336e9adf381/)
+- [Starbucks Coffee World Surreal Poster](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-036aff9d0766/)
+- [Old Delhi Sweet Shop Storefront Documentary Photo](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-03b03553ac00/)
+- [Kids Fashion Editorial Poster](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/cases/e-03bf83c641aa/)
+
+- 站点为静态 HTML/CSS/JS；默认不加载广告或 tracking 脚本。

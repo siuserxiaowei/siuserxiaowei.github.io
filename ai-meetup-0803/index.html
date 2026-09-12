@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>8·3 AI创业闭门会 · 道法术器势拆解</title>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --panel: #ffffff;
+    --ink: #1f2328;
+    --muted: #6a737d;
+    --accent: #b3541e;
+    --line: #e6e2da;
+    --code-bg: #f3f1ec;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+  }
+  .layout { display: flex; min-height: 100vh; }
+  /* 侧边栏 */
+  .sidebar {
+    width: 264px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--line);
+    background: var(--panel);
+    padding: 28px 18px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar h1 {
+    font-size: 15px;
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+  }
+  .sidebar .sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a {
+    display: block;
+    padding: 7px 10px;
+    margin: 2px 0;
+    font-size: 13.5px;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+  }
+  .nav a:hover { background: var(--code-bg); }
+  .nav a.active {
+    background: #f7efe8;
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .nav .sep {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 14px 0 4px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  /* 正文 */
+  .content {
+    flex: 1;
+    max-width: 860px;
+    padding: 40px 48px 120px;
+  }
+  .content h1 { font-size: 26px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+  .content h2 { font-size: 21px; margin-top: 2.2em; border-left: 4px solid var(--accent); padding-left: 10px; }
+  .content h3 { font-size: 17px; margin-top: 1.8em; }
+  .content h4 { font-size: 15px; }
+  .content blockquote {
+    margin: 1em 0;
+    padding: 10px 16px;
+    border-left: 4px solid var(--line);
+    background: var(--code-bg);
+    color: var(--muted);
+    border-radius: 0 6px 6px 0;
+  }
+  .content blockquote p { margin: 4px 0; }
+  .content code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
+  .content pre {
+    background: #282c34;
+    color: #e6e6e6;
+    padding: 14px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  .content pre code { background: none; color: inherit; padding: 0; }
+  .content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 13.5px;
+    display: block;
+    overflow-x: auto;
+  }
+  .content th, .content td {
+    border: 1px solid var(--line);
+    padding: 7px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .content th { background: var(--code-bg); white-space: nowrap; }
+  .content tr:nth-child(even) td { background: #fbfaf7; }
+  .content hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+  .content img { max-width: 100%; }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  #loading { color: var(--muted); padding: 60px 0; text-align: center; }
+  .menu-btn {
+    display: none;
+    position: fixed;
+    top: 10px; left: 10px;
+    z-index: 20;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  @media (max-width: 860px) {
+    .menu-btn { display: block; }
+    .sidebar { position: fixed; z-index: 10; left: -280px; transition: left .2s; }
+    .sidebar.open { left: 0; box-shadow: 4px 0 16px rgba(0,0,0,.12); }
+    .content { padding: 56px 20px 100px; }
+  }
+</style>
+</head>
+<body>
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 目录</button>
+<div class="layout">
+  <nav class="sidebar">
+    <h1>8·3 AI创业闭门会</h1>
+    <div class="sub">道法术器势全景拆解<span class="badge">内部资料</span></div>
+    <div class="nav" id="nav">
+      <a href="#README" data-doc="README">◆ 总览：道法术器势拆解</a>
+      <div class="sep">给没来的同学</div>
+      <a href="#01-guide" data-doc="01-guide">01 缺席者导读（10分钟入场）</a>
+      <a href="#02-shu" data-doc="02-shu">02 术 · 实操 Playbook</a>
+      <a href="#03-qi" data-doc="03-qi">03 器 · 工具资源清单</a>
+      <div class="sep">查资料</div>
+      <a href="#04-cases" data-doc="04-cases">04 人物案例库（38张卡）</a>
+      <a href="#05-numbers" data-doc="05-numbers">05 关键数字速查</a>
+      <div class="sep">给参会的同学</div>
+      <a href="#06-review-attendees" data-doc="06-review-attendees">06 参会者复盘清单</a>
+      <a href="#07-review-report" data-doc="07-review-report">07 纪要勘误与审校</a>
+      <div class="sep">原始材料</div>
+      <a href="#90-source-minutes" data-doc="90-source-minutes">90 飞书智能纪要（原文）</a>
+      <a href="#91-source-transcript" data-doc="91-source-transcript">91 完整逐字稿（6170行）</a>
+    </div>
+  </nav>
+  <main class="content" id="content"><div id="loading">加载中…</div></main>
+</div>
+<script>
+  const FILES = {
+    "README": "README.md",
+    "01-guide": "docs/01-guide.md",
+    "02-shu": "docs/02-shu.md",
+    "03-qi": "docs/03-qi.md",
+    "04-cases": "docs/04-cases.md",
+    "05-numbers": "docs/05-numbers.md",
+    "06-review-attendees": "docs/06-review-attendees.md",
+    "07-review-report": "docs/07-review-report.md",
+    "90-source-minutes": "docs/90-source-minutes.md",
+    "91-source-transcript": "docs/91-source-transcript.md"
+  };
+  const cache = {};
+  marked.setOptions({ breaks: true, gfm: true });
+
+  async function load(doc) {
+    if (!FILES[doc]) doc = "README";
+    document.querySelectorAll(".nav a").forEach(a =>
+      a.classList.toggle("active", a.dataset.doc === doc));
+    const el = document.getElementById("content");
+    el.innerHTML = '<div id="loading">加载中…</div>';
+    try {
+      if (!cache[doc]) {
+        const res = await fetch(FILES[doc]);
+        if (!res.ok) throw new Error(res.status);
+        cache[doc] = await res.text();
+      }
+      el.innerHTML = marked.parse(cache[doc]);
+      // 站内 md 链接改走 hash 路由
+      el.querySelectorAll('a[href^="docs/"], a[href$=".md"]').forEach(a => {
+        const m = a.getAttribute("href").match(/(?:docs\/)?([\w-]+)\.md/);
+        if (m && FILES[m[1]]) { a.setAttribute("href", "#" + m[1]); }
+      });
+      window.scrollTo(0, 0);
+      document.querySelector(".sidebar").classList.remove("open");
+    } catch (e) {
+      el.innerHTML = '<div id="loading">加载失败：' + e.message + '</div>';
+    }
+  }
+  window.addEventListener("hashchange", () => load(location.hash.slice(1)));
+  load(location.hash.slice(1) || "README");
+</script>
+</body>
+</html>

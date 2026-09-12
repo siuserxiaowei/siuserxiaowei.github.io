@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1746011071,
+  "drive_id": "2524825563",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "e13d91a94acfad7849f41adca937509624fce2cd",
+    "type": "sha1"
+  },
+  "id": "qpsUJQ7ZD1MDZvE58uNAxxU8KojnPvi3C",
+  "link_id": "clUix5orVwsX",
+  "link_url": "https://www.kdocs.cn/l/clUix5orVwsX",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1746011071,
+  "name": "数据处理篇：从大量广告文案中能提取出什么？.otl",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 5489285,
+  "type": "file",
+  "version": 1,
+  "path": "数据处理篇：从大量广告文案中能提取出什么？.otl"
+}

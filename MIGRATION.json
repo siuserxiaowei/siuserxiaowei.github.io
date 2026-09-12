@@ -1,0 +1,42 @@
+[
+  {
+    "name": "siuserxiaowei",
+    "group": "个人主页与博客",
+    "subgroup": "个人展示与博客",
+    "target": "siuserxiaowei.github.io",
+    "path": "projects/个人展示与博客/siuserxiaowei",
+    "sourceCommit": "14e501d1682e9553ab2d2f56e142b94148805666",
+    "historyRefs": 3,
+    "originalUrl": "https://github.com/siuserxiaowei/siuserxiaowei"
+  },
+  {
+    "name": "siuserxiaowei.github.io",
+    "group": "个人主页与博客",
+    "subgroup": "个人展示与博客",
+    "target": "siuserxiaowei.github.io",
+    "path": ".",
+    "sourceCommit": "d679d06039200778547cba7ce552be150c26171a",
+    "historyRefs": 1,
+    "originalUrl": "https://github.com/siuserxiaowei/siuserxiaowei.github.io"
+  },
+  {
+    "name": "blog",
+    "group": "个人主页与博客",
+    "subgroup": "个人展示与博客",
+    "target": "siuserxiaowei.github.io",
+    "path": "projects/个人展示与博客/blog",
+    "sourceCommit": "f7de5fcf86e7405a1af63d77931eb2d4b8b2938c",
+    "historyRefs": 7,
+    "originalUrl": "https://github.com/siuserxiaowei/blog"
+  },
+  {
+    "name": "qiaomu-blog-opensource",
+    "group": "个人主页与博客",
+    "subgroup": "个人展示与博客",
+    "target": "siuserxiaowei.github.io",
+    "path": "projects/个人展示与博客/qiaomu-blog-opensource",
+    "sourceCommit": "c1eeb1a55eca9557c07791d98f26decd1cd8fbf2",
+    "historyRefs": 1,
+    "originalUrl": "https://github.com/siuserxiaowei/qiaomu-blog-opensource"
+  }
+]

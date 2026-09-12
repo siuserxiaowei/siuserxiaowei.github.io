@@ -1,0 +1,108 @@
+type:image_generation_prompt
+
+{
+"style":"extreme hyper-realistic documentary fashion photography, authentic viral Instagram reel realism, raw street couture, handmade recycled fashion, zero CGI, real mobile-camera capture",
+
+"subject":{
+"identity_source":"strictly use uploaded reference image",
+"identity_preservation":{
+"priority":"maximum facial accuracy",
+"preserve_exactly":[
+"face shape","skin tone","eyes","nose","lips","jawline","haircut","expression","natural imperfections"
+],
+"goal":"identical to uploaded person, real Instagram reel frame realism"
+},
+
+"pose":"standing naturally on a small rusty steel skateboard platform, slightly leaning forward",
+
+"body_language":"casual confident street attitude, realistic posture and weight balance",
+
+"expression":"calm emotionless stare with viral reel confidence",
+
+"outfit":{
+"design":"fully handcrafted recycled outfit made from old shoes, rugged boots, damaged sneakers, denim scraps, hanging laces, stitched fabrics",
+
+"rules":[
+"physically wearable",
+"real gravity-based materials",
+"no fantasy look",
+"true handmade realism"
+],
+
+"details":[
+"dirty boot attached to chest",
+"hanging shoelaces",
+"worn sneaker-stitched denim",
+"frayed seams",
+"scratched rubber soles",
+"used leather textures",
+"dust accumulation",
+"realistic folds"
+],
+
+"footwear":"worn rugged sandals and damaged shoes"
+}
+},
+
+"environment":{
+"location":"real outdoor alley workshop",
+
+"background":{
+"wall":"unfinished concrete wall covered with hanging old shoes and boots",
+
+"details":[
+"dust-covered shoes",
+"dirty concrete textures",
+"aged urban environment",
+"real hanging shadows",
+"weather damage",
+"authentic underground workshop vibe",
+"organic imperfections"
+]
+},
+
+"ground":"dusty rough concrete floor with dirt and debris",
+
+"platform":"small rusty homemade skateboard-like steel plate with tiny wheels"
+},
+
+"lighting":{
+"type":"soft natural cloudy daylight",
+"avoid":[
+"studio lighting",
+"cinematic glow",
+"fake HDR"
+]
+},
+
+"camera":{
+"device":"high-end smartphone reel screenshot",
+"lens":"35mm mobile lens",
+"framing":"full-body vertical",
+"angle":"slightly low handheld angle",
+"focus":"sharp face and outfit realism",
+"motion":"subtle reel motion blur"
+},
+
+"quality":{
+"resolution":"16K ultra realism",
+"textures":[
+"skin pores",
+"shoe cracks",
+"dust particles",
+"fabric stitching",
+"metal rust",
+"concrete texture"
+],
+"rendering":"indistinguishable from real life"
+},
+
+"mood":[
+"raw authenticity",
+"creative survival",
+"viral underground fashion",
+"street innovation"
+],
+
+"aspect_ratio":"9:16"
+}

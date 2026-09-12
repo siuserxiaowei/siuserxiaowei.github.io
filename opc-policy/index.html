@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC Gate | InfiniSynapse 泛数据分析 · Vibe Coding 2026</title>
+<meta name="description" content="InfiniSynapse × CSDN Vibe Coding 2026 参赛作品：分析 42 城 125 条 OPC 政策与 128 个载体，生成带来源、风险和行动计划的落地路线。">
+<meta name="keywords" content="OPC,一人公司,OPC政策,OPC补贴,OPC社区,超级个体,AI创业,算力券,创业补贴,OPC创业,一人公司注册,OPC孵化器,opcgate">
+<meta property="og:title" content="OPC Gate | InfiniSynapse 泛数据分析参赛作品">
+<meta property="og:description" content="分析 42 城 125 条 OPC 政策与 128 个载体：可解释规则筛选后，由 InfiniSynapse 综合证据、风险和 7 天行动计划。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://opcgate.com">
+<meta property="og:image" content="https://opcgate.com/assets/brand/opcgate-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OPC Gate | InfiniSynapse 泛数据分析参赛作品">
+<meta name="twitter:description" content="42 城 125 条政策、128 个载体，经规则筛选与 InfiniSynapse 综合，输出证据、风险和 7 天行动计划。">
+<meta name="twitter:image" content="https://opcgate.com/assets/brand/opcgate-og.png">
+<meta name="theme-color" content="#2563EB">
+<meta name="author" content="siuser小伟">
+<link rel="canonical" href="https://opcgate.com">
+<link rel="alternate" type="application/rss+xml" title="opcgate.com · 全国 OPC 政策更新" href="https://opcgate.com/rss.xml">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"OPC Gate","description":"InfiniSynapse 泛数据分析应用：对 42 城 OPC 政策与载体数据进行可解释筛选，生成带来源、风险和行动计划的落地路线。","url":"https://opcgate.com","author":{"@type":"Person","name":"siuser小伟"},"applicationCategory":"BusinessApplication","operatingSystem":"Web"}
+</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="stylesheet" href="/assets/css/opcgate-vi.css">
+<style>
+:root {
+  --bg:#F7F8FA;--card:#FFFFFF;--card2:#F1F5F9;--border:#E2E8F0;
+  --text:#0F172A;--dim:#64748B;--accent:#2563EB;--al:#2563EB;
+  --green:#15803D;--gd:#DCFCE7;--yellow:#B45309;--yd:#FEF3C7;
+  --red:#B91C1C;--rd:#FEE2E2;--blue:#2563EB;--cyan:#0F766E;--orange:#B45309;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+a{color:var(--al);text-decoration:none;transition:color .2s}a:hover{color:var(--accent)}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.anim{opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(.25,.46,.45,.94)}.anim.vis{opacity:1;transform:translateY(0)}
+
+/* Top nav */
+.topnav{display:flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.topnav .logo{font-weight:800;font-size:1em;color:var(--al)}
+.topnav a{padding:6px 14px;border-radius:6px;font-size:.82em;color:var(--dim);transition:all .2s}
+.topnav a:hover,.topnav a.active{color:var(--al);background:rgba(37,99,235,.08)}
+.topnav .spacer{flex:1}
+
+/* Hero */
+.hero{position:relative;padding:50px 20px 35px;text-align:center;overflow:hidden;
+  background:linear-gradient(135deg,#EFF6FF 0%,#F0FDFA 40%,#EFF6FF 70%,#F7F8FA 100%)}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at 30% 50%,rgba(37,99,235,.08) 0%,transparent 50%),
+  radial-gradient(circle at 70% 80%,rgba(21,128,61,.06) 0%,transparent 50%);
+  }
+.hero h1{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
+.hero .sub{font-size:1em;color:var(--dim);position:relative;margin:6px 0 16px}
+.hero .version{display:inline-block;padding:4px 14px;border-radius:16px;background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.2);color:var(--al);font-size:.8em;position:relative}
+.contest-kicker{position:relative;display:inline-flex;align-items:center;gap:8px;margin-bottom:10px;padding:6px 12px;
+  border:1px solid rgba(37,99,235,.22);border-radius:999px;background:rgba(255,255,255,.82);color:var(--accent);
+  box-shadow:0 8px 24px rgba(37,99,235,.08);font-size:.76em;font-weight:800;letter-spacing:.025em}
+.contest-kicker::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(21,128,61,.1)}
+.hero-actions{position:relative;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0 16px}
+.hero-action{min-height:50px;padding:13px 24px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);
+  display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-size:.92em;font-weight:600;line-height:1.3;cursor:pointer;transition:all .2s}
+.hero-action:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.34);box-shadow:0 10px 26px rgba(15,23,42,.08);color:var(--accent)}
+.hero-action.primary{padding-inline:30px;border-color:var(--accent);background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;font-weight:800;
+  box-shadow:0 10px 28px rgba(37,99,235,.25);animation:heroPulse 2.8s ease-in-out infinite}
+.hero-action.primary:hover{color:#fff;box-shadow:0 14px 34px rgba(37,99,235,.34)}
+@keyframes heroPulse{0%,100%{box-shadow:0 10px 28px rgba(37,99,235,.22)}50%{box-shadow:0 12px 34px rgba(37,99,235,.38)}}
+.analysis-flow{position:relative;max-width:850px;margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;text-align:left}
+.analysis-step{position:relative;padding:11px 12px;border:1px solid rgba(37,99,235,.14);border-radius:10px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px)}
+.analysis-step:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:50%;transform:translate(50%,-50%);z-index:2;color:var(--accent);font-weight:800}
+.analysis-step b{display:block;color:var(--text);font-size:.78em}.analysis-step span{display:block;color:var(--dim);font-size:.68em;line-height:1.45;margin-top:2px}
+.contest-proof{position:relative;display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;margin-top:12px;font-size:.7em;color:var(--dim)}
+.contest-proof span,.contest-proof a{padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:rgba(255,255,255,.72)}
+.contest-proof strong{color:var(--green)}
+
+/* Tabs */
+.mode-tabs{display:flex;justify-content:center;gap:6px;padding:14px 20px;background:var(--card);border-bottom:1px solid var(--border)}
+.mode-tab{padding:8px 24px;border-radius:8px;font-size:.9em;font-weight:500;cursor:pointer;
+  border:1px solid var(--border);background:transparent;color:var(--dim);transition:all .3s}
+.mode-tab:hover{border-color:var(--accent);color:var(--al)}
+.mode-tab.active{background:rgba(37,99,235,.15);border-color:var(--accent);color:var(--al)}
+
+/* Steps */
+.steps{display:flex;justify-content:center;gap:0;max-width:500px;margin:20px auto 0;position:relative;z-index:1}
+.step{flex:1;text-align:center;position:relative;padding:10px 8px}
+.step::before{content:attr(data-num);display:flex;width:32px;height:32px;border-radius:50%;
+  align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:.85em;
+  background:var(--card);border:2px solid var(--border);color:var(--dim);transition:all .4s}
+.step.active::before{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 15px rgba(37,99,235,.4)}
+.step.done::before{background:var(--gd);border-color:var(--green);color:var(--green);content:'✓'}
+.step .step-label{font-size:.75em;color:var(--dim);transition:color .3s}
+.step.active .step-label{color:var(--al);font-weight:600}
+.step.done .step-label{color:var(--green)}
+.step-line{position:absolute;top:26px;left:calc(50% + 22px);right:calc(-50% + 22px);height:2px;background:var(--border)}
+.step:last-child .step-line{display:none}
+.step.done .step-line{background:var(--green)}
+
+.container{max-width:900px;margin:0 auto;padding:30px 20px}
+
+/* Panel */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px;
+  animation:fadeInUp .4s ease;position:relative;overflow:hidden}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--cyan));opacity:.5}
+.panel h2{font-size:1.3em;margin-bottom:4px}
+.panel .desc{color:var(--dim);font-size:.88em;margin-bottom:18px}
+.panel.hidden{display:none}
+
+/* Form */
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.85em;font-weight:600;margin-bottom:6px;color:var(--al)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input[type="text"],input[type="number"],select{
+  width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  color:var(--text);font-size:.9em;outline:none;transition:all .3s}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+select{cursor:pointer;appearance:auto;background-repeat:no-repeat;background-position:right 12px center}
+.form-error{color:var(--red);font-size:.8em;margin-top:4px;display:none}
+
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:5px 14px;border-radius:7px;font-size:.83em;border:1px solid var(--border);
+  background:transparent;color:var(--dim);cursor:pointer;transition:all .3s;user-select:none}
+.chip:hover{border-color:var(--accent);color:var(--al)}
+.chip.selected{background:rgba(37,99,235,.15);border-color:var(--accent);color:var(--al)}
+.chip.selected::before{content:'✓ '}
+
+/* Buttons */
+.btn{padding:11px 28px;border-radius:9px;font-size:.92em;font-weight:600;cursor:pointer;
+  border:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 15px rgba(37,99,235,.2)}
+.btn-primary:hover{background:#1D4ED8;transform:translateY(-2px);box-shadow:0 6px 25px rgba(37,99,235,.4)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--dim)}
+.btn-outline:hover{border-color:var(--accent);color:var(--al)}
+.btn-group{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+/* Checklist panel */
+.checklist-panel{margin-top:20px}
+.checklist-progress{margin-bottom:18px}
+.checklist-progress .progress-text{display:flex;justify-content:space-between;font-size:.82em;color:var(--al);margin-bottom:6px}
+.checklist-progress .progress-bar{height:8px;border-radius:4px;background:var(--border);overflow:hidden}
+.checklist-progress .progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--cyan));transition:width .4s ease}
+.checklist-section{margin-bottom:16px}
+.checklist-section h4{font-size:.88em;color:var(--accent);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.checklist-item{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;transition:background .2s;cursor:pointer}
+.checklist-item:hover{background:rgba(37,99,235,.04)}
+.checklist-item input[type="checkbox"]{margin-top:3px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;width:16px;height:16px}
+.checklist-item label{font-size:.88em;color:var(--text);cursor:pointer;line-height:1.5}
+.checklist-item.checked label{color:var(--dim);text-decoration:line-through}
+.checklist-note{font-size:.78em;color:var(--dim);margin-left:26px;margin-top:2px}
+
+/* Result card */
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:14px;
+  transition:all .3s;animation:fadeInUp .4s ease backwards;cursor:default}
+.result-card:hover{background:var(--card2);border-color:rgba(37,99,235,.2);transform:translateY(-2px)}
+.result-card h3{font-size:1.05em;margin-bottom:4px;line-height:1.4}
+.result-card .meta{font-size:.78em;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:10px}
+.result-card .benefits{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.result-card .benefit-tag{padding:2px 8px;border-radius:5px;font-size:.75em;font-weight:600;
+  background:rgba(15,118,110,.08);color:var(--cyan);border:1px solid rgba(15,118,110,.12)}
+.result-card .match-bar{height:5px;border-radius:3px;background:var(--border);overflow:hidden;margin-top:8px}
+.result-card .match-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.result-card .match-label{font-size:.76em;margin-top:3px;font-weight:600}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.72em;font-weight:600}
+.tag-go{background:var(--gd);color:var(--green)}.tag-check{background:var(--yd);color:var(--yellow)}
+.tag-no{background:var(--rd);color:var(--red)}.tag-info{background:rgba(37,99,235,.1);color:var(--blue)}
+
+/* Recent updates */
+.recent-updates{margin-top:30px}
+.recent-list{display:grid;gap:8px;margin-top:14px}
+.recent-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px 14px;
+  border:1px solid var(--border);border-radius:10px;background:var(--bg);transition:all .2s}
+.recent-item:hover{border-color:rgba(37,99,235,.28);background:var(--card2);transform:translateY(-1px)}
+.recent-title{font-size:.92em;font-weight:700;line-height:1.45;color:var(--text);margin-bottom:4px}
+.recent-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.76em;color:var(--dim)}
+.recent-summary{font-size:.78em;color:var(--cyan);margin-top:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.recent-date{font-size:.76em;color:var(--dim);white-space:nowrap;margin-top:1px}
+.source-badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:4px;font-size:.7em;font-weight:700;
+  background:rgba(15,118,110,.08);color:var(--cyan);border:1px solid rgba(15,118,110,.18)}
+.source-badge.ref{background:rgba(180,83,9,.08);color:var(--orange);border-color:rgba(180,83,9,.18)}
+
+/* City grid */
+.city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:16px 0}
+.city-card{padding:16px;border-radius:10px;border:1px solid var(--border);background:var(--card);
+  text-align:center;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.city-card:hover{transform:translateY(-3px);background:var(--card2);border-color:var(--accent)}
+.city-card .city-name{font-size:1.2em;font-weight:700;margin-bottom:2px}
+.city-card .city-count{font-size:.78em;color:var(--dim)}
+.city-card .city-hl{font-size:.68em;color:var(--dim);margin-top:3px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.city-card .city-tag{position:absolute;top:6px;right:6px;padding:1px 6px;border-radius:3px;font-size:.6em;font-weight:700}
+.city-hot{background:var(--gd);color:var(--green)}.city-coming{background:rgba(0,0,0,.04);color:var(--dim)}
+
+/* Summary stats */
+.summary-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+.summary-stat{padding:14px;text-align:center;border-radius:10px;border:1px solid var(--border);background:var(--card)}
+.summary-stat .num{font-size:1.8em;font-weight:800;line-height:1}.summary-stat .lbl{font-size:.72em;color:var(--dim);margin-top:2px}
+
+/* Detail */
+.detail-toggle{cursor:pointer;color:var(--al);font-size:.82em;font-weight:500;padding:4px 0;user-select:none;transition:color .2s}
+.detail-toggle:hover{color:#fff}
+.detail-content{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;opacity:0}
+.detail-content.open{max-height:3000px;opacity:1}
+.detail-content ul{list-style:none;padding:6px 0}
+.detail-content li{padding:3px 0;font-size:.85em}
+.detail-content li::before{content:'>';color:var(--accent);margin-right:8px;font-weight:700}
+.link-btn{display:inline-block;padding:6px 14px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-radius:7px;font-size:.82em;margin:4px 4px 0 0;transition:all .2s}
+.link-btn:hover{background:rgba(37,99,235,.25);transform:translateY(-1px)}
+
+/* AI Advisor */
+.advisor-panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-top:20px}
+.advisor-panel h3{font-size:1.1em;margin-bottom:12px;color:var(--al)}
+.chat-messages{max-height:300px;overflow-y:auto;margin-bottom:12px;padding:8px 0}
+.chat-msg{padding:10px 14px;border-radius:10px;margin-bottom:8px;font-size:.88em;line-height:1.5;animation:fadeIn .3s}
+.chat-user{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.15);margin-left:40px}
+.chat-ai{background:var(--bg);border:1px solid var(--border);margin-right:40px}
+.chat-input-row{display:flex;gap:8px}
+.chat-input-row input{flex:1;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9em;outline:none}
+.chat-input-row input:focus{border-color:var(--accent)}
+.chat-input-row button{padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;transition:all .2s}
+.chat-input-row button:hover{background:#1D4ED8}
+
+/* InfiniSynapse deep report */
+.ai-report{margin:18px 0;padding:22px;border-radius:16px;border:1px solid rgba(37,99,235,.2);
+  background:linear-gradient(135deg,rgba(239,246,255,.96),rgba(240,253,250,.92));box-shadow:0 18px 45px rgba(15,23,42,.06)}
+.ai-report-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ai-report-kicker{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.72em;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.ai-report h3{font-size:1.12em;margin:4px 0;color:var(--text)}
+.ai-report .ai-report-desc{color:var(--dim);font-size:.82em;max-width:650px;line-height:1.6}
+.ai-report-brand{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:#fff;border:1px solid var(--border);color:var(--dim);font-size:.7em;font-weight:700}
+.ai-report-brand::before{content:'∞';color:var(--accent);font-size:1.1em}
+.ai-report-status{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 14px;background:#fff;border:1px solid var(--border);border-radius:10px;color:var(--dim);font-size:.82em}
+.ai-report-status .pulse{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(37,99,235,.35);animation:aiPulse 1.6s infinite}
+@keyframes aiPulse{70%{box-shadow:0 0 0 8px rgba(37,99,235,0)}100%{box-shadow:0 0 0 0 rgba(37,99,235,0)}}
+.ai-report-result{margin-top:16px}
+.ai-report-summary{padding:16px;border-radius:12px;background:#0F172A;color:#E2E8F0;line-height:1.65;font-size:.9em}
+.ai-report-summary strong{display:block;color:#93C5FD;font-size:.76em;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.ai-report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.ai-report-card{background:#fff;border:1px solid var(--border);border-radius:11px;padding:14px;min-width:0}
+.ai-report-card h4{font-size:.86em;color:var(--accent);margin-bottom:8px}
+.ai-report-card p,.ai-report-card li{font-size:.8em;color:var(--text);line-height:1.55}
+.ai-report-card ul,.ai-report-card ol{padding-left:18px;margin:0}
+.ai-city-score{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:7px 0 3px;font-size:.82em;font-weight:700}
+.ai-score-bar{height:5px;background:var(--border);border-radius:999px;overflow:hidden}.ai-score-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan))}
+.ai-task-proof{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:.7em;color:var(--dim)}
+.ai-task-proof span{padding:4px 7px;border-radius:6px;background:#fff;border:1px solid var(--border);word-break:break-all}
+.ai-report-error{margin-top:14px;padding:12px 14px;border:1px solid rgba(220,38,38,.18);background:rgba(254,242,242,.9);border-radius:10px;color:var(--red);font-size:.82em;line-height:1.5}
+@media(max-width:680px){.ai-report-grid{grid-template-columns:1fr}.ai-report{padding:17px}.ai-report-head .btn{width:100%;justify-content:center}}
+
+/* Browse mode */
+.browse-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.browse-filters select{padding:7px 12px;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85em}
+.browse-search{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9em;outline:none;margin-bottom:12px}
+.browse-search:focus{border-color:var(--accent)}
+.policy-count{font-size:.85em;color:var(--dim);margin-bottom:12px}
+
+/* Profile matcher */
+.matcher-hint{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 20px}
+.matcher-hint span{padding:9px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--border);font-size:.76em;color:var(--dim)}
+.matcher-hint b{display:block;color:var(--al);font-size:.95em;margin-bottom:2px}
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.support-grid .chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:40px}
+.recommend-block{margin:16px 0;padding:18px;border-radius:14px;border:1px solid rgba(15,118,110,.18);background:linear-gradient(135deg,rgba(240,253,250,.86),rgba(239,246,255,.72))}
+.recommend-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.recommend-head h3{font-size:1.05em;color:var(--cyan);margin:0}
+.recommend-head p{font-size:.8em;color:var(--dim);margin-top:2px}
+.community-recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.community-rec{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;transition:all .2s}
+.community-rec:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.28);box-shadow:0 8px 24px rgba(15,23,42,.06)}
+.community-rec h4{font-size:.96em;line-height:1.35;margin-bottom:5px;color:var(--text)}
+.community-rec .score-line{display:flex;align-items:center;gap:8px;margin:8px 0}
+.community-rec .score-line .score{font-weight:800;color:var(--cyan);font-size:.92em}
+.community-rec .mini-bar{height:5px;flex:1;border-radius:999px;background:var(--border);overflow:hidden}
+.community-rec .mini-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--cyan))}
+.community-rec .reasons{font-size:.76em;color:var(--dim);line-height:1.55;margin-top:8px}
+.community-rec .reasons b{color:var(--green)}
+.community-rec .source{font-size:.72em;margin-top:8px}
+.update-monitor{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(220px,.9fr);gap:12px;align-items:stretch}
+.update-monitor-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px}
+.update-monitor-card h3{font-size:.95em;margin-bottom:6px;color:var(--text)}
+.crawler-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.crawler-metric{padding:10px;border-radius:8px;background:#fff;border:1px solid var(--border)}
+.crawler-metric b{display:block;color:var(--al);font-size:1.15em}
+.crawler-metric span{font-size:.72em;color:var(--dim)}
+
+/* Business cooperation */
+.business-section{background:#0F172A;color:#E5E7EB;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:34px 20px;margin-top:10px}
+.business-inner{max-width:940px;margin:0 auto}
+.business-kicker{font-size:.76em;color:#93C5FD;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.business-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:22px;align-items:end;margin-bottom:20px}
+.business-head h2{font-size:1.55em;margin-bottom:6px;color:#fff}
+.business-head p{font-size:.9em;color:#CBD5E1}
+.business-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.business-proof span{display:block;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:8px;padding:10px 12px}
+.business-proof b{display:block;color:#fff;font-size:1.05em}
+.business-proof small{display:block;color:#94A3B8;font-size:.72em;margin-top:2px}
+.business-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.business-item{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);border-radius:8px;padding:14px;min-height:156px}
+.business-item h3{font-size:.98em;color:#fff;margin-bottom:8px}
+.business-item p{font-size:.82em;color:#CBD5E1;margin-bottom:10px}
+.business-item ul{list-style:none;padding:0;margin:0}
+.business-item li{font-size:.76em;color:#94A3B8;padding:3px 0}
+.business-item li::before{content:'>';color:#60A5FA;margin-right:6px;font-weight:800}
+.business-cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.business-cta p{font-size:.84em;color:#CBD5E1;margin:0}
+.business-actions{display:flex;gap:8px;flex-wrap:wrap}
+.business-actions a{display:inline-flex;align-items:center;padding:8px 12px;border-radius:7px;font-size:.82em;font-weight:700}
+.business-actions .primary{background:#2563EB;color:#fff}
+.business-actions .secondary{border:1px solid rgba(255,255,255,.18);color:#BFDBFE;background:rgba(255,255,255,.04)}
+
+/* Learning resources */
+.learning-section{background:#fff;border-top:1px solid var(--border);padding:32px 20px}
+.learning-inner{max-width:940px;margin:0 auto}
+.learning-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:20px;align-items:end;margin-bottom:18px}
+.learning-kicker{font-size:.76em;color:var(--green);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.learning-head h2{font-size:1.45em;margin-bottom:6px;color:var(--text)}
+.learning-head p{font-size:.9em;color:var(--dim)}
+.learning-note{border:1px solid rgba(15,118,110,.18);border-left:3px solid var(--cyan);background:rgba(240,253,250,.7);border-radius:8px;padding:12px 14px;font-size:.84em;color:#334155}
+.learning-note b{color:var(--cyan)}
+.learning-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));gap:10px}
+.learning-card{border:1px solid var(--border);background:var(--bg);border-radius:8px;padding:14px;min-height:178px}
+.learning-tag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:4px;background:rgba(37,99,235,.08);color:var(--al);font-size:.68em;font-weight:800;margin-bottom:8px}
+.learning-card h3{font-size:.98em;color:var(--text);margin-bottom:7px}
+.learning-card p{font-size:.82em;color:var(--dim);margin-bottom:9px}
+.learning-card ul{list-style:none;padding:0;margin:0 0 10px}
+.learning-card li{font-size:.76em;color:#475569;padding:3px 0}
+.learning-card li::before{content:'>';color:var(--green);margin-right:6px;font-weight:800}
+.learning-link{display:inline-flex;align-items:center;padding:7px 11px;border-radius:7px;background:#fff;border:1px solid var(--border);font-size:.8em;font-weight:700;color:var(--al)}
+.learning-link:hover{background:#EFF6FF;color:#1D4ED8}
+
+/* Loading spinner */
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+
+/* Back to top */
+.back-top{position:fixed;bottom:24px;right:24px;width:42px;height:42px;border-radius:50%;
+  background:var(--accent);color:#fff;border:none;font-size:1.1em;cursor:pointer;
+  opacity:0;visibility:hidden;transition:all .3s;z-index:200;box-shadow:0 4px 15px rgba(37,99,235,.2)}
+.back-top.show{opacity:1;visibility:visible}
+.back-top:hover{transform:translateY(-2px)}
+
+footer{text-align:center;padding:30px 20px;color:var(--dim);font-size:.78em;border-top:1px solid var(--border)}
+
+/* Mobile: tablet */
+@media(max-width:768px){
+  .hero h1{font-size:1.6em}.form-row{grid-template-columns:1fr}
+  .city-grid{grid-template-columns:repeat(2,1fr)}.steps{gap:0}
+  .summary-stats{grid-template-columns:repeat(2,1fr)}.panel{padding:18px}
+  .topnav{overflow-x:auto;gap:4px;-ms-overflow-style:none;scrollbar-width:none}
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{white-space:nowrap;padding:6px 10px}
+  .chat-user{margin-left:10px}.chat-ai{margin-right:10px}
+  .inline-edit-grid{grid-template-columns:1fr 1fr!important}
+  .contact-card-inner{flex-direction:column;text-align:center}
+  .contact-card-inner img{width:80px!important;height:80px!important}
+  .contact-card-inner .card-text{min-width:0!important}
+  .recent-item{grid-template-columns:1fr}
+  .recent-date{margin-top:0}
+  .business-head{grid-template-columns:1fr}
+  .business-grid{grid-template-columns:repeat(2,1fr)}
+  .learning-head{grid-template-columns:1fr}
+  .learning-grid{grid-template-columns:repeat(2,1fr)}
+  .matcher-hint{grid-template-columns:1fr}
+  .update-monitor{grid-template-columns:1fr}
+  .crawler-metrics{grid-template-columns:repeat(3,1fr)}
+  .analysis-flow{grid-template-columns:repeat(2,minmax(0,1fr));max-width:560px}
+  .analysis-step::after{display:none}
+}
+/* Mobile: phone */
+@media(max-width:480px){
+  .hero h1{font-size:1.3em}
+  .hero .sub{font-size:.85em}
+  .city-grid{grid-template-columns:repeat(2,1fr);gap:6px}
+  .city-card{padding:10px}
+  .city-card .city-name{font-size:1em}
+  .mode-tabs{gap:3px;padding:10px 12px}
+  .mode-tab{padding:6px 14px;font-size:.82em}
+  .panel{padding:14px;border-radius:10px}
+  .btn-group{flex-direction:column}
+  .btn-group .btn{width:100%;justify-content:center}
+  .inline-edit-grid{grid-template-columns:1fr!important}
+  .summary-stats{grid-template-columns:1fr}
+  .topnav .logo{font-size:.85em}
+  .back-top{width:40px;height:40px;font-size:.9em;bottom:20px;right:16px}
+  .step .step-label{font-size:.65em}
+  .chat-user,.chat-ai{margin-left:0!important;margin-right:0!important;max-width:100%!important}
+  .business-proof,.business-grid{grid-template-columns:1fr}
+  .business-section{padding:26px 14px}
+  .learning-section{padding:26px 14px}
+  .learning-grid{grid-template-columns:1fr}
+  .community-recs{grid-template-columns:1fr}
+  .crawler-metrics{grid-template-columns:1fr}
+  .hero{padding:28px 14px 24px}
+  .contest-kicker{font-size:.67em;margin-bottom:8px}
+  .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px auto 12px;max-width:360px}
+  .hero-action{min-height:44px;padding:10px 12px;font-size:.8em}
+  .hero-action.primary{grid-column:1/-1;padding-inline:16px}
+  .analysis-flow{gap:6px;margin-top:13px}
+  .analysis-step{padding:8px 9px}.analysis-step b{font-size:.7em}.analysis-step span{font-size:.62em}
+  .contest-proof{font-size:.62em;gap:5px}
+  .topnav a:nth-of-type(n+5){display:none}
+  .topnav{justify-content:flex-start;padding-inline:10px;gap:2px}
+  .topnav a{padding-inline:8px}
+  .topnav .opc-brand{padding-inline:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* Trust banner - 反 AI 编造定位条 */
+.trust-slogan{display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:8px 16px;background:linear-gradient(90deg,rgba(15,118,110,.06),rgba(37,99,235,.04),rgba(15,118,110,.06));
+  border-bottom:1px solid rgba(15,118,110,.15);font-size:.78em;color:var(--cyan);
+  font-weight:500;flex-wrap:wrap;text-align:center}
+.trust-slogan .icon{font-size:1em}
+.trust-slogan .dot{color:var(--dim);margin:0 4px}
+.trust-slogan a{color:var(--al);text-decoration:underline;text-decoration-style:dotted}
+@media(max-width:640px){.trust-slogan{font-size:.7em;padding:6px 10px;gap:4px}}
+
+/* Verified badge - 政策卡片"已核验"标签 */
+.verified-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px;
+  font-size:.65em;font-weight:700;background:rgba(15,118,110,.1);color:var(--cyan);
+  border:1px solid rgba(15,118,110,.25);margin-left:6px;vertical-align:middle;letter-spacing:.3px}
+.verified-badge-warn{background:rgba(180,83,9,.12);color:var(--orange);border-color:rgba(180,83,9,.25)}
+
+/* Source link - 来源跳转按钮 */
+.source-link{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;margin:4px 4px 0 0;
+  border-radius:5px;font-size:.72em;color:var(--cyan);background:rgba(15,118,110,.05);
+  border:1px solid rgba(15,118,110,.12);transition:all .2s;text-decoration:none}
+.source-link:hover{background:rgba(15,118,110,.12);color:#fff;border-color:rgba(15,118,110,.3)}
+
+/* Countdown urgency - 申报截止倒计时 */
+.countdown{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:5px;
+  font-size:.72em;font-weight:700;margin-right:6px;letter-spacing:.2px}
+.countdown-urgent{background:rgba(185,28,28,.12);color:var(--red);
+  border:1px solid rgba(185,28,28,.3);animation:pulseFade 2s ease-in-out infinite}
+.countdown-warn{background:rgba(180,83,9,.12);color:var(--orange);
+  border:1px solid rgba(180,83,9,.25)}
+.countdown-ok{background:rgba(21,128,61,.08);color:var(--green);
+  border:1px solid rgba(21,128,61,.15)}
+.countdown-expired{background:rgba(136,136,160,.1);color:var(--dim);
+  border:1px solid rgba(136,136,160,.2)}
+@keyframes pulseFade{0%,100%{opacity:1}50%{opacity:.65}}
+
+/* Correction CTA - 纠错按钮 */
+.correction-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:6px;
+  background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);
+  font-size:.78em;color:var(--al);transition:all .2s;text-decoration:none}
+.correction-btn:hover{background:rgba(37,99,235,.18);color:#fff;border-color:var(--accent)}
+
+/* Source section in detail - 已核验·官方来源区块 */
+.src-section{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.04)}
+.src-section-label{font-size:.72em;color:var(--dim);margin-bottom:4px;font-weight:600}
+
+/* Community item with source */
+.comm-item{padding:8px 10px;background:rgba(0,0,0,.02);border-radius:6px;margin-bottom:6px;
+  border-left:2px solid rgba(37,99,235,.2)}
+.comm-item b{color:var(--al)}
+.comm-item .comm-meta{font-size:.74em;color:var(--dim);margin-top:3px}
+.comm-item .comm-src{font-size:.7em;margin-top:4px}
+.comm-item .comm-src a{color:var(--cyan)}
+.nav-dropdown{position:relative;display:inline-flex}
+.nav-dropdown-trigger{padding:6px 14px;border-radius:6px;font-size:.82em;color:var(--dim,var(--text-dim,#64748B));cursor:pointer;transition:all .2s;background:none;border:none;font-family:inherit;text-decoration:none}
+.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{color:var(--al,var(--accent-light,var(--accent,#2563EB)));background:rgba(37,99,235,.08)}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border,#E2E8F0);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);min-width:120px;z-index:200;padding:4px 0}
+.nav-dropdown.open .nav-dropdown-menu{display:block}
+.nav-dropdown-menu a{display:block;padding:8px 16px;font-size:.82em;color:var(--text,#0F172A);text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:rgba(37,99,235,.06);color:var(--al,var(--accent,#2563EB))}
+.nav-dropdown-menu a.active{color:var(--al,var(--accent,#2563EB));font-weight:600}
+</style>
+<script src="assets/js/schedule.js" defer></script>
+<!-- OPC-JSONLD-START -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://opcgate.com/#website","url":"https://opcgate.com/","name":"OPC 落地指南","description":"全国 OPC（一人公司 / 独立开发者）信息查询、城市/载体筛选和落地路线诊断参考。优先展示来源链接，缺失官链会明示参考来源；不提供政务办理、代办申报、法律税务结论或补贴承诺。","inLanguage":"zh-CN","publisher":{"@type":"Person","name":"siuser小伟"}},{"@type":"Dataset","@id":"https://opcgate.com/#dataset","name":"全国 OPC 落地信息数据集","description":"覆盖 42 城共 125 条 OPC 相关政策与落地支持信息的结构化数据，含适用口径、材料准备、有效期和来源链接。","creator":{"@type":"Organization","name":"OPC 落地指南"},"license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["OPC","一人公司","独立开发者","落地路线诊断","城市筛选","来源核验"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://opcgate.com/data/policies.json"}]},{"@type":"ItemList","@id":"https://opcgate.com/#cities","name":"全国 OPC 城市落地信息列表","numberOfItems":42,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://opcgate.com/guangzhou.html","name":"广州 OPC 政策"},{"@type":"ListItem","position":2,"url":"https://opcgate.com/chengdu.html","name":"成都 OPC 政策"},{"@type":"ListItem","position":3,"url":"https://opcgate.com/suzhou.html","name":"苏州 OPC 政策"},{"@type":"ListItem","position":4,"url":"https://opcgate.com/seo/cities/%E4%B8%8A%E6%B5%B7.html","name":"上海 OPC 政策"},{"@type":"ListItem","position":5,"url":"https://opcgate.com/seo/cities/%E4%B8%9C%E8%8E%9E.html","name":"东莞 OPC 政策"},{"@type":"ListItem","position":6,"url":"https://opcgate.com/seo/cities/%E4%B8%AD%E5%B1%B1.html","name":"中山 OPC 政策"},{"@type":"ListItem","position":7,"url":"https://opcgate.com/seo/cities/%E4%BD%9B%E5%B1%B1.html","name":"佛山 OPC 政策"},{"@type":"ListItem","position":8,"url":"https://opcgate.com/seo/cities/%E4%BF%9D%E5%AE%9A.html","name":"保定 OPC 政策"},{"@type":"ListItem","position":9,"url":"https://opcgate.com/seo/cities/%E5%85%A8%E5%9B%BD.html","name":"全国 OPC 政策"},{"@type":"ListItem","position":10,"url":"https://opcgate.com/seo/cities/%E5%8C%97%E4%BA%AC.html","name":"北京 OPC 政策"},{"@type":"ListItem","position":11,"url":"https://opcgate.com/seo/cities/%E5%8D%97%E4%BA%AC.html","name":"南京 OPC 政策"},{"@type":"ListItem","position":12,"url":"https://opcgate.com/seo/cities/%E5%8D%97%E5%85%85.html","name":"南充 OPC 政策"},{"@type":"ListItem","position":13,"url":"https://opcgate.com/seo/cities/%E5%8D%97%E9%80%9A.html","name":"南通 OPC 政策"},{"@type":"ListItem","position":14,"url":"https://opcgate.com/seo/cities/%E5%8E%A6%E9%97%A8.html","name":"厦门 OPC 政策"},{"@type":"ListItem","position":15,"url":"https://opcgate.com/seo/cities/%E5%90%88%E8%82%A5.html","name":"合肥 OPC 政策"},{"@type":"ListItem","position":16,"url":"https://opcgate.com/seo/cities/%E5%A4%A7%E8%BF%9E.html","name":"大连 OPC 政策"},{"@type":"ListItem","position":17,"url":"https://opcgate.com/seo/cities/%E5%A4%A9%E6%B4%A5.html","name":"天津 OPC 政策"},{"@type":"ListItem","position":18,"url":"https://opcgate.com/seo/cities/%E5%AE%81%E6%B3%A2.html","name":"宁波 OPC 政策"},{"@type":"ListItem","position":19,"url":"https://opcgate.com/seo/cities/%E5%AE%BF%E8%BF%81.html","name":"宿迁 OPC 政策"},{"@type":"ListItem","position":20,"url":"https://opcgate.com/seo/cities/%E5%B8%B8%E5%B7%9E.html","name":"常州 OPC 政策"},{"@type":"ListItem","position":21,"url":"https://opcgate.com/seo/cities/%E5%BE%90%E5%B7%9E.html","name":"徐州 OPC 政策"},{"@type":"ListItem","position":22,"url":"https://opcgate.com/seo/cities/%E6%83%A0%E5%B7%9E.html","name":"惠州 OPC 政策"},{"@type":"ListItem","position":23,"url":"https://opcgate.com/seo/cities/%E6%89%AC%E5%B7%9E.html","name":"扬州 OPC 政策"},{"@type":"ListItem","position":24,"url":"https://opcgate.com/seo/cities/%E6%97%A0%E9%94%A1.html","name":"无锡 OPC 政策"},{"@type":"ListItem","position":25,"url":"https://opcgate.com/seo/cities/%E6%98%86%E6%98%8E.html","name":"昆明 OPC 政策"},{"@type":"ListItem","position":26,"url":"https://opcgate.com/seo/cities/%E6%9D%AD%E5%B7%9E.html","name":"杭州 OPC 政策"},{"@type":"ListItem","position":27,"url":"https://opcgate.com/seo/cities/%E6%A2%85%E5%B7%9E.html","name":"梅州 OPC 政策"},{"@type":"ListItem","position":28,"url":"https://opcgate.com/seo/cities/%E6%AD%A6%E6%B1%89.html","name":"武汉 OPC 政策"},{"@type":"ListItem","position":29,"url":"https://opcgate.com/seo/cities/%E6%B5%8E%E5%8D%97.html","name":"济南 OPC 政策"},{"@type":"ListItem","position":30,"url":"https://opcgate.com/seo/cities/%E6%B5%B7%E5%8F%A3.html","name":"海口 OPC 政策"},{"@type":"ListItem","position":31,"url":"https://opcgate.com/seo/cities/%E6%B7%B1%E5%9C%B3.html","name":"深圳 OPC 政策"},{"@type":"ListItem","position":32,"url":"https://opcgate.com/seo/cities/%E6%B8%A9%E5%B7%9E.html","name":"温州 OPC 政策"},{"@type":"ListItem","position":33,"url":"https://opcgate.com/seo/cities/%E7%8F%A0%E6%B5%B7.html","name":"珠海 OPC 政策"},{"@type":"ListItem","position":34,"url":"https://opcgate.com/seo/cities/%E7%9B%90%E5%9F%8E.html","name":"盐城 OPC 政策"},{"@type":"ListItem","position":35,"url":"https://opcgate.com/seo/cities/%E7%9F%B3%E5%AE%B6%E5%BA%84.html","name":"石家庄 OPC 政策"},{"@type":"ListItem","position":36,"url":"https://opcgate.com/seo/cities/%E7%A6%8F%E5%B7%9E.html","name":"福州 OPC 政策"},{"@type":"ListItem","position":37,"url":"https://opcgate.com/seo/cities/%E8%A5%BF%E5%AE%89.html","name":"西安 OPC 政策"},{"@type":"ListItem","position":38,"url":"https://opcgate.com/seo/cities/%E8%BF%9E%E4%BA%91%E6%B8%AF.html","name":"连云港 OPC 政策"},{"@type":"ListItem","position":39,"url":"https://opcgate.com/seo/cities/%E9%83%91%E5%B7%9E.html","name":"郑州 OPC 政策"},{"@type":"ListItem","position":40,"url":"https://opcgate.com/seo/cities/%E9%87%8D%E5%BA%86.html","name":"重庆 OPC 政策"},{"@type":"ListItem","position":41,"url":"https://opcgate.com/seo/cities/%E9%95%BF%E6%B2%99.html","name":"长沙 OPC 政策"},{"@type":"ListItem","position":42,"url":"https://opcgate.com/seo/cities/%E9%9D%92%E5%B2%9B.html","name":"青岛 OPC 政策"}]}]}
+</script>
+<!-- OPC-JSONLD-END -->
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="topnav">
+  <a class="logo opc-brand" href="/" aria-label="opcgate OPC 落地指南">
+    <img class="opc-brand-mark" src="/assets/brand/opcgate-mark.svg" alt="">
+    <span class="opc-brand-text"><span class="opc-brand-name">opcgate</span><span class="opc-brand-sub">OPC 落地指南</span></span>
+  </a>
+  <a href="index.html" class="active">首页</a>
+  <div class="nav-dropdown" onclick="this.classList.toggle('open')">
+    <a class="nav-dropdown-trigger">城市 ▾</a>
+    <div class="nav-dropdown-menu">
+      <a href="guangzhou.html">广州</a>
+      <a href="chengdu.html">成都</a>
+      <a href="suzhou.html">苏州</a>
+      <a href="yuexiu.html">越秀区</a>
+    </div>
+  </div>
+  <a href="compare.html">对比</a>
+  <a href="now-open.html">🟢 窗口期</a>
+  <a href="aliyun-opc.html">阿里云OPC</a>
+  <a href="tax.html">税务</a>
+  <a href="changelog.html">更新记录</a>
+  <a href="/navigation">路线诊断</a>
+  <a href="/learn">课程</a>
+  <a href="#business">合作</a>
+</nav>
+
+<!-- Trust banner：反 AI 编造定位条 -->
+<div class="trust-slogan">
+  <span class="icon">🛡️</span>
+  <span><strong>优先展示官方原文</strong></span>
+  <span class="dot">·</span>
+  <span>拒绝 AI 编造</span>
+  <span class="dot">·</span>
+  <span>多源交叉核实</span>
+  <span class="dot">·</span>
+  <a href="changelog.html">维护日志</a>
+  <span class="dot">·</span>
+  <a href="rss.xml" title="订阅 RSS · 获取已核验更新">📡 RSS 订阅</a>
+</div>
+
+<!-- Hero：评委第一眼即可理解的泛数据分析主叙事 -->
+<div class="hero">
+  <a class="contest-kicker" href="https://infinisynapse.cn/contest/vibe-coding" target="_blank" rel="noopener">InfiniSynapse × CSDN Vibe Coding 2026 参赛作品</a>
+  <h1>用 AI 把 125 条 OPC 政策<br>分析成一条可执行的落地路线</h1>
+  <p class="sub">输入创业画像，规则引擎分析 42 城政策与 128 个载体，InfiniSynapse 综合来源证据、关键风险与 7 天行动计划。</p>
+  <div class="hero-actions">
+    <button class="hero-action primary" id="btnContestDemo" onclick="runContestDemo()">一键生成 AI 路线 · 约 60 秒</button>
+    <button class="hero-action" onclick="focusProfileForm()">自己填写创业画像</button>
+    <a class="hero-action" href="dashboard.html">查看数据分析看板 →</a>
+    <a class="hero-action" href="https://github.com/siuserxiaowei/opc-policy/releases/tag/vibe-coding-2026-final" target="_blank" rel="noopener">观看 36 秒演示 ↗</a>
+  </div>
+  <div class="analysis-flow" aria-label="OPC Gate 数据分析流程">
+    <div class="analysis-step"><b>01 · 结构化数据</b><span>政策、条件、金额、来源、载体</span></div>
+    <div class="analysis-step"><b>02 · 可解释匹配</b><span>画像条件逐项评分并暴露阻碍</span></div>
+    <div class="analysis-step"><b>03 · AI 跨城研判</b><span>InfiniSynapse 综合候选与证据</span></div>
+    <div class="analysis-step"><b>04 · 决策输出</b><span>推荐、风险、来源与 7 天行动</span></div>
+  </div>
+  <div class="contest-proof">
+    <span><strong>● 正式 Server API</strong></span>
+    <span>Task ID：850b9073-e8d9-49cb-9d03-9434f1f76a68</span>
+    <span>调用日志可由赛事后台核验</span>
+    <a href="https://github.com/siuserxiaowei/opc-policy/blob/main/VIBE_CODING_2026.md" target="_blank" rel="noopener">架构与复现说明 ↗</a>
+  </div>
+  <span class="version" style="display:block;width:max-content;max-width:calc(100% - 32px);margin:13px auto 0;color:var(--dim)">仅作信息查询与路线诊断参考；缺失官链会明示，不承诺补贴或申报结果。</span>
+</div>
+
+<!-- 时效公告（可关闭 + 过期自动隐藏） -->
+<div id="announcement" style="display:none;max-width:900px;margin:12px auto;padding:10px 40px 10px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;position:relative;z-index:1;font-size:.85em;color:var(--dim)">
+  <strong style="color:var(--al)">阿里云 OPC 创新助力计划</strong> 已纳入本站数据 · Token 补贴、百炼工具链、Y/OUR SPACE 站点 · <a href="aliyun-opc.html" style="color:var(--al)">查看整理 →</a>
+  <button onclick="this.parentElement.style.display='none';localStorage.setItem('ann-dismiss','aliyun-opc-0630')" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:1.1em;cursor:pointer;padding:4px">&times;</button>
+</div>
+<script>
+(function(){
+  var deadline = new Date('2026-06-30T23:59:59+08:00');
+  if (Date.now() < deadline && localStorage.getItem('ann-dismiss') !== 'aliyun-opc-0630') {
+    document.getElementById('announcement').style.display = 'block';
+  }
+})();
+</script>
+
+<!-- Mode Switch -->
+<div class="mode-tabs">
+  <button class="mode-tab active" onclick="switchMode('match')">路线诊断</button>
+  <button class="mode-tab" onclick="switchMode('browse')">查询政策信息</button>
+  <button class="mode-tab" onclick="switchMode('advisor')">资料问答</button>
+</div>
+
+<div class="container">
+
+  <!-- ===== MATCH MODE ===== -->
+  <div id="modeMatch">
+    <!-- Steps -->
+    <div class="steps" id="stepsBar">
+      <div class="step active" data-num="1"><div class="step-line"></div><span class="step-label">填写信息</span></div>
+      <div class="step" data-num="2"><div class="step-line"></div><span class="step-label">路线诊断</span></div>
+      <div class="step" data-num="3"><span class="step-label">查看结果</span></div>
+    </div>
+
+    <!-- Step 1: Form -->
+    <div class="panel" id="panelForm">
+      <h2>告诉我你的情况</h2>
+      <p class="desc">填写越详细诊断越精准；这次会同时给出候选政策、园区/社区，以及材料和来源核验缺口</p>
+      <div class="matcher-hint">
+        <span><b>1. 先看你是谁</b>主体、阶段、资质、社保人数</span>
+        <span><b>2. 再看你要什么</b>免租、算力、现金、贷款、场景</span>
+        <span><b>3. 最后给参考路线</b>政策 + 园区/社区 + 材料核验提醒</span>
+      </div>
+
+      <div class="form-group">
+        <label>公司注册地 <span style="color:var(--red)">*</span></label>
+        <div class="form-row">
+          <select id="fProvince"><option value="">选择省份</option>
+            <option value="广东">广东</option><option value="北京">北京</option><option value="上海">上海</option>
+            <option value="浙江">浙江</option><option value="四川">四川</option><option value="湖北">湖北</option>
+            <option value="安徽">安徽</option><option value="江苏">江苏</option><option value="湖南">湖南</option>
+            <option value="山东">山东</option><option value="重庆">重庆</option>
+            <option value="陕西">陕西</option><option value="福建">福建</option><option value="云南">云南</option>
+            <option value="天津">天津</option><option value="河北">河北</option><option value="海南">海南</option><option value="其他">其他省份</option>
+          </select>
+          <select id="fCity"><option value="">选择城市</option></select>
+        </div>
+        <select id="fDistrict" style="margin-top:8px"><option value="">选择区（可选）</option></select>
+        <div class="form-error" id="errLocation">请至少选择省份和城市</div>
+      </div>
+
+      <div class="form-group">
+        <label>公司情况</label>
+        <div class="form-row">
+          <input type="number" id="fEmployees" placeholder="社保人数" min="0">
+          <input type="number" id="fAge" placeholder="公司成立几年" min="0" step="0.5">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>落地意愿</label>
+        <div class="chips" id="chipsMobility" data-mode="single">
+          <div class="chip selected" data-val="current">只看当前城市</div>
+          <div class="chip" data-val="province">可同省迁移</div>
+          <div class="chip" data-val="national">全国择优</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>项目阶段</label>
+        <div class="chips" id="chipsStage" data-mode="single">
+          <div class="chip selected" data-val="idea">刚起步/准备注册</div>
+          <div class="chip" data-val="product">已有产品/MVP</div>
+          <div class="chip" data-val="revenue">有客户/有营收</div>
+          <div class="chip" data-val="scale">准备融资/规模化</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>最想要的支持（可多选）</label>
+        <div class="chips support-grid" id="chipsNeeds" data-mode="multi">
+          <div class="chip" data-val="rent">免租/低租工位</div>
+          <div class="chip" data-val="compute">算力券/API/模型</div>
+          <div class="chip" data-val="cash">现金补贴/奖励</div>
+          <div class="chip" data-val="loan">贷款/贴息</div>
+          <div class="chip" data-val="scene">场景/首单/客户</div>
+          <div class="chip" data-val="talent">人才/住房</div>
+          <div class="chip" data-val="mentor">孵化/导师/运营</div>
+          <div class="chip" data-val="competition">赛事/曝光</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>公司类型</label>
+        <div class="chips" id="chipsCompanyType" data-mode="single">
+          <div class="chip" data-val="个人独资">个人独资</div>
+          <div class="chip" data-val="一人有限公司">一人有限公司</div>
+          <div class="chip" data-val="小微企业">小微企业</div>
+          <div class="chip" data-val="个体工商户">个体工商户</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>行业方向（可多选）</label>
+        <div class="chips" id="chipsIndustry" data-mode="multi">
+          <div class="chip" data-val="AI语音/对话">AI语音/对话</div>
+          <div class="chip" data-val="AI视觉/图像">AI视觉/图像</div>
+          <div class="chip" data-val="大模型/NLP">大模型/NLP</div>
+          <div class="chip" data-val="智能硬件">智能硬件</div>
+          <div class="chip" data-val="数字内容/创意">数字内容/创意</div>
+          <div class="chip" data-val="智慧医疗">智慧医疗</div>
+          <div class="chip" data-val="智能制造">智能制造</div>
+          <div class="chip" data-val="跨境/电商">跨境/电商</div>
+          <div class="chip" data-val="其他AI">其他AI方向</div>
+          <div class="chip" data-val="非AI">非AI行业</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>已有资质（可多选）</label>
+        <div class="chips" id="chipsQualification" data-mode="multi">
+          <div class="chip" data-val="有营收">有营收</div>
+          <div class="chip" data-val="有合同">有合同/客户</div>
+          <div class="chip" data-val="有知识产权">有知识产权/软著</div>
+          <div class="chip" data-val="有模型备案">有模型备案</div>
+          <div class="chip" data-val="有算法备案">有算法备案</div>
+          <div class="chip" data-val="有产品上线">有产品上线</div>
+          <div class="chip" data-val="有落地案例">有落地案例</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>法人身份</label>
+        <div class="chips" id="chipsFounder" data-mode="single">
+          <div class="chip" data-val="高校毕业5年内">高校毕业5年内</div>
+          <div class="chip" data-val="留学回国">留学回国</div>
+          <div class="chip" data-val="退役军人">退役军人</div>
+          <div class="chip" data-val="登记失业">登记失业人员</div>
+          <div class="chip" data-val="港澳青年">港澳青年</div>
+          <div class="chip" data-val="以上都不是">以上都不是</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btnMatch" onclick="runMatch()">开始匹配</button>
+        <button class="btn btn-outline" onclick="fillDemo()">用示例填充</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Loading -->
+    <div class="panel hidden" id="panelLoading" style="text-align:center;padding:50px">
+      <div class="spinner"></div>
+      <p style="color:var(--al);font-size:.95em">正在分析你的情况，生成路线诊断参考...</p>
+    </div>
+
+    <!-- Step 3: Results -->
+    <div class="panel hidden" id="panelResults">
+      <!-- 顶部快速修改条件 -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+        <h2 style="margin:0">匹配结果</h2>
+        <button class="btn btn-outline" onclick="toggleInlineEdit()" style="font-size:.82em;padding:6px 16px">修改条件</button>
+      </div>
+
+      <!-- 内嵌快速修改区（默认隐藏） -->
+      <div id="inlineEdit" style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
+        <div class="inline-edit-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+          <div>
+            <label style="font-size:.78em;color:var(--al)">城市</label>
+            <select id="qCity" style="width:100%;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em"></select>
+          </div>
+          <div>
+            <label style="font-size:.78em;color:var(--al)">区</label>
+            <select id="qDistrict" style="width:100%;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em"><option value="">不限</option></select>
+          </div>
+          <div>
+            <label style="font-size:.78em;color:var(--al)">社保人数</label>
+            <input type="number" id="qEmployees" style="width:100%;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em" min="0">
+          </div>
+        </div>
+        <div class="inline-edit-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+          <div>
+            <label style="font-size:.78em;color:var(--al)">成立几年</label>
+            <input type="number" id="qAge" style="width:100%;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em" min="0" step="0.5">
+          </div>
+          <div>
+            <label style="font-size:.78em;color:var(--al)">法人身份</label>
+            <select id="qFounder" style="width:100%;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:.85em">
+              <option value="">不限</option><option>高校毕业5年内</option><option>留学回国</option><option>退役军人</option><option>登记失业人员</option><option>港澳青年</option><option>以上都不是</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:flex-end">
+            <button class="btn btn-primary" onclick="quickRematch()" style="width:100%;padding:8px;font-size:.85em">重新匹配</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="desc" id="resultDesc"></p>
+      <div class="summary-stats" id="summaryStats"></div>
+      <section class="ai-report" id="aiReportPanel" aria-labelledby="aiReportTitle">
+        <div class="ai-report-head">
+          <div>
+            <a class="ai-report-kicker" href="https://infinisynapse.cn/contest/vibe-coding" target="_blank" rel="noopener">AI 深度研判 · InfiniSynapse × CSDN Vibe Coding 参赛版 ↗</a>
+            <h3 id="aiReportTitle">把候选政策变成一份可执行的选址报告</h3>
+            <p class="ai-report-desc">规则引擎负责筛选与解释，InfiniSynapse Server API 负责跨城市综合、证据风险和行动计划。密钥只保存在服务端。</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="ai-report-brand">Powered by InfiniSynapse</span>
+            <button class="btn btn-primary" id="btnAiReport" onclick="generateAiReport()">生成 AI 深度选址报告</button>
+          </div>
+        </div>
+        <div class="ai-report-status hidden" id="aiReportStatus"><span class="pulse"></span><span id="aiReportStatusText">正在连接分析引擎…</span></div>
+        <div class="ai-report-result hidden" id="aiReportResult"></div>
+        <div class="ai-report-error hidden" id="aiReportError"></div>
+      </section>
+      <div id="communityMatches"></div>
+      <div style="display:flex;gap:6px;margin:16px 0;flex-wrap:wrap" id="resultTabs">
+        <button class="chip selected" onclick="filterResults('recommended',this)">候选政策</button>
+        <button class="chip" onclick="filterResults('all',this)">全部</button>
+        <button class="chip" onclick="filterResults('high',this)">高度匹配</button>
+        <button class="chip" onclick="filterResults('mid',this)">条件匹配</button>
+        <button class="chip" onclick="filterResults('low',this)">暂不匹配</button>
+      </div>
+      <div id="resultsList"></div>
+      <div class="btn-group">
+        <button class="btn btn-outline" onclick="goBack()">← 返回完整表单</button>
+        <button class="btn btn-outline" onclick="exportResults('txt')">导出 TXT</button>
+        <button class="btn btn-outline" onclick="exportResults('csv')">导出 CSV</button>
+        <button class="btn btn-primary" onclick="generateChecklist()"><svg class="icon"><use href="/assets/icons/opcgate-icons.svg#icon-policy"></use></svg>生成材料核验清单</button>
+      </div>
+
+      <!-- 订阅监控入口 -->
+      <div style="margin-top:20px;background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(15,118,110,.06));border:1px solid rgba(37,99,235,.15);border-radius:14px;padding:24px">
+        <h3 style="font-size:1.05em;margin-bottom:6px;color:var(--al)">📡 订阅政策变动监控</h3>
+        <p style="font-size:.85em;color:var(--dim);margin-bottom:14px">不想错过窗口期或来源更新？订阅你关注的城市，有变动第一时间知道。</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px">
+          <div style="padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px">
+            <div style="font-size:.78em;color:var(--green);font-weight:700;margin-bottom:4px">免费</div>
+            <div style="font-size:.88em;font-weight:600;margin-bottom:4px">RSS 订阅</div>
+            <ul style="font-size:.78em;color:var(--dim);padding-left:14px;margin-bottom:10px">
+              <li>所有城市政策更新</li>
+              <li>用 Feedly / Inoreader 阅读</li>
+              <li>新政策自动推送</li>
+            </ul>
+            <a href="rss.xml" style="display:inline-block;padding:6px 14px;background:rgba(21,128,61,.1);border:1px solid rgba(21,128,61,.2);border-radius:6px;font-size:.82em;color:var(--green);font-weight:600">📡 订阅 RSS</a>
+          </div>
+          <div style="padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px">
+            <div style="font-size:.78em;color:var(--orange);font-weight:700;margin-bottom:4px">即将推出</div>
+            <div style="font-size:.88em;font-weight:600;margin-bottom:4px">城市监控</div>
+            <ul style="font-size:.78em;color:var(--dim);padding-left:14px;margin-bottom:10px">
+              <li>关注指定城市 / 社区</li>
+              <li>截止日期提前提醒</li>
+              <li>每周变动摘要邮件</li>
+            </ul>
+            <span style="display:inline-block;padding:6px 14px;background:rgba(180,83,9,.08);border:1px solid rgba(180,83,9,.15);border-radius:6px;font-size:.82em;color:var(--orange)">🔜 敬请期待</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 税务引导 -->
+      <a href="tax.html" style="display:block;margin-top:16px;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='#2563EB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:.95em;font-weight:700;color:var(--text);margin-bottom:4px">整理 OPC 税务问题清单</div>
+            <div style="font-size:.82em;color:var(--dim)">三种主体税负对比参考 · 税收计算器 · 专业咨询问题 · 关键时间节点</div>
+          </div>
+          <span style="font-size:1.2em;color:var(--al)">→</span>
+        </div>
+      </a>
+
+      <!-- 材料清单面板 -->
+      <div class="panel hidden checklist-panel" id="panelChecklist">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <h2 style="margin:0"><svg class="icon"><use href="/assets/icons/opcgate-icons.svg#icon-policy"></use></svg> 材料核验清单</h2>
+          <button class="btn btn-outline" onclick="document.getElementById('panelChecklist').classList.add('hidden')" style="font-size:.8em;padding:5px 14px">收起</button>
+        </div>
+        <p class="desc" id="checklistDesc"></p>
+        <div class="checklist-progress">
+          <div class="progress-text"><span id="checklistProgressText">已准备 0 / 0 项</span><span id="checklistProgressPct">0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="checklistProgressFill" style="width:0%"></div></div>
+        </div>
+        <div id="checklistContent"></div>
+        <div class="btn-group">
+          <button class="btn btn-outline" onclick="exportChecklist()">导出清单 TXT</button>
+          <button class="btn btn-outline" onclick="clearChecklist()">清除勾选</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BROWSE MODE ===== -->
+  <div id="modeBrowse" style="display:none">
+    <div class="panel">
+      <h2>全部政策浏览</h2>
+      <input class="browse-search" type="text" placeholder="搜索政策名称、城市、关键词..." id="browseSearch" oninput="filterBrowse()">
+      <div class="browse-filters">
+        <select id="browseCity" onchange="filterBrowse()"><option value="">全部城市</option></select>
+        <select id="browseCat" onchange="filterBrowse()">
+          <option value="">全部类型</option>
+          <option value="comprehensive">综合</option><option value="subsidy">补贴</option>
+          <option value="space">空间</option><option value="computing">算力</option>
+          <option value="scenario">场景</option><option value="competition">赛事</option>
+          <option value="registration">注册</option>
+        </select>
+        <select id="browseSourceStatus" onchange="filterBrowse()">
+          <option value="">全部来源/状态</option>
+          <option value="official">官方原文</option>
+          <option value="reference">参考来源</option>
+          <option value="missing">暂无来源</option>
+          <option value="draft">征求意见</option>
+        </select>
+        <select id="browseSort" onchange="filterBrowse()">
+          <option value="city">按城市</option><option value="amount">按金额</option><option value="name">按名称</option>
+        </select>
+      </div>
+      <div class="policy-count" id="browseCount"></div>
+      <div id="browseList"></div>
+    </div>
+  </div>
+
+  <!-- ===== AI ADVISOR MODE ===== -->
+  <div id="modeAdvisor" style="display:none">
+    <div class="panel">
+      <h2>资料问答</h2>
+      <p class="desc">描述你的情况或提问，系统会基于本站政策数据库给出信息查询和核验参考</p>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg chat-ai">你好！我是 OPC 落地指南资料问答。你可以问我：<br>
+        · "我在广州越秀区做AI语音机器人，有什么政策可以申请？"<br>
+        · "深圳和广州哪个OPC政策更好？"<br>
+        · "海珠区场景征集需要先核验哪些材料？"<br>
+        · "有哪些城市提供免费办公空间？"</div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="输入你的问题..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button onclick="sendChat()">发送</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Updates -->
+  <div class="panel anim recent-updates" id="panelRecent">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>
+        <h2>最近更新</h2>
+        <p class="desc" style="margin-bottom:0">最新收录 / 调整的 5 条政策</p>
+      </div>
+      <a class="link-btn" href="changelog.html">查看更新记录</a>
+    </div>
+    <div class="recent-list" id="recentPolicies"></div>
+  </div>
+
+  <div class="panel anim" id="panelCrawler">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+      <div>
+        <h2>每日资料更新</h2>
+        <p class="desc" style="margin-bottom:0">爬虫负责发现新线索，人工 review 后才进入正式政策库，避免把未核验内容混进结果</p>
+      </div>
+      <a class="link-btn" href="admin.html">打开 Review 面板</a>
+    </div>
+    <div class="update-monitor">
+      <div class="update-monitor-card" id="crawlerStatusCard">
+        <h3>爬虫状态</h3>
+        <p style="font-size:.85em;color:var(--dim)">正在读取 opc-crawler 状态...</p>
+      </div>
+      <div class="update-monitor-card" id="crawlerLatestCard">
+        <h3>最近发现</h3>
+        <p style="font-size:.85em;color:var(--dim)">等待最近一次发现列表...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- City Grid -->
+  <div class="panel anim" id="panelCities" style="margin-top:30px">
+    <h2>已收录城市</h2>
+    <p class="desc">点击城市查看政策或自动填充匹配表单</p>
+    <div class="city-grid" id="cityGrid"></div>
+  </div>
+
+  <div class="panel anim" style="margin-top:24px">
+    <h2>热门对比与城市入口</h2>
+    <p class="desc">给搜索引擎和首次访问用户用的深页入口。后续你新增对比页或城市页，这里继续往下扩就行。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.78em;color:var(--al);font-weight:700;margin-bottom:6px">热门对比页</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a href="seo/guangzhou-vs-shenzhen-vs-suzhou.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">广州 vs 深圳 vs 苏州</a>
+          <a href="seo/beijing-vs-shanghai-vs-shenzhen.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">北京 vs 上海 vs 深圳</a>
+          <a href="seo/index.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">查看全部</a>
+        </div>
+      </div>
+      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.78em;color:var(--green);font-weight:700;margin-bottom:6px">重点城市</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a href="guangzhou.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">广州</a>
+          <a href="seo/cities/深圳.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">深圳</a>
+          <a href="suzhou.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">苏州</a>
+          <a href="seo/cities/北京.html" style="padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">北京</a>
+        </div>
+      </div>
+      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px">
+        <div style="font-size:.78em;color:var(--cyan);font-weight:700;margin-bottom:6px">城市静态入口</div>
+        <p style="font-size:.82em;color:var(--dim);margin-bottom:10px">不再先落到通用壳页，搜索和站内流量都能直接进入具体城市页。</p>
+        <a href="seo/cities/index.html" style="display:inline-flex;align-items:center;padding:8px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.82em">查看全部城市入口 →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<section class="learning-section anim" id="learning">
+  <div class="learning-inner">
+    <div class="learning-head">
+      <div>
+        <div class="learning-kicker">OPCGATE Course</div>
+        <h2>OPC 落地指南课程 / 从信息查询到材料核验</h2>
+        <p>这是一套 opcgate 自己的 OPC 入门到落地课程。围绕本站真实政策库、城市对比、数据看板和匹配器，带你把“一人公司该落哪、先核验什么、先准备什么”拆成可执行动作。</p>
+      </div>
+      <div class="learning-note">
+        <b>课程原则：</b>信息查询与路线诊断工具，不提供政务办理、代办申报、法律税务结论或补贴承诺；全部回到官方来源、窗口期和材料清单逐条确认。
+      </div>
+    </div>
+    <div class="learning-grid">
+      <div class="learning-card">
+        <span class="learning-tag">Module 01</span>
+        <h3>OPC 入门与赛道定位</h3>
+        <p>先判断你是不是适合做 OPC，再把产品、客户、收入方式和城市约束写成一页纸。</p>
+        <ul>
+          <li>第 0 课：OPC 决策框架</li>
+          <li>第 1 课：赛道与收入模型</li>
+          <li>第 2 课：最小落地画像</li>
+        </ul>
+        <a class="learning-link" href="/learn#module-01">开始学习 →</a>
+      </div>
+      <div class="learning-card">
+        <span class="learning-tag">Module 02</span>
+        <h3>城市选址与政策匹配</h3>
+        <p>用 42 城政策、128 个社区/载体和来源可信度，把候选城市缩到 2-3 个。</p>
+        <ul>
+          <li>第 3 课：城市筛选变量</li>
+          <li>第 4 课：补贴与成本测算</li>
+          <li>第 5 课：社区载体对比</li>
+        </ul>
+        <a class="learning-link" href="/learn#module-02">进入选址课 →</a>
+      </div>
+      <div class="learning-card">
+        <span class="learning-tag">Module 03</span>
+        <h3>主体边界与材料准备</h3>
+        <p>把公司主体、税务口径、知识产权、合同和材料要求拆成自查清单。</p>
+        <ul>
+          <li>第 6 课：主体与税务边界</li>
+          <li>第 7 课：材料清单与证据</li>
+          <li>第 8 课：风险自查表</li>
+        </ul>
+        <a class="learning-link" href="/learn#module-03">查看清单课 →</a>
+      </div>
+      <div class="learning-card">
+        <span class="learning-tag">Module 04</span>
+        <h3>材料核验与时间线</h3>
+        <p>从政策匹配结果出发，排窗口节奏、补资料缺口，把条款翻译成材料和证据。</p>
+        <ul>
+          <li>第 9 课：窗口与材料排期</li>
+          <li>第 10 课：材料清单</li>
+          <li>第 11-12 课：单城研究</li>
+        </ul>
+        <a class="learning-link" href="/learn#module-04">进入执行课 →</a>
+      </div>
+      <div class="learning-card">
+        <span class="learning-tag">Module 05</span>
+        <h3>风险核验与长期追踪</h3>
+        <p>识别未核验来源、征求意见稿和过度承诺，最后沉淀自己的 OPC 落地决策书。</p>
+        <ul>
+          <li>第 13 课：政策来源核验</li>
+          <li>第 14 课：财税问题清单</li>
+          <li>第 15 课：落地决策书</li>
+        </ul>
+        <a class="learning-link" href="/learn#module-05">完成决策书 →</a>
+      </div>
+    </div>
+    <div class="learning-note" style="margin-top:12px">
+      完整课程页已整理为 <a href="/learn">15 节课学习路径</a>，每节课都会给出目标、站内工具、交付物和核验动作。
+      学完后回到 <a href="compare.html">城市对比</a>、<a href="dashboard.html">数据看板</a> 和首页匹配器，判断“该落在哪座城市、走哪条准备路径”。
+    </div>
+  </div>
+</section>
+
+<section class="business-section anim" id="business">
+  <div class="business-inner">
+    <div class="business-head">
+      <div>
+        <div class="business-kicker">Business Cooperation</div>
+        <h2>商务合作</h2>
+        <p>opcgate 适合承接政策数据共建、园区/孵化器入库、工具/API 接入和 OPC 落地信息整理。合作的前提很简单：有可核验资料、有真实服务能力、有清晰交付边界。</p>
+      </div>
+      <div class="business-proof">
+        <span><b>42 城</b><small>结构化城市入口</small></span>
+        <span><b>125 条</b><small>政策与补贴记录</small></span>
+        <span><b>128 个</b><small>社区/载体样本</small></span>
+      </div>
+    </div>
+    <div class="business-grid">
+      <div class="business-item">
+        <h3>数据共建</h3>
+        <p>园区、媒体和创业服务商可补充官方原文、材料要求、窗口期和联系人。</p>
+        <ul>
+          <li>政策信息结构化入库</li>
+          <li>来源可信度标注</li>
+          <li>更新记录与 RSS 留痕</li>
+        </ul>
+      </div>
+      <div class="business-item">
+        <h3>园区/孵化器入库</h3>
+        <p>适合有真实 OPC 工位、算力、财税、融资或技术服务的社区载体。</p>
+        <ul>
+          <li>城市深页展示</li>
+          <li>社区对比页露出</li>
+          <li>入驻条件与来源链接</li>
+        </ul>
+      </div>
+      <div class="business-item">
+        <h3>工具/API 接入</h3>
+        <p>面向 AI Agent、招商平台、咨询系统和内容工具提供结构化政策数据入口。</p>
+        <ul>
+          <li>JSON / RSS 数据源</li>
+          <li>城市对比组件</li>
+          <li>定制筛选与报告输出</li>
+        </ul>
+      </div>
+      <div class="business-item">
+        <h3>路线诊断参考</h3>
+        <p>给准备落地 OPC 的个人开发者、小团队和服务商做城市对比、材料核验与来源核验路径整理。</p>
+        <ul>
+          <li>城市落地评估</li>
+          <li>候选政策报告</li>
+          <li>材料清单与行动表</li>
+        </ul>
+      </div>
+    </div>
+    <div class="business-cta">
+      <p>商务合作请加微信 <strong>siuserxiaowei</strong>，备注「商务合作 + 公司/园区名」。合作只提供信息整理和路线诊断参考，不提供政务办理、代办申报、法律税务结论或补贴承诺；政策补充或纠错也可以直接走 GitHub Issue。</p>
+      <div class="business-actions">
+        <a class="primary" href="javascript:void(0)" onclick="copyWechat()">复制微信号</a>
+        <a class="secondary" href="https://github.com/siuserxiaowei/opc-policy/issues" target="_blank" rel="noopener">提交数据线索</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- QR Code Modal（保留但不在首屏展示）-->
+<div id="qrModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:600;align-items:center;justify-content:center;cursor:pointer" onclick="this.style.display='none'">
+  <div style="background:#fff;border-radius:16px;padding:20px;max-width:320px;text-align:center" onclick="event.stopPropagation()">
+    <img src="assets/wechat-qr.jpg" style="width:100%;border-radius:8px">
+    <p style="color:#333;font-size:.85em;margin-top:10px">微信扫码添加好友，备注「OPC」</p>
+  </div>
+</div>
+
+<!-- Footer：简洁，不卖东西 -->
+<footer>
+  <p style="font-size:.88em;margin-bottom:8px"><strong>OPC 落地指南</strong> · 政策信息查询、城市/载体筛选与路线诊断参考</p>
+  <p style="margin-bottom:8px">
+    <a href="guangzhou.html">广州专版</a> · <a href="chengdu.html">成都专版</a> · <a href="suzhou.html">苏州专版</a> ·
+    <a href="seo/index.html">热门对比页</a> · <a href="seo/cities/index.html">城市入口</a> ·
+	    <a href="tax.html">税务边界</a> · <a href="dashboard.html">数据看板</a> · <a href="changelog.html">维护日志</a> ·
+	    <a href="/miniprogram">小程序说明</a> · <a href="#business">商务合作</a> · <a href="rss.xml">RSS 订阅</a> · <a href="https://github.com/siuserxiaowei/opc-policy" target="_blank">GitHub</a>
+  </p>
+  <p style="font-size:.78em;color:var(--dim)">
+    免责声明：信息查询与路线诊断工具，不提供政务办理、代办申报、法律税务结论或补贴承诺。数据来源优先展示官方原文，缺失官链会明示参考来源 · 拒绝 AI 编造<br>
+    有业务需求或数据纠错：微信 siuserxiaowei（备注 OPC）
+  </p>
+</footer>
+
+<script>
+// ===== DATA =====
+let POLICIES = [];
+let CITIES = [];
+let COMMUNITIES = [];
+const SPECIAL_CITY_PAGES = {
+  '广州': 'guangzhou.html',
+  '成都': 'chengdu.html',
+  '苏州': 'suzhou.html',
+};
+const OFFICIAL_SOURCE_SUFFIXES = ['.gov.cn', '.cnbayarea.org.cn', '.ccpit.org'];
+
+function getCityDetailHref(city){
+  return SPECIAL_CITY_PAGES[city] || `seo/cities/${encodeURIComponent(city)}.html`;
+}
+
+
+async function loadData() {
+  try {
+    const [pRes, cRes, commRes] = await Promise.all([fetch('data/policies.json'), fetch('data/cities.json'), fetch('data/communities.json')]);
+    if (!pRes.ok || !cRes.ok) throw new Error('fetch failed');
+    POLICIES = (await pRes.json()).policies || [];
+    CITIES = (await cRes.json()).cities || [];
+    COMMUNITIES = commRes.ok ? ((await commRes.json()).communities || []) : [];
+  } catch(e) {
+    console.error('加载政策数据失败:', e);
+    const el = document.getElementById('resultsList');
+    if (el) el.innerHTML = '<p style="text-align:center;color:var(--red);padding:30px">数据加载失败，请刷新页面；如持续失败请联系 siuserxiaowei</p>';
+    POLICIES = []; CITIES = []; COMMUNITIES = [];
+  }
+  renderCities();
+  renderRecentPolicies();
+  renderCrawlerMonitor();
+  populateBrowseFilters();
+  filterBrowse();
+
+  // 仅在爬虫暴露结构化端点时合并候选政策（不阻塞页面渲染）
+  mergeCrawlerData();
+}
+
+async function mergeCrawlerData() {
+  try {
+    const api = 'https://opc-crawler.siuserxy.workers.dev';
+    const statusResp = await fetch(`${api}/`, {
+      signal: AbortSignal.timeout(5000)
+    });
+    if (!statusResp.ok) return;
+    const status = await statusResp.json();
+    const endpoints = Object.keys(status.endpoints || {});
+    if (status.mode === 'link-discovery-only' || !endpoints.some(e => e.includes('/extracted'))) return;
+
+    const resp = await fetch(`${api}/extracted`, {
+      signal: AbortSignal.timeout(5000)
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    const newPolicies = data.policies || [];
+    if (!newPolicies.length) return;
+
+    // 去重：按 id 和 name 双重检查
+    const existingIds = new Set(POLICIES.map(p => p.id));
+    const existingNames = new Set(POLICIES.map(p => p.name));
+    let added = 0;
+
+    for (const p of newPolicies) {
+      if (existingIds.has(p.id) || existingNames.has(p.name)) continue;
+      p.auto_extracted = true; // 标记为爬虫候选
+      POLICIES.push(p);
+      existingIds.add(p.id);
+      existingNames.add(p.name);
+      added++;
+    }
+
+    if (added > 0) {
+      console.log(`[Crawler] 合并了 ${added} 条新政策`);
+      // 刷新浏览列表
+      populateBrowseFilters();
+      filterBrowse();
+      // 更新城市卡片数量
+      renderCities();
+      renderRecentPolicies();
+    }
+  } catch(e) {
+    // 爬虫不可用不影响正常使用
+    console.log('[Crawler] 跳过合并:', e.message);
+  }
+}
+
+loadData();
+
+// ===== MODE SWITCH =====
+function switchMode(mode) {
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  const clickedTab = (typeof event !== 'undefined' && event?.target?.classList?.contains('mode-tab'))
+    ? event.target
+    : Array.from(document.querySelectorAll('.mode-tab')).find(t => t.getAttribute('onclick')?.includes(`'${mode}'`));
+  if(clickedTab) clickedTab.classList.add('active');
+  document.getElementById('modeMatch').style.display = mode === 'match' ? '' : 'none';
+  document.getElementById('modeBrowse').style.display = mode === 'browse' ? '' : 'none';
+  document.getElementById('modeAdvisor').style.display = mode === 'advisor' ? '' : 'none';
+}
+
+// ===== CITY/DISTRICT =====
+const CITY_MAP = {
+  '广东':{cities:['广州','深圳','东莞','惠州','佛山','中山','珠海'],districts:{'惠州':['惠城','惠阳','惠东','博罗','大亚湾','仲恺'],
+    '广州':['越秀','天河','海珠','荔湾','白云','黄埔','番禺','南沙','花都','增城','从化'],
+    '深圳':['南山','福田','龙华','宝安','龙岗','罗湖','光明','前海','经开区']}},
+  '北京':{cities:['北京'],districts:{'北京':['海淀','朝阳','丰台','通州','大兴','昌平','经开区']}},
+  '上海':{cities:['上海'],districts:{'上海':['浦东','徐汇','静安','黄浦','长宁','杨浦','闵行','临港']}},
+  '浙江':{cities:['杭州','宁波','温州'],districts:{'杭州':['西湖','余杭','滨江','萧山','上城','临平','钱塘'],'宁波':['海曙','鄞州','江北','镇海']}},
+  '山东':{cities:['青岛','济南'],districts:{'青岛':['崂山','西海岸','市南','市北','城阳','即墨'],'济南':['历下','市中','高新','历城']}},
+  '四川':{cities:['成都'],districts:{'成都':['高新','天府新区','武侯','锦江','成华']}},
+  '湖北':{cities:['武汉'],districts:{'武汉':['东湖高新','洪山','武昌','江汉']}},
+  '安徽':{cities:['合肥'],districts:{'合肥':['包河','蜀山','庐阳','高新']}},
+  '江苏':{cities:['苏州','南京','无锡','扬州','常州','宿迁'],districts:{'苏州':['工业园区','吴江','昆山','高新区','吴中','相城','姑苏','张家港','常熟','太仓'],'南京':['江宁','鼓楼','玄武','栖霞','江北新区'],'无锡':['高新区','梁溪','锡山','惠山'],'扬州':['广陵','邗江','江都']}},
+  '湖南':{cities:['长沙'],districts:{'长沙':['岳麓','天心','望城','经开区']}},
+  '重庆':{cities:['重庆'],districts:{'重庆':['渝中','江北','南岸','两江新区','渝北']}},
+  '陕西':{cities:['西安'],districts:{'西安':['雁塔','高新','碑林','未央','长安']}},
+  '福建':{cities:['厦门','福州'],districts:{'厦门':['思明','湖里','集美','海沧'],'福州':['鼓楼','台江','仓山','晋安']}},
+  '云南':{cities:['昆明'],districts:{'昆明':['五华','盘龙','官渡','西山']}},
+  '天津':{cities:['天津'],districts:{'天津':['滨海高新','滨海新区','和平','南开','河西']}},
+  '河北':{cities:['石家庄'],districts:{'石家庄':['裕华','长安','桥西','新华']}},
+  '海南':{cities:['海口','三亚'],districts:{'海口':['龙华','美兰','秀英','高新区']}}
+};
+
+function populateCityOptions(province, selectedCity=''){
+  const cs = document.getElementById('fCity'), ds = document.getElementById('fDistrict');
+  cs.innerHTML = '<option value="">选择城市</option>';
+  ds.innerHTML = '<option value="">选择区（可选）</option>';
+  if(CITY_MAP[province]) CITY_MAP[province].cities.forEach(c => cs.innerHTML += `<option value="${c}">${c}</option>`);
+  if(selectedCity && CITY_MAP[province]?.cities.includes(selectedCity)) cs.value = selectedCity;
+}
+function populateDistrictOptions(province, city, selectedDistrict=''){
+  const ds = document.getElementById('fDistrict');
+  ds.innerHTML = '<option value="">选择区（可选）</option>';
+  if(CITY_MAP[province]?.districts[city]) CITY_MAP[province].districts[city].forEach(d => ds.innerHTML += `<option value="${d}">${d}</option>`);
+  if(selectedDistrict && CITY_MAP[province]?.districts[city]?.includes(selectedDistrict)) ds.value = selectedDistrict;
+}
+document.getElementById('fProvince').addEventListener('change', function(){
+  populateCityOptions(this.value);
+  hideError('errLocation');
+});
+document.getElementById('fCity').addEventListener('change', function(){
+  const p = document.getElementById('fProvince').value, c = this.value;
+  populateDistrictOptions(p, c);
+});
+
+// ===== CHIPS =====
+document.querySelectorAll('.chips').forEach(container => {
+  container.addEventListener('click', e => {
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    if(container.dataset.mode === 'single'){
+      container.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+    } else {
+      chip.classList.toggle('selected');
+    }
+  });
+});
+function getSelected(id){ return Array.from(document.querySelectorAll(`#${id} .chip.selected`)).map(c=>c.dataset.val) }
+
+// ===== DEMO =====
+function focusProfileForm(){
+  switchMode('match');
+  document.getElementById('panelForm').scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(()=>document.getElementById('fProvince').focus(),350);
+}
+
+function fillDemo(onReady){
+  document.getElementById('fProvince').value='广东';
+  document.getElementById('fProvince').dispatchEvent(new Event('change'));
+  setTimeout(()=>{
+    document.getElementById('fCity').value='广州';
+    document.getElementById('fCity').dispatchEvent(new Event('change'));
+    setTimeout(()=>{
+      document.getElementById('fDistrict').value='越秀';
+      document.getElementById('fEmployees').value='5';
+      document.getElementById('fAge').value='2';
+      ['chipsMobility','chipsStage','chipsNeeds','chipsCompanyType','chipsIndustry','chipsQualification','chipsFounder'].forEach(id=>{
+        document.querySelectorAll(`#${id} .chip`).forEach(c=>c.classList.remove('selected'));
+      });
+      sel('chipsMobility','current');sel('chipsStage','revenue');
+      sel('chipsNeeds','rent');sel('chipsNeeds','compute');sel('chipsNeeds','scene');
+      sel('chipsCompanyType','小微企业');sel('chipsIndustry','AI语音/对话');
+      sel('chipsQualification','有营收');sel('chipsQualification','有合同');sel('chipsQualification','有产品上线');
+      sel('chipsFounder','以上都不是');
+      if(typeof onReady === 'function') onReady();
+    },80);
+  },80);
+}
+function sel(id,v){document.querySelectorAll(`#${id} .chip`).forEach(c=>{if(c.dataset.val===v)c.classList.add('selected')})}
+
+function runContestDemo(){
+  switchMode('match');
+  const button = document.getElementById('btnContestDemo');
+  if(button){ button.disabled = true; button.textContent = '正在载入示例…'; }
+  fillDemo(()=>{
+    runMatch({autoAi:true});
+  });
+}
+
+// ===== FORM VALIDATION =====
+function showError(id){document.getElementById(id).style.display='block'}
+function hideError(id){document.getElementById(id).style.display='none'}
+
+function validateForm(){
+  let ok = true;
+  if(!document.getElementById('fProvince').value || !document.getElementById('fCity').value){
+    showError('errLocation'); ok = false;
+  } else { hideError('errLocation'); }
+  return ok;
+}
+
+// ===== MATCHING ENGINE (FIXED) =====
+const SUPPORT_NEEDS = {
+  rent: { label:'免租/低租工位', benefit:['rent_free'], category:['space'], words:['免租','低租','工位','办公','空间','社区','孵化器','园区','租金'] },
+  compute: { label:'算力券/API/模型', benefit:['voucher'], category:['computing'], words:['算力','模型','API','Token','语料','数据券','智能体框架'] },
+  cash: { label:'现金补贴/奖励', benefit:['cash'], category:['subsidy','comprehensive'], words:['补贴','奖励','资助','启动金','开业奖励','后补助'] },
+  loan: { label:'贷款/贴息', benefit:['loan'], category:['finance'], words:['贷款','贴息','信贷','授信','担保','金融'] },
+  scene: { label:'场景/首单/客户', benefit:['procurement'], category:['scenario'], words:['场景','首单','采购','示范','应用','客户','订单'] },
+  talent: { label:'人才/住房', benefit:['talent'], category:['talent'], words:['人才','住房','公寓','安居','租房','落户','购房'] },
+  mentor: { label:'孵化/导师/运营', benefit:['service'], category:['service'], words:['孵化','导师','创业辅导','运营','加速器','培训','路演'] },
+  competition: { label:'赛事/曝光', benefit:['competition'], category:['competition'], words:['大赛','赛事','路演','曝光','榜单','评选','挑战赛'] }
+};
+
+const STAGE_MATCH = {
+  idea: { label:'刚起步/准备注册', words:['注册','开业','初创','启动金','工位','免租','主体准备','创业资助'] },
+  product: { label:'已有产品/MVP', words:['产品','MVP','模型','算力','测试','工具池','API','开发'] },
+  revenue: { label:'有客户/有营收', words:['营收','合同','客户','采购','首单','场景','示范','应用'] },
+  scale: { label:'准备融资/规模化', words:['融资','基金','贷款','上市','高成长','股权','投资','规模化'] }
+};
+
+const INDUSTRY_WORDS = {
+  'AI语音/对话':['语音','对话','客服','智能体','Agent'],
+  'AI视觉/图像':['视觉','图像','视频','AIGC','内容'],
+  '大模型/NLP':['大模型','NLP','模型','语料','智能体','Agent'],
+  '智能硬件':['硬件','制造','机器人','具身','IoT'],
+  '数字内容/创意':['内容','文旅','创意','AIGC','视频'],
+  '智慧医疗':['医疗','健康','医药'],
+  '智能制造':['制造','工业','供应链','智造'],
+  '跨境/电商':['跨境','电商','出海','外贸'],
+  '其他AI':['人工智能','AI','智能体','模型']
+};
+
+function collectPolicyText(policy){
+  const benefits = (policy.benefits || []).map(b => `${b.item || ''} ${b.amount || ''} ${b.type || ''}`).join(' ');
+  const req = policy.requirements ? JSON.stringify(policy.requirements) : '';
+  return [
+    policy.name, policy.summary, policy.category, policy.city, policy.district,
+    (policy.tags || []).join(' '), benefits, policy.actual_cases, req,
+    policy.application?.method, policy.application?.schedule?.label, policy.application?.deadline
+  ].filter(Boolean).join(' ');
+}
+
+function includesAny(text, words){
+  return (words || []).some(word => text.includes(word));
+}
+
+function selectedNeedLabels(profile){
+  return (profile.supportNeeds || []).map(k => SUPPORT_NEEDS[k]?.label).filter(Boolean);
+}
+
+function scoreNeedsAgainstText(profile, policy, text, reasons){
+  const needs = profile.supportNeeds || [];
+  if(!needs.length) return { score:0, max:0 };
+  let score = 0;
+  const max = 24;
+  const per = max / Math.min(needs.length, 4);
+  const benefits = policy.benefits || [];
+  needs.slice(0,4).forEach(key => {
+    const meta = SUPPORT_NEEDS[key];
+    if(!meta) return;
+    const benefitHit = benefits.some(b => meta.benefit.includes(b.type) || includesAny(`${b.item || ''}${b.amount || ''}`, meta.words));
+    const categoryHit = meta.category.includes(policy.category);
+    const textHit = includesAny(text, meta.words);
+    if(benefitHit || categoryHit || textHit){
+      score += per;
+      reasons.push(`命中需求：${meta.label}`);
+    }
+  });
+  return { score:Math.min(max, score), max };
+}
+
+function scoreIndustry(profile, text, reasons){
+  const industries = (profile.industries || []).filter(v => v !== '非AI');
+  if(!industries.length) return { score:0, max:0 };
+  let hits = 0;
+  industries.forEach(ind => {
+    const words = INDUSTRY_WORDS[ind] || [ind.replace('/', ''), ind];
+    if(includesAny(text, words)) hits += 1;
+  });
+  if(hits){
+    reasons.push(`方向相关：${industries.slice(0,2).join('、')}`);
+  }
+  return { score:Math.min(12, hits * 6), max:12 };
+}
+
+function scoreStage(profile, text, reasons){
+  const meta = STAGE_MATCH[profile.projectStage];
+  if(!meta) return { score:0, max:0 };
+  if(includesAny(text, meta.words)){
+    reasons.push(`适合阶段：${meta.label}`);
+    return { score:10, max:10 };
+  }
+  return { score:3, max:10 };
+}
+
+function locationScore(profile, policy, req, reasons, blockers){
+  const max = 42;
+  const mobility = profile.mobility || 'current';
+  const regLoc = req.registration_location || '';
+  const isDirect = ['北京','上海','重庆'].includes(profile.city);
+  const policyCity = policy.city || '';
+  const policyDistrict = policy.district || '';
+  const cityMatch = (policyCity === profile.city) || (isDirect && policyCity === profile.province);
+  const sameProvince = policy.province === profile.province;
+  const districtMatch = profile.district && policyDistrict && (regLoc.includes(profile.district) || policyDistrict === profile.district);
+  const isProvinceLevel = policy.level === 'province';
+
+  if(!regLoc || regLoc === '不限'){
+    reasons.push('不限注册地');
+    return { score:38, max };
+  }
+  if(districtMatch && cityMatch){
+    reasons.push(`注册在${profile.district}区，完全匹配`);
+    return { score:42, max };
+  }
+  if(cityMatch && (!policyDistrict || policy.level === 'city')){
+    reasons.push(`注册在${profile.city}，市级匹配`);
+    return { score:38, max };
+  }
+  if(cityMatch && policyDistrict){
+    reasons.push(`同城可关注，但优先${policyDistrict}区`);
+    if(profile.district && profile.district !== policyDistrict) blockers.push(`政策更偏向${policyDistrict}区`);
+    return { score:22, max };
+  }
+  if(isProvinceLevel && sameProvince){
+    reasons.push('省级政策，同省适用');
+    return { score:34, max };
+  }
+  if(sameProvince && mobility !== 'current'){
+    reasons.push(mobility === 'province' ? '同省迁移可考虑' : '同省城市可作为备选');
+    return { score:28, max };
+  }
+  if(sameProvince){
+    blockers.push(`不在${policyCity}${policyDistrict ? policyDistrict + '区' : ''}`);
+    return { score:8, max };
+  }
+  if(mobility === 'national'){
+    reasons.push('全国择优，可作为迁移备选');
+    return { score:18, max };
+  }
+  blockers.push(`需要迁移到${policyCity}${policyDistrict ? policyDistrict + '区' : ''}`);
+  return { score:0, max };
+}
+
+function runMatch(options = {}){
+  if(!validateForm()) return;
+  const profile = {
+    province: document.getElementById('fProvince').value,
+    city: document.getElementById('fCity').value,
+    district: document.getElementById('fDistrict').value,
+    employees: parseInt(document.getElementById('fEmployees').value)||0,
+    companyAge: parseFloat(document.getElementById('fAge').value)||0,
+    mobility: getSelected('chipsMobility')[0] || 'current',
+    projectStage: getSelected('chipsStage')[0] || 'idea',
+    supportNeeds: getSelected('chipsNeeds'),
+    companyType: getSelected('chipsCompanyType'),
+    industries: getSelected('chipsIndustry'),
+    qualifications: getSelected('chipsQualification'),
+    founder: getSelected('chipsFounder')
+  };
+  localStorage.setItem('opc_profile', JSON.stringify(profile));
+  setStep(2);
+  document.getElementById('panelForm').classList.add('hidden');
+  document.getElementById('panelLoading').classList.remove('hidden');
+  setTimeout(()=>{ showResults(matchPolicies(profile), profile, options); }, 600);
+}
+
+function matchPolicies(profile){
+  return POLICIES.map(policy => {
+    let score=0, maxScore=0, reasons=[], blockers=[];
+    const req = policy.requirements||{};
+    const text = collectPolicyText(policy);
+    const windowState = policyWindowState(policy);
+
+    const loc = locationScore(profile, policy, req, reasons, blockers);
+    score += loc.score; maxScore += loc.max;
+
+    // 2. Company age (15 pts)
+    if(req.company_age_max_years){
+      maxScore += 15;
+      if(profile.companyAge > 0 && profile.companyAge <= req.company_age_max_years){
+        score += 15;
+        reasons.push(`成立${profile.companyAge}年，符合${req.company_age_max_years}年内`);
+      } else if(profile.companyAge > req.company_age_max_years){
+        blockers.push(`要求成立${req.company_age_max_years}年内`);
+      } else { score += 8; }
+    }
+
+    // 3. Social insurance (15 pts)
+    if(req.social_insurance_months){
+      maxScore += 15;
+      if(profile.employees >= 1){ score += 12; reasons.push(`${profile.employees}人缴社保`); }
+    }
+
+    // 4. Founder identity (15 pts)
+    const fReq = req.founder_identity||[];
+    if(fReq.length){
+      maxScore += 15;
+      const match = profile.founder.some(f => f !== '以上都不是' && fReq.some(r => r.includes(f) || f.includes(r.substring(0,3))));
+      if(match){ score += 15; reasons.push('法人身份符合'); }
+      else if(profile.founder.includes('以上都不是')){ blockers.push('法人身份不符'); }
+      else { score += 5; }
+    }
+
+    // 5. Qualifications (15 pts)
+    const qReq = req.qualifications||[];
+    if(qReq.length){
+      maxScore += 15;
+      const qMatch = profile.qualifications.some(pq => qReq.some(q => q.includes(pq.replace('有','')) || pq.includes(q.substring(0,3))));
+      if(qMatch){ score += 15; }
+      else {
+        if(qReq.some(q=>q.includes('模型备案')) && !profile.qualifications.includes('有模型备案')) blockers.push('需模型备案');
+        if(qReq.some(q=>q.includes('算法备案')) && !profile.qualifications.includes('有算法备案')) blockers.push('需算法备案');
+      }
+    }
+
+    const needs = scoreNeedsAgainstText(profile, policy, text, reasons);
+    score += needs.score; maxScore += needs.max;
+
+    const stage = scoreStage(profile, text, reasons);
+    score += stage.score; maxScore += stage.max;
+
+    const industry = scoreIndustry(profile, text, reasons);
+    score += industry.score; maxScore += industry.max;
+
+    if(windowState.state === 'closed'){
+      blockers.push('申请窗口已截止，仅保留历史参考');
+      score = Math.min(score, Math.round(maxScore * 0.25));
+    }
+
+    const pct = maxScore > 0 ? Math.round((score/maxScore)*100) : 50;
+    // Level logic: hard blockers prevent "high" rating when user only wants current city.
+    const hasLocationBlocker = blockers.some(b => b.includes('迁移') || b.includes('不在'));
+    const hasIdentityBlocker = blockers.some(b => b.includes('法人'));
+    let level;
+    if (windowState.state === 'closed') level = 'low';
+    else if (profile.mobility === 'current' && hasLocationBlocker) level = 'low';
+    else if (hasLocationBlocker && pct < 50) level = 'low';
+    else if (hasLocationBlocker) level = 'mid';
+    else if (hasIdentityBlocker) level = 'mid'; // identity mismatch = always mid
+    else if (pct >= 68) level = 'high';
+    else level = 'mid';
+
+    return {policy, score:pct, level, reasons, blockers};
+  }).sort((a,b) => b.score - a.score);
+}
+
+function claimableBenefitCeiling(policy){
+  return Math.max(0,...(policy?.benefits || [])
+    .filter(benefit => {
+      if(!['cash','voucher','tax_reduction'].includes(benefit.type)) return false;
+      const text = `${benefit.item || ''} ${benefit.amount || ''}`;
+      return !/(专项资金|资金池|基金|发放总额|总额|投入|场景清单|项目资金)/.test(text);
+    })
+    .map(benefit => benefit.amount_max || 0));
+}
+
+function collectCommunityText(community, linkedPolicies){
+  return [
+    community.name, community.city, community.district, community.address, community.operator, community.track,
+    (community.features || []).join(' '),
+    linkedPolicies.map(p => collectPolicyText(p)).join(' ')
+  ].filter(Boolean).join(' ');
+}
+
+function getPoliciesForCommunity(community){
+  const ids = new Set(community.policy_ids || []);
+  return POLICIES.filter(p => ids.has(p.id));
+}
+
+function communitySourceHtml(community){
+  if(!community.source) return '<span style="color:var(--dim)">来源待补</span>';
+  return `<a href="${community.source}" target="_blank" rel="noopener">${extractDomain(community.source) || '来源'} ↗</a>`;
+}
+
+function matchCommunities(profile, policyResults){
+  const policyScore = new Map(policyResults.map(r => [r.policy.id, r]));
+  const mobility = profile.mobility || 'current';
+
+  return COMMUNITIES.map(community => {
+    const reasons = [];
+    const blockers = [];
+    const linkedPolicies = getPoliciesForCommunity(community);
+    const text = collectCommunityText(community, linkedPolicies);
+    let score = 0;
+
+    if(community.city === profile.city && community.district && community.district === profile.district){
+      score += 38;
+      reasons.push(`同区：${community.district}`);
+    } else if(community.city === profile.city){
+      score += 32;
+      reasons.push(`同城：${community.city}`);
+    } else if(community.province === profile.province && mobility !== 'current'){
+      score += 24;
+      reasons.push('同省可迁移');
+    } else if(mobility === 'national'){
+      score += 16;
+      reasons.push('全国择优备选');
+    } else {
+      score += 4;
+      blockers.push(`不在${profile.city}`);
+    }
+
+    const linkedScores = linkedPolicies.map(p => policyScore.get(p.id)?.score || 0);
+    const bestLinked = Math.max(0, ...linkedScores);
+    if(bestLinked >= 70){
+      score += 22;
+      reasons.push('关联政策高度匹配');
+    } else if(bestLinked >= 45){
+      score += 14;
+      reasons.push('有关联政策可关注');
+    } else if(community.city === profile.city){
+      score += 8;
+    }
+
+    const needs = profile.supportNeeds || [];
+    if(needs.length){
+      let needHits = 0;
+      needs.slice(0,4).forEach(key => {
+        const meta = SUPPORT_NEEDS[key];
+        if(meta && includesAny(text, meta.words)) needHits += 1;
+      });
+      if(needHits){
+        score += Math.min(22, needHits * 7);
+        reasons.push(`覆盖 ${needHits} 项诉求`);
+      }
+    }
+
+    const industry = scoreIndustry(profile, text, reasons);
+    score += industry.score ? Math.min(10, industry.score) : 0;
+
+    const stage = STAGE_MATCH[profile.projectStage];
+    if(stage && includesAny(text, stage.words)){
+      score += 5;
+      reasons.push(`阶段匹配：${stage.label}`);
+    }
+
+    if(community.verified){
+      score += 3;
+      reasons.push('已核验');
+    }
+    if(community.source){
+      score += 2;
+    }
+
+    const pct = Math.min(100, Math.round(score));
+    let level = pct >= 65 ? 'high' : pct >= 38 ? 'mid' : 'low';
+    if(mobility === 'current' && blockers.length) level = 'low';
+    return { community, score:pct, level, reasons:[...new Set(reasons)], blockers:[...new Set(blockers)], linkedPolicies };
+  }).sort((a,b) => {
+    if(b.score !== a.score) return b.score - a.score;
+    return String(a.community.city).localeCompare(String(b.community.city), 'zh');
+  });
+}
+
+function renderCommunityMatches(results){
+  const el = document.getElementById('communityMatches');
+  if(!el) return;
+  const visible = results.filter(r => r.level !== 'low').slice(0,6);
+  if(!visible.length){
+    el.innerHTML = `<div class="recommend-block">
+      <div class="recommend-head">
+        <div><h3>推荐园区 / 社区</h3><p>当前条件下还没有高置信载体，建议放宽城市迁移意愿或补充“免租/算力/场景”等诉求。</p></div>
+      </div>
+    </div>`;
+    return;
+  }
+  el.innerHTML = `<div class="recommend-block">
+    <div class="recommend-head">
+      <div>
+        <h3>推荐园区 / 社区</h3>
+        <p>按地理适配、关联政策、免租/算力/场景诉求和来源核验综合排序</p>
+      </div>
+      <span class="tag tag-info">${visible.length} 个可优先联系</span>
+    </div>
+    <div class="community-recs">
+      ${visible.map(({ community, score, level, reasons, blockers, linkedPolicies }) => {
+        const tagCls = level === 'high' ? 'tag-go' : 'tag-check';
+        const policyNames = linkedPolicies.slice(0,2).map(p => p.name).join(' / ');
+        return `<article class="community-rec">
+          <h4>${escapeHtml(community.name)} <span class="tag ${tagCls}">${level === 'high' ? '优先' : '可关注'}</span></h4>
+          <div class="meta" style="font-size:.76em;color:var(--dim);gap:6px">
+            <span>${escapeHtml([community.city, community.district].filter(Boolean).join(' · '))}</span>
+            ${community.track ? `<span>${escapeHtml(community.track)}</span>` : ''}
+            ${community.verified ? '<span style="color:var(--cyan)">已核验</span>' : ''}
+          </div>
+          <div class="score-line"><span class="score">${score}%</span><div class="mini-bar"><span style="width:${score}%"></span></div></div>
+          ${(community.features || []).length ? `<div class="benefits">${community.features.slice(0,4).map(f=>`<span class="benefit-tag">${escapeHtml(f)}</span>`).join('')}</div>` : ''}
+          <div class="reasons"><b>为什么推荐：</b>${escapeHtml(reasons.slice(0,3).join(' · ') || '同城载体，可作为备选')}</div>
+          ${blockers.length ? `<div class="reasons" style="color:var(--red)">注意：${escapeHtml(blockers.join(' · '))}</div>` : ''}
+          ${policyNames ? `<div class="reasons">关联政策：${escapeHtml(policyNames)}</div>` : ''}
+          <div class="source">来源：${communitySourceHtml(community)}</div>
+        </article>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+// ===== RESULTS =====
+function showResults(results, profile, options = {}){
+  setStep(3);
+  document.getElementById('panelLoading').classList.add('hidden');
+  document.getElementById('panelResults').classList.remove('hidden');
+  const communityResults = matchCommunities(profile, results);
+  const high=results.filter(r=>r.level==='high');
+  const mid=results.filter(r=>r.level==='mid');
+  const low=results.filter(r=>r.level==='low');
+  const recommendedComms = communityResults.filter(r=>r.level!=='low');
+  const eligibleResults = results.filter(r => r.level !== 'low' && r.policy.status !== 'expired' && policyWindowState(r.policy).state !== 'closed');
+  const maxAmt = Math.max(0,...eligibleResults.map(r=>claimableBenefitCeiling(r.policy)));
+
+  document.getElementById('resultDesc').textContent =
+    `${profile.city}${profile.district?profile.district+'区':''} · ${profile.employees||'?'}人 · ${profile.industries.join('/')||'未指定'} · ${selectedNeedLabels(profile).join('/')||'未指定诉求'} — 共 ${results.length} 条政策、${COMMUNITIES.length} 个园区/社区参与匹配`;
+  document.getElementById('summaryStats').innerHTML = `
+    <div class="summary-stat"><div class="num" style="color:var(--green)">${high.length}</div><div class="lbl">高度匹配</div></div>
+    <div class="summary-stat"><div class="num" style="color:var(--yellow)">${mid.length}</div><div class="lbl">条件匹配</div></div>
+    <div class="summary-stat"><div class="num" style="color:var(--cyan)">${recommendedComms.length}</div><div class="lbl">推荐载体</div></div>
+    <div class="summary-stat"><div class="num" style="color:var(--cyan)">${maxAmt>=10000?Math.round(maxAmt/10000)+'万':maxAmt>0?maxAmt+'元':'-'}</div><div class="lbl">候选可核验上限</div></div>`;
+
+  window._communityResults = communityResults;
+  // === 决策结论 ===
+  const verdict = buildVerdict(results, profile);
+  let verdictEl = document.getElementById('verdictPanel');
+  if(!verdictEl){
+    verdictEl = document.createElement('div');
+    verdictEl.id = 'verdictPanel';
+    const tabs = document.getElementById('resultTabs');
+    tabs.parentNode.insertBefore(verdictEl, tabs);
+  }
+  verdictEl.innerHTML = verdict;
+
+  window._allResults = results;
+  window._profile = profile;
+  resetAiReport();
+  document.querySelectorAll('#resultTabs .chip').forEach((chip, i) => chip.classList.toggle('selected', i === 0));
+  renderCommunityMatches(communityResults);
+  renderResults(results.filter(r => r.level !== 'low'));
+  document.getElementById('aiReportPanel').scrollIntoView({behavior:'smooth',block:'center'});
+  if(options.autoAi){
+    const demoButton = document.getElementById('btnContestDemo');
+    if(demoButton) demoButton.textContent = '正在生成 AI 路线…';
+    setTimeout(async()=>{
+      await generateAiReport();
+      if(demoButton){
+        demoButton.disabled = false;
+        demoButton.textContent = '一键生成 AI 路线 · 约 60 秒';
+      }
+    },250);
+  }
+}
+
+function resetAiReport(){
+  const result = document.getElementById('aiReportResult');
+  const status = document.getElementById('aiReportStatus');
+  const error = document.getElementById('aiReportError');
+  const button = document.getElementById('btnAiReport');
+  if(result){ result.classList.add('hidden'); result.innerHTML = ''; }
+  if(status) status.classList.add('hidden');
+  if(error){ error.classList.add('hidden'); error.textContent = ''; }
+  if(button){ button.disabled = false; button.textContent = '生成 AI 深度选址报告'; }
+  window._aiReport = null;
+  window._aiTaskId = '';
+}
+
+function aiCandidatePayload(results){
+  return results.filter(r => r.level !== 'low').slice(0,10).map(r => {
+    const source = classifyPolicyLinks(r.policy);
+    return {
+      id: r.policy.id,
+      name: r.policy.name,
+      city: r.policy.city,
+      district: r.policy.district || '',
+      score: r.score,
+      status: r.policy.status,
+      summary: r.policy.summary,
+      benefits: (r.policy.benefits || []).slice(0,8).map(b => ({ item:b.item, amount:b.amount, type:b.type })),
+      reasons: r.reasons,
+      blockers: r.blockers,
+      officialUrl: source.official,
+      referenceUrl: source.application || source.references[0] || '',
+    };
+  });
+}
+
+function consumeSseBlock(block, onEvent){
+  const lines = block.split('\n');
+  let event = 'message';
+  const data = [];
+  lines.forEach(line => {
+    if(line.startsWith('event:')) event = line.slice(6).trim();
+    else if(line.startsWith('data:')) data.push(line.slice(5).trimStart());
+  });
+  if(!data.length) return;
+  let parsed = data.join('\n');
+  try { parsed = JSON.parse(parsed); } catch(e){}
+  onEvent(event, parsed);
+}
+
+async function readAiReportStream(response, onEvent){
+  if(!response.body) throw new Error('当前浏览器不支持流式报告，请升级浏览器后重试。');
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  while(true){
+    const {done,value} = await reader.read();
+    if(done) break;
+    buffer += decoder.decode(value,{stream:true}).replace(/\r\n/g,'\n');
+    let boundary;
+    while((boundary = buffer.indexOf('\n\n')) >= 0){
+      consumeSseBlock(buffer.slice(0,boundary), onEvent);
+      buffer = buffer.slice(boundary + 2);
+    }
+  }
+  if(buffer.trim()) consumeSseBlock(buffer,onEvent);
+}
+
+async function generateAiReport(){
+  const profile = window._profile;
+  const results = window._allResults || [];
+  if(!profile || !results.length){ alert('请先完成路线诊断'); return; }
+  const candidates = aiCandidatePayload(results);
+  if(!candidates.length){ alert('当前没有可供深度研判的候选政策，请先调整条件。'); return; }
+
+  const button = document.getElementById('btnAiReport');
+  const status = document.getElementById('aiReportStatus');
+  const statusText = document.getElementById('aiReportStatusText');
+  const resultEl = document.getElementById('aiReportResult');
+  const errorEl = document.getElementById('aiReportError');
+  button.disabled = true;
+  button.textContent = 'AI 正在研判…';
+  status.classList.remove('hidden');
+  statusText.textContent = '正在建立 InfiniSynapse Server API 分析任务…';
+  resultEl.classList.add('hidden');
+  errorEl.classList.add('hidden');
+  errorEl.textContent = '';
+  let received = false;
+
+  try{
+    const response = await fetch('/api/infinisynapse-report',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({profile:{...profile,needs:selectedNeedLabels(profile)},candidates}),
+    });
+    if(!response.ok){
+      const payload = await response.json().catch(()=>({}));
+      throw new Error(payload.error || `报告服务暂不可用（HTTP ${response.status}）`);
+    }
+    await readAiReportStream(response,(event,data)=>{
+      if(event==='meta'){
+        window._aiTaskId = data.taskId || '';
+        statusText.textContent = `任务已创建 ${data.taskId ? '· '+data.taskId.slice(0,8) : ''}，正在读取证据…`;
+      } else if(event==='status'){
+        statusText.textContent = data.message || '正在分析…';
+      } else if(event==='result'){
+        received = true;
+        window._aiTaskId = data.taskId || window._aiTaskId;
+        window._aiReport = data.report;
+        renderAiReport(data.report,data.taskId);
+      } else if(event==='error'){
+        throw new Error(data.error || '分析任务失败');
+      }
+    });
+    if(!received) throw new Error('分析连接已结束，但没有收到完整报告。');
+    button.textContent = '重新生成报告';
+  }catch(error){
+    errorEl.textContent = `${error.message || 'AI 报告生成失败'} 规则匹配结果仍可正常使用。`;
+    errorEl.classList.remove('hidden');
+    button.textContent = '重试 AI 深度报告';
+  }finally{
+    status.classList.add('hidden');
+    button.disabled = false;
+  }
+}
+
+function renderAiReport(report,taskId){
+  const resultEl = document.getElementById('aiReportResult');
+  const confidenceLabel = value => ({high:'高',medium:'中',low:'低'}[value] || '低');
+  const cityRows = (report.cityComparison || []).map(city => `<div style="margin-bottom:10px">
+    <div class="ai-city-score"><span>${escapeHtml(city.city)}${report.recommendedCity===city.city?' · 推荐':''}</span><span>${city.fitScore}%</span></div>
+    <div class="ai-score-bar"><span style="width:${city.fitScore}%"></span></div>
+    <p style="margin-top:5px">${escapeHtml(city.why)}</p>
+    ${(city.risks||[]).length?`<p style="color:var(--orange);margin-top:3px">注意：${city.risks.map(escapeHtml).join('；')}</p>`:''}
+  </div>`).join('');
+  const opportunityRows = (report.opportunities || []).map(item => `<li style="margin-bottom:7px"><strong>${escapeHtml(item.name)}</strong> · ${escapeHtml(item.city)} · 置信度${confidenceLabel(item.confidence)}<br>${escapeHtml(item.reason)}${item.evidenceUrl?` <a href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noopener" style="color:var(--accent)">核验来源 ↗</a>`:''}</li>`).join('');
+  const actionRows = (report.actionPlan || []).map(item => `<li style="margin-bottom:7px"><strong>${escapeHtml(item.within)}</strong>：${escapeHtml(item.action)}${item.evidence?`<br><span style="color:var(--dim)">${escapeHtml(item.evidence)}</span>`:''}</li>`).join('');
+  resultEl.innerHTML = `
+    <div class="ai-report-summary"><strong>AI 决策摘要${report.recommendedCity?` · 推荐 ${escapeHtml(report.recommendedCity)}`:''}</strong>${escapeHtml(report.executiveSummary||'报告已完成，请结合来源逐条核验。')}</div>
+    <div class="ai-report-grid">
+      <div class="ai-report-card"><h4>城市适配对比</h4>${cityRows||'<p>证据不足，暂不生成城市排序。</p>'}</div>
+      <div class="ai-report-card"><h4>优先机会与证据</h4><ol>${opportunityRows||'<li>请以规则匹配结果中的官方来源为准。</li>'}</ol></div>
+      <div class="ai-report-card"><h4>关键风险</h4><ul>${(report.risks||[]).map(item=>`<li>${escapeHtml(item)}</li>`).join('')||'<li>暂无新增风险结论。</li>'}</ul></div>
+      <div class="ai-report-card"><h4>7 天行动计划</h4><ol>${actionRows||'<li>逐条核验候选政策来源与申报材料。</li>'}</ol></div>
+    </div>
+    ${(report.limitations||[]).length?`<div class="ai-report-card" style="margin-top:10px"><h4>适用边界</h4><ul>${report.limitations.map(item=>`<li>${escapeHtml(item)}</li>`).join('')}</ul></div>`:''}
+    <div class="ai-task-proof"><span>InfiniSynapse Server API</span>${taskId?`<span>Task ID：${escapeHtml(taskId)}</span>`:''}<span>调用日志可在平台后台查验</span></div>`;
+  resultEl.classList.remove('hidden');
+}
+
+function buildVerdict(results, profile){
+  const high = results.filter(r=>r.level==='high');
+  const mid = results.filter(r=>r.level==='mid');
+  const low = results.filter(r=>r.level==='low');
+  const topCommunities = (window._communityResults || []).filter(r => r.level !== 'low').slice(0,3);
+
+  // Top 3 推荐政策
+  const top3 = results.slice(0,3);
+
+  // 按城市聚合推荐
+  const cityScores = {};
+  results.forEach(r => {
+    const c = r.policy.city;
+    if(!c || c === '全国') return;
+    if(!cityScores[c]) cityScores[c] = {city:c, totalScore:0, count:0, highCount:0, comms:0, maxAmt:0};
+    cityScores[c].totalScore += r.score;
+    cityScores[c].count++;
+    if(r.level==='high') cityScores[c].highCount++;
+    cityScores[c].comms = COMMUNITIES.filter(comm => comm.city === c).length;
+    const isEligibleCandidate = r.level !== 'low' && r.policy.status !== 'expired' && policyWindowState(r.policy).state !== 'closed';
+    if(isEligibleCandidate){
+      cityScores[c].maxAmt = Math.max(cityScores[c].maxAmt, claimableBenefitCeiling(r.policy));
+    }
+  });
+  const rankedCities = Object.values(cityScores).sort((a,b) => {
+    if(b.highCount !== a.highCount) return b.highCount - a.highCount;
+    return b.totalScore/b.count - a.totalScore/a.count;
+  });
+  const bestCity = rankedCities[0];
+  const notRec = rankedCities.filter(c => c.highCount === 0 && c.count > 0);
+
+  // 不推荐项
+  const blockerSummary = [];
+  low.forEach(r => {
+    r.blockers.forEach(b => {
+      if(!blockerSummary.includes(b)) blockerSummary.push(b);
+    });
+  });
+
+  // 3 步行动建议
+  const actions = [];
+  if(high.length > 0){
+    const firstHigh = high[0].policy;
+    if(firstHigh.application?.url) actions.push(`<a href="${firstHigh.application.url}" target="_blank" style="color:var(--cyan)">核验"${firstHigh.name.substring(0,20)}"材料与来源</a>`);
+    else actions.push(`查看 "${firstHigh.name.substring(0,25)}" 的材料要求与窗口`);
+  }
+  if(bestCity && bestCity.comms > 0) actions.push(`考虑入驻 ${bestCity.city} 的 OPC 社区（共 ${bestCity.comms} 个可选）`);
+  else actions.push('关注目标城市的 OPC 社区招募公告');
+  const deadlines = results.map(r => {
+    const cd = calcCountdown(r.policy.application);
+    if(!cd || cd.days < 0) return null;
+    const end = window.Schedule ? window.Schedule.nextDeadline(r.policy.application?.schedule || r.policy.application?.deadline) : (r.policy.application?.deadline || null);
+    return end ? {name: r.policy.name.substring(0,20), deadline: end} : null;
+  }).filter(Boolean).sort((a,b)=>a.deadline.localeCompare(b.deadline));
+  if(deadlines.length) actions.push(`注意最近截止：${deadlines[0].name} (${deadlines[0].deadline})`);
+  else actions.push('持续关注政策动态（<a href="rss.xml" style="color:var(--cyan)">订阅 RSS</a>）');
+
+  const amtStr = n => n >= 10000 ? (n/10000).toFixed(0)+'万' : n+'元';
+
+  return `
+  <div style="background:linear-gradient(135deg,rgba(15,118,110,.06),rgba(37,99,235,.04));border:1px solid rgba(15,118,110,.2);border-radius:14px;padding:22px;margin:16px 0">
+    <h3 style="font-size:1.1em;color:var(--cyan);margin-bottom:12px">⚡ 决策结论</h3>
+
+    ${bestCity ? `<div style="margin-bottom:14px">
+      <span style="font-size:.82em;color:var(--dim)">🏆 最推荐城市：</span>
+      <strong style="color:var(--green);font-size:1.1em">${bestCity.city}</strong>
+      <span style="font-size:.82em;color:var(--dim)">（${bestCity.highCount} 条高度匹配 · ${bestCity.comms} 个社区${bestCity.maxAmt ? ` · 候选可核验上限 ${amtStr(bestCity.maxAmt)}` : ''}）</span>
+    </div>` : ''}
+
+    ${notRec.length ? `<div style="margin-bottom:14px">
+      <span style="font-size:.82em;color:var(--dim)">⚠️ 暂不推荐：</span>
+      ${notRec.map(c => `<span style="color:var(--red);font-size:.88em">${c.city}</span>`).join('、')}
+      <span style="font-size:.78em;color:var(--dim)">（没有高度匹配政策）</span>
+    </div>` : ''}
+
+    ${blockerSummary.length ? `<div style="margin-bottom:14px">
+      <span style="font-size:.82em;color:var(--dim)">🚧 主要阻碍：</span>
+      <span style="font-size:.85em;color:var(--yellow)">${blockerSummary.slice(0,3).join(' · ')}</span>
+    </div>` : ''}
+
+    <div style="margin-bottom:14px">
+      <span style="font-size:.82em;color:var(--dim)">Top 3 推荐政策：</span>
+      <ol style="font-size:.85em;padding-left:18px;margin:6px 0;color:var(--text)">
+        ${top3.map(r => `<li><strong style="color:var(--al)">${r.policy.name.substring(0,35)}</strong> <span style="color:var(--dim)">${r.policy.city} · ${r.score}%</span></li>`).join('')}
+      </ol>
+    </div>
+
+    ${topCommunities.length ? `<div style="margin-bottom:14px">
+      <span style="font-size:.82em;color:var(--dim)">优先联系载体：</span>
+      <ol style="font-size:.85em;padding-left:18px;margin:6px 0;color:var(--text)">
+        ${topCommunities.map(r => `<li><strong style="color:var(--cyan)">${r.community.name.substring(0,28)}</strong> <span style="color:var(--dim)">${r.community.city}${r.community.district?' · '+r.community.district:''} · ${r.score}%</span></li>`).join('')}
+      </ol>
+    </div>` : ''}
+
+    <div style="padding-top:12px;border-top:1px solid rgba(0,0,0,.05)">
+      <span style="font-size:.82em;color:var(--dim)">🎯 下一步行动：</span>
+      <ol style="font-size:.85em;padding-left:18px;margin:6px 0;color:var(--green)">
+        ${actions.map(a => `<li>${a}</li>`).join('')}
+      </ol>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button onclick="exportVerdict()" style="padding:8px 16px;background:rgba(15,118,110,.1);border:1px solid rgba(15,118,110,.25);border-radius:8px;color:var(--cyan);font-size:.82em;font-weight:600;cursor:pointer">📄 导出决策报告</button>
+      <a href="rss.xml" style="padding:8px 16px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-radius:8px;color:var(--al);font-size:.82em;font-weight:600;display:inline-flex;align-items:center">📡 订阅政策更新</a>
+      ${bestCity ? `<a href="compare.html" style="padding:8px 16px;background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.25);border-radius:8px;color:var(--orange);font-size:.82em;font-weight:600;display:inline-flex;align-items:center">⚖️ 对比更多城市</a>` : ''}
+    </div>
+  </div>`;
+}
+
+function exportVerdict(){
+  const p = window._profile;
+  const results = window._allResults;
+  if(!p || !results) return;
+
+  const high = results.filter(r=>r.level==='high');
+  const mid = results.filter(r=>r.level==='mid');
+  const low = results.filter(r=>r.level==='low');
+
+  let txt = '# OPC 落地指南报告\n';
+  txt += `生成时间: ${new Date().toLocaleString('zh-CN')}\n`;
+  txt += `来源: opcgate.com · 优先展示官方原文，缺失官链会明示参考来源\n\n`;
+  txt += '## 你的情况\n';
+  txt += `城市: ${p.city}${p.district?' '+p.district+'区':''}\n`;
+  txt += `社保人数: ${p.employees||'未填'}\n`;
+  txt += `行业: ${p.industries?.join('、')||'未填'}\n`;
+  txt += `公司类型: ${p.companyType||'未填'}\n\n`;
+  txt += '## 匹配结果\n';
+  txt += `高度匹配: ${high.length} 条 / 条件匹配: ${mid.length} 条 / 暂不匹配: ${low.length} 条\n\n`;
+  txt += '## Top 3 推荐\n';
+  results.slice(0,3).forEach((r,i) => {
+    txt += `${i+1}. ${r.policy.name} (${r.policy.city}) - ${r.score}%\n`;
+    txt += `   ${r.policy.summary}\n`;
+    const sourceInfo = classifyPolicyLinks(r.policy);
+    const primarySource = sourceInfo.official || sourceInfo.application || sourceInfo.references[0];
+    if(primarySource) txt += `   来源: ${primarySource}${sourceInfo.official ? '' : ' (参考来源)'}\n`;
+    txt += '\n';
+  });
+  const comms = (window._communityResults || []).filter(r => r.level !== 'low').slice(0,5);
+  if(comms.length){
+    txt += '## 推荐园区/社区\n';
+    comms.forEach((r,i) => {
+      txt += `${i+1}. ${r.community.name} (${r.community.city}${r.community.district?' · '+r.community.district:''}) - ${r.score}%\n`;
+      if(r.reasons.length) txt += `   ${r.reasons.join('；')}\n`;
+      if(r.community.source) txt += `   来源: ${r.community.source}\n`;
+    });
+    txt += '\n';
+  }
+  if(high.length){
+    txt += '## 高度匹配的全部政策\n';
+    high.forEach(r => {
+      txt += `- ${r.policy.name} (${r.score}%)\n`;
+      (r.policy.benefits||[]).forEach(b => { txt += `  · ${b.item}: ${b.amount}\n`; });
+    });
+  }
+  txt += '\n---\nopcgate.com · OPC落地指南 · 仅供信息查询与路线诊断参考\n';
+
+  const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `OPC决策报告_${p.city}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();
+}
+
+// 计算距截止日期的天数 — 优先用结构化 schedule，降级到字符串 deadline
+function calcCountdown(input){
+  // 支持三种调用：policy.application 对象 / schedule 对象 / 日期字符串（向后兼容）
+  let iso = null;
+  if (input && typeof input === 'object') {
+    if (window.Schedule && (input.schedule || input.type)) {
+      const s = input.schedule || input;
+      const cd = window.Schedule.countdown(s);
+      if (cd) return {days: cd.daysLeft, cls: cd.expired ? 'countdown-expired' : cd.urgent ? 'countdown-urgent' : cd.soon ? 'countdown-warn' : 'countdown-ok',
+                      label: cd.expired ? '已过窗口' : cd.daysLeft === 0 ? '今天截止' : `${cd.daysLeft} 天后截止`};
+    }
+    iso = input.deadline || null;
+  } else {
+    iso = input;
+  }
+  if(!iso) return null;
+  const d = new Date(iso);
+  if(isNaN(d.getTime())) return null;
+  const now = new Date();
+  now.setHours(0,0,0,0);
+  const diff = Math.ceil((d - now) / 86400000);
+  if(diff < 0) return {days: diff, cls: 'countdown-expired', label: '已截止'};
+  if(diff === 0) return {days: 0, cls: 'countdown-urgent', label: '今天截止'};
+  if(diff <= 7) return {days: diff, cls: 'countdown-urgent', label: `${diff} 天后截止`};
+  if(diff <= 30) return {days: diff, cls: 'countdown-warn', label: `${diff} 天后截止`};
+  return {days: diff, cls: 'countdown-ok', label: `${diff} 天后截止`};
+}
+
+function policyWindowState(policy){
+  const cd = calcCountdown(policy?.application);
+  const expiredByDate = Boolean(cd && cd.days < 0);
+  if(policy?.status === 'expired' || policy?.landing_status === 'expired' || expiredByDate){
+    return {state:'closed', label:'已截止', countdown:cd};
+  }
+  if(policy?.status === 'draft'){
+    return {state:'draft', label:'征求意见', countdown:cd};
+  }
+  if(cd && cd.days >= 0){
+    return {state:'open', label:'申报中', countdown:cd};
+  }
+  return {state:'active', label:'生效中', countdown:cd};
+}
+
+// 从 URL 提取域名（用于 source badge 显示）
+function extractDomain(url){
+  if(!url) return '';
+  try { return new URL(url).hostname.replace(/^www\./,''); }
+  catch(e){ return ''; }
+}
+
+function isOfficialUrl(url){
+  if(!url) return false;
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return OFFICIAL_SOURCE_SUFFIXES.some(suffix => host.endsWith(suffix) || host === suffix.slice(1));
+  } catch(e) {
+    return false;
+  }
+}
+
+function uniqueUrls(urls){
+  return [...new Set((urls || []).filter(Boolean))];
+}
+
+function classifyPolicyLinks(p){
+  const links = p.links || {};
+  const official = isOfficialUrl(links.official) ? links.official : '';
+  const references = [];
+  if(links.official && !official) references.push(links.official);
+  references.push(...(links.news || []));
+  const application = p.application?.url || '';
+  return {
+    official,
+    application,
+    references: uniqueUrls(references).filter(url => url !== official && url !== application),
+  };
+}
+
+function escapeHtml(str){
+  return String(str ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+function policyUpdatedAt(p){
+  return p.updated_at || p.created_at || p.published_at || p.date || p.application?.updated_at || '';
+}
+
+function formatRecentDate(value){
+  if(!value) return '日期待补';
+  const d = new Date(value);
+  if(isNaN(d.getTime())) return value;
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function recentSourceBadgeHtml(p){
+  const { official, application, references } = classifyPolicyLinks(p);
+  const officialApplication = application && isOfficialUrl(application) ? application : '';
+  const sourceUrl = official || officialApplication || references[0] || application || '';
+  const isOfficial = Boolean(official || officialApplication);
+  const label = isOfficial ? '官方来源' : '参考来源';
+  const domain = extractDomain(sourceUrl);
+  const badge = `<span class="source-badge${isOfficial ? '' : ' ref'}" title="${domain ? label + '：' + domain : label}">${label}</span>`;
+  return sourceUrl ? `<a href="${sourceUrl}" target="_blank" rel="noopener">${badge}</a>` : badge;
+}
+
+function recentSummaryText(p){
+  const benefits = (p.benefits || []).map(b => [b.item, b.amount].filter(Boolean).join(': ')).filter(Boolean);
+  if(benefits.length) return benefits.slice(0,2).join(' · ');
+  const tags = (p.tags || []).filter(Boolean);
+  if(tags.length) return tags.slice(0,4).join(' · ');
+  return p.summary || '';
+}
+
+function renderRecentPolicies(){
+  const list = document.getElementById('recentPolicies');
+  if(!list) return;
+  const ranked = POLICIES.map((p, index) => ({ p, index, date: policyUpdatedAt(p) }))
+    .sort((a,b) => {
+      const dateCompare = String(b.date || '').localeCompare(String(a.date || ''));
+      return dateCompare || a.index - b.index;
+    })
+    .slice(0,5);
+
+  if(!ranked.length){
+    list.innerHTML = '<p style="color:var(--dim);font-size:.85em">政策数据加载中...</p>';
+    return;
+  }
+
+  list.innerHTML = ranked.map(({ p, date }) => {
+    const city = [p.city, p.district ? p.district + '区' : ''].filter(Boolean).join(' · ');
+    const summary = recentSummaryText(p);
+    const level = {province:'省级',city:'市级',district:'区级'}[p.level] || '';
+    return `<article class="recent-item">
+      <div>
+        <div class="recent-title">${escapeHtml(p.name)}</div>
+        <div class="recent-meta">
+          ${city ? `<span class="tag tag-info">${escapeHtml(city)}</span>` : ''}
+          ${level ? `<span>${level}</span>` : ''}
+          ${recentSourceBadgeHtml(p)}
+        </div>
+        ${summary ? `<div class="recent-summary">${escapeHtml(summary)}</div>` : ''}
+      </div>
+      <time class="recent-date" datetime="${escapeHtml(date)}">${escapeHtml(formatRecentDate(date))}</time>
+    </article>`;
+  }).join('');
+}
+
+async function renderCrawlerMonitor(){
+  const statusCard = document.getElementById('crawlerStatusCard');
+  const latestCard = document.getElementById('crawlerLatestCard');
+  if(!statusCard || !latestCard) return;
+  const api = 'https://opc-crawler.siuserxy.workers.dev';
+  try {
+    const [statusResp, newResp] = await Promise.all([
+      fetch(`${api}/status`, { signal: AbortSignal.timeout(6000) }),
+      fetch(`${api}/new`, { signal: AbortSignal.timeout(6000) })
+    ]);
+    if(!statusResp.ok) throw new Error('crawler status failed');
+    const status = await statusResp.json();
+    const latest = newResp.ok ? await newResp.json() : { finds: [] };
+    const last = status.last_crawl && status.last_crawl !== 'never'
+      ? new Date(status.last_crawl).toLocaleString('zh-CN', { hour12:false })
+      : '尚未运行';
+    const lastHistory = (status.history || []).slice(-1)[0] || {};
+    statusCard.innerHTML = `
+      <h3>爬虫状态</h3>
+      <p style="font-size:.85em;color:var(--dim)">当前模式：只发现链接，不自动写入正式库；人工确认后才会进入匹配结果。</p>
+      <div class="crawler-metrics">
+        <div class="crawler-metric"><b>${escapeHtml(status.sources || '-')}</b><span>监控源</span></div>
+        <div class="crawler-metric"><b>${escapeHtml(status.total_urls || 0)}</b><span>累计线索</span></div>
+        <div class="crawler-metric"><b>${escapeHtml(lastHistory.new_links ?? '-')}</b><span>本轮新增</span></div>
+      </div>
+      <p style="font-size:.78em;color:var(--dim);margin-top:10px">最近爬取：${escapeHtml(last)} · 频率：${escapeHtml(status.schedule || 'every 12 hours')}</p>`;
+
+    const finds = latest.finds || [];
+    latestCard.innerHTML = `
+      <h3>最近发现</h3>
+      ${finds.length ? finds.slice(0,3).map(item => `<div style="padding:8px 0;border-top:1px solid var(--border)">
+        <a href="${item.url}" target="_blank" rel="noopener" style="font-size:.84em;font-weight:700;color:var(--text)">${escapeHtml(item.title)}</a>
+        <div style="font-size:.74em;color:var(--dim)">${escapeHtml([item.city, item.source].filter(Boolean).join(' · '))}</div>
+      </div>`).join('') : '<p style="font-size:.85em;color:var(--dim)">最近一轮没有新增待审线索。</p>'}
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <a class="source-link" href="admin.html">人工 Review</a>
+        <a class="source-link" href="${api}/sources-health" target="_blank" rel="noopener">源健康状态</a>
+      </div>`;
+  } catch(e) {
+    statusCard.innerHTML = `<h3>爬虫状态</h3><p style="font-size:.85em;color:var(--orange)">暂时读取失败，不影响本地政策库匹配。可稍后打开 Review 面板查看。</p>`;
+    latestCard.innerHTML = `<h3>最近发现</h3><p style="font-size:.85em;color:var(--dim)">爬虫 API 暂不可用。</p>`;
+  }
+}
+
+// 生成 verified badge（如果政策有 verified 和 official source）
+function verifiedBadgeHtml(p){
+  if(!p.verified) return '';
+  const { official, application } = classifyPolicyLinks(p);
+  if(official){
+    const domain = extractDomain(official);
+    return `<span class="verified-badge" title="${domain ? '官方原文：' + domain : '已核验'}">✓ 已核验${domain ? ' · ' + domain : ''}</span>`;
+  }
+  if(application && isOfficialUrl(application)){
+    const domain = extractDomain(application);
+    return `<span class="verified-badge" title="未找到公开政策原文，当前展示的是官方材料核验链接">✓ 已核验 · ${domain}</span>`;
+  }
+  return '<span class="verified-badge verified-badge-warn" title="已人工核验，但当前缺少可公开官方原文链接">⚠ 已核验 · 缺官链</span>';
+}
+
+// 生成来源跳转区块（官方来源 + 新闻 + 众创汇总）
+function sourceSectionHtml(p){
+  const { official, application, references } = classifyPolicyLinks(p);
+  const links = [];
+  if(official) links.push(`<a class="source-link" href="${official}" target="_blank" rel="noopener">🏛️ 官方原文 · ${extractDomain(official)}</a>`);
+  if(application) links.push(`<a class="source-link" href="${application}" target="_blank" rel="noopener">${isOfficialUrl(application) ? '📝 官方来源核验' : '📝 材料核验参考'}</a>`);
+  references.forEach(n => links.push(`<a class="source-link" href="${n}" target="_blank" rel="noopener">📰 参考来源 · ${extractDomain(n)}</a>`));
+  if(!links.length) return '';
+  const label = official
+    ? '核验链接：'
+    : application
+      ? '材料 / 来源核验链接：'
+      : '参考链接（未找到公开官链）：';
+  return `<div class="src-section">
+    <div class="src-section-label">${label}</div>
+    ${links.join('')}
+  </div>`;
+}
+
+// 渲染 communities 时带 source 链接
+function communitiesHtml(communities){
+  if(!communities || !communities.length) return '';
+  return '<p style="font-size:.83em;color:var(--al);margin:12px 0 6px"><b>关联社区:</b></p>' +
+    communities.map(c => {
+      const meta = [c.address, c.operator, c.track].filter(Boolean).join(' · ');
+      const features = c.features ? c.features.join(', ') : '';
+      const srcLink = c.source ? `<div class="comm-src">来源：<a href="${c.source}" target="_blank" rel="noopener">${extractDomain(c.source)} ↗</a></div>` : '';
+      const verifiedTag = c.verified ? '<span class="verified-badge" style="margin-left:4px">✓</span>' : '';
+      return `<div class="comm-item">
+        <b>${c.name}</b>${verifiedTag}
+        ${meta ? `<div class="comm-meta">${meta}</div>` : ''}
+        ${features ? `<div class="comm-meta" style="color:var(--cyan)">— ${features}</div>` : ''}
+        ${srcLink}
+      </div>`;
+    }).join('');
+}
+
+// 构造政策纠错链接 (GitHub Issue)
+function correctionUrl(p){
+  const title = encodeURIComponent(`纠错/补充：${p.name}`);
+  const body = encodeURIComponent(`**政策 ID**: ${p.id}\n**城市**: ${p.city}${p.district?' · '+p.district:''}\n\n**问题类型**: [ ] 数据错误 [ ] 链接失效 [ ] 新增信息 [ ] 其他\n\n**具体内容**:\n请描述您发现的问题或补充，谢谢！\n\n**来源** (可选):\n请提供您的信息来源链接以便核实。`);
+  return `https://github.com/siuserxiaowei/opc-policy/issues/new?title=${title}&body=${body}&labels=data-correction`;
+}
+
+function renderResults(results){
+  const list = document.getElementById('resultsList');
+  list.innerHTML = '';
+  if(!results.length){ list.innerHTML = '<p style="text-align:center;color:var(--dim);padding:30px">没有匹配到政策</p>'; return; }
+  results.forEach((r,i) => {
+    const p = r.policy;
+    const benefits = (p.benefits||[]);
+    const lc = r.level==='high'?'var(--green)':r.level==='mid'?'var(--yellow)':'var(--red)';
+    const lt = r.level==='high'?'高度匹配':r.level==='mid'?'条件匹配':'暂不匹配';
+    const tc = r.level==='high'?'tag-go':r.level==='mid'?'tag-check':'tag-no';
+    const status = policyWindowState(p);
+    const cd = status.countdown;
+    const card = document.createElement('div');
+    card.className='result-card'; card.dataset.level=r.level;
+    card.style.animationDelay=(i*.04)+'s';
+    card.innerHTML = `
+      <h3>${p.name} <span class="tag ${tc}">${lt} ${r.score}%</span>${verifiedBadgeHtml(p)}</h3>
+      <div class="meta">
+        ${cd?`<span class="countdown ${cd.cls}">⏰ ${cd.label}</span>`:''}
+        <span>${p.city}${p.district?' · '+p.district+'区':''}</span>
+        <span>${{province:'省级',city:'市级',district:'区级'}[p.level]||''}政策</span>
+        <span>${status.label}</span>
+        ${(p.application?.schedule || p.application?.deadline)?`<span style="color:var(--dim)">${window.Schedule ? window.Schedule.displayLabel(p.application.schedule || p.application.deadline) : ('截止 ' + p.application.deadline)}</span>`:''}
+      </div>
+      <p style="font-size:.88em;color:var(--dim);margin-bottom:6px">${p.summary}</p>
+      <div class="benefits">${benefits.map(b=>`<span class="benefit-tag">${b.item}: ${b.amount}</span>`).join('')}</div>
+      <div class="match-bar"><div class="match-fill" style="width:${r.score}%;background:${lc}"></div></div>
+      <div class="match-label" style="color:${lc}">${r.score}% ${r.reasons.length?' · '+r.reasons[0]:''}</div>
+      ${r.blockers.length?`<div style="margin-top:4px;font-size:.8em;color:var(--red)">⚠ ${r.blockers.join(' | ')}</div>`:''}
+      <div class="detail-toggle" onclick="toggleDetail(this)">展开详情 ▾</div>
+      <div class="detail-content">
+        ${r.reasons.length?'<p style="font-size:.83em;color:var(--green);margin:6px 0"><b>匹配原因:</b></p><ul>'+r.reasons.map(x=>'<li>'+x+'</li>').join('')+'</ul>':''}
+        ${r.blockers.length?'<p style="font-size:.83em;color:var(--red);margin:6px 0"><b>阻碍:</b></p><ul>'+r.blockers.map(x=>'<li style="color:var(--red)">'+x+'</li>').join('')+'</ul>':''}
+        ${sourceSectionHtml(p)}
+        ${p.application?.email?`<div style="margin-top:8px;font-size:.82em;color:var(--dim)">联系: ${p.application.contact||''} ${p.application.phone||''} ${p.application.email||''}</div>`:''}
+        ${communitiesHtml(p.communities)}
+        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.04);text-align:right">
+          <a href="${correctionUrl(p)}" target="_blank" rel="noopener" class="correction-btn">🔧 发现错误？提交纠错</a>
+        </div>
+      </div>`;
+    list.appendChild(card);
+  });
+}
+
+function filterResults(level,btn){
+  document.querySelectorAll('#resultTabs .chip').forEach(c=>c.classList.remove('selected'));
+  btn.classList.add('selected');
+  if(level === 'all') renderResults(window._allResults);
+  else if(level === 'recommended') renderResults(window._allResults.filter(r=>r.level !== 'low'));
+  else renderResults(window._allResults.filter(r=>r.level===level));
+}
+
+function toggleDetail(el){
+  const c=el.nextElementSibling; c.classList.toggle('open');
+  el.textContent=c.classList.contains('open')?'收起详情 ▴':'展开详情 ▾';
+}
+
+function goBack(){
+  setStep(1);
+  document.getElementById('panelResults').classList.add('hidden');
+  document.getElementById('panelForm').classList.remove('hidden');
+}
+
+// ===== INLINE EDIT =====
+function toggleInlineEdit(){
+  const el = document.getElementById('inlineEdit');
+  const isHidden = el.style.display === 'none';
+  el.style.display = isHidden ? 'block' : 'none';
+  if(isHidden) populateQuickEdit();
+}
+
+function populateQuickEdit(){
+  // Fill city dropdown from CITIES data
+  const cs = document.getElementById('qCity');
+  if(cs.options.length <= 1){
+    cs.innerHTML = '<option value="">选择城市</option>';
+    const citySet = new Set(POLICIES.map(p=>p.city));
+    citySet.forEach(c => cs.innerHTML += `<option value="${c}">${c}</option>`);
+  }
+  // Load current profile values
+  try {
+    const saved = JSON.parse(localStorage.getItem('opc_profile')||'{}');
+    if(saved.city) cs.value = saved.city;
+    document.getElementById('qEmployees').value = saved.employees || '';
+    document.getElementById('qAge').value = saved.companyAge || saved.age || '';
+    const f = Array.isArray(saved.founder) ? saved.founder[0] : saved.founder;
+    if(f) document.getElementById('qFounder').value = f;
+  } catch(e){}
+}
+
+function quickRematch(){
+  const city = document.getElementById('qCity').value;
+  if(!city){ alert('请选择城市'); return; }
+  // Find province for this city
+  let province = '';
+  for(const [prov, data] of Object.entries(CITY_MAP)){
+    if(data.cities.includes(city)){ province = prov; break; }
+  }
+  if(!province) province = city; // 直辖市
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('opc_profile')||'{}'); } catch(e) {}
+
+  const profile = {
+    province,
+    city,
+    district: document.getElementById('qDistrict').value,
+    employees: parseInt(document.getElementById('qEmployees').value)||0,
+    companyAge: parseFloat(document.getElementById('qAge').value)||0,
+    mobility: saved.mobility || 'current',
+    projectStage: saved.projectStage || 'idea',
+    supportNeeds: saved.supportNeeds || [],
+    companyType: saved.companyType || [],
+    industries: saved.industries || [],
+    qualifications: saved.qualifications || [],
+    founder: [document.getElementById('qFounder').value].filter(Boolean)
+  };
+  localStorage.setItem('opc_profile', JSON.stringify(profile));
+  const results = matchPolicies(profile);
+  showResults(results, profile);
+  document.getElementById('inlineEdit').style.display = 'none';
+  document.getElementById('panelResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ===== EXPORT =====
+function exportResults(format){
+  if(!window._allResults) return;
+  if(format==='csv'){
+    let csv='政策名称,城市,区域,匹配度,匹配等级,摘要,最高金额,官方原文/参考链接\n';
+    window._allResults.forEach(r=>{
+      const p=r.policy;
+      const maxA=Math.max(0,...(p.benefits||[]).map(b=>b.amount_max||0));
+      const sourceInfo = classifyPolicyLinks(p);
+      const exportSource = sourceInfo.official || sourceInfo.application || sourceInfo.references[0] || '';
+      csv+=`"${p.name}","${p.city}","${p.district||''}",${r.score}%,"${r.level==='high'?'高度匹配':r.level==='mid'?'条件匹配':'暂不匹配'}","${p.summary}",${maxA},"${exportSource}"\n`;
+    });
+    download(csv,'OPC政策匹配结果.csv','text/csv;charset=utf-8');
+  } else {
+    let txt='全国OPC政策匹配结果\n'+'='.repeat(40)+'\n\n';
+    window._allResults.forEach(r=>{
+      txt+=`[${r.score}% ${r.level==='high'?'高度匹配':r.level==='mid'?'条件匹配':'暂不匹配'}] ${r.policy.name}\n`;
+      txt+=`  ${r.policy.summary}\n`;
+      if(r.reasons.length) txt+=`  ✓ ${r.reasons.join('; ')}\n`;
+      if(r.blockers.length) txt+=`  ✗ ${r.blockers.join('; ')}\n`;
+      const sourceInfo = classifyPolicyLinks(r.policy);
+      const exportSource = sourceInfo.official || sourceInfo.application || sourceInfo.references[0];
+      if(exportSource) txt+=`  链接: ${exportSource}${sourceInfo.official ? '' : ' (参考来源)'}\n`;
+      txt+='\n';
+    });
+    download(txt,'OPC政策匹配结果.txt','text/plain;charset=utf-8');
+  }
+}
+function download(content,name,type){
+  const b=new Blob(['\ufeff'+content],{type});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();
+}
+
+function setStep(n){
+  document.querySelectorAll('.step').forEach((s,i)=>{
+    s.classList.remove('active','done');
+    if(i+1<n)s.classList.add('done');if(i+1===n)s.classList.add('active');
+  });
+}
+
+// ===== BROWSE MODE =====
+function populateBrowseFilters(){
+  const citySet=new Set(POLICIES.map(p=>p.city));
+  const cs=document.getElementById('browseCity');
+  cs.innerHTML = '<option value="">全部城市</option>';
+  citySet.forEach(c=>cs.innerHTML+=`<option value="${c}">${c}</option>`);
+}
+
+function matchesBrowseSourceStatus(p, mode){
+  if(!mode) return true;
+  if(mode==='draft') return p.status!=='active';
+  const { official, application, references } = classifyPolicyLinks(p);
+  const hasOfficialOriginal = Boolean(official);
+  const hasAnyVisibleSource = Boolean(official || application || references.length);
+  if(mode==='official') return hasOfficialOriginal;
+  if(mode==='reference') return !hasOfficialOriginal && hasAnyVisibleSource;
+  if(mode==='missing') return !hasAnyVisibleSource;
+  return true;
+}
+
+function filterBrowse(){
+  const q=(document.getElementById('browseSearch').value||'').toLowerCase();
+  const city=document.getElementById('browseCity').value;
+  const cat=document.getElementById('browseCat').value;
+  const sourceStatus=document.getElementById('browseSourceStatus').value;
+  const sort=document.getElementById('browseSort').value;
+
+  let filtered=POLICIES.filter(p=>{
+    if(city && p.city!==city) return false;
+    if(cat && p.category!==cat) return false;
+    if(!matchesBrowseSourceStatus(p, sourceStatus)) return false;
+    if(q){
+      const text=(p.name+p.city+(p.district||'')+p.summary+(p.tags||[]).join('')).toLowerCase();
+      if(!text.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if(sort==='amount') filtered.sort((a,b)=>{
+    const ma=Math.max(0,...(a.benefits||[]).map(x=>x.amount_max||0));
+    const mb=Math.max(0,...(b.benefits||[]).map(x=>x.amount_max||0));
+    return mb-ma;
+  });
+  else if(sort==='name') filtered.sort((a,b)=>a.name.localeCompare(b.name,'zh'));
+  else filtered.sort((a,b)=>a.city.localeCompare(b.city,'zh'));
+
+  document.getElementById('browseCount').textContent=`共 ${filtered.length} 条政策`;
+  const list=document.getElementById('browseList');
+  list.innerHTML='';
+  filtered.forEach(p=>{
+    const maxA=Math.max(0,...(p.benefits||[]).map(b=>b.amount_max||0));
+    const status = policyWindowState(p);
+    const cd = status.countdown;
+    const card=document.createElement('div');
+    card.className='result-card';
+    card.innerHTML=`
+      <h3>${p.name} <span class="tag tag-info">${p.city}${p.district?' · '+p.district:''}</span>${verifiedBadgeHtml(p)}</h3>
+      <div class="meta">
+        ${cd?`<span class="countdown ${cd.cls}">⏰ ${cd.label}</span>`:''}
+        <span>${{province:'省级',city:'市级',district:'区级'}[p.level]||''}</span>
+        <span>${status.label}</span>
+        ${maxA>0?`<span style="color:var(--cyan)">最高${maxA>=10000?Math.round(maxA/10000)+'万':maxA+'元'}</span>`:''}
+        ${(p.application?.schedule || p.application?.deadline)?`<span style="color:var(--dim)">${window.Schedule ? window.Schedule.displayLabel(p.application.schedule || p.application.deadline) : ('截止 ' + p.application.deadline)}</span>`:''}
+      </div>
+      <p style="font-size:.88em;color:var(--dim);margin-bottom:6px">${p.summary}</p>
+      <div class="benefits">${(p.benefits||[]).map(b=>`<span class="benefit-tag">${b.item}: ${b.amount}</span>`).join('')}</div>
+      <div class="detail-toggle" onclick="toggleDetail(this)">展开详情 ▾</div>
+      <div class="detail-content">
+        ${sourceSectionHtml(p)}
+        ${communitiesHtml(p.communities)}
+        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.04);text-align:right">
+          <a href="${correctionUrl(p)}" target="_blank" rel="noopener" class="correction-btn">🔧 发现错误？提交纠错</a>
+        </div>
+      </div>`;
+    list.appendChild(card);
+  });
+}
+
+// ===== AI ADVISOR =====
+function sendChat(){
+  const input=document.getElementById('chatInput');
+  const q=input.value.trim();
+  if(!q) return;
+  input.value='';
+  const msgs=document.getElementById('chatMessages');
+  msgs.innerHTML+=`<div class="chat-msg chat-user">${escHtml(q)}</div>`;
+
+  // Local AI: search policies and generate answer
+  const answer = localAdvisor(q);
+  msgs.innerHTML+=`<div class="chat-msg chat-ai">${answer}</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+
+  // If answer contains a link to another page, make it clickable
+  msgs.querySelectorAll('a[href]').forEach(a=>{
+    a.style.color='var(--cyan)';
+    a.style.textDecoration='underline';
+  });
+}
+
+function localAdvisor(question){
+  const q=question.toLowerCase();
+  let relevant=[];
+
+  // Dynamically extract all cities from POLICIES
+  const allCities=[...new Set(POLICIES.map(p=>p.city).filter(Boolean))];
+
+  // Fuzzy city matching: user input may partially match city name
+  let matchedCity=allCities.find(c=>q.includes(c));
+  if(!matchedCity){
+    // Try partial match: e.g. "苏州" matches "苏州", "广" matches "广州"
+    matchedCity=allCities.find(c=>{
+      if(c.length>=2){
+        // Check if any 2-char substring of city name appears in query
+        for(let i=0;i<=c.length-2;i++){
+          if(q.includes(c.substring(i,i+2))) return true;
+        }
+      }
+      return false;
+    });
+  }
+
+  // Find multiple cities mentioned (for comparison)
+  const mentionedCities=allCities.filter(c=>q.includes(c));
+
+  // Enhanced keyword categories
+  const kwCategories={
+    subsidy:['补贴','奖励','扶持','资金','资助','奖金'],
+    rent:['免租','免费','空间','办公','孵化器','众创'],
+    compute:['算力','算力券','GPU','芯片','服务器'],
+    filing:['备案','合规','审批','许可'],
+    scenario:['场景','应用','落地','试点','示范'],
+    register:['注册','营业执照','开户','工商','登记'],
+    community:['社区','OPC社区','入驻'],
+    loan:['贷款','融资','投资','风投','VC','基金','信贷'],
+    competition:['赛事','大赛','比赛','竞赛','挑战赛'],
+    startup:['创业','创客','双创','初创'],
+    talent:['人才','博士','硕士','人才公寓','安居','购房','落户','引才'],
+    tax:['税','个税','企税','税负','核定','税收','节税','税务','纳税','减税','免税','所得税','增值税'],
+    token:['token','代币','数字资产']
+  };
+
+  // Match keywords across all categories
+  const matchedKw=[];
+  const matchedCategories=[];
+  Object.entries(kwCategories).forEach(([cat,words])=>{
+    const found=words.filter(k=>q.includes(k));
+    if(found.length){
+      matchedKw.push(...found);
+      matchedCategories.push(cat);
+    }
+  });
+
+  // ===== SPECIAL HANDLERS (checked first) =====
+
+  // 1. Tax-related questions -> guide to tax.html
+  if(matchedCategories.includes('tax')){
+    let html='<b>💰 税务问题清单参考：</b><br><br>';
+    html+='OPC企业常见待核验问题：<br>';
+    html+='· <b>核定征收</b>：是否适用、适用主体和当地口径需专业确认<br>';
+    html+='· <b>研发加计扣除</b>：研发活动、归集口径和凭证要求需逐条核验<br>';
+    html+='· <b>高新认定</b>：收入、人员、知识产权和研发占比需要专业判断<br>';
+    html+='· <b>个税优惠</b>：适用条件、申报主体和窗口期以官方口径为准<br>';
+    html+='· <b>增值税</b>：软件产品等优惠需核验资质、备案和材料要求<br><br>';
+    // Find tax-related policies
+    const taxPolicies=POLICIES.filter(p=>{
+      const txt=(p.name+p.summary+(p.tags||[]).join('')).toLowerCase();
+      return kwCategories.tax.some(k=>txt.includes(k));
+    });
+    if(matchedCity){
+      const cityTax=taxPolicies.filter(p=>p.city===matchedCity);
+      if(cityTax.length){
+        html+=`<b>${matchedCity}税务相关政策：</b><br>`;
+        cityTax.slice(0,5).forEach(p=>html+=`· ${p.name}<br>`);
+        html+='<br>';
+      }
+    }
+    html+=`<a href="tax.html" target="_blank" style="color:var(--cyan)">📖 查看完整税务指南 →</a>`;
+    return html;
+  }
+
+  // 2. Registration / business license questions
+  if(matchedCategories.includes('register')){
+    let html='<b>📝 OPC主体准备参考：</b><br><br>';
+    html+='OPC 落地指南不承接注册流程，只整理主体准备和材料核验路径。<br><br>';
+    html+='<b>常见准备事项：</b><br>';
+    html+='1. 先核验目标城市、载体和政策对主体类型的要求<br>';
+    html+='2. 整理名称、经营范围、地址、股东/法人等基础信息<br>';
+    html+='3. 领取营业执照后再核对银行、税务、社保等后续事项<br>';
+    html+='4. 保留官方页面、窗口期和材料清单截图或链接<br><br>';
+    html+='<b>💡 Tips：</b><br>';
+    html+='· 经营范围、注册资本和地址安排需结合业务和专业意见确认<br>';
+    html+='· 不建议只为补贴承诺而注册或迁移<br><br>';
+    // Show registration-related policies
+    const regPolicies=POLICIES.filter(p=>{
+      const txt=(p.name+p.summary+(p.tags||[]).join('')).toLowerCase();
+      return kwCategories.register.some(k=>txt.includes(k));
+    });
+    if(matchedCity){
+      const cityReg=regPolicies.filter(p=>p.city===matchedCity);
+      if(cityReg.length){
+        html+=`<b>${matchedCity}主体相关政策线索：</b><br>`;
+        cityReg.slice(0,5).forEach(p=>html+=`· ${p.name}<br>`);
+        html+='<br>';
+      }
+    }
+    return html;
+  }
+
+  // 3. Talent-related questions
+  if(matchedCategories.includes('talent')){
+    let html='<b>🎓 人才政策速览：</b><br><br>';
+    const talentPolicies=POLICIES.filter(p=>{
+      const txt=(p.name+p.summary+(p.tags||[]).join('')).toLowerCase();
+      return kwCategories.talent.some(k=>txt.includes(k));
+    });
+    if(matchedCity){
+      const cityTalent=talentPolicies.filter(p=>p.city===matchedCity);
+      if(cityTalent.length){
+        html+=`<b>${matchedCity}人才政策：</b><br>`;
+        cityTalent.slice(0,5).forEach(p=>{
+          const maxA=Math.max(0,...(p.benefits||[]).map(b=>b.amount_max||0));
+          html+=`· <b>${p.name}</b>`;
+          if(maxA>0) html+=` <span style="color:var(--cyan)">${maxA>=10000?Math.round(maxA/10000)+'万':maxA+'元'}</span>`;
+          html+='<br>';
+        });
+      }else{
+        html+=`${matchedCity}暂未收录专项人才政策，以下是其他城市的：<br>`;
+        talentPolicies.slice(0,5).forEach(p=>html+=`· <b>${p.city}</b> ${p.name}<br>`);
+      }
+    }else{
+      html+='各城市人才政策亮点：<br>';
+      // Group by city, show top cities
+      const talentByCity={};
+      talentPolicies.forEach(p=>{
+        if(!talentByCity[p.city]) talentByCity[p.city]=[];
+        talentByCity[p.city].push(p);
+      });
+      Object.entries(talentByCity).slice(0,6).forEach(([city,ps])=>{
+        html+=`<b style="color:var(--al)">${city}</b>：${ps.map(p=>p.name).join('、')}<br>`;
+      });
+    }
+    return html;
+  }
+
+  // 4. Loan / financing questions
+  if(matchedCategories.includes('loan')){
+    let html='<b>🏦 融资贷款相关政策：</b><br><br>';
+    const loanPolicies=POLICIES.filter(p=>{
+      const txt=(p.name+p.summary+(p.tags||[]).join('')+(p.benefits||[]).map(b=>b.item+b.amount).join('')).toLowerCase();
+      return kwCategories.loan.some(k=>txt.includes(k));
+    });
+    if(matchedCity){
+      const cityLoan=loanPolicies.filter(p=>p.city===matchedCity);
+      if(cityLoan.length){
+        html+=`<b>${matchedCity}融资政策：</b><br>`;
+        cityLoan.slice(0,5).forEach(p=>html+=`· ${p.name} — ${p.summary}<br>`);
+      }else{
+        html+=`${matchedCity}暂无专项融资政策，以下是其他城市的：<br>`;
+        loanPolicies.slice(0,5).forEach(p=>html+=`· <b>${p.city}</b> ${p.name}<br>`);
+      }
+    }else{
+      loanPolicies.slice(0,8).forEach(p=>html+=`· <b>${p.city}</b> ${p.name}<br>`);
+    }
+    if(!loanPolicies.length) html+='暂未收录专项融资政策，建议咨询当地科技局或产业园区。<br>';
+    return html;
+  }
+
+  // 5. City comparison (support all 37 cities)
+  if(q.includes('比较') || q.includes('对比') || q.includes('vs') || (q.includes('和') && mentionedCities.length>=2)){
+    const compared=mentionedCities.length>=2 ? mentionedCities : [];
+    if(compared.length>=2){
+      let html=`<b>📊 ${compared.join(' vs ')} OPC政策对比：</b><br><br>`;
+      compared.forEach(city=>{
+        const cp=POLICIES.filter(p=>p.city===city);
+        const maxA=Math.max(0,...cp.flatMap(p=>(p.benefits||[]).map(b=>b.amount_max||0)));
+        const comms=cp.reduce((s,p)=>s+(p.communities||[]).length,0);
+        const cats=[...new Set(cp.map(p=>p.category).filter(Boolean))];
+        html+=`<b style="color:var(--al)">${city}</b>：${cp.length}条政策，最高补贴${maxA>=10000?Math.round(maxA/10000)+'万':maxA+'元'}，${comms}个OPC社区<br>`;
+        if(cats.length) html+=`  覆盖领域：${cats.join('、')}<br>`;
+        cp.slice(0,3).forEach(p=>html+=`  · ${p.name}<br>`);
+        html+='<br>';
+      });
+      html+='<span style="color:var(--dim);font-size:.85em">💡 可以问我具体城市的详情，如"广州补贴"</span>';
+      return html;
+    }
+  }
+
+  // 6. "Which city is best" / recommendation questions
+  if(q.includes('最好') || q.includes('推荐') || q.includes('哪个城市') || q.includes('去哪') || q.includes('选哪') || q.includes('排名') || q.includes('排行')){
+    // Rank cities by policy count and max subsidy
+    const cityStats={};
+    POLICIES.forEach(p=>{
+      if(!p.city) return;
+      if(!cityStats[p.city]) cityStats[p.city]={count:0,maxAmount:0,comms:0,categories:new Set()};
+      cityStats[p.city].count++;
+      const maxA=Math.max(0,...(p.benefits||[]).map(b=>b.amount_max||0));
+      if(maxA>cityStats[p.city].maxAmount) cityStats[p.city].maxAmount=maxA;
+      cityStats[p.city].comms+=(p.communities||[]).length;
+      if(p.category) cityStats[p.city].categories.add(p.category);
+    });
+    // Sort by count first, then by maxAmount
+    const ranked=Object.entries(cityStats).sort((a,b)=>{
+      if(b[1].count!==a[1].count) return b[1].count-a[1].count;
+      return b[1].maxAmount-a[1].maxAmount;
+    });
+    let html='<b>🏆 OPC政策城市推荐排行（按政策数量+最高补贴）：</b><br><br>';
+    ranked.slice(0,10).forEach(([city,s],i)=>{
+      const medal=i<3?['🥇','🥈','🥉'][i]:`${i+1}.`;
+      html+=`${medal} <b style="color:var(--al)">${city}</b>：${s.count}条政策`;
+      if(s.maxAmount>0) html+=`，最高${s.maxAmount>=10000?Math.round(s.maxAmount/10000)+'万':s.maxAmount+'元'}`;
+      if(s.comms>0) html+=`，${s.comms}个社区`;
+      html+='<br>';
+    });
+    html+=`<br><span style="color:var(--dim);font-size:.85em">共覆盖 ${ranked.length} 个城市，输入城市名查看详情</span>`;
+    return html;
+  }
+
+  // ===== KEYWORD + CITY FILTERING =====
+  relevant=POLICIES.filter(p=>{
+    if(matchedCity && p.city!==matchedCity) return false;
+    if(matchedKw.length){
+      const txt=(p.name+p.summary+(p.tags||[]).join('')+(p.benefits||[]).map(b=>b.item).join('')).toLowerCase();
+      return matchedKw.some(k=>txt.includes(k));
+    }
+    return matchedCity ? true : false;
+  });
+
+  if(!relevant.length && matchedCity){
+    relevant=POLICIES.filter(p=>p.city===matchedCity);
+  }
+
+  // Broad search: try matching any word segment from the query
+  if(!relevant.length && !matchedCity){
+    const queryChars=q.replace(/[？?！!。，, ]/g,'');
+    if(queryChars.length>=2){
+      relevant=POLICIES.filter(p=>{
+        const txt=(p.name+p.summary+(p.tags||[]).join('')).toLowerCase();
+        // Try 2-char sliding window match
+        for(let i=0;i<=queryChars.length-2;i++){
+          const seg=queryChars.substring(i,i+2);
+          if(txt.includes(seg)) return true;
+        }
+        return false;
+      }).slice(0,8);
+    }
+  }
+
+  // Materials / preparation question
+  if(q.includes('材料') || q.includes('准备')){
+    const target=relevant[0];
+    if(target){
+      let html=`<b>「${target.name}」材料准备参考：</b><br><br>`;
+      html+='· 公司营业执照<br>· 产品介绍/BP<br>· 方案说明文档<br>';
+      if(target.requirements?.qualifications?.length) html+='· 知识产权/软著证明<br>';
+      if(target.requirements?.social_insurance_months) html+=`· 连续${target.requirements.social_insurance_months}个月社保缴费记录<br>`;
+      html+='· 已落地案例或合同清单<br>· 项目实施方案<br>';
+      const sourceInfo = classifyPolicyLinks(target);
+      const sourceUrl = sourceInfo.official || sourceInfo.application || sourceInfo.references[0];
+      if(sourceUrl) html+=`<br><a href="${sourceUrl}" target="_blank">${sourceInfo.official ? '查看官方要求' : '查看参考链接'} →</a>`;
+      return html;
+    }
+  }
+
+  // Free space / rent-free question
+  if(q.includes('免费') || q.includes('免租') || q.includes('空间')){
+    const freeSpace=POLICIES.filter(p=>
+      (p.benefits||[]).some(b=>b.type==='rent_free')||
+      (p.communities||[]).length>0
+    );
+    if(matchedCity){
+      const cityFree=freeSpace.filter(p=>p.city===matchedCity);
+      if(cityFree.length){
+        let html=`<b>${matchedCity} 免费/低成本办公空间：</b><br><br>`;
+        cityFree.slice(0,8).forEach(p=>{
+          html+=`· <b>${p.name}</b>`;
+          const comm=(p.communities||[])[0];
+          if(comm) html+=` — ${comm.name}`;
+          html+='<br>';
+        });
+        return html;
+      }
+    }
+    let html='<b>提供免费/低成本办公空间的政策：</b><br><br>';
+    freeSpace.slice(0,8).forEach(p=>{
+      html+=`· <b>${p.city}</b> ${p.name}`;
+      const comm=(p.communities||[])[0];
+      if(comm) html+=` — ${comm.name}`;
+      html+='<br>';
+    });
+    return html;
+  }
+
+  // Default: show relevant policies
+  let html=matchedCity?`<b>📍 ${matchedCity}的OPC政策（共${relevant.length}条）：</b><br><br>`:'<b>🔍 相关政策：</b><br><br>';
+  relevant.slice(0,6).forEach(p=>{
+    const maxA=Math.max(0,...(p.benefits||[]).map(b=>b.amount_max||0));
+    html+=`<b>${p.name}</b>`;
+    if(maxA>0) html+=` · <span style="color:var(--cyan)">${maxA>=10000?Math.round(maxA/10000)+'万':maxA+'元'}</span>`;
+    html+=`<br><span style="color:var(--dim);font-size:.9em">${p.summary}</span><br>`;
+    const sourceInfo = classifyPolicyLinks(p);
+    const sourceUrl = sourceInfo.official || sourceInfo.application || sourceInfo.references[0];
+    if(sourceUrl) html+=`<a href="${sourceUrl}" target="_blank" style="font-size:.85em">${sourceInfo.official ? '查看原文' : '查看参考链接'}</a><br>`;
+    html+='<br>';
+  });
+
+  if(!relevant.length) html='抱歉，没有找到相关政策。试试以下问法：<br>· 输入城市名，如"广州"、"深圳"、"苏州"<br>· 输入关键词，如"补贴"、"免租"、"算力券"<br>· 问"推荐"或"哪个城市最好"查看排行<br>· 问"税务"整理专业咨询问题清单<br>· 问"注册"了解主体准备参考';
+
+  return html;
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ===== CITIES =====
+function renderCities(){
+  const grid=document.getElementById('cityGrid');
+  grid.innerHTML='';
+  CITIES.forEach(c=>{
+    const link = c.link || getCityDetailHref(c.name);
+    const card = document.createElement('a');
+    card.href = link;
+    card.className='city-card';
+    card.style.borderColor=c.status==='hot'?c.color+'40':'var(--border)';
+    card.style.display='block';
+    card.style.textDecoration='none';
+    card.style.color='inherit';
+    card.innerHTML=`
+      <span class="city-tag ${c.status==='hot'?'city-hot':'city-coming'}">${c.status==='hot'?'HOT':c.policy_count>0?'NEW':'SOON'}</span>
+      <div class="city-name" style="color:${c.color}">${c.name}</div>
+      <div class="city-count">${c.policy_count} 条政策</div>
+      <div class="city-hl">${c.highlight||''}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function switchModeDirectly(mode){
+  document.querySelectorAll('.mode-tab').forEach(t=>{
+    t.classList.toggle('active',t.textContent.includes(mode==='match'?'匹配':mode==='browse'?'浏览':'顾问'));
+  });
+  document.getElementById('modeMatch').style.display=mode==='match'?'':'none';
+  document.getElementById('modeBrowse').style.display=mode==='browse'?'':'none';
+  document.getElementById('modeAdvisor').style.display=mode==='advisor'?'':'none';
+}
+
+// ===== UI =====
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('show',window.scrollY>400);
+});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.anim').forEach(el=>obs.observe(el));
+
+// Load saved profile
+try{
+  const s=localStorage.getItem('opc_profile');
+  if(s){
+    const p=JSON.parse(s);
+    if(p.province){
+      document.getElementById('fProvince').value=p.province;
+      populateCityOptions(p.province, p.city || '');
+      populateDistrictOptions(p.province, p.city || '', p.district || '');
+    }
+  }
+}catch(e){}
+
+// Copy WeChat ID
+function copyWx(){
+  navigator.clipboard.writeText('siuserxiaowei').then(()=>{
+    const el=document.getElementById('wxId');
+    const old=el.textContent;
+    el.textContent='已复制!';el.style.color='var(--green)';
+    setTimeout(()=>{el.textContent=old;el.style.color='var(--red)'},1500);
+  });
+}
+// Show QR
+function showQR(){document.getElementById('qrModal').style.display='flex'}
+function showZhangQR(){document.getElementById('zhangQrModal').style.display='flex'}
+
+// ===== 材料清单生成器 =====
+function generateChecklist(){
+  if(!window._allResults||!window._allResults.length){alert('请先完成信息查询与路线诊断');return;}
+  const highResults=window._allResults.filter(r=>r.level==='high');
+  if(!highResults.length){alert('暂无高度匹配的政策，无法生成材料清单。\n请先调整条件获得高度匹配结果。');return;}
+
+  // 基础材料
+  const materials=[
+    {section:'基础材料（常见准备项）',items:[
+      {id:'base_license',text:'公司营业执照（副本复印件）'},
+      {id:'base_id',text:'法人身份证复印件'},
+      {id:'base_charter',text:'公司章程'},
+      {id:'base_bank',text:'银行开户许可证'}
+    ]}
+  ];
+
+  // 收集所有高匹配政策的类型信息
+  const allBenefitTypes=new Set();
+  const allCategories=new Set();
+  let needSocialInsurance=false;
+  let socialInsuranceMonths=0;
+  let needQualifications=false;
+  let needRegistrationProof=false;
+  let maxCompanyAge=0;
+
+  highResults.forEach(r=>{
+    const p=r.policy;
+    allCategories.add(p.category);
+    (p.benefits||[]).forEach(b=>allBenefitTypes.add(b.type));
+    const req=p.requirements||{};
+    if(req.social_insurance_months){
+      needSocialInsurance=true;
+      socialInsuranceMonths=Math.max(socialInsuranceMonths,req.social_insurance_months);
+    }
+    if(req.qualifications&&req.qualifications.length) needQualifications=true;
+    if(req.company_age_max_years){
+      needRegistrationProof=true;
+      maxCompanyAge=Math.max(maxCompanyAge,req.company_age_max_years);
+    }
+  });
+
+  // 根据政策类型动态添加材料
+  const dynamicItems=[];
+
+  if(allBenefitTypes.has('voucher')||allCategories.has('computing')){
+    dynamicItems.push({id:'dyn_computing',text:'算力消耗证明 / 云服务账单'});
+  }
+  if(allBenefitTypes.has('rent_free')||allBenefitTypes.has('space')||allCategories.has('space')){
+    dynamicItems.push({id:'dyn_bp',text:'项目BP / 商业计划书'});
+    dynamicItems.push({id:'dyn_team',text:'团队介绍'});
+  }
+  if(allCategories.has('scenario')){
+    dynamicItems.push({id:'dyn_scenario',text:'应用场景说明'});
+    dynamicItems.push({id:'dyn_partner',text:'合作方意向书'});
+    dynamicItems.push({id:'dyn_plan',text:'项目实施方案'});
+  }
+  if(allBenefitTypes.has('cash')||allCategories.has('subsidy')){
+    dynamicItems.push({id:'dyn_finance',text:'财务报表'});
+    dynamicItems.push({id:'dyn_tax',text:'纳税证明'});
+  }
+  if(needSocialInsurance){
+    dynamicItems.push({id:'dyn_social',text:`社保缴费记录（连续${socialInsuranceMonths}个月）`});
+  }
+  if(needQualifications){
+    dynamicItems.push({id:'dyn_ip',text:'软件著作权 / 专利证书'});
+  }
+  if(needRegistrationProof){
+    dynamicItems.push({id:'dyn_reg',text:`公司注册满${maxCompanyAge*12}个月证明`});
+  }
+  if(allCategories.has('competition')){
+    dynamicItems.push({id:'dyn_demo',text:'参赛作品 / 项目Demo'});
+  }
+
+  if(dynamicItems.length){
+    materials.push({section:'政策专项材料（根据候选政策生成）',items:dynamicItems});
+  }
+
+  // 读取 localStorage 已勾选状态
+  let checkedState={};
+  try{checkedState=JSON.parse(localStorage.getItem('opc_checklist_state')||'{}');}catch(e){}
+
+  // 渲染
+  const panel=document.getElementById('panelChecklist');
+  const policyNames=highResults.map(r=>r.policy.name);
+  document.getElementById('checklistDesc').textContent=
+    `基于 ${highResults.length} 条高度匹配政策生成：${policyNames.slice(0,3).join('、')}${policyNames.length>3?'等':''}`;
+
+  let html='';
+  let totalItems=0;
+  materials.forEach(sec=>{
+    html+=`<div class="checklist-section"><h4>${sec.section}</h4>`;
+    sec.items.forEach(item=>{
+      totalItems++;
+      const isChecked=!!checkedState[item.id];
+      html+=`<div class="checklist-item${isChecked?' checked':''}" onclick="toggleChecklistItem(this,'${item.id}')">
+        <input type="checkbox" ${isChecked?'checked':''} onclick="event.stopPropagation();toggleChecklistItem(this.parentElement,'${item.id}')">
+        <label>${item.text}</label>
+      </div>`;
+    });
+    html+='</div>';
+  });
+
+  document.getElementById('checklistContent').innerHTML=html;
+  window._checklistTotalItems=totalItems;
+  window._checklistMaterials=materials;
+  updateChecklistProgress();
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleChecklistItem(el,id){
+  const cb=el.querySelector('input[type="checkbox"]');
+  const newState=!el.classList.contains('checked');
+  cb.checked=newState;
+  el.classList.toggle('checked',newState);
+
+  // 保存到 localStorage
+  let state={};
+  try{state=JSON.parse(localStorage.getItem('opc_checklist_state')||'{}');}catch(e){}
+  if(newState) state[id]=true; else delete state[id];
+  localStorage.setItem('opc_checklist_state',JSON.stringify(state));
+
+  updateChecklistProgress();
+}
+
+function updateChecklistProgress(){
+  const items=document.querySelectorAll('#checklistContent .checklist-item');
+  const checked=document.querySelectorAll('#checklistContent .checklist-item.checked');
+  const total=items.length;
+  const done=checked.length;
+  const pct=total>0?Math.round((done/total)*100):0;
+  document.getElementById('checklistProgressText').textContent=`已准备 ${done} / ${total} 项`;
+  document.getElementById('checklistProgressPct').textContent=pct+'%';
+  document.getElementById('checklistProgressFill').style.width=pct+'%';
+}
+
+function exportChecklist(){
+  if(!window._checklistMaterials) return;
+  let state={};
+  try{state=JSON.parse(localStorage.getItem('opc_checklist_state')||'{}');}catch(e){}
+
+  let txt='OPC 材料核验清单\n';
+  txt+='生成时间：'+new Date().toLocaleString('zh-CN')+'\n';
+  txt+='═'.repeat(40)+'\n\n';
+
+  window._checklistMaterials.forEach(sec=>{
+    txt+='【'+sec.section+'】\n';
+    sec.items.forEach(item=>{
+      txt+=(state[item.id]?'[✓]':'[ ]')+' '+item.text+'\n';
+    });
+    txt+='\n';
+  });
+
+  const items=document.querySelectorAll('#checklistContent .checklist-item');
+  const checked=document.querySelectorAll('#checklistContent .checklist-item.checked');
+  txt+='─'.repeat(40)+'\n';
+  txt+=`进度：${checked.length} / ${items.length} 项已准备\n`;
+
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='OPC材料核验清单.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function clearChecklist(){
+  if(!confirm('确定清除所有勾选状态？')) return;
+  localStorage.removeItem('opc_checklist_state');
+  document.querySelectorAll('#checklistContent .checklist-item').forEach(el=>{
+    el.classList.remove('checked');
+    el.querySelector('input[type="checkbox"]').checked=false;
+  });
+  updateChecklistProgress();
+}
+</script>
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>document.addEventListener('click',e=>{document.querySelectorAll('.nav-dropdown.open').forEach(d=>{if(!d.contains(e.target))d.classList.remove('open')})})</script>
+<script src="assets/friend-links.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>会议学习复盘库</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f1e7;--paper2:#fbf7ee;--side:#efe7d6;--ink:#21201c;--ink2:#4a463e;--muted:#8a8377;--line:#e0d7c4;--line2:#d3c8b2;--seal:#b23a2e;--sealsoft:#f3e3df;--gold:#9a7b3f;--serif:"Noto Serif SC",serif;--fr:"Fraunces",Georgia,serif;--sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{color:var(--ink);background:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-text-size-adjust:100%}
+/* 密码门 */
+.gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:radial-gradient(900px 400px at 50% 20%,#fcf9f1,var(--paper))}
+.gate .card{width:min(380px,88vw);text-align:center;padding:0 20px}
+.gate .seal{width:72px;height:72px;border:2px solid var(--seal);border-radius:10px;color:var(--seal);font-family:var(--serif);font-weight:900;font-size:16px;line-height:1.05;display:grid;place-content:center;margin:0 auto 22px;transform:rotate(-4deg)}
+.gate h1{font-family:var(--serif);font-weight:900;font-size:24px;margin:0 0 6px}
+.gate p{color:var(--muted);font-size:13px;margin:0 0 22px}
+.gate input{width:100%;padding:12px 14px;border:1px solid var(--line2);border-radius:10px;background:var(--paper2);font-size:16px;color:var(--ink);outline:none;text-align:center}
+.gate input:focus{border-color:var(--seal)}
+.gate button{margin-top:12px;width:100%;padding:12px;border:none;border-radius:10px;background:var(--seal);color:#fff;font-size:15px;font-family:var(--sans);cursor:pointer}
+.gate .err{color:var(--seal);font-size:13px;height:18px;margin-top:10px}
+.gate .public{display:inline-flex;margin-top:8px;color:var(--seal);font-size:13px;text-decoration:none;border-bottom:1px solid var(--sealsoft)}
+.gate .public:hover{border-bottom-color:var(--seal)}
+.app{display:none;height:100vh;overflow:hidden}.app.on{display:flex}
+.side{width:320px;flex:0 0 320px;background:var(--side);border-right:1px solid var(--line2);display:flex;flex-direction:column;height:100vh}
+.side .brand{padding:18px 20px 12px}.side .brand .k{font-family:var(--fr);font-style:italic;color:var(--seal);font-size:13px}
+.side .brand h1{font-family:var(--serif);font-weight:900;font-size:20px;margin:4px 0 2px}.side .brand .c{color:var(--muted);font-size:12px}
+.side .search{padding:6px 16px 10px}.side .search input{width:100%;padding:9px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--paper2);font-size:14px;color:var(--ink);outline:none}
+.side .search input:focus{border-color:var(--seal)}
+.list{flex:1;overflow-y:auto;padding:0 10px 30px}
+.row{display:block;padding:10px 12px;border-radius:8px;cursor:pointer;border-left:3px solid transparent}
+.row:hover{background:#e7ddc8}.row.active{background:var(--paper2);border-left-color:var(--seal)}
+.row .t{font-family:var(--serif);font-weight:600;font-size:14px;line-height:1.4}.row .d{color:var(--muted);font-size:11.5px;margin-top:2px}
+.row .tags{margin-top:5px;display:flex;gap:5px;flex-wrap:wrap}.row .tags i{font-style:normal;font-size:10px;color:var(--ink2);border:1px solid var(--line2);padding:1px 6px;border-radius:2px;background:var(--paper)}
+.count{color:var(--muted);font-size:11px;padding:4px 22px 8px}
+.main{flex:1;overflow-y:auto;height:100vh}.wrap{max-width:760px;margin:0 auto;padding:34px 30px 120px}
+article h1.title{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1.3;margin:0 0 6px}
+article .meta{color:var(--ink2);font-size:13px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:8px}
+article h2{font-family:var(--serif);font-weight:700;font-size:22px;margin:42px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+article h3{font-family:var(--serif);font-weight:600;font-size:16px;margin:22px 0 6px}
+article p{margin:12px 0;color:var(--ink2)}article strong{color:var(--ink);font-weight:600}
+article ul,article ol{padding-left:0;list-style:none}article ol{counter-reset:li}
+article li{margin:11px 0;padding-left:22px;position:relative;color:var(--ink2)}
+article ul li::before{content:"";position:absolute;left:3px;top:.75em;width:6px;height:6px;background:var(--seal);border-radius:50%;opacity:.55}
+article ol li::before{counter-increment:li;content:counter(li);position:absolute;left:0;top:.05em;color:var(--seal);font-family:var(--fr);font-weight:600;font-size:13px}
+article a{color:var(--seal);text-decoration:none;border-bottom:1px solid var(--sealsoft);word-break:break-all}
+article code{font-family:var(--sans);font-size:12px;color:var(--gold);background:#f4eedd;border:1px solid var(--line2);padding:1px 7px;border-radius:999px;white-space:nowrap}
+article :is(h1,h2,h3) code{all:unset}
+article blockquote{margin:14px 0;padding:14px 18px;background:var(--paper2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:4px;color:var(--ink2);font-family:var(--serif);font-size:15px}
+article blockquote strong{color:var(--seal)}
+.tablewrap{overflow-x:auto;margin:16px 0}article table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:440px}
+article th,article td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+article thead th{font-family:var(--serif);font-weight:700;border-bottom:2px solid var(--ink)}
+hr{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--line2) 18%,var(--line2) 82%,transparent);margin:40px 0}
+.menu-btn{display:none}
+@media(max-width:880px){
+ .side{position:fixed;z-index:30;left:0;top:0;transform:translateX(-100%);transition:.25s;box-shadow:2px 0 20px rgba(0,0,0,.15)}
+ .app.open .side{transform:translateX(0)}
+ .menu-btn{display:flex;position:fixed;z-index:40;top:12px;left:12px;width:42px;height:42px;border-radius:10px;background:var(--seal);color:#fff;border:none;align-items:center;justify-content:center;font-size:20px}
+ .scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25}.app.open .scrim{display:block}
+ .wrap{padding:60px 18px 90px}article h1.title{font-size:25px}
+}
+</style></head><body>
+<div class="gate" id="gate"><div class="card">
+  <div class="seal">道法<br>術器</div>
+  <h1>会议学习复盘库</h1><p>内部资料 · 请输入访问密码</p>
+  <input id="pw" type="password" placeholder="密码" autocomplete="off">
+  <button id="go">进入</button>
+  <div class="err" id="err"></div>
+  <a class="public" href="./public/">公开复盘索引</a>
+</div></div>
+<button class="menu-btn" id="menuBtn" style="display:none">☰</button>
+<div class="app" id="app">
+  <div class="scrim" id="scrim"></div>
+  <aside class="side">
+    <div class="brand"><div class="k">Meeting Learning Digest</div><h1>会议学习复盘库</h1><div class="c">道法术器势 · 点左侧任意一篇查看</div></div>
+    <div class="search"><input id="q" placeholder="搜索标题 / 日期…" autocomplete="off"></div>
+    <div class="count" id="count"></div><div class="list" id="list"></div>
+  </aside>
+  <main class="main" id="main"><div class="wrap"><article id="content"></article></div></main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+let ITEMS=[],CONTENTS={},active=null;
+const R=new marked.Renderer();const ot=R.table.bind(R);R.table=(h,b)=>`<div class="tablewrap">${ot(h,b)}</div>`;
+marked.setOptions({renderer:R,gfm:true,breaks:false});
+async function unlock(pw){
+  const e=await (await fetch('enc.json')).json();
+  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+  const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct));
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+const listEl=document.getElementById('list'),qEl=document.getElementById('q'),countEl=document.getElementById('count'),
+      contentEl=document.getElementById('content'),mainEl=document.getElementById('main'),app=document.getElementById('app');
+function rowHtml(it){const tags=(it.scenes||[]).map(s=>`<i>${s}</i>`).join('');
+  return `<div class="row" data-slug="${it.slug}"><div class="t">${it.title}</div><div class="d">${it.date||''}</div><div class="tags">${tags}</div></div>`;}
+function render(list){listEl.innerHTML=list.map(rowHtml).join('');countEl.textContent=`共 ${list.length} 篇`;
+  [...listEl.querySelectorAll('.row')].forEach(r=>r.onclick=()=>openItem(r.dataset.slug,r));}
+function openItem(slug,rowEl){if(active)active.classList.remove('active');if(rowEl){active=rowEl;rowEl.classList.add('active');}
+  app.classList.remove('open');mainEl.scrollTop=0;const it=ITEMS.find(x=>x.slug===slug);
+  contentEl.innerHTML=`<h1 class="title">${it.title}</h1><div class="meta">${it.date||''}</div>`+marked.parse(CONTENTS[slug]||'');location.hash=slug;}
+qEl.oninput=()=>{const k=qEl.value.trim().toLowerCase();render(!k?ITEMS:ITEMS.filter(it=>(it.title+' '+it.date).toLowerCase().includes(k)));};
+document.getElementById('menuBtn').onclick=()=>app.classList.toggle('open');
+document.getElementById('scrim').onclick=()=>app.classList.remove('open');
+async function tryEnter(){
+  const pw=document.getElementById('pw').value,err=document.getElementById('err');
+  err.textContent='解密中…';
+  try{const data=await unlock(pw);ITEMS=data.manifest;CONTENTS=data.contents;
+    sessionStorage.setItem('pw',pw);
+    document.getElementById('gate').style.display='none';document.getElementById('menuBtn').style.display='';
+    app.classList.add('on');render(ITEMS);
+    const h=location.hash.replace('#','');const first=ITEMS.find(x=>x.slug===h)||ITEMS[0];
+    if(first)openItem(first.slug,listEl.querySelector(`[data-slug="${first.slug}"]`));
+  }catch(e){err.textContent='密码错误';}
+}
+document.getElementById('go').onclick=tryEnter;
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
+const saved=sessionStorage.getItem('pw');
+if(saved){document.getElementById('pw').value=saved;tryEnter();}
+document.getElementById('pw').focus();
+</script></body></html>

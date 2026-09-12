@@ -1,0 +1,169 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showProgress?: boolean;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title = 'siuser小伟 - 思考、创造、记录',
+  description = '一个关于技术、思考与创造的个人空间',
+  showProgress = false,
+  ogImage = '',
+  ogType = 'website'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <title>{title}</title>
+
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:site_name" content="siuser小伟" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+  <link rel="alternate" type="application/rss+xml" title="siuser小伟" href="/rss.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'siuser小伟',
+      url: 'https://siuserxiaowei.com',
+      description: '关于技术、思考与创造的个人博客',
+      author: {
+        '@type': 'Person',
+        name: 'siuser小伟',
+        url: 'https://siuserxiaowei.com'
+      }
+    })}
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet" />
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="xxx"></script>
+  <ClientRouter />
+
+  <script is:inline>
+    (() => {
+      document.documentElement.classList.add('has-js');
+      const saved = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', saved || 'light');
+    })();
+  </script>
+</head>
+<body class="site-shell min-h-screen antialiased">
+  {showProgress && (
+    <div
+      id="progress-bar"
+      class="fixed top-0 left-0 z-[999] h-[2px] w-0 transition-[width] duration-100"
+      style="background: var(--color-accent);"
+    ></div>
+  )}
+
+  <div class="page-content relative z-10 flex min-h-screen flex-col">
+    <slot />
+  </div>
+
+  <script is:inline>
+    (() => {
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        window.dispatchEvent(new CustomEvent('themechange', { detail: theme }));
+      };
+
+      window.toggleTheme = () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      };
+
+      window.addEventListener('astro:page-load', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        window.dispatchEvent(new CustomEvent('themechange', { detail: current }));
+      });
+
+      window.dispatchEvent(
+        new CustomEvent('themechange', {
+          detail: document.documentElement.getAttribute('data-theme') || 'dark'
+        })
+      );
+    })();
+  </script>
+
+  <script is:inline>
+    (() => {
+      if (window.__siuserScrollRevealReady) return;
+      window.__siuserScrollRevealReady = true;
+
+      const reveal = () => {
+        const elements = Array.from(document.querySelectorAll('.scroll-reveal:not(.revealed)'));
+        if (!elements.length) return;
+
+        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          elements.forEach((element) => element.classList.add('revealed'));
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+        elements.forEach((element) => observer.observe(element));
+      };
+
+      document.addEventListener('astro:page-load', reveal);
+      reveal();
+    })();
+  </script>
+
+  {showProgress && (
+    <script is:inline>
+      (() => {
+        const syncProgress = () => {
+          const bar = document.getElementById('progress-bar');
+          if (!bar) return;
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          const ratio = max > 0 ? (window.scrollY / max) * 100 : 0;
+          bar.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
+        };
+
+        syncProgress();
+        window.addEventListener('scroll', syncProgress, { passive: true });
+        window.addEventListener('astro:page-load', syncProgress);
+      })();
+    </script>
+  )}
+</body>
+</html>

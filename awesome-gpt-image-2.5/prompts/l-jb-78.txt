@@ -1,0 +1,17 @@
+retexture the image attached based on the json below:
+
+{
+  "style": "photorealistic",
+  "material": "glass",
+  "background": "plain white",
+  "object_position": "centered",
+  "lighting": "soft, diffused studio lighting",
+  "camera_angle": "eye-level, straight-on",
+  "resolution": "high",
+  "aspect_ratio": "2:3",
+  "details": {
+    "reflections": true,
+    "shadows": false,
+    "transparency": true
+  }
+}

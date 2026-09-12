@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>AI 出海与 X 自媒体创业分享 · Founder Memo</title>
+  <style>
+    :root{
+      --bg:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#161616;
+      --muted:#686868;
+      --subtle:#8b8b8b;
+      --line:#dedbd2;
+      --line-strong:#bfb9aa;
+      --red:#c51515;
+      --red-soft:#fff1f1;
+      --green:#0a8f3c;
+      --green-soft:#eef9f1;
+      --amber:#9a6a12;
+      --amber-soft:#fff6df;
+      --blue:#1e5f91;
+      --blue-soft:#eef6fb;
+      --shadow:0 18px 50px rgba(20,20,20,.07);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      letter-spacing:0;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red)}
+    .shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+    aside{
+      position:sticky;
+      top:0;
+      height:100vh;
+      border-right:1px solid var(--line);
+      background:#fff;
+      padding:28px 24px;
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+    }
+    .brand{display:grid;gap:4px}
+    .brand-mark{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+    .mark{width:18px;height:24px;display:grid;grid-template-columns:6px 6px;gap:4px;align-items:end}
+    .mark i{display:block;background:var(--red)}
+    .mark i:first-child{height:14px}.mark i:last-child{height:22px}
+    .brand small{color:var(--muted);font-size:13px}
+    .toc-title{font-weight:800;font-size:14px;margin-bottom:10px}
+    .toc{display:grid;gap:2px}
+    .toc a{
+      display:block;
+      border-left:3px solid transparent;
+      padding:8px 8px 8px 12px;
+      color:#333;
+      font-size:14px;
+    }
+    .toc a:hover{border-left-color:var(--red);background:var(--red-soft);color:var(--red)}
+    .side-note{margin-top:auto;color:var(--muted);font-size:13px}
+    .side-note a{display:inline-block;margin-top:12px;color:var(--red)}
+    main{min-width:0}
+    .hero{
+      border-bottom:1px solid var(--line);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.96),rgba(251,250,247,.9)),
+        repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0,rgba(0,0,0,.025) 1px,transparent 1px,transparent 64px);
+    }
+    .wrap{max-width:1160px;margin:0 auto;padding:34px 42px}
+    .topline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      color:#333;
+      font-size:14px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:18px;
+    }
+    .topline span{display:inline-flex;align-items:center;gap:7px}
+    .topline svg{width:16px;height:16px;color:#222}
+    .tag{margin-left:auto;border:1px solid #99d6aa;color:#087e34;background:#f5fff7;border-radius:6px;padding:5px 10px;font-weight:700}
+    h1{
+      margin:42px 0 8px;
+      max-width:980px;
+      font-family:"Songti SC","Noto Serif SC",serif;
+      font-size:clamp(42px,7vw,78px);
+      line-height:1.05;
+      letter-spacing:0;
+      font-weight:900;
+    }
+    .subtitle{font-size:22px;color:var(--muted);margin:0 0 24px}
+    .rule{width:48px;height:4px;background:var(--red);margin:22px 0 34px}
+    .thesis{
+      background:var(--paper);
+      border:1px solid var(--line-strong);
+      box-shadow:var(--shadow);
+      padding:28px 32px;
+      margin:0 0 16px;
+    }
+    .quote-mark{font-family:Georgia,serif;color:var(--red);font-size:58px;line-height:.8}
+    .thesis-label{font-size:15px;color:#222;margin-bottom:8px}
+    .thesis h2{
+      margin:0 0 12px;
+      font-family:"Songti SC","Noto Serif SC",serif;
+      font-size:clamp(28px,3.8vw,46px);
+      line-height:1.2;
+      letter-spacing:0;
+      border:0;
+      padding:0;
+    }
+    .thesis h2 em{color:var(--red);font-style:normal}
+    .thesis p{margin:0;color:#333;font-size:17px}
+    .triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);background:#fff}
+    .triad article{padding:22px 24px;border-right:1px solid var(--line)}
+    .triad article:last-child{border-right:0}
+    .triad h3{margin:0 0 12px;font-size:17px;display:flex;align-items:center;gap:9px}
+    .triad h3 svg{width:22px;height:22px}
+    .triad ul{margin:0;padding-left:18px}
+    .triad li{margin:6px 0}
+    section{scroll-margin-top:18px}
+    h2.section-title{
+      margin:54px 0 14px;
+      padding-bottom:10px;
+      border-bottom:2px solid #161616;
+      font-family:"Songti SC","Noto Serif SC",serif;
+      font-size:30px;
+      line-height:1.25;
+      letter-spacing:0;
+    }
+    .section-lead{max-width:760px;color:var(--muted);font-size:17px;margin:0 0 22px}
+    .memo-grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:28px;align-items:start}
+    .memo-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:22px;
+      box-shadow:0 10px 28px rgba(20,20,20,.04);
+    }
+    .memo-card.red{background:var(--red-soft);border-color:#f0b5b5}
+    .memo-card.green{background:var(--green-soft);border-color:#b9e5c5}
+    .memo-card.amber{background:var(--amber-soft);border-color:#ead292}
+    .memo-card strong{display:block;font-size:18px;margin-bottom:9px}
+    .memo-card p{margin:0;color:#444}
+    .matrix{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
+    .matrix th,.matrix td{border-bottom:1px solid var(--line);padding:14px 16px;text-align:left;vertical-align:top}
+    .matrix th{font-size:14px;background:#f6f4ee;border-bottom:2px solid #161616}
+    .matrix tr:last-child td{border-bottom:0}
+    .matrix td:first-child{font-weight:800;width:34%}
+    .map{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .map-step{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:18px;
+      min-height:190px;
+    }
+    .map-step:not(:last-child):after{
+      content:"";
+      position:absolute;
+      right:-12px;
+      top:50%;
+      width:12px;
+      border-top:2px solid var(--line-strong);
+    }
+    .map-step .num{font-family:Georgia,serif;color:var(--red);font-size:30px;line-height:1}
+    .map-step h3{margin:8px 0 8px;font-size:18px}
+    .map-step p{margin:0;color:var(--muted)}
+    .flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+    .flow div{background:#fff;border:1px solid var(--line);padding:15px;min-height:132px}
+    .flow b{display:block;margin-bottom:8px;color:var(--blue)}
+    .flow span{font-size:13px;color:var(--muted)}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .compare .wrong{border-left:5px solid var(--red)}
+    .compare .right{border-left:5px solid var(--green)}
+    .list-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .trap{background:#fff;border:1px solid var(--line);padding:18px}
+    .trap b{display:block;color:var(--red);margin-bottom:6px}
+    .trap p{margin:0;color:#444}
+    .experiment{display:grid;gap:10px;counter-reset:day}
+    .day{
+      display:grid;
+      grid-template-columns:90px minmax(0,1fr) 250px;
+      gap:16px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:16px;
+    }
+    .day:before{
+      counter-increment:day;
+      content:"Day " counter(day);
+      color:var(--red);
+      font-weight:900;
+      font-size:18px;
+    }
+    .day strong{display:block;margin-bottom:3px}
+    .day p{margin:0;color:#444}
+    .day small{color:var(--muted)}
+    .callout{
+      margin:24px 0;
+      padding:20px 22px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-left:5px solid var(--red);
+      font-size:17px;
+    }
+    footer{border-top:1px solid var(--line);color:var(--muted)}
+    footer .wrap{padding-top:24px;padding-bottom:32px}
+    @media(max-width:980px){
+      .shell{display:block}
+      aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px 20px;gap:14px}
+      .brand{grid-template-columns:auto 1fr;align-items:center}
+      .brand small{justify-self:end}
+      .toc-title{display:none}
+      .toc{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+      .toc a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;padding:7px 4px;font-size:13px}
+      .toc a:hover{border-left-color:transparent;border-bottom-color:var(--red);background:transparent}
+      .side-note{display:none}
+      .wrap{padding:28px 20px}
+      .tag{margin-left:0}
+      .triad,.memo-grid,.map,.flow,.compare,.list-grid{grid-template-columns:1fr}
+      .triad article{border-right:0;border-bottom:1px solid var(--line)}
+      .triad article:last-child{border-bottom:0}
+      .map-step:not(:last-child):after{display:none}
+      .day{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .brand{display:block}
+      .brand small{display:block;margin-top:4px}
+      h1{font-size:38px}
+      .thesis{padding:22px}
+      .matrix{font-size:14px}
+      .matrix th,.matrix td{padding:11px 10px}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="brand">
+        <div class="brand-mark"><span class="mark" aria-hidden="true"><i></i><i></i></span>Founder Memo</div>
+        <small>会议拆解报告</small>
+      </div>
+      <div>
+        <div class="toc-title">目录</div>
+        <nav class="toc" aria-label="页面目录">
+          <a href="#summary">0. 执行摘要</a>
+          <a href="#judgement">1. 核心判断</a>
+          <a href="#leverage">2. 杠杆迁移地图</a>
+          <a href="#xflow">3. X 增长漏斗</a>
+          <a href="#traps">4. 误读清单</a>
+          <a href="#experiment">5. 7 天实验</a>
+        </nav>
+      </div>
+      <div class="side-note">
+        <div>更新：2026-06-28</div>
+        <div>公开版：不含原始逐字稿与私人路径</div>
+        <a href="./index.html">返回公开索引</a>
+      </div>
+    </aside>
+
+    <main>
+      <header class="hero" id="summary">
+        <div class="wrap">
+          <div class="topline">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+              2026-06-27
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              成都线下分享会
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.59 13.41 12 22l-10-10V2h10l8.59 8.59a2 2 0 0 1 0 2.82Z"/><circle cx="7" cy="7" r="1.5"/></svg>
+              AI 出海、X 自媒体、创业策略
+            </span>
+            <span class="tag">内部拆解，仅供参考</span>
+          </div>
+
+          <h1>AI 出海与 X 自媒体创业分享</h1>
+          <p class="subtitle">会议拆解报告 · Founder Memo</p>
+          <div class="rule"></div>
+
+          <div class="thesis">
+            <div class="quote-mark">“</div>
+            <div class="thesis-label">我们的核心判断是：</div>
+            <h2>AI 出海的胜负手，不在模型，而在<em>分发与信任的再造</em>。</h2>
+            <p>X 的开放分发、实时语境和关系背书，是小团队把内容、产品、信任放到全球市场里测试的低成本路径。AI 负责放大执行，X 负责放大认知与信任，产品负责承接付费。</p>
+          </div>
+
+          <div class="triad">
+            <article>
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" aria-hidden="true"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+                What Changed
+              </h3>
+              <ul>
+                <li>开发从重资产变成可快速试错</li>
+                <li>分发从平台推荐转向关系背书</li>
+                <li>内容从观点表达变成信任资产</li>
+              </ul>
+            </article>
+            <article>
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg>
+                Why It Matters
+              </h3>
+              <ul>
+                <li>创始人时间不再适合做交付核心</li>
+                <li>小团队要避开大而全，抢细分入口</li>
+                <li>信任可以被内容化、结构化、规模化</li>
+              </ul>
+            </article>
+            <article>
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" aria-hidden="true"><path d="M13 2 3 14h8l-1 8 11-14h-8l0-6Z"/></svg>
+                What To Do
+              </h3>
+              <ul>
+                <li>先做一个可承接付费的最小产品</li>
+                <li>用公开学习同步上下文和信任</li>
+                <li>用 X 冷启动测试受众和关系网络</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </header>
+
+      <div class="wrap">
+        <section id="judgement">
+          <h2 class="section-title">1. 核心判断</h2>
+          <p class="section-lead">这场分享真正提供的信息增量，不是“AI 出海赚钱”或“X 要发干货”，而是给了一个小团队创业的迁移路径：从人力交付，到内容信任，再到产品化承接。</p>
+
+          <div class="memo-grid">
+            <div class="memo-card red">
+              <strong>判断 1：顺序不能倒</strong>
+              <p>先解决被看见，再解决被信任，最后才是商业化。急于变现会提前损耗信任，急于做产品会浪费开发效率。</p>
+            </div>
+            <table class="matrix">
+              <thead>
+                <tr><th>核心判断</th><th>关键说明</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>分发先于产品放大</td><td>AI 让产品更容易做出来，但没有分发，产品只是库存。X 和公开学习的价值在于给产品制造第一批可信流量。</td></tr>
+                <tr><td>信任是最稀缺的资产</td><td>内容不是为了刷存在感，而是让陌生人持续看到你真实下场、持续解决问题、持续积累判断。</td></tr>
+                <tr><td>创始人要逃离人力交付</td><td>外包、卖课、社群都可能赚钱，但天花板常被创始人时间卡住。产品化交付才有复利空间。</td></tr>
+                <tr><td>X 的价值是关系背书</td><td>大 V 转发、handle 推荐、主页转化，本质上都是信任转移，不是简单的算法技巧。</td></tr>
+                <tr><td>全球化不是翻译问题</td><td>X 自动翻译降低语言门槛，但产品、支付、客服、文化语境仍然需要重新设计。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="leverage">
+          <h2 class="section-title">2. 杠杆迁移地图</h2>
+          <p class="section-lead">涛哥部分最值得学的不是“出海利润高”，而是他如何判断不同业务模型对创始人时间的占用。</p>
+
+          <div class="map">
+            <article class="map-step">
+              <div class="num">01</div>
+              <h3>人力交付</h3>
+              <p>外包、咨询、定制、课程成交都能带来现金流，但收入和创始人出场频率强绑定。</p>
+            </article>
+            <article class="map-step">
+              <div class="num">02</div>
+              <h3>内容信任</h3>
+              <p>公开学习把低流量期变成证据资产：你在做什么、踩了什么坑、如何判断，都会被市场看见。</p>
+            </article>
+            <article class="map-step">
+              <div class="num">03</div>
+              <h3>产品承接</h3>
+              <p>粗糙版本接支付的价值，是用最小承诺验证真实需求；不是拿不成熟产品冒充完整服务。</p>
+            </article>
+            <article class="map-step">
+              <div class="num">04</div>
+              <h3>系统复利</h3>
+              <p>订阅、工单、SEO、X 内容、联盟和商单组合起来，才可能让收入不完全依赖本人时间。</p>
+            </article>
+          </div>
+
+          <div class="callout">
+            这套迁移的关键不是“所有人都应该出海”，而是：任何业务都应该问自己，收入是否必须靠创始人每次亲自成交、亲自交付、亲自答疑。
+          </div>
+
+          <div class="compare">
+            <div class="memo-card wrong">
+              <strong>表层听法</strong>
+              <p>AI 可以写代码，所以现在就能两天做一个产品，接上支付上线等着收钱。</p>
+            </div>
+            <div class="memo-card right">
+              <strong>真正拆法</strong>
+              <p>AI 压缩的是实现成本，不压缩需求判断、定价、分发、售后、合规和信任。开发快，只会让错误方向更快暴露。</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="xflow">
+          <h2 class="section-title">3. X 增长漏斗</h2>
+          <p class="section-lead">于总部分不要只听成“发长文、找大 V”。它其实是一套完整漏斗：背书曝光、主页判断、高密度内容、早期互动、商业承接。</p>
+
+          <div class="flow">
+            <div><b>1. 背书曝光</b><span>第一篇内容需要可信节点转发。大 V 给的不是流量魔法，而是初始信任。</span></div>
+            <div><b>2. 主页判断</b><span>用户点进主页后，会判断你是谁、服务谁、长期能给什么价值。</span></div>
+            <div><b>3. 内容留存</b><span>教程、清单、避坑、账号基础设施这类内容，解决进入新世界的门槛。</span></div>
+            <div><b>4. 早期互动</b><span>前 60 分钟回复和对话，是在提升初始样本质量，不是玄学。</span></div>
+            <div><b>5. 商业承接</b><span>自有产品、商单、联盟、创作者收益、社群，必须匹配受众信任。</span></div>
+          </div>
+
+          <table class="matrix" style="margin-top:18px">
+            <thead><tr><th>爆文题材</th><th>真正需求</th><th>为什么会传播</th></tr></thead>
+            <tbody>
+              <tr><td>海外手机号 / eSIM</td><td>进入海外产品、AI 工具、平台账号体系</td><td>刚需、步骤复杂、踩坑多、可收藏</td></tr>
+              <tr><td>X 创作者收益</td><td>把内容直接变成现金流</td><td>利益明确，适合被转发给更多创作者</td></tr>
+              <tr><td>头部博主清单</td><td>降低信息筛选成本</td><td>被推荐者愿意转发，读者愿意收藏</td></tr>
+              <tr><td>支付、保号、防风控</td><td>减少出海试错损失</td><td>痛感强，受众持续存在，容易形成长尾转化</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="traps">
+          <h2 class="section-title">4. 误读清单</h2>
+          <p class="section-lead">这场会最危险的地方，是很多话听起来像捷径。真正执行时，要先把边界讲清楚。</p>
+
+          <div class="list-grid">
+            <div class="trap"><b>误读 1：粗糙上线就是不管质量</b><p>错。粗糙指功能范围小，不是支付、隐私、安全、退款、承诺都粗糙。</p></div>
+            <div class="trap"><b>误读 2：找大 V 转发就能起号</b><p>错。转发只是测试机会，主页定位和第一篇内容接不住，曝光会被浪费。</p></div>
+            <div class="trap"><b>误读 3：没流量也有价值，所以随便发</b><p>错。没流量但有上下文沉淀才有价值；没有具体动作和判断，就只是日记。</p></div>
+            <div class="trap"><b>误读 4：X 自动翻译等于全球化</b><p>错。语言墙降低了，但文化、支付、交付、客服、合规仍然存在。</p></div>
+            <div class="trap"><b>误读 5：商单越多越好</b><p>错。商单与受众不匹配，会污染账号标签，伤害长期信任。</p></div>
+            <div class="trap"><b>误读 6：出海适合所有技术人</b><p>错。适合有需求判断、分发耐心、产品承接能力的人，不适合只想换个市场逃避竞争的人。</p></div>
+          </div>
+        </section>
+
+        <section id="experiment">
+          <h2 class="section-title">5. 7 天实验</h2>
+          <p class="section-lead">不要把会议听成鸡血。下面这套实验只验证一件事：你能不能把一个想法，从个人判断推进到市场信号。</p>
+
+          <div class="experiment">
+            <div class="day"><div><strong>定义交叉人群</strong><p>选一个具体到能找到人的方向：AI 工具 + 出海开发者、X 增长 + 独立开发者、支付账号基础设施 + 一人公司。</p></div><small>交付物：一句定位和 20 个真实问题</small></div>
+            <div class="day"><div><strong>拆现有资产</strong><p>列出你已经有的经验、案例、代码、踩坑、关系、社群和工具，判断哪些能迁移到新方向。</p></div><small>交付物：资产清单</small></div>
+            <div class="day"><div><strong>做最小承接物</strong><p>不先做完整 SaaS。先做页面、模板、清单、轻量工具、候补名单或可收款服务。</p></div><small>合格：陌生人 30 秒内知道价值</small></div>
+            <div class="day"><div><strong>写 anchor post</strong><p>结构必须包含：我是谁、我踩过什么坑、我解决了什么、你可以照做的步骤、我下一步会公开什么。</p></div><small>合格：能承接一次大 V 转发</small></div>
+            <div class="day"><div><strong>重写 X 主页</strong><p>名字、简介、置顶、链接、最近内容，要共同回答“我为什么要长期关注你”。</p></div><small>合格：10 秒内看懂你服务谁</small></div>
+            <div class="day"><div><strong>找可信节点</strong><p>不要群发求转。先说明这篇内容为什么能帮到对方受众，最好内容里也自然带给对方价值。</p></div><small>交付物：3-5 个反馈对象</small></div>
+            <div class="day"><div><strong>复盘硬信号</strong><p>只看真实私信、候补名单、链接点击、付费、复购、转发节点和用户复述你的定位。</p></div><small>不要只看点赞</small></div>
+          </div>
+        </section>
+
+        <section id="boundary">
+          <h2 class="section-title">来源边界</h2>
+          <p class="section-lead">本页基于用户提供的会议智能总结与逐字稿文本重写，不包含原文全文。现场提到的收益、利润率、涨粉、曝光、商单价格等数字未做外部独立核验，仅作为经验口径和待验证假设。</p>
+        </section>
+      </div>
+
+      <footer>
+        <div class="wrap">Miaoji Decon · Public-safe Founder Memo for GitHub Pages</div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

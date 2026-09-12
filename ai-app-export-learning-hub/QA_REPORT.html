@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Report · AI App 出海知识库</title>
+  <meta name="description" content="QA Report，AI App 出海知识库文档页。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="site/styles.css">
+</head>
+<body class="doc-body">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="doc-header">
+    <nav class="doc-nav" aria-label="文档导航">
+      <a class="brand" href="site/index.html">
+        <span class="brand-mark">AI</span>
+        <span>AI App 出海知识库</span>
+      </a>
+      <div class="doc-nav-links">
+        <a href="site/index.html#knowledge">知识库</a>
+        <a href="site/index.html#downloads">资料库</a>
+        <a href="docs/index.html">文档索引</a>
+      </div>
+    </nav>
+    <div class="doc-hero">
+      <p class="eyebrow">Rendered Document</p>
+      <h1>QA Report</h1>
+      <p>已渲染为 HTML 页面，来源文件：<code>QA_REPORT.md</code></p>
+    </div>
+  </header>
+  <main class="doc-shell" id="main">
+    <article class="doc-article">
+<h1 id="qa-report">QA Report</h1>
+<p>状态：通过追加验收。</p>
+<p>验收日期：2026-06-02</p>
+<h2 id="验收范围">验收范围</h2>
+<ul>
+<li>Markdown 资料库</li>
+<li>知识库首页、搜索和专题筛选</li>
+<li>知识库来源登记表</li>
+<li>提示词资产化流程</li>
+<li>合规双语学习稿</li>
+<li>原目标覆盖矩阵</li>
+<li>品牌拆解手册</li>
+<li>OPC App 方向剧本</li>
+<li>最终完成度审计</li>
+<li>授权逐字稿处理流程</li>
+<li>研究证据登记表</li>
+<li>机会评分表 CSV</li>
+<li>静态学习网站</li>
+<li>开源协议、贡献规则和署名说明</li>
+<li>Google AdSense / Google Ads 接入准备</li>
+<li>隐私说明和使用条款页面</li>
+<li>交付索引和入口说明</li>
+</ul>
+<h2 id="2026-06-02-自主持续开发追加验收">2026-06-02 自主持续开发追加验收</h2>
+<ul>
+<li>首页已从资料包入口升级为可维护的知识库首页，保留学习路径，并新增统一搜索、标签筛选、8 个一级专题、核查日期、GitHub 贡献入口和深度资料库。</li>
+<li><code>site/content.js</code> 已作为全局内容注册文件，统一暴露 <code>window.learningHubContent</code>；<code>site/app.js</code> 只负责渲染、筛选和搜索交互。</li>
+<li>8 个一级专题保持为：市场与机会、产品验证、AI App 案例、上架合规、隐私与 AI 风险、ASO 与本地化、订阅变现、冷启动增长。</li>
+<li>每个一级专题包含 3 张入门知识卡、3 张进阶知识卡、1 个模板、1 个案例和 1 组行动清单；总计 48 张知识卡。</li>
+<li>每张知识卡包含适合谁、核心结论、操作步骤、常见坑、来源和最后核查日期。</li>
+<li>已新增 <code>docs/knowledge-source-register.md</code>，记录来源等级、政策核查日期、订阅报告、提示词资产化流程和 HTTPS 上线修复项。</li>
+<li>针对“前同事留下的提示词没人会用”的业务问题，首页新增提示词资产工具包，包含 SOP、客户输入表、提示词原件登记、输出质检表和失败样本回放流程。</li>
+<li>已将失效的抖音短链从公开可点击外链改为历史来源说明，避免把短链作为长期公开来源。</li>
+<li>已用系统 Chrome headless 验证桌面 1440px 和移动 390px 视口：9 个专题按钮、48 张知识卡、24 张网页资料卡、4 个提示词工具包、6 个网页筛选按钮，无控制台 warning/error，无横向溢出。</li>
+<li>统一搜索已覆盖知识卡、网页资料、案例、模板和提示词工具包；桌面和移动视口中，“提示词”返回 12 条，“EU DSA”返回 8 条，“订阅”返回 12 条，“ASO”返回 11 条。</li>
+<li>网页资料馆已扩展为 24 个外部网页，整理成为什么读、我怎么看、怎么用、别误读，并按市场趋势、上架合规、ASO 增长、订阅变现、公开案例筛选。</li>
+<li>网页资料馆筛选已通过浏览器断言：上架合规返回 7 张，订阅变现返回 5 张，公开案例返回 2 张。</li>
+<li>已新增 <code>sitemap.xml</code>、<code>robots.txt</code> 和 <code>llms.txt</code>；<code>site/index.html</code> 已补充 canonical、Open Graph、Twitter 卡片和 LearningResource 结构化数据。当前 canonical 使用 HTTP，待 HTTPS 修复后再切换。</li>
+<li>核心外链短名单验证通过：GitHub、Sensor Tower、TechCrunch、Apple Review、Google Play AI policy、Google Data Safety、Apple localization、Apple custom product pages、Google store listing experiments、Apple subscriptions、RevenueCat 2026、RevenueCat 2025、Apple EU DSA、Apple App Privacy Details、Google User Data policy、Google Developer Policy、GSMA Mobile Economy、Photoroom customer stories、RevenueCat dub case 均返回 200 或可接受跳转。</li>
+<li><code>http://gptimage2.store/site/index.html</code> 和 <code>http://gptimage2.store/</code> 返回 200；<code>https://gptimage2.store/</code> 仍返回 000，保留为正式推广前的 HTTPS 证书修复项。</li>
+</ul>
+<h2 id="2026-06-02-文档-html-渲染修复验收">2026-06-02 文档 HTML 渲染修复验收</h2>
+<ul>
+<li>已新增 <code>scripts/render_markdown_pages.py</code>，将根目录 5 个 Markdown 文件和 <code>docs/</code> 下 16 个 Markdown 文件生成对应 HTML 页面，并额外生成 <code>docs/index.html</code> 与 <code>LICENSE.html</code>。</li>
+<li>首页、动态内容来源链接和 <code>llms.txt</code> 已从公开 <code>.md</code> 入口切换到 <code>.html</code> 入口，避免访客看到 raw Markdown。</li>
+<li>文档页统一使用站点样式，包含文档导航、标题区、正文卡片、目录和页面信息；表格、代码块、链接和移动端长 URL 已做响应式处理。</li>
+<li><code>sitemap.xml</code> 已收录生成后的文档 HTML 页面。</li>
+<li><code>python3 scripts/verify_package.py</code> 已加入防回归检查：公开入口不得暴露 <code>.md</code> 链接；每个 Markdown 必须有对应 HTML；渲染页本地链接必须存在。</li>
+<li>已用系统 Chrome 验证首页点击“学习指南”会进入 <code>docs/learning-guide.html</code>，并验证 <code>docs/index.html</code>、<code>docs/learning-guide.html</code>、<code>docs/case-study-workbook.html</code>、<code>docs/knowledge-source-register.html</code>、<code>README.html</code>、<code>LICENSE.html</code> 都是 HTML 渲染页，不是 Markdown 源码页。</li>
+</ul>
+<h2 id="完成项">完成项</h2>
+<ul>
+<li>已将 <code>main</code> 合并到 <code>agent/qa-polish</code>，合并方式为 fast-forward。</li>
+<li>Required files 共 27 项全部存在：入口说明、交付索引、QA 报告、13 份核心 docs、CSV、静态站文件、内容注册文件和 SEO 文件。</li>
+<li>新增 <code>docs/bilingual-study-note.md</code>，用中文学习稿、英文学习译稿、术语表和课堂练习替代不可交付的完整逐字稿/逐句译文。</li>
+<li>新增 <code>docs/goal-coverage-matrix.md</code>，逐项说明原始目标、当前交付证据、完成状态和版权限制。</li>
+<li>新增 <code>docs/brand-teardown-handbook.md</code>，独立拆解 AI App 出海品牌的命名、首页、信任层、定价、传播钩子和 10 个品牌样本。</li>
+<li>新增 <code>docs/final-completion-audit.md</code>，逐项审计原始目标、当前证据、线上链接、验证命令和不能声明完成的版权受限部分。</li>
+<li>新增 <code>docs/authorized-transcript-workflow.md</code>，说明授权文本到位后如何在 <code>private/</code> 目录处理完整逐字稿、译文和学习注释。</li>
+<li>新增 <code>docs/research-evidence-register.md</code>，登记市场报告、平台政策、竞品/品牌页面、媒体案例和上线证据。</li>
+<li>新增 <code>docs/opc-app-playbook.md</code>，将 10 个候选方向拆成用户、旧流程、MVP、渠道实验、7 天验证和淘汰标准。</li>
+<li><code>data/opportunity-scorecard.csv</code> 可由 Python <code>csv.DictReader</code> 正常解析，含 10 行机会记录和必需字段。</li>
+<li><code>site/index.html</code> 的本地 <code>href</code>/<code>src</code> 目标均存在，站内锚点均能解析到页面内 <code>id</code>。</li>
+<li>Markdown 本地链接可解析到目标文件。</li>
+<li>内容风险搜索未发现完整逐字稿、完整逐句翻译、明显误听词或不适合对外交付的内部备忘录语气。</li>
+<li>修复了两类引用链接：Lovart 旧路径返回 404，MyFitnessPal/Cal AI 收购引用改为 GlobeNewswire 原始发布页。</li>
+<li>修复了 <code>README.md</code> 中静态站打开命令的过期 worktree 绝对路径，改为包内相对路径。</li>
+<li>6 个 agent worktree 已合并回 <code>main</code> 并回收；分支记录保留，便于后续追溯。</li>
+<li>追加更新了 RevenueCat 2026、Lovart、Photoroom、Gamma、HeyGen、ElevenLabs 等参考链接。</li>
+<li>新增 <code>LICENSE</code>，采用 CC BY 4.0，并在 <code>README.md</code>、<code>DELIVERY_INDEX.md</code> 和静态站页脚加入开源引用入口。</li>
+<li>新增 <code>CONTRIBUTING.md</code> 和 <code>ATTRIBUTION.md</code>，说明贡献规则、署名方式、第三方内容边界和广告边界。</li>
+<li>新增 <code>CNAME</code>，自有域名目标为 <code>gptimage2.store</code>。</li>
+<li>新增 <code>ads.txt.template</code>，只保留 AdSense publisher ID 占位模板；未生成含假 ID 的 <code>ads.txt</code>。</li>
+<li>新增 <code>docs/google-ads-and-adsense-setup.md</code> 和 <code>docs/google-ads-campaign-plan.md</code>，分别覆盖接入步骤和小预算投放计划。</li>
+<li>新增 <code>site/privacy.html</code> 和 <code>site/terms.html</code>，并在静态站页脚加入 Privacy、Terms、GitHub、License。</li>
+<li>新增 <code>site/google-ads-config.js</code>、<code>site/google-ads-config.example.js</code> 和 <code>site/tracking.js</code>，当前默认关闭 Google tag；首页关键 CTA 已添加 <code>data-conversion</code>。</li>
+</ul>
+<h2 id="版权边界">版权边界</h2>
+<ul>
+<li>不输出完整视频逐字稿。</li>
+<li>不输出完整逐句翻译。</li>
+<li>仅使用短摘录、分段转述、英文摘要、教学化分析和公开来源引用。</li>
+<li>对外发布时不将资料包包装成原作者授权课程、官方译文或源视频复刻稿。</li>
+<li>广告展示不代表项目作者推荐广告产品。</li>
+<li>当前未写入真实或伪造的 AdSense / Google Ads ID；拿到真实 ID 且审核通过后再启用。</li>
+</ul>
+<h2 id="验证命令">验证命令</h2>
+<pre><code class="language-bash">git fetch
+git merge main
+python3 scripts/verify_package.py
+python3 - &lt;&lt;&#x27;PY&#x27;
+from pathlib import Path
+required = [
+    &#x27;README.md&#x27;, &#x27;DELIVERY_INDEX.md&#x27;, &#x27;QA_REPORT.md&#x27;,
+    &#x27;docs/source-brief.md&#x27;, &#x27;docs/learning-guide.md&#x27;, &#x27;docs/public-content-pack.md&#x27;,
+    &#x27;docs/bilingual-study-note.md&#x27;, &#x27;docs/goal-coverage-matrix.md&#x27;,
+    &#x27;docs/final-completion-audit.md&#x27;,
+    &#x27;docs/authorized-transcript-workflow.md&#x27;,
+    &#x27;docs/research-evidence-register.md&#x27;,
+    &#x27;docs/opc-app-playbook.md&#x27;,
+    &#x27;docs/brand-teardown-handbook.md&#x27;,
+    &#x27;docs/case-study-workbook.md&#x27;, &#x27;docs/7-day-learning-plan.md&#x27;, &#x27;docs/facilitator-guide.md&#x27;,
+    &#x27;data/opportunity-scorecard.csv&#x27;,
+    &#x27;site/index.html&#x27;, &#x27;site/styles.css&#x27;, &#x27;site/app.js&#x27;, &#x27;site/content.js&#x27;,
+    &#x27;site/content-advanced-cards.js&#x27;, &#x27;site/content-web-extra.js&#x27;, &#x27;site/content-toolkits.js&#x27;,
+    &#x27;sitemap.xml&#x27;, &#x27;robots.txt&#x27;, &#x27;llms.txt&#x27;,
+]
+missing = [path for path in required if not Path(path).exists()]
+print(&#x27;required files checked:&#x27;, len(required))
+print(&#x27;missing:&#x27;, missing or &#x27;none&#x27;)
+PY
+python3 - &lt;&lt;&#x27;PY&#x27;
+import csv
+from pathlib import Path
+with Path(&#x27;data/opportunity-scorecard.csv&#x27;).open(newline=&#x27;&#x27;, encoding=&#x27;utf-8&#x27;) as handle:
+    rows = list(csv.DictReader(handle))
+print(&#x27;rows:&#x27;, len(rows))
+print(&#x27;columns:&#x27;, &#x27;, &#x27;.join(rows[0].keys()))
+PY
+python3 - &lt;&lt;&#x27;PY&#x27;
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlparse, unquote
+root = Path.cwd()
+site = root / &#x27;site&#x27;
+html = (site / &#x27;index.html&#x27;).read_text(encoding=&#x27;utf-8&#x27;)
+class Parser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+        self.ids = set()
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if &#x27;id&#x27; in attrs:
+            self.ids.add(attrs[&#x27;id&#x27;])
+        for attr in (&#x27;href&#x27;, &#x27;src&#x27;):
+            if attrs.get(attr):
+                self.links.append((tag, attr, attrs[attr]))
+parser = Parser()
+parser.feed(html)
+missing = []
+fragment_missing = []
+file_link_count = 0
+fragment_count = 0
+for tag, attr, raw in parser.links:
+    parsed = urlparse(raw)
+    url = raw.split(&#x27;#&#x27;, 1)[0].split(&#x27;?&#x27;, 1)[0]
+    if parsed.fragment and not parsed.scheme:
+        fragment_count += 1
+        if parsed.fragment not in parser.ids:
+            fragment_missing.append(raw)
+    if not url or parsed.scheme or url.startswith(&#x27;//&#x27;) or url.startswith(&#x27;mailto:&#x27;) or url.startswith(&#x27;tel:&#x27;):
+        continue
+    file_link_count += 1
+    target = (site / unquote(url)).resolve()
+    if not target.exists():
+        missing.append(raw)
+print(&#x27;site local href/src checked:&#x27;, file_link_count)
+print(&#x27;site fragment links checked:&#x27;, fragment_count)
+print(&#x27;missing local targets:&#x27;, missing or &#x27;none&#x27;)
+print(&#x27;missing fragments:&#x27;, fragment_missing or &#x27;none&#x27;)
+PY
+python3 - &lt;&lt;&#x27;PY&#x27;
+from pathlib import Path
+from urllib.parse import urlparse, unquote
+import re
+root = Path.cwd()
+missing = []
+count = 0
+for path in sorted(root.glob(&#x27;*.md&#x27;)) + sorted((root / &#x27;docs&#x27;).glob(&#x27;*.md&#x27;)):
+    text = path.read_text(encoding=&#x27;utf-8&#x27;)
+    for match in re.finditer(r&#x27;\[[^\]]+\]\(([^)]+)\)&#x27;, text):
+        raw = match.group(1).strip()
+        url = raw.split(&#x27;#&#x27;, 1)[0].split(&#x27;?&#x27;, 1)[0]
+        parsed = urlparse(url)
+        if not url or parsed.scheme or url.startswith(&#x27;//&#x27;) or url.startswith(&#x27;mailto:&#x27;):
+            continue
+        count += 1
+        target = (path.parent / unquote(url)).resolve()
+        if not target.exists():
+            missing.append((path, raw))
+print(&#x27;markdown local links checked:&#x27;, count)
+print(&#x27;missing markdown links:&#x27;, missing or &#x27;none&#x27;)
+PY
+rg -n &quot;逐字|逐句|全文|完整.*(翻译|译文|转写|字幕|逐字稿)|transcript|translation|原文|字幕|内部|备忘|memo|confidential|not for&quot; README.md DELIVERY_INDEX.md QA_REPORT.md docs site data
+rg -n &quot;^[0-9]{1,2}:[0-9]{2}|^[0-9]{2}:[0-9]{2}|\[[0-9]{1,2}:[0-9]{2}\]|Speaker|主持人|采访者|受访者|雷子：|雷子:&quot; docs README.md DELIVERY_INDEX.md QA_REPORT.md site
+git worktree list
+python3 scripts/verify_package.py
+gh api repos/siuserxiaowei/ai-app-export-learning-hub/pages
+dig +short gptimage2.store A
+dig +short gptimage2.store AAAA
+dig +short www.gptimage2.store CNAME
+curl -I -L https://gptimage2.store/</code></pre>
+<h2 id="验证结果">验证结果</h2>
+<ul>
+<li><code>python3 scripts/verify_package.py</code> 输出：<code>OK: learning hub package verification passed</code>。</li>
+<li>Required files 检查输出：27 项，missing 为 <code>none</code>。</li>
+<li>CSV 检查输出：10 行，字段包括 <code>opportunity</code>、<code>target_user</code>、<code>job_to_be_done</code>、<code>opportunity_score</code> 等。</li>
+<li>静态站本地链接检查：20 个本地 <code>href</code>/<code>src</code> 均存在；8 个站内锚点均存在。</li>
+<li>Markdown 本地链接检查：31 个本地链接均存在。</li>
+<li>核心外部来源轻量检查：RevenueCat 2026、Sensor Tower、GlobeNewswire、Photoroom、Gamma、HeyGen 均返回 200；ElevenLabs 返回 308 跳转；Lovart 页面经浏览器/web 打开可读，但普通脚本请求返回 404，记录为站点请求方式差异。</li>
+<li>内容风险搜索只命中版权边界说明、正常时间轴摘要、字幕/翻译作为产品功能描述，以及“内部”作为交接/团队场景描述；验证脚本内维护的已知误听词列表未命中交付内容。</li>
+<li><code>git worktree list</code> 仅保留主仓库工作区，临时 agent worktree 已清理。</li>
+<li>开源与广告准备检查通过：<code>LICENSE</code>、<code>CONTRIBUTING.md</code>、<code>ATTRIBUTION.md</code>、<code>CNAME</code>、<code>ads.txt.template</code>、Privacy、Terms 和 Google Ads no-op 追踪文件均存在。</li>
+<li><code>site/google-ads-config.js</code> 默认 <code>enabled: false</code>，不会加载 Google tag。</li>
+<li>首页 <code>data-conversion</code> 覆盖开始学习、下载评分表、打开 GitHub 和打开 OPC 剧本。</li>
+</ul>
+<h2 id="遗留限制">遗留限制</h2>
+<ul>
+<li>外部网页链接已做轻量存活检查并修复发现的问题，但第三方站点未来仍可能改版、跳转、限流或失效。</li>
+<li>本次 QA 未重新下载、重转写或逐字复核原始视频；验收基于仓库内已交付内容和公开引用链接。</li>
+<li>市场数据、收入数字和政策条款只做引用链接可访问性与资料边界检查，未展开二次事实审计。</li>
+<li><code>gptimage2.store</code> 的 DNS 记录需要在域名注册商面板切换到 GitHub Pages；DNS 生效前自有域名无法稳定访问。</li>
+<li>AdSense 和 Google Ads 账号、付款、审核、publisher ID、conversion ID 需要用户登录 Google 后完成；本项目只准备可接入结构。</li>
+</ul>
+    </article>
+    <aside class="doc-side">
+      <nav class="doc-toc" aria-label="本文目录"><strong>目录</strong><a class="toc-level-2" href="#验收范围">验收范围</a><a class="toc-level-2" href="#2026-06-02-自主持续开发追加验收">2026-06-02 自主持续开发追加验收</a><a class="toc-level-2" href="#2026-06-02-文档-html-渲染修复验收">2026-06-02 文档 HTML 渲染修复验收</a><a class="toc-level-2" href="#完成项">完成项</a><a class="toc-level-2" href="#版权边界">版权边界</a><a class="toc-level-2" href="#验证命令">验证命令</a><a class="toc-level-2" href="#验证结果">验证结果</a><a class="toc-level-2" href="#遗留限制">遗留限制</a></nav>
+      <div class="doc-meta">
+        <strong>页面信息</strong>
+        <span>最后核查：2026-06-02</span>
+        <a href="site/index.html">返回知识库首页</a>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

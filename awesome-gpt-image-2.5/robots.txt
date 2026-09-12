@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /404
+Disallow: /*?
+
+Sitemap: https://siuserxiaowei.github.io/awesome-gpt-image-2.5/sitemap.xml

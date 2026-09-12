@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleEngagement from '../../components/ArticleEngagement.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+const readingTime = Math.max(1, Math.ceil(post.body!.length / 500));
+---
+
+<BaseLayout title={`${post.data.title} - siuser小伟`} description={post.data.description} showProgress={true} ogType="article" ogImage={post.data.image || ''}>
+  <Header />
+
+  <!-- BlogPosting Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date.toISOString(),
+    "author": { "@type": "Person", "name": "siuser小伟", "url": "https://siuserxiaowei.com" },
+    "publisher": { "@type": "Person", "name": "siuser小伟" },
+    "url": `https://siuserxiaowei.com/blog/${post.id}/`,
+    "wordCount": post.body?.length || 0,
+    "keywords": post.data.tags?.join(', ') || '',
+    ...(post.data.image ? { "image": post.data.image } : {})
+  })} />
+
+  <main class="flex-1">
+    <article class="blog-article mx-auto px-6 pt-16 pb-20 md:pt-24" style="max-width: 720px;">
+      <!-- Meta -->
+      <div class="animate-fade-in stagger-1 flex items-center gap-3 mb-6">
+        <time class="text-xs tracking-wider uppercase" style="color: var(--text-secondary);">
+          {formatDate(post.data.date)}
+        </time>
+        <span class="text-xs" style="color: var(--border);">|</span>
+        <span class="text-xs" style="color: var(--text-secondary);">
+          约 {readingTime} 分钟阅读
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="blog-article-title animate-fade-in stagger-2 text-3xl md:text-4xl lg:text-5xl mb-4" style="font-family: var(--font-heading); color: var(--text); line-height: 1.15;">
+        {post.data.title}
+      </h1>
+
+      <!-- Description -->
+      <p class="animate-fade-in stagger-3 text-base md:text-lg mb-8" style="color: var(--text-secondary);">
+        {post.data.description}
+      </p>
+
+      <!-- Tags -->
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="animate-fade-in stagger-4 flex flex-wrap gap-2 mb-8">
+          {post.data.tags.map((tag: string) => (
+            <span class="text-xs px-2.5 py-1 rounded-full" style="background: var(--surface-2); color: var(--color-accent);">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <!-- Hero Image -->
+      {post.data.image && (
+        <div class="animate-fade-in stagger-4 rounded-xl overflow-hidden mb-10">
+          <img src={post.data.image} alt={post.data.title} class="w-full h-auto" loading="lazy" />
+        </div>
+      )}
+
+      <!-- Divider -->
+      <div class="animate-fade-in stagger-4 divider-accent mb-12"></div>
+
+      <!-- Content -->
+      <div class="animate-fade-in stagger-5 prose">
+        <Content />
+      </div>
+
+      <ArticleEngagement slug={post.id} title={post.data.title} />
+
+      <!-- Comments (Giscus) -->
+      <!--
+        启用步骤：
+        1. 去 https://github.com/siuserxiaowei/blog/settings 开启 Discussions
+        2. 去 https://github.com/apps/giscus 安装到仓库
+        3. 去 https://giscus.app 获取 data-repo-id 和 data-category-id
+        4. 填入下面的配置，取消注释即可
+      -->
+      <div id="comments" class="mt-16 pt-8 border-t scroll-mt-24" style="border-color: var(--border);" data-comment-term={post.id}>
+        <h2 class="text-xl mb-6" style="font-family: var(--font-heading); color: var(--text);" data-i18n="blog.comments">评论</h2>
+        <div id="comment-quote-note" class="comment-quote-note" hidden>
+          <div>
+            <p>引用已复制</p>
+            <blockquote id="comment-quote-text"></blockquote>
+          </div>
+          <button id="comment-quote-copy" type="button">再复制一次</button>
+        </div>
+        <div id="giscus-container">
+          <p class="text-sm" style="color: var(--text-secondary);">加载评论中...</p>
+        </div>
+        <script is:inline>
+          (function() {
+            // Giscus 配置 — 填入 repo-id 和 category-id 后自动启用
+            const REPO_ID = 'R_kgDOR6Qj0A';
+            const CATEGORY_ID = 'DIC_kwDOR6Qj0M4C6JlO';
+
+            if (!REPO_ID || !CATEGORY_ID) return; // 未配置则跳过
+            window.__articleGiscusController?.abort();
+
+            const controller = new AbortController();
+            window.__articleGiscusController = controller;
+            window.__articleGiscusObserver?.disconnect();
+
+            function loadGiscus() {
+              const comments = document.getElementById('comments');
+              const container = document.getElementById('giscus-container');
+              if (!comments || !container) return;
+              const term = comments.dataset.commentTerm || window.location.pathname;
+              if (container.dataset.loadedTerm === term) return;
+              container.dataset.loadedTerm = term;
+              container.innerHTML = ''; // 清空占位文本
+              const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark_dimmed';
+              const script = document.createElement('script');
+              script.src = 'https://giscus.app/client.js';
+              script.setAttribute('data-repo', 'siuserxiaowei/blog');
+              script.setAttribute('data-repo-id', REPO_ID);
+              script.setAttribute('data-category', 'General');
+              script.setAttribute('data-category-id', CATEGORY_ID);
+              script.setAttribute('data-mapping', 'specific');
+              script.setAttribute('data-term', term);
+              script.setAttribute('data-strict', '0');
+              script.setAttribute('data-reactions-enabled', '1');
+              script.setAttribute('data-emit-metadata', '0');
+              script.setAttribute('data-input-position', 'top');
+              script.setAttribute('data-theme', theme);
+              script.setAttribute('data-lang', 'zh-CN');
+              script.setAttribute('crossorigin', 'anonymous');
+              script.async = true;
+              container.appendChild(script);
+            }
+
+            const obs = new MutationObserver(() => {
+              const iframe = document.querySelector('.giscus-frame');
+              if (iframe) {
+                const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark_dimmed';
+                iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+              }
+            });
+            obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+            window.__articleGiscusObserver = obs;
+
+            document.addEventListener('astro:page-load', loadGiscus, { signal: controller.signal });
+            document.addEventListener('astro:before-swap', () => {
+              obs.disconnect();
+              controller.abort();
+            }, { once: true, signal: controller.signal });
+
+            loadGiscus();
+          })();
+        </script>
+      </div>
+
+      <!-- Back -->
+      <div class="mt-12 pt-8 border-t" style="border-color: var(--border);">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm tracking-wider uppercase transition-colors duration-200 hover:text-[var(--color-accent)]" style="color: var(--text-secondary);">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          <span data-i18n="blog.back">返回文章列表</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-article {
+    width: 100%;
+    max-width: min(720px, 100%);
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .blog-article-title,
+  .blog-article :global(.prose),
+  .blog-article :global(.prose *) {
+    max-width: 100%;
+    min-width: 0;
+    line-break: loose;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .comment-quote-note {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  .comment-quote-note[hidden] {
+    display: none;
+  }
+
+  .comment-quote-note > div {
+    min-width: 0;
+  }
+
+  .comment-quote-note p {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .comment-quote-note blockquote {
+    margin: 0.45rem 0 0;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .comment-quote-note button {
+    min-height: 2.4rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+
+  .comment-quote-note button:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-strong);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .blog-article {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .blog-article-title {
+      font-size: clamp(2rem, 8.5vw, 2.55rem);
+      line-height: 1.12;
+    }
+
+    .comment-quote-note {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

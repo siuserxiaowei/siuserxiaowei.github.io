@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X Viral Lab v1.3 / 爆款算法工作台</title>
+    <meta
+      name="description"
+      content="基于 X For You 公开算法思想与源码级 wiki 校准的内容运营评分、爆款潜力诊断、增长复盘与方法论工作台。"
+    />
+    <link rel="stylesheet" href="./assets/site.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <nav class="topbar" aria-label="站点导航">
+          <a href="#algorithm">算法地图</a>
+          <a href="#radar">爆款雷达</a>
+          <a href="#course">方法论</a>
+          <a href="#cases">案例</a>
+          <a href="#deploy">在线入口</a>
+        </nav>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">X Viral Lab v1.3</p>
+            <h1>把源码级算法拆解，变成可执行的爆款潜力工作台</h1>
+            <p class="lead">
+              这不是 X 官方内部模型复刻，而是基于公开算法思想、xai-org/x-algorithm
+              与 cclank/x-algorithm-wiki 的运营转译：写作、评分、爆款因素增强、增长复盘、课程和案例在同一套流程里闭环。
+            </p>
+            <div class="actions">
+              <a class="button primary" href="https://x-viral-lab.vercel.app/">打开全功能 App</a>
+              <a class="button" href="https://github.com/siuserxiaowei/x-viral-lab-pages">查看静态站仓库</a>
+            </div>
+          </div>
+          <div class="panel signal-panel" aria-label="核心能力">
+            <div>
+              <span class="label">Viral Radar</span>
+              <strong>爆款潜力诊断</strong>
+              <p>11 维雷达只做运营代理，帮助定位钩子、质量、互动入口、风险和重复问题，不预测平台真实推荐。</p>
+            </div>
+            <div>
+              <span class="label">Rules Only</span>
+              <strong>零 key 可用</strong>
+              <p>没有 OpenAI / X OAuth 配置，也能生成、评分、导入示例数据做完整体验。</p>
+            </div>
+            <div>
+              <span class="label">Source Calibrated</span>
+              <strong>源码锚点校准</strong>
+              <p>Thunder、Phoenix、Filtering、Home Mixer、Grox 的边界按源码级 wiki 重新标注。</p>
+            </div>
+            <div>
+              <span class="label">Workflow</span>
+              <strong>内容闭环</strong>
+              <p>算法解释进入课程，课程进入案例，案例灌入工作台继续改稿。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="algorithm" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Algorithm Map</p>
+          <h2>源码校准后的六段地图</h2>
+          <p>
+            静态站只展示解释层；完整的评分、生成和 dashboard 分析请进入 Vercel App。
+          </p>
+        </div>
+        <div class="cards six">
+          <article class="card">
+            <span>01</span>
+            <h3>Candidate Pipeline</h3>
+            <p>统一的推荐流水线框架，把 source、filter、scorer、selector 等阶段拆清楚。</p>
+          </article>
+          <article class="card">
+            <span>02</span>
+            <h3>Home Mixer</h3>
+            <p>外层编排，把已排序帖子流与广告、关注建议、Prompts 等模块混排。</p>
+          </article>
+          <article class="card">
+            <span>03</span>
+            <h3>Thunder</h3>
+            <p>站内候选源，不是过滤器；它维护关注网络内的新鲜候选内容。</p>
+          </article>
+          <article class="card">
+            <span>04</span>
+            <h3>Phoenix</h3>
+            <p>召回与排序：双塔缩小候选，再由 transformer 预测多行为概率。</p>
+          </article>
+          <article class="card">
+            <span>05</span>
+            <h3>Filtering & Selection</h3>
+            <p>预打分过滤、TopK 选择、选后水合和选后过滤，处理重复、已看、可见性等问题。</p>
+          </article>
+          <article class="card">
+            <span>06</span>
+            <h3>Grox</h3>
+            <p>异步内容理解旁路，提供安全、垃圾、质量和多模态相关信号。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section strip">
+        <div>
+          <p class="eyebrow">Myths vs Source</p>
+          <h2>几个必须纠正的运营迷思</h2>
+        </div>
+        <div class="myths">
+          <p><strong>Thunder 不是过滤器。</strong>过滤发生在 PhoenixCandidatePipeline 的过滤阶段。</p>
+          <p><strong>互动量不是越高越好。</strong>负向行为预测会进入 RankingScorer 权重。</p>
+          <p><strong>11 维不是平台真实分。</strong>它是给创作者改稿用的可解释代理模型。</p>
+        </div>
+      </section>
+
+      <section id="radar" class="section radar-section">
+        <div class="section-head">
+          <p class="eyebrow">v1.3 Viral Radar</p>
+          <h2>爆款因素增强，不是平台预测承诺</h2>
+          <p>
+            v1.3 把「爆款」拆成四个可操作关口：先进入候选池，避开过滤，再提高排序信号，最后控制混排和读者疲劳。
+          </p>
+        </div>
+        <div class="radar-grid">
+          <article class="radar-card">
+            <span>01</span>
+            <h3>候选池</h3>
+            <p>加清晰对象、场景和冲突，让系统和读者知道这条内容该给谁看。</p>
+          </article>
+          <article class="radar-card">
+            <span>02</span>
+            <h3>过滤</h3>
+            <p>清理重复、标题党、攻击性和不安全建议，用事实和边界保住分发机会。</p>
+          </article>
+          <article class="radar-card">
+            <span>03</span>
+            <h3>排序</h3>
+            <p>补强钩子、信息密度、收藏理由和讨论入口，让正向行为更容易发生。</p>
+          </article>
+          <article class="radar-card">
+            <span>04</span>
+            <h3>混排/疲劳</h3>
+            <p>同一主线下轮换观点、案例、教程和复盘，减少同质内容连续出现。</p>
+          </article>
+        </div>
+        <div class="radar-note">
+          <strong>11 维是运营代理。</strong>
+          <p>雷达分用于改稿优先级和复盘，不等同 X 官方内部模型，也不承诺预测真实推荐结果。</p>
+        </div>
+      </section>
+
+      <section id="course" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Course</p>
+          <h2>8 节方法论课程</h2>
+          <p>候选池、召回、过滤、打分、反垃圾、作者多样性、内容生命周期、爆款复盘 SOP。</p>
+        </div>
+        <div class="cards four">
+          <article class="card"><h3>先定位关口</h3><p>每节课先问：这条内容卡在召回、过滤、排序还是混排？</p></article>
+          <article class="card"><h3>再转成动作</h3><p>把算法视角变成主题、人群、证据、钩子、评论入口、风险表达和爆款因素增强。</p></article>
+          <article class="card"><h3>进入工作台</h3><p>课程模板可以直接带入完整 App，生成候选并评分。</p></article>
+          <article class="card"><h3>复盘下一条</h3><p>dashboard 会把最佳题材、最佳时段和下一步内容建议输出成行动项。</p></article>
+        </div>
+      </section>
+
+      <section id="cases" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Case Library</p>
+          <h2>20 条内置案例</h2>
+          <p>覆盖 AI 编程、出海、产品增长、个人 IP、热点评论和长文线程，完整 App 里可一键灌入工作台。</p>
+        </div>
+        <div class="cards three">
+          <article class="card accent"><h3>AI 编程</h3><p>把失败日志、工具链变化和开发者工作流拆成高信号内容。</p></article>
+          <article class="card accent"><h3>增长方法</h3><p>把数据复盘、选题管理和评论区策略变成可复用结构。</p></article>
+          <article class="card accent"><h3>个人 IP</h3><p>在稳定账号定位下，保持观点、案例、教程和复盘的结构多样性。</p></article>
+        </div>
+      </section>
+
+      <section id="deploy" class="section deploy">
+        <div>
+          <p class="eyebrow">Public Entrypoints</p>
+          <h2>两个线上入口，各司其职</h2>
+          <p>
+            GitHub Pages 是这个静态展示站；Vercel App 才是完整工作台，包含 Next.js API、Rules Only
+            生成、评分、dashboard 示例分析和复制复用动作。
+          </p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://x-viral-lab.vercel.app/">进入 Vercel 全功能 App</a>
+          <a class="button" href="https://github.com/siuserxiaowei/x-viral-lab-pages">静态站仓库</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

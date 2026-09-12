@@ -1,0 +1,12 @@
+{
+  "content": "177：自动挖掘无限虚拟资源的另一种策略  \n我们以前聊过这方面的思路，见分享：  \n[君言戏语VIP会员专属内容 - 群主分享 - 2024.otl](https://kdocs.cn/l/caxQ8nS9p1U4)96：无限挖掘虚拟资源  \n  \n今天分享的思路，是帮助一些不会技术的朋友，尽可能低成本的去自动挖掘的策略，  \n它适用于你想发现那些你不知道的资源类型。  \n  \n首先还是利用特殊词汇的逻辑，比如夸克网盘的资源链接一般是：[pan.quark.cn/s/513e3d969c12](https://pan.quark.cn/s/513e3d969c12)  \ns/后面有一段字符串，12位，小写字母和数字随机组合。  \n  \n当我们把这一串链接放到搜索引擎里：  \n![image]()\n可以看到，s/后面这一串字符里的部分字母或数字是有可能被匹配到的。  \n  \n其次，字母和数字是有限的，0-9和a-z 这两段。  \n有基于此，我们可以使用程序去随机组合，让它自动生成假的夸克资源链接的格式：  \n\n```python\nimport random\n\n_str = ['0','1','2','3','4','5','6','7','8','9'] + [chr(i) for i in range(97, 123)]\nrandom.shuffle(_str)\n\ns = []\nfor i in range(3):\n    s.append(random.sample(_str,1)[0])\n\nprint('pan.quark.cn/s/%s' % ''.join(s))\n\n# 结果输出：pan.quark.cn/s/28j\n```\n\n这是一段脚本代码，每次运行可以生成：[pan.quark.cn/s/xxx](https://pan.quark.cn/s/xxx)，xxx是随机的数字或字母，根据排列组合可以生成几万条不一样的链接。  \n由于能匹配的字符往往只有几个，所以我们不需要生成一整串的字符。  \n  \n然后拿着这条链接去百度一下：  \n![image]()\n[pan.quark.cn](https://pan.quark.cn/) 和 28j 会把相关的资源带出来，28j换成其他的，就会因为目标网页里的内容匹配出不一样的资源。  \n  \n这么做的意义在于：  \n你不需要想什么词根词汇，你也不至于用固定的[pan.quark.cn/s/](https://pan.quark.cn/s/)来挖掘，你每次都可以键入不同的假链接，利用字母数字来匹配到可能的各种资源。  \n  \n然后你可以结合我以前分享的webscraper，网页采集插件，它一次可以导入1000条链接：  \n![image]()\n这样就相当于自动去查询每一条假的链接，得到大量采集结果(多条链接是支持一次性导入的)。  \n把百度搜索结果里的标题和描述收集回来：  \n![image]()\n最好在Excel里去除一下描述不包含[pan.quark.cn](https://pan.quark.cn/)的数据，这种不是目标数据。  \n  \n剩下的数据就可以拿去给ai帮你根据标题和描述内容提取出资源主题类型，然后你就可以发现各种各样的虚拟资源类型以及它们出现的频率，再去考虑你想做什么资源。  \n  \n另外，在使用webscraper采集时，你还可以收集站点：  \n![image]()\n最后可以在Excel里统计到经常看到的站点，说明这些地方可以稳定发布资源链接。  \n  \n如果你要做这个事情，遇到什么操作问题或代码脚本，可以来找我。  \nwebscraper的教程可以看我发布在知乎的文章，知乎ID：君言  ",
+  "content_format": "markdown",
+  "drive_id": "2581401869",
+  "file_id": "HqSyrmxwE1MBA1JtDToFrxpUJZka1tvBA",
+  "name": "177：自动挖掘无限虚拟资源的另一种策略.otl",
+  "status": "ok",
+  "suffix": ".otl",
+  "warnings": [
+    "当需要对智能文档精细化操作 或 使用到完整格式信息和内容时，使用otl.block_query处理"
+  ]
+}

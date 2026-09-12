@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>AI讯息｜今天真的变了什么</title>
+    <link>https://siuserxiaowei.github.io/daily-hotboard-studio/</link>
+    <description>只推送经一手或原始来源核验、且相较上一期发生实质变化的 AI 事件；最多 3 条。</description>
+    <lastBuildDate>Sat, 12 Sep 2026 04:50:01 GMT</lastBuildDate>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://siuserxiaowei.github.io/daily-hotboard-studio/data/change-brief.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>csoai/gspc-ai-economy-index</title>
+      <link>https://huggingface.co/datasets/csoai/gspc-ai-economy-index</link>
+      <guid isPermaLink="false">event-3wbrmp</guid>
+      <pubDate>Sat, 12 Sep 2026 04:50:01 GMT</pubDate>
+      <description>CHANGED｜1 个原始来源确认事实已发生实质变化，值得更新原有判断。</description>
+    </item>
+    <item>
+      <title>dc-ai/Visualization2</title>
+      <link>https://huggingface.co/datasets/dc-ai/Visualization2</link>
+      <guid isPermaLink="false">event-ut6ub8</guid>
+      <pubDate>Sat, 12 Sep 2026 04:50:01 GMT</pubDate>
+      <description>CHANGED｜1 个原始来源确认事实已发生实质变化，值得更新原有判断。</description>
+    </item>
+    <item>
+      <title>AgentCrafter/RAg_gita</title>
+      <link>https://huggingface.co/spaces/AgentCrafter/RAg_gita</link>
+      <guid isPermaLink="false">event-1nzgsqq</guid>
+      <pubDate>Sat, 12 Sep 2026 04:50:01 GMT</pubDate>
+      <description>CHANGED｜1 个原始来源确认事实已发生实质变化，值得更新原有判断。</description>
+    </item>
+  </channel>
+</rss>

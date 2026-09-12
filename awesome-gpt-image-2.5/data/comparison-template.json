@@ -1,0 +1,266 @@
+{
+  "schema_version": 2,
+  "status": "template_not_a_result",
+  "planned_request_count": 9,
+  "executed_request_count": 0,
+  "scope": "Three single-sample controlled comparisons, not a model leaderboard.",
+  "execution_prerequisites": [
+    "Approved API provider and budget",
+    "Provider account access to all three requested model IDs",
+    "Do not silently substitute a model or change parameters for one member of a group"
+  ],
+  "controls": [
+    "Same exact UTF-8 prompt, size, quality, output format, background and n within each group",
+    "Group C uses the same original reference bytes for every model; no conversation history or output chaining",
+    "Fresh independent requests, no automatic retries; failed attempts are retained",
+    "Same quality label does not guarantee the same internal compute or cost",
+    "One sample per model and task cannot establish general superiority or reproducibility"
+  ],
+  "groups": [
+    {
+      "id": "A",
+      "title": "中文海报标题",
+      "operation": "generations",
+      "size": "1024x1536",
+      "expected_text": [
+        "把平凡日子过成好风景",
+        "周末城市漫步计划"
+      ],
+      "reference_images": [],
+      "prompt": "设计一张中文城市漫步海报。主体是一位穿深绿色外套、背帆布包的成年行人，走在有梧桐树的安静街道，采用简洁平面插画，奶油白、墨绿和少量橙色，午后柔和侧光。竖幅构图，人物放在下半部，上半部留出清楚的文字区。顶部主标题必须逐字写成“把平凡日子过成好风景”，分两行：第一行“把平凡日子”，第二行“过成好风景”；主标题使用粗黑中文字体，字号大、笔画清楚。标题下方的小一号副标题必须写成“周末城市漫步计划”。禁止出现其他文字、数字、logo 或水印。不要改变任何指定文案。",
+      "checks": [
+        "逐字记录标题与副标题实际文字；无法辨认记为无法辨认，不猜字",
+        "标题两行顺序、文字遮挡和多余文字",
+        "只评价本次结果，不推断所有中文排版任务"
+      ],
+      "status": "planned_not_run",
+      "prompt_sha256": "2710b92bfca1eb50696adefa8a546cb11be721e2ad62d73ae9c9c33a206e0d66",
+      "planned_requests": [
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2",
+          "prompt": "设计一张中文城市漫步海报。主体是一位穿深绿色外套、背帆布包的成年行人，走在有梧桐树的安静街道，采用简洁平面插画，奶油白、墨绿和少量橙色，午后柔和侧光。竖幅构图，人物放在下半部，上半部留出清楚的文字区。顶部主标题必须逐字写成“把平凡日子过成好风景”，分两行：第一行“把平凡日子”，第二行“过成好风景”；主标题使用粗黑中文字体，字号大、笔画清楚。标题下方的小一号副标题必须写成“周末城市漫步计划”。禁止出现其他文字、数字、logo 或水印。不要改变任何指定文案。",
+          "size": "1024x1536"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-flare",
+          "prompt": "设计一张中文城市漫步海报。主体是一位穿深绿色外套、背帆布包的成年行人，走在有梧桐树的安静街道，采用简洁平面插画，奶油白、墨绿和少量橙色，午后柔和侧光。竖幅构图，人物放在下半部，上半部留出清楚的文字区。顶部主标题必须逐字写成“把平凡日子过成好风景”，分两行：第一行“把平凡日子”，第二行“过成好风景”；主标题使用粗黑中文字体，字号大、笔画清楚。标题下方的小一号副标题必须写成“周末城市漫步计划”。禁止出现其他文字、数字、logo 或水印。不要改变任何指定文案。",
+          "size": "1024x1536"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-sunburst",
+          "prompt": "设计一张中文城市漫步海报。主体是一位穿深绿色外套、背帆布包的成年行人，走在有梧桐树的安静街道，采用简洁平面插画，奶油白、墨绿和少量橙色，午后柔和侧光。竖幅构图，人物放在下半部，上半部留出清楚的文字区。顶部主标题必须逐字写成“把平凡日子过成好风景”，分两行：第一行“把平凡日子”，第二行“过成好风景”；主标题使用粗黑中文字体，字号大、笔画清楚。标题下方的小一号副标题必须写成“周末城市漫步计划”。禁止出现其他文字、数字、logo 或水印。不要改变任何指定文案。",
+          "size": "1024x1536"
+        }
+      ],
+      "execution_order": [
+        "gpt-image-2",
+        "gpt-image-2.5-flare",
+        "gpt-image-2.5-sunburst"
+      ],
+      "runs": []
+    },
+    {
+      "id": "B",
+      "title": "电商主图与包装小字",
+      "operation": "generations",
+      "size": "1024x1024",
+      "expected_text": [
+        "山岚乌龙茶",
+        "原叶冷萃",
+        "净含量 100 克"
+      ],
+      "reference_images": [],
+      "prompt": "生成一张方形电商产品主图：一只奶白色长方体茶叶纸盒，直立居中，略微展示右侧面。包装正面朝向镜头，占画面高度约三分之二，盒子完整不裁切。背景为浅砂色无缝影棚，柔和左上侧光，底部自然接触阴影。包装用墨绿色中文排版：上方品牌文字必须逐字写成“山岚乌龙茶”；中间小一号文字必须写成“原叶冷萃”；底部更小的净含量文字必须写成“净含量 100 克”。只允许这些文字，禁止添加其他品牌、英文、价格、功效声明、二维码和水印。纸盒边缘与印刷笔画要清晰，保持真实纸张材质。",
+      "checks": [
+        "按三行分别转录实际文字，对照记录正确、错字、漏字、多字、无法辨认",
+        "盒子数量、边缘、裁切与正面文字可读性",
+        "小字检查使用同一原图缩放倍率，不对某模型单独增强"
+      ],
+      "status": "planned_not_run",
+      "prompt_sha256": "da1f62e80b98e70976db8a4bde6514fcabb0e05cb87b9446b5971e74c0055a37",
+      "planned_requests": [
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2",
+          "prompt": "生成一张方形电商产品主图：一只奶白色长方体茶叶纸盒，直立居中，略微展示右侧面。包装正面朝向镜头，占画面高度约三分之二，盒子完整不裁切。背景为浅砂色无缝影棚，柔和左上侧光，底部自然接触阴影。包装用墨绿色中文排版：上方品牌文字必须逐字写成“山岚乌龙茶”；中间小一号文字必须写成“原叶冷萃”；底部更小的净含量文字必须写成“净含量 100 克”。只允许这些文字，禁止添加其他品牌、英文、价格、功效声明、二维码和水印。纸盒边缘与印刷笔画要清晰，保持真实纸张材质。",
+          "size": "1024x1024"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-flare",
+          "prompt": "生成一张方形电商产品主图：一只奶白色长方体茶叶纸盒，直立居中，略微展示右侧面。包装正面朝向镜头，占画面高度约三分之二，盒子完整不裁切。背景为浅砂色无缝影棚，柔和左上侧光，底部自然接触阴影。包装用墨绿色中文排版：上方品牌文字必须逐字写成“山岚乌龙茶”；中间小一号文字必须写成“原叶冷萃”；底部更小的净含量文字必须写成“净含量 100 克”。只允许这些文字，禁止添加其他品牌、英文、价格、功效声明、二维码和水印。纸盒边缘与印刷笔画要清晰，保持真实纸张材质。",
+          "size": "1024x1024"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-sunburst",
+          "prompt": "生成一张方形电商产品主图：一只奶白色长方体茶叶纸盒，直立居中，略微展示右侧面。包装正面朝向镜头，占画面高度约三分之二，盒子完整不裁切。背景为浅砂色无缝影棚，柔和左上侧光，底部自然接触阴影。包装用墨绿色中文排版：上方品牌文字必须逐字写成“山岚乌龙茶”；中间小一号文字必须写成“原叶冷萃”；底部更小的净含量文字必须写成“净含量 100 克”。只允许这些文字，禁止添加其他品牌、英文、价格、功效声明、二维码和水印。纸盒边缘与印刷笔画要清晰，保持真实纸张材质。",
+          "size": "1024x1024"
+        }
+      ],
+      "execution_order": [
+        "gpt-image-2.5-flare",
+        "gpt-image-2.5-sunburst",
+        "gpt-image-2"
+      ],
+      "runs": []
+    },
+    {
+      "id": "C",
+      "title": "只改背景，保持机器人三视图",
+      "operation": "edits",
+      "size": "1536x1024",
+      "expected_text": [],
+      "reference_images": [
+        {
+          "file": "cases/004/results/run-01.png",
+          "url": "https://raw.githubusercontent.com/siuserxiaowei/siuserxiaowei.github.io/main/public-media/awesome-gpt-image-2.5/media/cases/004/results/run-01.png",
+          "sha256": "50e1d9176ead3467178972fc1daeb9e9e077b91321669755601c417e8802ed6b",
+          "width": 1536,
+          "height": 1024,
+          "role": "shared edit source",
+          "source_model_status": "existing project image; generation model version unconfirmed; used as shared input only"
+        }
+      ],
+      "prompt": "Change only the white background to a uniform pale blue background (#DCEEF7). Keep unchanged: all three robot views, their exact positions, size, silhouette, orientation, off-white heads and limbs, orange bodies and antenna tips, dark face panels, cyan eyes, front chest button, rear backpack, materials, lighting, and contact shadows. Keep the original 1536x1024 composition. Do not add, remove, crop, resize, or rearrange any robot. Add no text, logo, or other objects.",
+      "checks": [
+        "背景是否变为浅蓝色；记录残留白底和边缘污染",
+        "逐项核对三视图数量、位置、轮廓、蓝色眼睛、橙色天线、胸前按钮与背包",
+        "并排展示原图与结果，以原像素尺寸检查；这里不测试真人脸或 logo，不据此推断人脸能力"
+      ],
+      "status": "planned_not_run",
+      "prompt_sha256": "ad9202d3f5102881eada9c03017b2c8d1c03ad0a84b978bca2dc0bc7a8cc66ae",
+      "planned_requests": [
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2",
+          "prompt": "Change only the white background to a uniform pale blue background (#DCEEF7). Keep unchanged: all three robot views, their exact positions, size, silhouette, orientation, off-white heads and limbs, orange bodies and antenna tips, dark face panels, cyan eyes, front chest button, rear backpack, materials, lighting, and contact shadows. Keep the original 1536x1024 composition. Do not add, remove, crop, resize, or rearrange any robot. Add no text, logo, or other objects.",
+          "size": "1536x1024"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-flare",
+          "prompt": "Change only the white background to a uniform pale blue background (#DCEEF7). Keep unchanged: all three robot views, their exact positions, size, silhouette, orientation, off-white heads and limbs, orange bodies and antenna tips, dark face panels, cyan eyes, front chest button, rear backpack, materials, lighting, and contact shadows. Keep the original 1536x1024 composition. Do not add, remove, crop, resize, or rearrange any robot. Add no text, logo, or other objects.",
+          "size": "1536x1024"
+        },
+        {
+          "quality": "high",
+          "n": 1,
+          "output_format": "png",
+          "background": "opaque",
+          "model": "gpt-image-2.5-sunburst",
+          "prompt": "Change only the white background to a uniform pale blue background (#DCEEF7). Keep unchanged: all three robot views, their exact positions, size, silhouette, orientation, off-white heads and limbs, orange bodies and antenna tips, dark face panels, cyan eyes, front chest button, rear backpack, materials, lighting, and contact shadows. Keep the original 1536x1024 composition. Do not add, remove, crop, resize, or rearrange any robot. Add no text, logo, or other objects.",
+          "size": "1536x1024"
+        }
+      ],
+      "execution_order": [
+        "gpt-image-2.5-sunburst",
+        "gpt-image-2",
+        "gpt-image-2.5-flare"
+      ],
+      "runs": []
+    }
+  ],
+  "run_record_template": {
+    "status": "not_run",
+    "group_id": null,
+    "attempt": null,
+    "provider_origin": null,
+    "endpoint": null,
+    "surface": "API",
+    "requested_at_utc": null,
+    "completed_at_utc": null,
+    "requested_model_id": null,
+    "response_model_id": null,
+    "model_evidence": {
+      "kind": null,
+      "request_id": null,
+      "public_evidence_url": null,
+      "verification_status": "unconfirmed"
+    },
+    "prompt_sha256": null,
+    "reference_images": [],
+    "quality": null,
+    "size": null,
+    "elapsed_seconds": null,
+    "timing_method": "Client monotonic clock from sending request until complete response body; includes network time",
+    "http_status": null,
+    "error_type": null,
+    "usage": null,
+    "output": {
+      "file": null,
+      "sha256": null,
+      "width": null,
+      "height": null
+    },
+    "review": {
+      "reviewed_at": null,
+      "review_method": null,
+      "observed_text": [],
+      "findings": [],
+      "limitations": []
+    }
+  },
+  "publication_gate": [
+    "Inspect original outputs against exact prompts and shared inputs before writing conclusions",
+    "Keep request model separate from returned model; an absent response field remains null",
+    "For third-party gateways describe routing evidence limits; do not call a requested string independent provider verification",
+    "Public evidence excludes Authorization headers, tokens, personal account fields and private conversation URLs",
+    "Do not populate cases.2.5.json from this plan; a reviewed evidence-ingestion change is still required"
+  ],
+  "documentation": [
+    "https://developers.openai.com/api/docs/guides/image-generation",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+  ],
+  "builtin_examples": {
+    "status": "three_actual_outputs_saved",
+    "generation_surface": "Codex built-in image_gen",
+    "exact_model_id": null,
+    "note": "These prompts were run once each with built-in image_gen. The planned API requests above remain unexecuted; their parameters do not describe the built-in results.",
+    "cases": [
+      {
+        "group": "A",
+        "id": "own-010",
+        "url": "/awesome-gpt-image-2.5/cases/own-010/"
+      },
+      {
+        "group": "B",
+        "id": "own-011",
+        "url": "/awesome-gpt-image-2.5/cases/own-011/"
+      },
+      {
+        "group": "C",
+        "id": "own-012",
+        "url": "/awesome-gpt-image-2.5/cases/own-012/"
+      }
+    ]
+  }
+}

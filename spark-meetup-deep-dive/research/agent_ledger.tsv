@@ -1,0 +1,4 @@
+agent_id	task_id	lane	claim_group_id	evidence_ids	source_ids	status	verification_status	confidence	notes
+factcheck	entity-resolution	worker	CG-001,CG-002,CG-003,CG-004,CG-005,CG-006,CG-007,CG-008,CG-009	EV-001,EV-002,EV-003,EV-004,EV-005,EV-006,EV-007,EV-008,EV-009,EV-010,EV-011,EV-012	SRC-001,SRC-002,SRC-003,SRC-004,SRC-005,SRC-006,SRC-007,SRC-008,SRC-009	checked	corroborated	high	实体和数字先由独立 worktree 收集，收入统一保留自报标签
+strategy	method-validation	worker	CG-010,CG-011,CG-012,CG-013,CG-014,CG-015,CG-016,CG-017,CG-018,CG-019,CG-020	EV-013,EV-014,EV-015,EV-016,EV-017,EV-018,EV-019,EV-020,EV-021,EV-022,EV-023,EV-024	SRC-012,SRC-013,SRC-014,SRC-015,SRC-016,SRC-017,SRC-018,SRC-019,SRC-020,SRC-021,SRC-022,SRC-023	checked	corroborated	high	方法论、反证和适用边界由独立 worktree 收集
+root	curator-review	summary	CG-001-CG-020	EV-001-EV-024	SRC-001-SRC-023	accepted	corroborated	high	主任务直接复读核心一手页面并审查 claim 不宽于证据；单源结论显式标注

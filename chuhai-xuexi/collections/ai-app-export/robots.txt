@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://gptimage2.store/sitemap.xml

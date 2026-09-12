@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerClaw · 接入多种 IM 的智能 AI 主机</title>
+  <meta name="description" content="HerClaw 是一台接入 LINE、Slack、WhatsApp、飞书、钉钉、Zalo、Telegram 等即时通讯工具的智能 AI 主机，让团队不用搭服务器，也能拥有常在线、能处理具体任务的 AI 队友。" />
+  <meta name="theme-color" content="#F4FBF7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__stage">
+      <div class="intro__mark">
+        <span class="intro__brand">HerClaw</span>
+        <span class="intro__lob">🦞</span>
+      </div>
+      <div class="intro__tag">AI TEAMMATE · MULTI-IM NATIVE · LOCAL FIRST</div>
+      <div class="intro__load">
+        <div class="intro__track"><span class="intro__fill" id="introFill"></span></div>
+        <div class="intro__meta">
+          <span>盒子启动中</span>
+          <span id="introPct">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="intro__skip">点击任意处跳过</div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <span class="scroll-lob" id="scrollLob" aria-hidden="true">🦞</span>
+  <button class="scroll-peek" id="scrollPeek" type="button" aria-label="投喂弹出的小龙虾"><span aria-hidden="true">🦞</span></button>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <div class="seabed" id="seabed" aria-hidden="true"></div>
+  <div class="critters" id="critters" aria-hidden="true"></div>
+  <span class="deco deco--star" aria-hidden="true">✦</span>
+  <span class="deco deco--lobster" aria-hidden="true">🦞</span>
+  <span class="deco deco--lobster2" aria-hidden="true">🦞</span>
+
+  <div class="ticker ticker--top" aria-hidden="true">
+    <div class="ticker__track">
+      <span>HerClaw 已就位</span><b>🦞</b><span>让 AI 在 IM 里干活</span><b>✦</b><span>LINE · Slack · WhatsApp · 飞书 · 钉钉 · Zalo · Telegram</span><b>🦞</b><span>本地 Skills 可复用</span><b>✦</b>
+      <span>HerClaw 已就位</span><b>🦞</b><span>让 AI 在 IM 里干活</span><b>✦</b><span>LINE · Slack · WhatsApp · 飞书 · 钉钉 · Zalo · Telegram</span><b>🦞</b><span>本地 Skills 可复用</span><b>✦</b>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="回到顶部">
+      <span class="nav__logo">🦞</span>
+      <span class="nav__name">HerClaw<em>智能 AI 主机</em></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="页面导航">
+      <a href="#problem">问题</a>
+      <a href="#box">盒子</a>
+      <a href="#agents">AI 团队</a>
+      <a href="#skills">Skills</a>
+      <a href="#audience">适合谁</a>
+    </nav>
+    <a class="nav__cta" href="#contact">联系试用</a>
+    <button class="nav__burger" id="navBurger" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <h1 class="hero__title reveal" data-reveal>
+          <span>HerClaw</span>
+          <strong>接入多种 IM 的<br />智能 AI 主机</strong>
+        </h1>
+        <p class="hero__lead reveal" data-reveal>
+          不用搭服务器，也能拥有一个常在线、能处理具体任务的 AI 队友。它把 AI 从网页工具带进 LINE、Slack、WhatsApp、飞书、钉钉、Zalo、Telegram 等即时通讯入口，让私聊、群聊、@ 派活和本地 Skills 变成团队日常。
+        </p>
+        <div class="hero__actions reveal" data-reveal>
+          <a class="btn btn--red" href="#box"><span aria-hidden="true">↘</span>看它怎么工作</a>
+          <a class="btn btn--blue" href="#contact"><span aria-hidden="true">✉</span>联系试用</a>
+        </div>
+        <ul class="hero__chips reveal" data-reveal aria-label="产品特点">
+          <li>多 IM 入口</li>
+          <li>本地常驻</li>
+          <li>无需公网服务器</li>
+          <li>Skills 可复用</li>
+        </ul>
+      </div>
+
+      <div class="hero__visual reveal" data-reveal>
+        <button class="hero__bait" id="feedButton" type="button" aria-label="投喂小龙虾">🍤<span>投喂小龙虾</span></button>
+        <span class="hero__poplob" id="popLobster" aria-hidden="true">🦞</span>
+        <div class="im-hub" aria-label="支持的即时通讯入口">
+          <span class="im-hub__core">IM</span>
+          <span class="im-hub__node" style="--x:18%;--y:12%;--c:#06c755">LINE</span>
+          <span class="im-hub__node" style="--x:70%;--y:16%;--c:#611f69">Slack</span>
+          <span class="im-hub__node" style="--x:5%;--y:52%;--c:#25d366">WhatsApp</span>
+          <span class="im-hub__node" style="--x:61%;--y:48%;--c:#2458e8">飞书</span>
+          <span class="im-hub__node" style="--x:90%;--y:42%;--c:#1683ff">钉钉</span>
+          <span class="im-hub__node" style="--x:26%;--y:84%;--c:#0068ff">Zalo</span>
+          <span class="im-hub__node" style="--x:76%;--y:80%;--c:#26a5e4">Telegram</span>
+        </div>
+        <img class="hero__product" id="productHero" src="assets/herclaw-product.png" alt="HerClaw 智能 AI 主机产品渲染图，顶部有弹簧小龙虾" />
+        <div class="chat-stack" aria-hidden="true">
+          <div><b>任意 IM</b><span>团队在群里 @ HerClaw</span></div>
+          <div><b>@小龙虾</b><span>整理会议纪要和项目进度</span></div>
+          <div><b>@Hermes</b><span>生成客户沟通策略和深度方案</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker ticker--band" aria-hidden="true">
+      <div class="ticker__track">
+        <span>从网页工具，到工作现场</span><b>★</b><span>LOCAL FIRST</span><b>★</b><span>MULTI-IM NATIVE</span><b>★</b>
+        <span>从网页工具，到工作现场</span><b>★</b><span>LOCAL FIRST</span><b>★</b><span>MULTI-IM NATIVE</span><b>★</b>
+      </div>
+    </div>
+
+    <section class="section problem" id="problem">
+      <div class="section__head">
+        <span class="section__num reveal" data-reveal>01</span>
+        <h2 class="section__title reveal" data-reveal>AI 还停在浏览器里</h2>
+        <p class="section__sub reveal" data-reveal>很多人已经会用 AI，但真正回到工作里，它往往还是另一个需要切换、复制和解释背景的网页工具。</p>
+      </div>
+      <div class="problem__grid">
+        <article class="panel pain pain--red reveal" data-reveal>
+          <span class="card__icon">⌘</span>
+          <h3>入口分散</h3>
+          <p>资料和任务在各种 IM 群里，AI 却还在网页里。来回复制会打断思路，也让团队协作难以沉淀。</p>
+        </article>
+        <article class="panel pain pain--blue reveal" data-reveal>
+          <span class="card__icon">⛓</span>
+          <h3>部署复杂</h3>
+          <p>很多机器人方案需要 Webhook、公网 IP、域名和服务器维护，小团队常常卡在“先搭系统”。</p>
+        </article>
+        <article class="panel pain pain--lime reveal" data-reveal>
+          <span class="card__icon">↻</span>
+          <h3>难以常驻</h3>
+          <p>临时问答适合一次性使用，却不适合长期任务、团队入口和每天自动触发的工作流。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section box" id="box">
+      <div class="section__head">
+        <span class="section__num reveal" data-reveal>02</span>
+        <h2 class="section__title reveal" data-reveal>为什么是一个盒子</h2>
+      </div>
+      <div class="box__layout">
+        <div class="box__media reveal" data-reveal>
+          <img src="assets/herclaw-product.png" alt="HerClaw 盒子本地常驻运行的产品图" />
+          <div class="box__callouts" aria-hidden="true">
+            <span class="box__callout box__callout--im"><em>IM</em><b>多入口接入</b></span>
+            <span class="box__callout box__callout--local"><em>24H</em><b>本地常驻</b></span>
+            <span class="box__callout box__callout--guard"><em>SAFE</em><b>边界清楚</b></span>
+            <span class="box__callout box__callout--skills"><em>SKILL</em><b>任务复用</b></span>
+          </div>
+          <div class="box__console" aria-hidden="true">
+            <span></span>
+            <b>LOCAL RUNNING</b>
+            <em>skills online</em>
+          </div>
+        </div>
+        <div class="box__content reveal" data-reveal>
+          <p class="big-copy">HerClaw 把安装、连接、运行、权限边界和使用入口一起产品化。</p>
+          <div class="reason-list">
+            <div><span>🏠</span><b>本地常驻</b><p>设备放在办公室、书架或工位旁，7×24 小时在线，任务在自己的环境里运行。</p></div>
+            <div><span>🛡</span><b>边界清楚</b><p>通过受控 IM 入口收发指令，和核心业务系统保持边界，数据处理更安心。</p></div>
+            <div><span>🔌</span><b>开箱少配置</b><p>不用从公网服务器、回调地址和运维脚本开始折腾，把时间留给业务。</p></div>
+            <div><span>💬</span><b>入口自然</b><p>销售在路上、老师在教室、老板在手机上，都能直接在常用 IM 里给 AI 派活。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="section__head">
+        <span class="section__num reveal" data-reveal>03</span>
+        <h2 class="section__title reveal" data-reveal>一句话触发具体任务</h2>
+        <p class="section__sub reveal" data-reveal>HerClaw 的价值不是功能堆叠，而是让 AI 在真实任务里先帮你动起来。</p>
+      </div>
+      <div class="work__grid">
+        <article class="task-card reveal" data-reveal><span>📊</span><h3>PPT 和文档初稿</h3><p>给主题、页数、用途和材料，先生成结构完整的第一版。</p></article>
+        <article class="task-card reveal" data-reveal><span>📑</span><h3>合同和资料审核</h3><p>提取重点、标出风险条款，让人工复核更有方向。</p></article>
+        <article class="task-card reveal" data-reveal><span>📁</span><h3>投标和项目材料</h3><p>根据固定结构生成框架，再由团队补真实数据和案例。</p></article>
+        <article class="task-card reveal" data-reveal><span>🎓</span><h3>学习辅导</h3><p>按年级、知识点和题目拆步骤，讲清楚为什么这样做。</p></article>
+        <article class="task-card task-card--wide reveal" data-reveal><span>⚙</span><h3>长期工作流</h3><p>行业简报、客户问题汇总、固定格式资料整理，都可以沉淀成可复用流程。</p></article>
+      </div>
+    </section>
+
+    <section class="agents" id="agents">
+      <div class="godrays" aria-hidden="true">
+        <i style="--x:14%;--w:80px;--sk:-18deg;--o:.16;--rd:9s"></i>
+        <i style="--x:46%;--w:140px;--sk:-12deg;--o:.10;--rd:12s;--rdl:-3s"></i>
+        <i style="--x:78%;--w:100px;--sk:-22deg;--o:.14;--rd:10s;--rdl:-1s"></i>
+      </div>
+      <div class="bubbles" id="agentBubbles" aria-hidden="true"></div>
+      <div class="flora" id="agentFlora" aria-hidden="true"></div>
+      <div class="agents__inner">
+        <div class="section__head section__head--light">
+          <span class="section__num section__num--light reveal" data-reveal>04</span>
+          <h2 class="section__title section__title--light reveal" data-reveal>双智能体，也可以组 AI 团队</h2>
+          <p class="section__sub section__sub--light reveal" data-reveal>OpenClaw 和 Hermes 是两个队长型 Agent。需要处理复杂项目时，它们可以分别创建新的 Agent，组成多层级团队，做任务编排、并行协作和结果汇总。</p>
+        </div>
+        <div class="agent-cards">
+          <article class="agent-card agent-card--lob reveal" data-reveal>
+            <div class="agent-card__hero">🦞</div>
+            <h3>OpenClaw</h3>
+            <p>你的效率执行官。擅长整理资料、生成内容、日常问答、任务拆解和信息归纳，也可以创建执行型子 Agent。</p>
+            <ul>
+              <li>任务拆解与执行</li>
+              <li>信息整理与归纳</li>
+              <li>创建执行子 Agent</li>
+            </ul>
+          </article>
+          <article class="agent-card agent-card--hermes reveal" data-reveal>
+            <div class="agent-card__hero">🦞</div>
+            <h3>Hermes</h3>
+            <p>你的策略顾问。像信使一样连接信息、工具和决策，适合深度分析、复杂方案、长链路推理，也可以创建策略型子 Agent。</p>
+            <ul>
+              <li>复杂方案与评估</li>
+              <li>文档撰写与优化</li>
+              <li>创建策略子 Agent</li>
+            </ul>
+          </article>
+        </div>
+        <div class="team-builder reveal" data-reveal aria-label="可以组 AI 团队">
+          <div class="team-builder__copy">
+            <span>多 Agent 模式</span>
+            <h3>可以组 AI 团队，不只是一对一聊天</h3>
+            <p>一个人发起任务，OpenClaw 和 Hermes 可以各自创建新的 Agent：研究、写作、审查、执行分头跑，最后由 HerClaw 合并结果，回到同一个 IM 会话里。</p>
+          </div>
+          <div class="team-builder__flow" aria-label="多 Agent 团队工作流">
+            <div><b>OpenClaw</b><span>创建执行子 Agent</span></div>
+            <i>→</i>
+            <div><b>Hermes</b><span>创建策略子 Agent</span></div>
+            <i>→</i>
+            <div><b>子 Agent</b><span>并行协作</span></div>
+            <i>→</i>
+            <div><b>HerClaw</b><span>汇总交付</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills">
+      <div class="section__head">
+        <span class="section__num reveal" data-reveal>05</span>
+        <h2 class="section__title reveal" data-reveal>本地 Skills，把能力做成可执行任务</h2>
+        <p class="section__sub reveal" data-reveal>不用每次从零写长 prompt。一个任务跑顺之后，就可以被团队复用、调整和扩展。</p>
+      </div>
+      <div class="skills__layout">
+        <div class="flow reveal" data-reveal aria-label="HerClaw 工作流">
+          <div><span>1</span><b>IM 请求</b><p>一句话派活，可少写 prompt。</p></div>
+          <i>→</i>
+          <div><span>2</span><b>HerClaw 调度</b><p>选择小龙虾或 Hermes 执行。</p></div>
+          <i>→</i>
+          <div><span>3</span><b>本地 Skills</b><p>PPT、合同、投标、纪要、简报。</p></div>
+          <i>→</i>
+          <div><span>4</span><b>回到 IM</b><p>结果发回私聊或群聊。</p></div>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-tile reveal" data-reveal><span>▤</span><b>文档处理</b></article>
+          <article class="skill-tile reveal" data-reveal><span>▦</span><b>表格分析</b></article>
+          <article class="skill-tile reveal" data-reveal><span>◉</span><b>会议纪要</b></article>
+          <article class="skill-tile reveal" data-reveal><span>↻</span><b>流程自动化</b></article>
+          <article class="skill-tile reveal" data-reveal><span>?</span><b>知识问答</b></article>
+          <article class="skill-tile reveal" data-reveal><span>🔔</span><b>通知提醒</b></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section audience" id="audience">
+      <div class="section__head">
+        <span class="section__num reveal" data-reveal>06</span>
+        <h2 class="section__title reveal" data-reveal>适合已经知道想让 AI 做什么的人</h2>
+      </div>
+      <div class="audience__grid">
+        <article class="aud-card reveal" data-reveal><b>中小团队</b><p>没有专门 AI 工程师，也想把 AI 放进日常协作。</p></article>
+        <article class="aud-card reveal" data-reveal><b>自由职业者</b><p>处理合同、方案、客户资料和汇报材料。</p></article>
+        <article class="aud-card reveal" data-reveal><b>办公室团队</b><p>需要常在线 IM AI 助手，减少重复整理和写作。</p></article>
+        <article class="aud-card reveal" data-reveal><b>教育 / 家庭</b><p>希望 AI 做解释型辅导，讲步骤，也讲为什么。</p></article>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact-band__inner reveal" data-reveal>
+        <span class="footer__lob" aria-hidden="true">🦞</span>
+        <p>一句话介绍</p>
+        <h2>HerClaw 让团队不用搭服务器，也能拥有一个常在线、能处理具体任务的 AI 队友。</h2>
+        <a class="btn btn--lime" href="mailto:hello@herclaw.local"><span aria-hidden="true">✉</span>联系试用</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bar">
+      <span><span class="footer__logo">🦞</span> HerClaw · Local AI teammate for multi-IM teams</span>
+      <span>页面演示版 · <button class="egg-hint__btn" id="hintButton" type="button" aria-label="显示彩蛋提示">🥚</button></span>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

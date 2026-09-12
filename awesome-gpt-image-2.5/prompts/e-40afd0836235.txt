@@ -1,0 +1,7 @@
+“Highly detailed technical blueprint sketch and realistic 3D–render fusion of a custom modified car 2027 BMW iM3.
+Transform the car into a tuned concept blueprint with an aggressive lowered stance, wide-body aesthetic (adapted to match the real car’s form), and bold racing stripe accents matching or enhancing the original photo colors.
+Add large aftermarket-style wheels inspired by the car in the photo (accurate spoke design & size), sharp LED-like lighting details, and sporty aerodynamic additions such as front spoiler, side skirts, rear diffuser, and small spoiler — all adjusted realistically to the BMW iM3’s geometry.
+Surround the main render with precise engineering-style blueprint elements: multiple orthographic views (front, rear, side, top) derived from the reference photo, construction lines, mm-dimensions, exploded-view details for wheels, suspension, and body kit components.
+Art style combines pencil/ink drafting with fine cross-hatching, clean annotations, and a photorealistic shaded center render.
+Blueprint background in soft light-blue or sepia technical-paper texture, ultra-detailed, professional automotive concept-design composition.
+--ar 9:16 --stylize 300 --v 6 --q 2”

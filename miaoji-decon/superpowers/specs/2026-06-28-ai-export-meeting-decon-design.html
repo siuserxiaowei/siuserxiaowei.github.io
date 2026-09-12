@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI Export Meeting Deconstruction Design | miaoji-decon</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="AI Export Meeting Deconstruction Design" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。" />
+<meta property="og:description" content="用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。" />
+<link rel="canonical" href="https://siuserxiaowei.github.io/miaoji-decon/superpowers/specs/2026-06-28-ai-export-meeting-decon-design.html" />
+<meta property="og:url" content="https://siuserxiaowei.github.io/miaoji-decon/superpowers/specs/2026-06-28-ai-export-meeting-decon-design.html" />
+<meta property="og:site_name" content="miaoji-decon" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AI Export Meeting Deconstruction Design" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"用途：妙记拆解复盘系统：监控飞书妙记，把会议自动拆成可学习、可追问、可归档的深度复盘。 状态：网页可访问；功能未验收。","headline":"AI Export Meeting Deconstruction Design","url":"https://siuserxiaowei.github.io/miaoji-decon/superpowers/specs/2026-06-28-ai-export-meeting-decon-design.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/miaoji-decon/assets/css/style.css?v=6b8efbad724bee2ddd04b8ff75811bfffc60d655">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/miaoji-decon/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://siuserxiaowei.github.io/miaoji-decon/">miaoji-decon</a></h1>
+      
+
+      <h1 id="ai-export-meeting-deconstruction-design">AI Export Meeting Deconstruction Design</h1>
+
+<h2 id="context">Context</h2>
+
+<p>The input meeting is a high-density offline sharing session about AI export entrepreneurship, product leverage, learning in public, and X/Twitter creator growth. It exposes a gap in the current <code class="language-plaintext highlighter-rouge">miaoji-decon</code> skill:</p>
+
+<ul>
+  <li>The skill is strong for Feishu Minutes scan/manual URL flows, but does not clearly describe how to handle pasted meeting text when no <code class="language-plaintext highlighter-rouge">minute_token</code> is available.</li>
+  <li>The scene taxonomy mentions <code class="language-plaintext highlighter-rouge">出海</code> in the template but the main skill routing table does not make <code class="language-plaintext highlighter-rouge">出海</code> or <code class="language-plaintext highlighter-rouge">自媒体运营</code> first-class routes.</li>
+  <li>The public repository correctly avoids publishing real meeting deconstructions, but it lacks a validation guard that prevents future accidental public examples or broken template structure.</li>
+</ul>
+
+<p>This change keeps real deconstruction output private. The public repo should improve the workflow, template, and validation layer only.</p>
+
+<h2 id="goals">Goals</h2>
+
+<ol>
+  <li>Add an explicit pasted-text/manual-draft mode for meeting notes supplied as local text, attachments, or transcript snippets.</li>
+  <li>Add first-class scene routing for <code class="language-plaintext highlighter-rouge">出海</code> and <code class="language-plaintext highlighter-rouge">自媒体运营</code>, with emphasis on product leverage, public learning, platform distribution, conversion, and 7-day execution.</li>
+  <li>Make the output template better for entrepreneurial sharing sessions without turning every meeting into noisy labels.</li>
+  <li>Add a lightweight repository validator so future changes can check privacy, template shape, required command caveats, and static page safety.</li>
+  <li>Update the README with the new workflow and validation command.</li>
+</ol>
+
+<h2 id="non-goals">Non-Goals</h2>
+
+<ul>
+  <li>Do not commit the actual pasted meeting content, transcript, or generated private digest to this public repository.</li>
+  <li>Do not implement Feishu API behavior directly in Python; <code class="language-plaintext highlighter-rouge">lark-cli</code> remains the integration boundary.</li>
+  <li>Do not change <code class="language-plaintext highlighter-rouge">docs/enc.json</code> or publish decrypted/internal meeting data.</li>
+  <li>Do not add a package manager, web framework, or build step.</li>
+</ul>
+
+<h2 id="product-behavior">Product Behavior</h2>
+
+<h3 id="pasted-text-mode">Pasted-Text Mode</h3>
+
+<p>When the user provides pasted text, local transcript files, or exported meeting notes without a Feishu URL/token, the skill should enter draft-only mode:</p>
+
+<ol>
+  <li>Read all supplied local text files before analysis.</li>
+  <li>Treat the material as source text, not as an already-verified transcript.</li>
+  <li>Generate the learning digest in the same fixed structure as normal.</li>
+  <li>Mark source boundaries clearly: no <code class="language-plaintext highlighter-rouge">minute_token</code>, no Feishu Doc/Base write, no GitHub public link.</li>
+  <li>Save only to a private destination when the user or local workflow asks for persistence.</li>
+</ol>
+
+<h3 id="scene-routing">Scene Routing</h3>
+
+<p><code class="language-plaintext highlighter-rouge">出海</code> and <code class="language-plaintext highlighter-rouge">自媒体运营</code> should be first-class scene types:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">出海</code>: emphasize leverage, pricing/geography differences, product validation, payments, support load, distribution, and risk.</li>
+  <li><code class="language-plaintext highlighter-rouge">自媒体运营</code>: emphasize platform mechanics, cold start, account positioning, content formats, conversion paths, monetization, and misleading shortcuts to avoid.</li>
+</ul>
+
+<p>Mixed scenes are allowed. For this meeting type, likely scene tags are <code class="language-plaintext highlighter-rouge">[大佬分享, 知识, 出海, 自媒体运营]</code>.</p>
+
+<h3 id="output-emphasis">Output Emphasis</h3>
+
+<p>For entrepreneurial sharing meetings, the digest should extract:</p>
+
+<ul>
+  <li>5-8 independent takeaways for fast reading.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">道法术器势</code> table where each row ends in an action.</li>
+  <li>Deep-dive knowledge points that distinguish speaker claims from model interpretation.</li>
+  <li>Reusable methods with a <code class="language-plaintext highlighter-rouge">不要误读成</code> warning.</li>
+  <li>A 7-day assignment plan that turns learning into a small validation loop.</li>
+  <li>People/resources as a resource map, while avoiding unverified personal claims.</li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>The repository remains a static skill/documentation repository.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/SKILL.md</code> owns triggers, modes, scene routing, external command rules, and safety boundaries.</li>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/template.md</code> owns the visible digest structure and writing standard.</li>
+  <li><code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/workflow.md</code> owns command-level operational details and fallback handling.</li>
+  <li><code class="language-plaintext highlighter-rouge">scripts/validate_repo.py</code> owns repository-level static checks.</li>
+  <li><code class="language-plaintext highlighter-rouge">tests/test_validate_repo.py</code> gives the validator deterministic coverage without extra dependencies.</li>
+  <li><code class="language-plaintext highlighter-rouge">README.md</code> remains the human entry point and should mention pasted-text mode plus validation.</li>
+</ul>
+
+<h2 id="quality-gates">Quality Gates</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">python3 -m unittest discover -s tests -v</code></li>
+  <li><code class="language-plaintext highlighter-rouge">python3 scripts/validate_repo.py</code></li>
+  <li><code class="language-plaintext highlighter-rouge">python3 -m compileall .</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rg -n "token|secret|password|access_key|authorization|appSecret|accessToken" .</code></li>
+</ul>
+
+<p>The secret scan may match documented placeholder text and the password input in <code class="language-plaintext highlighter-rouge">docs/index.html</code>; those are acceptable if no real secrets appear.</p>
+
+<h2 id="parallel-work-slices">Parallel Work Slices</h2>
+
+<p>To support parallel subagent work, file ownership is split as follows:</p>
+
+<ul>
+  <li>Worker A: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/SKILL.md</code></li>
+  <li>Worker B: <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/workflow.md</code> and <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/references/template.md</code></li>
+  <li>Worker C: <code class="language-plaintext highlighter-rouge">scripts/validate_repo.py</code> and <code class="language-plaintext highlighter-rouge">tests/test_validate_repo.py</code></li>
+  <li>Worker D: <code class="language-plaintext highlighter-rouge">README.md</code> and <code class="language-plaintext highlighter-rouge">skills/miaoji-decon/examples/README.md</code></li>
+</ul>
+
+<p>Workers must not edit files outside their assigned set. The controller integrates and runs the global quality gates.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

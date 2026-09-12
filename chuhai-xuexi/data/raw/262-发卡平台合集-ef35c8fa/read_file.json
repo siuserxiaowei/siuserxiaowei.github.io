@@ -1,0 +1,12 @@
+{
+  "content": "262：发卡平台合集  \n我看到有一个发卡平台：[dtyuedan.cn](https://dtyuedan.cn/)，一个月可以看到的预估流量是2.8万；  \n然后我发现它的导入流量很有趣：  \n![image]()\n几乎这些站点全部都是gpt充值的页面：  \n![image]()\n也就是这些做充值业务的，他们是用这个发卡平台来收款交易；  \n![image]()\n  \n因为我在上面看到[dtyuedan.cn](https://dtyuedan.cn/)的导入流量里，知乎排名在前面，也就是有很多[dtyuedan.cn](https://dtyuedan.cn/)的链接出现在知乎并发生了跳转。  \n所以我去知乎查了一下：  \n![image]()\n我发现这朋友直接把卡密购买链接放在知乎回答里了。  \n  \n所以，如果你有卡密平台链接，进行类似的搜索就能发现一些奇奇怪怪的小众业务：  \n![image]()\n![image]()\n![image]()\n![image]()\n![image]()\n  \n当然，还可以像我们之前提到的，去查询这些发卡平台的导入流量，这些导入流量很多都是直接的业务下单页面的域名：  \n![image]()\n  \n不过，很多流量其实经常不能被统计到，很多发卡平台也是小平台，数据不多；  \n所以，如果我们要做这方面的挖掘，需要多收集一些发卡平台。  \n  \n刚好我之前有收集了一些，统计了他们的流量，去除了一些没有数据的，还有30个平台，可以用来挖掘业务：  \n\n| 发卡平台域名 | 3个月可见流量 |\n| --- | --- |\n| [qianxun1688.com](https://qianxun1688.com/) | 375,814 |\n| [vifaka.com](https://vifaka.com/) | 158,662 |\n| [zaofaka.com](https://zaofaka.com/) | 122,513 |\n| [qufaka.net](https://qufaka.net/) | 99,583 |\n| [houfaka.com](https://houfaka.com/) | 79,607 |\n| [728fk.com](https://728fk.com/) | 53,242 |\n| [dtyuedan.cn](https://dtyuedan.cn/) | 45,370 |\n| [96ydw.com](https://96ydw.com/) | 38,934 |\n| [fkwlm.com](https://fkwlm.com/) | 18,812 |\n| [90yundian.com](https://90yundian.com/) | 18,184 |\n| [soufk.com](https://soufk.com/) | 17,520 |\n| [wcfaka.com](https://wcfaka.com/) | 16,200 |\n| [shop.autofaka.com](https://shop.autofaka.com/) | 15,330 |\n| [871faka.com](https://871faka.com/) | 13,185 |\n| [vip.yixunka.com](https://vip.yixunka.com/) | 10,867 |\n| [kuaifaka.com](https://kuaifaka.com/) | 8,563 |\n| [faka.cc](https://faka.cc/) | 5,972 |\n| [zhufaka.cn](https://zhufaka.cn/) | 3,987 |\n| [fakawang.org](https://fakawang.org/) | 3,676 |\n| [cdkaa.com](https://cdkaa.com/) | 3,291 |\n| [xiongmao212.com](https://xiongmao212.com/) | 2,956 |\n| [fakamiao.com](https://fakamiao.com/) | 2,945 |\n| [ncwmj.com](https://ncwmj.com/) | 2,233 |\n| [b8ka.com](https://b8ka.com/) | 2,111 |\n| [manfaka.com](https://manfaka.com/) | 1,606 |\n| [hmwdk.com](https://hmwdk.com/) | 1,430 |\n| [51fkba.com](https://51fkba.com/) | 1,213 |\n| [buy.jiyuanfaka.com](https://buy.jiyuanfaka.com/) | 989 |\n| [yilufaka.com](https://yilufaka.com/) | 586 |\n| [820faka.cn](https://820faka.cn/) | 260 |\n\n仅供大家参考使用。  ",
+  "content_format": "markdown",
+  "drive_id": "2581401869",
+  "file_id": "zCHen7Qys1MkFibnySRE1xt2iZijEYsmh",
+  "name": "262：发卡平台合集.otl",
+  "status": "ok",
+  "suffix": ".otl",
+  "warnings": [
+    "当需要对智能文档精细化操作 或 使用到完整格式信息和内容时，使用otl.block_query处理"
+  ]
+}

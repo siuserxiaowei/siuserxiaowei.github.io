@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="智策雷达：面向制造业与中小企业的 AI 政策搜索、画像匹配和政策简报工作台。" />
+    <meta name="author" content="siuser小伟" />
+    <title>智策雷达｜AI 政策搜索与申报助手</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="paper-noise" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="智策雷达首页">
+        <span class="brand-seal">策</span>
+        <span>
+          <strong>智策雷达</strong>
+          <small>POLICY RADAR / 2026</small>
+        </span>
+      </a>
+      <div class="masthead-status">
+        <span class="live-dot" id="healthDot"></span>
+        <span id="healthLabel">正在核验自动快照</span>
+        <time id="lastChecked">2026.08.04</time>
+      </div>
+      <div class="author-badge">作品作者：siuser小伟</div>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">知乎全球青年 Agent 内容征集 · AI 政策搜索与申报助手</p>
+          <h1>从政策海洋里，<br /><em>找出与你有关的那一条。</em></h1>
+          <p class="hero-lead">定时回到政府官方来源核验政策，识别关键字段，结合企业画像计算匹配度，并生成带来源证据的可执行政策简报。</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <div class="radar-ring ring-1"></div>
+          <div class="radar-ring ring-2"></div>
+          <div class="radar-ring ring-3"></div>
+          <div class="radar-beam"></div>
+          <span class="radar-core">AI</span>
+        </div>
+      </section>
+
+      <section class="search-command reveal delay-1" aria-label="政策搜索">
+        <label class="search-box" for="queryInput">
+          <span class="search-index">01</span>
+          <input id="queryInput" type="search" placeholder="试试：东莞制造企业有哪些人工智能支持政策？" autocomplete="off" />
+          <kbd>Enter</kbd>
+        </label>
+        <button class="primary-action" id="searchButton" type="button">开始研判 <span>→</span></button>
+      </section>
+
+      <section class="data-status" id="dataStatus" data-state="loading" aria-live="polite">
+        <div class="data-status-mark" aria-hidden="true"><span></span></div>
+        <div>
+          <strong id="dataStatusTitle">正在读取最近一次官方核验快照</strong>
+          <p id="dataStatusDetail">自动来源失败时保留上次成功数据，不用不完整结果覆盖可信快照。</p>
+        </div>
+        <span class="data-mode" id="dataMode">加载中</span>
+      </section>
+
+      <section class="metrics reveal delay-2" aria-label="数据概览">
+        <article><span>收录记录</span><strong id="metricTotal">0</strong><small>自动快照 + 人工基线</small></article>
+        <article><span>当前有效</span><strong id="metricActive">0</strong><small>按今天重新计算</small></article>
+        <article><span>画像匹配</span><strong id="metricMatched">0</strong><small>匹配度 ≥ 60</small></article>
+        <article><span>自动来源</span><strong id="metricSources">—</strong><small id="metricSourcesNote">正在核验</small></article>
+      </section>
+
+      <section class="workspace reveal delay-3">
+        <aside class="profile-panel" aria-labelledby="profileTitle">
+          <div class="section-heading">
+            <span>企业画像</span>
+            <small>PROFILE</small>
+          </div>
+          <h2 id="profileTitle">告诉雷达，你是谁</h2>
+          <p>画像只在当前浏览器内计算，不上传、不保存。</p>
+
+          <div class="field-grid">
+            <label>所在地区
+              <select id="profileRegion">
+                <option value="东莞">东莞</option>
+                <option value="广东">广东</option>
+                <option value="全国">全国</option>
+                <option value="江苏">江苏</option>
+              </select>
+            </label>
+            <label>所属行业
+              <select id="profileIndustry">
+                <option value="制造业">制造业</option>
+                <option value="人工智能">人工智能</option>
+                <option value="电子信息">电子信息</option>
+                <option value="软件服务">软件服务</option>
+                <option value="XR">XR 智能终端</option>
+              </select>
+            </label>
+            <label>企业规模
+              <select id="profileScale">
+                <option value="中小企业">中小企业</option>
+                <option value="专精特新">专精特新</option>
+                <option value="规上企业">规上企业</option>
+                <option value="初创团队">初创团队</option>
+              </select>
+            </label>
+            <label>发展诉求
+              <select id="profileGoal">
+                <option value="数字化转型">数字化转型</option>
+                <option value="人工智能应用">人工智能应用</option>
+                <option value="资金申报">资金申报</option>
+                <option value="品牌与质量">品牌与质量</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>现有能力</legend>
+            <label class="check"><input type="checkbox" value="研发" checked /><span>研发投入</span></label>
+            <label class="check"><input type="checkbox" value="数据" checked /><span>数据基础</span></label>
+            <label class="check"><input type="checkbox" value="场景" /><span>应用场景</span></label>
+            <label class="check"><input type="checkbox" value="专利" /><span>知识产权</span></label>
+          </fieldset>
+
+          <button class="profile-action" id="matchButton" type="button">更新画像匹配</button>
+          <div class="privacy-note"><span>✓</span> 本地计算 · 不收集企业敏感信息</div>
+        </aside>
+
+        <section class="results-panel" aria-labelledby="resultsTitle">
+          <div class="results-toolbar">
+            <div>
+              <div class="section-heading"><span>智能检索</span><small>INTELLIGENCE</small></div>
+              <h2 id="resultsTitle">政策机会清单</h2>
+            </div>
+            <div class="filters" aria-label="政策筛选">
+              <select id="regionFilter" aria-label="地区筛选">
+                <option value="全部">全部地区</option>
+                <option value="全国">全国</option>
+                <option value="广东">广东</option>
+                <option value="东莞">东莞</option>
+                <option value="江苏">江苏</option>
+              </select>
+              <select id="statusFilter" aria-label="状态筛选">
+                <option value="全部">全部状态</option>
+                <option value="有效">有效</option>
+                <option value="待核验">待核验</option>
+                <option value="已截止">已截止</option>
+              </select>
+            </div>
+          </div>
+          <div id="resultSummary" class="result-summary" role="status"></div>
+          <div id="policyList" class="policy-list"></div>
+          <div id="emptyState" class="empty-state" hidden>
+            <span>未检出</span>
+            <h3>换一个关键词，或放宽地区与状态条件。</h3>
+          </div>
+        </section>
+
+        <aside class="brief-panel" aria-labelledby="briefTitle">
+          <div class="section-heading inverse"><span>行动简报</span><small>BRIEFING</small></div>
+          <h2 id="briefTitle">把政策变成下一步</h2>
+          <div class="brief-meta">
+            <span id="briefProfile">东莞 · 制造业 · 中小企业</span>
+            <span id="briefTime">刚刚生成</span>
+          </div>
+          <div id="briefContent" class="brief-content"></div>
+          <button class="export-action" id="exportButton" type="button">导出 Markdown 简报 <span>↗</span></button>
+          <p id="exportStatus" class="export-status" role="status" aria-live="polite"></p>
+          <p class="brief-disclaimer">系统结论用于信息筛选，不替代主管部门正式解释。每条建议均附官方来源。</p>
+        </aside>
+      </section>
+
+      <section class="method-strip reveal" aria-label="技术路线">
+        <div><span>01</span><strong>定时核验</strong><small>官方 API / 每日 4 次</small></div>
+        <i>→</i>
+        <div><span>02</span><strong>结构抽取</strong><small>地区 / 对象 / 时限 / 支持</small></div>
+        <i>→</i>
+        <div><span>03</span><strong>画像匹配</strong><small>多维加权 / 可解释证据</small></div>
+        <i>→</i>
+        <div><span>04</span><strong>安全发布</strong><small>失败保旧 / 原文追溯</small></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>智策雷达 · AI 政策搜索与申报助手</span>
+      <span>设计与开发：siuser小伟 · 2026</span>
+    </footer>
+
+    <dialog id="policyDialog" class="policy-dialog">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

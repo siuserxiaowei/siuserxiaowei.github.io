@@ -1,0 +1,1252 @@
+[
+  {
+    "source": "ai-app-export-learning-hub",
+    "target": "chuhai-xuexi",
+    "title": "AI App 出海学习资料",
+    "path": "collections/ai-app-export",
+    "sourceCommit": "c0527c48b281adea8aecccfdb8f319b258d09bea",
+    "originalPage": "https://siuserxiaowei.github.io/ai-app-export-learning-hub/",
+    "files": [
+      {
+        "path": ".gitignore",
+        "sha256": "47f4957fadb4d2e37ab3b517d26e8054b415d9a186b80a7c046cd8833efc14a3",
+        "bytes": 21
+      },
+      {
+        "path": ".nojekyll",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "bytes": 1
+      },
+      {
+        "path": "ATTRIBUTION.html",
+        "sha256": "5c511361f3f0bd4282d49f9143c0c496b6c81d04b2206e6838609680caf8dff1",
+        "bytes": 3292
+      },
+      {
+        "path": "ATTRIBUTION.md",
+        "sha256": "52f93f34f9abbf8064bf730c103b89c5ba55783703f9f0a82a9c9185e928e1e6",
+        "bytes": 1323
+      },
+      {
+        "path": "CONTRIBUTING.html",
+        "sha256": "502473dba193c1a1e5137c075321e1f00aaa6ba1c8c38ecaf12e64090d5c149e",
+        "bytes": 4569
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "sha256": "f0c701cf4cdea5f24f622b2fd307e64211847fc7389dc7f8fd63e4fd28ff89e5",
+        "bytes": 2164
+      },
+      {
+        "path": "DELIVERY_INDEX.html",
+        "sha256": "d09b730210742160210d676a612344772da2f5388de0c230c7e7e5e0866961bd",
+        "bytes": 16432
+      },
+      {
+        "path": "DELIVERY_INDEX.md",
+        "sha256": "0e42eb785fd79ccc1c6bd6d9627fa75f590b375d84f3e66ec8616a2f87283c84",
+        "bytes": 11623
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "6de22c2995db272b1c70a5ac1973bcccac119685f9ae5ba237de02686f78ca22",
+        "bytes": 803
+      },
+      {
+        "path": "LICENSE.html",
+        "sha256": "30e5ec0872d6fac183b9db506bf05a6de416bcdb080a281c0f26ce047c02c394",
+        "bytes": 1726
+      },
+      {
+        "path": "QA_REPORT.html",
+        "sha256": "09cd85b7ddc1f3d017f6e10ff46bcef20b3c856a63c456d45c26b283811e3e7c",
+        "bytes": 19237
+      },
+      {
+        "path": "QA_REPORT.md",
+        "sha256": "a25d649ba13acf647206a6b4e37914f39a469e906dc782bcb982993d9af3ead3",
+        "bytes": 14513
+      },
+      {
+        "path": "README.html",
+        "sha256": "3bc1eb81caac94bc42786e82279a8c9e0339e0629c4de6a42e0532c20f6a35e1",
+        "bytes": 13728
+      },
+      {
+        "path": "README.md",
+        "sha256": "001976c3f5a01b3eccb0e4c6da479234841f3c1bf0e3fee96df14dc23e8385ab",
+        "bytes": 12967
+      },
+      {
+        "path": "ads.txt.template",
+        "sha256": "946ee6e7bc09dc0da96c5a5bfe47a3e3c1df17d0330fee6d983c5644d7f72038",
+        "bytes": 60
+      },
+      {
+        "path": "data/opportunity-scorecard.csv",
+        "sha256": "27f0a6b999b852396b14734d63118677ee1eeecfe8aed461a5f8c39a7c4c0bc2",
+        "bytes": 5235
+      },
+      {
+        "path": "docs/7-day-learning-plan.html",
+        "sha256": "df7e30d68301b5b2235b760a1a50e019a9333b468d94801b8181f8f9029d6c1b",
+        "bytes": 11244
+      },
+      {
+        "path": "docs/7-day-learning-plan.md",
+        "sha256": "ec80475e28fc90419588dcbfeec1d37ce3ddb5c0180ec47ce5f78c122b9cf7ad",
+        "bytes": 6857
+      },
+      {
+        "path": "docs/authorized-transcript-workflow.html",
+        "sha256": "47eb9ddf723e5e5e21b6ef3c6ac37a1204be7dd9458ac4a0678cb21da5469673",
+        "bytes": 9148
+      },
+      {
+        "path": "docs/authorized-transcript-workflow.md",
+        "sha256": "ba74c93db31824d41dd036ace0ab6d00bc3b177114cc8f9df3b4b79f670705f0",
+        "bytes": 4837
+      },
+      {
+        "path": "docs/bilingual-study-note.html",
+        "sha256": "43cc6eeedce2b6f1dc1bc24f6e5866aaddc66a947b3cb5c6e8c54f9716d33c0d",
+        "bytes": 12107
+      },
+      {
+        "path": "docs/bilingual-study-note.md",
+        "sha256": "113ce75f7782759e2d1ed6931da2a5434f6b623f4b1acae2d1013360ef556eda",
+        "bytes": 8233
+      },
+      {
+        "path": "docs/brand-teardown-handbook.html",
+        "sha256": "95e08f0310806afc223eb3c905e3aab604336785b7229e9e51edb06cef833140",
+        "bytes": 23024
+      },
+      {
+        "path": "docs/brand-teardown-handbook.md",
+        "sha256": "f3b7cf936f5e68b3ac5c182f4dd357833924c45f3ee3d7c0f5878245c3c2f26c",
+        "bytes": 15116
+      },
+      {
+        "path": "docs/case-study-workbook.html",
+        "sha256": "a0dc994b0375a64d67c59179c17c33b221fd831c0e499f11566a849185495ffd",
+        "bytes": 39917
+      },
+      {
+        "path": "docs/case-study-workbook.md",
+        "sha256": "191501870639fa9eda365410356eff5ed4828d8247ea4c5ebc075425209e62df",
+        "bytes": 29150
+      },
+      {
+        "path": "docs/facilitator-guide.html",
+        "sha256": "d7b5e7a7151a54926984d74fabe79e8cdb67ca4a3081c6ca3d2bf537eafc95e6",
+        "bytes": 11688
+      },
+      {
+        "path": "docs/facilitator-guide.md",
+        "sha256": "de3f36cc233c2e7ad186a856a5275e0e273f4c657f48b54b9a15291d9857155a",
+        "bytes": 8064
+      },
+      {
+        "path": "docs/final-completion-audit.html",
+        "sha256": "77093e768013171e62e0875b9137f8e040d3176cfb646ff56f4116ed3bbb811c",
+        "bytes": 16435
+      },
+      {
+        "path": "docs/final-completion-audit.md",
+        "sha256": "f95249d1884e48a205ca07131df49b3ceec0dd1ea00da0a5171426e0d6835e5b",
+        "bytes": 9387
+      },
+      {
+        "path": "docs/goal-coverage-matrix.html",
+        "sha256": "96bd8dab7aa30ebb2969a4238c836c4e69c92ae04f9152a7eb98d27afdbc2d97",
+        "bytes": 6264
+      },
+      {
+        "path": "docs/goal-coverage-matrix.md",
+        "sha256": "b0232d3f9035a6d20644efcd165cbb08962633cdda556b57f5fb646ebbdf4211",
+        "bytes": 3574
+      },
+      {
+        "path": "docs/google-ads-and-adsense-setup.html",
+        "sha256": "f8a392334f29f6d7ff77dc725d84842baf4802bfeb4e1a1d186610404f87772d",
+        "bytes": 7981
+      },
+      {
+        "path": "docs/google-ads-and-adsense-setup.md",
+        "sha256": "ec4db32a77906c4ab9557344cb6983a38808b079f6e12c11e022a2a5736dcee3",
+        "bytes": 4140
+      },
+      {
+        "path": "docs/google-ads-campaign-plan.html",
+        "sha256": "084bf5869d650eb24ee80c085198c458152751ca97d4e9bd1efcab719a3df13d",
+        "bytes": 6494
+      },
+      {
+        "path": "docs/google-ads-campaign-plan.md",
+        "sha256": "4979ee799dc20f1953a428f4152fd0580306f8c75e8f6a12c5bae7ef05664a4b",
+        "bytes": 3104
+      },
+      {
+        "path": "docs/index.html",
+        "sha256": "94fded169fa269efeb328fbcb86d3d011894b2c540a925ca5b2b7da9536108f5",
+        "bytes": 3449
+      },
+      {
+        "path": "docs/knowledge-source-register.html",
+        "sha256": "7398b6657508d6ffcc9a882a5dcf658c73e31e6d3a931c028aa04b4615c23a86",
+        "bytes": 15202
+      },
+      {
+        "path": "docs/knowledge-source-register.md",
+        "sha256": "ad79c13a1f1bf64ed8b702f4e5ba1de7a828e355699fe2a74f234ce05949e303",
+        "bytes": 10202
+      },
+      {
+        "path": "docs/learning-guide.html",
+        "sha256": "d57beb923765bd0666074c708392198d40fcf5ed96ba471e628e31dff420ce11",
+        "bytes": 30505
+      },
+      {
+        "path": "docs/learning-guide.md",
+        "sha256": "75ffb98fe1558c9ed46f5d6b747424f0afc24bc7555a51519b5b107c7e0f9fdd",
+        "bytes": 19896
+      },
+      {
+        "path": "docs/opc-app-playbook.html",
+        "sha256": "4da809218f4b522c16cad6b88d18156d071ca221ccaecbb1e679f573a69ee9d4",
+        "bytes": 19433
+      },
+      {
+        "path": "docs/opc-app-playbook.md",
+        "sha256": "6eda8fcae01d211f8241decb2948d0ad5810a89c34820f836e0862d9e01b9127",
+        "bytes": 12238
+      },
+      {
+        "path": "docs/public-content-pack.html",
+        "sha256": "8f4dc0b1ceda157e277edb326d5648c6d17b1aa1ac36e1a0ebcc507f14e9b921",
+        "bytes": 34978
+      },
+      {
+        "path": "docs/public-content-pack.md",
+        "sha256": "71fa98f24509283429287951013452c82814d8b0f0886ea7bf65b3ce668b74be",
+        "bytes": 25064
+      },
+      {
+        "path": "docs/research-evidence-register.html",
+        "sha256": "55041b93a09fdc54c267f77431ea877ed3ce559ff6e3afca864921b959595713",
+        "bytes": 17402
+      },
+      {
+        "path": "docs/research-evidence-register.md",
+        "sha256": "948cff82d95313a85d58ac62f82c408bde480431b17d077c52c3fcb9a5c17852",
+        "bytes": 9459
+      },
+      {
+        "path": "docs/source-brief.html",
+        "sha256": "1415d37588d29cfb51e4cd2ffbd30a93e6f19f224e34d6abd911f26019c27ae5",
+        "bytes": 40172
+      },
+      {
+        "path": "docs/source-brief.md",
+        "sha256": "676020aed843dd1c6ba2c6c206852bb7269c425eddb659b6e08d7f00f52ccf68",
+        "bytes": 31020
+      },
+      {
+        "path": "index.html",
+        "sha256": "15a855d02d89a282d84a41e76f379cbf4db29c10bb59e6846bc23ebbe4f8631a",
+        "bytes": 22293
+      },
+      {
+        "path": "llms.txt",
+        "sha256": "50a8e54c49e486306d66a3ca0d2e2391f67716502224fb1299e75c3bf10e559a",
+        "bytes": 716
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "0cfa6a7cb2b9c18f70f87d004de976f75db0d6ed0e6533399e0fa14a7ff228cb",
+        "bytes": 68
+      },
+      {
+        "path": "scripts/render_markdown_pages.py",
+        "sha256": "4c00d8f0c492c5b220dcf4b4c5905f061324c91918c8cf3c3590b3af8c94cae1",
+        "bytes": 15903
+      },
+      {
+        "path": "scripts/render_root_index.py",
+        "sha256": "9dca2fad9a03755dbea2cacde5d649cddfd695112be583e5b9204b7050ab44fb",
+        "bytes": 2169
+      },
+      {
+        "path": "scripts/verify_package.py",
+        "sha256": "1c75bd0d526c6d8f2117638993c596ffa24dc321d5e045a1f6d1dbc79fa8bf73",
+        "bytes": 23647
+      },
+      {
+        "path": "site/app.js",
+        "sha256": "f02a365d8eafffee455786fd6c95f310ac8e64766d3ff120c34b9a0ffad01761",
+        "bytes": 19110
+      },
+      {
+        "path": "site/content-advanced-cards.js",
+        "sha256": "39c28e2d5422a254d448c511c7a0fd71d826d0d86bacd92699834267593c1ea6",
+        "bytes": 18191
+      },
+      {
+        "path": "site/content-toolkits.js",
+        "sha256": "65781181452428718b9402c3a12399a2e022a839d2bd6bc3dd233d0c7217550e",
+        "bytes": 5807
+      },
+      {
+        "path": "site/content-web-extra.js",
+        "sha256": "0dccd7a5ca5fef94a08d372147a98a47d01fd896d3536336be4be6066769bf80",
+        "bytes": 10687
+      },
+      {
+        "path": "site/content.js",
+        "sha256": "a58a63298231898c4d31d681a9b4cea9c9fbd7f3fff623d22487c275b077c51c",
+        "bytes": 34554
+      },
+      {
+        "path": "site/google-ads-config.example.js",
+        "sha256": "91e1ac5fefcc87825b9618d9ef7ab14fbb92cd959461f845cf4e54fb12d08840",
+        "bytes": 291
+      },
+      {
+        "path": "site/google-ads-config.js",
+        "sha256": "add7dc1a8100652a1c1d3183e7c4d212d4ea02595527266490a7082bf04cee7a",
+        "bytes": 185
+      },
+      {
+        "path": "site/index.html",
+        "sha256": "ae40abddc94fbfafc27c6a3ed8803ded8180d2fdef12c9daf2e96294148ddb78",
+        "bytes": 22258
+      },
+      {
+        "path": "site/privacy.html",
+        "sha256": "597e67d000f6a3966ec77748429ec8df2607fb660f7becd05c3a4afc72d1676e",
+        "bytes": 2998
+      },
+      {
+        "path": "site/root-paths.js",
+        "sha256": "7bf7c9f8486eef5973c52352e6eb3f6e93653799d61a8bddf439ec036d1e0e77",
+        "bytes": 726
+      },
+      {
+        "path": "site/styles.css",
+        "sha256": "998554641eb4341c42a733c70bfae6ec42d38da435adb4666c7748baf19ff967",
+        "bytes": 29546
+      },
+      {
+        "path": "site/terms.html",
+        "sha256": "5c1e341a5c8a9b7461d34361f0b34c577b63fdb6b53c63bfb8a28a86b365ce89",
+        "bytes": 2364
+      },
+      {
+        "path": "site/tracking.js",
+        "sha256": "3024134385c27a66f88d8ecc79b2f4f538cb131266cc32a6c9c5c1cf8a8c8b7d",
+        "bytes": 1375
+      },
+      {
+        "path": "sitemap.xml",
+        "sha256": "c2e8c3ffbd3b6d33a794caa10c3703e3757b023bebbc19a37c9e407804c928f3",
+        "bytes": 4942
+      }
+    ]
+  },
+  {
+    "source": "moneyhunter-learning-hub",
+    "target": "chuhai-xuexi",
+    "title": "MoneyHunter 学习资料",
+    "path": "collections/moneyhunter",
+    "sourceCommit": "6d5943455bbde25e247655ccfa1bb8ee54d569b3",
+    "originalPage": "https://siuserxiaowei.github.io/moneyhunter-learning-hub/",
+    "files": [
+      {
+        "path": ".gitignore",
+        "sha256": "53f0c100a33a56ebada040287b3d0f5dbab21c6ec6b66209fec5515c508f1144",
+        "bytes": 29
+      },
+      {
+        "path": "README.md",
+        "sha256": "ade53065023220349226fecf081584edd5586f24d19d9707043e46f9f28c2909",
+        "bytes": 4653
+      },
+      {
+        "path": "data/moneyhunter-links.json",
+        "sha256": "aa7c4bf1fe252da1f1b6d6ad9be9a1ba2800abda161349f955d87bf417327024",
+        "bytes": 1914951
+      },
+      {
+        "path": "data/moneyhunter-manifest.json",
+        "sha256": "2a726f08079a13f81efbe53801b6dd933e2d86883a9b3f7ebf58ceee66730af4",
+        "bytes": 5697034
+      },
+      {
+        "path": "docs/moneyhunter-file-index.md",
+        "sha256": "7a6901568e9941e4ec4892a91dbaccd6a6325d63db295e0eaa9d174dae473b41",
+        "bytes": 36186
+      },
+      {
+        "path": "docs/moneyhunter-growth-map.md",
+        "sha256": "56fcac8a30e2699beeb19cf81661c8ac28beb3a246e9c29d4285b0df8ad05bf4",
+        "bytes": 2370
+      },
+      {
+        "path": "docs/moneyhunter-overview.md",
+        "sha256": "7d519007ab09202e601684caaa5b6360e02e51828d108a453349e2cdfa07e431",
+        "bytes": 3673
+      },
+      {
+        "path": "docs/moneyhunter-risk-notes.md",
+        "sha256": "3b26430b1a7a4cf9447b06100cda5a4f5b67699d4d340b802af399d15c053847",
+        "bytes": 1278
+      },
+      {
+        "path": "index.html",
+        "sha256": "00d98a722b37783bcc8928a695c8f57348c64bf086a062a1d230a82b5f01a568",
+        "bytes": 4303
+      },
+      {
+        "path": "raw/2023/2023-03-21.md",
+        "sha256": "01e7a380b3389ecc7123f05bd3327901587ecdbeb0dc0112c8810bb6ca420d4e",
+        "bytes": 2330
+      },
+      {
+        "path": "raw/2023/2023-03-22.md",
+        "sha256": "90781773110d5d8218bd5f1f545b5026d6cdf4ff276a06ae7f4ae08594cd0d95",
+        "bytes": 2544
+      },
+      {
+        "path": "raw/2023/2023-03-23.md",
+        "sha256": "521a871a8618cb9db231e54c5493a6c2001e966a8f0c533f2d8995f44d4ec8ca",
+        "bytes": 4623
+      },
+      {
+        "path": "raw/2023/2023-03-24.md",
+        "sha256": "6c3a150a53d5d7d6cbc8bf2282f22da25f3359d4665a9e9fe5b55e41d72a7573",
+        "bytes": 3470
+      },
+      {
+        "path": "raw/2023/2023-03-25.md",
+        "sha256": "fe87420bda2041a12cc1df6c1b95978bfbc6123e64cf48043ed05ed1276dbcb9",
+        "bytes": 2239
+      },
+      {
+        "path": "raw/2023/2023-03-27.md",
+        "sha256": "99d8c65b91b290c975ffbaed3b089b7c6ecb853d61e6ec1270fdb1f30f18c468",
+        "bytes": 2446
+      },
+      {
+        "path": "raw/2023/2023-03-28.md",
+        "sha256": "42e21235500037e6d74c13f406307b332f3ea19c0543cc8b6835f1b23cc0aeb7",
+        "bytes": 3184
+      },
+      {
+        "path": "raw/2023/2023-03-29.md",
+        "sha256": "ec5cbc13bc254863cb1154eb0ccc855be46f6f8a7709004b4743155f51997539",
+        "bytes": 2153
+      },
+      {
+        "path": "raw/2023/2023-03-30.md",
+        "sha256": "30e75e9821f146194ea10bf91d4d3e6edaa0482f472af41e7ee78edbd9c4c174",
+        "bytes": 2747
+      },
+      {
+        "path": "raw/2023/2023-03-31.md",
+        "sha256": "c75eba0441c0ce0a43affa4b8ebc6289bd2eff536489feb9c5ff126f9e6269a4",
+        "bytes": 2704
+      },
+      {
+        "path": "raw/2023/2023-04-03.md",
+        "sha256": "d646cc941184f827eb588621a0eb1ce2a9e690ae074b24c72a6842171369ffeb",
+        "bytes": 2510
+      },
+      {
+        "path": "raw/2023/2023-04-04.md",
+        "sha256": "16895d5fb5a5a29be5250d0d36a8fc4a1ccf0a8b08dcdf094ca9ddf9b822ac5c",
+        "bytes": 2340
+      },
+      {
+        "path": "raw/2023/2023-04-07.md",
+        "sha256": "6ee470907ae743dc882b8bdf49a2d5ff51fe6680b48bae5487f031e180b86800",
+        "bytes": 1416
+      },
+      {
+        "path": "raw/2023/2023-04-10.md",
+        "sha256": "e476fac76c569920ef30d79ef989e601177e1f3852bcd6e4b992f250b17241fb",
+        "bytes": 1396
+      },
+      {
+        "path": "raw/2023/2023-04-11.md",
+        "sha256": "b7eddc71aaf6b3abc45c4c43379c5d8b95c931362cfd0adb7118eb71f9611e19",
+        "bytes": 3335
+      },
+      {
+        "path": "raw/2023/2023-04-12.md",
+        "sha256": "a7c5618f47a49678cefa54e6f4f1cb6163d782c47bb85d29f73c226d9f39b677",
+        "bytes": 100
+      },
+      {
+        "path": "raw/2023/2023-04-14.md",
+        "sha256": "be5bd01681304b2e20393446c5eccb6b5df205d59279d10d7081ea69508a6977",
+        "bytes": 3501
+      },
+      {
+        "path": "raw/2023/2023-04-18.md",
+        "sha256": "3610b33ddfea282b784257b5b857fb5a2e3209e7504c4db325ed2526642dfc0d",
+        "bytes": 3754
+      },
+      {
+        "path": "raw/2023/2023-04-20.md",
+        "sha256": "b4035d1467064b308645f25e61718832415f11ba309ccd453c9c31d7a7b5ed96",
+        "bytes": 2167
+      },
+      {
+        "path": "raw/2023/2023-04-23.md",
+        "sha256": "a66a75a8226b6a6d18859760237161d51d857ce40ff2cb015a18aed22278e88a",
+        "bytes": 3656
+      },
+      {
+        "path": "raw/2023/2023-04-25.md",
+        "sha256": "24ee9e3a716b759b84938fd26909550cd80a22e727e5a7b42b6757c31cf27bf2",
+        "bytes": 2175
+      },
+      {
+        "path": "raw/2023/2023-04-27.md",
+        "sha256": "19101fa31ab2a6d5688efd57b94ff9f4f53747b3faaaf1ec2ba832616385fd6b",
+        "bytes": 2018
+      },
+      {
+        "path": "raw/2023/2023-05-04.md",
+        "sha256": "133f34b45788d40c8e4dea1648cf1711fa7e076a3fcb92f388a0087b6ef738c6",
+        "bytes": 2737
+      },
+      {
+        "path": "raw/2023/2023-05-08.md",
+        "sha256": "581bbea7d59ca124323b2f4f84290bd5541c86243f6102aa929608ee618a3966",
+        "bytes": 3748
+      },
+      {
+        "path": "raw/2023/2023-05-10.md",
+        "sha256": "572410c58fe072726469d989221852fa84924d35aefd2839cf02f056decdac1e",
+        "bytes": 1653
+      },
+      {
+        "path": "raw/2023/2023-05-14.md",
+        "sha256": "917d221bdc0d5141403e80baa866f51574e0903924fa3bd5e476cbe2f6747fe5",
+        "bytes": 3592
+      },
+      {
+        "path": "raw/2023/2023-05-19.md",
+        "sha256": "c24295c3216173100ffd30535832e51284a7590a79d6a24a28eadcd6256c5f43",
+        "bytes": 3192
+      },
+      {
+        "path": "raw/2023/2023-05-23.md",
+        "sha256": "43a6574028edb9d88a4828d2f1893b30348d20e982dfa15c6a0503e21ebd4cec",
+        "bytes": 1007
+      },
+      {
+        "path": "raw/2023/2023-05-29.md",
+        "sha256": "b3bd5dd9ae8b838c2124b2697c0b059ebc4452bdb9b72cd6a49249b2aa1e4623",
+        "bytes": 4435
+      },
+      {
+        "path": "raw/2023/2023-06-01.md",
+        "sha256": "fa754145206eab8f3cc62d30673654325d2acffe051dcb20c048b3f593e2a861",
+        "bytes": 2441
+      },
+      {
+        "path": "raw/2023/2023-06-02.md",
+        "sha256": "bf06c3d08547d3f8af45766f54b9a0592612318e8f8e6b75e3a315c9414d7db7",
+        "bytes": 6403
+      },
+      {
+        "path": "raw/2023/2023-06-09.md",
+        "sha256": "24545925ca08c8ff2a7692d81899bec3f84f5630b8795d88e5bb268700f65f18",
+        "bytes": 2534
+      },
+      {
+        "path": "raw/2023/2023-06-13.md",
+        "sha256": "092b819ca4abfa5800c620c13e020277f0d9f265929042f6c25ff179911480fb",
+        "bytes": 5012
+      },
+      {
+        "path": "raw/2023/2023-06-19.md",
+        "sha256": "fcab6a8afb2532053787259af470de0aee44d40f2a3897308d27c0593133a09c",
+        "bytes": 3935
+      },
+      {
+        "path": "raw/2023/2023-06-29.md",
+        "sha256": "2dad9836efdd7400c1ea3a987e8c957345d3391bc2b3f72bad77e60af101a2c1",
+        "bytes": 3695
+      },
+      {
+        "path": "raw/2023/2023-07-04.md",
+        "sha256": "466d9daab34d2001d10297b150d3adf26248f27eedde984b8bb3f76f05120872",
+        "bytes": 4950
+      },
+      {
+        "path": "raw/2023/2023-07-08.md",
+        "sha256": "946e0765ae9413f98c8dcd720d0ff51188ee6875b2f0ba4421a5d21e2f8f384a",
+        "bytes": 5623
+      },
+      {
+        "path": "raw/2023/2023-07-12.md",
+        "sha256": "b14de466c510ee736d4800c21dfde1d2958113a15028f33d23601c57fa58d58b",
+        "bytes": 3767
+      },
+      {
+        "path": "raw/2023/2023-07-21.md",
+        "sha256": "016ee5b8909306a8d42e3c9b0a2f3c4463e477b4bad0643c3bb4b6b2c873166b",
+        "bytes": 6715
+      },
+      {
+        "path": "raw/2023/2023-07-31.md",
+        "sha256": "b676501c43fa1c14aecd6e261d05d348f507bdb71d152c592ce0abdb699819ec",
+        "bytes": 6302
+      },
+      {
+        "path": "raw/2023/2023-08-11.md",
+        "sha256": "d0ac34e66f44c7543b557d8063eea0f99e1665e226d5f286d23b50b38993d024",
+        "bytes": 4930
+      },
+      {
+        "path": "raw/2023/2023-08-21.md",
+        "sha256": "92d3c324d74a85da2ace50db27c18c40a6eb59f4e7a4fb7c77dd810ae2e14fa9",
+        "bytes": 6001
+      },
+      {
+        "path": "raw/2023/2023-08-28.md",
+        "sha256": "a9dcb957be10515b6216b8cd91f93f9ef38da90283ca7c7b603ce733d3c68518",
+        "bytes": 3897
+      },
+      {
+        "path": "raw/2023/2023-09-04.md",
+        "sha256": "b471451c520b2559cd98e7ab7de7eae75c1541a0e2533a3d10452a29ad14e439",
+        "bytes": 6330
+      },
+      {
+        "path": "raw/2023/2023-09-11.md",
+        "sha256": "661df50cf4545ccc323c255ae94b3cb29abfc10f6e07a0ac5dfc15f54f9d7baf",
+        "bytes": 4473
+      },
+      {
+        "path": "raw/2023/2023-09-18.md",
+        "sha256": "1dcd9be7b29806d52e30c20811880ed60e86c426423ba3cc126585406d86fc35",
+        "bytes": 6602
+      },
+      {
+        "path": "raw/2023/2023-09-27.md",
+        "sha256": "81fa56b88ffa92d78252bc90ea571625fece83eb3d4238ea5536da4acecc8f6d",
+        "bytes": 6988
+      },
+      {
+        "path": "raw/2023/2023-10-20.md",
+        "sha256": "9fbee8ffe33144cd5fafd3f9c62d226e97f80bbc92e409274be45855031c695e",
+        "bytes": 5861
+      },
+      {
+        "path": "raw/2023/2023-10-30.md",
+        "sha256": "3a0c475d27bb5665f81bcfacbd015e60dfbf4e431adbad210f643e055a2c5e47",
+        "bytes": 5930
+      },
+      {
+        "path": "raw/2023/2023-11-06.md",
+        "sha256": "f41785148dde1ad2e059bf1574bdcc3a925968a192a0500c94269655ebf7a184",
+        "bytes": 6630
+      },
+      {
+        "path": "raw/2023/2023-11-13.md",
+        "sha256": "2dd6ef0f88ab86fe7a8466fe7d9bb753fdf2c7a7bfd082c0985c933e069fbdd1",
+        "bytes": 4523
+      },
+      {
+        "path": "raw/2023/2023-11-20.md",
+        "sha256": "cffe29570c3f8fd6997f535d304ce4f564c34f8cb5d910591001fe23d0b03c0e",
+        "bytes": 7855
+      },
+      {
+        "path": "raw/2023/2023-11-27.md",
+        "sha256": "984bace5ee25f852d169c270eafcf06813278ac770248a1d87305cadac925e75",
+        "bytes": 5864
+      },
+      {
+        "path": "raw/2023/2023-12-01.md",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "raw/2023/2023-12-05.md",
+        "sha256": "6cc5b68db9c1d46a74197d966fedad4eccf7a90514fadaa280ac68ba74e5d388",
+        "bytes": 5220
+      },
+      {
+        "path": "raw/2023/2023-12-11.md",
+        "sha256": "cc658a7381dcefcd0a297f9dd780eed24393311077100f25b2195f1604e97431",
+        "bytes": 4575
+      },
+      {
+        "path": "raw/2023/2023-12-20.md",
+        "sha256": "f694c516302677d7bfe014f6d9fe09bc126d958b83739509b2938ca0cfcb3a65",
+        "bytes": 6207
+      },
+      {
+        "path": "raw/2023/2024-01-02.md",
+        "sha256": "02097817fdd0b752fc706a1ff975ab79ac02c63e94b05a9c1172f7558fdd57f9",
+        "bytes": 9787
+      },
+      {
+        "path": "raw/2023/2024-01-15.md",
+        "sha256": "7285a017df8d2b75f407de7b0b46cc53b658d71defb39f2305d90f13ef3deb5d",
+        "bytes": 7206
+      },
+      {
+        "path": "raw/2023/2024-02-19.md",
+        "sha256": "5c9c1084e8b3a933d701f5d02024f213589e50ffecceb2e352070b161f00af27",
+        "bytes": 5709
+      },
+      {
+        "path": "raw/2023/2024-03-04.md",
+        "sha256": "7ab6ec15c6246b4b69d4cd5683bd5df03d3753ad09a0de2ef90e66bed2465fe4",
+        "bytes": 6181
+      },
+      {
+        "path": "raw/2023/2024-03-12.md",
+        "sha256": "780cf77040a686abd35e1226b75d58c54abfa51601578447c0a085d18a6c0b8d",
+        "bytes": 4397
+      },
+      {
+        "path": "raw/2023/2024-03-25.md",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "raw/2023/2024-04-01.md",
+        "sha256": "e79ea9b56af26f7704fb37dd170c0f285d799e63bdc4b1e20e1f9cf9afd9f22e",
+        "bytes": 9716
+      },
+      {
+        "path": "raw/2023/2024-04-15.md",
+        "sha256": "11d5a714cdff9cb62e53453729a3890c72e1baaa77d9c1da030dcd5ca51634ce",
+        "bytes": 7712
+      },
+      {
+        "path": "raw/2023/2024-05-06.md",
+        "sha256": "5866ba029c71598e129060d545c4e06152a96db9e199b8357248969684659ffd",
+        "bytes": 18668
+      },
+      {
+        "path": "raw/2023/2024-05-27.md",
+        "sha256": "5dac871879ee27ccfe75fc7c6999326df6077fa50a84b217fbd748e0dccc0e60",
+        "bytes": 21214
+      },
+      {
+        "path": "raw/2023/README.MD",
+        "sha256": "e59819675648c3d75eed740efaaf4ddd41c98559e2a6af583586bf340555bd2b",
+        "bytes": 2413
+      },
+      {
+        "path": "raw/2023/daily.md",
+        "sha256": "15c4dfa66c136466c209fe3203626330a4694f262ee8e9a20f6de2d35309a1fd",
+        "bytes": 1505
+      },
+      {
+        "path": "raw/2024/2024-12.md",
+        "sha256": "5803067eb777651eea1b8f7b78bb21541b9ccf4d06bee63e00c8a25531808a37",
+        "bytes": 817
+      },
+      {
+        "path": "raw/2024/202407/2024-07-08.md",
+        "sha256": "21d52f302eeb46d2f4739ccbf7a8096d94e520eb8aea15d0a54f5931c86223dc",
+        "bytes": 6758
+      },
+      {
+        "path": "raw/2024/202407/2024-07-22.md",
+        "sha256": "2d76d18e98aa6e761f886a4b84cc1a8909d5aeb4a5535a57a9408252e9c8c28d",
+        "bytes": 6018
+      },
+      {
+        "path": "raw/2024/202408/20240801.md",
+        "sha256": "afa40909b904bdeab1fc2bf1f34b726477b0d3ec30039de45d272b99f4ba6833",
+        "bytes": 19184
+      },
+      {
+        "path": "raw/2024/202409/20240912.md",
+        "sha256": "cd78811316e8721e6554294714a6e575ee0da7d00263dac6f8b2e932250e875e",
+        "bytes": 6307
+      },
+      {
+        "path": "raw/2024/202410/202410.md",
+        "sha256": "461a3be60baac24fa6d275b553fbdebbaadf1d37ae98a11787a3f68916fe0c1f",
+        "bytes": 5805
+      },
+      {
+        "path": "raw/2024/202411/202411.md",
+        "sha256": "4a92f3a959503ca1c74e53564fbf9ac6debdd1a2c7f75fa129e1f4a25cabca22",
+        "bytes": 7982
+      },
+      {
+        "path": "raw/2024/202412/20241201.md",
+        "sha256": "0bf7f24909d7d759c5c2fa92cfa87ae28937ae109ece67634bb2a75b4053f514",
+        "bytes": 12037
+      },
+      {
+        "path": "raw/2025/2025-01.md",
+        "sha256": "878dcfc451081b81dc20f2086c32344a9b2b6988ddcff1ae6bf248ceb7c3d66f",
+        "bytes": 10953
+      },
+      {
+        "path": "raw/2025/2025-02.md",
+        "sha256": "d505e182a6b901a8452f4f8548afbe544ae3a988dda720669c8adc9a916e4eed",
+        "bytes": 25887
+      },
+      {
+        "path": "raw/2025/2025-03.md",
+        "sha256": "57bbc61f03042b02e57965655585e813a1d51c288acd0a5a7cc3a9353f24e43f",
+        "bytes": 17535
+      },
+      {
+        "path": "raw/2025/2025-04.md",
+        "sha256": "590a63775a7b94d3956a13868de01fad58915985e2ad229f68a21249161271ad",
+        "bytes": 30069
+      },
+      {
+        "path": "raw/2025/2025-05.md",
+        "sha256": "b24c57f4ce62992332844f503c0c3d61b0b18885f6502c4f9893e31bb1115089",
+        "bytes": 10827
+      },
+      {
+        "path": "raw/2025/2025-06.md",
+        "sha256": "57485ae8c837c3e35b00fb8d294cbce697737d4e84fcd9a9713120bd4fa4507f",
+        "bytes": 23202
+      },
+      {
+        "path": "raw/2025/2025-07.md",
+        "sha256": "3bf9ca71df924dc98a898f4756798032483af1a2c4abd727e2e4a31b050082d6",
+        "bytes": 10316
+      },
+      {
+        "path": "raw/2025/2025-08.md",
+        "sha256": "434aa5497dcb27ea784f74720c19f82b7ac5f054c2285e4e5358bc67a82055a2",
+        "bytes": 16271
+      },
+      {
+        "path": "raw/2025/2025-09.md",
+        "sha256": "8f9533fe9dd8f898050bbf3629e49dccbb3ec472fa5d4c01c7567947d274c621",
+        "bytes": 13733
+      },
+      {
+        "path": "raw/2025/2025-10.md",
+        "sha256": "24d38e0e9bc4868594d6efbfaae6c618f16e9efcdb251655964f17380aebae48",
+        "bytes": 13779
+      },
+      {
+        "path": "raw/2025/2025-11.md",
+        "sha256": "36533a2ded6ad9fd5fd2cf1c55683b1b5acf073edcb661d50855ca5ebe8c4334",
+        "bytes": 15623
+      },
+      {
+        "path": "raw/2025/2025-12.md",
+        "sha256": "a121ead62986b47a7a22ebb631a3d40df34df7d035e3171d30d8cb6117261374",
+        "bytes": 16342
+      },
+      {
+        "path": "raw/2025/总结.md",
+        "sha256": "ac023e3faf63de220511e632fd499018657a51eda57ac06fac11758e9f1b9901",
+        "bytes": 1763
+      },
+      {
+        "path": "raw/2025/社群介绍.md",
+        "sha256": "bfaac92db52df1b4b0bb7a770f565f460fcb537e6effdb87895422142a25bf73",
+        "bytes": 625
+      },
+      {
+        "path": "raw/2026/2026-01.md",
+        "sha256": "db6f94180fd5825ad79a36d4c4fddb2271e35fdda47aeca44d1c3619b702f763",
+        "bytes": 17917
+      },
+      {
+        "path": "raw/2026/2026-02.md",
+        "sha256": "8ede164932fca8c7d93aa5701961dfec91a9af068206c8496c5570681964346c",
+        "bytes": 5324
+      },
+      {
+        "path": "raw/MoneyHunter微信.jpg",
+        "sha256": "18daffed8e64e74545d17e049328cf792c15ba4f7b576324b0fe777a7db76845",
+        "bytes": 229033
+      },
+      {
+        "path": "raw/bug/tiktok.md",
+        "sha256": "f9fba9222de78379317ac0f560e0f831e4173c5057711005cb8948539205660a",
+        "bytes": 661
+      },
+      {
+        "path": "raw/index.html",
+        "sha256": "f207ba2200825d57e348ad92fc9321b87cee0109d82ff917b00f6274db7d4964",
+        "bytes": 2714
+      },
+      {
+        "path": "raw/other/Daily.md",
+        "sha256": "d3ab8cce4d2861bfd9e3c0a9fc4c289a5f777c7e492f524a45508c31ce72ddbb",
+        "bytes": 767
+      },
+      {
+        "path": "raw/other/other.md",
+        "sha256": "49776baa9142a6ecfff1090b4486c52a8f371125013d1a933d78d044bc720636",
+        "bytes": 886
+      },
+      {
+        "path": "raw/other/电商.md",
+        "sha256": "346563c9a7f7296ee024d02ef2469820a49538adaa6767851df68210a62069c7",
+        "bytes": 952
+      },
+      {
+        "path": "raw/其他资料/下载低收入高的app.xlsx",
+        "sha256": "dfe865e69119950006fd335991094513e7f47f76a5a6ed221f5c0282838da071",
+        "bytes": 52438
+      },
+      {
+        "path": "raw/功法/2025/.com.ai之术.md",
+        "sha256": "4c0e620599cd5540c5df11dd28c964ee2d852c8c58b9a7122279b8a8cf0885bc",
+        "bytes": 298
+      },
+      {
+        "path": "raw/功法/2025/FBGroup做APP.md",
+        "sha256": "6573961a5dedb1f4444e35c3ac2e9218dc34847b169da24acfaf2e7c0d3a664b",
+        "bytes": 388
+      },
+      {
+        "path": "raw/功法/2025/ai追踪之术.md",
+        "sha256": "73b7eda7399d17ab44b55cd677852dc216c3825e593a2c67e34580a9535117db",
+        "bytes": 417
+      },
+      {
+        "path": "raw/功法/2025/aso-seo.md",
+        "sha256": "dec873c6b19e0abafa5d203a398e593b131da5ce95c0cc61969af2561c753f74",
+        "bytes": 454
+      },
+      {
+        "path": "raw/功法/2025/cuttemplate热模之术.md",
+        "sha256": "ac5a322095b0a28473fa2b8dfe3019ff2eeabccdb06ec84d5c58e518af679e94",
+        "bytes": 1691
+      },
+      {
+        "path": "raw/功法/2025/esty功法.md",
+        "sha256": "a1f521a78638ffe673409279d38a22722aa32348e792429ce978573ac094d2a0",
+        "bytes": 775
+      },
+      {
+        "path": "raw/功法/2025/facebook传导术.md",
+        "sha256": "91f4c0ea159c2e4b370d5559ff944bc2c9e703a5daf406cea44e21300a726283",
+        "bytes": 1342
+      },
+      {
+        "path": "raw/功法/2025/prankmeme-之术.md",
+        "sha256": "39bdeb5d9fe4636fb952d3aa106752633009cd6e5a26a1f4e78e0479346f09e0",
+        "bytes": 2877
+      },
+      {
+        "path": "raw/功法/2025/reddit的Json功法.md",
+        "sha256": "74eff1926a6fd357588ad9d78688cb69c430c40cd7adf6cfe1a25ff553161d59",
+        "bytes": 611
+      },
+      {
+        "path": "raw/功法/2025/revenuecat.md",
+        "sha256": "05b73f7c25c38b6322d22744976363a19fae9745717c1e0c54bfa288cf849609",
+        "bytes": 463
+      },
+      {
+        "path": "raw/功法/2025/sitemap追踪术.md",
+        "sha256": "39ba7f6b0c5bd989e025e339953925f5cbebcac01e3da86ce68c7f3065a0ffd1",
+        "bytes": 808
+      },
+      {
+        "path": "raw/功法/2025/tiktok-kol.md",
+        "sha256": "29fe1f5c1489caea485b99c5083faa9c0d0b5e4966ee06783ccb59163aa5795c",
+        "bytes": 174
+      },
+      {
+        "path": "raw/功法/2025/tiktok广告.md",
+        "sha256": "aa627d06f65f86cdfe13b67880821bf98d523578862f9e69bfe1e333d2dc7306",
+        "bytes": 738
+      },
+      {
+        "path": "raw/功法/2025/tiktok引流.md",
+        "sha256": "74ef45f18d5d71442c7280319686f3eddfeccd634ac37f6516d3c89491e2fe72",
+        "bytes": 376
+      },
+      {
+        "path": "raw/功法/2025/tiktok截流.md",
+        "sha256": "71407ddcab01a1bacc17c929c3e1f40d946f906244447c172a4084327e8d2bbc",
+        "bytes": 511
+      },
+      {
+        "path": "raw/功法/2025/tiktok爆款监控.md",
+        "sha256": "63e979bf3ae33e26f7a0ca8581bae7438e90a347f8b5122279f65e3d4f618f1e",
+        "bytes": 20
+      },
+      {
+        "path": "raw/功法/2025/tiktok选词.md",
+        "sha256": "a41f1217c2378e189b833e97f8c4b894d79eeaa4ddd18041cc59040673482dd9",
+        "bytes": 332
+      },
+      {
+        "path": "raw/功法/2025/trending国区之术.md",
+        "sha256": "fde5c95dfdf476ac25fb79e75e1fa032f833ade504a5cdf3cd83a6a35538073d",
+        "bytes": 249
+      },
+      {
+        "path": "raw/功法/2025/twitter-赚钱.md",
+        "sha256": "d4280feae61691a0723749178b93b650d301dc3b5f0b54c7f61df335c8042244",
+        "bytes": 484
+      },
+      {
+        "path": "raw/功法/2025/webtoapp.md",
+        "sha256": "731bdc032fee5a1c9dc20144cbac582369ff4e3042b211a9dc14280eddfa2e9c",
+        "bytes": 834
+      },
+      {
+        "path": "raw/功法/2025/借势之术.md",
+        "sha256": "2f324fbdbe4cbab2e9a34fa1cd431da1d750a96f4a9b13321ffdbb75521a1bf8",
+        "bytes": 1742
+      },
+      {
+        "path": "raw/功法/2025/借新之术.md",
+        "sha256": "51c066c48d9100104f25df97bd02f610aa6c078bf45a2da31be0f40b3b0b0fd0",
+        "bytes": 1198
+      },
+      {
+        "path": "raw/功法/2025/借火之术.md",
+        "sha256": "2a62861dc4882155854bc66094836bd60ba190dc68a72113d8985ea7ce17bef8",
+        "bytes": 368
+      },
+      {
+        "path": "raw/功法/2025/借词之术-广告借词.md",
+        "sha256": "8683454549a5ac779b5b15a1091e7d87ab839b9f92b081f9a653971ae06373fd",
+        "bytes": 1664
+      },
+      {
+        "path": "raw/功法/2025/借风之术.md",
+        "sha256": "2104541379c21b48ade305d0fc7500c827ee812f32e534bce28dff8b684800de",
+        "bytes": 2076
+      },
+      {
+        "path": "raw/功法/2025/免费之术.md",
+        "sha256": "e2d6c4f44ff665cfd954a302fae32382bd8e0841e09e75f54a1e00e06de0eba1",
+        "bytes": 1293
+      },
+      {
+        "path": "raw/功法/2025/卡ROI之术.md",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "raw/功法/2025/反向meme之术.md",
+        "sha256": "476db06f956e098e3c0b79b17fa6a526b11a3477e99ec17503fc06a714bbea87",
+        "bytes": 994
+      },
+      {
+        "path": "raw/功法/2025/商标之术.md",
+        "sha256": "41022de21f5fe0ff5c01eef1fea2c417bf1870cae4d77a1b5718168da11ade5a",
+        "bytes": 206
+      },
+      {
+        "path": "raw/功法/2025/截流之术.md",
+        "sha256": "057ba18c556f3ab77c11db534bbfe9ee84e798fa4ad7b36210467344ed3fa10a",
+        "bytes": 428
+      },
+      {
+        "path": "raw/功法/2025/接力棒.md",
+        "sha256": "244f9dc249e9bf23a259b98b169bd78e765fad9f5eeb681c17f66cf2163b0800",
+        "bytes": 441
+      },
+      {
+        "path": "raw/功法/2025/接火之术.md",
+        "sha256": "941f15a66336212c136c1fd78148ce4cee77e6562f7374c5cf804627d4210b6f",
+        "bytes": 194
+      },
+      {
+        "path": "raw/功法/2025/无限投放.md",
+        "sha256": "ac742b23be50392788bb884abfce333d43b949ab19966d09b9fa013f52b15d84",
+        "bytes": 848
+      },
+      {
+        "path": "raw/功法/2025/社群介绍.md",
+        "sha256": "44c8ebce501cac95075a0237a2972d1c9e2dc8d4b591ce608e9e8c6706c7ca91",
+        "bytes": 652
+      },
+      {
+        "path": "raw/功法/2025/等风来.md",
+        "sha256": "a53cfc22af2eef2321378d12cbf33d156f9758a48d72d30548a9be5e172d4248",
+        "bytes": 406
+      },
+      {
+        "path": "raw/功法/2025/血祭搜魂术.md",
+        "sha256": "4e4e6a6e2aa910ff7fea68ad1eb3c11862134c2ce35ad6123a8728f2826e97f1",
+        "bytes": 423
+      },
+      {
+        "path": "raw/功法/2025/骚操作.md",
+        "sha256": "6bfe44d45371faebc4347b3c83a2db773246ad6ef4919ce9c0934036501e7a23",
+        "bytes": 165
+      },
+      {
+        "path": "raw/变化/ai视频站2.0.md",
+        "sha256": "8b8534485b7f808b2afde9bf58d05bd3630e937132b71633a367a20793e7bd4f",
+        "bytes": 3411
+      },
+      {
+        "path": "raw/如何做一个骚货/如何做一个骚货.pptx",
+        "sha256": "b6cd499631f7087b94f9e4a2c14c53da1b462df0be6f2045e7c2ada060b56047",
+        "bytes": 9464632
+      },
+      {
+        "path": "raw/宗教/原创圈.md",
+        "sha256": "785440f0146076bbcb9761d5d72a1c180d9ca89806f4fc355d77dbfe8cb3dc88",
+        "bytes": 531
+      },
+      {
+        "path": "raw/思考/2025/APP.md",
+        "sha256": "a7cd5dcf2e3efbe032d1ce5f0636c80c944ba6d7526149b64843cfd1c0deb71a",
+        "bytes": 3698
+      },
+      {
+        "path": "raw/思考/2025/clawclaw.md",
+        "sha256": "b7d4f16a9807a559f85e57b4777d7b98640433c21bc740bfc3309aa89776bdfa",
+        "bytes": 1059
+      },
+      {
+        "path": "raw/思考/2025/一些思考.md",
+        "sha256": "531cf7af9eecefc7e89dc915f6942e250c1ffbee48f104d80483628d3af29506",
+        "bytes": 6298
+      },
+      {
+        "path": "raw/思考/2025/操作信仰.md",
+        "sha256": "91f8fed0e70ce472991e5aeb4a2d7d28a9ac1ca374665b97d1a967edf182f3dd",
+        "bytes": 1690
+      },
+      {
+        "path": "raw/思考/2025/起势后.md",
+        "sha256": "517ce4e648517463975e2f255b5e4344eaf778f4a1c6377a28bdbe4c191ae89d",
+        "bytes": 733
+      },
+      {
+        "path": "raw/抄抄抄/ad.md",
+        "sha256": "3feb66b520a079f84e35306c7fe4dbb9c7137cf19e5909803840b0f32a7a44bb",
+        "bytes": 1688
+      },
+      {
+        "path": "raw/抄抄抄/抄抄抄.md",
+        "sha256": "fba6e81e4e8e55e64ceb462b0e9aa92522e97c07b69e02382bbaf73ab0d08a50",
+        "bytes": 501
+      },
+      {
+        "path": "raw/社群介绍.md",
+        "sha256": "12438acc2e6e746526a689599b8ea8b03fec5ffbded990d9e7e22c012522fd80",
+        "bytes": 839
+      },
+      {
+        "path": "raw/骚操作/2025/tiktok的template.md",
+        "sha256": "db6423b5a44b00ea5a481a19219e2db22c681566ed672b59b86d531752985f3e",
+        "bytes": 737
+      },
+      {
+        "path": "raw/骚操作/2025/付费思路.md",
+        "sha256": "9f571b1d723b26c398d43f87c6939aeef249550cc56df77186548448bcf9e86a",
+        "bytes": 339
+      },
+      {
+        "path": "raw/骚操作/2025/免费功法.md",
+        "sha256": "1f68025f8272583a3e3755561d8fd8f83bdbea3717e2414494828e0628b58b01",
+        "bytes": 463
+      },
+      {
+        "path": "raw/骚操作/2025/刷榜战术.md",
+        "sha256": "62446867864e108cf046216834b5ae749870c6f506a4cdb647d120e6d8ecd43e",
+        "bytes": 103
+      },
+      {
+        "path": "raw/骚操作/2025/小应用市场.md",
+        "sha256": "29a729671e1f0bf3c42eb07f0343209b89877ade65d04f858b3c0046f6e448d4",
+        "bytes": 162
+      },
+      {
+        "path": "scripts/import_moneyhunter.py",
+        "sha256": "d18aca1fed44c4207780668b33d837024d996d30d7eec98302f62220aad31205",
+        "bytes": 84013
+      },
+      {
+        "path": "scripts/verify_package.py",
+        "sha256": "68bab7ec45acf0ae83d83a3187a328cfc808367a81e6b21376a282a2f3831b8e",
+        "bytes": 6088
+      },
+      {
+        "path": "site/app.js",
+        "sha256": "9d73313ba9c8ea0a05475bef3de6f9b68488b9fa02a9def5b9c03cf39e79a1c7",
+        "bytes": 20049
+      },
+      {
+        "path": "site/index.html",
+        "sha256": "e5ec2bfb1f50d3a2aecc7a6f9f836184c121564a9580a3733cec5c2221f99c09",
+        "bytes": 4311
+      },
+      {
+        "path": "site/links.html",
+        "sha256": "b3d969834f5ed489bd98e3f005236cd8840bd1c68bd0f48d90f99f952945097c",
+        "bytes": 3349
+      },
+      {
+        "path": "site/moneyhunter-data.js",
+        "sha256": "af51574bbcc7edd5cea862c82dc3ebe99afacf9fa0d9bb849e563a3b7d64ded9",
+        "bytes": 4196231
+      },
+      {
+        "path": "site/styles.css",
+        "sha256": "9bd501bbbfa58706cebca4bcacb92e6a52fe6d7b712dfeb2a9e39cb33b59f387",
+        "bytes": 15876
+      }
+    ]
+  },
+  {
+    "source": "stripe-solo-operators-report",
+    "target": "chuhai-xuexi",
+    "title": "独立创业者产品研究",
+    "path": "collections/solo-operators",
+    "sourceCommit": "582997ecc209e405bbb080337a6f6f3b0a2b374c",
+    "originalPage": "https://siuserxiaowei.github.io/stripe-solo-operators-report/",
+    "files": [
+      {
+        "path": "README.md",
+        "sha256": "dfb645527cc29b72e2425731193f8ce156a84a0e63158930493b03e5eeac4ba2",
+        "bytes": 6237
+      },
+      {
+        "path": "assets/favicon.svg",
+        "sha256": "b7639d62cafc0866ba2cb5c5ebee13699cf33d0ce939fdb1f0d35a4819d5e24f",
+        "bytes": 338
+      },
+      {
+        "path": "assets/share-card.png",
+        "sha256": "4f164b6cfa343c1c7b0287bf18c68a80ca8602555ab49ff5ec9845db1040ef6e",
+        "bytes": 48548
+      },
+      {
+        "path": "assets/share-card.svg",
+        "sha256": "48cbc69feb9eb211d6efaf27426901b1d762857607840b26140a854ea29b7c75",
+        "bytes": 2103
+      },
+      {
+        "path": "assets/wechat-qr-siuserxiaowei.png",
+        "sha256": "e079b4ea2b20cf0288d11ceb385c0b1591d75c651b0c3e7e0c00907a4f0ca4fd",
+        "bytes": 237059
+      },
+      {
+        "path": "index.html",
+        "sha256": "4c6f668574ae07d43a22b61f615df6ee819b13d50246ca93079e978c9bba93d9",
+        "bytes": 64312
+      }
+    ]
+  }
+]

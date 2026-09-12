@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1751940594,
+  "drive_id": "2524825563",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "b71e0556756bd6d51ca606b4fa309fbd20a35be0",
+    "type": "sha1"
+  },
+  "id": "qPU9siHmo1MTVjRSmVFK1xz9MG7APH8jC",
+  "link_id": "ctLKnXD1SeSi",
+  "link_url": "https://www.kdocs.cn/l/ctLKnXD1SeSi",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1751940868,
+  "name": "君言戏语VIP会员专属内容 - 群主分享 - 2024-1.otl",
+  "parent_id": "0",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 104025897,
+  "type": "file",
+  "version": 3,
+  "path": "君言戏语VIP会员专属内容 - 群主分享 - 2024-1.otl"
+}

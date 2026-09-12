@@ -1,0 +1,2373 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-08-23T10:14:46.475Z",
+    "lastSuccessfulAt": "2026-08-23T10:14:46.475Z",
+    "sourceCount": 2,
+    "successfulSourceCount": 2,
+    "failedSourceCount": 0,
+    "recordCount": 59,
+    "sourceResults": [
+      {
+        "id": "dongguan-industry-notices",
+        "status": "success",
+        "fetchedCount": 207,
+        "acceptedCount": 207,
+        "directoryCount": 2562,
+        "candidateCount": 207,
+        "skippedInvalidDetailUrlCount": 0
+      },
+      {
+        "id": "dongguan-industry-policies",
+        "status": "success",
+        "fetchedCount": 19,
+        "acceptedCount": 19,
+        "directoryCount": 143,
+        "candidateCount": 19,
+        "skippedInvalidDetailUrlCount": 0
+      }
+    ]
+  },
+  "policies": [
+    {
+      "id": "policy-fd292301c1a687a9",
+      "title": "关于组织申报2026年东莞市倍增企业经营管理者素质提升资助项目的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-14",
+      "deadline": "2026-09-01",
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "资金申报"
+      ],
+      "summary": "关于组织申报2026年东莞市倍增企业经营管理者素质提升资助项目的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "（二）网上申报的截止时间：2026年9月1日（星期二）17:00。逾期未提交，视同放弃申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4574/post_4574047.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4574/post_4574047.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-a154e6324ef5c5de",
+      "title": "转发广东省工业和信息化厅关于做好2026年工业和信息化领域创新任务揭榜挂帅工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-12",
+      "deadline": "2026-08-19",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "转发广东省工业和信息化厅关于做好2026年工业和信息化领域创新任务揭榜挂帅工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "各申报主体应根据所选方向申报指南（详见2026年工信部揭榜工作正文附件1-6）有关要求填写申报材料（附件7）和汇总表（附件8），于2026年8月19日（周三）前将申报资料报送至市工信局对应专题负责科室，专题联系方式见本文附件1。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4572/post_4572642.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4572/post_4572642.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-c33e247d08f5b243",
+      "title": "转发广东省工业和信息化厅关于开展2026年省级企业技术中心（第25批）认定的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-07",
+      "deadline": "2026-09-30",
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "转发广东省工业和信息化厅关于开展2026年省级企业技术中心（第25批）认定的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "企业登录“广东省数字工信平台”（网址：https://gdii.gd.gov.cn/szgx/ywtb-gzc/cms/index），按照《2026年省级企业技术中心认定工作指南》要求，于9月30日24时前提交申报材料，逾期不予受理。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4571/post_4571702.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4571/post_4571702.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-4a505698a616190f",
+      "title": "关于开展广东省工业和信息化厅第二批制造业赋能资源遴选的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-06",
+      "deadline": "2026-08-20",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "关于开展广东省工业和信息化厅第二批制造业赋能资源遴选的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "（二）本次遴选申报的截止时间为2026年8月20日，各申报单位请及时登录赋能平台完成注册、认证及材料提交。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4569/post_4569935.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4569/post_4569935.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-c88d66dc51bb4fd9",
+      "title": "关于举办东莞市炒菜机器人“厨王”争霸赛的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-03",
+      "deadline": "2026-08-20",
+      "status": "已截止",
+      "type": "通知公告",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "机器人"
+      ],
+      "summary": "关于举办东莞市炒菜机器人“厨王”争霸赛的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "报名截止时间（2026年8月20日18:00）后不再接受任何补报、改报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4569/post_4569747.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4569/post_4569747.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-1e9c79bb8cda6139",
+      "title": "关于开展2026年度东莞市人才分类评价（企业人才）企业举荐自评权申报的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-08-03",
+      "deadline": "2026-09-04",
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "资金申报"
+      ],
+      "summary": "关于开展2026年度东莞市人才分类评价（企业人才）企业举荐自评权申报的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "2026年8月4日-9月4日17时，逾期将不再受理申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4568/post_4568270.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4568/post_4568270.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-e6f6e20c411b8a72",
+      "title": "关于组织开展国家级零碳工厂建设名单申报工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-27",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报",
+        "绿色制造"
+      ],
+      "summary": "关于组织开展国家级零碳工厂建设名单申报工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于组织开展国家级零碳工厂建设名单申报工作的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566279.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566279.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-84da2e742c889718",
+      "title": "关于组织申报2027年广东省制造业当家重点任务保障专项企业技术改造资金项目及市企业技术改造资金项目入库的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-27",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于组织申报2027年广东省制造业当家重点任务保障专项企业技术改造资金项目及市企业技术改造资金项目入库的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于组织申报2027年广东省制造业当家重点任务保障专项企业技术改造资金项目及市企业技术改造资金项目入库的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566679.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566679.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-8cf38718f497b9f7",
+      "title": "关于延长广东省普惠性制造业投资奖励资金项目入库申报及整体清算时间的补充通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-24",
+      "deadline": "2026-08-07",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于延长广东省普惠性制造业投资奖励资金项目入库申报及整体清算时间的补充通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "网上审核通过后，项目申报单位按照申报指南要求将书面申报资料打印胶装成册一式两份，电子版刻录成光盘一式两份，于 2026 年8月7日 17:30 前报送至市工业和信息化局技改创新科，逾期不提交视同放弃申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566071.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4566/post_4566071.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-5e427b2cb6ca9933",
+      "title": "2026年度东莞市人才分类评价（第一批）申报公告",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-17",
+      "deadline": "2026-08-23",
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "资金申报"
+      ],
+      "summary": "2026年度东莞市人才分类评价（第一批）申报公告。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "1.认定、专家评定、优才服务申报时间：2026年7月24日至8月23日。"
+      ],
+      "source": "https://www.dg.gov.cn/dgzsj/gkmlpt/content/4/4562/post_4562699.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://www.dg.gov.cn/dgzsj/gkmlpt/content/4/4562/post_4562699.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-a198ba2657779b35",
+      "title": "关于转发《关于组织开展&lt;2026 全国中小企业数字化转型典型案例&gt;征集工作的通知》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-09",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "数字化",
+        "中小企业"
+      ],
+      "summary": "关于转发《关于组织开展&lt;2026 全国中小企业数字化转型典型案例&gt;征集工作的通知》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于转发《关于组织开展&lt;2026 全国中小企业数字化转型典型案例&gt;征集工作的通知》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4558/post_4558786.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4558/post_4558786.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-959196848030803a",
+      "title": "关于暂停项目评审专家征集的公告",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-08",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [],
+      "summary": "关于暂停项目评审专家征集的公告。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于暂停项目评审专家征集的公告"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4558/post_4558583.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4558/post_4558583.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-b1736ca74b4acbe5",
+      "title": "《东莞市功能型无人车道路测试与商业应用工作管理办法（试行）》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-07",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [],
+      "summary": "《东莞市功能型无人车道路测试与商业应用工作管理办法（试行）》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《东莞市功能型无人车道路测试与商业应用工作管理办法（试行）》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4557/post_4557751.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4557/post_4557751.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-c9ae78ff15c3fcf3",
+      "title": "关于组织开展广东省普惠性制造业投资奖励资金项目入库申报及整体清算的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-07",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于组织开展广东省普惠性制造业投资奖励资金项目入库申报及整体清算的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于组织开展广东省普惠性制造业投资奖励资金项目入库申报及整体清算的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4557/post_4557809.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4557/post_4557809.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-7855dd83d8fd614c",
+      "title": "关于开展广东省工业和信息化厅2027年度支持推动人工智能赋能新型工业化标杆项目入库的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-02",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化"
+      ],
+      "summary": "关于开展广东省工业和信息化厅2027年度支持推动人工智能赋能新型工业化标杆项目入库的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于开展广东省工业和信息化厅2027年度支持推动人工智能赋能新型工业化标杆项目入库的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556539.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556539.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-be3ca8481083e39b",
+      "title": "关于组织开展广东省工业和信息化厅2027年人工智能与机器人产业创新发展资金开源相关项目入库工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-02",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "机器人",
+        "制造业",
+        "数字化"
+      ],
+      "summary": "关于组织开展广东省工业和信息化厅2027年人工智能与机器人产业创新发展资金开源相关项目入库工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于组织开展广东省工业和信息化厅2027年人工智能与机器人产业创新发展资金开源相关项目入库工作的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556533.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556533.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-d5e0753b713fcd6f",
+      "title": "东莞市工业和信息化局 东莞市公安局 东莞市交通运输局关于印发《东莞市功能型无 人车道路测试与商业应用工作管理办法 (试行)》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-07-01",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局 东莞市公安局 东莞市交通运输局关于印发《东莞市功能型无 人车道路测试与商业应用工作管理办法 (试行)》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局 东莞市公安局 东莞市交通运输局关于印发《东莞市功能型无 人车道路测试与商业应用工作管理办法 (试行)》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556759.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4556/post_4556759.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-749007bfc316fc1a",
+      "title": "东莞市工业和信息化局关于开展2026年度创新型中小企业评价和复核工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-29",
+      "deadline": "2026-08-10",
+      "status": "已截止",
+      "type": "通知公告",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "中小企业"
+      ],
+      "summary": "东莞市工业和信息化局关于开展2026年度创新型中小企业评价和复核工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "初审通过的，请于2026年8月10日前将正式推荐公文及2026年创新型中小企业评价和复核汇总表报市工业和信息化局汇总。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4554/post_4554582.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4554/post_4554582.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-277d4e2fbffb0b17",
+      "title": "关于开展省级制造业当家重点任务保障专项资金首台（套）重大技术装备研制与推广应用项目入库储备工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-26",
+      "deadline": "2026-07-10",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于开展省级制造业当家重点任务保障专项资金首台（套）重大技术装备研制与推广应用项目入库储备工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "请各园区、镇（街）工信部门结合辖区内项目情况，根据申报指南（附件1）要求，组织符合条件的企业开展项目入库储备工作，并由申请单位在2026年7月10日前登录广东省工业和信息化厅-数字工信平台（网址：https://gdii.gd.gov.cn/szgx/ywtb-gzc/cms/index，技术支持电话：13609085751，QQ群：965582589）在线提交项目申请资料。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4554/post_4554302.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4554/post_4554302.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-868e0f7ad7a759b6",
+      "title": "关于组织申报2026年东莞市提升工业母机产品高精密加工能力奖励项目入库的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-24",
+      "deadline": "2026-07-17",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于组织申报2026年东莞市提升工业母机产品高精密加工能力奖励项目入库的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "（二）网上申报的截止时间：2026年7月17日（星期五）17:00。逾期未提交，视同放弃申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4552/post_4552993.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4552/post_4552993.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-9f7abeb232274122",
+      "title": "关于开展工业母机应用示范场景征集工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-12",
+      "deadline": "2026-06-26",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "制造业"
+      ],
+      "summary": "关于开展工业母机应用示范场景征集工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "（一）申报单位按要求编制《东莞市工业母机应用示范场景申报书》，加盖单位公章后生成PDF电子版，于2026年6月26日（星期五）前报送至电子邮箱：381415946@qq.com。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4549/post_4549342.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4549/post_4549342.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-4e1e6869b893ea1f",
+      "title": "关于组织开展2026年东莞市工业和信息化专项资金人工智能应用创新中心专题项目申报工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-12",
+      "deadline": "2026-06-18",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "关于组织开展2026年东莞市工业和信息化专项资金人工智能应用创新中心专题项目申报工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "2026年6月12日至6月18日，逾期不再接受申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4549/post_4549745.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4549/post_4549745.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-d07fb3ee4010d0ac",
+      "title": "关于开展2026年度省级绿色工厂、绿色工业园区申报工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-10",
+      "deadline": "2026-06-23",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报",
+        "绿色制造"
+      ],
+      "summary": "关于开展2026年度省级绿色工厂、绿色工业园区申报工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "请各镇街（园区）重点发动规模以上企业、重点用能企业中有意向创建绿色工厂的企业和绿色工厂数量较多的工业园区自愿开展申报，并于6月23日前通过管理平台上传推荐函推荐上报，同时将推荐函、绿色工厂推荐汇总表（附件2）、绿色工业园区推荐汇总表（附件3）等相关材料报送至我局（工业节能与民爆科OA邮箱）。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547900.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547900.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-8c9a8156a00f3ffd",
+      "title": "关于公开征集东莞市中小企业运行监测平台工作承接机构的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-08",
+      "deadline": "2026-06-17",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "中小企业"
+      ],
+      "summary": "关于公开征集东莞市中小企业运行监测平台工作承接机构的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "截止日期：2026年6月17日"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547703.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547703.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-45497ff74bc6c691",
+      "title": "关于开展2026年市级工业设计中心申报的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-08",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于开展2026年市级工业设计中心申报的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于开展2026年市级工业设计中心申报的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547737.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547737.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-4743cf292d95ce5f",
+      "title": "关于转发《广东省工业和信息化厅关于组织开展第二批国家制造业数字化转型促进中心申报工作的通知》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-08",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "关于转发《广东省工业和信息化厅关于组织开展第二批国家制造业数字化转型促进中心申报工作的通知》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于转发《广东省工业和信息化厅关于组织开展第二批国家制造业数字化转型促进中心申报工作的通知》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547482.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4547/post_4547482.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-c046826042fb1ea3",
+      "title": "关于组织申报2026年东莞市“算力券”奖补项目入库的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-04",
+      "deadline": "2026-12-31",
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "资金申报"
+      ],
+      "summary": "关于组织申报2026年东莞市“算力券”奖补项目入库的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "2026年东莞市“算力券”奖补项目核算范围从2025年11月1日起，截至2026年12月31日，对此期间算力租赁费用予以补贴。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4546/post_4546473.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4546/post_4546473.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-3d065077518c8c77",
+      "title": "关于开展第九批国家级制造业单项冠军奖励项目（市级资金）“免申即享”工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-06-03",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于开展第九批国家级制造业单项冠军奖励项目（市级资金）“免申即享”工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于开展第九批国家级制造业单项冠军奖励项目（市级资金）“免申即享”工作的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4545/post_4545850.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4545/post_4545850.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-ee7fec68c8cf5625",
+      "title": "关于举办第十届“创客广东”东莞市中小企业创新创业大赛的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-05-20",
+      "deadline": null,
+      "status": "有效",
+      "type": "通知公告",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "中小企业"
+      ],
+      "summary": "关于举办第十届“创客广东”东莞市中小企业创新创业大赛的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于举办第十届“创客广东”东莞市中小企业创新创业大赛的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4541/post_4541200.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4541/post_4541200.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-4a1d40fd12a6c0d2",
+      "title": "关于开展2026年东莞市工业和信息化产业发展专项资金消费品工业发展奖励项目“免申即享”工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-05-18",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "关于开展2026年东莞市工业和信息化产业发展专项资金消费品工业发展奖励项目“免申即享”工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于开展2026年东莞市工业和信息化产业发展专项资金消费品工业发展奖励项目“免申即享”工作的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4540/post_4540068.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4540/post_4540068.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-56bb508b34434508",
+      "title": "关于推广使用广东省制造业赋能线上对接平台“粤智赋”的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-05-15",
+      "deadline": null,
+      "status": "有效",
+      "type": "通知公告",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "制造业"
+      ],
+      "summary": "关于推广使用广东省制造业赋能线上对接平台“粤智赋”的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于推广使用广东省制造业赋能线上对接平台“粤智赋”的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4544/post_4544084.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4544/post_4544084.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-9a29b35fe65576ac",
+      "title": "关于开展东莞市第二批市级制造业创新中心建设申报工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-05-12",
+      "deadline": "2026-06-12",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于开展东莞市第二批市级制造业创新中心建设申报工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "（二）网上申报的截止时间：2026年6月12日17:00。逾期未提交，视同放弃申报。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4538/post_4538709.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4538/post_4538709.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-123ea1498871550c",
+      "title": "关于转发《广东省工业和信息化厅关于开展制造业赋能资源遴选的通知》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-05-08",
+      "deadline": "2026-05-14",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "关于转发《广东省工业和信息化厅关于开展制造业赋能资源遴选的通知》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "本次遴选申报的截止时间为2026年5月14日，各申报单位请及时登录赋能平台完成注册、认证及材料提交。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4536/post_4536017.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4536/post_4536017.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-e785e2f7c10d3f20",
+      "title": "关于组织申报2026年东莞市工业设备更新银行贷款贴息项目的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-27",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于组织申报2026年东莞市工业设备更新银行贷款贴息项目的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于组织申报2026年东莞市工业设备更新银行贷款贴息项目的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4532/post_4532837.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4532/post_4532837.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-f5dbdbb275f59a67",
+      "title": "关于开展东莞市推动工业母机制造企业进军一流供应链奖励项目意向征集工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-24",
+      "deadline": "2026-05-06",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "关于开展东莞市推动工业母机制造企业进军一流供应链奖励项目意向征集工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "（二）本次工作为项目前期意向摸排与储备征集，请各镇街（园区）工信主管部门做好辖区内企业的征集动员和指导服务工作，全面摸排辖区内符合条件的企业情况，确保应知尽知，于2026年5月6日前将企业提交的征集材料 PDF 文件，通过粤政易报送至“殷彦斌”处。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4532/post_4532918.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4532/post_4532918.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-79c96c5a8fe0b2c4",
+      "title": "关于《关于进一步促进我市企业数字化转型的若干措施（征求意见稿）》公开征求意见情况的公告",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-16",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "数字化"
+      ],
+      "summary": "关于《关于进一步促进我市企业数字化转型的若干措施（征求意见稿）》公开征求意见情况的公告。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于《关于进一步促进我市企业数字化转型的若干措施（征求意见稿）》公开征求意见情况的公告"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4528/post_4528965.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4528/post_4528965.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-97f1b544b0056431",
+      "title": "关于对《东莞市支持开源鸿蒙生态发展若干措施（征求意见稿）》公开征求意见情况的公告",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-08",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [],
+      "summary": "关于对《东莞市支持开源鸿蒙生态发展若干措施（征求意见稿）》公开征求意见情况的公告。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于对《东莞市支持开源鸿蒙生态发展若干措施（征求意见稿）》公开征求意见情况的公告"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524506.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524506.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-cdbe9e7142b9db06",
+      "title": "关于公开征求《国家人工智能应用中试基地（移动终端方向）揭榜挂帅任务申报指南（征求意见稿）》意见的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-08",
+      "deadline": "2026-04-14",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "人工智能"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "资金申报"
+      ],
+      "summary": "关于公开征求《国家人工智能应用中试基地（移动终端方向）揭榜挂帅任务申报指南（征求意见稿）》意见的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "为贯彻党的二十大和二十届历次全会精神，落实国家、省、市关于人工智能发展的决策部署，全面推进“人工智能+”行动，加快国家人工智能应用中试基地（移动终端方向）（以下简称“国家中试基地”）建设和运营，促进人工智能技术在移动终端方向的规模化应用，国家中试基地建设单位结合场景打造需求，研究编制《国家人工智能应用中试基地（移动终端方向）揭榜挂帅任务申报指南（征求意见稿）》，现面向社会公开征求意见，公开征求意见截止时间为2026年4月14日，公众可通过电子邮件方式将意见发送至：hqs-gdaigd@chinaunicom.cn。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4525/post_4525768.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4525/post_4525768.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-8e8172fbcc54a0a0",
+      "title": "关于开展 2026 年东莞市工业和信息化产业发展专项资金绿色化发展项目“免申即享”工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-08",
+      "deadline": null,
+      "status": "有效",
+      "type": "通知公告",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "资金申报",
+        "绿色制造"
+      ],
+      "summary": "关于开展 2026 年东莞市工业和信息化产业发展专项资金绿色化发展项目“免申即享”工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于开展 2026 年东莞市工业和信息化产业发展专项资金绿色化发展项目“免申即享”工作的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524855.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524855.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-62dc6d0259336b93",
+      "title": "关于开展2025年人工智能软企上规模奖励项目“免申即享”的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-07",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "人工智能"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "资金申报"
+      ],
+      "summary": "关于开展2025年人工智能软企上规模奖励项目“免申即享”的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于开展2025年人工智能软企上规模奖励项目“免申即享”的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524079.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4524/post_4524079.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-f6f87c0e882a6dd6",
+      "title": "东莞市工业和信息化局关于开展2026年度专精特新“小巨人”企业认定和复核工作的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-03",
+      "deadline": "2026-05-28",
+      "status": "已截止",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "中小企业"
+      ],
+      "summary": "东莞市工业和信息化局关于开展2026年度专精特新“小巨人”企业认定和复核工作的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "（三）企业如需修改申报材料，请于2026年5月28日前向我局提出并完成修改提交。"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4523/post_4523359.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4523/post_4523359.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-c30773bfd14f0a78",
+      "title": "关于公开征求《进一步促进我市企业数字化转型的若干措施（征求意见稿）》意见的公告",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2026-04-03",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "数字化"
+      ],
+      "summary": "关于公开征求《进一步促进我市企业数字化转型的若干措施（征求意见稿）》意见的公告。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于公开征求《进一步促进我市企业数字化转型的若干措施（征求意见稿）》意见的公告"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4523/post_4523379.html",
+      "sourceLabel": "东莞市工业和信息化局 · 通知公告",
+      "sources": [
+        {
+          "id": "dongguan-industry-notices",
+          "label": "东莞市工业和信息化局 · 通知公告",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4523/post_4523379.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-7b3b0c098622b45e",
+      "title": "《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-12-26",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化"
+      ],
+      "summary": "《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4481/post_4481646.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4481/post_4481646.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-cbb83d42280965de",
+      "title": "《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-12-26",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4481/post_4481686.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4481/post_4481686.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-72ca513e5f915958",
+      "title": "关于印发《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-12-22",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化"
+      ],
+      "summary": "关于印发《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于印发《东莞市工业和信息化局关于东莞市人工智能应用创新中心的认定管理办法（试行）》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4479/post_4479279.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4479/post_4479279.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-8fa22595085039d8",
+      "title": "关于印发《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-12-22",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "人工智能",
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "人工智能应用",
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "人工智能",
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "关于印发《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "关于印发《东莞市工业和信息化专项资金人工智能应用创新中心专题项目实施细则》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4479/post_4479321.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4479/post_4479321.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-a5e4d8e5a1cbadb8",
+      "title": "《东莞市市级制造业创新中心认定管理暂行办法》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-09-30",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "制造业"
+      ],
+      "summary": "《东莞市市级制造业创新中心认定管理暂行办法》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《东莞市市级制造业创新中心认定管理暂行办法》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4470/post_4470272.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4470/post_4470272.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-13eb076cbd0f2b37",
+      "title": "《东莞市制造业新型技术改造专项资金管理办法》的政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-09-30",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "资金申报"
+      ],
+      "summary": "《东莞市制造业新型技术改造专项资金管理办法》的政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "《东莞市制造业新型技术改造专项资金管理办法》的政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4449/post_4449187.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4449/post_4449187.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-cbadbc569b0b20a1",
+      "title": "东莞市工业和信息化局关于印发《东莞市制造业新型技术改造专项资金管理办法》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-09-30",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型",
+        "资金申报"
+      ],
+      "tags": [
+        "制造业",
+        "数字化",
+        "资金申报"
+      ],
+      "summary": "东莞市工业和信息化局关于印发《东莞市制造业新型技术改造专项资金管理办法》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "项目申报、认定或资金支持，以官方通知为准",
+      "evidence": [
+        "东莞市工业和信息化局关于印发《东莞市制造业新型技术改造专项资金管理办法》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4449/post_4449181.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4449/post_4449181.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-cf25b8d87fd09be7",
+      "title": "《东莞市加快潮玩和动漫产业发展若干措施》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-09-25",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [],
+      "summary": "《东莞市加快潮玩和动漫产业发展若干措施》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《东莞市加快潮玩和动漫产业发展若干措施》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4442/post_4442238.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4442/post_4442238.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-02ed12817f855d4e",
+      "title": "东莞市工业和信息化局 中共东莞市委宣传部 东莞市商务局 东莞市文化广电旅游体育局关于印发《东莞市加快潮玩和动漫产业发展若干措施》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-09-25",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局 中共东莞市委宣传部 东莞市商务局 东莞市文化广电旅游体育局关于印发《东莞市加快潮玩和动漫产业发展若干措施》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局 中共东莞市委宣传部 东莞市商务局 东莞市文化广电旅游体育局关于印发《东莞市加快潮玩和动漫产业发展若干措施》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4442/post_4442203.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4442/post_4442203.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-3f01f10e5257510b",
+      "title": "东莞市工业和信息化局关于印发《东莞市市级制造业创新中心认定管理暂行办法》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-08-26",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局关于印发《东莞市市级制造业创新中心认定管理暂行办法》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局关于印发《东莞市市级制造业创新中心认定管理暂行办法》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4426/post_4426445.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4426/post_4426445.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-3a58ee87e37817a1",
+      "title": "《关于加快推动工业和信息化产业高质量发展的若干政策措施》政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-06-26",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "《关于加快推动工业和信息化产业高质量发展的若干政策措施》政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《关于加快推动工业和信息化产业高质量发展的若干政策措施》政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4399/post_4399245.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4399/post_4399245.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-a66b6e4003cea480",
+      "title": "东莞市工业和信息化局 东莞市发展和改革局 东莞市科学技术局 东莞市农业农村局关于印发《东莞市重点产业链“链主”企业遴选管理办法》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-06-06",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局 东莞市发展和改革局 东莞市科学技术局 东莞市农业农村局关于印发《东莞市重点产业链“链主”企业遴选管理办法》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局 东莞市发展和改革局 东莞市科学技术局 东莞市农业农村局关于印发《东莞市重点产业链“链主”企业遴选管理办法》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4391/post_4391605.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4391/post_4391605.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-89ed4525a16481c3",
+      "title": "关于《东莞市重点产业链“链主”企业遴选管理办法》的政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-06-06",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [],
+      "summary": "关于《东莞市重点产业链“链主”企业遴选管理办法》的政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于《东莞市重点产业链“链主”企业遴选管理办法》的政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4391/post_4391603.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4391/post_4391603.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-30a0bde539697306",
+      "title": "东莞市工业和信息化局关于印发《关于加快推动工业和信息化产业高质量发展的若干政策措施》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-06-05",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局关于印发《关于加快推动工业和信息化产业高质量发展的若干政策措施》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局关于印发《关于加快推动工业和信息化产业高质量发展的若干政策措施》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4390/post_4390817.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4390/post_4390817.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-2f6f88c3eb3948be",
+      "title": "东莞市工业和信息化局关于印发《东莞市“倍增企业”遴选考核办法》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-05-26",
+      "deadline": null,
+      "status": "有效",
+      "type": "项目申报",
+      "industries": [
+        "制造业",
+        "软件服务"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "数字化转型"
+      ],
+      "tags": [
+        "制造业",
+        "数字化"
+      ],
+      "summary": "东莞市工业和信息化局关于印发《东莞市“倍增企业”遴选考核办法》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "东莞市工业和信息化局关于印发《东莞市“倍增企业”遴选考核办法》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4386/post_4386981.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4386/post_4386981.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-905f82df21fdf20f",
+      "title": "《东莞市推动智能机器人产业创新发展若干政策措施》的政策解读",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-04-25",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "机器人"
+      ],
+      "summary": "《东莞市推动智能机器人产业创新发展若干政策措施》的政策解读。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "《东莞市推动智能机器人产业创新发展若干政策措施》的政策解读"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4415/post_4415621.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4415/post_4415621.html"
+        }
+      ]
+    },
+    {
+      "id": "policy-7700a32c07cf487c",
+      "title": "关于印发《东莞市推动智能机器人产业创新发展若干政策措施》的通知",
+      "agency": "东莞市工业和信息化局",
+      "region": "东莞",
+      "publishedAt": "2025-04-23",
+      "deadline": null,
+      "status": "有效",
+      "type": "产业政策",
+      "industries": [
+        "制造业"
+      ],
+      "scales": [
+        "中小企业",
+        "专精特新",
+        "规上企业"
+      ],
+      "goals": [
+        "品牌与质量"
+      ],
+      "tags": [
+        "机器人"
+      ],
+      "summary": "关于印发《东莞市推动智能机器人产业创新发展若干政策措施》的通知。请查看官方原文核对适用条件与执行口径。",
+      "support": "政策指引与产业支持，以官方原文为准",
+      "evidence": [
+        "关于印发《东莞市推动智能机器人产业创新发展若干政策措施》的通知"
+      ],
+      "source": "https://im.dg.gov.cn/gkmlpt/content/4/4374/post_4374645.html",
+      "sourceLabel": "东莞市工业和信息化局 · 政策文件",
+      "sources": [
+        {
+          "id": "dongguan-industry-policies",
+          "label": "东莞市工业和信息化局 · 政策文件",
+          "url": "https://im.dg.gov.cn/gkmlpt/content/4/4374/post_4374645.html"
+        }
+      ]
+    }
+  ]
+}

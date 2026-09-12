@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07161e" />
+  <title>GitHub Skills 玩法与集合站｜从流量到 Agent 的商业闭环</title>
+  <meta name="description" content="一份给未参会同学的深度学习手册：拆解 X 热点推文、多平台内容分发与 Skills 集合站，并按道、法、术、器、势重构商业闭环。" />
+  <meta property="og:title" content="GitHub Skills 玩法与集合站｜从流量到 Agent 的商业闭环" />
+  <meta property="og:description" content="两个内容自动化工作流、一座 Skills 集合站，以及从开源能力到 Agent 产品的完整商业闭环。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://siuserxiaowei.github.io/meeting-minutes-shu-fa-dao-qi-shi-pages/articles/20260713-2159-github-skills-commercial-loop/" />
+  <link rel="canonical" href="https://siuserxiaowei.github.io/meeting-minutes-shu-fa-dao-qi-shi-pages/articles/20260713-2159-github-skills-commercial-loop/" />
+  <link rel="stylesheet" href="../../assets/agent-engineering.css?v=20260713-2" />
+  <link rel="stylesheet" href="../../assets/skills-commercial-loop.css?v=20260713-1" />
+</head>
+<body class="skills-page">
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+  <aside class="top-contact" id="contact" aria-label="作者联系方式">
+    <strong class="top-contact-label">作者联系方式</strong>
+    <a class="contact-chip" href="https://x.com/HIT_SZ" target="_blank" rel="me noopener noreferrer">
+      <small>X / Twitter</small><b>@HIT_SZ ↗</b>
+    </a>
+    <span class="contact-chip"><small>微信</small><b>siuserxiaowei</b></span>
+  </aside>
+
+  <header class="site-bar">
+    <a class="site-brand" href="../../index.html" aria-label="返回道法术器势会议拆解站">
+      <span class="brand-mark">技</span>
+      <span>道法术器势会议拆解站</span>
+    </a>
+    <nav class="site-actions" aria-label="页面工具">
+      <button id="search-toggle" class="text-button" type="button">全文检索</button>
+      <button id="print-page" class="text-button" type="button">打印 / PDF</button>
+      <a class="text-button" href="../../index.html">全部会议</a>
+    </nav>
+  </header>
+
+  <section class="search-drawer" id="search-drawer" hidden>
+    <div class="search-inner">
+      <label for="article-search">搜索这份纪要</label>
+      <input id="article-search" type="search" placeholder="例如：Grok、Typefully、Agent、企业交付" autocomplete="off" />
+      <span id="search-status" aria-live="polite">输入关键词开始检索</span>
+      <button id="search-close" type="button" aria-label="关闭检索">关闭</button>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">2026.07.13 · SKILLS / AGENT / GROWTH · 学习手册</p>
+        <h1 id="page-title">Skills<br /><em>→ Agent</em></h1>
+        <p class="hero-deck">两个内容自动化工作流，一座 Skills 集合站。把开源能力从“工具清单”变成流量入口、交付系统与商业产品。</p>
+        <div class="hero-meta" aria-label="文档数据">
+          <span><strong>3</strong> 项主题</span>
+          <span><strong>5</strong> 个分析维度</span>
+          <span><strong>2</strong> 条自动化链路</span>
+          <span><strong>7</strong> 天实践计划</span>
+        </div>
+      </div>
+      <div class="hero-compass" aria-label="道法术器势分析维度">
+        <span data-n="01">道</span><span data-n="02">法</span><span data-n="03">术</span>
+        <span data-n="04">器</span><span data-n="05">势</span>
+      </div>
+      <div class="hero-note">
+        <span>核心命题</span>
+        <p>不要卖一份容易复制的 Skill 文件；要用 Skills 发现需求、制造内容、搭建工作流，再把稳定结果与行业适配包装成客户愿意购买的 Agent 或服务。</p>
+      </div>
+    </section>
+
+    <section class="loop-strip" aria-label="商业闭环概览">
+      <div><small>01 / DISCOVER</small><strong>集合站找能力</strong></div>
+      <i aria-hidden="true">→</i>
+      <div><small>02 / DISTRIBUTE</small><strong>工作流做内容</strong></div>
+      <i aria-hidden="true">→</i>
+      <div><small>03 / CONVERT</small><strong>内容获得线索</strong></div>
+      <i aria-hidden="true">→</i>
+      <div><small>04 / DELIVER</small><strong>Agent 承接结果</strong></div>
+    </section>
+
+    <section class="reader-shell">
+      <aside class="toc-panel" aria-label="文章目录">
+        <div class="toc-sticky">
+          <p class="toc-label">阅读地图</p>
+          <nav id="table-of-contents"></nav>
+          <div class="toc-foot">
+            <span id="reading-percent">0%</span>
+            <small>阅读进度</small>
+          </div>
+        </div>
+      </aside>
+
+      <article class="article-content" id="article-content">
+<h1 id="github-skills-玩法与集合站会议纪要深度拆解">GitHub Skills 玩法与集合站：会议纪要深度拆解</h1>
+<blockquote>
+<p>适合对象：没有参会，但希望理解这场分享的观点、方法、工具、商业逻辑，并能照着做出一个最小闭环的同学。</p>
+</blockquote>
+<h2 id="一先看结论">一、先看结论</h2>
+<p>这场分享真正讲的不是“怎么安装两个 Skills”，而是一套从开源能力到商业结果的链路：</p>
+<p><strong>把 Skills 当作能力积木、选题来源和低成本流量入口；把多个 Skills 组合成稳定工作流，再包装为 Agent、企业交付或定制服务完成变现；用 Skills 集合站持续发现新能力、趋势和客户需求。</strong></p>
+<p>更严谨地说，用户通常不会为一份通用、可替代的 <code>SKILL.md</code> 支付高价，但会为以下结果付费：</p>
+<ul>
+<li>更快、更稳定地完成具体任务；</li>
+<li>不需要自己安装、调试、选择和组合工具；</li>
+<li>适配自己的行业、账号、数据、审批和交付流程；</li>
+<li>有明确效果、责任边界、售后和持续迭代。</li>
+</ul>
+<p>所以商业价值并不来自把 Skill 改名成 Agent，而来自<strong>场景选择、系统组合、结果稳定性、客户关系、私有数据、评测与交付能力</strong>。</p>
+<p>本文把你说的“三个内容”按会议主题理解为：</p>
+<ol type="1">
+<li>X 热点推文自动生产 Skill；</li>
+<li>微信公众号、X、小红书等多平台内容分发 Skill；</li>
+<li>Skills 集合站的发现、内容、组合与企业交付玩法。</li>
+</ol>
+<p>两个飞书链接则是同一场会议的智能纪要与逐字稿，智能纪要中还关联了一条妙记。三项主题的完整拆解集中在“术”一章，前面的章节负责补足来源、底层逻辑和商业框架。</p>
+<h2 id="二会议信息与取材说明">二、会议信息与取材说明</h2>
+<ul>
+<li>主题：GitHub 两个 Skills 玩法 + 怎么玩 Skills 集合站</li>
+<li>时间：2026 年 7 月 13 日 21:59–22:26（GMT+08）</li>
+<li>主讲：Jason Zhu</li>
+<li>有效内容段：逐字稿约 00:03:06–00:26:33</li>
+<li>会议形态：以单人分享和演示为主，结束前基本没有实质问答，因此下文应理解为<strong>主讲人的经验判断</strong>，不是参会者共同决议。</li>
+</ul>
+<p>本次拆解使用了三类会议产物：</p>
+<ol type="1">
+<li>智能纪要：用于确认主题结构、AI 提炼结果、待办和演示截图。</li>
+<li>完整文字记录：用于还原主讲人的原始论证、例子、限定条件和口头表述。</li>
+<li>关联妙记：已识别到，但当前用户身份没有妙记文件阅读权限，无法读取其中独立的 Summary、Todo、Chapter 与 Transcript。本文没有虚构这部分内容，而是用前两项和纪要截图交叉还原。</li>
+</ol>
+<h2 id="三两份链接与关联妙记分别提供了什么">三、两份链接与关联妙记分别提供了什么</h2>
+<h3 id="1-智能纪要压缩后的结论地图">1. 智能纪要：压缩后的“结论地图”</h3>
+<p>智能纪要把分享压缩成五部分：</p>
+<ol type="1">
+<li>Skills 与 Agent 的价值定位；</li>
+<li>Skills 获客的四种玩法；</li>
+<li>两个已经跑通的内容工作流；</li>
+<li>企业服务和 Agent 市场的商业化判断；</li>
+<li>后续分享频率与回放上传。</li>
+</ol>
+<p>它的优点是结构清楚，适合快速浏览；缺点是把很多经验判断写成了确定结论，也丢失了主讲人在逐字稿中的犹豫、举例和限定条件。例如“Skills 无法变现”更接近主讲人的商业定位建议，不是一个普遍事实。</p>
+<p>智能纪要还存在自动转写错误。最重要的一处是把 <strong>Grok CLI</strong> 写成了 “Gloak/GloVe”；演示截图已经确认正确工具名是 Grok CLI。纪要里的 “COI” 结合上下文与集合站公开页面，较可能是 <strong>CLI</strong>，仍建议向主讲人复核。</p>
+<h3 id="2-文字记录原始论证与隐含假设">2. 文字记录：原始论证与隐含假设</h3>
+<p>逐字稿中的真实论证链是：</p>
+<ol type="1">
+<li>主讲人接触过做 FDE/企业交付的一线从业者，发现 Skills 与 Agents 可以作为低成本交付单元。</li>
+<li>Skills 是经验固化和开源产物，透明、易复制，所以大众对通用 Skill 的直接付费意愿低。</li>
+<li>Agent 在用户认知中更像一个完整产品，即使内部只是一个或多个 Skills，也更容易承接付费。</li>
+<li>因此可以把 Skills 放在漏斗前端获客，把 Agent、定制工作流或企业交付放在后端变现。</li>
+<li>获客不一定要原创开发 Skill，也可以通过整理、推荐、组合、演示和二创获得流量。</li>
+<li>企业客户往往不关心底层是不是开源 Skill，只关心能否解决 LinkedIn、内容生产、PPT 等实际问题。</li>
+<li>Agent 市场可能成为新型服务交易市场：客户先体验已有 Agent，再基于差距提出定制需求，从而降低供需沟通成本。</li>
+</ol>
+<p>这里包含几个关键假设：</p>
+<ul>
+<li>用户的付费意愿主要由结果包装和完整度决定，而不是底层组件是否开源；</li>
+<li>发现和组合能力本身也能形成内容价值；</li>
+<li>企业使用门槛仍高，能够安装、集成、调试和交付的人存在服务机会；</li>
+<li>低成本内容分发能够稳定产生线索，并由后端产品承接。</li>
+</ul>
+<p>这些假设大体合理，但会议没有提供完整的转化漏斗、收入归因和成本数据。</p>
+<h3 id="3-飞书妙记应有的交叉核验层">3. 飞书妙记：应有的交叉核验层</h3>
+<p>按飞书妙记的产物结构，第三项原本应提供：</p>
+<ul>
+<li>Summary：妙记自己的 AI 总结；</li>
+<li>Chapters：按话题划分的章节；</li>
+<li>Todos：AI 提取的待办；</li>
+<li>Transcript：录制链路的原始文字记录。</li>
+</ul>
+<p>当前缺少读取权限，因此无法验证妙记与智能纪要之间是否存在章节差异、遗漏待办或不同转写。已能确认的正式待办只有一项：</p>
+<ul>
+<li>Jason Zhu：将本次会议回放上传会员中心，供成员回看。</li>
+</ul>
+<p>主讲人在结尾还口头表示，计划大约每半个月组织一次类似分享，但没有给出下一次主题、日期、负责人或验收标准。</p>
+<h2 id="四整场会议的商业闭环">四、整场会议的商业闭环</h2>
+<div class="commercial-loop" role="img" aria-label="Skills 从发现到交付的商业闭环">
+  <div><small>DISCOVER</small><strong>集合站与 GitHub</strong><p>发现趋势、工具和需求。</p></div>
+  <div><small>DISTRIBUTE</small><strong>内容入口</strong><p>单 Skill、合集、场景工作流与案例。</p></div>
+  <div><small>CONVERT</small><strong>流量与诊断</strong><p>把关注、私信和咨询转成可验证需求。</p></div>
+  <div><small>DELIVER</small><strong>Agent 与 FDE</strong><p>用集成、评测、部署和定制承接结果。</p></div>
+</div>
+<p>这套闭环中，Skill 不是孤立产品，而同时承担四个角色：</p>
+<ul>
+<li><strong>能力积木</strong>：让工作流快速拼装；</li>
+<li><strong>内容素材</strong>：用于推荐、演示和教程；</li>
+<li><strong>需求探针</strong>：通过搜索和反馈发现用户真正需要什么；</li>
+<li><strong>交付起点</strong>：在开源基础上适配客户，而不是从零开发。</li>
+</ul>
+<h2 id="五道底层认知与价值原则">五、道：底层认知与价值原则</h2>
+<h3 id="道一用户购买的是结果不是组件名称">道一：用户购买的是结果，不是组件名称</h3>
+<p>“Skill 免费、Agent 收费”只是表象。真正的价值层级更接近：</p>
+<p><strong>代码/说明文件 &lt; 可复现能力 &lt; 稳定工作流 &lt; 可运营产品 &lt; 行业解决方案 &lt; 持续负责的业务结果。</strong></p>
+<p>如果一个 Agent 只是给同一个 Skill 换了名字，并没有更稳定、更省事、更贴近客户，它不会产生可持续溢价。反过来，即使底层全是开源 Skills，只要完成了选择、集成、权限、数据、评测、部署和持续维护，仍然可以形成高价值服务。</p>
+<h3 id="道二开源降低组件价格但不消灭服务价值">道二：开源降低组件价格，但不消灭服务价值</h3>
+<p>通用 Skill 容易被复制，确实会压低单个文件的价格；但开源同时扩大了以下机会：</p>
+<ul>
+<li>托管服务与订阅；</li>
+<li>企业集成、部署和运维；</li>
+<li>垂直行业模板、数据和评测集；</li>
+<li>培训、咨询、技术支持与 SLA；</li>
+<li>私有工作流和团队协作治理。</li>
+</ul>
+<p>因此，会议里的“Skills 不赚钱”应修正为：<strong>未差异化、未产品化、未承接具体结果的通用 Skill，直接收费空间有限。</strong></p>
+<h3 id="道三分发能力与交付能力必须成对出现">道三：分发能力与交付能力必须成对出现</h3>
+<p>只有流量，没有后端产品，内容热度难以转化；只有产品，没有低成本分发，获客成本可能过高。会议强调的有效结构是：</p>
+<ul>
+<li>前端：Skills 教程、合集、工作流、案例；</li>
+<li>中段：社群、咨询、诊断、试用；</li>
+<li>后端：Agent、自动化方案、企业培训、FDE 定制。</li>
+</ul>
+<h3 id="道四真正的壁垒在闭环数据">道四：真正的壁垒在闭环数据</h3>
+<p>Skill 本身容易复制，难复制的是：</p>
+<ul>
+<li>你接触到的真实客户问题；</li>
+<li>哪种组合在什么场景下成功；</li>
+<li>失败案例、评测标准和兜底逻辑；</li>
+<li>账号、渠道和信任关系；</li>
+<li>持续运营形成的私有反馈数据。</li>
+</ul>
+<h2 id="六法把认知变成可重复的方法">六、法：把认知变成可重复的方法</h2>
+<h3 id="1-skills-获客的四种方法">1. Skills 获客的四种方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>做什么</th>
+<th style="text-align: right;">内容价值</th>
+<th style="text-align: right;">难度</th>
+<th>适合谁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自主开发/二创</td>
+<td>自己做 Skill，或基于开源项目改造</td>
+<td style="text-align: right;">展示专业能力</td>
+<td style="text-align: right;">高</td>
+<td>有开发和维护能力的人</td>
+</tr>
+<tr>
+<td>垂直合集</td>
+<td>按 PPT、视频、办公、营销等场景整理</td>
+<td style="text-align: right;">节省筛选成本</td>
+<td style="text-align: right;">中</td>
+<td>熟悉某个垂直领域的人</td>
+</tr>
+<tr>
+<td>单工具种草</td>
+<td>用文字、图文、视频演示一个 Skill</td>
+<td style="text-align: right;">降低认知门槛</td>
+<td style="text-align: right;">低</td>
+<td>内容创作者、工具博主</td>
+</tr>
+<tr>
+<td>场景组合</td>
+<td>把多个 Skills 串成完整结果链</td>
+<td style="text-align: right;">直接展示“怎么解决问题”</td>
+<td style="text-align: right;">中</td>
+<td>想获客或做企业交付的人</td>
+</tr>
+</tbody>
+</table>
+<p>主讲人判断“场景组合”当前获客效率较高，因为它兼顾了三个优点：用户容易看懂、创作门槛不高、离付费结果最近。</p>
+<h3 id="2-内容阶梯与产品阶梯">2. 内容阶梯与产品阶梯</h3>
+<p>建议把会议观点整理成两条并行阶梯。</p>
+<p>内容阶梯：</p>
+<ol type="1">
+<li>单个 Skill 介绍；</li>
+<li>垂直 Skills 合集；</li>
+<li>一个场景的组合教程；</li>
+<li>有输入、过程、结果、数据的案例；</li>
+<li>行业方案与评测报告。</li>
+</ol>
+<p>产品阶梯：</p>
+<ol type="1">
+<li>免费清单、教程或模板；</li>
+<li>付费诊断、工作坊或安装服务；</li>
+<li>标准化 Agent/工作流；</li>
+<li>行业版产品；</li>
+<li>企业定制、数据接入、权限治理与 SLA。</li>
+</ol>
+<h3 id="3-fde-式交付方法">3. FDE 式交付方法</h3>
+<p>面对企业需求，不要一上来写新 Skill，可按八步推进：</p>
+<ol type="1">
+<li><strong>界定结果</strong>：客户到底要新增线索、提高产能，还是降低人工时间？</li>
+<li><strong>拆任务</strong>：把结果拆成检索、生成、审核、发布、监控等原子环节。</li>
+<li><strong>搜索能力</strong>：去集合站和 GitHub 找可复用 Skills、MCP、CLI 和 API。</li>
+<li><strong>安全审查</strong>：看许可证、权限、密钥访问、网络请求、维护状态和安装脚本。</li>
+<li><strong>组合原型</strong>：先做最短可用链路，不追求全自动。</li>
+<li><strong>场景适配</strong>：接客户模板、数据源、账号、审批和品牌规范。</li>
+<li><strong>评测兜底</strong>：定义成功指标、失败重试、人工审批与回滚。</li>
+<li><strong>沉淀复用</strong>：把定制部分抽象成模板、测试集和下一轮内容案例。</li>
+</ol>
+<h2 id="七术三套可直接照着理解的工作流">七、术：三套可直接照着理解的工作流</h2>
+<h3 id="工作流-ax-热点推文自动生产">工作流 A：X 热点推文自动生产</h3>
+<h4 id="输入">输入</h4>
+<ul>
+<li>时间窗口：主讲人的当前经验值是最近 12 小时；</li>
+<li>热点候选及相关高互动 Quote 帖；</li>
+<li>浏览量、发布时间、互动量、媒体类型；</li>
+<li>账号定位、语气和发布标准。</li>
+</ul>
+<h4 id="流程">流程</h4>
+<ol type="1">
+<li>Grok CLI 抓取 X 热点和相关 Quote 帖。</li>
+<li>系统输出约 5 个候选话题，并展示热度、时间和媒体类型。</li>
+<li>人工从 Top 5 中选择 1–3 个值得写的主题。</li>
+<li>Claude Opus 按账号风格生成推文。</li>
+<li>再由 Grok 按约 5 个维度评分、提出修改建议并优化。</li>
+<li>按媒体类型分流：
+<ul>
+<li>纯文字：生成涂鸦或信息图；</li>
+<li>图片：下载并按需要加工；</li>
+<li>视频：下载、语音转文字、加字幕和水印。</li>
+</ul></li>
+<li>通过 Typefully API 上传文字与媒体，创建草稿。</li>
+<li>人工检查事实、语气、版权和排版后点击发布。</li>
+</ol>
+<h4 id="输出">输出</h4>
+<ul>
+<li>可直接审阅的 X 草稿；</li>
+<li>已处理的视频、图片或生成图；</li>
+<li>话题候选和评分记录。</li>
+</ul>
+<h4 id="演示结果">演示结果</h4>
+<p>主讲人展示的一条历史内容约有 4 万+浏览、200+点赞、300+收藏。它说明流程有可能产出高互动内容，但不能仅凭单条结果判断长期有效性，还需要看中位数、失败率、账号基线和发布频次。</p>
+<h4 id="应补的指标">应补的指标</h4>
+<ul>
+<li>每条内容端到端耗时与人工分钟数；</li>
+<li>候选话题采用率；</li>
+<li>草稿一次通过率；</li>
+<li>7/30 天浏览量、收藏率、关注转化；</li>
+<li>私信/咨询线索数和付费转化；</li>
+<li>API、模型、媒体处理的单条成本。</li>
+</ul>
+<h3 id="工作流-b多平台内容一键分发">工作流 B：多平台内容一键分发</h3>
+<h4 id="输入-1">输入</h4>
+<ul>
+<li>一段文字、一个链接、一个视频转写稿，或一个 Skill/项目链接；</li>
+<li>目标受众、内容目标、平台和账号风格；</li>
+<li>微信公众号、X、小红书等发布渠道。</li>
+</ul>
+<h4 id="流程-1">流程</h4>
+<ol type="1">
+<li>抓取输入材料，先让用户确认主题和核心事实。</li>
+<li>生成长文初稿，并做“去 AI 化”编辑。</li>
+<li>生成 3 个标题供人工选择，也允许用户自定标题。</li>
+<li>按文章小节生成配图，另生成封面图。</li>
+<li>针对不同平台重新组织标题、开头、长度、图片比例和 CTA，不能只复制同一份正文。</li>
+<li>分别推送到微信公众号、X 和小红书草稿箱；主讲人当前主要使用微信和 X。</li>
+<li>人工检查后再正式发布。</li>
+</ol>
+<h4 id="关键认识">关键认识</h4>
+<p>“一键分发”的价值不在于无脑同步，而在于把<strong>抓取、写作、编辑、配图、格式适配、账号登录和草稿创建</strong>组合成一个受控流程。草稿箱和人工确认是必要安全门，不是多余步骤。</p>
+<h3 id="工作流-cskills-集合站的四种玩法">工作流 C：Skills 集合站的四种玩法</h3>
+<ol type="1">
+<li><strong>追踪趋势</strong>：看热门、增速榜、本周新增，抢先做新工具内容。</li>
+<li><strong>整理合集</strong>：围绕某位创作者或某个垂直场景，说明每个 Skill 的用途、限制和组合关系。</li>
+<li><strong>场景组合</strong>：让 Agent 基于现有 Skills 设计“热点发现—写作—配图—发布”等端到端方案。</li>
+<li><strong>二创与企业交付</strong>：先搜索现成能力，再针对企业流程做修改、组合和部署。</li>
+</ol>
+<p>集合站的核心不只是“下载目录”，而是三种基础设施：</p>
+<ul>
+<li>能力搜索引擎；</li>
+<li>趋势和选题雷达；</li>
+<li>企业方案的组件库。</li>
+</ul>
+<p>经公开信息核验，会议中所指的集合站应是 Jason Zhu 维护的 <code>agentskillshub.top</code>。它除检索和趋势外，还提供质量评分、安全分级与 CLI 审查入口；这比“找 Skill”又多了一层供应链审查价值。<a href="https://agentskillshub.top/">Agent Skills Hub</a></p>
+<h2 id="八器工具依赖与各自职责">八、器：工具、依赖与各自职责</h2>
+<h3 id="1-x-热点工作流">1. X 热点工作流</h3>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>会议中的用途</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grok CLI</td>
+<td>热点抓取、找 Quote、内容评分</td>
+<td>截图确认是 Grok，不是转写中的 Gloak；<a href="https://docs.x.ai/build/cli/reference">xAI CLI 文档</a></td>
+</tr>
+<tr>
+<td>Claude Opus</td>
+<td>撰写推文</td>
+<td>“Opus 4.6”为会议现场表述</td>
+</tr>
+<tr>
+<td>apimart API / <code>gemini-3.1-flash-image-preview</code></td>
+<td>主路线涂鸦/信息图生成</td>
+<td>来自演示截图，需以当前 API 实际可用性为准</td>
+</tr>
+<tr>
+<td>OpenAI <code>gpt-image-2</code></td>
+<td>备用图片生成</td>
+<td>来自演示截图</td>
+</tr>
+<tr>
+<td><code>yt-dlp</code></td>
+<td>下载帖子视频或图片</td>
+<td>需注意平台条款和素材版权</td>
+</tr>
+<tr>
+<td><code>ffmpeg-full</code></td>
+<td>加水印、烧录字幕</td>
+<td>媒体加工层</td>
+</tr>
+<tr>
+<td>Whisper base</td>
+<td>视频语音转文字</td>
+<td>需检查专有名词和多人发言</td>
+</tr>
+<tr>
+<td>Typefully API</td>
+<td>上传媒体、创建草稿</td>
+<td>官方 API 支持草稿、排期、发布和媒体上传；<a href="https://support.typefully.com/en/articles/8718287-typefully-api">Typefully API</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-多平台内容工作流">2. 多平台内容工作流</h3>
+<table>
+<thead>
+<tr>
+<th>工具/Skill</th>
+<th>用途</th>
+<th>会议截图中的安装线索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baoyu-post-to-wechat</code></td>
+<td>微信文章渲染与上传</td>
+<td><code>npx add-skill baoyu/baoyu-post-to-wechat</code>；公开仓库为 <a href="https://github.com/JimLiu/baoyu-skills">JimLiu/baoyu-skills</a></td>
+</tr>
+<tr>
+<td><code>illo</code></td>
+<td>叙事型封面和编辑插画</td>
+<td><code>npx skills add tmchow/illo-skill --skill illo</code>；<a href="https://github.com/tmchow/illo-skill">tmchow/illo-skill</a></td>
+</tr>
+<tr>
+<td><code>qiaomu-x-article-publisher</code></td>
+<td>X Articles 自动化发布到草稿</td>
+<td><a href="https://github.com/joeseesun/qiaomu-x-article-publisher">joeseesun/qiaomu-x-article-publisher</a>；公开说明强调只保存草稿，不自动正式发布</td>
+</tr>
+<tr>
+<td><code>patchright</code>、Pillow、<code>pyobjc-framework-Cocoa</code></td>
+<td>qiaomu 的浏览器自动化与 macOS 辅助依赖</td>
+<td>公开仓库说明当前主要面向 macOS</td>
+</tr>
+<tr>
+<td><code>yt-dlp</code></td>
+<td>输入是视频源时下载媒体</td>
+<td>只在视频源需要时安装</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-工具使用原则">3. 工具使用原则</h3>
+<ul>
+<li>不把账号密钥硬编码进 Skill 或 Git 仓库；</li>
+<li>安装前审查 <code>SKILL.md</code>、脚本、依赖、许可证和网络访问；</li>
+<li>发布、删除、付款等高风险操作必须保留人工确认；</li>
+<li>对浏览器自动化准备登录过期、页面改版和验证码兜底；</li>
+<li>给每个外部 API 准备超时、重试、限流和替代路径；</li>
+<li>定期锁定和更新依赖版本，避免“今天能跑、明天失效”。</li>
+</ul>
+<h2 id="九势趋势判断机会与风险">九、势：趋势判断、机会与风险</h2>
+<h3 id="1-会议看到的势">1. 会议看到的“势”</h3>
+<ul>
+<li>Skills 数量快速增长，发现和筛选将成为新问题；</li>
+<li>多个平台开始支持 Skills、MCP 和 Agent 工作流；</li>
+<li>企业用户的能力使用门槛仍高，存在培训、安装和定制空间；</li>
+<li>Agent 市场可能把传统外包的“先讲需求”变为“先试产品，再描述差距”；</li>
+<li>内容生产与分发自动化使个人或小团队获得更高杠杆。</li>
+</ul>
+<h3 id="2-更重要的二阶趋势">2. 更重要的二阶趋势</h3>
+<p>当“找代码、写代码、装 Skill”越来越便宜，竞争优势会从组件开发迁移到：</p>
+<ul>
+<li><strong>选择</strong>：知道什么值得用；</li>
+<li><strong>组合</strong>：知道怎样形成完整结果；</li>
+<li><strong>验证</strong>：知道结果是否可靠；</li>
+<li><strong>治理</strong>：知道权限、合规和风险如何控制；</li>
+<li><strong>分发</strong>：能够持续触达目标客户；</li>
+<li><strong>交付</strong>：能够进入客户真实环境并负责到底。</li>
+</ul>
+<p>这也意味着集合站未来的核心价值不会只是数量，而是安全、质量、兼容性、维护状态、真实案例和评测数据。</p>
+<h3 id="3-主要风险">3. 主要风险</h3>
+<ol type="1">
+<li><strong>能力同质化</strong>：只做公开 Skill 的浅层搬运，很快被复制。</li>
+<li><strong>平台依赖</strong>：X 算法、页面、API 和账号政策变化会让流程失效。</li>
+<li><strong>安全风险</strong>：Agent Skill 可能读取本地文件、环境变量、Cookie 和密钥。</li>
+<li><strong>版权风险</strong>：下载、改编和再发布他人图片或视频需要明确权利边界。</li>
+<li><strong>事实风险</strong>：热点内容自动生成容易放大错误消息。</li>
+<li><strong>品牌风险</strong>：跨平台直接复制会破坏账号调性，批量低质内容会透支信任。</li>
+<li><strong>商业风险</strong>：浏览量并不等于线索，更不等于收入；必须建立归因。</li>
+</ol>
+<h2 id="十哪些观点值得保留哪些需要修正">十、哪些观点值得保留，哪些需要修正</h2>
+<h3 id="值得保留">值得保留</h3>
+<ul>
+<li>Skills 做前端流量、Agent/服务做后端承接，是一个清晰的商业漏斗。</li>
+<li>场景组合比单工具介绍更接近客户结果，也更容易体现价值。</li>
+<li>企业交付应优先搜索、组合、改造现有能力，而不是从零开发。</li>
+<li>草稿箱和人工发布确认是合理的自动化边界。</li>
+<li>集合站既能找工具，也能做选题和需求发现。</li>
+</ul>
+<h3 id="需要修正或补证">需要修正或补证</h3>
+<ul>
+<li><strong>“Skills 不能赚钱”过于绝对</strong>：托管、支持、企业版、培训、数据和定制都可以变现。</li>
+<li><strong>“Agent 更高维所以更值钱”不够扎实</strong>：长期价格取决于效果、稳定性和责任，不是名称。</li>
+<li><strong>七位数间接变现</strong>：会议提到 DBS Skills 与 Agent Reach 的案例，但没有展示归因口径、周期或成本，应作为案例线索而非已核实结论。</li>
+<li><strong>视频在 X 上流量最好</strong>：可能是主讲人的账号经验，不能直接推广到所有领域和账号。</li>
+<li><strong>用 Grok 评分就更符合 X 推荐算法</strong>：这是一个工作假设，不等于已证明的因果关系；内容评分模型与真实推荐系统不是同一件事。</li>
+<li><strong>单条 4 万浏览代表流程跑通</strong>：只能证明出现过成功样本，不能证明稳定复现。</li>
+<li><strong>Agent 市场替代传统接单平台</strong>：有方向性，但仍取决于评测、担保、数据隔离、责任和交付治理。</li>
+</ul>
+<h2 id="十一给未参会同学的最小实践作业">十一、给未参会同学的最小实践作业</h2>
+<h3 id="7-天做出一个可验证闭环">7 天做出一个可验证闭环</h3>
+<p><strong>第 1 天：选场景</strong></p>
+<p>从自己熟悉的行业选一个高频、可量化、可审核的任务，例如“跨境品牌每周生成 3 条 LinkedIn 内容”，不要选“做一个万能内容 Agent”。</p>
+<p><strong>第 2 天：找组件</strong></p>
+<p>在 Skills 集合站和 GitHub 搜索至少 20 个候选，按功能、维护状态、权限、许可证和安装难度筛到 5 个以内。</p>
+<p><strong>第 3 天：画流程</strong></p>
+<p>写清输入、处理步骤、人工决策点、输出、失败分支和成功指标。</p>
+<p><strong>第 4 天：做最短原型</strong></p>
+<p>只跑通一条输入到一个草稿箱的链路，先保留人工选题、事实核验和发布。</p>
+<p><strong>第 5 天：连续测试</strong></p>
+<p>用至少 10 个样本记录成功率、耗时、人工分钟数、成本和常见错误。</p>
+<p><strong>第 6 天：做公开案例</strong></p>
+<p>展示问题、流程、前后对比、数据、限制和适合谁，不只做工具清单。</p>
+<p><strong>第 7 天：设计承接产品</strong></p>
+<p>给流量准备明确下一步：免费诊断、安装服务、标准工作流、行业版 Agent 或企业定制。</p>
+<h3 id="验收标准">验收标准</h3>
+<ul>
+<li>陌生同学能在 5 分钟内说清这个流程解决什么问题；</li>
+<li>同一输入重复执行时，结果基本可预测；</li>
+<li>所有高风险写操作都有人审；</li>
+<li>至少有一组真实的时间、质量或转化指标；</li>
+<li>免费内容后面有明确、不过度承诺的付费承接路径。</li>
+</ul>
+<h2 id="十二会议行动项">十二、会议行动项</h2>
+<h3 id="已明确">已明确</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Jason Zhu：上传本次会议回放至会员中心。</label></li>
+<li><label><input type="checkbox" />Jason Zhu：约每半个月组织一次同类型分享。</label></li>
+</ul>
+<h3 id="建议补充">建议补充</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />补充两个 GitHub 项目的准确仓库地址、版本与安装说明。</label></li>
+<li><label><input type="checkbox" />把 X 工作流的 5 个评分维度公开成可复用评测表。</label></li>
+<li><label><input type="checkbox" />补充至少 30 条内容的中位数表现，而不是只展示最佳样本。</label></li>
+<li><label><input type="checkbox" />给多平台工作流增加平台差异化模板、事实核验和版权检查。</label></li>
+<li><label><input type="checkbox" />给 Skills 集合站使用方法增加安全审查清单。</label></li>
+<li><label><input type="checkbox" />明确从内容流量到咨询、试用、付费的归因指标。</label></li>
+</ul>
+<h2 id="十三一句话记忆">十三、一句话记忆</h2>
+<p><strong>不要卖一个容易复制的 Skill 文件；要用 Skills 发现需求、制造内容、搭建工作流，再把稳定结果、行业适配和持续负责包装成客户愿意购买的 Agent 或服务。</strong></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div>
+      <span class="footer-kicker">THE OPERATING PRINCIPLE</span>
+      <strong>能力免费，<br />结果有价。</strong>
+    </div>
+    <a href="../../index.html">返回全部会议拆解 →</a>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="返回页面顶部">↑</button>
+  <script src="../../assets/agent-engineering.js"></script>
+</body>
+</html>

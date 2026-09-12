@@ -1,0 +1,4 @@
+{
+  "code": 400001,
+  "message": "暂不支持的文件类型：.form（read_file 支持 docx / pdf / xlsx / ksheet / dbt / otl）"
+}

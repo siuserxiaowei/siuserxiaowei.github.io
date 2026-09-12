@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Q&A 与风险边界｜iOS AI App 开发分享</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>iOS AI App Dossier</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">总览</a><a href="workflow.html">流程</a><a href="business.html">商业</a><a href="growth.html">推广</a><a href="qa-risks.html" aria-current="page">问答风险</a><a href="timeline.html">时间线</a><a href="appendix.html">附录</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <p class="eyebrow">Q&A / Risks</p>
+      <h1>哪些方向不建议一开始就碰</h1>
+      <p class="lede">会议后半段的问答很实用：模型重复犯错、安卓、小程序、中转站、海外站和合规边界，都不是一句“AI 能做”就能抹平的问题。</p>
+    </section>
+
+    <section class="section">
+      <div class="grid two">
+        <article class="card">
+          <h3>模型反复犯错怎么办？</h3>
+          <p>优先换更好的模型。便宜模型可能一个问题要十轮对话，好模型一次就解决。上下文过长时，让模型总结当前会话并写入项目文档，再开新会话读取要点。</p>
+          <p class="meta-line">来源：约 01:53:25</p>
+        </article>
+        <article class="card">
+          <h3>为什么不优先做安卓？</h3>
+          <p>国内安卓市场上架复杂，应用商店多，订阅生态弱，用户付费意愿低。若要尝试，分享者建议优先考虑 Google Play，而不是投入大量精力到国内安卓市场。</p>
+          <p class="meta-line">来源：约 01:55:06</p>
+        </article>
+        <article class="card">
+          <h3>小程序是不是更容易？</h3>
+          <p>开发门槛低，但获客和付费难。分享者做过小众旅游类小程序，最多一千多用户但没有收费，流量主收入很低；要靠广告收入通常需要几十万用户量。</p>
+          <p class="meta-line">来源：约 01:56:25-01:58:19</p>
+        </article>
+        <article class="card">
+          <h3>中转站怎么处理？</h3>
+          <p>分享者提到自己使用中转站，总计开发四五个 App 花费五六百，成本较低。但是否分享具体接口要先询问相关老师。本网页不记录具体中转站地址和密钥信息。</p>
+          <p class="meta-line">来源：约 01:59:26</p>
+        </article>
+        <article class="card">
+          <h3>现在主要做 iOS 还是海外站？</h3>
+          <p>分享者目前主要做 iOS App，海外站暂时没有精力。海外站推广需要找热词、发外链、持续运营，难度和精力投入可能比 iOS App 更高。</p>
+          <p class="meta-line">来源：约 02:00:59-02:03:21</p>
+        </article>
+        <article class="card">
+          <h3>App 备案、软著、合规呢？</h3>
+          <p>普通工具类 App 国内 App Store 上架不一定强制备案，但交易、直播、社交等类型可能触发更复杂要求。早期建议从简单工具切入，少碰复杂合规业务。</p>
+          <p class="meta-line">来源：约 01:11:45、01:20:22</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p class="kicker">Risk Register</p>
+        <h2>风险清单</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>风险</th><th>表现</th><th>处理建议</th></tr></thead>
+          <tbody>
+            <tr><td>过度规划</td><td>写很多分析但迟迟不动手。</td><td>先让 AI 做一个可运行框架，再根据测试和反馈迭代。</td></tr>
+            <tr><td>模型能力不足</td><td>同一个 bug 反复修坏、上下文混乱。</td><td>换更强模型；阶段性总结项目记忆；开新会话继续。</td></tr>
+            <tr><td>订阅调试误判</td><td>模拟器可用，真机或沙盒支付异常。</td><td>付费场景优先真机测试，保留日志给 AI 排错。</td></tr>
+            <tr><td>截图和资料卡壳</td><td>截图尺寸、描述、隐私政策、年龄分级不合规。</td><td>让 AI 生成文案，但人工核对；截图尺寸另做模板。</td></tr>
+            <tr><td>渠道平台封禁</td><td>Reddit 等平台封帖或封号。</td><td>先积累正常互动，不把强营销内容作为第一动作。</td></tr>
+            <tr><td>隐私与凭证泄露</td><td>公开中转站、密钥、临时下载链接、账号信息。</td><td>网页只保留方法论和安全边界，不公开可复用凭证。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <blockquote class="quote">
+        <p>“我建议大家开始做的话，就不要做奇奇怪怪的类型，什么直播、社交都不要做，那些都很麻烦，你就做工具。”</p>
+        <cite>约 01:20:22，逐字稿校对</cite>
+      </blockquote>
+    </section>
+  </main>
+
+  <footer class="footer">问答风险页 · 来源：逐字稿 01:11:45-02:05:26 校对</footer>
+</body>
+</html>
+

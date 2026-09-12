@@ -1,0 +1,70 @@
+Create a premium stylized illustration of {character_name} from {franchise}, designed as a modern anime-inspired streetwear poster with bold visual identity and cinematic composition.
+Character Interpretation
+Analyze the character’s canon personality and translate it into visual storytelling:
+heroic / determined → explosive movement, confident energy
+calm / intelligent → composed posture, restrained motion
+mysterious / dark → low-key presence, hidden intensity
+aggressive / chaotic → tension-filled stance, sharp gestures
+Extract the character’s most recognizable signature color from the original design and make it the dominant visual accent throughout the artwork.
+Pose & Presence
+Design an iconic pose that instantly communicates the character’s personality:
+dynamic action poses for energetic characters
+relaxed but commanding posture for confident personalities
+shadowed or asymmetrical stance for mysterious characters
+forward-driving combat stance for intense characters
+Body language should feel expressive, cinematic, and instantly readable.
+Facial Expression
+Match the expression tightly to the character’s emotional identity and canon temperament, confident, cold, playful, threatening, fearless, etc.
+Visual Style
+Blend:
+anime illustration aesthetics
+modern streetwear / techwear fashion design
+high-end graphic poster composition
+Style requirements:
+ultra-clean linework
+semi-flat rendering with selective detail
+strong contrast and shape language
+sleek editorial feel
+minimal but visually impactful
+Outfit Redesign
+Reinterpret the original costume as contemporary fashion while preserving recognizable identity traits:
+signature symbols
+silhouettes
+accessories
+hairstyle cues
+iconic patterns or materials
+The design should feel wearable yet unmistakably tied to the character.
+Composition & Layout
+Vertical composition ({aspect_ratio})
+Off-center framing
+Strong diagonal movement across the canvas
+Layered foreground/background depth
+Poster-like balance using intentional negative space
+Color Direction
+Clean white or near-white dominant background
+Signature character color as the main accent
+One complementary secondary accent color
+Minimal palette with bold contrast and controlled saturation
+Background Design
+Create an abstract graphic environment using:
+geometric forms
+sharp framing elements
+layered shapes
+subtle typography-inspired structures
+color-themed visual accents tied to the character
+Keep the background stylish and supportive rather than overly detailed.
+Effects & Motion
+Add stylized visual effects that reflect the character’s energy:
+motion streaks
+paint slashes
+energy trails
+graphic impact lines
+glow accents
+Effects should naturally follow movement and color identity.
+Lighting & Rendering
+Directional cinematic lighting
+Crisp shadows and edge highlights
+Soft glow using the signature accent color
+Ultra-clean vector-like finish
+Premium 4K poster-quality rendering
+Sharp, polished, modern presentation

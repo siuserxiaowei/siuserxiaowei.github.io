@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "run_id": "SPARK-MEETUP-20260809",
+  "mode": "deep_research",
+  "request": {
+    "question": "Reconstruct and deeply analyze the supplied Spark indie-hacker meetup transcript",
+    "deliverable": "Chinese self-study report with timeline, evidence, counterpoints, Dao-Fa-Shu-Qi-Shi and action system"
+  },
+  "scope": {
+    "geography": "global with Shanghai context",
+    "language": ["zh-CN", "en"],
+    "timeframe": "through 2026-08-09",
+    "allowed_source_types": ["official", "docs", "paper", "media", "social"],
+    "blocked_source_types": ["private", "login-only", "paywalled"],
+    "stop_condition": "event entities resolved or explicitly left uncertain; external top claims accepted or visibly bounded"
+  },
+  "capabilities": [
+    {"provider": "Exa via agent-reach", "readiness": "available", "credential_present": false},
+    {"provider": "Jina Reader", "readiness": "available", "credential_present": false},
+    {"provider": "YouTube via yt-dlp", "readiness": "available", "credential_present": false},
+    {"provider": "Twitter CLI", "readiness": "not_configured", "credential_present": false},
+    {"provider": "Reddit OpenCLI", "readiness": "not_configured", "credential_present": false}
+  ],
+  "authorizations": [
+    {"scope": "public web read-only research", "granted_for_current_task": true}
+  ],
+  "routes": [
+    {"route_id": "ROUTE-001", "stage": "discovery", "provider": "Exa", "status": "partial", "reason": "initial discovery worked; later free MCP quota returned 429"},
+    {"route_id": "ROUTE-002", "stage": "fetch", "provider": "Jina Reader", "status": "selected", "reason": "public first-party pages remained readable"},
+    {"route_id": "ROUTE-003", "stage": "discovery", "provider": "X/Reddit", "status": "blocked", "reason": "no authenticated route; Jina public X pages used only when directly addressable"}
+  ],
+  "candidates": [
+    {"source_id":"SRC-001","url":"https://luma.com/kwon9drc","tier":"required","status":"verified"},
+    {"source_id":"SRC-002","url":"https://x.com/marclou","tier":"required","status":"verified"},
+    {"source_id":"SRC-003","url":"https://x.com/damonchen","tier":"required","status":"verified"},
+    {"source_id":"SRC-004","url":"https://marclou.com/","tier":"required","status":"verified"},
+    {"source_id":"SRC-005","url":"https://shipfa.st/","tier":"required","status":"verified"},
+    {"source_id":"SRC-006","url":"https://datafa.st/","tier":"required","status":"verified"},
+    {"source_id":"SRC-007","url":"https://zenvoice.io/","tier":"required","status":"verified"},
+    {"source_id":"SRC-008","url":"https://trustmrr.com/","tier":"required","status":"verified"},
+    {"source_id":"SRC-009","url":"https://testimonial.to/","tier":"required","status":"verified"},
+    {"source_id":"SRC-010","url":"https://pdf.ai/","tier":"important","status":"verified"},
+    {"source_id":"SRC-011","url":"https://www.youtube.com/watch?v=eqgUjOByexc","tier":"important","status":"verified"},
+    {"source_id":"SRC-012","url":"https://www.ycombinator.com/library/4D-yc-s-essential-startup-advice","tier":"important","status":"verified"},
+    {"source_id":"SRC-013","url":"https://www.cdc.gov/sleep/about/index.html","tier":"important","status":"verified"},
+    {"source_id":"SRC-014","url":"https://pubmed.ncbi.nlm.nih.gov/12683469/","tier":"important","status":"verified"},
+    {"source_id":"SRC-015","url":"https://docs.stripe.com/products-prices/pricing-models","tier":"important","status":"verified"},
+    {"source_id":"SRC-016","url":"https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business","tier":"important","status":"verified"},
+    {"source_id":"SRC-017","url":"https://www.apa.org/topics/research/multitasking","tier":"important","status":"verified"},
+    {"source_id":"SRC-018","url":"https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program/nistir-8259-series","tier":"important","status":"verified"},
+    {"source_id":"SRC-019","url":"https://www.sequoiacap.com/article/pmf-framework/","tier":"important","status":"verified"},
+    {"source_id":"SRC-020","url":"https://doi.org/10.1177/002224379303000203","tier":"important","status":"verified"},
+    {"source_id":"SRC-021","url":"https://doi.org/10.1287/mksc.2017.1066","tier":"important","status":"verified"},
+    {"source_id":"SRC-022","url":"https://doi.org/10.1287/mnsc.1110.1421","tier":"important","status":"verified"},
+    {"source_id":"SRC-023","url":"https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf","tier":"important","status":"verified"}
+  ],
+  "coverage": [
+    {"dimension": "required_sources", "status": "complete", "handled": 9, "total": 9, "notes": "all required event and product sources handled"},
+    {"dimension": "event_video", "status": "none", "notes": "no matching full event video found"},
+    {"dimension": "community_counterpoints", "status": "partial", "notes": "X/Reddit search routes lacked authentication"},
+    {"dimension": "method_validation", "status": "complete", "notes": "official guidance and research cover each top external claim or visible gap"}
+  ],
+  "errors": [
+    {"provider": "Exa", "stage": "discovery", "error": "free MCP quota 429 after initial successful discovery", "fallback": "Jina Reader and known first-party URLs"},
+    {"provider": "Twitter CLI", "stage": "discovery", "error": "not authenticated", "fallback": "direct public X pages through Jina Reader"},
+    {"provider": "Reddit OpenCLI", "stage": "discovery", "error": "not authenticated / extension unavailable", "fallback": "gap recorded; no absence claim"},
+    {"provider": "YouTube search", "stage": "discovery", "error": "results were noisy and no matching event recording was identified", "fallback": "supplied transcript retained as event primary source"}
+  ],
+  "phases": [
+    {"stage": "scope", "status": "complete", "gate": "passed"},
+    {"stage": "discovery", "status": "complete", "gate": "candidates and failures recorded"},
+    {"stage": "fetch", "status": "complete", "gate": "all ledger sources handled"},
+    {"stage": "extraction", "status": "complete", "gate": "24 narrow evidence cards created"},
+    {"stage": "worker_check", "status": "complete", "gate": "factcheck and strategy modules self-checked"},
+    {"stage": "curator_acceptance", "status": "complete", "gate": "root directly reviewed source support"},
+    {"stage": "synthesis", "status": "complete", "gate": "REPORT.md and final_synthesis.md complete"},
+    {"stage": "indexing", "status": "skipped", "gate": "local repository is the reusable corpus"}
+  ],
+  "artifacts": {
+    "research_scope.md": "research_scope.md",
+    "sources.tsv": "sources.tsv",
+    "queries.tsv": "queries.tsv",
+    "evidence_cards.tsv": "evidence_cards.tsv",
+    "agent_ledger.tsv": "agent_ledger.tsv",
+    "source_gap_backlog.md": "source_gap_backlog.md",
+    "final_synthesis.md": "final_synthesis.md",
+    "run_manifest.json": "run_manifest.json"
+  },
+  "next_gate": "complete"
+}

@@ -1,0 +1,7 @@
+I asked GPT Image 2 and Nano Banana to visualize one of my favorite books in this style. Lots of fun.
+
+Do this for Shahnameh: A hyper-realistic macro photograph of a giant spherical artifact cracked open to reveal a world inside, resting in a white studio::4
+The Exterior Shell: The unbroken left side of the sphere is covered in a 2D painted manuscript aesthetic inferred from the cultural origins of [MEDIA_TITLE]. It features beautiful calligraphy text and flat traditional painted illustrations::5
+The Interior Cavern: The hollowed-out inside is a hyper-detailed 3D miniature carved diorama of the world of [MEDIA_TITLE]. Multi-tiered carved stone and gold architecture, inferred mythological creatures, tiny rivers, and thousands of micro-scale soldiers in battle::5
+Lighting and Material: Antiqued finish, rough cracked stone edges, warm glowing internal firelight illuminating the deep cavern, shallow depth of field::4
+Modern day, photorealistic humans, real landscape, messy background::-2

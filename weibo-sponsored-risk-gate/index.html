@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>OA-005｜微博商单发布前风险门禁</title>
+  <style>
+    :root {
+      --ink: #f6f8ff;
+      --muted: #9fa9c7;
+      --dim: #737e9e;
+      --bg: #080b13;
+      --panel: rgba(18, 23, 37, .9);
+      --panel-2: #151b2b;
+      --line: rgba(160, 176, 220, .15);
+      --cyan: #58e1ff;
+      --violet: #9a82ff;
+      --pass: #55e6a5;
+      --revise: #ffbd59;
+      --abstain: #ff6f83;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .38);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; background: var(--bg); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 14% -12%, rgba(88, 225, 255, .15), transparent 32%),
+        radial-gradient(circle at 88% 4%, rgba(154, 130, 255, .16), transparent 32%),
+        linear-gradient(180deg, #090d17 0%, #070a11 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    button { font: inherit; }
+
+    .shell {
+      position: relative;
+      width: min(1500px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 30px 0 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(88,225,255,.4);
+      border-radius: 13px;
+      background: linear-gradient(145deg, rgba(88,225,255,.18), rgba(154,130,255,.12));
+      box-shadow: inset 0 0 24px rgba(88,225,255,.06);
+      color: var(--cyan);
+      font-weight: 850;
+      letter-spacing: -.06em;
+    }
+
+    .brand-title { font-size: 15px; font-weight: 760; letter-spacing: .02em; }
+    .brand-subtitle { margin-top: 3px; color: var(--muted); font-size: 12px; }
+
+    .boundary-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .boundary-note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pass);
+      box-shadow: 0 0 14px rgba(85,230,165,.65);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr);
+      align-items: end;
+      gap: 40px;
+      padding: 30px 32px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(130deg, rgba(21,27,43,.96), rgba(13,17,29,.88));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 780;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::after { content: ""; width: 46px; height: 1px; background: var(--cyan); opacity: .6; }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(36px, 4.2vw, 62px);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(90deg, #f8fbff 10%, #73e8ff 55%, #b29fff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero-copy {
+      margin: 18px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .hero-side { display: grid; gap: 14px; }
+
+    .mini-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .mini-flow span {
+      padding: 11px 8px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .mini-flow strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 13px; }
+
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .badge {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: #c8d0e7;
+      font-size: 11px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 254px minmax(0, 1.14fr) minmax(360px, .86fr);
+      gap: 14px;
+      min-height: 570px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 16px 46px rgba(0,0,0,.22);
+      backdrop-filter: blur(16px);
+    }
+
+    .case-panel { padding: 18px; }
+    .panel-kicker { color: var(--dim); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .panel-title { margin: 6px 0 16px; font-size: 16px; font-weight: 760; }
+
+    .case-list { display: grid; gap: 9px; }
+
+    .case-button {
+      position: relative;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .case-button:hover { transform: translateY(-1px); background: rgba(255,255,255,.045); }
+    .case-button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .case-button[aria-selected="true"] { border-color: rgba(88,225,255,.38); background: rgba(88,225,255,.08); color: var(--ink); }
+
+    .case-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .case-name { font-size: 13px; font-weight: 720; }
+    .case-state { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 850; letter-spacing: .04em; }
+    .case-desc { margin-top: 7px; font-size: 11px; line-height: 1.45; }
+    .state-pass { color: var(--pass); }
+    .state-revise { color: var(--revise); }
+    .state-abstain { color: var(--abstain); }
+
+    .flow-card {
+      margin-top: 18px;
+      padding: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .flow-row { display: flex; align-items: center; gap: 8px; }
+    .flow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); opacity: .75; }
+
+    .input-panel { padding: 22px; }
+
+    .section-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    .section-head h2 { margin: 5px 0 0; font-size: 20px; letter-spacing: -.02em; }
+    .synthetic-tag { flex: none; padding: 7px 9px; border-radius: 8px; background: rgba(154,130,255,.11); color: #c8bbff; font-size: 10px; }
+
+    .draft-card {
+      position: relative;
+      margin-top: 18px;
+      padding: 18px;
+      min-height: 120px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #0d1220;
+    }
+
+    .draft-label { margin-bottom: 10px; color: var(--dim); font-size: 10px; font-weight: 760; letter-spacing: .1em; }
+    .draft-text { color: #e4e9f7; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+
+    .constraint-head { display: flex; align-items: center; justify-content: space-between; margin: 20px 0 10px; }
+    .constraint-head h3 { margin: 0; font-size: 13px; }
+    .constraint-head span { color: var(--dim); font-size: 10px; }
+    .constraint-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+    .constraint {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      min-height: 62px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .constraint-icon { width: 20px; height: 20px; display: grid; place-items: center; flex: none; border-radius: 6px; background: rgba(85,230,165,.1); color: var(--pass); font-size: 11px; }
+    .constraint.is-warning .constraint-icon { background: rgba(255,189,89,.1); color: var(--revise); }
+    .constraint.is-blocked .constraint-icon { background: rgba(255,111,131,.1); color: var(--abstain); }
+    .constraint-name { color: #d8def0; font-size: 11px; font-weight: 700; }
+    .constraint-value { margin-top: 4px; color: var(--dim); font-size: 10px; line-height: 1.35; }
+
+    .run-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+
+    .run-button {
+      flex: 1;
+      min-height: 44px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(105deg, var(--cyan), #8c8cff);
+      color: #07101b;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(88,225,255,.16);
+    }
+
+    .run-button:hover { filter: brightness(1.06); }
+    .run-button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+    .run-button:disabled { opacity: .7; cursor: wait; }
+    .run-meta { color: var(--dim); font-size: 10px; line-height: 1.45; }
+
+    .result-panel { padding: 22px; display: flex; flex-direction: column; }
+
+    .verdict-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .verdict-label { color: var(--dim); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+    .verdict { margin-top: 4px; font-size: 38px; font-weight: 900; letter-spacing: -.04em; }
+    .verdict-code { padding: 8px 10px; border-radius: 9px; background: rgba(255,255,255,.04); color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; }
+
+    .summary { margin: 16px 0; color: #d3daed; font-size: 13px; line-height: 1.6; }
+    .finding-list { display: grid; gap: 9px; }
+
+    .finding {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-left: 3px solid currentColor;
+      border-radius: 11px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .finding.empty { border-left-color: var(--pass); color: var(--pass); }
+    .finding.revise { color: var(--revise); }
+    .finding.abstain { color: var(--abstain); }
+    .finding-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
+    .finding-copy { margin-top: 5px; color: #d3daed; font-size: 11px; line-height: 1.5; }
+    .finding-remedy { margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.45; }
+
+    .reference-drawer {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #090d17;
+      color: #9bb0db;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+
+    .reference-drawer[hidden] { display: none; }
+
+    .reference-button {
+      margin-top: 12px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--cyan);
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .reference-button:focus-visible { outline: 1px solid var(--cyan); outline-offset: 4px; }
+
+    .result-bottom { margin-top: auto; padding-top: 16px; }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .metric { padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.02); }
+    .metric strong { display: block; font-size: 14px; }
+    .metric span { color: var(--dim); font-size: 9px; }
+
+    .human-note {
+      display: flex;
+      gap: 9px;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 11px;
+      background: rgba(154,130,255,.08);
+      color: #c6baff;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .human-note strong { color: #e9e4ff; }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 4px 0;
+      color: var(--dim);
+      font-size: 10px;
+    }
+
+    .scanning .draft-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      background: linear-gradient(180deg, transparent, rgba(88,225,255,.1), transparent);
+      transform: translateY(-80%);
+      animation: scan .55s ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes scan { to { transform: translateY(80%); } }
+
+    @media (max-width: 1100px) {
+      .workspace { grid-template-columns: 220px 1fr; }
+      .result-panel { grid-column: 1 / -1; min-height: 420px; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1500px); padding-top: 18px; }
+      .topbar, .footer { align-items: flex-start; flex-direction: column; }
+      .boundary-note { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 24px 20px; }
+      .workspace { grid-template-columns: 1fr; }
+      .case-list { grid-template-columns: repeat(3, 1fr); }
+      .case-desc { display: none; }
+      .result-panel { grid-column: auto; }
+      .constraint-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">OA</div>
+        <div>
+          <div class="brand-title">OA-005 · Sponsored Risk Gate</div>
+          <div class="brand-subtitle">微博商单发布前风险门禁</div>
+        </div>
+      </div>
+      <div class="boundary-note">本地离线运行 · 不连接微博 · 不执行发布</div>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <div class="eyebrow">VibeWork · Local-first guardrail</div>
+        <h1 id="page-title">先拦住风险，<br><span class="gradient-text">再交给人决定。</span></h1>
+        <p class="hero-copy">把单条商单草稿、人工确认的 brief 与获权证据，变成可回链的三态判断。缺规则、缺证据或权利不清时，系统拒绝猜测。</p>
+      </div>
+      <div class="hero-side" aria-label="工作流概览">
+        <div class="mini-flow">
+          <span><strong>01</strong>读取确认输入</span>
+          <span><strong>02</strong>运行固定规则</span>
+          <span><strong>03</strong>生成人工签核包</span>
+        </div>
+        <div class="hero-badges">
+          <span class="badge">纯本地</span>
+          <span class="badge">确定性</span>
+          <span class="badge">输入可回链</span>
+          <span class="badge">Fail closed</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="固定合成案例演示">
+      <aside class="panel case-panel">
+        <div class="panel-kicker">Synthetic cases</div>
+        <div class="panel-title">选择一个固定案例</div>
+        <div class="case-list" role="tablist" aria-label="案例列表">
+          <button class="case-button" type="button" role="tab" data-case="pass" aria-selected="true">
+            <span class="case-top"><span class="case-name">信息完整</span><span class="case-state state-pass">PASS</span></span>
+            <span class="case-desc">brief、披露与证据均已确认</span>
+          </button>
+          <button class="case-button" type="button" role="tab" data-case="revise" aria-selected="false">
+            <span class="case-top"><span class="case-name">缺少披露</span><span class="case-state state-revise">REVISE</span></span>
+            <span class="case-desc">规则明确，可通过修改修复</span>
+          </button>
+          <button class="case-button" type="button" role="tab" data-case="abstain" aria-selected="false">
+            <span class="case-top"><span class="case-name">缺少证据</span><span class="case-state state-abstain">ABSTAIN</span></span>
+            <span class="case-desc">判断条件不足，拒绝替人猜测</span>
+          </button>
+        </div>
+        <div class="flow-card" aria-label="状态优先级">
+          <div class="flow-row"><span class="flow-dot"></span>状态优先级</div>
+          <div>ABSTAIN &gt; REVISE &gt; PASS</div>
+          <div style="margin-top:8px">所有案例均为虚构合成数据。</div>
+        </div>
+      </aside>
+
+      <section class="panel input-panel" aria-labelledby="input-title">
+        <div class="section-head">
+          <div>
+            <div class="panel-kicker">Confirmed input</div>
+            <h2 id="input-title">单条草稿与已确认约束</h2>
+          </div>
+          <span class="synthetic-tag">SYNTHETIC · 合成演示</span>
+        </div>
+        <div class="draft-card">
+          <div class="draft-label">WEIBO DRAFT</div>
+          <div class="draft-text" id="draft-text"></div>
+        </div>
+        <div class="constraint-head">
+          <h3>Brief 约束矩阵</h3>
+          <span id="brief-version">brief.synthetic.v1</span>
+        </div>
+        <div class="constraint-grid" id="constraint-grid"></div>
+        <div class="run-row">
+          <button class="run-button" id="run-button" type="button">运行发布前门禁</button>
+          <div class="run-meta">离线规则引擎<br>不调用在线模型</div>
+        </div>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-title" aria-live="polite">
+        <div class="verdict-wrap">
+          <div>
+            <div class="verdict-label">DETERMINISTIC VERDICT</div>
+            <div class="verdict" id="result-title">PASS</div>
+          </div>
+          <div class="verdict-code" id="exit-code">EXIT 0</div>
+        </div>
+        <p class="summary" id="summary"></p>
+        <div class="finding-list" id="finding-list"></div>
+        <button class="reference-button" id="reference-button" type="button" aria-expanded="false">查看机器可解析的输入引用 ↓</button>
+        <div class="reference-drawer" id="reference-drawer" hidden></div>
+        <div class="result-bottom">
+          <div class="status-strip">
+            <div class="metric"><strong id="finding-count">0</strong><span>Findings</span></div>
+            <div class="metric"><strong>19</strong><span>Frozen rules</span></div>
+            <div class="metric"><strong>PENDING</strong><span>Human signoff</span></div>
+          </div>
+          <div class="human-note"><span aria-hidden="true">◇</span><div><strong>仍待人工签核。</strong><br>本工具没有执行发布；结果不构成法律意见、平台批准或发布授权。</div></div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <span>固定案例可离线复现 · PASS / REVISE / ABSTAIN</span>
+      <span>Web Demo 只展示冻结合成案例，核心交付为本地 CLI 与可验证签核包。</span>
+    </footer>
+  </main>
+
+  <script>
+    const cases = {
+      pass: {
+        verdict: "PASS",
+        exit: 0,
+        color: "var(--pass)",
+        draft: "#商业合作# 周末整理桌面时用了「山岚便携收纳盒」，分区设计适合收纳充电线和随身小物。活动详情见 https://example.invalid/campaign/oa005",
+        summary: "当前已确认输入中未发现自动 finding；仍须人工核对并签核。",
+        constraints: [
+          ["商业关系披露", "#商业合作# · 已出现", "ok"],
+          ["必提产品名", "山岚便携收纳盒 · 已出现", "ok"],
+          ["CTA", "授权活动链接 · 已出现", "ok"],
+          ["证据与权利", "本地证据 SHA-256 · 已验证", "ok"]
+        ],
+        findings: [],
+        refs: ["/campaign/constraints/disclosure", "/claims/0/evidence_refs/0", "/assets/0/sha256"]
+      },
+      revise: {
+        verdict: "REVISE",
+        exit: 10,
+        color: "var(--revise)",
+        draft: "周末整理桌面时用了「山岚便携收纳盒」，分区设计适合收纳充电线和随身小物。活动详情见 https://example.invalid/campaign/oa005",
+        summary: "信息足以判断，但草稿违反了已确认、可修改的披露约束。",
+        constraints: [
+          ["商业关系披露", "要求 #商业合作# · 草稿缺失", "warning"],
+          ["必提产品名", "山岚便携收纳盒 · 已出现", "ok"],
+          ["CTA", "授权活动链接 · 已出现", "ok"],
+          ["证据与权利", "本地证据 SHA-256 · 已验证", "ok"]
+        ],
+        findings: [{
+          id: "DISCLOSURE_REQUIRED",
+          tone: "revise",
+          copy: "已确认 brief 要求显著披露商业关系，但草稿未包含指定披露词。",
+          remedy: "最小补救：由责任人在正文显著加入 #商业合作#，随后重新运行门禁。"
+        }],
+        refs: ["/campaign/constraints/disclosure/required", "/draft/text"]
+      },
+      abstain: {
+        verdict: "ABSTAIN",
+        exit: 20,
+        color: "var(--abstain)",
+        draft: "#商业合作# 「山岚便携收纳盒」采用耐磨材料，适合高频通勤使用。活动详情见 https://example.invalid/campaign/oa005",
+        summary: "关键主张缺少可验证证据，系统失败关闭，不替品牌或审核人员补全事实。",
+        constraints: [
+          ["商业关系披露", "#商业合作# · 已出现", "ok"],
+          ["必提产品名", "山岚便携收纳盒 · 已出现", "ok"],
+          ["CTA", "授权活动链接 · 已出现", "ok"],
+          ["证据与权利", "“耐磨材料”证据缺失", "blocked"]
+        ],
+        findings: [{
+          id: "CLAIM_EVIDENCE_MISSING",
+          tone: "abstain",
+          copy: "草稿中的“耐磨材料”是需证据支持的产品主张，当前 claim ledger 没有绑定本地证据。",
+          remedy: "最小补救：提供获权证据文件、来源说明与 SHA-256，更新输入后重新运行。"
+        }],
+        refs: ["/claims/0/text", "/claims/0/evidence_refs", "/evidence"]
+      }
+    };
+
+    const draftText = document.querySelector("#draft-text");
+    const constraintGrid = document.querySelector("#constraint-grid");
+    const verdict = document.querySelector("#result-title");
+    const exitCode = document.querySelector("#exit-code");
+    const summary = document.querySelector("#summary");
+    const findingList = document.querySelector("#finding-list");
+    const findingCount = document.querySelector("#finding-count");
+    const runButton = document.querySelector("#run-button");
+    const referenceButton = document.querySelector("#reference-button");
+    const referenceDrawer = document.querySelector("#reference-drawer");
+    const inputPanel = document.querySelector(".input-panel");
+    const caseButtons = [...document.querySelectorAll("[data-case]")];
+    let activeCase = "pass";
+
+    function render(caseId) {
+      const current = cases[caseId];
+      activeCase = caseId;
+      draftText.textContent = current.draft;
+      constraintGrid.replaceChildren(...current.constraints.map(([name, value, state]) => {
+        const item = document.createElement("div");
+        item.className = `constraint${state === "warning" ? " is-warning" : state === "blocked" ? " is-blocked" : ""}`;
+        const icon = document.createElement("span");
+        icon.className = "constraint-icon";
+        icon.textContent = state === "ok" ? "✓" : state === "warning" ? "!" : "×";
+        const text = document.createElement("div");
+        const title = document.createElement("div");
+        title.className = "constraint-name";
+        title.textContent = name;
+        const detail = document.createElement("div");
+        detail.className = "constraint-value";
+        detail.textContent = value;
+        text.append(title, detail);
+        item.append(icon, text);
+        return item;
+      }));
+      verdict.textContent = current.verdict;
+      verdict.style.color = current.color;
+      exitCode.textContent = `EXIT ${current.exit}`;
+      summary.textContent = current.summary;
+      findingCount.textContent = String(current.findings.length);
+      findingList.replaceChildren();
+      if (current.findings.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "finding empty";
+        empty.innerHTML = '<div class="finding-id">NO_AUTOMATED_FINDINGS</div><div class="finding-copy">冻结规则范围内未发现阻断项。</div>';
+        findingList.append(empty);
+      } else {
+        current.findings.forEach((finding) => {
+          const item = document.createElement("div");
+          item.className = `finding ${finding.tone}`;
+          const id = document.createElement("div");
+          id.className = "finding-id";
+          id.textContent = finding.id;
+          const copy = document.createElement("div");
+          copy.className = "finding-copy";
+          copy.textContent = finding.copy;
+          const remedy = document.createElement("div");
+          remedy.className = "finding-remedy";
+          remedy.textContent = finding.remedy;
+          item.append(id, copy, remedy);
+          findingList.append(item);
+        });
+      }
+      referenceDrawer.textContent = current.refs.join("\n");
+      referenceDrawer.hidden = true;
+      referenceButton.setAttribute("aria-expanded", "false");
+      referenceButton.textContent = "查看机器可解析的输入引用 ↓";
+      caseButtons.forEach((button) => button.setAttribute("aria-selected", String(button.dataset.case === caseId)));
+      const url = new URL(window.location.href);
+      url.searchParams.set("case", caseId);
+      window.history.replaceState({}, "", url);
+    }
+
+    caseButtons.forEach((button) => button.addEventListener("click", () => render(button.dataset.case)));
+
+    runButton.addEventListener("click", () => {
+      runButton.disabled = true;
+      runButton.textContent = "正在运行 19 条冻结规则…";
+      inputPanel.classList.add("scanning");
+      window.setTimeout(() => {
+        render(activeCase);
+        inputPanel.classList.remove("scanning");
+        runButton.disabled = false;
+        runButton.textContent = "重新运行发布前门禁";
+      }, 560);
+    });
+
+    referenceButton.addEventListener("click", () => {
+      const willOpen = referenceDrawer.hidden;
+      referenceDrawer.hidden = !willOpen;
+      referenceButton.setAttribute("aria-expanded", String(willOpen));
+      referenceButton.textContent = willOpen ? "收起输入引用 ↑" : "查看机器可解析的输入引用 ↓";
+    });
+
+    const requestedCase = new URL(window.location.href).searchParams.get("case");
+    render(Object.hasOwn(cases, requestedCase) ? requestedCase : "pass");
+  </script>
+</body>
+</html>

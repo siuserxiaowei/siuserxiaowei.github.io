@@ -1,0 +1,66 @@
+有点没搞懂，同一份提示词，在香蕉那正常，GPT Image 2 这边尺度明显大了很多🤪
+
+但矛盾的是，在香蕉能生成的提示词，放到 GPT 这边又提示不符合平台政策 balabala🤔
+
+提示词👇
+{
+  "task_description": "Create a natural street portrait of a real person standing in front of a layered, messy graffiti wall. The wall features a spontaneous, hand-painted caricature of the person mixed with Year of the Horse elements.",
+  "global_settings": {
+    "aspect_ratio": "4:3",
+    "overall_vibe": "Authentic urban street culture, vibrant Lunar New Year energy, raw and spicy"
+  },
+  "variables": {
+    "mural_main_text": "马上暴富",
+    "mural_secondary_text": "2026",
+    "theme": "Year of the Horse - Festive & Hot"
+  },
+  "mural_aesthetics": {
+    "rendering_style": "Hand-painted aerosol art, authentic street graffiti style",
+    "messiness_factors": [
+      "Visible paint splatters and spontaneous drips in gold and red",
+      "Soft, blurred spray edges over weathered concrete textures",
+      "Layered effect: a stylized Horse zodiac silhouette and the subject's caricature painted over old, messy tags",
+      "Imperfect, high-energy freehand strokes"
+    ],
+    "content": "A vibrant caricature based on the reference person's facial features, integrated with bold '2026' and horse-themed graffiti symbols."
+  },
+  "style_scenarios": {
+    "New_Year_Festive_Spicy": {
+      "setting": "A bustling old city alleyway at dusk with warm ambient lighting",
+      "palette": "Dominant imperial red, vibrant gold, and charcoal black accents",
+      "details": "Faint glowing red lanterns blurred in the background, festive 'Chunlian' inspired graffiti tags"
+    }
+  },
+  "foreground_subject": {
+    "logic": "Mirror the gender and facial features of the reference image.",
+    "attire_strategy": "A spicy and festive fusion outfit: A form-fitting, modified modern Cheongsam (Qipao) with a daring deep V-neck and a large open-back design, rendered in glossy silk red with gold embroidery. The outfit should be provocative (high-slit to the hip), emphasizing a curvaceous silhouette.",
+    "position": "Grounded in the frame, flexible positioning (center or right-third).",
+    "camera_and_pose_options": [
+      {
+        "angle": "Low-angle shot (worm's eye view)",
+        "pose": "Standing tall with one foot forward, leaning slightly back to elongate the legs and emphasize the high-slit dress, looking down at the camera with a confident gaze.",
+        "effect": "Powerful, statuesque, and dominant."
+      },
+      {
+        "angle": "High-angle close-up portrait",
+        "pose": "Leaning against the wall with arms crossed behind the head, highlighting the curves of the upper body and the deep V-neck, looking up with a playful, sultry smile.",
+        "effect": "Intimate and alluring."
+      },
+      {
+        "angle": "3/4 side-view / Dutch angle",
+        "pose": "Walking past the wall but looking back over the shoulder (candid movement), capturing the open-back detail and the flow of the dress's high slit.",
+        "effect": "Dynamic, cinematic street photography."
+      },
+      {
+        "angle": "Sitting or crouching pose (eye-level)",
+        "pose": "Crouching casually in front of the mural, one hand on the ground and the other on the knee, wearing a red oversized street jacket partially falling off the shoulder to reveal the sexy outfit underneath.",
+        "effect": "Raw, edgy, and effortlessly cool."
+      }
+    ]
+  },
+  "technical_finish": {
+    "wall_texture": "Naturally weathered urban brick wall; organic cracks blended with fresh, thick spray paint texture.",
+    "lighting": "Warm golden hour lighting mixed with red lantern glow; soft shadows cast on the wall to create 3D depth."
+  }
+}
+camera_and_pose_options choose first one

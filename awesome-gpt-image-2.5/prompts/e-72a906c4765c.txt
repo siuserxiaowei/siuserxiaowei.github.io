@@ -1,0 +1,90 @@
+;
+
+{
+  "reference_image": "uploaded_photo",
+  "face_likeness": {
+    "accuracy": "high",
+    "preserve_features": [
+      "exact facial structure",
+      "natural skin tone",
+      "eye shape",
+      "nose form",
+      "lip structure",
+      "original expression"
+    ],
+    "usage": "primary face reference for proportions and likeness"
+  },
+
+  "portrait_style": {
+    "composition": "dramatic female side-profile portrait",
+    "mood": "intense, rebellious, emotionally charged",
+    "art_direction": "expressive mixed-media ink illustration with conceptual editorial aesthetics"
+  },
+
+  "subject_details": {
+    "gender": "female",
+    "pose": "strong side profile facing right",
+    "presence": "bold, mysterious, psychologically complex",
+    "hair": {
+      "style": "messy textured bun with loose strands",
+      "treatment": "chaotic ink brush detailing and sharp sketch strokes"
+    },
+    "wardrobe": {
+      "type": "dark abstract oversized jacket",
+      "treatment": "heavy painterly textures, angular brushwork, layered ink strokes"
+    }
+  },
+
+  "visual_elements": {
+    "overlays": [
+      "cryptic handwritten notes",
+      "abstract mathematical sketches",
+      "symbols and glyphs",
+      "fragmented typography",
+      "ink splatters",
+      "diagram-like markings wrapping around the face"
+    ],
+    "meaning": "representing inner conflict, hidden emotions, intellectual chaos, and emotional depth"
+  },
+
+  "art_technique": {
+    "linework": "sharp pen detailing mixed with aggressive brush strokes",
+    "effects": [
+      "ink splashes",
+      "controlled chaos",
+      "layered textures",
+      "grunge imperfections",
+      "rough mixed-media blending"
+    ],
+    "style_blend": "editorial illustration meets psychological concept art"
+  },
+
+  "background": {
+    "texture": "aged parchment paper",
+    "tone": "warm desaturated beige with grain",
+    "details": [
+      "faded manuscript texture",
+      "subtle stains",
+      "vintage paper imperfections",
+      "delicate line artifacts",
+      "hand-drawn sketch remnants"
+    ]
+  },
+
+  "lighting": {
+    "style": "high-contrast cinematic shading",
+    "focus": "sharp highlights on facial contours with deep ink-heavy shadows"
+  },
+
+  "overall_aesthetic": {
+    "contrast": "high",
+    "finish": "raw yet precise, experimental and cinematic",
+    "emotion": "powerful, intense, thought-provoking, rebellious"
+  },
+
+  "quality": {
+    "detail_level": "extremely high",
+    "render_style": "premium artstation-quality editorial illustration",
+    "resolution": "ultra detailed"
+  }
+}

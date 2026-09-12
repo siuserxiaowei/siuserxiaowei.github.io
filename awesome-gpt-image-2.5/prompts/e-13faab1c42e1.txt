@@ -1,0 +1,9 @@
+Create a high-quality character introduction page using a chibi illustration and a full standing character artwork, styled like an official visual novel (gal-game) character profile page. It should look realistic enough to use on an actual game website. Include CG-style illustrations, facial expression variants, and a chibi version of the character.
+
+"Self-introduction here"
+
+Name: (name here)
+Theme color: (color here)
+Height: (height here) cm
+Weight: (weight here) kg
+Catchphrase: "(line here)"

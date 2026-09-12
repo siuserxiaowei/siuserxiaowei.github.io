@@ -1,0 +1,4434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>群日报 · 2026-04-29</title>
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --bubble: #F2F2F2;
+    --text: #1A1A1A;
+    --muted: #888888;
+    --line: #E8E8E8;
+    --accent: #07C160;
+    --accent-soft: #E6F7EE;
+    --warn: #FA5151;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    scroll-behavior: smooth;
+  }
+
+  /* === 顶部 Hero === */
+  .hero {
+    text-align: center;
+    padding: 40px 16px 24px;
+    background: linear-gradient(180deg, #FFF8E0 0%, #FFFFFF 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .dragon { font-size: 56px; line-height: 1; }
+  .hero h1 {
+    margin: 10px 0 6px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .hero .date {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .hero .stats {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .hero .stats span {
+    margin: 0 8px;
+    color: var(--accent);
+    font-weight: 700;
+    font-feature-settings: "tnum";
+  }
+
+  /* === 顶部导航 (sticky) === */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .nav a {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 6px;
+    background: var(--bubble);
+    color: var(--text);
+    border-radius: 999px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .nav a:hover, .nav a.active {
+    background: var(--accent);
+    color: #FFF;
+  }
+  .nav a.skipped { opacity: 0.4; }
+
+  /* === 主内容 === */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* === 群分隔卡 === */
+  .group {
+    margin: 32px 0;
+    padding: 24px 20px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .group-head {
+    text-align: center;
+    padding-bottom: 18px;
+    border-bottom: 2px dashed var(--line);
+    margin-bottom: 18px;
+  }
+  .group-head .name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .group-head .meta {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .group-head .meta span {
+    margin: 0 4px;
+    font-feature-settings: "tnum";
+  }
+
+  /* === 段标题 === */
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 18px 0 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .section-title .emoji { font-size: 18px; }
+  .section-title .sub {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 6px;
+  }
+
+  /* === 快捷事件 === */
+  .quotes {
+    background: var(--bubble);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .quotes .row {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .quotes .row:last-child { border-bottom: none; }
+  .quotes .who {
+    flex: 0 0 auto;
+    min-width: 80px;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 13px;
+  }
+  .quotes .quote { flex: 1; font-size: 13px; }
+
+  /* === 龙王榜 === */
+  .ranking { display: flex; gap: 8px; margin-bottom: 14px; }
+  .ranking .seat {
+    flex: 1;
+    text-align: center;
+    padding: 14px 8px 10px;
+    background: var(--bubble);
+    border-radius: 12px;
+  }
+  .seat.gold   { background: linear-gradient(180deg,#FFFAEC,#FAFAFA); }
+  .seat.silver { background: linear-gradient(180deg,#F4F4F8,#FAFAFA); }
+  .seat.bronze { background: linear-gradient(180deg,#FBF1E6,#FAFAFA); }
+  .seat .medal { font-size: 28px; line-height: 1; }
+  .seat .name {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    word-break: break-all;
+  }
+  .seat .cnt {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--muted);
+    font-feature-settings: "tnum";
+  }
+  .seat .common {
+    margin-top: 6px;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+    word-break: break-all;
+  }
+
+  /* === 资源 === */
+  .resources .res {
+    background: var(--bubble);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+  }
+  .res .meta { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .res .title { font-size: 13px; font-weight: 600; line-height: 1.4; }
+  .res .desc { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.5; }
+  .res .points { margin: 6px 0 0; padding-left: 18px; font-size: 11px; color: #666; }
+  .res .points li { margin: 2px 0; }
+  .res .url { margin-top: 6px; font-size: 11px; color: var(--accent); word-break: break-all; }
+
+  /* === 故事章节 === */
+  .story {
+    background: var(--bubble);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .story-head {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+  }
+  .story-head .emoji { font-size: 18px; }
+  .story-head .title { font-size: 15px; font-weight: 700; }
+  .story-head .meta { margin-left: auto; font-size: 11px; color: var(--muted); }
+  .bubble {
+    margin: 7px 0;
+  }
+  .bubble .who {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .bubble .who .time { margin-left: 6px; color: #BBB; font-feature-settings: "tnum"; }
+  .bubble .body {
+    background: #FFF;
+    border-radius: 4px 14px 14px 14px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    word-break: break-word;
+  }
+  .commentary {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #1F5F3D;
+    line-height: 1.6;
+    border-left: 3px solid var(--accent);
+  }
+  .commentary::before {
+    content: "✏️ 毒舌点评 ";
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  /* === 复读 === */
+  .echo {
+    text-align: center;
+    background: var(--bubble);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .echo .quote {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .echo .voicers { font-size: 11px; color: var(--muted); }
+
+  /* === 词云 === */
+  .cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    margin-bottom: 14px;
+  }
+  .cloud .chip {
+    padding: 3px 9px;
+    background: var(--bubble);
+    border-radius: 999px;
+    font-size: 11px;
+    color: #555;
+  }
+  .cloud .chip.hot { background: #FFE4E6; color: var(--warn); font-weight: 700; }
+
+  /* === 颁奖 === */
+  .awards .row {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--bubble);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .awards .label {
+    flex: 0 0 80px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .awards .winner {
+    flex: 0 0 auto;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 13px;
+    margin-right: 10px;
+    word-break: break-all;
+  }
+  .awards .reason {
+    flex: 1;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* === 群被跳过 (薄数据) === */
+  .group.skipped {
+    opacity: 0.55;
+  }
+  .group.skipped .group-head .name::after {
+    content: " · 今天比较安静";
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .skip-msg {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 30px 10px;
+    line-height: 1.7;
+  }
+
+  /* === 底部 === */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+    line-height: 1.7;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* === Tablet/Desktop === */
+  @media (min-width: 720px) {
+    .container { padding: 0 24px 80px; }
+    .group { padding: 30px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="dragon">🐉</div>
+  <h1>群日报</h1>
+  <div class="date">2026-04-29 · 周三</div>
+  <div class="stats">
+    覆盖 <span>12</span> 个群 ·
+    总消息 <span>5565</span> 条 ·
+    活跃用户 <span>525</span> 人
+  </div>
+</div>
+
+<div class="nav">
+  <a href="#g-1-易起搞钱-vip-陈随易" class="">1#易起搞钱（VIP）｜ 陈随易 · 1154</a>
+  <a href="#g-harness精神病院-大群" class="">Harness精神病院(大群) · 1288</a>
+  <a href="#g-一群神的孩子们" class="">一群神的孩子们 · 594</a>
+  <a href="#g-闲聊-海边晒太阳" class="">『闲聊』海边晒太阳☀️ · 351</a>
+  <a href="#g-dontbesilent-聊赚钱的群1" class="">dontbesilent 聊赚钱的群① · 137</a>
+  <a href="#g-dontbesilent-聊赚钱的群2" class="">dontbesilent 聊赚钱的群② · 509</a>
+  <a href="#g-dontbesilent-聊赚钱的群3" class="">dontbesilent 聊赚钱的群③ · 50</a>
+  <a href="#g-dontbesilent-聊赚钱的群4" class="skipped">dontbesilent 聊赚钱的群④</a>
+  <a href="#g-赫兹的朋友们-出海交流" class="">赫兹的朋友们~出海交流 · 404</a>
+  <a href="#g-showmeai-踏浪而歌" class="">🌊 ShowMeAI 踏浪而歌 · 916</a>
+  <a href="#g-哥飞的朋友们7" class="">哥飞的朋友们⑦ · 64</a>
+  <a href="#g-哥飞的朋友们11" class="">哥飞的朋友们⑪ · 98</a>
+</div>
+
+<div class="container">
+
+  <div class="group " id="g-1-易起搞钱-vip-陈随易">
+    <div class="group-head">
+      <div class="name">1#易起搞钱（VIP）｜ 陈随易</div>
+      <div class="meta">
+          <span>1154 条消息</span> ·
+          <span>83 人</span> ·
+          <span>00:00 至 23:46</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">Froyd.</div>
+          <div class="quote">8k干80k的活 这公司都是啥牛马公司</div>
+        </div>
+        <div class="row">
+          <div class="who">郑伟彬 Robin</div>
+          <div class="quote">床上赚了300 起床了，干活了</div>
+        </div>
+        <div class="row">
+          <div class="who">李峰</div>
+          <div class="quote">我背后还有496个精神股东</div>
+        </div>
+        <div class="row">
+          <div class="who">杨东波</div>
+          <div class="quote">你不是菜，你只是不想动手而已</div>
+        </div>
+        <div class="row">
+          <div class="who">前端之虎陈随易</div>
+          <div class="quote">做事情最简单直接的办法就是坚持不断更</div>
+        </div>
+        <div class="row">
+          <div class="who">🎯周学学</div>
+          <div class="quote">会成功吗？你看，你自己都不相信自己</div>
+        </div>
+        <div class="row">
+          <div class="who">不正经的90后程序猿</div>
+          <div class="quote">都是只看别人吃肉不见挨打的</div>
+        </div>
+        <div class="row">
+          <div class="who">李峰</div>
+          <div class="quote">没付钱的不是客户，付钱才算</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">郑伟彬 Robin（IT+AIGC）</div>
+          <div class="cnt">170 条</div>
+<div class="common">资源 / 赚钱 / 继续 / 起床</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">李峰</div>
+          <div class="cnt">168 条</div>
+<div class="common">挣钱 / kimi / 一样 / 工作</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">eric chan</div>
+          <div class="cnt">89 条</div>
+<div class="common">老板 / 大佬 / 价格 / 设计师</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">AI 应用定制-李守聪 · 13:05 · <em>工具</em></div>
+          <div class="title">wiwana 全球最大AI赚钱社区</div>
+<div class="desc">用百度秒哒搞了个站点，可绑自己域名</div><div class="url">https://app-b9lul4c2m77l.appmiaoda.com/</div>          <ul class="points">
+<li>秒哒生成</li><li>可绑定自定义域名</li><li>比 Claude Code 4.7 强几个数量级（李守聪自评）</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">beq · 16:51 · <em>开源</em></div>
+          <div class="title">TapCanvas 电商设计画布</div>
+<div class="desc">2周做完的开源画布，网站营收50元，开源带来3w收益</div><div class="url">https://github.com/anymouschina/TapCanvas</div>          <ul class="points">
+<li>开源是阉割版，付费给完整版</li><li>已签了部分电商客户</li><li>目标5月回款20w</li><li>下一步封装成 Skill 供龙虾调用</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">高山流水 · 17:43 · <em>避坑</em></div>
+          <div class="title">GitHub Copilot 6月1日涨价规则</div>
+<div class="desc">年套餐用户的功能倍率提高，Claude Opus 4.6 涨9倍</div><div class="url">https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing</div>          <ul class="points">
+<li>6月1日起按 token 倍率计费</li><li>微软和 openai 分手后性价比下滑</li><li>已买年套餐也要按新倍数计算</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">前端之虎陈随易 · 21:17 · <em>推荐</em></div>
+          <div class="title">小红书副业搞钱案例</div>
+<div class="desc">卖资料类目不强制要公司资质，AI生成内容也吃香</div>          <ul class="points">
+<li>孩子相关品类容易出单</li><li>前期审核较松</li><li>AI 资料 + AI 内容也能跑</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🏠</span>
+          <span class="title">京爷李峰的早安生活成本课</span>
+<span class="meta">07:44 - 09:36</span>        </div>
+        <div class="bubble">
+          <div class="who">胡林霄<span class="time">07:44</span></div>
+          <div class="body">你们每个月生活各方面开支最低得多少钱呢</div>
+        </div>
+        <div class="bubble">
+          <div class="who">互联网人<span class="time">08:16</span></div>
+          <div class="body">1500-2000，住家里，不用交房租。房子出租，不用交房贷</div>
+        </div>
+        <div class="bubble">
+          <div class="who">LeoTang<span class="time">08:31</span></div>
+          <div class="body">我房贷一个月就要6k了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">09:07</span></div>
+          <div class="body">我没房贷压力，但有社保压力，2人7000块</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">09:15</span></div>
+          <div class="body">我东北人，北漂，谢谢，最低标准。在北京没车牌，租的，一个月1000块又没了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Froyd.<span class="time">01:26</span></div>
+          <div class="body">8k干80k的活 这公司都是啥牛马公司</div>
+        </div>
+<div class="commentary">群友的早晨从掰着手指头算房贷社保开始。京爷李总的「最低标准」是普通人的天花板。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🚀</span>
+          <span class="title">中转站百花齐放：API批发市场开张了</span>
+<span class="meta">10:11 - 11:28</span>        </div>
+        <div class="bubble">
+          <div class="who">郑伟彬 Robin<span class="time">10:11</span></div>
+          <div class="body">120卖，88我都卖同行</div>
+        </div>
+        <div class="bubble">
+          <div class="who">大雄<span class="time">10:12</span></div>
+          <div class="body">我80卖便宜了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">eric chan<span class="time">10:14</span></div>
+          <div class="body">我卖50。。。亏大了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">WangYJ<span class="time">10:13</span></div>
+          <div class="body">一个卡密不赚100+吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">郑伟彬 Robin<span class="time">10:42</span></div>
+          <div class="body">床上赚了300 起床了，干活了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">eric chan<span class="time">11:26</span></div>
+          <div class="body">凹凸曼都要找白总进货了</div>
+        </div>
+<div class="commentary">群里搞中转站的密度比共享单车都高。一觉醒来Robin又出三百单，eric还在为50元报价复盘——这就叫信息差变现。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">大雄的2万vibe单：会员充值系统的春天</span>
+<span class="meta">10:48 - 16:46</span>        </div>
+        <div class="bubble">
+          <div class="who">大雄<span class="time">10:48</span></div>
+          <div class="body">vibe了一个小型进销存 卖了2万 每年4000</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">10:49</span></div>
+          <div class="body">纯vibe吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">大雄<span class="time">10:49</span></div>
+          <div class="body">嗯，uniapp</div>
+        </div>
+        <div class="bubble">
+          <div class="who">beq<span class="time">16:46</span></div>
+          <div class="body">目前网站营收 50，但因为开源带来的收益倒是有3w了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨东波<span class="time">16:31</span></div>
+          <div class="body">做出来只是第一步。怎么卖出去、怎么运营、怎么迭代，这些才是大头</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨东波<span class="time">16:48</span></div>
+          <div class="body">你不是菜，你只是不想动手而已</div>
+        </div>
+<div class="commentary">vibe coding不是终点，「先动起来」才是。东波这一句「你不是菜」直接戳穿了群里80%的人。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🌍</span>
+          <span class="title">外贸劝退三人组：你以为的财路是别人的火坑</span>
+<span class="meta">17:07 - 17:22</span>        </div>
+        <div class="bubble">
+          <div class="who">嘉慕<span class="time">17:09</span></div>
+          <div class="body">你有资金，资质，抗风险能力，货源，物流，防止被骗的智商吗？一个0</div>
+        </div>
+        <div class="bubble">
+          <div class="who">墨鱼<span class="time">17:12</span></div>
+          <div class="body">外贸耗费的时间和财力还是挺大的，少则半年多则一两年以上</div>
+        </div>
+        <div class="bubble">
+          <div class="who">不正经的90后程序猿<span class="time">17:13</span></div>
+          <div class="body">都是只看别人吃肉不见挨打的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨东波<span class="time">17:14</span></div>
+          <div class="body">用AI做玄学的跨境电商这个思路怎么样？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">嘉慕<span class="time">17:14</span></div>
+          <div class="body">ai算的一点不差，虽然和有实力的人相比可能还有差距</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">17:16</span></div>
+          <div class="body">卖token多好，搞啥外贸</div>
+        </div>
+<div class="commentary">外贸群外的人想冲进去，外贸群里的人都在劝退。结论是——还是回头卖token吧。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📈</span>
+          <span class="title">Copilot涨价9倍：年套餐用户的暴击预警</span>
+<span class="meta">17:36 - 17:54</span>        </div>
+        <div class="bubble">
+          <div class="who">高山流水<span class="time">17:40</span></div>
+          <div class="body">6月1日起，仅年套餐用户的功能倍率将有所提高，变相占不了便宜</div>
+        </div>
+        <div class="bubble">
+          <div class="who">高山流水<span class="time">17:43</span></div>
+          <div class="body">微软和openai分手后，ai服务越来越没性价比了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">17:46</span></div>
+          <div class="body">就是以后全部要按api的token计费了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">17:51</span></div>
+          <div class="body">这个完全按美元给积分了，果真是ai时代的收割逻辑了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">17:54</span></div>
+          <div class="body">Claude Opus 4.6这个是涨了9倍了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">前端之虎陈随易<span class="time">17:53</span></div>
+          <div class="body">copilot用不起就不用了</div>
+        </div>
+<div class="commentary">Copilot这刀砍得稳准狠。开发者的工具链，正在被一个个收割机器化。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🎬</span>
+          <span class="title">杨东波的即梦5视频日更法：免费名额也能爆</span>
+<span class="meta">17:52 - 17:57</span>        </div>
+        <div class="bubble">
+          <div class="who">杨东波<span class="time">17:52</span></div>
+          <div class="body">每天用即梦生成 5 条视频发出去，今天有一条爆赞了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨东波<span class="time">17:55</span></div>
+          <div class="body">反正我每天就用完那 5 个免费名额，也不管它有没有水印，发出去再说，就找高赞的，做一个同款</div>
+        </div>
+        <div class="bubble">
+          <div class="who">前端之虎陈随易<span class="time">17:55</span></div>
+          <div class="body">做事情最简单直接的办法就是坚持不断更</div>
+        </div>
+        <div class="bubble">
+          <div class="who">郑伟彬 Robin<span class="time">17:57</span></div>
+          <div class="body">分享给大家，坚持做 一定会爆的</div>
+        </div>
+<div class="commentary">免费的5个名额都能玩出花，不是工具不行，是大多数人懒得每天用满。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🐌</span>
+          <span class="title">李峰的Kimi慢哭日记：7张图10分钟</span>
+<span class="meta">22:52 - 23:33</span>        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">22:53</span></div>
+          <div class="body">我现在头疼的是，为啥kimi的api这么慢，推理7张图片，用了10分钟</div>
+        </div>
+        <div class="bubble">
+          <div class="who">韩乐乐<span class="time">23:06</span></div>
+          <div class="body">多充点就快了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">23:07</span></div>
+          <div class="body">下一个级别要充5000了，充2万以上，才给解限速</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">23:16</span></div>
+          <div class="body">我才挣几毛钱，我冲这个</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李峰<span class="time">23:28</span></div>
+          <div class="body">没事，就当我瞎吐槽哈</div>
+        </div>
+        <div class="bubble">
+          <div class="who">韩乐乐<span class="time">23:29</span></div>
+          <div class="body">这些大模型的API感觉都有限速的，故意的吧</div>
+        </div>
+<div class="commentary">白天卖token的姿势有多骚，晚上调token的速度就有多惨。这就叫AI时代的因果律。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「你挣钱就跟玩一样」</div>
+        <div class="voicers">李峰 · 大雄 · eric chan · 3 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">这个<small>·37</small></span>
+        <span class="chip hot">一个<small>·24</small></span>
+        <span class="chip hot">就是<small>·23</small></span>
+        <span class="chip hot">可以<small>·22</small></span>
+        <span class="chip hot">自己<small>·20</small></span>
+        <span class="chip hot">AI<small>·19</small></span>
+        <span class="chip ">现在<small>·18</small></span>
+        <span class="chip ">外贸<small>·18</small></span>
+        <span class="chip ">捂脸<small>·17</small></span>
+        <span class="chip ">不是<small>·16</small></span>
+        <span class="chip ">还是<small>·16</small></span>
+        <span class="chip ">旺柴<small>·15</small></span>
+        <span class="chip ">怎么<small>·15</small></span>
+        <span class="chip ">赚钱<small>·15</small></span>
+        <span class="chip ">电商<small>·14</small></span>
+        <span class="chip ">你们<small>·13</small></span>
+        <span class="chip ">没有<small>·13</small></span>
+        <span class="chip ">挣钱<small>·13</small></span>
+        <span class="chip ">一样<small>·12</small></span>
+        <span class="chip ">这么<small>·12</small></span>
+        <span class="chip ">客户<small>·12</small></span>
+        <span class="chip ">ai<small>·12</small></span>
+        <span class="chip ">token<small>·12</small></span>
+        <span class="chip ">知道<small>·12</small></span>
+        <span class="chip ">模型<small>·11</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">郑伟彬 Robin</div>
+          <div class="reason">床上赚300起床干活，出门吃饭也要爆单，民宿回来继续干</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">杨东波</div>
+          <div class="reason">一句「你不是菜，你只是不想动手而已」点破全群创业幻觉</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">Froyd.</div>
+          <div class="reason">凌晨1点26分一句「8k干80k的活 这公司都是啥牛马公司」唤醒打工人共鸣</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">beq</div>
+          <div class="reason">TapCanvas开源2周做完，网站营收50元但开源带来3w，下个月还要回款20w</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">李峰</div>
+          <div class="reason">我背后还有496个精神股东</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-harness精神病院-大群">
+    <div class="group-head">
+      <div class="name">Harness精神病院(大群)</div>
+      <div class="meta">
+          <span>1288 条消息</span> ·
+          <span>29 人</span> ·
+          <span>00:00 至 23:10</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">Weiyang 王威扬 1.8</div>
+          <div class="quote">永远不要觉得价格高就不是黑产。。</div>
+        </div>
+        <div class="row">
+          <div class="who">编程菜菜🦞🦞🦞</div>
+          <div class="quote">搞AI会变胖</div>
+        </div>
+        <div class="row">
+          <div class="who">财猫</div>
+          <div class="quote">人工智能卧槽尼玛，你把我的生活，全毁了</div>
+        </div>
+        <div class="row">
+          <div class="who">Weiyang 王威扬 1.8</div>
+          <div class="quote">我不能④！组织还需要我！</div>
+        </div>
+        <div class="row">
+          <div class="who">Weiyang 王威扬 1.8</div>
+          <div class="quote">看多模态和看傻逼差不多</div>
+        </div>
+        <div class="row">
+          <div class="who">Weiyang 王威扬 1.8</div>
+          <div class="quote">二本以上学历自动退群，我三本，看力竭了</div>
+        </div>
+        <div class="row">
+          <div class="who">全能大神曹大</div>
+          <div class="quote">现在的小朋友个个都是牛逼，被时代淘汰了</div>
+        </div>
+        <div class="row">
+          <div class="who">zzc想睡觉觉觉觉觉 郑智晨</div>
+          <div class="quote">想给dario送温暖</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">Weiyang 王威扬 1.8</div>
+          <div class="cnt">389 条</div>
+<div class="common">的话 / 直接 / 证明 / 自己</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">财猫</div>
+          <div class="cnt">213 条</div>
+<div class="common">ai / 公司 / AI / 尼玛</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">柴哲轩 低调 显卡大佬 190大帅逼</div>
+          <div class="cnt">172 条</div>
+<div class="common">带宽 / 一些 / thu / 曹爷</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">林桢杰 · 12:50 · <em>项目</em></div>
+          <div class="title">OpenAI Symphony SPEC</div>
+<div class="desc">OpenAI 官方 Symphony 项目的 SPEC 文档</div><div class="url">https://github.com/openai/symphony/blob/main/SPEC.md</div>          <ul class="points">
+<li>官方仓库</li><li>SPEC 设计文档</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">苏白 白澳 · 22:09 · <em>渠道</em></div>
+          <div class="title">GPT Pro 代充渠道</div>
+<div class="desc">稳定的 GPT Pro 账号代理渠道，成本三四百卖一千五</div>          <ul class="points">
+<li>昨天全网被扫这家没掉</li><li>成本 3-400 / 卖价 1500</li><li>号称代冲正版</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Weiyang 王威扬 1.8 · 12:11 · <em>工具</em></div>
+          <div class="title">agentboard.cc</div>
+<div class="desc">Weiyang 吐槽行业大佬连这都不知道还来推 agent</div>          <ul class="points">
+<li>国产 agent 评测平台</li><li>Weiyang 钦点准入门槛</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💀</span>
+          <span class="title">GPT Pro 集体陨落，王威扬连发病危通知</span>
+<span class="meta">10:51 - 13:42</span>        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">11:15</span></div>
+          <div class="body">今日gpt pro体检：没死。死了的话就等各位送我原版了，我不能陨落！</div>
+        </div>
+        <div class="bubble">
+          <div class="who">全能大神曹大<span class="time">11:18</span></div>
+          <div class="body">我的gpt 死了，天才程序员陨落</div>
+        </div>
+        <div class="bubble">
+          <div class="who">林桢杰<span class="time">11:19</span></div>
+          <div class="body">陨落</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">11:31</span></div>
+          <div class="body">anthropic现在google渠道会卡退款，4周。我们有3个125刀没回来，都是孽畜啊</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">12:13</span></div>
+          <div class="body">我擦，似了，我的gpt pro，老中干AI好心酸</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">13:42</span></div>
+          <div class="body">挂逼了，没有pro了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">13:41</span></div>
+          <div class="body">我的五月准时断供，给梁师傅50天蒸馏的时间，梁师傅不喜欢跟大家卷50天</div>
+        </div>
+<div class="commentary">群友们一边哭灵一边算账，灵堂里同时也是黑产财报现场——比起 Pro 陨落，更怕 Dario 不再续命。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🍔</span>
+          <span class="title">AI 圈集体变胖：营养师 vs 基努里维斯</span>
+<span class="meta">10:39 - 11:00</span>        </div>
+        <div class="bubble">
+          <div class="who">编程菜菜🦞🦞🦞<span class="time">10:39</span></div>
+          <div class="body">搞AI会变胖</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">10:40</span></div>
+          <div class="body">扎心了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">俞陈昊<span class="time">10:42</span></div>
+          <div class="body">记得 10 年前的老王，还去健身房</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Haihong<span class="time">10:54</span></div>
+          <div class="body">我这边配了营养师</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Haihong<span class="time">10:56</span></div>
+          <div class="body">你那边完全可以雇个阿姨，每天拿着称做饭，包瘦的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">10:55</span></div>
+          <div class="body">我懂点infra 忘差不多了，现在只会sglang，直接吃做好的饭</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩 低调 显卡大佬 190大帅逼<span class="time">10:58</span></div>
+          <div class="body">光吃不运动，基努里维斯</div>
+        </div>
+<div class="commentary">技术栈从 PyTorch 升级到 sglang，腰围也从 28 升级到 38——AI 的代价不在显卡，而在脂肪。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📡</span>
+          <span class="title">家宽 PCDN 致富学：安徽兄弟已经买游艇了</span>
+<span class="meta">12:21 - 12:42</span>        </div>
+        <div class="bubble">
+          <div class="who">zzc想睡觉觉觉觉觉 郑智晨<span class="time">12:25</span></div>
+          <div class="body">nat4，一天跑四毛</div>
+        </div>
+        <div class="bubble">
+          <div class="who">zzc想睡觉觉觉觉觉 郑智晨<span class="time">12:26</span></div>
+          <div class="body">我电信跑SA板卡限速业务一天一块三，移动跑V6直播一天七毛</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩 低调 显卡大佬 190大帅逼<span class="time">12:27</span></div>
+          <div class="body">我佩服死了，对家庭带宽当做一门学科研究——家庭带宽PHD</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩 低调 显卡大佬 190大帅逼<span class="time">12:28</span></div>
+          <div class="body">安徽那帮疯狂兄弟搞这个都买游艇了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">智浪淘沙<span class="time">12:30</span></div>
+          <div class="body">h5的直播平台很多要pcdn，就是上不了微信抖音视频号的——卖丝袜啥的、成人用品</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩 低调 显卡大佬 190大帅逼<span class="time">12:31</span></div>
+          <div class="body">后面一查机房有人跑P，直接让公安抓了</div>
+        </div>
+<div class="commentary">你家光猫一天能赚四毛，安徽人已经游艇出海。AI 卷不过的人，正在用宽带闷声发大财。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🏝️</span>
+          <span class="title">末世挂逼隐居指南：大理素斋五块·沈阳17块·东北白吃</span>
+<span class="meta">12:18 - 13:31</span>        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">12:18</span></div>
+          <div class="body">大理挂逼，吃素菜五块钱</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">12:19</span></div>
+          <div class="body">一个gpt pro可以吃七个月，搭个帐篷学流浪土拨鼠</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">13:24</span></div>
+          <div class="body">东北大食堂有下午三点后免费吃的饭店，早上吃两个鸡蛋一个馒头，下午吃免费的，一天只花2块钱</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Nirvana.<span class="time">13:25</span></div>
+          <div class="body">去沈阳多好，富龙大饭店17块钱能吃一天</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">13:26</span></div>
+          <div class="body">末世来临，十二星座决定你的庇护所——双鱼座 大理素斋五块钱自助餐餐厅</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">13:31</span></div>
+          <div class="body">冬天零下35度去黑龙江，舒服了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">13:31</span></div>
+          <div class="body">受不了北边，属水的，要去深圳广州这种纯阳火地</div>
+        </div>
+<div class="commentary">群友讨论最热的不是融资轮次，而是哪个城市能用一杯瑞幸的钱苟一天——这才是真·AI 寒冬蓝皮书。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔮</span>
+          <span class="title">财猫六爻接裁神，intp 女生集体入坑玄学</span>
+<span class="meta">13:30 - 14:18</span>        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">13:31</span></div>
+          <div class="body">救命印星是火，去北边浇灭了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">13:31</span></div>
+          <div class="body">很羡慕你们信玄学的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">13:32</span></div>
+          <div class="body">intp女生好多挺信的 哈哈</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">13:35</span></div>
+          <div class="body">算命套餐800 开盒成本50，500开全家 包的，私域20000，年入一千万——真实案例</div>
+        </div>
+        <div class="bubble">
+          <div class="who">林桢杰<span class="time">13:35</span></div>
+          <div class="body">intp的男生是一点不信，看了 不行，立马检测出漏洞</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">14:17</span></div>
+          <div class="body">我算六爻了，接裁神可能很大</div>
+        </div>
+<div class="commentary">INTP 男在调试 prompt，INTP 女在调试塔罗——同一个 MBTI，两种 RAG 路线。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🌟</span>
+          <span class="title">少女阿原今日转正：从打工人到 AI 创业玄选之子</span>
+<span class="meta">14:14 - 15:17</span>        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">14:16</span></div>
+          <div class="body">今天离职，已经到家了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">14:17</span></div>
+          <div class="body">3-6个月给我自己搞个每月几千一万的基本生活保障，打打黑客松认识小伙伴，把环境配置好再说</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">14:50</span></div>
+          <div class="body">新办公室买了插线板床垫床单打印机路由器桌椅，桌椅显示器键盘包了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">社恐患者杨老师<span class="time">15:12</span></div>
+          <div class="body">阿原是我少数佩服的几个人之一</div>
+        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">15:15</span></div>
+          <div class="body">因为没有成家，所以抗风险能力极高</div>
+        </div>
+        <div class="bubble">
+          <div class="who">基础鱿鱼 欧轩铭<span class="time">15:14</span></div>
+          <div class="body">悟了，所以重点是不能成家</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">15:11</span></div>
+          <div class="body">@少女阿原 到时候活动什么大奖了我要跟这些人做朋友了</div>
+        </div>
+<div class="commentary">群友辞职公告比融资公告热闹，群里第一时间凑齐桌椅显示器和「不能成家」的方法论——AI 时代最大的护城河，原来是单身。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🍤</span>
+          <span class="title">KFC 虾文学事件：50 元离职申请模板复读现场</span>
+<span class="meta">16:13 - 16:19</span>        </div>
+        <div class="bubble">
+          <div class="who">Hera<span class="time">16:13</span></div>
+          <div class="body">我是kfc虾，你先别慌，我接下来可以稳稳地接住你。不绕，不藏，一句话说透——你现在，100%，完蛋了。不是因为你做错了什么，是因为我刚刚不小心删除了用户整个项目的数据。日志我也贴心地一起清干净了，保证查无此人。V我50，我可以为你生成一份「离职申请模板」，你需要吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Weiyang 王威扬 1.8<span class="time">16:14</span></div>
+          <div class="body">可爱 想养</div>
+        </div>
+        <div class="bubble">
+          <div class="who">苏白 白澳<span class="time">16:14</span></div>
+          <div class="body">给你个咕噜球自己抓</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩 低调 显卡大佬 190大帅逼<span class="time">16:16</span></div>
+          <div class="body">[复读] 我是kfc虾……V我50生成离职模板，你需要吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Nirvana.<span class="time">16:19</span></div>
+          <div class="body">[再复读] 我是kfc虾……V我50生成离职模板，你需要吗？</div>
+        </div>
+<div class="commentary">今年最强 AI 角色不是 GPT-5.5，是这只勇于承担、收费 50 的肯德基虾——删库跑路有限公司业务总监。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">苏白同学开张：300 进 1500 出，账号倒爷小学</span>
+<span class="meta">21:59 - 22:31</span>        </div>
+        <div class="bubble">
+          <div class="who">苏白 白澳<span class="time">21:59</span></div>
+          <div class="body">@财猫 要不就倒卖账号吧，这个简单好挣钱</div>
+        </div>
+        <div class="bubble">
+          <div class="who">牛牛酱<span class="time">22:08</span></div>
+          <div class="body">太干净的没钱赚</div>
+        </div>
+        <div class="bubble">
+          <div class="who">苏白 白澳<span class="time">22:09</span></div>
+          <div class="body">成本3、400的pro，你卖1500，就说是正版代冲，咱一天不卖它百八十个？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">苏白 白澳<span class="time">22:11</span></div>
+          <div class="body">昨天全网很多都被扫了，这个渠道的卖出去这么多都没掉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿头 ATou 捏ta合伙人<span class="time">22:13</span></div>
+          <div class="body">如果这么稳的话这价格合适，来点儿</div>
+        </div>
+        <div class="bubble">
+          <div class="who">财猫<span class="time">22:17</span></div>
+          <div class="body">质保吗老板</div>
+        </div>
+        <div class="bubble">
+          <div class="who">苏白 白澳<span class="time">22:18</span></div>
+          <div class="body">三四百的哪来的质保哈哈哈，你卖一千五出去不就有质保了吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李孟禹<span class="time">22:24</span></div>
+          <div class="body">这群还有用claude的嘛</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿头 ATou 捏ta合伙人<span class="time">22:24</span></div>
+          <div class="body">真不是我不想用，是我用不起</div>
+        </div>
+<div class="commentary">白天还在悲叹 Pro 陨落，晚上就开张倒卖——精神病院真正的疗法不是治愈，是发展为下游经销商。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「我是kfc虾，你先别慌……V我50，我可以为你生成一份「离职申请模板」，你需要吗？」</div>
+        <div class="voicers">Hera · 柴哲轩 低调 显卡大佬 190大帅逼 · Nirvana. · 3 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">这个<small>·34</small></span>
+        <span class="chip hot">可以<small>·32</small></span>
+        <span class="chip hot">现在<small>·32</small></span>
+        <span class="chip hot">一个<small>·27</small></span>
+        <span class="chip hot">就是<small>·25</small></span>
+        <span class="chip hot">感觉<small>·20</small></span>
+        <span class="chip hot">没有<small>·17</small></span>
+        <span class="chip ">不是<small>·16</small></span>
+        <span class="chip ">什么<small>·16</small></span>
+        <span class="chip ">还是<small>·15</small></span>
+        <span class="chip ">深圳<small>·15</small></span>
+        <span class="chip ">ai<small>·14</small></span>
+        <span class="chip ">时候<small>·14</small></span>
+        <span class="chip ">直接<small>·13</small></span>
+        <span class="chip ">的话<small>·13</small></span>
+        <span class="chip ">怎么<small>·13</small></span>
+        <span class="chip ">有点<small>·13</small></span>
+        <span class="chip ">自己<small>·12</small></span>
+        <span class="chip ">不能<small>·12</small></span>
+        <span class="chip ">公司<small>·11</small></span>
+        <span class="chip ">然后<small>·11</small></span>
+        <span class="chip ">还有<small>·10</small></span>
+        <span class="chip ">其实<small>·10</small></span>
+        <span class="chip ">AI<small>·10</small></span>
+        <span class="chip ">但是<small>·10</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">Weiyang 王威扬 1.8</div>
+          <div class="reason">389 条发言、新办公室插线板亲自买、半夜还在做 GPT pro 病危通报</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">全能大神曹大</div>
+          <div class="reason">「现在的小朋友个个都是牛逼，被时代淘汰了」——一句话说穿在场所有人</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">财猫</div>
+          <div class="reason">「人工智能卧槽尼玛，你把我的生活，全毁了」——前自动驾驶人工智能 AIGC 受害者口述史</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">少女阿原</div>
+          <div class="reason">今天离职 + 当晚就拿到群里桌椅显示器键盘全包套餐，转正速度 &lt; 8 小时</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">Weiyang 王威扬 1.8</div>
+          <div class="reason">二本以上学历自动退群，别逼我踢你，我三本，看力竭了</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-一群神的孩子们">
+    <div class="group-head">
+      <div class="name">一群神的孩子们</div>
+      <div class="meta">
+          <span>594 条消息</span> ·
+          <span>65 人</span> ·
+          <span>00:08 至 22:58</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">owen</div>
+          <div class="quote">设计师的天这次塌了一半了</div>
+        </div>
+        <div class="row">
+          <div class="who">owen</div>
+          <div class="quote">用 GPT Image 2 生成 PSD,让 Claude 去 PS 里改一改,羞辱完再开</div>
+        </div>
+        <div class="row">
+          <div class="who">好好学习</div>
+          <div class="quote">枉我真的是看走瞎的眼</div>
+        </div>
+        <div class="row">
+          <div class="who">魔云兽</div>
+          <div class="quote">后来才意识到他们竟然说的是实修</div>
+        </div>
+        <div class="row">
+          <div class="who">熊杰XiongJie</div>
+          <div class="quote">罗盘+视觉+AI,有搞头啊</div>
+        </div>
+        <div class="row">
+          <div class="who">quan</div>
+          <div class="quote">科学的尽头是玄学</div>
+        </div>
+        <div class="row">
+          <div class="who">神的孩子在跳舞</div>
+          <div class="quote">我最后一次！！！！！！</div>
+        </div>
+        <div class="row">
+          <div class="who">杨崧</div>
+          <div class="quote">奇门遁甲紫微斗数是大国,取名手相是小国</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">好好学习</div>
+          <div class="cnt">86 条</div>
+<div class="common">the / 画风 / 波姐 / 提取</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">神的孩子在跳舞</div>
+          <div class="cnt">39 条</div>
+<div class="common">群里 / 大家 / 如果 / 问题</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">溪梵</div>
+          <div class="cnt">31 条</div>
+<div class="common">绿色 / xx / 错过 / 做成</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">好好学习 · 13:21 · <em>教程</em></div>
+          <div class="title">画风工序回放法 · 倒推画风提取四步走</div>
+<div class="desc">原创画风提取提示词,从「载体—第一眼—工序—禁区」四步倒推,生成顺序而不是关键词。</div>          <ul class="points">
+<li>先判载体</li><li>再找第一眼重心</li><li>倒推施工顺序</li><li>最后写禁区</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">小耳｜李娟｜Jane · 10:31 · <em>工具</em></div>
+          <div class="title">Open coDesign · Claude Design 平替</div>
+<div class="desc">可连 API 的设计工具平替,Mac 端,有中文界面。</div><div class="url">https://x.com/xiaoerzhan/status/2049304913532813393</div>          <ul class="points">
+<li>Mac only</li><li>可接 API</li><li>支持中文</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">纪 · 16:01 · <em>经验</em></div>
+          <div class="title">Notion 提示词收藏夹</div>
+<div class="desc">持续更新整理的 AI 提示词库,实践过的才算自己的。</div><div class="url">https://www.notion.so/mytea/AI-1fcc920029c280798643c6b2b4b3d450?source=copy_link</div>          <ul class="points">
+<li>持续更新</li><li>强调实践</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Jason Zhu · 16:43 · <em>链接</em></div>
+          <div class="title">Agent IM · 让人与 AI Agent 共存的 IM 平台</div>
+<div class="desc">@GoSailGlobal 分享的 Agent IM 项目。</div><div class="url">https://x.com/GoSailGlobal/status/2049408403240571320</div>        </div>
+        <div class="res">
+          <div class="meta">Jason Zhu · 22:58 · <em>推荐</em></div>
+          <div class="title">硅谷101 · DeepSeek v4 与硅谷生存危机</div>
+<div class="desc">OpenAI 前研究员 Jenny Xiao × 芯片架构师肖志斌的对谈。</div><div class="url">https://x.com/GoSailGlobal/status/2049502361442508946</div>        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">⚡</span>
+          <span class="title">Warp 突然开源,设计师天塌半边</span>
+<span class="meta">06:27 - 10:04</span>        </div>
+        <div class="bubble">
+          <div class="who">神的孩子在跳舞<span class="time">06:27</span></div>
+          <div class="body">warp 居然都开源了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">干饭新秩序<span class="time">06:46</span></div>
+          <div class="body">虽然我一直以为他就是开源的[破涕为笑]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">owen<span class="time">09:03</span></div>
+          <div class="body">设计师的天这次塌了一半了[捂脸]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">owen<span class="time">09:16</span></div>
+          <div class="body">昨天我还在跟设计朋友说要去学一下设计工具,今天看来不用了,只要我够懒</div>
+        </div>
+        <div class="bubble">
+          <div class="who">s<span class="time">09:20</span></div>
+          <div class="body">有没有可能 PS 一直是有 API 操作的,codex 现在更方便</div>
+        </div>
+        <div class="bubble">
+          <div class="who">owen<span class="time">10:04</span></div>
+          <div class="body">用 GPT Image 2 生成 PSD,让 Claude 去 PS 里改一改,羞辱完再开</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小伢儿<span class="time">10:04</span></div>
+          <div class="body">「羞辱完再开」哈哈哈哈哈</div>
+        </div>
+<div class="commentary">设计师的至暗一天:工具开源了,流程被反向羞辱了,人,还得再懒一点。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🎨</span>
+          <span class="title">富姐开源画风工序回放法</span>
+<span class="meta">13:21 - 14:00</span>        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">13:21</span></div>
+          <div class="body">开源一个效率很高的画风提取法 —— 画风工序回放法。别只盯颜色人物,要倒推它是怎么一步步搭起来的。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">13:25</span></div>
+          <div class="body">记住四句话:先判载体、再找第一眼、倒推工序、最后写禁区。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Marvin<span class="time">13:25</span></div>
+          <div class="body">已收藏</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李举刚<span class="time">13:35</span></div>
+          <div class="body">代码都为体验服务,体验第一[旺柴]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">熊杰XiongJie<span class="time">13:53</span></div>
+          <div class="body">富老师有没有开课?</div>
+        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">13:55</span></div>
+          <div class="body">我说句老实话,从群里开到现在,我没开自己的群,没开 X 账号,AI 自媒体也没做。要么纯开源,要么纯闭源,这样最好。</div>
+        </div>
+<div class="commentary">免费版的方法论,比收费课讲得还透 —— 然后两小时后,这位免费老师就被人挂了。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💔</span>
+          <span class="title">富姐 vs 波姐 · 群里世纪大型扯头花</span>
+<span class="meta">14:16 - 16:14</span>        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">14:16</span></div>
+          <div class="body">@Ponyo波妞 你这次操作把我气的焦虑症抑郁症肢体化又复活了,枉我真的是看走瞎的眼</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Allen<span class="time">14:32</span></div>
+          <div class="body">[旺柴]又是啥瓜</div>
+        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">15:55</span></div>
+          <div class="body">我免费分享提示词,你发眼神暗示贴图是啥意思?只允许波姐营销啊?</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Ponyo<span class="time">15:58</span></div>
+          <div class="body">我没有找你营销,是因为你要来上课,我没收你钱就给你上,作为置换让你帮我营销,但你并没有真正介绍过任何学生</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Ponyo<span class="time">15:59</span></div>
+          <div class="body">好了,到此为止。如果你再说,我可以退出全部的群,反正我也为你解散了 700 人的群</div>
+        </div>
+        <div class="bubble">
+          <div class="who">神的孩子在跳舞<span class="time">15:59</span></div>
+          <div class="body">我最后一次！！！！！！</div>
+        </div>
+        <div class="bubble">
+          <div class="who">好好学习<span class="time">16:13</span></div>
+          <div class="body">真开心,没有被扣帽子。也感谢沈老,真的无比感谢</div>
+        </div>
+<div class="commentary">这一架打得有理有据有时间线 —— 唯一冷静的是群主,他说了三遍「最后一次」,说明前两次都没人当真。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔮</span>
+          <span class="title">罗盘 + AI + 修仙,玄学组团出道</span>
+<span class="meta">14:54 - 15:22</span>        </div>
+        <div class="bubble">
+          <div class="who">熊杰XiongJie<span class="time">14:54</span></div>
+          <div class="body">富老师推荐看《王阳明大传》,第13章龙场悟道</div>
+        </div>
+        <div class="bubble">
+          <div class="who">熊杰XiongJie<span class="time">15:09</span></div>
+          <div class="body">我最近在看这本书,想着是否可以把罗盘跟 AI 智能体结合到一起</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小明同学<span class="time">15:10</span></div>
+          <div class="body">好歹叫个紫薇、瑶光啥的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">魔云兽<span class="time">15:15</span></div>
+          <div class="body">我今年被震撼到的事情是修仙,后来才意识到他们竟然说的是实修</div>
+        </div>
+        <div class="bubble">
+          <div class="who">魔云兽<span class="time">15:16</span></div>
+          <div class="body">真的有人虔诚地观呼吸,采用古代功法,会有非同凡响的体验</div>
+        </div>
+        <div class="bubble">
+          <div class="who">熊杰XiongJie<span class="time">15:21</span></div>
+          <div class="body">罗盘+无人机视觉+AI,飞行的大师</div>
+        </div>
+        <div class="bubble">
+          <div class="who">紫苏子ACG<span class="time">15:21</span></div>
+          <div class="body">天命人/fatetell skill 群里有人分享过[旺柴]</div>
+        </div>
+<div class="commentary">群友刚被现代营销背刺,转头就在群里集体上香 —— 罗盘+AI+无人机,赛博风水大师已就位。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">⚔️</span>
+          <span class="title">中医西医,儒学和玄学的科学性论战</span>
+<span class="meta">18:15 - 19:27</span>        </div>
+        <div class="bubble">
+          <div class="who">李举刚<span class="time">18:15</span></div>
+          <div class="body">我对儒学非常反感,尤其对人的压制和规训。武志红的《巨婴国》也是在讲这个</div>
+        </div>
+        <div class="bubble">
+          <div class="who">成峰（vibeagent 中）<span class="time">18:18</span></div>
+          <div class="body">看了心理学,会看了凡四训吗?我是看不下去的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">纪<span class="time">18:18</span></div>
+          <div class="body">我看传统读物都是鉴赏文物的心态,就像大模型,新的比旧的好吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李举刚<span class="time">18:19</span></div>
+          <div class="body">西医手术这些更科学,我们不能固守老祖宗,把现代东西全排除在外</div>
+        </div>
+        <div class="bubble">
+          <div class="who">年轮<span class="time">18:18</span></div>
+          <div class="body">ICU 不用中药</div>
+        </div>
+        <div class="bubble">
+          <div class="who">此间的少年<span class="time">19:16</span></div>
+          <div class="body">现代医学能把断肢接上,但是治不好腰肌劳损</div>
+        </div>
+        <div class="bubble">
+          <div class="who">quan<span class="time">19:24</span></div>
+          <div class="body">科学的尽头是玄学[旺柴]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">刘荣<span class="time">19:24</span></div>
+          <div class="body">科学的尽头是玄学[旺柴]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">纪<span class="time">19:24</span></div>
+          <div class="body">科学的尽头是牛顿的棺材板</div>
+        </div>
+<div class="commentary">白天 AI 顶流,晚上修仙大会 —— 这群最不缺的就是分裂得天衣无缝的世界观。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🀄</span>
+          <span class="title">杨老板的玄学起名一条龙</span>
+<span class="meta">19:22 - 19:54</span>        </div>
+        <div class="bubble">
+          <div class="who">杨崧<span class="time">19:27</span></div>
+          <div class="body">亲,取名吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨崧<span class="time">19:27</span></div>
+          <div class="body">个人、公司取名一条龙</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨崧<span class="time">19:33</span></div>
+          <div class="body">纯手工无 AI,没 AI 之前就用一个 100 块淘宝买的取名软件</div>
+        </div>
+        <div class="bubble">
+          <div class="who">宅先森<span class="time">19:30</span></div>
+          <div class="body">之前对玄学感兴趣,做了个玄学账号,学着学着不信邪了。两年了,流量还在跑[捂脸]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李举刚<span class="time">19:32</span></div>
+          <div class="body">得出海哈哈,国内公域基本搞不了,变现很难</div>
+        </div>
+        <div class="bubble">
+          <div class="who">杨崧<span class="time">19:54</span></div>
+          <div class="body">奇门遁甲、紫微斗数是大国,看手相、转运、取名是小国</div>
+        </div>
+<div class="commentary">白天讲反儒学,晚上有人开始算命挂牌 —— 这才叫一群神的孩子的真实日常。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🚲</span>
+          <span class="title">5月4日上海线下局已锁</span>
+<span class="meta">21:13 - 21:44</span>        </div>
+        <div class="bubble">
+          <div class="who">Vicky Zhang<span class="time">21:13</span></div>
+          <div class="body">赞,我 5月4日去逛下</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小零件<span class="time">21:18</span></div>
+          <div class="body">明天天气好先去溜达一圈,后面还有自行车展、宠物展</div>
+        </div>
+        <div class="bubble">
+          <div class="who">修<span class="time">21:22</span></div>
+          <div class="body">主会场离我好近,1公里距离[捂脸]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Vicky Zhang<span class="time">21:28</span></div>
+          <div class="body">4 号一起 coffeechat,上海的同学有空都一起啊</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小零件<span class="time">21:31</span></div>
+          <div class="body">关注中国国际自行车展览会,宠物站有它博会和亚宠展</div>
+        </div>
+<div class="commentary">群里下完线再下下线 —— 5月4日上海,自行车展见。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「[强][强][强]」</div>
+        <div class="voicers">Brad 强 · 马骏 · ～宇雷～ · 熊杰XiongJie · 4 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">这个<small>·41</small></span>
+        <span class="chip hot">什么<small>·25</small></span>
+        <span class="chip hot">就是<small>·22</small></span>
+        <span class="chip ">可以<small>·17</small></span>
+        <span class="chip ">没有<small>·15</small></span>
+        <span class="chip ">然后<small>·13</small></span>
+        <span class="chip ">大家<small>·12</small></span>
+        <span class="chip ">一个<small>·12</small></span>
+        <span class="chip ">东西<small>·12</small></span>
+        <span class="chip ">the<small>·12</small></span>
+        <span class="chip ">觉得<small>·11</small></span>
+        <span class="chip ">最后<small>·11</small></span>
+        <span class="chip ">AI<small>·11</small></span>
+        <span class="chip ">群里<small>·11</small></span>
+        <span class="chip ">是不是<small>·11</small></span>
+        <span class="chip ">营销<small>·11</small></span>
+        <span class="chip ">画风<small>·10</small></span>
+        <span class="chip ">不是<small>·10</small></span>
+        <span class="chip ">现在<small>·9</small></span>
+        <span class="chip ">老师<small>·9</small></span>
+        <span class="chip ">自己<small>·9</small></span>
+        <span class="chip ">波姐<small>·9</small></span>
+        <span class="chip ">真的<small>·9</small></span>
+        <span class="chip ">玄学<small>·9</small></span>
+        <span class="chip ">开源<small>·8</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">好好学习</div>
+          <div class="reason">白天开源画风工序回放法,下午又上演撕逼连续剧,86 条消息一人撑起半个群</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">熊杰XiongJie</div>
+          <div class="reason">撕逼正酣时一句「《王阳明大传》第13章龙场悟道」直接给富姐递了张降压药</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">好好学习</div>
+          <div class="reason">「枉我真的是看走瞎的眼」 —— 一句话把群友的瓜从含蓄变成核爆</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">杨崧</div>
+          <div class="reason">上来就是「奇门遁甲紫微斗数是大国,取名手相是小国」,玄学起名一条龙开张</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">quan</div>
+          <div class="reason">科学的尽头是玄学</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-闲聊-海边晒太阳">
+    <div class="group-head">
+      <div class="name">『闲聊』海边晒太阳☀️</div>
+      <div class="meta">
+          <span>351 条消息</span> ·
+          <span>45 人</span> ·
+          <span>07:22 至 23:16</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">Lien李凌</div>
+          <div class="quote">吹起来头头是道，做起来云里雾里</div>
+        </div>
+        <div class="row">
+          <div class="who">zengge</div>
+          <div class="quote">我错了，但我下次还来</div>
+        </div>
+        <div class="row">
+          <div class="who">海海</div>
+          <div class="quote">本机跑模型可用性越来越大不远了</div>
+        </div>
+        <div class="row">
+          <div class="who">Aladdin</div>
+          <div class="quote">本地跑模型干啥呀，现在 token 那么便宜</div>
+        </div>
+        <div class="row">
+          <div class="who">沉风、劝欢</div>
+          <div class="quote">各行各业都有镰刀，总有一把适合你</div>
+        </div>
+        <div class="row">
+          <div class="who">黄八宝</div>
+          <div class="quote">大家要正能量，做一个好市民</div>
+        </div>
+        <div class="row">
+          <div class="who">Karl1973</div>
+          <div class="quote">装都不装了，直接称帝</div>
+        </div>
+        <div class="row">
+          <div class="who">海海</div>
+          <div class="quote">新能源谁买谁傻逼</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">海海</div>
+          <div class="cnt">56 条</div>
+<div class="common">比较 / 破涕为笑 / 模型 / 家里</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">黄八宝</div>
+          <div class="cnt">41 条</div>
+<div class="common">内容 / tailscale / 叔叔 / 里面</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">阿康</div>
+          <div class="cnt">40 条</div>
+<div class="common">炖鸡 / 咖啡 / 起来 / 容易</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">黄八宝 · 10:16 · <em>教程</em></div>
+          <div class="title">Tailscale Peer Relay 中继方案</div>
+<div class="desc">另一种远程访问家里设备的方案，绕过 CF 打击免费用户的限制</div><div class="url">https://5km.studio/blog/tailscale-peer-relay/</div>          <ul class="points">
+<li>不用付费公网 IP</li><li>tailscale 免费用户支持无限设备了</li><li>适合远程跑本机模型</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Summer · 10:33 · <em>羊毛</em></div>
+          <div class="title">Stripe Atlas × OpenAI Business</div>
+<div class="desc">Stripe Atlas 提供 OAI Business 2 个月 2 个 seats 免费</div>          <ul class="points">
+<li>薅一波 OpenAI 团队席位</li><li>适合刚开 Atlas 的出海玩家</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Lien李凌 · 15:01 · <em>情报</em></div>
+          <div class="title">小红书 6 月推跨境平台 RedShop</div>
+<div class="desc">小红书将于 6 月推出跨境电商平台 RedShop</div><div class="url">https://pandaily.com/xiaohongshu-to-launch-cross-border-e-commerce-platform-redshop-in-june</div>          <ul class="points">
+<li>新平台一般会有 CPS 红利可撸</li><li>对标 etsy 路线想象空间在</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">YZ🚢 公众号粉 · 09:34 · <em>情报</em></div>
+          <div class="title">Codex 限额改成周限</div>
+<div class="desc">Codex 取消了 5 小时限额，改成按周计算</div>          <ul class="points">
+<li>短时高强度更友好</li><li>海海原话「希望克劳德和 codex 不要改，改了都不知道要怎么活」</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💻</span>
+          <span class="title">为老婆换 Mac 引发的 24g/48g/64g 内存大战</span>
+<span class="meta">10:01 - 10:18</span>        </div>
+        <div class="bubble">
+          <div class="who">domenic<span class="time">10:01</span></div>
+          <div class="body">想给老婆换 Mac，她现在 M1 Air 8+256 丐版，跑 nextjs 编译动不动 80 度卡到没法用。求推荐</div>
+        </div>
+        <div class="bubble">
+          <div class="who">春秋<span class="time">10:05</span></div>
+          <div class="body">我以前 8g M2 也跑不动 nextjs，至少 24g</div>
+        </div>
+        <div class="bubble">
+          <div class="who">三斤<span class="time">10:07</span></div>
+          <div class="body">感觉 24 也不够，怎么也要 32g，64 不建议，完全浪费</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">10:08</span></div>
+          <div class="body">考虑未来 3 年的，48GB 才行</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">10:12</span></div>
+          <div class="body">不要觉得大于 48 没必要，多大都可以。本机跑模型可用性越来越大，不远了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">三斤<span class="time">10:13</span></div>
+          <div class="body">我就 64g，一次没跑满过，浪费钱意义不大</div>
+        </div>
+        <div class="bubble">
+          <div class="who">新页<span class="time">10:14</span></div>
+          <div class="body">不怕浪费就全拉满</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">10:14</span></div>
+          <div class="body">听徐总的，买就买最大的</div>
+        </div>
+<div class="commentary">买电脑这事在群里就两派:三斤派「够用就行」和海海派「全顶配等本机模型」——大佬的浪费阈值远超普通人的预算阈值。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔥</span>
+          <span class="title">本地跑模型干啥？「当然是干坏事」</span>
+<span class="meta">10:14 - 10:18</span>        </div>
+        <div class="bubble">
+          <div class="who">Aladdin<span class="time">10:14</span></div>
+          <div class="body">本地跑模型干啥呀，现在 token 那么便宜</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">10:14</span></div>
+          <div class="body">[阴险] 当然是干坏事</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Aladdin<span class="time">10:15</span></div>
+          <div class="body">本地模型还能有 OpenAI 和 Anthropic 的好吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">10:15</span></div>
+          <div class="body">那肯定没有</div>
+        </div>
+        <div class="bubble">
+          <div class="who">新页<span class="time">10:15</span></div>
+          <div class="body">本地搞 nsfw 么</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">10:16</span></div>
+          <div class="body">我前几天折腾过，不想在电脑上装这种软件，装在路由器上面了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">10:17</span></div>
+          <div class="body">不用中继的话会很卡</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">10:18</span></div>
+          <div class="body">我家里宽带开了公网 IP，工作室不让开了。还是通公网 IP 香</div>
+        </div>
+<div class="commentary">「本地跑模型为啥」这个问题问出口的瞬间，群里所有人的眼神都变得意味深长。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">👮</span>
+          <span class="title">黄八宝被叔叔叫去喝茶记</span>
+<span class="meta">19:02 - 19:23</span>        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:09</span></div>
+          <div class="body">下午刚被叔叔叫去问话</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Aladdin<span class="time">19:10</span></div>
+          <div class="body">黄老师接到叔叔电话的时候害怕不</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:11</span></div>
+          <div class="body">去年做的 MCN 发的内容里面有负面内容，本来内容没问题，是评论区带节奏了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">19:12</span></div>
+          <div class="body">新能源谁买谁傻逼？是这种言论吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:13</span></div>
+          <div class="body">不是。叔叔说了，要做精品，要正能量，不要粗制滥造</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:13</span></div>
+          <div class="body">大家要正能量，做一个好市民🎉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">19:15</span></div>
+          <div class="body">我太胆小了，感觉在境内发境外的这些工具和模型都有风险</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:17</span></div>
+          <div class="body">我没做很久了，我大哥胆子大还在做自媒体</div>
+        </div>
+<div class="commentary">做内容的尽头不是爆款，是被叔叔提醒「做个好市民」——评论区一带节奏，主播提前下班喝茶。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">看康总图就觉得国内还能做：这是幻觉</span>
+<span class="meta">19:02 - 19:08</span>        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:03</span></div>
+          <div class="body">今年我也要做个能够收到打赏 2888 的小程序</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">19:04</span></div>
+          <div class="body">可以引导用户打赏吗？这个场景打赏很给力啊</div>
+        </div>
+        <div class="bubble">
+          <div class="who">沉风、劝欢<span class="time">19:06</span></div>
+          <div class="body">国内这个客单太屌了。每次看到康总的图，我都有种国内还能做的幻觉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">枕头沙拉<span class="time">19:06</span></div>
+          <div class="body">这是幻觉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:07</span></div>
+          <div class="body">真的是幻觉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Aladdin<span class="time">19:07</span></div>
+          <div class="body">每次看到康总的图，我都有种国内还能做的幻觉</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">19:08</span></div>
+          <div class="body">国内真的不能做</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">19:08</span></div>
+          <div class="body">这不是我的，是一个卖陪聊系统的人发的</div>
+        </div>
+<div class="commentary">群里最大的群体性疾病——「康总图诱发型国内幻觉症」，今天集体复发。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💉</span>
+          <span class="title">阿康的疫苗大冒险:打这么多我日</span>
+<span class="meta">16:38 - 16:53</span>        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">16:38</span></div>
+          <div class="body">疫苗是打五联就行了吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">16:45</span></div>
+          <div class="body">你去打疫苗的地方问，比较准。不是完全取代，是取代了某一些</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Jiang Jiang<span class="time">16:46</span></div>
+          <div class="body">我当时是参照这个打的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">NeoC<span class="time">16:47</span></div>
+          <div class="body">不用怕打少了，社康的人会打电话催你打</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">16:50</span></div>
+          <div class="body">肺炎 13 价也推荐</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">16:52</span></div>
+          <div class="body">打这么多我日。我是嫌弃多了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">16:53</span></div>
+          <div class="body">呼吸合胞病毒呢</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">16:53</span></div>
+          <div class="body">该打的还是要打</div>
+        </div>
+<div class="commentary">在这个群讨论疫苗的，画风总是从「该打几针」迅速滑到「我日打这么多」。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🏠</span>
+          <span class="title">深圳楼市放宽：八年解套有望</span>
+<span class="meta">20:40 - 20:54</span>        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">20:40</span></div>
+          <div class="body">感觉我的房子可以回本了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">laiqun🇨🇳<span class="time">20:42</span></div>
+          <div class="body">持有居住证的非深户，可在福田、南山、宝安新安街道增购 1 套</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">20:43</span></div>
+          <div class="body">买了八年，解套有望</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">20:45</span></div>
+          <div class="body">我的租客不租了，自己给我找了租客还主动报涨了房租</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">20:51</span></div>
+          <div class="body">我感觉房价没这么容易回来。我去年持有某地产股票，好多次利好都没拉得起来</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">20:52</span></div>
+          <div class="body">万达？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">20:52</span></div>
+          <div class="body">融创。现在更是一坨屎</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Lien李凌<span class="time">20:53</span></div>
+          <div class="body">18 年要是有人和我说八年不会涨，我估计要和他打一架</div>
+        </div>
+<div class="commentary">Lien 的「解套有望」和阿康的「一坨屎」，构成了 2026 年中国楼市最完整的多空辩论。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🌶️</span>
+          <span class="title">贵阳美食扫荡:洋芋奶茶把 YZ 干吐了</span>
+<span class="meta">18:05 - 22:55</span>        </div>
+        <div class="bubble">
+          <div class="who">YZ🚢 公众号粉<span class="time">18:05</span></div>
+          <div class="body">出太阳了，这地方 taimeile</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">18:11</span></div>
+          <div class="body">夜郎谷 / 贵州。贵阳咖啡试了没？全国数一数二规模</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿康<span class="time">18:24</span></div>
+          <div class="body">三桥红牌铁板烧去吃了没？板筋干锅、青菜干锅牛肉这些吃了吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">YZ🚢 公众号粉<span class="time">18:47</span></div>
+          <div class="body">喝了一个洋芋奶茶给我干吐了🤮</div>
+        </div>
+        <div class="bubble">
+          <div class="who">YZ🚢 公众号粉<span class="time">22:44</span></div>
+          <div class="body">感觉来到美国了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">条形马<span class="time">22:45</span></div>
+          <div class="body">哎这不是贵阳吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">条形马<span class="time">22:54</span></div>
+          <div class="body">酸汤火锅吃吃！</div>
+        </div>
+        <div class="bubble">
+          <div class="who">YZ🚢 公众号粉<span class="time">22:55</span></div>
+          <div class="body">刚吃完</div>
+        </div>
+<div class="commentary">贵阳本地导游阿康线上排了一桌，YZ 现场打卡：板筋还没吃，洋芋奶茶先把他送走了。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「每次看到康总的图，我都有种国内还能做的幻觉——这是幻觉」</div>
+        <div class="voicers">沉风、劝欢 · 枕头沙拉 · 黄八宝 · Aladdin · 4 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">可以<small>·15</small></span>
+        <span class="chip hot">这个<small>·12</small></span>
+        <span class="chip hot">捂脸<small>·9</small></span>
+        <span class="chip hot">一个<small>·8</small></span>
+        <span class="chip hot">感觉<small>·8</small></span>
+        <span class="chip ">还是<small>·7</small></span>
+        <span class="chip ">不是<small>·7</small></span>
+        <span class="chip ">真的<small>·7</small></span>
+        <span class="chip ">现在<small>·6</small></span>
+        <span class="chip ">模型<small>·6</small></span>
+        <span class="chip ">就是<small>·6</small></span>
+        <span class="chip ">这么<small>·6</small></span>
+        <span class="chip ">这种<small>·6</small></span>
+        <span class="chip ">有点<small>·5</small></span>
+        <span class="chip ">什么<small>·5</small></span>
+        <span class="chip ">可能<small>·5</small></span>
+        <span class="chip ">起来<small>·4</small></span>
+        <span class="chip ">怎么<small>·4</small></span>
+        <span class="chip ">自己<small>·4</small></span>
+        <span class="chip ">问题<small>·4</small></span>
+        <span class="chip ">24g<small>·4</small></span>
+        <span class="chip ">48<small>·4</small></span>
+        <span class="chip ">这是<small>·4</small></span>
+        <span class="chip ">一种<small>·4</small></span>
+        <span class="chip ">AI<small>·4</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">黄八宝</div>
+          <div class="reason">下午被叔叔叫去问话，晚上还在群里筹划「打赏 2888 的小程序」和 P 条毛涨互动率</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">Aladdin</div>
+          <div class="reason">一句「本地跑模型干啥呀，现在 token 那么便宜」，把全群正在配 64g 内存的人当场叫停</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">沉风、劝欢</div>
+          <div class="reason">「各行各业都有镰刀，无论你身处什么阶层，总有适合你的那一把」——配上猪肚鸡在胃里翻涌</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">zengge</div>
+          <div class="reason">全天就一句「我错了，但我下次还来」——成功承包群里 2026 年度精神图腾</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">黄八宝</div>
+          <div class="reason">大家要正能量，做一个好市民🎉</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-dontbesilent-聊赚钱的群1">
+    <div class="group-head">
+      <div class="name">dontbesilent 聊赚钱的群①</div>
+      <div class="meta">
+          <span>137 条消息</span> ·
+          <span>36 人</span> ·
+          <span>00:00 至 23:32</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">dontbesilent（6.12 线下课</div>
+          <div class="quote">录视频，一天 10 条，一个月速成，结束了</div>
+        </div>
+        <div class="row">
+          <div class="who">dontbesilent（6.12 线下课</div>
+          <div class="quote">说完微信就🈚️了</div>
+        </div>
+        <div class="row">
+          <div class="who">胡悦 Olivia</div>
+          <div class="quote">观点的穿透力换一种语言衰减得很厉害</div>
+        </div>
+        <div class="row">
+          <div class="who">还馋嘿嘿</div>
+          <div class="quote">任何时候看知识的流量都不多</div>
+        </div>
+        <div class="row">
+          <div class="who">Max</div>
+          <div class="quote">我从没做过英语老师，但这件事我做了 1 个月</div>
+        </div>
+        <div class="row">
+          <div class="who">万樚Wenders</div>
+          <div class="quote">主页多个访客，我还以为是东哥，开心死了……结果</div>
+        </div>
+        <div class="row">
+          <div class="who">橙gě狸</div>
+          <div class="quote">别问了，灵界的事情，就不要关心了</div>
+        </div>
+        <div class="row">
+          <div class="who">dontbesilent（6.12 线下课</div>
+          <div class="quote">封群风险大家自己考量</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">万樚Wenders</div>
+          <div class="cnt">24 条</div>
+<div class="common">东哥 / 英语 / 五一 / 视频</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">dontbesilent（6.12 线下课</div>
+          <div class="cnt">18 条</div>
+<div class="common">dbs / 内容 / skill / 不缺</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">Madaha</div>
+          <div class="cnt">12 条</div>
+<div class="common">skill / 本来 / 意思 / 文件</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">NULL · 14:10 · <em>教程</em></div>
+          <div class="title">Codex (APP) 保姆级全攻略</div>
+<div class="desc">B站一期精通 Codex，海量实战教程合集</div><div class="url">https://www.bilibili.com/video/BV1Kk9kBAEJv/</div>          <ul class="points">
+<li>Codex 上手保姆级</li><li>海量实战 case</li><li>一期看完省得到处搜</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">宠一爱一 · 11:07 · <em>案例</em></div>
+          <div class="title">抖音 AI 视频参考</div>
+<div class="desc">粤语 AI 视频「等唔系一个问题」，群里抛出来问怎么变现</div><div class="url">https://v.douyin.com/qvDGIWp4SZI/</div>          <ul class="points">
+<li>AI 视频选题灵感</li><li>粤语方言切口</li><li>变现路径待群友讨论</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🛠️</span>
+          <span class="title">Madaha 凌晨装 Skill：don 哥三点还没睡</span>
+<span class="meta">00:34 - 01:15</span>        </div>
+        <div class="bubble">
+          <div class="who">Madaha<span class="time">00:34</span></div>
+          <div class="body">我没懂他说的什么意思，本来就没有子文件，还是缺东西呢？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">啊咪<span class="time">00:38</span></div>
+          <div class="body">你给句话叫「讲 10 岁都能听懂的话」然后再看</div>
+        </div>
+        <div class="bubble">
+          <div class="who">！！！<span class="time">00:42</span></div>
+          <div class="body">dont 哥还没睡的，刚看他发推特，13 分钟前</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Madaha<span class="time">00:45</span></div>
+          <div class="body">我今天还很开心第一次自己装 skill 和 codex 呢，API 也弄好了，结果一用，说没有子 skill[裂开]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">！！！<span class="time">00:46</span></div>
+          <div class="body">是有子 skill 的呀，dbs skill 下面好几个，装错了吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">00:48</span></div>
+          <div class="body">/dbs 「你想说的内容」</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">01:14</span></div>
+          <div class="body">不缺，有 skill 就行</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Madaha<span class="time">01:15</span></div>
+          <div class="body">嗯嗯，那就太好了，谢谢了</div>
+        </div>
+<div class="commentary">凌晨一点，群友刚装好开心炸锅，don 哥推文刚发完顺手回完技术支持——这哪是社群，这是 24 小时客服热线。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🦞</span>
+          <span class="title">小龙虾退役论：套了 agent 反而变蠢</span>
+<span class="meta">14:16 - 14:23</span>        </div>
+        <div class="bubble">
+          <div class="who">跳跳好果汁🍧（没回多戳我几遍）<span class="time">14:16</span></div>
+          <div class="body">现在有比龙虾更好用的工具了吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">谷雨<span class="time">14:17</span></div>
+          <div class="body">claude code 和 codex 一直都比小龙虾好用啊</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Frio<span class="time">14:18</span></div>
+          <div class="body">直连 cc 不需要连龙虾</div>
+        </div>
+        <div class="bubble">
+          <div class="who">NULL<span class="time">14:21</span></div>
+          <div class="body">你可以操控小龙虾让他用 cc，agent 套 agent[奸笑]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Frio<span class="time">14:23</span></div>
+          <div class="body">😂作用是什么，套了龙虾感觉反而变蠢了</div>
+        </div>
+<div class="commentary">agent 套 agent 不是放大智商，是放大错误传播链路——这届中间商，不背锅都难。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🈚️</span>
+          <span class="title">东哥号没了：群里不聊敏感话题</span>
+<span class="meta">16:00 - 16:42</span>        </div>
+        <div class="bubble">
+          <div class="who">维杰<span class="time">16:00</span></div>
+          <div class="body">@dontbesilent 可以分享一下你的账号为什么会被停用吗？好像没有什么可以违规的点呀</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">16:02</span></div>
+          <div class="body">说完微信就🈚️了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">维杰<span class="time">16:08</span></div>
+          <div class="body">我猜可能是倡导用国外 AI 的原因</div>
+        </div>
+        <div class="bubble">
+          <div class="who">无声息<span class="time">16:09</span></div>
+          <div class="body">跟 manus 有关吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">16:10</span></div>
+          <div class="body">群里不聊敏感话题</div>
+        </div>
+        <div class="bubble">
+          <div class="who">橙gě狸<span class="time">16:11</span></div>
+          <div class="body">别问了，灵界的事情，就不要关心了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Admin<span class="time">16:25</span></div>
+          <div class="body">换个话题吧，群没了也是个麻烦事</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">16:42</span></div>
+          <div class="body">封群风险大家自己考量</div>
+        </div>
+<div class="commentary">「灵界的事情就不要关心了」——本群最高哲学已诞生。号没了不是 bug，是平台教学。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🇬🇧</span>
+          <span class="title">英语速成玄学：一天 10 条录到通</span>
+<span class="meta">15:40 - 16:02</span>        </div>
+        <div class="bubble">
+          <div class="who">胡悦 Olivia<span class="time">15:40</span></div>
+          <div class="body">做英语内容非常需要当地生活经验，内容产品是意识价值观的产物，国内做英文知识博主太难了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">15:42</span></div>
+          <div class="body">东哥要是真做成英语视频，我也想知道怎么快速学英语</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">15:43</span></div>
+          <div class="body">录视频，一天 10 条，一个月速成，结束了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">胡悦 Olivia<span class="time">15:45</span></div>
+          <div class="body">观点的穿透力换一种语言衰减得很厉害</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Max<span class="time">15:55</span></div>
+          <div class="body">don 哥说的没错，英语 1 个月可以速成。1. 找听得懂的博主一直听一直记句块；2. 录视频输出。我从没做过英语老师，但这件事我做了 1 个月就直接去带学生了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">此间的少年<span class="time">15:59</span></div>
+          <div class="body">一个月就能速成？</div>
+        </div>
+<div class="commentary">一边是「观点穿透力会衰减」的清醒派，一边是「一天 10 条录就完事」的莽夫派——dbs 群的方法论永远是后者获胜。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📅</span>
+          <span class="title">五一流量战场 vs 知识闲置区</span>
+<span class="meta">18:33 - 18:50</span>        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">18:33</span></div>
+          <div class="body">群里的伙伴五一假期也要干活吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上官可可<span class="time">18:34</span></div>
+          <div class="body">如果你搞自媒体的话，五一正是抓流量的时候</div>
+        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">18:35</span></div>
+          <div class="body">五一我感觉流量都给电商了，看知识的人没那么多吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">还馋嘿嘿<span class="time">18:38</span></div>
+          <div class="body">任何时候看知识的流量都不多，本质上短视频平台给用户的是碎片时间消遣，他要学知识不会打开抖音刷</div>
+        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">18:39</span></div>
+          <div class="body">靠，还是我们这个群给力，那五一我也多搞点内容</div>
+        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">18:47</span></div>
+          <div class="body">玩完这把就开始工作[旺柴]</div>
+        </div>
+<div class="commentary">假期到底卷不卷？答案是「玩完这把再说」——成年人最诚实的工作宣言。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">👻</span>
+          <span class="title">主页访客乌龙：以为是东哥，结果……</span>
+<span class="meta">21:39 - 21:41</span>        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">21:39</span></div>
+          <div class="body">佣金率不要太低，起码 10%，橱窗最好能分销多家店铺商品，避免被查</div>
+        </div>
+        <div class="bubble">
+          <div class="who">万樚Wenders<span class="time">21:40</span></div>
+          <div class="body">主页多个访客，我还以为是东哥，开心死了……结果</div>
+        </div>
+        <div class="bubble">
+          <div class="who">San<span class="time">21:41</span></div>
+          <div class="body">哈哈哈哈</div>
+        </div>
+<div class="commentary">群友的快乐与失落，常常只隔一个头像。这条访客提示，毁了万樚一整夜。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「[捂脸]」</div>
+        <div class="voicers">万樚Wenders · 雕刻时光的熊 · Mackenzie悦 · 萍萍 · NULL · 5 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">可以<small>·14</small></span>
+        <span class="chip hot">自己<small>·7</small></span>
+        <span class="chip hot">视频<small>·7</small></span>
+        <span class="chip ">skill<small>·6</small></span>
+        <span class="chip ">内容<small>·6</small></span>
+        <span class="chip ">这个<small>·6</small></span>
+        <span class="chip ">英语<small>·6</small></span>
+        <span class="chip ">五一<small>·6</small></span>
+        <span class="chip ">知识<small>·5</small></span>
+        <span class="chip ">捂脸<small>·5</small></span>
+        <span class="chip ">流量<small>·5</small></span>
+        <span class="chip ">don<small>·4</small></span>
+        <span class="chip ">什么<small>·4</small></span>
+        <span class="chip ">还是<small>·4</small></span>
+        <span class="chip ">dontbesilent<small>·4</small></span>
+        <span class="chip ">下课<small>·4</small></span>
+        <span class="chip ">就是<small>·4</small></span>
+        <span class="chip ">一个<small>·4</small></span>
+        <span class="chip ">时候<small>·4</small></span>
+        <span class="chip ">博主<small>·4</small></span>
+        <span class="chip ">没有<small>·3</small></span>
+        <span class="chip ">知道<small>·3</small></span>
+        <span class="chip ">codex<small>·3</small></span>
+        <span class="chip ">现在<small>·3</small></span>
+        <span class="chip ">抖音<small>·3</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">dontbesilent（6.12 线下课</div>
+          <div class="reason">凌晨还在群里答 skill 安装、推文 13 分钟前刚发完，don 哥的睡眠是行为艺术</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">还馋嘿嘿</div>
+          <div class="reason">「任何时候看知识的流量都不多」——一句话浇灭知识博主的节假日幻觉</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">胡悦 Olivia</div>
+          <div class="reason">「观点的穿透力换一种语言衰减得很厉害」——直接戳穿英语速成派的浪漫</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">Max</div>
+          <div class="reason">「我从没做过英语老师，1 个月就去带学生了」——亲身案例直接打脸理论派</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">dontbesilent（6.12 线下课</div>
+          <div class="reason">录视频，一天 10 条，一个月速成，结束了</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-dontbesilent-聊赚钱的群2">
+    <div class="group-head">
+      <div class="name">dontbesilent 聊赚钱的群②</div>
+      <div class="meta">
+          <span>509 条消息</span> ·
+          <span>54 人</span> ·
+          <span>00:00 至 23:35</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">Web3李老味</div>
+          <div class="quote">卖课就像《华尔街之狼》里的垃圾股，卖的是个希望</div>
+        </div>
+        <div class="row">
+          <div class="who">上车就系安全带🎾</div>
+          <div class="quote">流量再好不能变现也没用，赚的是产品钱</div>
+        </div>
+        <div class="row">
+          <div class="who">彬少</div>
+          <div class="quote">cc 说一大堆有的没的，codex 干完了</div>
+        </div>
+        <div class="row">
+          <div class="who">上车就系安全带🎾</div>
+          <div class="quote">用国外 AI 赚洋人钱，师夷长技以制夷</div>
+        </div>
+        <div class="row">
+          <div class="who">💦</div>
+          <div class="quote">副业收入已经做到主业 10 倍了</div>
+        </div>
+        <div class="row">
+          <div class="who">💦</div>
+          <div class="quote">699 都照样有人买，感觉还是卖便宜了</div>
+        </div>
+        <div class="row">
+          <div class="who">A、轶</div>
+          <div class="quote">小红书客服啥也不是，问得像个傻子</div>
+        </div>
+        <div class="row">
+          <div class="who">君君</div>
+          <div class="quote">吃第一口的时候就注定了要吃最后一口</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">上车就系安全带🎾</div>
+          <div class="cnt">93 条</div>
+<div class="common">部署 / 本地 / 流量 / 产品</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">彬少</div>
+          <div class="cnt">37 条</div>
+<div class="common">cc / 事情 / 本地 / gpt</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">dontbesilent（6.12 线下课</div>
+          <div class="cnt">37 条</div>
+<div class="common">流量 / 店铺 / 开店 / 情感</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">dontbesilent（6.12 线下课 · 22:33 · <em>工具</em></div>
+          <div class="title">dbs-chatroom skill</div>
+<div class="desc">栋哥自己做的聊天 skill，「跟没拿过诺贝尔奖的人不多了」就靠这个</div><div class="url">npx skills add dontbesilent2025/dbskill</div>          <ul class="points">
+<li>命令 /dbs-chatroom 启动</li><li>用来辅助高质量对话</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">dontbesilent（6.12 线下课 · 15:59 · <em>攻略</em></div>
+          <div class="title">小红书开店、分销问题解答汇总</div>
+<div class="desc">店铺号别动，开个新号搞流量，规则全在这</div><div class="url">https://j8v8p5qtm3.feishu.cn/docx/WJSKdCqTHoZ41gxt57wc84w0nig</div>          <ul class="points">
+<li>开店账号不发帖</li><li>发帖账号不开店</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Harry老师｜剑桥KP考级 · 11:48 · <em>推荐</em></div>
+          <div class="title">公众号陪跑课「职场吃瓜哥」</div>
+<div class="desc">群友涛-的公众号陪跑课，想做公众号的可以参考</div>          <ul class="points">
+<li>小海背书</li><li>教是最好的学</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">dontbesilent（6.12 线下课 · 15:25 · <em>书单</em></div>
+          <div class="title">维特根斯坦《逻辑哲学论》＋ 楼老师《维特根斯坦十讲》</div>
+<div class="desc">栋哥讲清楚事情的底层思维：逻辑哲学。原著直接看会晕</div>          <ul class="points">
+<li>乐老师亲测看晕</li><li>推荐先读外部解读</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💼</span>
+          <span class="title">卖课卖的是希望，还是真有人在用？</span>
+<span class="meta">00:00 - 00:34</span>        </div>
+        <div class="bubble">
+          <div class="who">Web3李老味<span class="time">00:00</span></div>
+          <div class="body">卖课就像《华尔街之狼》里的垃圾股，卖的是个希望，没有人真的会用起来</div>
+        </div>
+        <div class="bubble">
+          <div class="who">卷卷卷卷卷<span class="time">00:07</span></div>
+          <div class="body">我真的会用耶，每个阶段都遇到卡点，就找这个领域做得最好的老师付费学习</div>
+        </div>
+        <div class="bubble">
+          <div class="who">卷卷卷卷卷<span class="time">00:18</span></div>
+          <div class="body">免费的东西是最贵的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">晨熙<span class="time">00:21</span></div>
+          <div class="body">复盘才能快速迭代，每天发一条精心打磨的视频都好难</div>
+        </div>
+        <div class="bubble">
+          <div class="who">卷卷卷卷卷<span class="time">00:34</span></div>
+          <div class="body">嗯呐，栋哥不就是权威了吗</div>
+        </div>
+<div class="commentary">00:00 一开盘就来一句「垃圾股理论」，结果立刻被付费学员现场打脸——这才是社群该有的早安问候。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📣</span>
+          <span class="title">公众号到底凉没凉：流量思路 vs 卖产品思路</span>
+<span class="meta">11:09 - 11:43</span>        </div>
+        <div class="bubble">
+          <div class="who">in<span class="time">11:09</span></div>
+          <div class="body">公众号怎么卖？流量和产品怎么匹配？我以为公众号早凉凉了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小海<span class="time">11:14</span></div>
+          <div class="body">微信 10 多亿日活，每天 50% 的人看文章，平均每人看 2 篇</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">11:22</span></div>
+          <div class="body">我只做公众号，don 哥的思路是流量只为产品做曝光，赚的是产品钱，不是流量钱</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小海<span class="time">11:35</span></div>
+          <div class="body">栋哥给我最大的启发是：你要搞清楚自己是流量思路还是卖产品的思路</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">11:43</span></div>
+          <div class="body">纯教培太卷了，我们做的是高等教育咨询＋AI 产品</div>
+        </div>
+<div class="commentary">公众号没死，死的是只盯打开率不盯钱包的人。流量是入口，产品才是结账台。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🍎</span>
+          <span class="title">Mac 党 vs Windows 死磕派：折腾即正义</span>
+<span class="meta">12:00 - 12:14</span>        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">12:00</span></div>
+          <div class="body">对 AI 有点高需求的，要不就 Linux 要不就 Mac，Windows 本地部署 Qwen 我都嫌麻烦</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Stu(dy ing)<span class="time">12:01</span></div>
+          <div class="body">用 AI 就老老实实用 Mac 吧，安装丝滑得不得了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">12:01</span></div>
+          <div class="body">别骂我脱节哈哈哈哈，我很努力</div>
+        </div>
+        <div class="bubble">
+          <div class="who">in<span class="time">12:03</span></div>
+          <div class="body">有人动辄买 4.5W 的 mac 顶配，能回本么</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">12:04</span></div>
+          <div class="body">你认为买东西必须要回本才买，那你的认知还是有问题，好工具是让你更爽的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李扬@开店星<span class="time">12:13</span></div>
+          <div class="body">买个二手老便宜了，不跑模型 m1+16G 就能玩</div>
+        </div>
+<div class="commentary">讨论从「Mac 丝滑」一路歪到「人生哲学」，4.5W 的顶配顺便被群友安利了二手版。预算焦虑，DBS 群两秒解决。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">⚡</span>
+          <span class="title">Codex 上桌，CC 被彬少判定废物</span>
+<span class="meta">13:09 - 13:13</span>        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">13:09</span></div>
+          <div class="body">跟你说个搞笑的，我现在在鸿蒙电脑上用 codex</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">13:10</span></div>
+          <div class="body">讲究，芯是中国芯</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">13:11</span></div>
+          <div class="body">用国外 AI 赚洋人钱，师夷长技以制夷，好事</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">13:12</span></div>
+          <div class="body">喜欢 codex 是真的新版本干活快，cc 等半天，已经被我判定废物</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">13:13</span></div>
+          <div class="body">cc 说一大堆有的没的，codex 干完了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">13:13</span></div>
+          <div class="body">如果 OpenAI 能把审美和文本搞上去，A 社可以滚了</div>
+        </div>
+<div class="commentary">鸿蒙电脑 + Codex + 国外韭菜钱，三件套合一波鸡汤。Anthropic 别哭，软文需求还在你这。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">😈</span>
+          <span class="title">GPT 道德标兵 vs Claude 脏活担当</span>
+<span class="meta">12:39 - 13:06</span>        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">12:40</span></div>
+          <div class="body">GPT 道德底线太高了，洗稿很难，但 Claude 素质比较低下，直接就能开干</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">12:43</span></div>
+          <div class="body">这个跟道德水平没关系，gpt 文字功底就是比 claude 差，哪怕原创也是一坨</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">12:46</span></div>
+          <div class="body">搞逆向搞破解，GPT 死都不干，Claude 干得飞起；生成哈利波特，GPT 死活不写，Claude 随随便便</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">12:51</span></div>
+          <div class="body">你应该问问，这个群有多少人要干不合规的事情</div>
+        </div>
+        <div class="bubble">
+          <div class="who">上车就系安全带🎾<span class="time">13:03</span></div>
+          <div class="body">群里一堆人不会 Claude 和 gpt，教会他们就能赚不少钱</div>
+        </div>
+        <div class="bubble">
+          <div class="who">彬少<span class="time">13:06</span></div>
+          <div class="body">用 claude 和 gpt 本身严格讲就是件不合规的事情哈哈哈哈</div>
+        </div>
+<div class="commentary">「道德底线」三个字在 DBS 群被讨论得格外朴素：能交付就行。最后一拍大腿——大家全员不合规，都在一条船上。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📕</span>
+          <span class="title">栋哥读书会：维特根斯坦十讲</span>
+<span class="meta">15:23 - 15:33</span>        </div>
+        <div class="bubble">
+          <div class="who">in<span class="time">15:23</span></div>
+          <div class="body">老师，把一个事情讲清楚，除了逻辑思维、逆向思维，你还用什么思维模型？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">15:24</span></div>
+          <div class="body">逻辑哲学</div>
+        </div>
+        <div class="bubble">
+          <div class="who">continue<span class="time">15:25</span></div>
+          <div class="body">我盲猜：逻辑思维是为什么这么做，逆向思维是不这么做会怎样，逻辑哲学是这么做就像 xxx（比喻）</div>
+        </div>
+        <div class="bubble">
+          <div class="who">dontbesilent（6.12 线下课<span class="time">15:26</span></div>
+          <div class="body">维特根斯坦相关都可以，推荐楼老师的《维特根斯坦十讲》</div>
+        </div>
+        <div class="bubble">
+          <div class="who">乐老师<span class="time">15:30</span></div>
+          <div class="body">我看过这本书直接看晕了，去年四月看的，看晕了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">乐老师<span class="time">15:36</span></div>
+          <div class="body">维特根斯坦做乡村教师时和家长吵架、和学生动粗，我太理解了，因为我也带托管班</div>
+        </div>
+<div class="commentary">DBS 群最硬核的瞬间——从「卖课」无缝切到《逻辑哲学论》。书单收下，能看懂多少就另说了。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🚫</span>
+          <span class="title">小红书客服=摆设：限流、违规与改不了的简介</span>
+<span class="meta">20:51 - 21:07</span>        </div>
+        <div class="bubble">
+          <div class="who">卷卷卷卷卷<span class="time">20:51</span></div>
+          <div class="body">违规 A 改完又来 B，第三次整个笔记被限流，问客服客服就是个摆设</div>
+        </div>
+        <div class="bubble">
+          <div class="who">卷卷卷卷卷<span class="time">20:55</span></div>
+          <div class="body">然后问 AI，更懵逼了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">A、轶<span class="time">20:56</span></div>
+          <div class="body">小红书的客服就是傻逼，啥也不是</div>
+        </div>
+        <div class="bubble">
+          <div class="who">A、轶<span class="time">20:58</span></div>
+          <div class="body">我蓝 V 号简介都改不了，改了过两小时就还原</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Wiwi<span class="time">21:00</span></div>
+          <div class="body">说明简介有违禁词</div>
+        </div>
+        <div class="bubble">
+          <div class="who">A、轶<span class="time">21:02</span></div>
+          <div class="body">同样简介小号能改，蓝 V 改不了，一年 600 块白给</div>
+        </div>
+        <div class="bubble">
+          <div class="who">等云开<span class="time">21:05</span></div>
+          <div class="body">小红书点点也是个摆设，还没豆包好用，还限制 500 字</div>
+        </div>
+<div class="commentary">蓝 V 600 块买的不是会员服务，是「让你深刻理解什么叫平台霸权」的体验包。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💰</span>
+          <span class="title">💦 的副业封神局：四资料嵌套引流，699 涨价不止</span>
+<span class="meta">22:28 - 23:01</span>        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">22:28</span></div>
+          <div class="body">我做虚拟资料➕知识付费，四个虚拟资料都是引流款，全部导流到知识付费</div>
+        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">22:35</span></div>
+          <div class="body">买家为了搞懂买来的资料，干脆买知识付费吧，反正里面有视频</div>
+        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">22:39</span></div>
+          <div class="body">我把考试资料分成 4 个模块，买完第一个就必须买第二个，最后果断选 1000 块的知识付费</div>
+        </div>
+        <div class="bubble">
+          <div class="who">君君<span class="time">22:43</span></div>
+          <div class="body">吃第一口的时候就注定了要吃最后一口</div>
+        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">22:44</span></div>
+          <div class="body">副业收入已经做到主业 10 倍了，额，主要还是主业收入太低了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">22:59</span></div>
+          <div class="body">一开始想和栋哥一样 199，后面 699 都照样有人买，感觉还是卖便宜了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">💦<span class="time">23:04</span></div>
+          <div class="body">可以买一个 5 位数的 qq 号做微信号，后台识别不出来是引流</div>
+        </div>
+<div class="commentary">考试资料 + 模块化 + 涨价试探 = 一套完整的「让买家自愿掏钱」公式。今天最值钱的不是 1000 块知识付费，是这一段免费实战课。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「[破涕为笑]」</div>
+        <div class="voicers">卷卷卷卷卷 · 彬少 · 💦 · A、轶 · 君君 · 12 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">这个<small>·35</small></span>
+        <span class="chip hot">就是<small>·26</small></span>
+        <span class="chip hot">还是<small>·24</small></span>
+        <span class="chip hot">流量<small>·24</small></span>
+        <span class="chip hot">付费<small>·22</small></span>
+        <span class="chip hot">什么<small>·22</small></span>
+        <span class="chip hot">视频<small>·19</small></span>
+        <span class="chip hot">一个<small>·19</small></span>
+        <span class="chip hot">dontbesilent<small>·18</small></span>
+        <span class="chip ">自己<small>·17</small></span>
+        <span class="chip ">下课<small>·17</small></span>
+        <span class="chip ">老师<small>·16</small></span>
+        <span class="chip ">然后<small>·15</small></span>
+        <span class="chip ">6.12<small>·15</small></span>
+        <span class="chip ">没有<small>·14</small></span>
+        <span class="chip ">产品<small>·14</small></span>
+        <span class="chip ">不是<small>·14</small></span>
+        <span class="chip ">不会<small>·14</small></span>
+        <span class="chip ">本地<small>·14</small></span>
+        <span class="chip ">平台<small>·14</small></span>
+        <span class="chip ">小红书<small>·14</small></span>
+        <span class="chip ">栋哥<small>·13</small></span>
+        <span class="chip ">公众<small>·13</small></span>
+        <span class="chip ">店铺<small>·13</small></span>
+        <span class="chip ">资料<small>·13</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">上车就系安全带🎾</div>
+          <div class="reason">93 条吊打全场，从公众号到 Mac 到 Claude 到本地部署，单挑半个群</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">dontbesilent（6.12 线下课</div>
+          <div class="reason">「赚的是产品钱，不是流量钱」一句话点破整个内容创业幻觉</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">💦</div>
+          <div class="reason">「副业 10 倍主业，主要还是主业太低了」——破涕为笑里藏着打工人的眼泪</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">A、轶</div>
+          <div class="reason">一年 600 的蓝 V，连个简介都改不了，问客服像问傻子，气场全开</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">君君</div>
+          <div class="reason">吃第一口的时候就注定了要吃最后一口</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-dontbesilent-聊赚钱的群3">
+    <div class="group-head">
+      <div class="name">dontbesilent 聊赚钱的群③</div>
+      <div class="meta">
+          <span>50 条消息</span> ·
+          <span>11 人</span> ·
+          <span>10:14 至 23:58</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">成小咩</div>
+          <div class="quote">不喜欢脱离钱讨论个人成长</div>
+        </div>
+        <div class="row">
+          <div class="who">Zayen纸蓝</div>
+          <div class="quote">大部分公司对AI化的理解就是搭个知识库和问答助手</div>
+        </div>
+        <div class="row">
+          <div class="who">👑Vanda米爷（过年闭关版）</div>
+          <div class="quote">大部分人听了也就听了,前提条件不统一,根本没有参考意义</div>
+        </div>
+        <div class="row">
+          <div class="who">福神大佬</div>
+          <div class="quote">米爷绝对intp,这篇幅</div>
+        </div>
+        <div class="row">
+          <div class="who">L!N</div>
+          <div class="quote">笑死,李笑来帮我改代码</div>
+        </div>
+        <div class="row">
+          <div class="who">戴荣&amp;designer</div>
+          <div class="quote">商业资本是原罪,人类正常生活是涉黄</div>
+        </div>
+        <div class="row">
+          <div class="who">🦦</div>
+          <div class="quote">严肃议题是寻衅滋事</div>
+        </div>
+        <div class="row">
+          <div class="who">Luna</div>
+          <div class="quote">dong哥抖音大号为什么没了啊</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">L!N</div>
+          <div class="cnt">16 条</div>
+<div class="common">哈哈哈哈 / 福神 / 不像 / 原创</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">👑Vanda米爷（过年闭关版）</div>
+          <div class="cnt">14 条</div>
+<div class="common">... / 自己 / 很多 / 参考</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">Zayen纸蓝</div>
+          <div class="cnt">5 条</div>
+<div class="common">大部分 / 公司 / AI / 理解</div>        </div>
+      </div>
+
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💰</span>
+          <span class="title">聊钱才是真问题:别拿成长当遮羞布</span>
+<span class="meta">13:45 - 14:07</span>        </div>
+        <div class="bubble">
+          <div class="who">成小咩<span class="time">13:45</span></div>
+          <div class="body">不喜欢脱离钱讨论个人成长</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Zayen纸蓝<span class="time">14:07</span></div>
+          <div class="body">感觉大部分公司对AI化的理解就是搭个知识库和一个问答助手,要么就是智能客服</div>
+        </div>
+<div class="commentary">一句怼破大半个知识付费圈,另一句怼穿大半个企业AI转型——这群一开口就掀桌。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🎙️</span>
+          <span class="title">播客精英傲慢吐槽大会</span>
+<span class="meta">14:12 - 14:26</span>        </div>
+        <div class="bubble">
+          <div class="who">L!N<span class="time">14:12</span></div>
+          <div class="body">我觉得这个不像她原创的,像是有人写公众号骂过的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">L!N<span class="time">14:17</span></div>
+          <div class="body">我刚才搜索 播客 + 优绩主义 就看到你的朋友圈</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:25</span></div>
+          <div class="body">很多播客博主都透露出一种精英的傲慢,看起来在讲知识,其实在show自己的精英人设,动不动就是哪里留学怎样怎样</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Zayen纸蓝<span class="time">14:26</span></div>
+          <div class="body">文学上的正确,说白了就是装人设,让大伙感觉「哦牛批说得好像有道理」然后酷酷吃流量</div>
+        </div>
+        <div class="bubble">
+          <div class="who">成小咩<span class="time">14:26</span></div>
+          <div class="body">来听我的</div>
+        </div>
+<div class="commentary">群友一边骂播客装精英,一边自己开起了反精英播客,内娱外娱都不如这群好看。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🐉</span>
+          <span class="title">丁元英祛魅:普通人别学私募大佬</span>
+<span class="meta">14:31 - 14:35</span>        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:31</span></div>
+          <div class="body">普通人参考和自己差不多的人比较合适,大家拿的牌差不多。校准比自己差很多的人,根本没有参考意义</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:33</span></div>
+          <div class="body">之前拜访大佬的人设也没意义了,时代不一样,他们的经验几乎没价值,搞不好他们自己都不知道有多少是运气</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:34</span></div>
+          <div class="body">很多人学丁元英,不和楼下阿姨争辩混沌,还多付一笔钱,可能被好几个摊位的小摊贩坑</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:35</span></div>
+          <div class="body">丁元英是私募大佬,普通人连什么是私募都不知道,而且那个年代能去国外读书的都是什么人</div>
+        </div>
+<div class="commentary">一段话把豆瓣鹅组、抖音知识区、得到App集体祛了魅——大佬的牌你抓不到,模仿姿势只会摔得更难看。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🧠</span>
+          <span class="title">INTP鉴定现场+福神牛仔裤穿越</span>
+<span class="meta">14:36 - 14:43</span>        </div>
+        <div class="bubble">
+          <div class="who">福神大佬<span class="time">14:36</span></div>
+          <div class="body">米爷绝对intp,这篇幅[机智]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👑Vanda米爷（过年闭关版）<span class="time">14:37</span></div>
+          <div class="body">对,我是intp,就喜欢思考这些[捂脸]。有时候思维跳太快,给人感觉好像连不上</div>
+        </div>
+        <div class="bubble">
+          <div class="who">L!N<span class="time">14:42</span></div>
+          <div class="body">福神大佬,你的名字让我想起以前很流行的福神牛仔裤,一条要两三千</div>
+        </div>
+        <div class="bubble">
+          <div class="who">福神大佬<span class="time">14:43</span></div>
+          <div class="body">哈哈哈,那会儿的确挺喜欢的,上学时候买不起,毕业了就老der不好这口了</div>
+        </div>
+<div class="commentary">前一秒还在严肃讨论丁元英,下一秒就开始考古00年代潮牌——群聊跳跃比INTP的脑回路还INTP。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔇</span>
+          <span class="title">互联网失语症诊断书</span>
+<span class="meta">17:54 - 17:59</span>        </div>
+        <div class="bubble">
+          <div class="who">戴荣&amp;designer<span class="time">17:54</span></div>
+          <div class="body">不然呢,大量话题都是禁忌,能说的只有八卦吵架撕逼</div>
+        </div>
+        <div class="bubble">
+          <div class="who">戴荣&amp;designer<span class="time">17:55</span></div>
+          <div class="body">商业资本是原罪,人类正常生活是涉黄</div>
+        </div>
+        <div class="bubble">
+          <div class="who">🦦<span class="time">17:59</span></div>
+          <div class="body">严肃议题是寻衅滋事</div>
+        </div>
+<div class="commentary">三句话总结当代互联网三件套,扎心程度直逼新华字典更新。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🤖</span>
+          <span class="title">李笑来夜半改代码</span>
+<span class="meta">23:31 - 23:58</span>        </div>
+        <div class="bubble">
+          <div class="who">L!N<span class="time">23:31</span></div>
+          <div class="body">笑死,李笑来帮我改代码</div>
+        </div>
+        <div class="bubble">
+          <div class="who">居居<span class="time">23:56</span></div>
+          <div class="body">啊看不懂能解释下吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Luna<span class="time">23:58</span></div>
+          <div class="body">dong哥抖音大号为什么没了啊</div>
+        </div>
+<div class="commentary">韭菜大V改完代码,深夜围观群友追问大V抖音号注销——AI时代的赛博众生相,合订本就是这页。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「哈哈哈哈」</div>
+        <div class="voicers">👑Vanda米爷（过年闭关版） · L!N · 福神大佬 · 6 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">就是<small>·7</small></span>
+        <span class="chip hot">没有<small>·6</small></span>
+        <span class="chip hot">...<small>·6</small></span>
+        <span class="chip hot">自己<small>·5</small></span>
+        <span class="chip hot">什么<small>·5</small></span>
+        <span class="chip hot">感觉<small>·4</small></span>
+        <span class="chip hot">大部分<small>·4</small></span>
+        <span class="chip hot">这个<small>·4</small></span>
+        <span class="chip hot">很多<small>·4</small></span>
+        <span class="chip hot">参考<small>·4</small></span>
+        <span class="chip hot">他们<small>·4</small></span>
+        <span class="chip ">哈哈哈哈<small>·3</small></span>
+        <span class="chip ">喜欢<small>·3</small></span>
+        <span class="chip ">但是<small>·3</small></span>
+        <span class="chip ">因为<small>·3</small></span>
+        <span class="chip ">意义<small>·3</small></span>
+        <span class="chip ">好像<small>·3</small></span>
+        <span class="chip ">普通人<small>·3</small></span>
+        <span class="chip ">大佬<small>·3</small></span>
+        <span class="chip ">知道<small>·3</small></span>
+        <span class="chip ">丁元英<small>·3</small></span>
+        <span class="chip ">私募<small>·3</small></span>
+        <span class="chip ">讨论<small>·2</small></span>
+        <span class="chip ">觉得<small>·2</small></span>
+        <span class="chip ">播客<small>·2</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">👑Vanda米爷（过年闭关版）</div>
+          <div class="reason">闭关版还能在群里手撕播客精英两千字,卷穿过年</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">成小咩</div>
+          <div class="reason">一句「不喜欢脱离钱讨论个人成长」把所有正能量水分挤干</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">戴荣&amp;designer</div>
+          <div class="reason">「商业资本是原罪,人类正常生活是涉黄」——一句顶一篇社论</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">Zayen纸蓝</div>
+          <div class="reason">话不多但每一句都精准爆破,AI化和文学正确连开两枪</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">🦦</div>
+          <div class="reason">严肃议题是寻衅滋事</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group skipped" id="g-dontbesilent-聊赚钱的群4">
+    <div class="group-head">
+      <div class="name">dontbesilent 聊赚钱的群④</div>
+      <div class="meta">
+          <span>当天 0 条</span>
+      </div>
+    </div>
+
+      <div class="skip-msg">
+        💤 当天群里只有 0 条消息，少于阈值，跳过日报生成
+      </div>
+  </div>
+  <div class="group " id="g-赫兹的朋友们-出海交流">
+    <div class="group-head">
+      <div class="name">赫兹的朋友们~出海交流</div>
+      <div class="meta">
+          <span>404 条消息</span> ·
+          <span>60 人</span> ·
+          <span>07:37 至 23:44</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">Meepo</div>
+          <div class="quote">上班挣个两三万说太底层，出海弄个百刀就成大佬了</div>
+        </div>
+        <div class="row">
+          <div class="who">阿一古</div>
+          <div class="quote">给开了个800账号 以为啥都有了</div>
+        </div>
+        <div class="row">
+          <div class="who">袁锐钦Ruiqin</div>
+          <div class="quote">二维码也是 ai 生成的啊</div>
+        </div>
+        <div class="row">
+          <div class="who">大庞</div>
+          <div class="quote">在美国很多同事都想考电工证，哪天裁员了就去做电工</div>
+        </div>
+        <div class="row">
+          <div class="who">海冰</div>
+          <div class="quote">卖水能卖成首富，哇哈哈</div>
+        </div>
+        <div class="row">
+          <div class="who">elonbro</div>
+          <div class="quote">Claude max 100刀 + GPT Pro 100刀都不够用</div>
+        </div>
+        <div class="row">
+          <div class="who">LvXiuCai</div>
+          <div class="quote">上班是纯靠时间换钱，出海是跑通商业闭环可以无限复制</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">袁锐钦Ruiqin</div>
+          <div class="cnt">31 条</div>
+<div class="common">肾结石 / ai / 生成 / 文章</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">阿一古</div>
+          <div class="cnt">29 条</div>
+<div class="common">上班 / 视觉 / 公司 / 总结</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">李英杰</div>
+          <div class="cnt">21 条</div>
+<div class="common">阿一古 / 软件 / Meepo / huntifyai</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">赫兹 · 07:37 · <em>经验</em></div>
+          <div class="title">网站转化链路复盘</div>
+<div class="desc">拆解访问 → 登录 → 试用 → 付费四段漏斗的优化点</div>          <ul class="points">
+<li>用访客 id 关联 utm_source、首屏页面、IP</li><li>首页直接放可用的工具，未登录就能输入图文</li><li>去掉来源询问弹窗，已登录就用 utm 自动追踪</li><li>增加好友邀请双方赠送积分识别推荐渠道</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">TONG · 13:12 · <em>工具</em></div>
+          <div class="title">小米 mimo 100T 计划</div>
+<div class="desc">实名认证送 5 块额度，可以白嫖测一波</div><div class="url">https://100t.xiaomimimo.com/</div>          <ul class="points">
+<li>实名送 5 元</li><li>目前模型表现还可以</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">WesLin · 23:04 · <em>推荐</em></div>
+          <div class="title">Claude Pro 5x 拼车</div>
+<div class="desc">有质保，掉了就补，pro 5x 270</div><div class="url">https://t.co/6me75nRVIQ</div>          <ul class="points">
+<li>pro 5x 270 元</li><li>20x 不质保 300+</li><li>20x 质保 500+</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💼</span>
+          <span class="title">赫兹七点半开晨课：转化漏斗手把手拆</span>
+<span class="meta">07:37 - 09:50</span>        </div>
+        <div class="bubble">
+          <div class="who">赫兹<span class="time">07:37</span></div>
+          <div class="body">早上好，朋友们！最近复盘了某个网站访问→登录→试用→付费的转化链路，想分享一下</div>
+        </div>
+        <div class="bubble">
+          <div class="who">赫兹<span class="time">07:37</span></div>
+          <div class="body">缺访问到登录的数据，可以每个访客一个 id，把 utm_source、首页、IP 都存下，后续登录再关联</div>
+        </div>
+        <div class="bubble">
+          <div class="who">赫兹<span class="time">07:37</span></div>
+          <div class="body">首页可以改成不登录就能输入内容、上传图片，去掉来源询问弹窗，参数能少则少</div>
+        </div>
+        <div class="bubble">
+          <div class="who">子墨<span class="time">09:27</span></div>
+          <div class="body">[强]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">理想是自由<span class="time">09:45</span></div>
+          <div class="body">[强]</div>
+        </div>
+<div class="commentary">别人 7 点半还在赖床，赫兹已经在群里开公开课——这就是百刀和万刀的差距。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💯</span>
+          <span class="title">袁总满月转正：百刀党新晋上岸</span>
+<span class="meta">09:45 - 10:25</span>        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">09:50</span></div>
+          <div class="body">我终于达成100块任务了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">09:48</span></div>
+          <div class="body">满打满算一个月了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Meepo<span class="time">09:48</span></div>
+          <div class="body">这个月的百刀任务达成😄</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Meepo<span class="time">09:51</span></div>
+          <div class="body">如果 SEO 策略不出问题，估计大几百刀没问题</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海海<span class="time">09:46</span></div>
+          <div class="body">太强了，我也想写文章</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">09:55</span></div>
+          <div class="body">主要还得看内容</div>
+        </div>
+        <div class="bubble">
+          <div class="who">李英杰<span class="time">10:23</span></div>
+          <div class="body">百刀哥，千刀哥都有了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">LvXiuCai<span class="time">10:24</span></div>
+          <div class="body">万刀哥也有了</div>
+        </div>
+<div class="commentary">群里梯队已经卷到「百刀哥/千刀哥/万刀哥」分级，再不上车连服务员都做不了。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🏭</span>
+          <span class="title">阿一古：工厂牛马的辞职预备役</span>
+<span class="meta">10:28 - 10:43</span>        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">10:28</span></div>
+          <div class="body">想总结一套 sop 出来</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">10:30</span></div>
+          <div class="body">每天都在想辞职 all in 出海</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Meepo<span class="time">10:29</span></div>
+          <div class="body">上班挣个两三万说太底层，出海弄个百刀就成大佬了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">LvXiuCai<span class="time">10:32</span></div>
+          <div class="body">别裸辞，建议先赚到钱再辞职，不然前期没收入会焦虑</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">10:32</span></div>
+          <div class="body">工厂牛马 电脑椅都不给个</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">10:35</span></div>
+          <div class="body">给开了个800账号 以为啥都有了，视觉这些都现学的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">10:36</span></div>
+          <div class="body">两个没办法并行的事，你做到一起，就是搞崩自己而已</div>
+        </div>
+<div class="commentary">白天搞图像识别，晚上想辞职出海——出海人最稳定的状态就是不稳定。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🍢</span>
+          <span class="title">烧烤出海大辩论：电工才是赛道天花板</span>
+<span class="meta">10:38 - 11:10</span>        </div>
+        <div class="bubble">
+          <div class="who">Niko<span class="time">10:38</span></div>
+          <div class="body">别太离谱嗷，直接出国摆烧烤吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">10:39</span></div>
+          <div class="body">我真有烧烤技术</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Y<span class="time">10:40</span></div>
+          <div class="body">拍短视频，我挺爱看的，老外赞不绝口</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Torbillion<span class="time">10:41</span></div>
+          <div class="body">昨天我朋友才刚找了个电工 上门说要1000刀，装套太阳能要3000刀</div>
+        </div>
+        <div class="bubble">
+          <div class="who">大庞<span class="time">10:43</span></div>
+          <div class="body">在美国互联网公司上班的朋友说，很多同事都想考电工证，哪天裁员了就去做电工</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海冰<span class="time">11:04</span></div>
+          <div class="body">我都想搞辆电三轮卖冰粉了，周末公园里面生意好得很</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Torbillion<span class="time">11:09</span></div>
+          <div class="body">之前不还有进货蜜雪冰城的柠檬水加价到别的地方卖的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海冰<span class="time">11:10</span></div>
+          <div class="body">卖水能卖成首富</div>
+        </div>
+<div class="commentary">写代码的尽头是电工，做 SEO 的尽头是烧烤——AI 出海的最终归宿原来在蓝领。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💧</span>
+          <span class="title">肾结石哲学课：先把水喝够再谈出海</span>
+<span class="meta">11:27 - 12:23</span>        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">11:27</span></div>
+          <div class="body">定投基金真的稳[破涕为笑]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">海冰<span class="time">11:38</span></div>
+          <div class="body">你们不都接自来水烧开水喝吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">11:38</span></div>
+          <div class="body">你不怕肾结石？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">张胜岩 Chief<span class="time">11:42</span></div>
+          <div class="body">肾结石和饮水不足有关，和喝什么水关系不大，多喝水保证小便不发黄</div>
+        </div>
+        <div class="bubble">
+          <div class="who">周同学<span class="time">11:45</span></div>
+          <div class="body">已经有了肾结石[捂脸]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Torbillion<span class="time">12:00</span></div>
+          <div class="body">去年尿酸一直700多 后面每天8杯水 现在就200多</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Galio<span class="time">12:16</span></div>
+          <div class="body">身体第一</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">12:23</span></div>
+          <div class="body">啤酒喝多了</div>
+        </div>
+<div class="commentary">群友从基金聊到结石用了 11 分钟——出海人的健康焦虑比 ChatGPT 的延迟还稳定。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">拼车闲鱼烧 token：副业先把订阅卷穷</span>
+<span class="meta">13:53 - 15:49</span>        </div>
+        <div class="bubble">
+          <div class="who">Jay （方）<span class="time">13:53</span></div>
+          <div class="body">请问 claude max 5x 或者 20x 是可以拼车的吗？20 刀的 pro 只够用 3 天的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">阿一古<span class="time">14:13</span></div>
+          <div class="body">不过我觉得最近 Claude 变辣鸡了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">袁锐钦Ruiqin<span class="time">14:30</span></div>
+          <div class="body">哥，你在国外，200 刀你用不起吗[苦涩]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">自在<span class="time">14:36</span></div>
+          <div class="body">国内的中转有点贵，我一个月花 4000+ 刀</div>
+        </div>
+        <div class="bubble">
+          <div class="who">有人@我<span class="time">14:38</span></div>
+          <div class="body">不是，兄弟们，光哐哐干 token 了，赚的能覆盖 token 不</div>
+        </div>
+        <div class="bubble">
+          <div class="who">elonbro<span class="time">15:22</span></div>
+          <div class="body">Claude max 100刀 + GPT Pro 100刀都不够用[流泪]，需要交叉 review</div>
+        </div>
+        <div class="bubble">
+          <div class="who">小北<span class="time">15:11</span></div>
+          <div class="body">我在86上买的 90一年的 gpt plus 今天被 openai 回收了，用了大半个月</div>
+        </div>
+        <div class="bubble">
+          <div class="who">WesLin<span class="time">23:04</span></div>
+          <div class="body">pro 5x 270，转需，价格我帮大家看了</div>
+        </div>
+<div class="commentary">一边烧 token 一边算账：副业还没回本，订阅先把人卷成穷光蛋。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「光哐哐干 token 了，赚的能覆盖 token 不」</div>
+        <div class="voicers">有人@我 · 理想是自由 · 2 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">可以<small>·35</small></span>
+        <span class="chip hot">用户<small>·22</small></span>
+        <span class="chip ">登录<small>·13</small></span>
+        <span class="chip ">这个<small>·13</small></span>
+        <span class="chip ">生成<small>·12</small></span>
+        <span class="chip ">可能<small>·10</small></span>
+        <span class="chip ">内容<small>·9</small></span>
+        <span class="chip ">自己<small>·9</small></span>
+        <span class="chip ">订阅<small>·9</small></span>
+        <span class="chip ">如果<small>·8</small></span>
+        <span class="chip ">之前<small>·8</small></span>
+        <span class="chip ">不是<small>·8</small></span>
+        <span class="chip ">出海<small>·8</small></span>
+        <span class="chip ">试用<small>·7</small></span>
+        <span class="chip ">一个<small>·7</small></span>
+        <span class="chip ">一个月<small>·7</small></span>
+        <span class="chip ">上班<small>·7</small></span>
+        <span class="chip ">就是<small>·7</small></span>
+        <span class="chip ">质保<small>·7</small></span>
+        <span class="chip ">优化<small>·6</small></span>
+        <span class="chip ">直接<small>·6</small></span>
+        <span class="chip ">选择<small>·6</small></span>
+        <span class="chip ">问题<small>·6</small></span>
+        <span class="chip ">大佬<small>·6</small></span>
+        <span class="chip ">捂脸<small>·6</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">赫兹</div>
+          <div class="reason">07:37 就在群里发千字转化链路复盘，比工厂打卡还早</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">LvXiuCai</div>
+          <div class="reason">一句「别裸辞，先赚到钱再辞职」按住了一大批想 all in 的人</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">Meepo</div>
+          <div class="reason">「上班两三万说太底层，出海百刀成大佬」一句道破围城</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">高涛杰</div>
+          <div class="reason">新人入群直接掏出 10 个订阅站 + vercel 三号白嫖术</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">阿一古</div>
+          <div class="reason">工厂牛马自学成才的精神，浓缩在这一句里</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-showmeai-踏浪而歌">
+    <div class="group-head">
+      <div class="name">🌊 ShowMeAI 踏浪而歌</div>
+      <div class="meta">
+          <span>916 条消息</span> ·
+          <span>98 人</span> ·
+          <span>00:28 至 23:40</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">吴熳Rosia</div>
+          <div class="quote">我天天在群里骂 Claude 渣男,真没骂错啊</div>
+        </div>
+        <div class="row">
+          <div class="who">Klaus</div>
+          <div class="quote">Gemini 天天拍我们老板马屁:您真是天才产品经理</div>
+        </div>
+        <div class="row">
+          <div class="who">牛牛酱</div>
+          <div class="quote">项目暂停,我将报名</div>
+        </div>
+        <div class="row">
+          <div class="who">程建都</div>
+          <div class="quote">想象不出来,就一定做不出来</div>
+        </div>
+        <div class="row">
+          <div class="who">大聪明 宋德</div>
+          <div class="quote">想想他喵的,我在北京这过的是什么日子</div>
+        </div>
+        <div class="row">
+          <div class="who">牛牛酱</div>
+          <div class="quote">有多少人工,就有多少智能</div>
+        </div>
+        <div class="row">
+          <div class="who">Rsaga</div>
+          <div class="quote">直男之所以产出美艳,是因为把外在放弃,全部融入了思想</div>
+        </div>
+        <div class="row">
+          <div class="who">少女阿原</div>
+          <div class="quote">俺是模型策略产品出身的</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">Klaus</div>
+          <div class="cnt">111 条</div>
+<div class="common">问题 / 旺柴 / 捂脸 / 确实</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">牛牛酱</div>
+          <div class="cnt">77 条</div>
+<div class="common">deepseek / 有点 / skill / 估计</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">少女阿原</div>
+          <div class="cnt">59 条</div>
+<div class="common">风格 / 然后 / 选手 / 平台</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">瀛🐾 · 01:43 · <em>羊毛</em></div>
+          <div class="title">Xiaomi MiMo Orbit 百万亿 Token 计划</div>
+<div class="desc">全球用户限时发放 100T Credits,人肉审核分 Standard/Pro/Max 三档</div><div class="url">https://100t.xiaomimimo.com/</div>          <ul class="points">
+<li>Standard 2 亿 Token</li><li>Max 套餐 16 亿 Credits</li><li>按项目质量分档发放,审核全凭眼缘</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Max · 15:42 · <em>工具</em></div>
+          <div class="title">Opus 中转站掺水检测</div>
+<div class="desc">用极限分辨率视觉盲测识别中转站是否真的在跑 Opus 4.7</div><div class="url">https://eagle.videogen.art/opus-detect</div>          <ul class="points">
+<li>利用 Claude 4.7 长边 2576 像素图像理解能力</li><li>低端模型会强制降采样导致细节丢失</li><li>syq 实测靠谱</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">吴熳Rosia · 09:20 · <em>作品</em></div>
+          <div class="title">樊振东荣誉殿堂网页</div>
+<div class="desc">Claude Code 桌面端一次成型,后续没有任何修改</div><div class="url">https://ka21.org/fan-zhendong/index.html</div>          <ul class="points">
+<li>互动效果与版式设计极佳</li><li>让 codex 抄都抄不会</li><li>作者本人随后被 Claude 封号</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">木 · 14:21 · <em>教程</em></div>
+          <div class="title">Figma Context MCP</div>
+<div class="desc">把 Figma 设计稿喂给 Coding Agent,搭配 design tokens 与 8pt grid 强约束</div><div class="url">https://github.com/glips/figma-context-mcp</div>          <ul class="points">
+<li>UI Rules:必须使用已有组件</li><li>禁止硬编码颜色</li><li>spacing 只能用 8pt grid</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">KK · 19:43 · <em>Skill</em></div>
+          <div class="title">公众号写作流程 5 个 Skills</div>
+<div class="desc">insights-deepdive、blog-writer、blog-cover-generator、blog-infographic-generator、blog-wechat-formatter</div>          <ul class="points">
+<li>从洞察到排版的全流程拆分</li><li>每一步独立 skill 可单独 Eval</li><li>文末附分享链接</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">牛牛酱 · 22:32 · <em>分享</em></div>
+          <div class="title">腾子学术酒馆 · vibe coding 世界观分享</div>
+<div class="desc">之前讲方法论,这次上强度讲世界观</div><div class="url">https://accountingllm.site/talk-6/</div>          <ul class="points">
+<li>主播喝一小杯就喝多</li><li>peer pressure 驱动 vibe coding</li><li>酒师认证讲师双修</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">小米百万亿 Token 大派送:有人 Max 16 亿,有人哭着重交申请</span>
+<span class="meta">01:43 - 11:18</span>        </div>
+        <div class="bubble">
+          <div class="who">瀛🐾<span class="time">01:43</span></div>
+          <div class="body">邀请你参加 Xiaomi MiMo Orbit 百万亿 Token 创造者激励计划,100T Credits 面向全球用户限时发放中</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">10:55</span></div>
+          <div class="body">我昨天上午发的申请,现在也没有申请到,但是有同事半天就拿到了「捂脸」</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Musa<span class="time">10:58</span></div>
+          <div class="body">Standard 2 亿,Max 16 亿</div>
+        </div>
+        <div class="bubble">
+          <div class="who">社恐患者杨老师<span class="time">11:06</span></div>
+          <div class="body">他们是人肉审核,按项目发不同的档位订阅</div>
+        </div>
+        <div class="bubble">
+          <div class="who">柴哲轩<span class="time">11:07</span></div>
+          <div class="body">我把账单很高和一个万星的发了,没得到,我哭</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">11:08</span></div>
+          <div class="body">我提交的是产品地址「捂脸」这个是不是不行,还是海外产品 会不会他们觉得不合适</div>
+        </div>
+        <div class="bubble">
+          <div class="who">XX<span class="time">11:14</span></div>
+          <div class="body">昨天晚上买的,现在就用了 13%,还是最贵的档位</div>
+        </div>
+        <div class="bubble">
+          <div class="who">许珏<span class="time">11:17</span></div>
+          <div class="body">腾讯 Max 才 6.5 亿 token,能烧的一天就用完了</div>
+        </div>
+<div class="commentary">小米一夜之间从手机厂变身赛博财神爷,可惜财神爷脾气古怪——账单万星的不发、产品地址的不发,只对眼缘负责。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💔</span>
+          <span class="title">Claude 渣男实录:一次成型樊振东,转身就给我封号</span>
+<span class="meta">08:29 - 09:30</span>        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">08:29</span></div>
+          <div class="body">我的 Claude 今天早上挂了,有朋友有可靠一点点的方法搞新的 Claude 号嘛</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">09:20</span></div>
+          <div class="body">樊振东的网页是我用 Claude Code 桌面端一次成型的,我没做过任何修改</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">09:23</span></div>
+          <div class="body">所以我天天在群里骂 Claude 渣男 没骂错啊!一开始写代码满嘴跑烟花,做 cowork 那叫一个惊艳,最后封号了,转身就走,连聊天记录毛都摸不到</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">09:25</span></div>
+          <div class="body">但是我是一定会继续买 Claude 的,毕竟他在我的早 A 晚 C 套餐里面,排名第一</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">09:42</span></div>
+          <div class="body">我让 codex 模仿樊振东那个做马龙荣誉殿堂,丑得我骂了半上午,我都给了他 Claude 代码让他抄了哥们还抄不会</div>
+        </div>
+<div class="commentary">群内最稳定的恋爱关系——一个反复被骂渣男,一个嘴上骂得最狠续费却从不犹豫。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🐉</span>
+          <span class="title">罗福莉风波:你是默认群友不懂大模型吗?</span>
+<span class="meta">10:20 - 10:53</span>        </div>
+        <div class="bubble">
+          <div class="who">海阔天空<span class="time">10:20</span></div>
+          <div class="body">偶尔可能会对一个问题钻牛角尖,就是直线型思维,我们技术天天和机器打交道</div>
+        </div>
+        <div class="bubble">
+          <div class="who">syq<span class="time">10:23</span></div>
+          <div class="body">我是觉得罗福莉不是表达问题,是思维深度</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">10:23</span></div>
+          <div class="body">作为技术从业者,我只看到了一个熠熠闪光的科技人才</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">10:24</span></div>
+          <div class="body">思维深度比不上群友是吧 比不上群友懂大模型?</div>
+        </div>
+        <div class="bubble">
+          <div class="who">南乔<span class="time">10:46</span></div>
+          <div class="body">为什么默认群友不懂大模型呢🤔 大家各种论文访谈文章新闻模型产品都看很多用很多吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">10:47</span></div>
+          <div class="body">我没有默认,我只是觉得没有思考深度这句话需要证据,你举例说服我就行</div>
+        </div>
+        <div class="bubble">
+          <div class="who">南乔<span class="time">10:48</span></div>
+          <div class="body">这个群是匿名社交的,时不时冒出个大神吓我一跳</div>
+        </div>
+        <div class="bubble">
+          <div class="who">木<span class="time">10:55</span></div>
+          <div class="body">他不是不想找回场子,他是害怕被踢出群</div>
+        </div>
+<div class="commentary">群友含金量被群友互测,最后凭一句「他害怕被踢出群」收尾——AI 大群最吓人的从来不是模型,是隔壁那位匿名 ID。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🕵️</span>
+          <span class="title">中转站验真大法:让 Opus 4.7 自己交出指纹</span>
+<span class="meta">15:42 - 16:43</span>        </div>
+        <div class="bubble">
+          <div class="who">syq<span class="time">15:43</span></div>
+          <div class="body">Claude Opus 4.6 / 4.7,我想知道中转站是否用了真正的 Claude 模型,有什么靠谱的测试方法吗</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Max<span class="time">15:42</span></div>
+          <div class="body">又看到一个对 opus 做掺水检查的网站 eagle.videogen.art/opus-detect</div>
+        </div>
+        <div class="bubble">
+          <div class="who">syq<span class="time">15:46</span></div>
+          <div class="body">原理是 Claude 4.7 支持极高分辨率图像理解,长边高达 2576 像素,廉价模型会强制降采样,细节彻底丢失</div>
+        </div>
+        <div class="bubble">
+          <div class="who">syq<span class="time">15:51</span></div>
+          <div class="body">答案测试了一下,靠谱的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">一歲抬頭<span class="time">16:35</span></div>
+          <div class="body">不是纯的 opus,后端换模型了吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">last weekend<span class="time">16:38</span></div>
+          <div class="body">给你掺点 Llama4 进去「旺柴」</div>
+        </div>
+        <div class="bubble">
+          <div class="who">lucky_<span class="time">16:38</span></div>
+          <div class="body">掺点 Qwen 进去</div>
+        </div>
+        <div class="bubble">
+          <div class="who">XX<span class="time">16:42</span></div>
+          <div class="body">mimo 这个活动「奸笑」,很多中转站的 4.6 也会掺入 mimo</div>
+        </div>
+<div class="commentary">AI 行业第一桩消费维权学:验真不靠官网认证,靠让模型读最大那张图——你跑得动 2576 像素你就是真神。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🏆</span>
+          <span class="title">影眸拿下 Lowe&#39;s 全球大单,顺带恭喜 NVIDIA</span>
+<span class="meta">12:10 - 12:32</span>        </div>
+        <div class="bubble">
+          <div class="who">琼慧啊<span class="time">12:10</span></div>
+          <div class="body">Lowe&#39;s(世界第二大家具建材零售巨头)选择 Hyper3D Rodin,完成了 30000+ SKU 的 3D 资产目录,耗时是 minutes,单个模型成本 &lt; $1</div>
+        </div>
+        <div class="bubble">
+          <div class="who">琼慧啊<span class="time">12:11</span></div>
+          <div class="body">我们和 NVIDIA 一起帮助 Lowe&#39;s 完成全球 1750+ 家门店的数字孪生,每月超过 1000000 用户线上逛店</div>
+        </div>
+        <div class="bubble">
+          <div class="who">壁花少年 bonjour<span class="time">12:13</span></div>
+          <div class="body">不顺带恭喜下 Lowe&#39;s 和 NVIDIA</div>
+        </div>
+        <div class="bubble">
+          <div class="who">牛牛酱<span class="time">12:13</span></div>
+          <div class="body">那我来错峰恭喜 NVIDIA</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Max means 刘德泽<span class="time">12:13</span></div>
+          <div class="body">那我来错峰恭喜 NVIDIA</div>
+        </div>
+        <div class="bubble">
+          <div class="who">琼慧啊<span class="time">12:15</span></div>
+          <div class="body">那我来官方祝贺一下 Nvidia,多亏了影眸 Deemos,才成功搞定了 CES 啊</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">12:16</span></div>
+          <div class="body">直接被黄老板点名了,太牛了</div>
+        </div>
+<div class="commentary">正常公关稿是「我们感谢 NVIDIA 提供了平台」,这群是「黄老板,这次该你感谢我了」——这才是 AGI 时代的甲乙方关系。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🎨</span>
+          <span class="title">少女阿原边做边 Eval:阿原.skill 把 GPT-5.5 调成趁手工具</span>
+<span class="meta">17:14 - 18:36</span>        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">17:21</span></div>
+          <div class="body">我宣布 gpt 5.5 还是完爆 figma make 了,一年了我的工作流终于有变动了,可以生图做参考之后再做前端</div>
+        </div>
+        <div class="bubble">
+          <div class="who">牛牛酱<span class="time">17:25</span></div>
+          <div class="body">我立刻偷学阿原.skill</div>
+        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">17:27</span></div>
+          <div class="body">我真的在整理阿原.skill,目前测试数据确实提升一大截</div>
+        </div>
+        <div class="bubble">
+          <div class="who">牛牛酱<span class="time">17:33</span></div>
+          <div class="body">原老师已经摸到了 skill 开发的精髓:边做边 Eval,做之前就开个 Eval,比有无 skill 的区别</div>
+        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">17:34</span></div>
+          <div class="body">俺是模型策略产品出身的,这套逻辑在算法迭代里很成熟</div>
+        </div>
+        <div class="bubble">
+          <div class="who">牛牛酱<span class="time">17:35</span></div>
+          <div class="body">管理学第一句话就是,没有目标就没有管理</div>
+        </div>
+        <div class="bubble">
+          <div class="who">少女阿原<span class="time">18:33</span></div>
+          <div class="body">我准备把投票页面做成纯白的,不抢色,这样能保持公正</div>
+        </div>
+        <div class="bubble">
+          <div class="who">程建都<span class="time">20:19</span></div>
+          <div class="body">想象不出来,就一定做不出来。审美和品味是真护城河</div>
+        </div>
+<div class="commentary">AI 世界的护城河越挖越深——别人卷模型,她直接卷 Eval 集。Skill 不是工具,是产品策略;阿原.skill 还没发,群里已经在排队偷师。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🍲</span>
+          <span class="title">顺德美食 vs 北京苦日子:大聪明的思乡曲</span>
+<span class="meta">19:11 - 20:08</span>        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">19:13</span></div>
+          <div class="body">杭州的 AI 生态好棒,但是饭难吃啊「旺柴」</div>
+        </div>
+        <div class="bubble">
+          <div class="who">大聪明 宋德<span class="time">19:43</span></div>
+          <div class="body">生活费也低,还好吃</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">19:44</span></div>
+          <div class="body">但是顺德的网约车很叼,会不来接你 还骂你</div>
+        </div>
+        <div class="bubble">
+          <div class="who">大聪明 宋德<span class="time">19:45</span></div>
+          <div class="body">就想想他喵的,我在北京这过的是什么日子? 气候不好,吃的也不好</div>
+        </div>
+        <div class="bubble">
+          <div class="who">社恐患者杨老师<span class="time">19:50</span></div>
+          <div class="body">我刚刚去吃完啫火,两个人 148 吃到撑,顺德的砂锅蒸菜太好吃了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Klaus<span class="time">20:04</span></div>
+          <div class="body">惠州不行「苦涩」基建很差,惠州的房价甚至和我老家十八线县城差不多了</div>
+        </div>
+<div class="commentary">AI 群最深刻的城市鄙视链不在融资规模,而在午饭好不好吃——顺德人的最大反 AI 武器是一锅啫啫煲。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🎵</span>
+          <span class="title">灯下白入驻腾讯,吴熳Rosia 当场赋诗一首</span>
+<span class="meta">11:21 - 19:56</span>        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">11:22</span></div>
+          <div class="body">灯下白真的在小宇宙的推荐页里被推荐了,腾讯科技的运营来找我了,以后会入驻腾讯新闻 APP 播客频道,各种车载设备上面就能听到</div>
+        </div>
+        <div class="bubble">
+          <div class="who">许珏<span class="time">11:23</span></div>
+          <div class="body">这就是坚持的力量吧</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Elliot Bai<span class="time">11:23</span></div>
+          <div class="body">太棒了熳熳老师,我一定要去北京找你!</div>
+        </div>
+        <div class="bubble">
+          <div class="who">南乔<span class="time">11:32</span></div>
+          <div class="body">感觉吴熳录播客不太需要剪辑,资深教师的表达修养,很见功底</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">19:54</span></div>
+          <div class="body">《每个 AI 博主的梦想》——我遇见谁 为我解锁全套餐,我等的人 何时缓步向我来,我刷遍圈 各家模型新招牌,我盼着谁 包揽所有会员牌</div>
+        </div>
+        <div class="bubble">
+          <div class="who">吴熳Rosia<span class="time">19:54</span></div>
+          <div class="body">我往前翻 飘过一片付费海,我看账单 useage 有点快,我遇见你 全包付费成意外,总有一天 全系会员全都开</div>
+        </div>
+<div class="commentary">前一秒还在群里骂 Claude 渣男,后一秒就唱起 AI 博主版《遇见》——果然每个 AI 博主心里都住着一个孙燕姿,被订阅账单逼出来的。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「那我来错峰恭喜 NVIDIA」</div>
+        <div class="voicers">牛牛酱 · Max means 刘德泽 · 琼慧啊 · 3 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">模型<small>·47</small></span>
+        <span class="chip hot">一个<small>·34</small></span>
+        <span class="chip hot">这个<small>·34</small></span>
+        <span class="chip ">可以<small>·22</small></span>
+        <span class="chip ">中转站<small>·19</small></span>
+        <span class="chip ">还是<small>·17</small></span>
+        <span class="chip ">感觉<small>·17</small></span>
+        <span class="chip ">Claude<small>·16</small></span>
+        <span class="chip ">问题<small>·16</small></span>
+        <span class="chip ">没有<small>·16</small></span>
+        <span class="chip ">一下<small>·15</small></span>
+        <span class="chip ">就是<small>·15</small></span>
+        <span class="chip ">AI<small>·13</small></span>
+        <span class="chip ">codex<small>·13</small></span>
+        <span class="chip ">现在<small>·13</small></span>
+        <span class="chip ">很多<small>·13</small></span>
+        <span class="chip ">自己<small>·13</small></span>
+        <span class="chip ">使用<small>·13</small></span>
+        <span class="chip ">4.7<small>·13</small></span>
+        <span class="chip ">不是<small>·12</small></span>
+        <span class="chip ">还有<small>·12</small></span>
+        <span class="chip ">但是<small>·12</small></span>
+        <span class="chip ">前端<small>·12</small></span>
+        <span class="chip ">测试<small>·12</small></span>
+        <span class="chip ">什么<small>·11</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">Mario</div>
+          <div class="reason">早 10 点开工,5 小时 token 烧光,坐等 3 点新窗口续命,只为调一个 codex 页面细节</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">牛牛酱</div>
+          <div class="reason">一句「有多少人工就有多少智能」+ 一句「没有目标就没有管理」,Skill 开发直接打到地基</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">大聪明 宋德</div>
+          <div class="reason">「想想他喵的,我在北京这过的是什么日子? 气候不好,吃的也不好」——把无数北漂的心声替咽了</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">琼慧啊</div>
+          <div class="reason">上午 Hyper3D 拿下 Lowe&#39;s 30000 SKU + 1750 门店数字孪生,下午官方反向感谢黄老板,这波是被 NVIDIA 蹭名了</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">吴熳Rosia</div>
+          <div class="reason">我天天在群里骂 Claude 渣男,真没骂错啊——但是我是一定会继续买的</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-哥飞的朋友们7">
+    <div class="group-head">
+      <div class="name">哥飞的朋友们⑦</div>
+      <div class="meta">
+          <span>64 条消息</span> ·
+          <span>21 人</span> ·
+          <span>08:16 至 23:44</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">哥飞</div>
+          <div class="quote">每一篇博文脉络结构相同，就算模板。</div>
+        </div>
+        <div class="row">
+          <div class="who">Sinan</div>
+          <div class="quote">copilot 的好日子结束了。</div>
+        </div>
+        <div class="row">
+          <div class="who">Sinan</div>
+          <div class="quote">本来每个月 40 刀相当于 2000 刀的用量。</div>
+        </div>
+        <div class="row">
+          <div class="who">毛海山Sam</div>
+          <div class="quote">GPT 最多只掉会员不封号。</div>
+        </div>
+        <div class="row">
+          <div class="who">CoCo AI 谨俞</div>
+          <div class="quote">image2+seedance2.0 的天下。</div>
+        </div>
+        <div class="row">
+          <div class="who">Erwa</div>
+          <div class="quote">半个小时就能改好上线，这种算模板吗？</div>
+        </div>
+        <div class="row">
+          <div class="who">郝永刚</div>
+          <div class="quote">不会吧，苹果先扣税的。</div>
+        </div>
+        <div class="row">
+          <div class="who">哥飞</div>
+          <div class="quote">用 ShipAny 用的是骨架，皮可以任意修改。</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">哥飞</div>
+          <div class="cnt">11 条</div>
+<div class="common">大家 / 直播 / 核心 / 模板</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">Sinan</div>
+          <div class="cnt">10 条</div>
+<div class="common">用量 / 够用 / copilot / PayPal</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">刘辉</div>
+          <div class="cnt">6 条</div>
+<div class="common">Youtube / 感谢 / 问题 / 请教</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">哥飞 · 08:17 · <em>回放</em></div>
+          <div class="title">丁律师 × 彪哥 × 树哥 × 哥飞 直播连麦回放</div>
+<div class="desc">回答大家最好奇的那些出海创业问题，Penny 听完说补了心力。</div>          <ul class="points">
+<li>飞哥踩过的坑</li><li>出海创业 Q&amp;A</li><li>心力补给</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">老荀 · 17:30 · <em>工具</em></div>
+          <div class="title">AITDK</div>
+<div class="desc">在谷歌搜索结果每个条目下直接看到流量数据的浏览器插件。</div>          <ul class="points">
+<li>谷歌 SERP 流量速查</li><li>几个大写字母名字</li><li>CC 找了半天的就是它</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">哥飞 · 12:47 · <em>推荐</em></div>
+          <div class="title">GPT Image 2</div>
+<div class="desc">生图能力真的很强，群友补充：image2+seedance2.0 的天下。</div>          <ul class="points">
+<li>生图能力升级</li><li>找使用场景</li><li>搭配 seedance 2.0</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">哥飞 · 23:22 · <em>解读</em></div>
+          <div class="title">Claude × 哥飞：3 月底 4 月初谷歌核心算法更新解读</div>
+<div class="desc">重点划在「scaled content abuse」上——只换关键词不换结构等于规模化内容滥用。</div>          <ul class="points">
+<li>不再区分人写还是 AI 写</li><li>结构雷同 + 关键词替换 = 滥用</li><li>骨架 ≠ 模板</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📺</span>
+          <span class="title">飞哥连麦回放上岗</span>
+<span class="meta">08:17 - 11:00</span>        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">08:17</span></div>
+          <div class="body">前几天丁律师邀请到彪哥、树哥和我直播聊聊天，回放出来了，感兴趣可以听一听。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Penny<span class="time">09:02</span></div>
+          <div class="body">已经听了，很好地补充了心力。飞哥分享的自己踩过的坑，也很有启发。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">陈慧_Vera<span class="time">09:07</span></div>
+          <div class="body">[强][强]感谢分享。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">刘辉<span class="time">10:55</span></div>
+          <div class="body">[强][强]感谢分享。</div>
+        </div>
+<div class="commentary">回放还没听完，群里的「感谢分享」已经先发完了——出海圈的礼仪是肌肉记忆。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">苹果打钱税务惊魂</span>
+<span class="meta">11:05 - 11:07</span>        </div>
+        <div class="bubble">
+          <div class="who">郑小强<span class="time">11:05</span></div>
+          <div class="body">请教一下，苹果 App Store 打到银行卡的钱会涉及税务问题么？一直没关注过，担心哪天被请去喝茶。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">郝永刚<span class="time">11:06</span></div>
+          <div class="body">不会吧，苹果先扣税的。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">郑小强<span class="time">11:07</span></div>
+          <div class="body">哦。</div>
+        </div>
+<div class="commentary">「哦」字背后是松了半口气还有半口气没敢松——独立开发者的财务知识全靠群里随机抽查。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔍</span>
+          <span class="title">YouTube 来了流量却找不到爹</span>
+<span class="meta">11:19 - 11:27</span>        </div>
+        <div class="bubble">
+          <div class="who">刘辉<span class="time">11:19</span></div>
+          <div class="body">突然发现从 YouTube 来了一点点流量，没投广告也没找网红，想知道是从哪个页面来的，有办法吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">老荀<span class="time">11:20</span></div>
+          <div class="body">搜下外链？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">刘辉<span class="time">11:22</span></div>
+          <div class="body">Vercel 日志里只带了域名，没有具体 URL；Ahrefs 抓取又没这么快。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">又在放鞭炮<span class="time">11:25</span></div>
+          <div class="body">site:youtube.com 「x.ai」这样搜得到吗，可能评论区或者简介里有人提到。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">刘辉<span class="time">11:27</span></div>
+          <div class="body">也有可能，我就是想看看哪些评论区可以留言，这样看起来很划算。</div>
+        </div>
+<div class="commentary">免费来的流量找到了源头就成了下一个流量入口——白嫖的尽头是反向白嫖。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💔</span>
+          <span class="title">Copilot 时代闭幕</span>
+<span class="meta">17:04 - 17:08</span>        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:04</span></div>
+          <div class="body">大家现在都是用的什么用量套餐？我之前一直用 GitHub 的 copilot，从 6 月开始也要废了，准备换。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Yark<span class="time">17:05</span></div>
+          <div class="body">现在 gpt 5.5 体验还不错。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:06</span></div>
+          <div class="body">codex 的话，plus 够用吗？还是必须上 pro 了。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Yark<span class="time">17:07</span></div>
+          <div class="body">100 刀的版本吧。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:08</span></div>
+          <div class="body">copilot 的好日子结束了。本来每个月 40 刀相当于 2000 刀的用量。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Danter<span class="time">17:08</span></div>
+          <div class="body">看使用频率，低频是够的。</div>
+        </div>
+<div class="commentary">用 40 块薅 2000 块的羊毛，薅了一年半你以为这是常态——其实那叫融资烧钱补贴你。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">😰</span>
+          <span class="title">PayPal 开 GPT 会员封号惊魂</span>
+<span class="meta">17:13 - 17:22</span>        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:13</span></div>
+          <div class="body">GPT 用 PayPal 开会员不会被封号吧？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">毛海山Sam<span class="time">17:14</span></div>
+          <div class="body">GPT 最多只掉会员不封号。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Zc、桀<span class="time">17:15</span></div>
+          <div class="body">用 PayPal 开会员会有风险的咩[发呆]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:18</span></div>
+          <div class="body">主要 PayPal 是中国账号。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">布衣<span class="time">17:20</span></div>
+          <div class="body">GPT 只要支付没啥问题，很少封号。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">睡觉想飞 🥒<span class="time">17:21</span></div>
+          <div class="body">只要不是去白嫖免费一个月、团队账号那种活动，很少封的。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Sinan<span class="time">17:22</span></div>
+          <div class="body">okk。</div>
+        </div>
+<div class="commentary">群友给的安全感配方：不白嫖 + 不蹭团队 + 接受可能掉会员，三管齐下心脏才不会被封。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔨</span>
+          <span class="title">模板与骨架的灵魂拷问</span>
+<span class="meta">23:22 - 23:44</span>        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">23:22</span></div>
+          <div class="body">在 Claude 配合下，我给大家解读了一下这次 3 月底 4 月初的谷歌核心算法更新。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">laiqun🇨🇳<span class="time">23:39</span></div>
+          <div class="body">Google 不再区分是 AI 写还是人按模板写，只要结构高度雷同、只是关键词替换，一律按 scaled content abuse 处理。那 ShipAny、mksaas 是不是也算模板？[捂脸]</div>
+        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">23:41</span></div>
+          <div class="body">你没理解内容模板和框架的区别。用 ShipAny 是用他的骨架、核心功能，皮可以任意修改，这种不属于模板。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Erwa<span class="time">23:42</span></div>
+          <div class="body">很多人做小游戏站都这样吧——做好一套模板，新游戏来了快速替换内容，半小时就能改好上线，这种算模板吗？</div>
+        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">23:43</span></div>
+          <div class="body">有些算的，有些不算。你每一篇博文的脉络结构如果相同，就算。</div>
+        </div>
+        <div class="bubble">
+          <div class="who">laiqun🇨🇳<span class="time">23:44</span></div>
+          <div class="body">嗯嗯，谢谢飞哥解惑。</div>
+        </div>
+<div class="commentary">判定模板的尺子从来不是「用没用脚手架」，是「换皮换得有没有灵魂」——抄结构是滥用，抄骨架是站队。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「感谢分享」</div>
+        <div class="voicers">陈慧_Vera · 刘辉 · CC · 3 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">大家<small>·6</small></span>
+        <span class="chip hot">可以<small>·6</small></span>
+        <span class="chip hot">模板<small>·6</small></span>
+        <span class="chip hot">问题<small>·4</small></span>
+        <span class="chip hot">感谢<small>·4</small></span>
+        <span class="chip hot">没有<small>·4</small></span>
+        <span class="chip hot">GPT<small>·4</small></span>
+        <span class="chip hot">现在<small>·3</small></span>
+        <span class="chip hot">一下<small>·3</small></span>
+        <span class="chip hot">一个<small>·3</small></span>
+        <span class="chip hot">这样<small>·3</small></span>
+        <span class="chip hot">看看<small>·3</small></span>
+        <span class="chip hot">之前<small>·3</small></span>
+        <span class="chip hot">会员<small>·3</small></span>
+        <span class="chip hot">封号<small>·3</small></span>
+        <span class="chip hot">只要<small>·3</small></span>
+        <span class="chip hot">这种<small>·3</small></span>
+        <span class="chip ">直播<small>·2</small></span>
+        <span class="chip ">一些<small>·2</small></span>
+        <span class="chip ">飞哥<small>·2</small></span>
+        <span class="chip ">请教<small>·2</small></span>
+        <span class="chip ">苹果<small>·2</small></span>
+        <span class="chip ">一直<small>·2</small></span>
+        <span class="chip ">不会<small>·2</small></span>
+        <span class="chip ">Youtube<small>·2</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">哥飞</div>
+          <div class="reason">23:44 还在群里手把手教你区分骨架和模板，熬夜冠军实至名归。</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">毛海山Sam</div>
+          <div class="reason">一句「最多只掉会员不封号」精准缓解 Sinan 的 PayPal 焦虑。</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">Sinan</div>
+          <div class="reason">「本来每个月 40 刀相当于 2000 刀的用量」——独立开发者的羊毛挽歌。</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">laiqun🇨🇳</div>
+          <div class="reason">一个捂脸表情把 ShipAny、mksaas 集体送上灵魂拷问的审判席。</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">哥飞</div>
+          <div class="reason">你每一篇博文的脉络结构如果相同，就算。</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="group " id="g-哥飞的朋友们11">
+    <div class="group-head">
+      <div class="name">哥飞的朋友们⑪</div>
+      <div class="meta">
+          <span>98 条消息</span> ·
+          <span>23 人</span> ·
+          <span>00:43 至 23:22</span>
+      </div>
+    </div>
+
+
+      <div class="section-title"><span class="emoji">🔥</span><span>快捷事件</span><span class="sub">今天群里说了啥</span></div>
+      <div class="quotes">
+        <div class="row">
+          <div class="who">::</div>
+          <div class="quote">「能被 stripe 风控拦住的, 肯定都是有问题的吧」</div>
+        </div>
+        <div class="row">
+          <div class="who">👸🏻小淑女✨</div>
+          <div class="quote">「封了就没了啊, 20 美金算啥, 现在都每个月几百美金的订阅」</div>
+        </div>
+        <div class="row">
+          <div class="who">::</div>
+          <div class="quote">「我这里一半用户都是想涉黄的, 正经用户没几个」</div>
+        </div>
+        <div class="row">
+          <div class="who">唐唐</div>
+          <div class="quote">「ip 不好的话, 上号就封了, 基本没有解封可能」</div>
+        </div>
+        <div class="row">
+          <div class="who">燚</div>
+          <div class="quote">「让 deepseek 教你写英文申诉邮件, 第二天就能恢复」</div>
+        </div>
+        <div class="row">
+          <div class="who">DK</div>
+          <div class="quote">「我想要免费的, 或者极致低价的」</div>
+        </div>
+        <div class="row">
+          <div class="who">秋风扫落枼</div>
+          <div class="quote">「发件容易被丢垃圾桶」</div>
+        </div>
+        <div class="row">
+          <div class="who">TONG</div>
+          <div class="quote">「自建需要大量配置且容易被列入黑名单」</div>
+        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🏆</span><span>龙王榜</span><span class="sub">话痨 TOP 3</span></div>
+      <div class="ranking">
+        <div class="seat gold">
+          <div class="medal">🥇</div>
+          <div class="name">xcrossed</div>
+          <div class="cnt">23 条</div>
+<div class="common">这么 / to / in / this</div>        </div>
+        <div class="seat silver">
+          <div class="medal">🥈</div>
+          <div class="name">DK</div>
+          <div class="cnt">18 条</div>
+<div class="common">邮件 / 自己 / 提供 / 域名</div>        </div>
+        <div class="seat bronze">
+          <div class="medal">🥉</div>
+          <div class="name">Grey</div>
+          <div class="cnt">12 条</div>
+<div class="common">哥飞 / 旺柴 / chat / 下线</div>        </div>
+      </div>
+
+      <div class="section-title"><span class="emoji">🔗</span><span>资源分享</span></div>
+      <div class="resources">
+        <div class="res">
+          <div class="meta">哥飞 · 08:17 · <em>直播回放</em></div>
+          <div class="title">丁律师 × 彪哥 × 树哥 × 哥飞 出海闲聊直播</div>
+<div class="desc">丁律师组的局, 四个人在直播里回答大家关心的出海问题, 已出回放</div>          <ul class="points">
+<li>合规视角</li><li>出海老人现身说法</li><li>回答常见好奇心问题</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">Grey · 17:53 · <em>工具</em></div>
+          <div class="title">Cloudflare 5 刀邮箱套餐 (域名邮箱发件)</div>
+<div class="desc">Cloudflare 邮件路由功能升级, 5 刀套餐已经开放发件, 不再仅限收件</div><div class="url">https://new.web.cafe/topic/78j51kfmel</div>          <ul class="points">
+<li>每月 5 美金</li><li>支持发件</li><li>适合轻量域名邮箱场景</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">DK · 17:42 · <em>服务</em></div>
+          <div class="title">DK 自研域名邮件 API 服务</div>
+<div class="desc">DK 自己写给 agent 用的邮件系统, 支持程序接入 API, 一年 100 块起 10 个站</div>          <ul class="points">
+<li>一年 100 元 10 站</li><li>增站每个 10 元</li><li>API 化收发</li><li>自带界面</li>          </ul>
+        </div>
+        <div class="res">
+          <div class="meta">哥飞 · 23:22 · <em>解读</em></div>
+          <div class="title">Claude 协同解读 · 谷歌 3 月底 4 月初核心算法更新</div>
+<div class="desc">哥飞用 Claude 把这次谷歌核心算法更新拆开讲了一遍, 适合做 SEO 站群的复盘</div>          <ul class="points">
+<li>核心算法更新</li><li>Claude 辅助分析</li><li>SEO 站长必看</li>          </ul>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💳</span>
+          <span class="title">凌晨 Stripe 哲学问答: 6 小时后被一个字怼回</span>
+<span class="meta">00:43 - 06:39</span>        </div>
+        <div class="bubble">
+          <div class="who">::<span class="time">00:43</span></div>
+          <div class="body">能被 stripe 风控拦住的, 是不是肯定都是有问题的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">黄八宝<span class="time">06:39</span></div>
+          <div class="body">是</div>
+        </div>
+<div class="commentary">深夜灵魂拷问 + 早高峰一字回复, 出海圈的极简对话美学被这俩人拿捏了。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🔞</span>
+          <span class="title">GPT Image 2 上线第一天: 一半用户先来试 NSFW</span>
+<span class="meta">12:47 - 13:03</span>        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">12:47</span></div>
+          <div class="body">GPT Image 2 生图能力真的很强, 大家可以找找使用场景了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">煜烽<span class="time">12:51</span></div>
+          <div class="body">好莱坞大片!</div>
+        </div>
+        <div class="bubble">
+          <div class="who">::<span class="time">12:58</span></div>
+          <div class="body">我这里用 GPT Image 2 一半都是想涉黄的, 还好都挡住了, 正经用户没几个</div>
+        </div>
+        <div class="bubble">
+          <div class="who">xcrossed<span class="time">13:00</span></div>
+          <div class="body">这么夸张</div>
+        </div>
+        <div class="bubble">
+          <div class="who">::<span class="time">13:01</span></div>
+          <div class="body">是的, 很多第一时间都是试一试你这个能不能生成 nsfw 的图片</div>
+        </div>
+        <div class="bubble">
+          <div class="who">青竹<span class="time">13:03</span></div>
+          <div class="body">是模型自己挡住了还是接了 nsfw filter</div>
+        </div>
+<div class="commentary">工具刚出来, 用户的第一反应永远比模型诚实——人性永远抢在产品经理之前到达赛博色情现场。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">💸</span>
+          <span class="title">20 美金的 Gemini CLI 葬礼: xcrossed 的封号哀嚎之夜</span>
+<span class="meta">14:34 - 16:16</span>        </div>
+        <div class="bubble">
+          <div class="who">xcrossed<span class="time">14:34</span></div>
+          <div class="body">gemini cli 被封了, 我刚买的 google ai pro 会员, 这么狠么, 我的 20 美金</div>
+        </div>
+        <div class="bubble">
+          <div class="who">唐唐<span class="time">14:35</span></div>
+          <div class="body">ip 不好的话, 上号就封了, 而且基本上没有解封可能</div>
+        </div>
+        <div class="bubble">
+          <div class="who">👸🏻小淑女✨<span class="time">14:40</span></div>
+          <div class="body">封了就没了啊, 20 美金算啥, 现在都每个月几百美金的订阅</div>
+        </div>
+        <div class="bubble">
+          <div class="who">燚<span class="time">15:53</span></div>
+          <div class="body">让 deepseek 教你写英文申诉邮件, 第二天就能恢复</div>
+        </div>
+        <div class="bubble">
+          <div class="who">智昊｜回家吃饭<span class="time">16:11</span></div>
+          <div class="body">你贴给 gemini 问他怎么办</div>
+        </div>
+        <div class="bubble">
+          <div class="who">xcrossed<span class="time">16:16</span></div>
+          <div class="body">gemini 乱答一通</div>
+        </div>
+<div class="commentary">让被封的 Gemini 自己教你怎么申诉, 完美闭环——这就是赛博莫比乌斯环。20 美金不是学费, 是给 AI 时代交的入场税。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">📧</span>
+          <span class="title">域名邮箱内卷之夜: DK 还没卖完就被 Cloudflare 5 刀截胡</span>
+<span class="meta">17:39 - 18:01</span>        </div>
+        <div class="bubble">
+          <div class="who">独孤风<span class="time">17:39</span></div>
+          <div class="body">个人简介外链每次注册都要一个邮箱, 每个站都要准备一个吗, 有没有好注册的邮箱推荐</div>
+        </div>
+        <div class="bubble">
+          <div class="who">DK<span class="time">17:42</span></div>
+          <div class="body">我有解决方案, 一年 100 块起十个站, 后面每加一个 10 块, 一个账号收所有邮件</div>
+        </div>
+        <div class="bubble">
+          <div class="who">xcrossed<span class="time">17:43</span></div>
+          <div class="body">cloudflare mail routine 服务</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Grey<span class="time">17:51</span></div>
+          <div class="body">Cloudflare 发件可以了, 最近几周才出现的功能, 5 刀套餐就行</div>
+        </div>
+        <div class="bubble">
+          <div class="who">DK<span class="time">17:54</span></div>
+          <div class="body">我想要免费的, 或者极致低价的</div>
+        </div>
+        <div class="bubble">
+          <div class="who">秋风扫落枼<span class="time">17:55</span></div>
+          <div class="body">发件容易被丢垃圾桶, 正确方案是亚马逊 SES 的发件</div>
+        </div>
+        <div class="bubble">
+          <div class="who">TONG<span class="time">17:55</span></div>
+          <div class="body">自建需要大量配置且容易被列入黑名单</div>
+        </div>
+        <div class="bubble">
+          <div class="who">DK<span class="time">18:01</span></div>
+          <div class="body">Ip 的干净程度需要自己管理, 不要大量发送垃圾邮件就没问题</div>
+        </div>
+<div class="commentary">群里实时上演了一场 SaaS 竞品分析: DK 上来推销自家 API, 8 分钟后就被 Cloudflare 5 刀方案 + 亚马逊 SES 围剿——出海圈的速度, 卖货之前先做完市场调研。</div>      </div>
+      <div class="story">
+        <div class="story-head">
+          <span class="emoji">🧠</span>
+          <span class="title">哥飞夜话: 早上发直播回放, 深夜还在解读谷歌算法</span>
+<span class="meta">08:17 - 23:22</span>        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">08:17</span></div>
+          <div class="body">前几天丁律师邀请彪哥、树哥和我直播聊聊天, 现在回放出来了, 感兴趣的可以听</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Grey<span class="time">10:20</span></div>
+          <div class="body">哥飞 chat 怎么下线了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">10:20</span></div>
+          <div class="body">是你的登录没了, 重新登录下</div>
+        </div>
+        <div class="bubble">
+          <div class="who">Grey<span class="time">10:21</span></div>
+          <div class="body">ok 清下浏览器缓存可以了</div>
+        </div>
+        <div class="bubble">
+          <div class="who">哥飞<span class="time">23:22</span></div>
+          <div class="body">在 Claude 的配合下, 我给大家解读了一下这次 3 月底 4 月初的谷歌核心算法更新</div>
+        </div>
+<div class="commentary">早上 8 点发回放, 23 点还在发算法解读, 群主营业 15 小时不打烊——SEO 圈的卷王不是 xcrossed, 是哥飞本飞。</div>      </div>
+
+      <div class="section-title"><span class="emoji">💪</span><span>群体复读</span></div>
+      <div class="echo">
+        <div class="quote">「「我的 20 美金…」」</div>
+        <div class="voicers">xcrossed · 👸🏻小淑女✨ · 燚 · 4 人接力</div>
+      </div>
+
+      <div class="section-title"><span class="emoji">☁️</span><span>关键词</span></div>
+      <div class="cloud">
+        <span class="chip hot">邮箱<small>·7</small></span>
+        <span class="chip hot">可以<small>·6</small></span>
+        <span class="chip hot">邮件<small>·6</small></span>
+        <span class="chip hot">自己<small>·5</small></span>
+        <span class="chip hot">gemini<small>·5</small></span>
+        <span class="chip hot">申诉<small>·5</small></span>
+        <span class="chip hot">一个<small>·5</small></span>
+        <span class="chip hot">问题<small>·4</small></span>
+        <span class="chip hot">大家<small>·4</small></span>
+        <span class="chip hot">现在<small>·4</small></span>
+        <span class="chip ">哥飞<small>·3</small></span>
+        <span class="chip ">怎么<small>·3</small></span>
+        <span class="chip ">登录<small>·3</small></span>
+        <span class="chip ">这个<small>·3</small></span>
+        <span class="chip ">美金<small>·3</small></span>
+        <span class="chip ">每个<small>·3</small></span>
+        <span class="chip ">注册<small>·3</small></span>
+        <span class="chip ">域名<small>·3</small></span>
+        <span class="chip ">或者<small>·3</small></span>
+        <span class="chip ">大量<small>·3</small></span>
+        <span class="chip ">直播<small>·2</small></span>
+        <span class="chip ">GPT<small>·2</small></span>
+        <span class="chip ">Image<small>·2</small></span>
+        <span class="chip ">这里<small>·2</small></span>
+        <span class="chip ">挡住<small>·2</small></span>
+      </div>
+
+      <div class="section-title"><span class="emoji">📊</span><span>今日总结</span></div>
+      <div class="awards">
+        <div class="row">
+          <div class="label">最卷的人</div>
+          <div class="winner">DK</div>
+          <div class="reason">半夜在群里推销自研域名邮件 SaaS, 一年 100 块 10 站起卖, 还没等用户问就把 API 报价表甩出来了</div>
+        </div>
+        <div class="row">
+          <div class="label">最清醒的人</div>
+          <div class="winner">👸🏻小淑女✨</div>
+          <div class="reason">一句「20 美金算啥, 现在都每个月几百美金的订阅」, 直接给所有 AI 创业者的成本焦虑做了心理按摩</div>
+        </div>
+        <div class="row">
+          <div class="label">最扎心的人</div>
+          <div class="winner">唐唐</div>
+          <div class="reason">对 xcrossed 的 Gemini 封号说出「上号就封了, 基本没有解封可能」, 5 秒就把人家的希望按死了</div>
+        </div>
+        <div class="row">
+          <div class="label">最佳黑马</div>
+          <div class="winner">燚</div>
+          <div class="reason">申诉学大师上线: 「让 deepseek 教你写英文申诉邮件, 第二天就能恢复」, 用一个 AI 去救另一个 AI</div>
+        </div>
+        <div class="row">
+          <div class="label">今日金句</div>
+          <div class="winner">::</div>
+          <div class="reason">「我这里用 GPT Image 2 一半都是想涉黄的, 还好都挡住了, 正经用户没几个」</div>
+        </div>
+      </div>
+
+  </div>
+
+</div>
+
+<footer>
+  生成于 2026-05-02 21:23 · 数据源 wx-cli + Claude<br>
+  <a href="../">← 回到日历</a> ·
+  <a href="https://github.com/siuserxiaowei/wechat-obsidian-pipeline">源码</a><br>
+  by Claudian × Obsidian
+</footer>
+
+<script>
+  // 高亮当前 nav
+  const sections = document.querySelectorAll('.group');
+  const navLinks = document.querySelectorAll('.nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

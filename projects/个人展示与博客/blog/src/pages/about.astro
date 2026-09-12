@@ -1,0 +1,323 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const focusAreas = [
+  { tag: '01', label: 'AI 与自动化产品' },
+  { tag: '02', label: '产品工程与工具化' },
+  { tag: '03', label: '学习系统与公开构建' },
+  { tag: '04', label: '长期主义下的个人工作台' }
+];
+---
+
+<BaseLayout title="关于 · siuser小伟" description="关于 siuser小伟，以及这个网站为什么会长成现在这样。">
+  <Header />
+
+  <main class="flex-1">
+
+    <!-- Hero -->
+    <section class="mx-auto px-6 pt-32 pb-14 md:pt-40 md:pb-20" style="max-width: var(--container-max);">
+      <div class="about-hero">
+        <div class="scroll-reveal about-hero-copy">
+          <p class="section-kicker">About</p>
+          <h1>关于我，<br/>也关于这个网站<br/>为什么长成这样。</h1>
+          <p class="about-lede">
+            这里不是一页信息堆出来的个人介绍。<br/>
+            我把关心的问题、正在做的事情、持续形成的判断，<br/>
+            整理成一个长期运行的工作台。
+          </p>
+        </div>
+
+        <aside class="scroll-reveal surface-card gradient-border about-focus">
+          <p class="section-kicker">Current Focus</p>
+          <div class="about-focus-list">
+            {focusAreas.map((item) => (
+              <div class="about-focus-row">
+                <span>{item.tag}</span>
+                <p>{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Narrative -->
+    <section class="mx-auto px-6 pb-16 md:pb-20" style="max-width: var(--container-max);">
+      <article class="scroll-reveal about-story">
+        <p class="section-kicker">Narrative</p>
+        <div class="story-copy">
+          <p>我是 siuser小伟。独立开发者，AI 语音机器人方案商，也在持续做一些自己用、也能给别人用的小产品。</p>
+          <p>
+            早些年在无锡做制造业咨询，见过工厂一线怎么算账、怎么走政策。后来转到技术方向，发现好产品总是来自「真的有人在用、真的有问题要解决」。
+            现在这个网站就是我把判断、实验和正在做的东西整理出来的地方——先让自己能高效运转，再让来的人能快速进入。
+          </p>
+          <p>
+            关注方向是 AI 产品、自动化、内容工具、学习系统这几个交叉地带。写东西的时候优先记录真实进展，做工具的时候优先解决高频动作，推项目的时候优先让它公开可见。
+          </p>
+        </div>
+
+        <div class="story-pillars">
+          <div class="story-pillar">
+            <span>Write</span>
+            <p>把判断写成可被引用的日志，不是自我介绍。</p>
+          </div>
+          <div class="story-pillar">
+            <span>Build</span>
+            <p>重复动作沉淀成浏览器内的工具，少记少搜。</p>
+          </div>
+          <div class="story-pillar">
+            <span>Ship</span>
+            <p>公开推进的项目和比赛雷达，用外部约束逼迭代。</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Contact -->
+    <section class="mx-auto px-6 pb-24" style="max-width: var(--container-max);">
+      <div class="scroll-reveal surface-card gradient-border contact-card">
+        <div class="contact-lead">
+          <p class="section-kicker">Contact</p>
+          <h2>如果你在做类似方向，<br/>欢迎直接找我。</h2>
+          <p class="contact-copy">AI、自动化、内容产品、学习工具这些方向都可以聊。希望结识一起做东西的人，而不是交换名片。</p>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://github.com/siuserxiaowei" target="_blank" rel="noopener">
+            <span>GitHub</span>
+            <em>@siuserxiaowei</em>
+          </a>
+          <a href="mailto:hi@siuserxiaowei.com">
+            <span>Email</span>
+            <em>hi@siuserxiaowei.com</em>
+          </a>
+          <a href="/rss.xml">
+            <span>RSS</span>
+            <em>订阅更新</em>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-hero h1 {
+    margin-top: 1rem;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.22;
+    letter-spacing: -0.004em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  .about-lede {
+    max-width: 44rem;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+    line-height: 1.8;
+  }
+
+  .about-focus {
+    padding: 1.35rem;
+    border-radius: 28px;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .about-focus-list {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .about-focus-row {
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: baseline;
+    padding: 0.8rem 0;
+    border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  }
+
+  .about-focus-row:first-child {
+    border-top: none;
+    padding-top: 0.25rem;
+  }
+
+  .about-focus-row span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .about-focus-row p {
+    color: var(--text);
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .about-story {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .story-copy {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .story-copy p {
+    color: var(--text);
+    font-size: 1.02rem;
+    line-height: 1.95;
+    text-wrap: pretty;
+  }
+
+  .story-copy p:first-child {
+    color: var(--text);
+    font-size: 1.22rem;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+  }
+
+  .story-pillars {
+    display: grid;
+    gap: 1.1rem;
+    margin-top: 2.3rem;
+  }
+
+  .story-pillar {
+    padding-left: 1rem;
+    border-left: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--border));
+  }
+
+  .story-pillar span {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .story-pillar p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.7fr);
+    gap: 3rem;
+    padding: 2.5rem 2rem;
+    border-radius: 28px;
+  }
+
+  .contact-lead h2 {
+    margin-top: 0.35rem;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    line-height: 1.22;
+    letter-spacing: -0.004em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  .contact-copy {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .contact-links {
+    display: grid;
+    gap: 0.65rem;
+    align-content: start;
+  }
+
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+    background: color-mix(in srgb, var(--surface-2) 82%, transparent);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .contact-links a:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--color-accent) 38%, var(--border));
+  }
+
+  .contact-links span {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .contact-links em {
+    color: var(--text-secondary);
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .about-hero,
+    .about-story,
+    .contact-card {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero h1 br {
+      display: none;
+    }
+
+    .about-lede br {
+      display: none;
+    }
+
+    .contact-lead h2 br {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    if (!revealElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach((element) => observer.observe(element));
+  })();
+</script>

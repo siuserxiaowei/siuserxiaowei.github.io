@@ -1,0 +1,14 @@
+query_id	query	language	market	search_channel	intent	expected_source_type	result_notes
+Q-001	Marc Lou Shanghai Indie Hackers Meetup Spark Lab August 9	en	global	Exa and Jina	resolve event and speaker	official/social	Luma and same-day X posts found; Exa later hit 429
+Q-002	Marc Lou ShipFast DataFast Zenvoice TrustMRR products	en	global	Exa and Jina	correct transcript entities	official	Founder portfolio and product sites aligned
+Q-003	Damon Chen Marc Lou Shanghai meetup Testimonial two kids	en	global	X via Jina	resolve speaker 7	social/official	Same-day posts and product clues aligned; speaker is Damon not Jack
+Q-004	Marc Lou startup story VirallyBot GameWidget COVID ShipFast typhoon	en	global	YouTube and Jina	cross-check narrative	media/official	Founder video found; exact VirallyBot GameWidget relationship remains unclear
+Q-005	one time payment versus subscription SaaS pricing usage based AI	en	global	web	validate pricing claim	docs	Stripe docs show more than a binary choice
+Q-006	personalized email randomized field experiment	en	global	web	validate cold email mechanism	paper	Adjacent marketing-email experiment found; B2B extrapolation limited
+Q-007	viral product design randomized experiment peer influence	en	global	web	validate PLG mechanism	paper	Aral and Walker experiment found; product context differs
+Q-008	first mover advantage pioneers failure historical study	en	global	web	challenge winner-takes-most	paper	Historical study counters universal first-mover claim
+Q-009	sleep restriction cognition adults randomized trial CDC sleep	en	global	web	validate health claim	paper/official	Randomized trial and CDC guidance found
+Q-010	AI inference cost decline AI Index 2025	en	global	web	validate wrapper pressure	paper	Stanford AI Index found
+Q-011	Spark Lab Shanghai residential accelerator 42 days 10 startups	en/zh	China	Exa Bing Jina	verify institution model	official	No independently accessible organization page found; retained as event self-report
+Q-012	Spark Marc Lou Shanghai meetup full video	en/zh	global	YouTube Bilibili web	find original event video	media	No matching full event video found; supplied transcript remains event primary source
+Q-013	Marc Lou discussion Reddit X indie hacker criticism	en	global	Reddit and X	collect external counterpoints	community/social	Reddit and X search lacked authenticated route; absence of results not treated as absence of discussion

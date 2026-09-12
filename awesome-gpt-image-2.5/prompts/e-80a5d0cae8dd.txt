@@ -1,0 +1,28 @@
+[STYLE]
+black and white grayscale illustration, 3D rendered character, clean instructional reference sheet,
+white background, comic panel grid layout, technical diagram aesthetic
+
+[LAYOUT]
+4x4 grid, 16 panels total, each panel divided by thin black borders,
+cells numbered 1 through 16, uniform panel dimensions
+
+[CHARACTER]
+young female dancer, athletic build, ponytail hairstyle, crop top and baggy pants, sneakers — same character across all panels
+
+[PANEL STRUCTURE - per cell]
+top-left: bold number badge + Korean title text
+center: full-body character pose illustration
+bottom-left: Korean description text (3-4 lines)
+overlay: motion arrows showing movement direction
+
+[ARROWS / MOTION INDICATORS]
+curved arrows, straight arrows, circular rotation markers,
+placed around the character to indicate movement flow and direction
+
+[RENDERING STYLE]
+high-detail 3D sculpt style, soft studio lighting, subtle shadows,
+no color, grayscale shading, clean linework, game concept art quality
+
+[NEGATIVE]
+no background scenery, no color tones, no extra characters,
+no cluttered backgrounds

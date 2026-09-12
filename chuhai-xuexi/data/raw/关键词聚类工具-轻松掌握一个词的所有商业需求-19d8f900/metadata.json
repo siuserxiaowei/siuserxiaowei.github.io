@@ -1,0 +1,63 @@
+{
+  "created_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "ctime": 1755431362,
+  "drive_id": "2581401869",
+  "ext_attrs": [
+    {
+      "name": "secure_guid",
+      "value": ""
+    },
+    {
+      "name": "protected",
+      "value": "false"
+    }
+  ],
+  "hash": {
+    "sum": "402b01fb6c956ecf19c9d930f89cf0f22ce34c22",
+    "type": "sha1"
+  },
+  "id": "RZK8pd3Gc1MR4SAMJqbp1xC2iESBJ6msL",
+  "link_id": "clslzSoPRY0y",
+  "link_url": "https://www.kdocs.cn/l/clslzSoPRY0y",
+  "modified_by": {
+    "avatar": "https://img.qwps.cn/1249174163?imageMogr2/thumbnail/180x180!&k=1733060992276249955",
+    "company_id": "0",
+    "id": "1249174163",
+    "name": "君言",
+    "type": "user"
+  },
+  "mtime": 1756091368,
+  "name": "关键词聚类工具-轻松掌握一个词的所有商业需求.otl",
+  "parent_id": "tz8DLJBTtxMUDgphArturxoEd87XkwX9c",
+  "permission": {
+    "comment": false,
+    "copy": false,
+    "copy_content": false,
+    "delete": false,
+    "download": false,
+    "history": false,
+    "list": true,
+    "move": false,
+    "new_empty": false,
+    "perm_ctl": false,
+    "preview": true,
+    "print": false,
+    "rename": false,
+    "saveas": false,
+    "secret": false,
+    "share": false,
+    "update": false,
+    "upload": false
+  },
+  "shared": false,
+  "size": 558157,
+  "type": "file",
+  "version": 1,
+  "path": "脚本程序/关键词聚类工具-轻松掌握一个词的所有商业需求.otl"
+}
