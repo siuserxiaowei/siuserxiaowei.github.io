@@ -29,7 +29,7 @@ def safe_cell(value):
 
 for key,filename in [('projects','项目清单.csv'),('materials','会议主题清单.csv')]:
     with (ROOT/filename).open('w',encoding='utf-8-sig',newline='') as f:
-        w=csv.writer(f)
+        w=csv.writer(f,lineterminator="\n")
         w.writerow(['名称','用途','分类','主题','状态','维护状态','入口','仓库','原始标题','依据','日期'])
         for p in data[key]:
             w.writerow(map(safe_cell,[p['title'],p['purpose'],p['category'],' / '.join(p['topics']),p['status'],p['maintenance'],p['entryUrl'],p['repoUrl'],p['originalTitle'],p['sourceBasis'],p['archiveDate'] or p['updated']]))
