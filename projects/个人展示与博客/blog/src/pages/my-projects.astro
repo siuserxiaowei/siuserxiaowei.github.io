@@ -3,155 +3,85 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-interface OwnedSite {
-  title: string;
-  href: string;
-  lang: string;
-  summary: string;
-}
+const intro = '以下是我们运营的其他网站，按类别整理。';
 
-interface SiteGroup {
-  id: string;
-  label: string;
-  note: string;
-  sites: OwnedSite[];
-}
-
-// 页脚只放同组里的四条。这一页放较完整的项目清单。
-// 三家商城只收录 PayForGPT，不列 nano-banana / stackmemoai。
-const groups: SiteGroup[] = [
+const categories = [
   {
-    id: 'studio',
-    label: '硬件 · 公司 · 创业',
-    note: '和这个站放在一起看的公开项目。',
-    sites: [
-      {
-        title: 'OPC 一人公司落地路线',
-        href: 'https://opcgate.com/',
-        lang: 'zh',
-        summary: '把各地一人公司政策整理成可以按城市查阅的页面。'
-      },
-      {
-        title: 'X 爆款写作工作台',
-        href: 'https://x-viral-lab.vercel.app/',
-        lang: 'zh',
-        summary: '写 X 长帖和连载时用的中文工作台。'
-      },
-      {
-        title: '新物 AI 硬件库',
-        href: 'https://hixinwu.com/',
-        lang: 'zh',
-        summary: 'AI 硬件和陪伴设备的发现库。'
-      },
-      {
-        title: '花衍科技 AI 陪伴机器人',
-        href: 'https://huayanit.com/',
-        lang: 'zh',
-        summary: '做 AI 陪伴机器人的公司站。'
-      },
-      {
-        title: '飞书 AI 主机 HerClaw',
-        href: 'https://www.herclawai.com/',
-        lang: 'zh',
-        summary: '可以接入飞书的 AI 主机。'
-      },
-      {
-        title: 'Next Move 人生副本决策游戏',
-        href: 'https://pathdeck.app/',
-        lang: 'zh',
-        summary: '面向人生和创业选择的中文决策游戏。'
-      },
-      {
-        title: '小白学 AI',
-        href: 'https://siuserxiaowei.github.io/',
-        lang: 'zh',
-        summary: '公开的学习路径和作品集。'
-      }
+    name: '个人与其他',
+    links: [
+      { url: 'https://siuserxiaowei.github.io/', anchor: 'siuser小伟项目集', description: '个人作品集与项目导航' },
+      { url: 'https://mideafind.com/', anchor: 'MideaFind', description: '德国 Midea 空调库存查询' },
+      { url: 'https://hklicensingprep.com/zh-hk/', anchor: '香港牌照考試題庫', description: '香港专业牌照考试题库' }
     ]
   },
   {
-    id: 'guides',
-    label: '教程 · 比价 · 充值',
-    note: '中文教程、会员价格对照，以及一家充值站。',
-    sites: [
-      {
-        title: 'Grok Bot 从 0 到 1',
-        href: 'https://grokguide.si/',
-        lang: 'zh',
-        summary: 'Grok Bot 的中文教程。'
-      },
-      {
-        title: 'AI 会员订阅比价',
-        href: 'https://aipricex.com/',
-        lang: 'zh',
-        summary: 'ChatGPT、Claude、Grok 等会员的渠道价格对照。'
-      },
-      {
-        title: 'CodexGuide',
-        href: 'https://codexguide.codes/',
-        lang: 'zh',
-        summary: 'Codex 的中文实战教程。'
-      },
-      {
-        title: 'PayForGPT',
-        href: 'https://payforgpt.com/',
-        lang: 'zh',
-        summary: '我在运营的 AI 会员充值站。'
-      }
+    name: 'AI 订阅与比价',
+    links: [
+      { url: 'https://payforgpt.com/', anchor: 'PayForGPT', description: 'ChatGPT Plus 会员充值' },
+      { url: 'https://aipricex.com/', anchor: 'AIPriceX 比价', description: 'AI 会员与发卡网价格对比' },
+      { url: 'https://getgiffgaff.com/', anchor: 'getgiffgaff', description: 'giffgaff 英国手机卡中文教程' },
+      { url: 'https://whenresets.com/zh/', anchor: 'WhenResets', description: 'Codex 额度重置时间追踪' }
     ]
   },
   {
-    id: 'independent',
-    label: '独立站点',
-    note: '主题独立，只列在这一页。',
-    sites: [
-      {
-        title: 'MideaFind PortaSplit Verfügbarkeit',
-        href: 'https://mideafind.com/',
-        lang: 'de',
-        summary: '德语站，查询 Midea PortaSplit 的供应情况。'
-      },
-      {
-        title: '香港牌照考試題庫',
-        href: 'https://hklicensingprep.com/zh-hk/',
-        lang: 'zh-HK',
-        summary: '香港牌照考试的练习题库。'
-      }
+    name: 'AI 教程指南',
+    links: [
+      { url: 'https://codexguide.codes/', anchor: 'CodexGuide', description: 'Codex 中文图文实战教程' },
+      { url: 'https://ccmanual.com/', anchor: 'Claude Code 实战手册', description: 'Claude Code 上手实测' },
+      { url: 'https://grokguide.si/', anchor: 'Grok Bot 中文教程', description: 'Grok Bot 从 0 到 1 上手' },
+      { url: 'https://gpt6astra.com/', anchor: 'GPT-6 Astra 案例集', description: 'GPT-6 Astra 案例与复现' }
+    ]
+  },
+  {
+    name: 'AI 工具',
+    links: [
+      { url: 'https://checkaifree.com/', anchor: 'CheckAIFree', description: '免费 AI 图片检测' },
+      { url: 'https://quickupscale.com/', anchor: 'QuickUpscale', description: '像素画与精灵图放大' },
+      { url: 'https://nanobananalite.org/', anchor: 'Nano Banana Lite', description: '免费 AI 修图编辑器' },
+      { url: 'https://seedance25pro.com/', anchor: 'Kiveloom Studio', description: 'AI 图片与视频生成' },
+      { url: 'https://freestoryai.com/', anchor: 'FreeStoryAI', description: 'AI 故事写作工具' },
+      { url: 'https://openfate.org/', anchor: 'OpenFate', description: '免费 AI 星盘解读' },
+      { url: 'https://x-viral-lab.vercel.app/', anchor: 'X Viral Lab', description: 'X 爆款写作与评分工作台' }
+    ]
+  },
+  {
+    name: '游戏与小工具',
+    links: [
+      { url: 'https://freekitbox.com/', anchor: 'FreeKitBox', description: '在线工具箱与 Roblox 兑换码' },
+      { url: 'https://hussbaboon.com/', anchor: 'Huss Baboon 攻略', description: 'Huss Baboon 游戏攻略' },
+      { url: 'https://mortal-shell-ii-guide.vercel.app/', anchor: 'Mortal Shell II 攻略', description: 'Mortal Shell II 攻略' },
+      { url: 'https://pathdeck.app/', anchor: 'PathDeck', description: '人生副本决策小游戏' }
+    ]
+  },
+  {
+    name: 'AI 硬件与创业',
+    links: [
+      { url: 'https://huayanit.com/', anchor: '花衍科技', description: 'AI 陪伴硬件公司官网' },
+      { url: 'https://hixinwu.com/', anchor: '新物', description: 'AI 硬件发现平台' },
+      { url: 'https://www.herclawai.com/', anchor: 'HerClaw', description: '接入飞书等 IM 的 AI 主机' },
+      { url: 'https://opcgate.com/', anchor: 'OPC Gate', description: '一人公司政策与载体分析' }
     ]
   }
 ];
 ---
 
-<BaseLayout title="我的项目 · siuser小伟" description="我公开运营的站点：硬件与创业、中文教程，以及两份主题独立的小站。">
+<BaseLayout title="友情链接" description={intro}>
   <Header />
 
   <main class="flex-1">
-    <section class="mx-auto px-6 pt-32 pb-16 md:pt-40 md:pb-20" style="max-width: var(--container-max);">
-      <div class="owned-hero">
-        <p class="section-kicker">My sites</p>
-        <h1 class="owned-headline display-serif">我的<em>项目</em></h1>
-        <p class="owned-lede">
-          这些是我公开在运营的站。页脚只留同组里的几条，完整清单放在这里。
-        </p>
-      </div>
-    </section>
+    <section class="mx-auto px-6 pt-32 pb-28 md:pt-40" style="max-width: var(--container-max);">
+      <h1 class="friend-title display-serif">友情链接</h1>
+      <p class="friend-intro">{intro}</p>
 
-    <section class="mx-auto px-6 pb-28" style="max-width: var(--container-max);">
-      {groups.map((group) => (
-        <div class="owned-group">
-          <header class="owned-group-head">
-            <h2>{group.label}</h2>
-            <p>{group.note}</p>
-          </header>
-          <ul class="owned-list">
-            {group.sites.map((site) => (
-              <li>
-                <a href={site.href} lang={site.lang}>{site.title}</a>
-                <p>{site.summary}</p>
-              </li>
+      {categories.map((category) => (
+        <section class="friend-group">
+          <h2>{category.name}</h2>
+          <ul>
+            {category.links.map((link) => (
+              <li><a href={link.url}>{link.anchor}</a> - {link.description}</li>
             ))}
           </ul>
-        </div>
+        </section>
       ))}
     </section>
   </main>
@@ -160,84 +90,51 @@ const groups: SiteGroup[] = [
 </BaseLayout>
 
 <style>
-  .owned-hero {
-    max-width: 46rem;
-  }
-
-  .owned-headline {
-    margin-top: 1rem;
+  .friend-title {
     font-size: clamp(2.4rem, 5vw, 4rem);
     line-height: 1.12;
     letter-spacing: -0.005em;
   }
 
-  .owned-headline em {
-    color: var(--color-accent);
-  }
-
-  .owned-lede {
-    margin-top: 1.4rem;
-    max-width: 36rem;
+  .friend-intro {
+    margin-top: 1rem;
     color: var(--text-secondary);
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.7;
   }
 
-  .owned-group + .owned-group {
-    margin-top: 3.5rem;
+  .friend-group {
+    margin-top: 2.4rem;
   }
 
-  .owned-group-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.6rem 1.5rem;
-    padding-bottom: 0.9rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .owned-group-head h2 {
+  .friend-group h2 {
     font-family: var(--font-heading);
     font-size: 1.35rem;
     letter-spacing: -0.01em;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border);
   }
 
-  .owned-group-head p {
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-  }
-
-  .owned-list {
+  .friend-group ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .owned-list li {
-    display: grid;
-    gap: 0.35rem;
-    padding: 1.15rem 0;
+  .friend-group li {
+    padding: 0.75rem 0;
     border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    color: var(--text-secondary);
+    line-height: 1.7;
   }
 
-  .owned-list a {
+  .friend-group a {
     color: var(--text);
-    font-size: 1.05rem;
-    line-height: 1.45;
-    width: fit-content;
     border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
   }
 
-  .owned-list a:hover {
+  .friend-group a:hover {
     color: var(--color-accent);
     border-bottom-color: var(--color-accent);
-  }
-
-  .owned-list p {
-    color: var(--text-secondary);
-    line-height: 1.7;
   }
 </style>

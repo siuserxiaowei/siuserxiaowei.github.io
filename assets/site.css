@@ -9,3 +9,12 @@
 .project p a{color:#00e6a8;font-weight:800}
 @media (max-width:980px){.site-footer{padding-left:34px;padding-right:34px}}
 @media (max-width:640px){.site-footer{padding-left:20px;padding-right:20px}}
+.friend-page{padding:64px 72px 78px;max-width:980px}
+.friend-page h1{font-family:Georgia,"Songti SC",serif;font-size:56px;line-height:1.08;margin:0 0 16px}
+.friend-page .friend-intro{font-size:20px;line-height:1.6;color:#c1d7ce;margin:0 0 8px}
+.friend-page h2{font-family:Georgia,"Songti SC",serif;font-size:28px;line-height:1.2;margin:32px 0 8px}
+.friend-page ul{list-style:none;margin:0;padding:0}
+.friend-page li{padding:8px 0;line-height:1.65;color:#c1d7ce}
+.friend-page li a{color:#00e6a8;font-weight:800}
+@media (max-width:980px){.friend-page{padding-left:34px;padding-right:34px}.friend-page h1{font-size:44px}}
+@media (max-width:640px){.friend-page{padding:34px 20px 48px}.friend-page h1{font-size:36px}.friend-page .friend-intro{font-size:18px}}
