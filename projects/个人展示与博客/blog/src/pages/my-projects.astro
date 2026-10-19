@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const intro = '以下是我们运营的其他网站，按类别整理。';
+
+const categories = [
+  {
+    name: '个人与其他',
+    links: [
+      { url: 'https://siuserxiaowei.github.io/', anchor: 'siuser小伟项目集', description: '个人作品集与项目导航' },
+      { url: 'https://mideafind.com/', anchor: 'MideaFind', description: '德国 Midea 空调库存查询' },
+      { url: 'https://hklicensingprep.com/zh-hk/', anchor: '香港牌照考試題庫', description: '香港专业牌照考试题库' }
+    ]
+  },
+  {
+    name: 'AI 订阅与比价',
+    links: [
+      { url: 'https://payforgpt.com/', anchor: 'PayForGPT', description: 'ChatGPT Plus 会员充值' },
+      { url: 'https://aipricex.com/', anchor: 'AIPriceX 比价', description: 'AI 会员与发卡网价格对比' },
+      { url: 'https://getgiffgaff.com/', anchor: 'getgiffgaff', description: 'giffgaff 英国手机卡中文教程' },
+      { url: 'https://whenresets.com/zh/', anchor: 'WhenResets', description: 'Codex 额度重置时间追踪' }
+    ]
+  },
+  {
+    name: 'AI 教程指南',
+    links: [
+      { url: 'https://codexguide.codes/', anchor: 'CodexGuide', description: 'Codex 中文图文实战教程' },
+      { url: 'https://ccmanual.com/', anchor: 'Claude Code 实战手册', description: 'Claude Code 上手实测' },
+      { url: 'https://grokguide.si/', anchor: 'Grok Bot 中文教程', description: 'Grok Bot 从 0 到 1 上手' },
+      { url: 'https://gpt6astra.com/', anchor: 'GPT-6 Astra 案例集', description: 'GPT-6 Astra 案例与复现' }
+    ]
+  },
+  {
+    name: 'AI 工具',
+    links: [
+      { url: 'https://checkaifree.com/', anchor: 'CheckAIFree', description: '免费 AI 图片检测' },
+      { url: 'https://quickupscale.com/', anchor: 'QuickUpscale', description: '像素画与精灵图放大' },
+      { url: 'https://nanobananalite.org/', anchor: 'Nano Banana Lite', description: '免费 AI 修图编辑器' },
+      { url: 'https://seedance25pro.com/', anchor: 'Kiveloom Studio', description: 'AI 图片与视频生成' },
+      { url: 'https://freestoryai.com/', anchor: 'FreeStoryAI', description: 'AI 故事写作工具' },
+      { url: 'https://openfate.org/', anchor: 'OpenFate', description: '免费 AI 星盘解读' },
+      { url: 'https://x-viral-lab.vercel.app/', anchor: 'X Viral Lab', description: 'X 爆款写作与评分工作台' }
+    ]
+  },
+  {
+    name: '游戏与小工具',
+    links: [
+      { url: 'https://freekitbox.com/', anchor: 'FreeKitBox', description: '在线工具箱与 Roblox 兑换码' },
+      { url: 'https://hussbaboon.com/', anchor: 'Huss Baboon 攻略', description: 'Huss Baboon 游戏攻略' },
+      { url: 'https://mortal-shell-ii-guide.vercel.app/', anchor: 'Mortal Shell II 攻略', description: 'Mortal Shell II 攻略' },
+      { url: 'https://pathdeck.app/', anchor: 'PathDeck', description: '人生副本决策小游戏' }
+    ]
+  },
+  {
+    name: 'AI 硬件与创业',
+    links: [
+      { url: 'https://huayanit.com/', anchor: '花衍科技', description: 'AI 陪伴硬件公司官网' },
+      { url: 'https://hixinwu.com/', anchor: '新物', description: 'AI 硬件发现平台' },
+      { url: 'https://www.herclawai.com/', anchor: 'HerClaw', description: '接入飞书等 IM 的 AI 主机' },
+      { url: 'https://opcgate.com/', anchor: 'OPC Gate', description: '一人公司政策与载体分析' }
+    ]
+  }
+];
+---
+
+<BaseLayout title="友情链接" description={intro}>
+  <Header />
+
+  <main class="flex-1">
+    <section class="mx-auto px-6 pt-32 pb-28 md:pt-40" style="max-width: var(--container-max);">
+      <h1 class="friend-title display-serif">友情链接</h1>
+      <p class="friend-intro">{intro}</p>
+
+      {categories.map((category) => (
+        <section class="friend-group">
+          <h2>{category.name}</h2>
+          <ul>
+            {category.links.map((link) => (
+              <li><a href={link.url}>{link.anchor}</a> - {link.description}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .friend-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+  }
+
+  .friend-intro {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .friend-group {
+    margin-top: 2.4rem;
+  }
+
+  .friend-group h2 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .friend-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .friend-group li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .friend-group a {
+    color: var(--text);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+
+  .friend-group a:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+</style>

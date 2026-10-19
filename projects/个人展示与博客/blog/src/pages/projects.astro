@@ -142,6 +142,7 @@ const statusMap: Record<Project['status'], { label: string; tone: 'accent' | 'ac
         })}
 
         <div class="project-rule project-rule-foot"></div>
+        <p class="projects-more">对外运营的站点见 <a href="/my-projects">我的项目</a>。</p>
       </div>
     </section>
   </main>
@@ -343,6 +344,21 @@ const statusMap: Record<Project['status'], { label: string; tone: 'accent' | 'ac
 
   .project-links a em {
     font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .projects-more {
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .projects-more a {
+    color: var(--text);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+
+  .projects-more a:hover {
     color: var(--color-accent);
   }
 
