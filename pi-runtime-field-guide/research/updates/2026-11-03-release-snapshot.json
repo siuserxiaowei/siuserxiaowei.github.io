@@ -1,0 +1,54 @@
+{
+  "verified_at": "2026-11-03T20:50:20+08:00",
+  "timezone": "Asia/Shanghai",
+  "method": "Official release inventories, channel endpoints, package registry and version-pinned documentation; no installation or end-to-end execution tests.",
+  "pi": {
+    "repository": "https://github.com/earendil-works/pi",
+    "stable_version": "1.5.0",
+    "tag_commit": "f9a26365568127461c47a07a37dcb42c140a3ac5",
+    "github_published_at": "2026-11-02T11:05:31Z",
+    "npm_published_at": "2026-11-02T11:05:09.564Z",
+    "npm_dist_tag_latest": "1.5.0",
+    "sources": [
+      "https://github.com/earendil-works/pi/releases",
+      "https://github.com/earendil-works/pi/tags",
+      "https://github.com/earendil-works/pi/releases/tag/v1.5.0",
+      "https://registry.npmjs.org/@earendil-works%2Fpi-coding-agent"
+    ]
+  },
+  "multica": {
+    "repository": "https://github.com/multica-ai/multica",
+    "stable_version": "0.8.0",
+    "github_published_at": "2026-11-03T10:30:52Z",
+    "license": "Multica License: Apache 2.0 plus additional conditions; not plain Apache 2.0 or MIT",
+    "sources": [
+      "https://github.com/multica-ai/multica/releases",
+      "https://api.github.com/repos/multica-ai/multica/releases/latest",
+      "https://github.com/multica-ai/multica/releases/tag/v0.8.0",
+      "https://github.com/multica-ai/multica/blob/main/LICENSE",
+      "https://multica.ai/licensing"
+    ]
+  },
+  "magpie": {
+    "repository": "https://github.com/yetone/magpie",
+    "distribution_repository": "https://github.com/yetone/magpie-releases",
+    "default_latest": {
+      "version": "0.1.2854",
+      "published_at": "2026-11-03T12:30:08Z",
+      "endpoint": "https://usemagpie.ai/api/latest",
+      "release": "https://github.com/yetone/magpie-releases/releases/tag/v0.1.2854"
+    },
+    "stable_channel": {
+      "version": "0.1.2115",
+      "published_at": "2026-10-29T23:08:31Z",
+      "endpoint": "https://usemagpie.ai/api/latest?channel=stable",
+      "release": "https://github.com/yetone/magpie-releases/releases/tag/v0.1.2115"
+    },
+    "caveat": "Application stable channel and GitHub prerelease flag are different labels; source tags alone do not establish distributed latest."
+  },
+  "integration_evidence": {
+    "multica_pi": "Official provider documentation and released integration fixes",
+    "magpie_pi": "Official README and internal/agent/pi.go",
+    "multica_pi_magpie_end_to_end": "Not tested in this research"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "verified_at": "2026-11-03T13:02:26.989552+00:00",
+  "scope": "Local static site browser verification; official capability research is a separate evidence record",
+  "browser": "156.0.8078.80",
+  "result": "passed",
+  "checks": [
+    "latest content, three-tool comparison, 14 archived chapters and 50 sources render",
+    "chapter expansion and persisted completion state work",
+    "source search and reset work",
+    "1440px desktop and 390px mobile have no document horizontal overflow",
+    "full report page loads with expected versions and mobile layout",
+    "no browser console errors or uncaught page errors"
+  ],
+  "deployment": "Repository content update only; GitHub Pages is not configured for the consolidated repository"
+}
