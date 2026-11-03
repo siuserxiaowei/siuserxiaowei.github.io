@@ -1,0 +1,460 @@
+[
+  {
+    "number": 6,
+    "id": "chapter-06",
+    "tag": "Tools / MCP",
+    "title": "工具管道：参数验证、并发与 MCP / Codemode",
+    "summary": "沿 v1.5.0 的真实工具管道，从 JSON Schema、Hook 和执行顺序，理解 MCP 与脚本调用如何进入同一套工具契约。",
+    "questions": [
+      "参数验证通过，为什么仍不代表允许执行工具？",
+      "并行工具的完成事件顺序，为什么可以不同于持久化结果顺序？",
+      "MCP 和 Codemode 分别增加什么能力，又不能替代什么安全控制？"
+    ],
+    "sections": [
+      {
+        "title": "先把工具定义与执行权限分开",
+        "paragraphs": [
+          "工具不仅是一个函数，还包括名称、说明、JSON Schema 参数、执行函数和可选的参数准备逻辑。v1.5.0 使用 pi-schema 处理验证与类型推导；Schema 可以是普通 JSON 对象，不再要求依赖 TypeBox。TypeBox 的常见 JSON Schema 类型仍有兼容路径，但 JavaScript 专属类型、refinement 或 codec 不能当成通用 Schema 使用。",
+          "pi-schema 的 check 判断值是否合法，开启 coerce 后才提供转换与 parse；转换不会直接改写调用者的原对象。默认值只是注释，不会自动补入参数。参数合法只解决形状和类型问题，业务权限、路径范围、额度和副作用仍要由工具与宿主决定。"
+        ],
+        "bullets": [
+          "把危险参数约束写进 Schema，也在工具执行边界检查真实资源。",
+          "不要把“模型能看见这个工具”理解成“这个调用已经获得授权”。"
+        ]
+      },
+      {
+        "title": "一次调用经过哪些阶段",
+        "paragraphs": [
+          "管道依次查找工具，调用可选 prepareArguments，再验证参数、运行 beforeToolCall、执行工具并收集进度，最后运行 afterToolCall。未知工具、无效参数、阻止执行以及抛出的异常都会形成 isError 结果，交给上层处理。验证失败不会进入前置 Hook；被前置 Hook 阻止的调用也不会进入执行和后置 Hook。",
+          "runToolCall 提供同样的准备、验证和 Hook 语义，适合工具内部再调用工具。它自己不发送事件，也不追加会话消息。Codemode 等组合工具可以沿这个入口调用底层工具，保留宿主的拦截策略，而不是绕开管道直接调用函数。"
+        ],
+        "bullets": [
+          "afterToolCall 可以改写结果，但不应掩盖已经发生的外部副作用。",
+          "durationMs 度量工具 execute 的耗时，不包含 Hook 和队列等待。"
+        ]
+      },
+      {
+        "title": "并发不等于结果乱序",
+        "paragraphs": [
+          "默认 parallel 模式按 assistant 中的调用顺序依次预检，再并发运行获准工具。tool_execution_end 按实际完成顺序发出，但最终 toolResult 消息和 turn_end.toolResults 按 assistant 的原始顺序提交。因此 UI 看到 B 先完成，并不表示历史里 B 应排在 A 前面。",
+          "任一工具声明 executionMode 为 sequential 时，整个批次顺序执行。批次中每个最终结果都设置 terminate:true，才会跳过自动后续模型请求；混合批次不会因其中一个工具要求停止就全部结束。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "MCP 提供工具，Codemode 组织调用",
+        "paragraphs": [
+          "原生 MCP 支持 stdio 和 streamable HTTP，不支持旧 SSE；用户配置与经过信任确认的项目配置共同决定连接和暴露方式。pi mcp list 会实际连接启用的服务器，不只是读取配置。Codemode 不在基础默认工具列表中，可用 pi --tools +codemode 追加；MCP 也会按 codemode 或 deferred 暴露需求自动启用 Codemode 或 tool_search。",
+          "Codemode 的输入是 JavaScript 源码，运行于没有 Node、文件系统、网络与计时器 API 的 QuickJS 环境。脚本通过工具调用外部资源，可并发筛选结果，只把必要输出交给模型。但被调用工具会真实执行；脚本后续报错不会撤销此前的写入，QuickJS 也不会把 bash 自动变成安全沙箱。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "离线验证合法、无效、被拦截与不存在的工具",
+      "objective": "调用真实 runToolCall，证明验证和 Hook 的先后边界；本实验不测试模型是否会选对工具。",
+      "steps": [
+        "准备 Node.js 22.19 或更新版本，以及临时 Node 项目中的 @earendil-works/pi-agent-core@1.5.0 和 @earendil-works/pi-schema@1.5.0。首次安装依赖需要联网，实验执行不需要账号。",
+        "将下面代码保存为 tool-pipeline.mjs，在该临时项目目录执行 node tool-pipeline.mjs。",
+        "查看结果与日志，确认只有合法且未被拦截的调用进入 execute。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from 'node:assert/strict';\nimport { runToolCall } from '@earendil-works/pi-agent-core';\nimport { obj, str } from '@earendil-works/pi-schema';\nlet executions = 0;\nconst hooks = [];\nconst tool = {\n  name: 'echo', label: 'Echo', description: 'Return a string',\n  parameters: obj({ value: str() }),\n  async execute(_id, args) {\n    executions++;\n    return { content: [{ type: 'text', text: args.value }], details: {} };\n  },\n};\nconst usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0,\n  totalTokens: 0, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, total: 0 } };\nconst options = {\n  tools: [tool], context: { messages: [] },\n  assistantMessage: { role: 'assistant', content: [], api: 'faux',\n    provider: 'faux', model: 'faux-1', usage, stopReason: 'stop', timestamp: 0 },\n  beforeToolCall: async ({ toolCall, args }) => {\n    hooks.push(`before:${toolCall.id}`);\n    if (args.value === 'blocked') return { block: true, reason: 'blocked by lab' };\n  },\n  afterToolCall: async ({ toolCall }) => { hooks.push(`after:${toolCall.id}`); },\n};\nconst results = [];\nfor (const [id, name, args] of [\n  ['ok', 'echo', { value: 'ok' }],\n  ['invalid', 'echo', { value: { nested: true } }],\n  ['blocked', 'echo', { value: 'blocked' }],\n  ['missing', 'missing', {}],\n]) results.push(await runToolCall({ type: 'toolCall', id, name, arguments: args }, options));\nassert.deepEqual(results.map(x => x.isError), [false, true, true, true]);\nassert.equal(executions, 1);\nassert.deepEqual(hooks, ['before:ok', 'after:ok', 'before:blocked']);\nconsole.log(JSON.stringify({ errors: results.map(x => x.isError), executions, hooks }));\n",
+      "expected": [
+        "isError 序列为 false、true、true、true；所有调用都返回结果对象，工具失败不会让本探针直接抛出未处理异常。",
+        "execute 只运行一次；invalid 和 missing 不进入 Hook，blocked 进入前置 Hook 后停止。"
+      ],
+      "verification": "所有 assert 通过且进程退出码为 0；修改为无效参数后 execute 计数仍不增加。",
+      "requires": "offline",
+      "notes": "离线指依赖已就绪后的执行阶段。这里只测 runToolCall，不会发 provider 请求，不会启动 MCP，也不产生 Agent 会话事件；并发和 MCP 连通性需要另做集成实验。"
+    },
+    "pitfalls": [
+      "把 Schema 验证当作权限检查，或以为 default 会自动补值。",
+      "按照 tool_execution_end 的到达顺序重排持久化工具结果。",
+      "把 Codemode 的 QuickJS 隔离等同于所有被调用工具的操作系统隔离。"
+    ],
+    "sources": [
+      {
+        "title": "Agent 工具执行、并发与 runToolCall",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/README.md"
+      },
+      {
+        "title": "pi-schema 构建器、验证与类型边界",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/schema/README.md"
+      },
+      {
+        "title": "原生 MCP 配置与传输协议",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/mcp.md"
+      },
+      {
+        "title": "Codemode 脚本、工具调用与限制",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/codemode.md"
+      }
+    ],
+    "migration": "用当前 pi-schema、默认并行执行、runToolCall 和原生 MCP/Codemode 重新解释工具契约；旧 TypeBox 专属假设和第三方 MCP 限制不再作为本章前提。"
+  },
+  {
+    "number": 7,
+    "id": "chapter-07",
+    "tag": "Retry / Effects",
+    "title": "重试与副作用：先判断能不能再做一次",
+    "summary": "区分模型请求重试、Agent 轮次恢复与外部工具副作用；用实际重试分类器和幂等设计控制重复执行。",
+    "questions": [
+      "同为 HTTP 429，为什么限流和余额耗尽不能使用相同策略？",
+      "工具超时后，为什么不能直接认定外部操作没有成功？",
+      "Pi Durable 的 replay:safe 能保证外部系统 exactly-once 吗？"
+    ],
+    "sections": [
+      {
+        "title": "先分类，再计算退避时间",
+        "paragraphs": [
+          "v1.5.0 的重试判断基于 assistant 的 stopReason 和 errorMessage。正常结果立即返回，aborted 是终态；只有错误且具有瞬时故障特征时才进入有限重试。网络断连、部分服务端错误和短期限流属于候选，账户额度、预算、计费耗尽则优先排除，即使错误文本同时带有 429。",
+          "isRetryableAssistantError 是分类器，不负责整个恢复流程。调用者要先识别上下文溢出，再应用重试预算与报告策略。不能见到 timeout 或状态码就无限重复，也不能通过换一个错误字符串掩盖原始失败原因。"
+        ],
+        "bullets": [
+          "错误分类需要同时看供应商语义与账户状态，不能只看 HTTP 数字。",
+          "用户取消与认证、额度问题应让流程可见地停止或等待处理。"
+        ]
+      },
+      {
+        "title": "预算属于哪一层",
+        "paragraphs": [
+          "retryAssistantCall 接收 enabled、maxRetries、baseDelayMs 和可选 maxAgentDelayMs。初次调用不计入 maxRetries；每次重试按指数退避计算，默认单次等待上限为六十秒。调度前、真正重试前和最终结束时可以发送回调，退避等待也会响应 AbortSignal。",
+          "provider 适配层的请求重试与 AgentSession 的 assistant 级恢复不是同一个边界。前者处理一次传输，后者可能重新生成一轮回答。叠加时必须知道总尝试次数和等待上限；否则每层都看似有界，用户却仍会经历很长的等待。"
+        ],
+        "bullets": [
+          "记录原始错误、尝试编号、最终结果和取消原因。",
+          "不要把一次重试成功理解成之前的请求没有消耗费用。"
+        ]
+      },
+      {
+        "title": "工具错误先保留不确定性",
+        "paragraphs": [
+          "工具执行可能已经发邮件、提交订单或写入数据库，结果却在返回途中丢失。因此超时代表“结果未知”，不是“操作未发生”。普通 Agent 的工具异常会回流为 isError 结果；是否再次调用应由明确策略决定，不能套用 provider 的网络重试规则。",
+          "可写工具应由业务系统记录稳定的操作标识与幂等键。同一业务动作的重试沿用同一个键；先查询既有结果，再决定继续、补偿或请求人工处理。日志要区分未执行、已确认成功、已确认失败和状态未知，不能仅凭进程是否收到返回值记账。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "持久化恢复仍有外部边界",
+        "paragraphs": [
+          "独立 Pi Durable 会持久化任务意图与检查点，崩溃后只对声明 replay:safe 的工具执行安全重放，其他中断调用会报告给模型处理。这个声明是开发者对操作性质的承诺，不会自动让任意写接口获得幂等能力。",
+          "持久化提交、客户端 requestId 去重和外部系统副作用各有边界。给任务去重，不等于银行、邮件服务或发布平台也参与了同一事务。设计恢复策略时，应把业务幂等与可查询结果放在真实副作用所在的系统中，再用重放声明表达已经具备的安全性。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "离线比较瞬时失败、额度耗尽与取消",
+      "objective": "使用 v1.5.0 的真实 retryAssistantCall 和分类器，验证有限重试、终态和等待上限；不访问任何模型服务。",
+      "steps": [
+        "在含 @earendil-works/pi-ai@1.5.0 的临时 Node 项目保存 retry-probe.mjs。依赖未安装时先联网准备；执行阶段无需 provider 凭证。",
+        "运行 node retry-probe.mjs；生产等待被替换为零延迟，produce 返回本地构造的 assistant 消息。",
+        "核对瞬时错误的调用次数与额度错误、取消的调用次数，避免把本地 mock 解释成真实供应商可用性测试。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from 'node:assert/strict';\nimport { isRetryableAssistantError, retryAssistantCall, retryDelayMs } from '@earendil-works/pi-ai';\nconst usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0,\n  totalTokens: 0, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, total: 0 } };\nconst message = (stopReason, errorMessage) => ({ role: 'assistant', content: [],\n  api: 'faux', provider: 'faux', model: 'faux-1', usage, stopReason,\n  ...(errorMessage ? { errorMessage } : {}), timestamp: 0 });\nconst policy = { enabled: true, maxRetries: 2, baseDelayMs: 0 };\nlet transientCalls = 0;\nconst result = await retryAssistantCall(async () => {\n  transientCalls++;\n  return transientCalls === 1 ? message('error', '503 service unavailable') : message('stop');\n}, policy, undefined);\nlet quotaCalls = 0;\nawait retryAssistantCall(async () => {\n  quotaCalls++;\n  return message('error', '429 insufficient_quota');\n}, policy, undefined);\nlet abortedCalls = 0;\nawait retryAssistantCall(async () => {\n  abortedCalls++;\n  return message('aborted');\n}, policy, undefined);\nassert.equal(isRetryableAssistantError(message('error', '429 insufficient_quota')), false);\nassert.equal(result.stopReason, 'stop');\nassert.deepEqual([transientCalls, quotaCalls, abortedCalls], [2, 1, 1]);\nassert.equal(retryDelayMs({ baseDelayMs: 1000, maxAgentDelayMs: 2500 }, 5), 2500);\nconsole.log(JSON.stringify({ transientCalls, quotaCalls, abortedCalls, cappedDelayMs: 2500 }));\n",
+      "expected": [
+        "瞬时 503 先失败后成功，共调用两次；额度耗尽和 aborted 各只调用一次。",
+        "第五次计算出的退避时间受 2500ms 的自设上限限制。"
+      ],
+      "verification": "assert 全部通过、退出码 0；把 maxRetries 改为 0 后，瞬时错误也不应再调用第二次。",
+      "requires": "offline",
+      "notes": "这是重试策略的本地探针，不执行邮件、支付、部署或模型调用，也不证明外部写操作具有幂等性。"
+    },
+    "pitfalls": [
+      "将 429 一律归为可重试，持续重试余额或订阅额度耗尽。",
+      "工具已发生副作用却因未收到结果而生成新的业务幂等键。",
+      "把 replay:safe 当作框架提供的外部事务保证。"
+    ],
+    "sources": [
+      {
+        "title": "Assistant 重试分类与有界策略",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/utils/retry.ts"
+      },
+      {
+        "title": "Provider 级请求重试实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/utils/provider-retry.ts"
+      },
+      {
+        "title": "工具异常如何成为结果",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/src/agent-loop.ts"
+      },
+      {
+        "title": "Durable 工具重放与存储边界",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/durable/README.md"
+      }
+    ],
+    "migration": "重试按当前公开策略与独立 Pi Durable 的边界讲解，不再将 8 月 core 中的实验性 AgentHarness 当作当前恢复实现。"
+  },
+  {
+    "number": 8,
+    "id": "chapter-08",
+    "tag": "Events / SDK / RPC",
+    "title": "事件与集成：什么时候真的结束了",
+    "summary": "用事件边界区分请求被接受、一次低层运行结束和会话完全静止，并选择 SDK 或 JSONL RPC 接入。",
+    "questions": [
+      "RPC 的 prompt success:true，是否代表任务已经完成？",
+      "agent_end 与 AgentSession 的 agent_settled 有什么区别？",
+      "为什么工具完成事件、会话记录和遥测不能互相替代？"
+    ],
+    "sections": [
+      {
+        "title": "先读懂一次低层运行的时间线",
+        "paragraphs": [
+          "一次正常 Agent 运行从 agent_start、turn_start 开始，依次产生消息开始、流式更新、消息结束；若有工具调用，再经过工具执行事件与结果消息，最后发出 turn_end。工具结果需要后续判断时会进入下一轮，直到 agent_end 收口。message_update 是 assistant 的增量事件，不能当成已经完成的一条消息。",
+          "Agent.subscribe 的监听器按注册顺序被等待。agent_end 表示不会再发出该低层运行的事件，但它的异步监听器仍可能尚未结束；prompt 和 waitForIdle 要等待这些工作结算。把“收到最后一个事件”和“调用方的 Promise 已完成”当成同一瞬间，会制造资源释放和 UI 状态竞态。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "会话结束比一轮结束更高一层",
+        "paragraphs": [
+          "Coding Agent 的 AgentSession 还负责自动重试、溢出恢复、压缩和输入队列。因此某次 agent_end 后，仍可能启动新的运行。外部客户端需要确认 Pi 不会自动继续时，应等待会话层的 agent_settled，而不是在第一个 agent_end 就展示最终交付。",
+          "RPC prompt 的成功响应只是输入已经开始、排队或被扩展处理；handled 表示没有为这条输入开启运行，不能机械等待一个不会出现的 agent_settled。订阅应先于发送 prompt，避免快任务在订阅建立前就结束。"
+        ],
+        "bullets": [
+          "显示“已受理”“运行中”“等待复核”和“已静止”等不同业务状态。",
+          "完成事件不自动代表用户的验收条件已经满足。"
+        ]
+      },
+      {
+        "title": "SDK 与 RPC 是两种边界",
+        "paragraphs": [
+          "Node.js 或 Bun 应用可用 SDK 在进程内直接访问 AgentSession、会话和工具，生命周期结束时 dispose。其他语言、IDE 或需要进程隔离的宿主可使用 pi --mode rpc，以 stdin/stdout 的 JSONL 命令、响应和事件通信；TypeScript 子进程集成也可使用官方 RpcClient。",
+          "每条协议记录必须是一个完整 JSON 对象，以 LF 结束。并发命令按唯一 id 关联响应，不能依赖返回顺序；U+2028 和 U+2029 可以出现在 JSON 字符串内，不能把它们当协议换行。持续读取 stdout 并处理背压；诊断在 stderr，进程退出与超时必须由客户端处理。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "进度、持久事实和遥测各有用途",
+        "paragraphs": [
+          "并行工具的完成事件按实际结束先后到达，而持久化结果仍按模型原调用顺序。界面可以先显示已完成的工具，历史重建却要遵守持久记录。durationMs 只表示 execute 的耗时，不包含 Hook、队列和整个业务请求。",
+          "pi-telemetry 提供与供应商无关的诊断契约和适配器边界。Trace 不是持久应用状态，carrier 也不是授权凭证；更换适配器不能改变会话的业务事实。默认不要把完整提示词、文件、工具输出和凭证写进观测属性；记录可用的低基数操作信息即可。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "无 prompt 的 RPC 协议探针",
+      "objective": "在隔离配置中向真实 Pi CLI 查询状态、统计与消息，验证 JSONL framing 和按 id 匹配响应。",
+      "steps": [
+        "准备已安装的 @earendil-works/pi-coding-agent@1.5.0 与 Node.js 22.19+；将代码保存为 rpc-inspect.mjs，放在能解析该包的临时 Node 项目中。",
+        "执行 node rpc-inspect.mjs。脚本使用临时工作目录和临时 PI_CODING_AGENT_DIR，禁用发现的扩展、技能、模板、主题和上下文文件。",
+        "代码不发送 prompt，不发起模型推理；读取完三条命令响应后关闭 stdin。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from 'node:assert/strict';\nimport { spawn } from 'node:child_process';\nimport { once } from 'node:events';\nimport { mkdtemp } from 'node:fs/promises';\nimport { tmpdir } from 'node:os';\nimport { dirname, join } from 'node:path';\nimport { fileURLToPath } from 'node:url';\nconst cli = join(dirname(fileURLToPath(import.meta.resolve('@earendil-works/pi-coding-agent'))), 'cli.js');\nconst work = await mkdtemp(join(tmpdir(), 'pi-rpc-inspect-'));\nconst child = spawn(process.execPath, [cli, '--mode', 'rpc', '--no-session',\n  '--no-extensions', '--no-skills', '--no-prompt-templates', '--no-themes', '--no-context-files'],\n  { cwd: work, env: { PATH: process.env.PATH ?? '', TERM: 'dumb', NO_COLOR: '1',\n      PI_CODING_AGENT_DIR: join(work, 'agent') },\n    stdio: ['pipe', 'pipe', 'inherit'] });\nlet buffer = '';\nconst waiting = new Map();\nchild.stdout.setEncoding('utf8');\nchild.stdout.on('data', chunk => {\n  buffer += chunk;\n  let end;\n  while ((end = buffer.indexOf('\\n')) >= 0) {\n    const line = buffer.slice(0, end).replace(/\\r$/, '');\n    buffer = buffer.slice(end + 1);\n    if (!line) continue;\n    const record = JSON.parse(line);\n    if (record.type === 'response' && waiting.has(record.id)) {\n      const { resolve, timer } = waiting.get(record.id);\n      clearTimeout(timer); waiting.delete(record.id); resolve(record);\n    }\n  }\n});\nfunction ask(type) {\n  const id = `lab-${type}`;\n  return new Promise((resolve, reject) => {\n    const timer = setTimeout(() => { waiting.delete(id); reject(new Error(`Timeout: ${id}`)); }, 30000);\n    waiting.set(id, { resolve, timer });\n    child.stdin.write(JSON.stringify({ id, type }) + '\\n');\n  });\n}\ntry {\n  for (const type of ['get_state', 'get_session_stats', 'get_messages']) {\n    const response = await ask(type);\n    assert.equal(response.id, `lab-${type}`);\n    assert.equal(response.command, type);\n    assert.equal(response.success, true, JSON.stringify(response));\n    console.log(JSON.stringify({ id: response.id, command: type, success: response.success }));\n  }\n  const exited = once(child, 'exit');\n  child.stdin.end();\n  const [status] = await exited;\n  assert.equal(status, 0);\n} finally {\n  if (child.exitCode === null) child.kill();\n}\n",
+      "expected": [
+        "收到三条 id 与 command 对应且 success:true 的 response；不要求按随机启动事件的位置取第 N 行。",
+        "没有发送 prompt，因此本实验不验证模型输出、工具调用和 agent_settled 的整段生命周期。"
+      ],
+      "verification": "三条查询断言通过且 Pi 正常退出；手工把某条命令改为不存在的 type，应得到失败响应而不是把它解释为任务成功。",
+      "requires": "installed CLI",
+      "notes": "这是无模型推理的协议检查，需要已安装的 CLI 包；子进程只继承 PATH，不继承模型 API 凭证环境变量，使用临时配置目录，不读取或覆盖用户真实 Pi 配置。完整事件实验需额外 provider 凭证，本节不声称已完成该测评。"
+    },
+    "pitfalls": [
+      "把 prompt 的 success:true 或第一个 agent_end 当作业务任务完成。",
+      "用按所有 Unicode 换行切割的通用 reader 解析 JSONL。",
+      "把遥测事件当作恢复所需的持久状态，或把 trace id 当作授权凭证。"
+    ],
+    "sources": [
+      {
+        "title": "低层 Agent 事件与监听器结算",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/README.md"
+      },
+      {
+        "title": "RPC framing、响应与运行生命周期",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/rpc.md"
+      },
+      {
+        "title": "SDK 会话生命周期",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/sdk.md"
+      },
+      {
+        "title": "遥测契约与安全边界",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/telemetry/README.md"
+      }
+    ],
+    "migration": "用当前 RPC 文档的受理语义和 agent_settled 边界重写，不再用旧 agent_end 事件推断整个会话已经结束。"
+  },
+  {
+    "number": 9,
+    "id": "chapter-09",
+    "tag": "Context / Projection",
+    "title": "上下文预算：历史保存与模型可见内容分开管理",
+    "summary": "从 SessionManager 的规范投影出发，使用 ContextEditEntry 改变后续模型输入，同时保留原始历史与用量记录。",
+    "questions": [
+      "为什么修改 agent.state.messages 不能可靠替换 Coding Agent 的持久上下文？",
+      "ContextEditEntry 的 replacement:null 会删除原始记录吗？",
+      "上下文溢出恢复为什么要先保存失败尝试，再修复投影？"
+    ],
+    "sections": [
+      {
+        "title": "预算计算针对模型真正会看到的内容",
+        "paragraphs": [
+          "上下文预算不仅是历史消息长度，还包括系统提示、工具声明、新输入、工具结果、预留输出和安全余量。v1.5.0 在每次请求前使用 SessionManager 构造规范投影；已压缩或省略的原始记录仍可保存，但不会继续占据同一份模型输入预算。",
+          "系统提示和工具加载变化也会以 system 消息记录。重放这些变更后得到当前提示与工具集合，压缩时还会保存完整系统检查点。因此要分清原始 entry、当前分支、投影消息和最终 provider 请求，而不是把一份数组当作所有层的唯一真相。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "ContextEditEntry 追加修改，不覆盖历史",
+        "paragraphs": [
+          "context_edit 指向当前分支上一条已经产生模型内容的记录。replacement:null 省略该记录；非空 replacement 只替换 content，不改角色、模型、时间或用量等原始元数据。user、assistant、toolResult 和 custom_message 都可成为目标，元数据项和任意跨分支记录不能当作可编辑目标。",
+          "同一个目标出现多个编辑时，活动分支上最后的编辑生效。导航回编辑之前，原始内容重新参与上下文；这让摘要、脱敏和失败清理能保持分支语义。原记录仍可被 UI、导出、历史查询和会话账务读取，不能把省略操作当成数据删除或隐私擦除。"
+        ],
+        "bullets": [
+          "assistant 和 toolResult 的字符串替换会规范成文本块数组。",
+          "自定义状态用 custom entry；需要模型读取的信息才进入 custom_message。"
+        ]
+      },
+      {
+        "title": "规范上下文由会话管理器重建",
+        "paragraphs": [
+          "buildContextEntries 沿活动 leaf 回到根并处理压缩边界；buildSessionProjection 再应用 context_edit；buildSessionContext 生成交给模型的消息列表。这条链决定 finalized context，不能靠直接赋值 session.agent.state.messages 来持久替换它，下一次规范重建可能覆盖临时改动。",
+          "SDK 恢复外部历史时，应提供已含对应 entries 的 SessionManager。临时应用消息可以通过 Agent 的 transformContext 和 convertToLlm 分层处理，但这不等于已经写入会话；任何长期有效的变化都要有可重放来源。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "溢出恢复也要保留证据",
+        "paragraphs": [
+          "CLI 在新用户输入前以及工具结果完成、准备下一次响应时检查规范上下文。provider 拒绝过长请求或部分 length 终止可触发一次压缩恢复；带工具调用的 length 响应还要保留合成失败工具结果并遵守原有调度，不能粗暴丢弃整个轮次。",
+          "失败尝试先成为真实历史，并经过 turn_end、agent_end，再追加 context_edit 修复未来输入，成功压缩后才开始新的重试运行。压缩失败或取消时保留省略编辑，不写成功 compaction，也不安排内部恢复重试。这样错误可审计，后续模型又不会不断读到同一份失败现场。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "在内存会话中替换、省略，再回到编辑之前",
+      "objective": "验证 ContextEditEntry 的投影语义和原始历史保留，完全不调用模型。",
+      "steps": [
+        "准备含 @earendil-works/pi-coding-agent@1.5.0 的临时 Node 项目，保存 context-edit.mjs；使用已就绪依赖后可离线执行。",
+        "运行 node context-edit.mjs，依次观察原文、替换文本、省略后的空消息列表及回到原 leaf 的状态。",
+        "原文使用实验哨兵，不放真实敏感数据；本节只验证内存投影，不做隐私删除承诺。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from 'node:assert/strict';\nimport { SessionManager } from '@earendil-works/pi-coding-agent';\nconst manager = SessionManager.inMemory();\nconst original = 'RAW_CONTEXT_SENTINEL';\nconst id = manager.appendMessage({ role: 'user', content: original, timestamp: 0 });\nmanager.appendContextEdit(id, { content: 'short replacement' });\nassert.equal(manager.getEntry(id).message.content, original);\nassert.equal(manager.buildSessionContext().messages[0].content, 'short replacement');\nmanager.appendContextEdit(id, null);\nassert.equal(manager.buildSessionContext().messages.length, 0);\nassert.equal(manager.getEntry(id).message.content, original);\nmanager.branch(id);\nassert.equal(manager.buildSessionContext().messages[0].content, original);\nassert.equal(manager.getEntries().filter(e => e.type === 'context_edit').length, 2);\nconsole.log(JSON.stringify({ rawPreserved: true, replacementApplied: true,\n  omissionApplied: true, beforeEditRestored: true }));\n",
+      "expected": [
+        "替换后，原始 entry 的内容仍为哨兵文本，模型投影为 short replacement。",
+        "省略后投影没有该消息；切回原始 entry 时哨兵文本重新出现，两个 context_edit 仍留在原始 entries 中。"
+      ],
+      "verification": "四个状态的断言全部通过；不要仅检查 TUI 文本是否变化。",
+      "requires": "offline",
+      "notes": "需已安装固定版 Coding Agent 包；首次准备依赖可能联网。SessionManager.inMemory 不创建会话文件，实验不发起 provider 请求。"
+    },
+    "pitfalls": [
+      "把从模型输入省略等同于从文件、导出或账务记录永久删除。",
+      "直接修改 agent.state.messages 后，认为会话恢复也会保留这个修改。",
+      "按原始历史的总字符数估计当前窗口，忽略压缩、分支和 context_edit 投影。"
+    ],
+    "sources": [
+      {
+        "title": "ContextEditEntry 与上下文重建契约",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/session-format.md"
+      },
+      {
+        "title": "SessionManager 编辑验证与投影实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/session-manager.ts"
+      },
+      {
+        "title": "AgentSession 请求准备与恢复流程",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/agent-session.ts"
+      },
+      {
+        "title": "SDK 的规范会话来源",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/sdk.md"
+      }
+    ],
+    "migration": "用 v1.5.0 的规范会话投影、系统消息检查点与追加式 context_edit 解释预算，不再把修改内存消息数组当作完整上下文管理方案。"
+  },
+  {
+    "number": 10,
+    "id": "chapter-10",
+    "tag": "Compaction / Branches",
+    "title": "压缩与分支摘要：重建工作现场，不删除历史",
+    "summary": "学习当前压缩的触发、合法切点、系统检查点与摘要累计机制，再把它和离开分支时的信息交接分开。",
+    "questions": [
+      "reserveTokens 与摘要模型的最大输出长度，为什么不是同一个参数？",
+      "压缩为何不能从一条 toolResult 开始保留上下文？",
+      "compaction 的 firstKeptEntryId 与 branch_summary 的 fromId 分别回答什么问题？"
+    ],
+    "sections": [
+      {
+        "title": "阈值决定何时压缩，不决定摘要写多长",
+        "paragraphs": [
+          "默认条件仍是 contextTokens 大于 contextWindow 减 reserveTokens，默认 reserveTokens 为 16384，可由用户、项目和按模型设置调整。它决定何时开始压缩，不是摘要输出上限；当前摘要请求按模型输出能力和剩余窗口共同约束，不能把 reserveTokens 直接当 maxTokens。",
+          "会话会在新用户输入前检查，也会在工具结果追加后、下一响应准备阶段检查规范投影。若本批工具已终止运行且没有排队输入要求继续，就跳过该轮间检查。手工 /compact 可以附带说明；溢出和部分 length 情况另外走一次恢复尝试。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "切点必须留下完整的调用关系",
+        "paragraphs": [
+          "算法从当前投影往前估算，默认保留约 20000 个近期 token，再摘要较旧部分。优先按用户消息跨度切分；一个跨度本身过大时，可从 assistant 消息切开，将前缀单独摘要。合法边界不会落在 toolResult 上，否则模型会看见结果却失去发起调用的 assistant。",
+          "一次压缩追加 CompactionEntry，记录 summary、firstKeptEntryId、tokensBefore 和可用的 usage，还保存压缩边界的系统提示与工具检查点。后续上下文由该检查点、摘要、保留区间和新 entries 重建。原始历史继续存在，保留范围为空时 firstKeptEntryId 指向该压缩 entry 自身。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "重复压缩处理的是投影，不是原始文件切片",
+        "paragraphs": [
+          "再次压缩时，从上次保留边界接着摘要，并把上一份摘要作为迭代上下文；不应从上一条 compaction 的物理位置盲目切片。被 context_edit 省略的原始条目不参与切点、摘要和窗口估算，tokensBefore 也要按重建后的实际投影计算。",
+          "默认摘要保留目标、约束、进展、关键决定和下一步，压缩摘要还包含继续任务必需的关键背景。序列化不包含 thinking 块，并截断过长工具结果以控制摘要请求体积。读写文件清单会在 Pi 默认摘要间累计；扩展自供摘要的 details 需要由扩展自己维护。"
+        ],
+        "bullets": []
+      },
+      {
+        "title": "离开分支时，摘要负责交接另一条路径",
+        "paragraphs": [
+          "/tree 导航可把从旧 leaf 到共同祖先之间、不会出现在新活动路径中的工作做成 branch_summary。它的 parentId 指向新分支续接位置，fromId 记录离开的旧 leaf。这个摘要解决切换路径后的信息交接；compaction 解决当前路径的窗口压力，两者不能互相替代。",
+          "扩展可通过 session_before_compact 取消或自供摘要，通过失败事件观察压缩终态，也可参与树导航摘要。无论默认还是自供摘要，都应保留能验证的完成事项、未解决问题和原始证据位置；摘要只是工作交接材料，无法保证模型没有遗漏或曲解。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "手工摘要探针：比较压缩与离开分支",
+      "objective": "用内存 SessionManager 验证摘要 entry 的上下文重建语义；手工提供摘要，隔离掉模型质量和计费变量。",
+      "steps": [
+        "在已准备 @earendil-works/pi-coding-agent@1.5.0 的临时 Node 项目保存 summary-projection.mjs。",
+        "运行代码：第一份会话追加 compaction 并保留新消息；第二份会话从共同祖先建立带摘要的新分支。",
+        "核对原始哨兵记录仍可读取，却不直接进入新上下文；再检查 firstKeptEntryId、parentId、fromId 的含义。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from 'node:assert/strict';\nimport { SessionManager } from '@earendil-works/pi-coding-agent';\nconst user = content => ({ role: 'user', content, timestamp: 0 });\nconst compacted = SessionManager.inMemory();\nconst oldId = compacted.appendMessage(user('OLD_RAW_SENTINEL'));\nconst keptId = compacted.appendMessage(user('continue with the query test'));\nconst compactId = compacted.appendCompaction('Earlier work chose SQLite.', keptId, 1234);\nconst projected = JSON.stringify(compacted.buildSessionContext().messages);\nassert.equal(compacted.getEntry(oldId).message.content, 'OLD_RAW_SENTINEL');\nassert.equal(compacted.getEntry(compactId).firstKeptEntryId, keptId);\nassert.ok(projected.includes('Earlier work chose SQLite.'));\nassert.ok(projected.includes('continue with the query test'));\nassert.ok(!projected.includes('OLD_RAW_SENTINEL'));\nconst branched = SessionManager.inMemory();\nconst common = branched.appendMessage(user('shared goal'));\nconst oldLeaf = branched.appendMessage(user('LEFT_RAW_SENTINEL'));\nconst summaryId = branched.branchWithSummary(common, 'Approach A was explored.', undefined, true);\nconst summary = branched.getEntry(summaryId);\nassert.equal(summary.parentId, common);\nassert.equal(summary.fromId, oldLeaf);\nassert.equal(branched.getEntry(oldLeaf).message.content, 'LEFT_RAW_SENTINEL');\nconst newContext = JSON.stringify(branched.buildSessionContext().messages);\nassert.ok(newContext.includes('Approach A was explored.'));\nassert.ok(!newContext.includes('LEFT_RAW_SENTINEL'));\nconsole.log(JSON.stringify({ compactionRebuilt: true, branchSummaryLinked: true, rawHistoryPreserved: true }));\n",
+      "expected": [
+        "compaction 投影包含手工摘要与保留的新消息，不包含旧哨兵原文；旧 entry 仍存在。",
+        "branch_summary 的 parentId 为共同祖先，fromId 为离开的 leaf，新路径只携带它的摘要而不复制旧路径原文。"
+      ],
+      "verification": "所有断言通过且退出码 0；能够解释“模型没看见原文”和“原文已经删除”的区别。",
+      "requires": "offline",
+      "notes": "固定版依赖已准备后无需网络或模型账户。本探针不执行 /compact、不调用摘要模型，不验证自动切点、真实 token 估算或 LLM 摘要质量；这些需要另做 provider 集成测试。"
+    },
+    "pitfalls": [
+      "以为 reserveTokens 就是摘要请求固定输出上限。",
+      "为了省 token，从 toolResult 截断，拆散工具调用与结果。",
+      "把分支摘要当作合并两条完整历史，或宣称压缩删除了原始记录。"
+    ],
+    "sources": [
+      {
+        "title": "压缩触发、边界、恢复与扩展契约",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/compaction.md"
+      },
+      {
+        "title": "当前 compaction 实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/compaction/compaction.ts"
+      },
+      {
+        "title": "分支摘要收集与生成",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/compaction/branch-summarization.ts"
+      },
+      {
+        "title": "摘要 entry 与上下文重建实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/session-manager.ts"
+      }
+    ],
+    "migration": "完整按当前规范投影、系统检查点和摘要预算讲解；保留仍成立的 16384/20000 默认值，同时说明它们与按模型设置、摘要输出上限的区别。"
+  }
+]

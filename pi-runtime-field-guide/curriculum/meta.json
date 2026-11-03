@@ -1,0 +1,19 @@
+{
+  "title": "Pi v1.5.0：14 章源码与实践教程",
+  "version": "1.5.0",
+  "verifiedAt": "2026-11-03T21:19:39+08:00",
+  "sourceCommit": "f9a26365568127461c47a07a37dcb42c140a3ac5",
+  "releaseUrl": "https://github.com/earendil-works/pi/releases/tag/v1.5.0",
+  "nodeRequirement": ">=22.19.0",
+  "progressKey": "pi-guide-completed:v1.5.0",
+  "chapterCount": 14,
+  "archive": "archive/2026-08-26-chapters.json",
+  "scope": "14 章正文、实验及源码引用均按本次固定发布版更新；旧 DSH 比较和 Top 50 仍按原日期保留。",
+  "integrations": {
+    "verifiedAt": "2026-11-03T21:20:47+08:00",
+    "multica": "0.8.0",
+    "magpieLatest": "0.1.2858",
+    "magpieStable": "0.1.2115",
+    "endToEnd": "not_run_requires_real_credentials"
+  }
+}

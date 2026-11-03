@@ -1,0 +1,171 @@
+{
+  "version": "1.5.0",
+  "sourceCommit": "f9a26365568127461c47a07a37dcb42c140a3ac5",
+  "verifiedAt": "2026-11-03T13:33:33.864376+00:00",
+  "node": "22.23.2",
+  "chaptersRewritten": 14,
+  "officialReferences": 54,
+  "piSourcePathsVerified": 50,
+  "localLinksVerified": 87,
+  "cleanInstall": "npm ci --ignore-scripts succeeded with committed lockfile",
+  "offlineBundle": "9 deterministic chapter programs passed from clean install",
+  "experiments": [
+    {
+      "chapter": 1,
+      "status": "passed",
+      "command": "node --version; pi --version; pi --help (isolated install)",
+      "exit_code": 0,
+      "stdout": "node --version: v22.23.2\n./node_modules/.bin/pi --version: 1.5.0\nhelp:   --provider <name>              Provider to search for --model (requires --model) |   --model <pattern>              Model pattern or ID (supports \"provider/id\" and optional \":<thinking>\") |   --mode <mode>                  Output mode: text (default), json, or rpc |   --print, -p                    Non-interactive mode: process prompt and exit |   --models <patterns>            Comma-separated model patterns for Ctrl+P cycling |   --tools, -t <tools>            Comma-separated allowlist of tool names or patterns (*) to enable",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 2,
+      "status": "passed",
+      "command": "node chapter-02-lab.mjs",
+      "exit_code": 0,
+      "stdout": "{\n  first: 'stop',\n  second: 'error',\n  usage: {\n    input: 3,\n    output: 4,\n    cacheRead: 0,\n    cacheWrite: 0,\n    totalTokens: 7,\n    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, total: 0 }\n  }\n}",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 3,
+      "status": "passed",
+      "command": "node chapter-03-lab.mjs",
+      "exit_code": 0,
+      "stdout": "{ prompt: 'BASE\\n\\nLONG', tools: [], originalRules: 'SHORT' }",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 4,
+      "status": "passed",
+      "command": "node chapter-04-lab.mjs",
+      "exit_code": 0,
+      "stdout": "{\n  users: [ 'START', 'STEER', 'FOLLOW' ],\n  requests: 3,\n  finishes: 3,\n  idle: true\n}",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 5,
+      "status": "passed",
+      "command": "node chapter-05-lab.mjs",
+      "exit_code": 0,
+      "stdout": "{ executed: 0, toolErrors: 1, cancelled: 'aborted' }",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 6,
+      "status": "passed",
+      "command": "node chapter-06.mjs",
+      "exit_code": 0,
+      "stdout": "{\"errors\":[false,true,true,true],\"executions\":1,\"hooks\":[\"before:ok\",\"after:ok\",\"before:blocked\"]}\n",
+      "stderr": "",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 7,
+      "status": "passed",
+      "command": "node chapter-07.mjs",
+      "exit_code": 0,
+      "stdout": "{\"transientCalls\":2,\"quotaCalls\":1,\"abortedCalls\":1,\"cappedDelayMs\":2500}\n",
+      "stderr": "",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 8,
+      "status": "passed",
+      "command": "node chapter-08.mjs",
+      "exit_code": 0,
+      "stdout": "{\"id\":\"lab-get_state\",\"command\":\"get_state\",\"success\":true}\n{\"id\":\"lab-get_session_stats\",\"command\":\"get_session_stats\",\"success\":true}\n{\"id\":\"lab-get_messages\",\"command\":\"get_messages\",\"success\":true}\n",
+      "stderr": "",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 9,
+      "status": "passed",
+      "command": "node chapter-09.mjs",
+      "exit_code": 0,
+      "stdout": "{\"rawPreserved\":true,\"replacementApplied\":true,\"omissionApplied\":true,\"beforeEditRestored\":true}\n",
+      "stderr": "",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 10,
+      "status": "passed",
+      "command": "node chapter-10.mjs",
+      "exit_code": 0,
+      "stdout": "{\"compactionRebuilt\":true,\"branchSummaryLinked\":true,\"rawHistoryPreserved\":true}\n",
+      "stderr": "",
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 11,
+      "status": "passed",
+      "command": "node chapter-11.mjs",
+      "exit_code": 0,
+      "stdout": "PASS: raw history preserved; context edits are branch-relative",
+      "stderr": "",
+      "elapsed_seconds": 0.73,
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 12,
+      "status": "passed",
+      "command": "node chapter-12.mjs crash chapter12-recovery-kuwkxr0p",
+      "exit_code": 77,
+      "stdout": "sleep checkpoint committed",
+      "stderr": "",
+      "elapsed_seconds": 0.21,
+      "expected_exit_code": 77
+    },
+    {
+      "chapter": 12,
+      "status": "passed",
+      "command": "node chapter-12.mjs resume chapter12-recovery-kuwkxr0p",
+      "exit_code": 0,
+      "stdout": "PASS: same task recovered 7",
+      "stderr": "",
+      "elapsed_seconds": 1.03,
+      "expected_exit_code": 0
+    },
+    {
+      "chapter": 13,
+      "status": "passed",
+      "command": "bash chapter-13.sh",
+      "exit_code": 0,
+      "stdout": "PASS: trust controls loading; no-tools is not a process sandbox\nEvidence: <temporary-lab>/pi-trust-lab.htdTvu",
+      "stderr": "",
+      "elapsed_seconds": 0.73,
+      "expected_exit_code": 0
+    }
+  ],
+  "chapter14": {
+    "syntax": "checked",
+    "jointRun": "not_run_requires_real_credentials"
+  },
+  "limits": [
+    "No real provider quality, billing or latency benchmark",
+    "CLI/session and Durable mechanisms are tested separately",
+    "Multica–Pi and Magpie–Pi official integrations verified; complete combined deployment not tested"
+  ],
+  "browser": {
+    "verifiedAt": "2026-11-03T13:37:54.299721+00:00",
+    "result": "passed",
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "checks": [
+      "All 14 active chapters have current-version prose, three questions, executable lab and official sources",
+      "Versioned completion persists and does not reuse or delete old completion data",
+      "Chapter expansion and direct links to chapters 12 and 14 work",
+      "Historical 50-source library still renders and filters",
+      "Complete book has 14 chapters, working TOC and 390px mobile layout",
+      "Stack research, Markdown lessons and validation evidence are readable",
+      "No uncaught browser or resource errors"
+    ]
+  }
+}

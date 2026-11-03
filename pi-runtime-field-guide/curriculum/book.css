@@ -1,0 +1,14 @@
+body { max-width: 1060px; }
+.lesson-version { color: #55534d; font-size: 14px; }
+#toc { border: 1px solid #aaa79e; padding: 18px 26px; margin: 32px 0; background: #e8e4da; }
+#toc ol { columns: 2; column-gap: 36px; padding-left: 0; list-style: none; }
+#toc li { break-inside: avoid; margin: 7px 0; }
+.book-chapter { scroll-margin-top: 24px; }
+.book-chapter h4 { font-size: 21px; margin-top: 30px; }
+.chapter-lab { padding: 20px 24px; border: 1px solid #aaa79e; margin: 28px 0; background: #e8e4da; }
+.chapter-lab h3 { margin-top: 0; }
+.chapter-lab pre { background: #f4f0e6; }
+.chapter-lab h5 { font-size: 17px; margin: 24px 0 10px; }
+.lab-note, .lab-requires { font-size: 14px; color: #55534d; }
+.lesson-sources { font-size: 14px; }
+@media (max-width: 600px) { #toc ol { columns: 1; } .chapter-lab { padding: 16px; } }

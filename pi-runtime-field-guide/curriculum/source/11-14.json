@@ -1,0 +1,372 @@
+[
+  {
+    "number": 11,
+    "id": "chapter-11",
+    "tag": "SESSION / CONTEXT",
+    "title": "会话树、上下文编辑与 CLI 恢复",
+    "summary": "把磁盘原始历史、当前分支和下一次模型上下文分开，才能解释回退、压缩和恢复。Pi v1.5.0 的 ContextEditEntry 改变后续模型投影，不擦除原始记录，也不回滚已经发生的文件或网络副作用。",
+    "questions": [
+      "同一 JSONL 保存多个分支时，为什么不能把所有 message 按时间拼给模型？",
+      "把一条工具结果从上下文隐藏后，原文、用量和外部文件分别会怎样？",
+      "Multica 记录了 Pi 会话标识，为什么换一台 runtime 仍可能无法续接？"
+    ],
+    "sections": [
+      {
+        "title": "一份文件保存历史，一条路径组成当前现场",
+        "paragraphs": [
+          "CLI 默认把会话放在 `~/.pi/agent/sessions/--<path>--/`。表头记录版本、会话 ID 与 cwd；其余条目用 `id/parentId` 连接。当前 leaf 到根的路径决定活动分支；切换 leaf 后追加，形成另一条路径，旧条目继续保留。表头的会话 ID 不是树节点的 ID。",
+          "`/tree` 在当前文件内导航；`/fork`、`/clone` 可创建关联的新会话。恢复是按记录重建上下文，不是重新执行过去每个 bash。修改代码后的分支切换不会自动把工作目录恢复到旧版本，文件回滚应由 Git 或快照单独完成。"
+        ],
+        "bullets": [
+          "区分：全量原始条目、active branch、模型可见 messages。",
+          "`custom`、`usage`、`context_edit` 不各自产生一条普通模型消息。"
+        ]
+      },
+      {
+        "title": "ContextEditEntry 是追加的投影变更",
+        "paragraphs": [
+          "`appendContextEdit(targetId, {content: ...})` 给当前分支上的可编辑消息追加替换；传 `null` 则使目标不参与未来上下文。可编辑目标包括 user、assistant、toolResult 和 custom_message。连续修改同一目标时，当前活动路径上最后一次生效。",
+          "`buildSessionProjection()` 把编辑应用到消息内容；目标的角色、来源和账务元数据保留。回到编辑之前的分支，原内容重新参与上下文。压缩另由 CompactionEntry 的摘要、系统检查点和 `firstKeptEntryId` 控制，不能把编辑理解为截断整个日志。"
+        ],
+        "bullets": [
+          "原始文件、UI、导出和会话计费保留原记录；隐藏上下文不等于脱敏删除。",
+          "编辑必须指向活动分支上的上下文消息，不能任意修改另一分支或 usage 条目。"
+        ]
+      },
+      {
+        "title": "恢复要核对路径、进程和真实副作用",
+        "paragraphs": [
+          "`pi --continue` 继续当前目录最近会话；`pi --resume` 打开选择器；`pi --session <path|id>` 打开指定会话，恢复到其记录的 cwd。`--session-dir` 覆盖查找和存储位置，`--no-session` 则仅在内存中保存。迁移电脑时，只有会话标识还不够，文件、原 cwd 和所需工具也必须可访问。",
+          "先检查会话文件与工作目录，再检查 provider 配置与凭证，最后验证真实产物。对发送消息、收费、远端写入等动作，恢复前核对外部结果；CLI JSONL 会话不能提供这些动作的 exactly-once 保证。"
+        ],
+        "bullets": [
+          "SDK 内存实验验证投影和分支；磁盘续接要另在临时项目检查。",
+          "不要把 CLI 的 SessionManager 与第 12 章独立 Durable 存储 API 混用。"
+        ]
+      }
+    ],
+    "lab": {
+      "title": "不调用模型，验证编辑只影响活动分支",
+      "objective": "用 v1.5.0 的真实 SessionManager API 同时观察原历史、编辑后的上下文、编辑前的分支。",
+      "steps": [
+        "在独立实验目录预先准备 `@earendil-works/pi-coding-agent@1.5.0` 依赖，Node 至少 22.19；本实验不需要模型凭证。",
+        "把代码保存为 `session-projection.mjs`，执行 `node session-projection.mjs`。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { SessionManager } from \"@earendil-works/pi-coding-agent\";\n\nconst session = SessionManager.inMemory();\nconst original = \"原记录 A\";\nconst first = session.appendMessage({ role: \"user\", content: original, timestamp: Date.now() });\nsession.appendMessage({ role: \"user\", content: \"另一条消息\", timestamp: Date.now() });\nsession.appendContextEdit(first, { content: \"未来模型只见 B\" });\nconst editedLeaf = session.getLeafId();\nassert.equal(session.buildSessionContext().messages[0].content, \"未来模型只见 B\");\nassert.equal(session.getEntries().find((entry) => entry.id === first).message.content, original);\n\nsession.branch(first);\nsession.appendMessage({ role: \"user\", content: \"从编辑之前分叉\", timestamp: Date.now() });\nassert.equal(session.buildSessionContext().messages[0].content, original);\nsession.branch(editedLeaf);\nassert.equal(session.buildSessionContext().messages[0].content, \"未来模型只见 B\");\nconsole.log(\"PASS: raw history preserved; context edits are branch-relative\");",
+      "expected": [
+        "断言全部通过，输出 PASS。",
+        "全量条目中的第一条仍是“原记录 A”，编辑后的模型上下文为 B。",
+        "回到编辑前分支时可见 A；返回编辑后的 leaf 时再次可见 B。"
+      ],
+      "verification": "比较 `getEntries()` 与 `buildSessionContext()` 的输出；内存实验不证明磁盘耐久性，也不验证外部副作用恢复。",
+      "requires": "offline",
+      "notes": "本轮已在 Node 22.23.2 与预装 v1.5.0 SDK 中离线实跑通过；不需要模型凭证。不要拿真实密钥测试“隐藏后是否还在原日志”。 可选扩展（需要真实模型凭证，未计入本章离线通过）：另用已登录的 CLI 在临时目录创建一条会话，退出后用 `pi --session <实际JSONL路径>` 续接，并检查恢复的 cwd；这一步会发模型请求。"
+    },
+    "pitfalls": [
+      "把 context_edit 当成原始记录删除，误以为分享会话已无敏感信息。",
+      "只改 leaf 就期待已经写入的代码或数据库跟着回滚。",
+      "跨机器只复制 session ID，却缺失 JSONL、cwd 或 provider 配置。"
+    ],
+    "sources": [
+      {
+        "title": "v1.5.0 Session format 与 ContextEditEntry",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/session-format.md"
+      },
+      {
+        "title": "v1.5.0 SessionManager 实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/core/session-manager.ts"
+      },
+      {
+        "title": "v1.5.0 CLI session 参数",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/cli.md#sessions"
+      }
+    ],
+    "migration": "8 月关于 JSONL 树的基本判断仍成立；本章补入 v1.5.0 的分支相对 context_edit、系统检查点和当前恢复参数。旧会话继续由 CLI 迁移，不应把其文件直接交给 pi-durable。"
+  },
+  {
+    "number": 12,
+    "id": "chapter-12",
+    "tag": "DURABLE / EXPERIMENTAL",
+    "title": "独立 Pi Durable：任务检查点、存储与崩溃恢复",
+    "summary": "v1.5.0 的持久任务路线在独立的 @earendil-works/pi-durable。它把对话、任务状态与应用文档提交到存储；API 仍标 Experimental，默认终端 CLI 没有自动换用这套引擎。",
+    "questions": [
+      "一个工具在“外部动作成功、结果尚未提交”之间崩溃，为什么仍需要幂等键？",
+      "MemoryStorage、SQLite 和 JSONL 分别能保住哪些状态，谁负责单一写入者？",
+      "为什么一个 JavaScript Promise 或内存变量不能充当跨进程任务检查点？"
+    ],
+    "sections": [
+      {
+        "title": "先分开 Conversation、Task 和 Document",
+        "paragraphs": [
+          "`Harness.open(storage, {models, registry}, context)` 打开持久 Session；`harness.root(context)` 取得同一个根对话。Conversation 保存 transcript；Document 保存类型化 JSON 状态；Task 是有版本、phase 与 checkpoint 的持久状态机。`conversation.commit()` 可把追加条目、文档变更和创建任务放在同一个原子提交。",
+          "任务定义由 registry 的扩展提供；存储保存名字与状态，不替你保存程序代码。恢复进程要装回相容任务定义；缺失或不能迁移的定义会阻塞任务。`requestId` 可去重重复输入提交，但不自动去重任务里面的外部写操作。"
+        ],
+        "bullets": [
+          "`pi.generation` 调模型并拥有其 `pi.tool` 子任务。",
+          "需要重启后继续使用的数据，应进入 checkpoint、文档或任务结果。"
+        ]
+      },
+      {
+        "title": "恢复从提交点继续，副作用要另作保证",
+        "paragraphs": [
+          "`resume()`、提交输入或等待任务会启动调度。phase 在重启后可能从头执行，所以先保存意图，再执行外部动作，再保存结果；等待时间用 `sleepUntil()` 结束当前 phase，把下一 phase 的 checkpoint 一起持久化。",
+          "工具只有声明 `replay: \"safe\"` 才会在进程中断后重跑；否则给模型 interrupted 错误及已提交输出。即使标为 safe，外部系统仍应使用稳定幂等键。持续崩溃受 restartLimit 约束，不能把自动恢复描述成无限重试或任意步骤只执行一次。"
+        ],
+        "bullets": [
+          "任务状态提交与外部邮件、支付、数据库写入不属于同一事务。",
+          "进度输出可能延迟落盘；默认约 1 秒的未持久窗口，不能声称每个已显示字符都抗崩溃。"
+        ]
+      },
+      {
+        "title": "选择后端，同时定义存储所有权",
+        "paragraphs": [
+          "MemoryStorage 不持久化。SQLite 的 WAL/NORMAL 可承受进程崩溃，但最新提交在断电或宿主故障时仍可能丢失。JSONL 提供追加日志与可选 fsync，且把全量历史留在内存中；长任务通常更适合 SQLite。浏览器还有 IndexedDB，服务端有 Cloudflare Durable Object 适配。",
+          "一份 storage 同时由一个进程拥有，库不提供跨进程锁。多个 worker 不应随意打开同一目录抢任务；只读观察者使用 readOnly，不能调用 resume 或写入。实验性版本升级要先备份并在副本演练定义与存储兼容。"
+        ],
+        "bullets": [
+          "CLI JSONL 会话树与 Durable 的 JSONL 存储不是同一格式。",
+          "关闭进程与突然崩溃的恢复细节不同，验收时要分别记录故障注入点。"
+        ]
+      }
+    ],
+    "lab": {
+      "title": "保存睡眠检查点，结束进程后重新启动",
+      "objective": "不用模型和外部副作用，通过真实 JSONL storage 验证任务跨两个 Node 进程恢复。",
+      "steps": [
+        "在独立 Node 项目准备 `@earendil-works/pi-durable@1.5.0`、`@earendil-works/pi-ai@1.5.0` 与 `@earendil-works/chord@1.5.0`，Node 至少 22.19。",
+        "保存为 `durable-recovery.mjs`。用一个全新目录执行 `node durable-recovery.mjs crash ./recovery-lab`；预期以 77 退出，这是实验故障注入。",
+        "再执行 `node durable-recovery.mjs resume ./recovery-lab`。保留目录检查证据，不同时启动第二个写入进程。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { existsSync } from \"node:fs\";\nimport { mkdir, readFile, writeFile } from \"node:fs/promises\";\nimport { join, resolve } from \"node:path\";\nimport { BACKGROUND_CONTEXT } from \"@earendil-works/chord/context\";\nimport { createModels } from \"@earendil-works/pi-ai/models\";\nimport { createRegistry, defineExtension, defineTask, Harness } from \"@earendil-works/pi-durable\";\nimport { openNodeJsonlStorage } from \"@earendil-works/pi-durable/storage/jsonl/node\";\n\nconst mode = process.argv[2];\nif (![\"crash\", \"resume\"].includes(mode)) throw new Error(\"Choose crash or resume\");\nconst directory = resolve(process.argv[3] ?? \"./recovery-lab\");\nawait mkdir(directory, { recursive: true });\nconst idFile = join(directory, \"task-id.json\");\nconst context = BACKGROUND_CONTEXT;\nconst Probe = defineTask({\n  name: \"lab.recovery\", version: 1,\n  initial: () => ({ phase: \"prepare\" }),\n  phases: {\n    prepare: async (_task, runtime, ctx) => {\n      await runtime.sleepUntil(runtime.now() + 1000, { phase: \"finish\" }, ctx);\n      console.log(\"sleep checkpoint committed\");\n      if (mode === \"crash\") process.exit(77);\n    },\n    finish: (_task, runtime, ctx) => runtime.commit(\n      () => ({ status: \"terminal\", outcome: { status: \"completed\", result: \"recovered\" } }), ctx),\n  },\n  abort: (_task, runtime, ctx) => runtime.commit(\n    () => ({ status: \"terminal\", outcome: { status: \"aborted\" } }), ctx),\n});\nconst registry = createRegistry();\nregistry.install(defineExtension({ name: \"recovery-lab\", tasks: [Probe] }));\nconst storage = await openNodeJsonlStorage(join(directory, \"store\"), context, { fsync: true });\nconst harness = await Harness.open(storage, { models: createModels(), registry }, context);\nlet id;\nif (mode === \"crash\") {\n  if (existsSync(idFile)) throw new Error(\"Use a fresh experiment directory\");\n  const root = await harness.root(context);\n  id = await root.commit((tx) => tx.createTask(Probe, null, { ownership: { kind: \"conversation\" } }), context);\n  await writeFile(idFile, JSON.stringify(id));\n} else {\n  id = JSON.parse(await readFile(idFile, \"utf8\"));\n}\nconst record = await harness.waitForTask(id, context);\nassert.equal(record.state.status, \"terminal\");\nassert.equal(record.state.outcome.status, \"completed\");\nassert.equal(record.state.outcome.result, \"recovered\");\nconsole.log(\"PASS: same task recovered\", id);\nawait harness.close(context);",
+      "expected": [
+        "首次输出 sleep checkpoint committed，进程退出码为 77。",
+        "第二次以保存的同一 task ID 完成，输出 PASS 与 recovered。",
+        "未注册任何模型 provider，不产生模型 API 请求；存储与 task-id.json 保留。"
+      ],
+      "verification": "记录两次进程退出码、同一 task ID、terminal/completed 结果。它验证已提交 checkpoint 的恢复，不证明外部支付或邮件的 exactly-once。",
+      "requires": "offline",
+      "notes": "本轮在 Node 22.23.2 与预装 v1.5.0 依赖中实跑：首次退出 77，第二次恢复同一 task ID 并 completed；没有模型请求。TaskId 按 JSON 保存与读取，保留其原始类型。"
+    },
+    "pitfalls": [
+      "给有外部副作用的工具加 replay:safe，却没有业务幂等键。",
+      "用 MemoryStorage 做测试后声称断进程仍可恢复。",
+      "让多个进程同时写同一 storage，或把 readOnly 当可调度副本。",
+      "把 TaskId 假定为字符串；应保存并恢复原始 ID 类型。"
+    ],
+    "sources": [
+      {
+        "title": "v1.5.0 Durable API 与存储限制",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/durable/README.md"
+      },
+      {
+        "title": "v1.5.0 官方恢复实验",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/durable/test/examples/12-recovery.ts"
+      },
+      {
+        "title": "v1.5.0 JSONL Node 适配入口",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/durable/src/storage/jsonl/node.ts"
+      }
+    ],
+    "migration": "从 v1.0.0 起，旧 core 实验 Harness 导出已拆除。本章以独立 pi-durable 的 Harness/Conversation/Task/Document API 重写；不要继续照抄 8 月 core AgentHarness 接口。"
+  },
+  {
+    "number": 13,
+    "id": "chapter-13",
+    "tag": "TRUST / PERMISSIONS",
+    "title": "信任资源不等于限制权限：真正的安全边界",
+    "summary": "Pi 的 project trust 决定加载哪些项目资源，不给每个工具创建权限边界。工具、扩展和子进程通常继承启动用户权限；要保护宿主文件和凭证，必须明确整个进程或各工具实际运行在哪里。",
+    "questions": [
+      "已拒绝 project trust，为什么 AGENTS.md 仍可能影响模型？",
+      "--no-tools 为什么挡不住一个已加载扩展的模块代码？",
+      "只把 bash 放进微型虚拟机，与把整个 Pi 放进容器，保护范围差在哪里？"
+    ],
+    "sections": [
+      {
+        "title": "Project trust 只控制受保护资源加载",
+        "paragraphs": [
+          "当前文档保护 `.pi/settings.json`、项目 MCP、extensions、skills、prompts、themes 和系统提示文件，以及项目层 `.agents/skills`。显式 `--approve` 或 `--no-approve` 优先；否则依次由可处理信任事件的扩展、已保存路径决定和全局 defaultProjectTrust 决定。默认 ask 在 print/JSON/RPC 无交互模式下会跳过受保护资源。",
+          "它不是完整启动边界：选择会话时会先读取项目 sessionDir；普通 AGENTS.override.md、AGENTS.md、CLAUDE.md 也不受这项项目信任控制，除非关闭上下文加载。拒绝信任不能让仓库里的自然语言自动变可信。"
+        ],
+        "bullets": [
+          "`/trust` 的决定按规范化路径保存在用户 trust.json。",
+          "批准资源加载不等于授予一个隔离的“仅此目录”权限。"
+        ]
+      },
+      {
+        "title": "工具过滤、Hook 和 QuickJS 各有范围",
+        "paragraphs": [
+          "`--no-tools` 禁用向模型开放的工具，不阻止已经加载的 TypeScript 扩展在 Pi 进程内读写文件。扩展还能访问提示词、工具参数、凭证和历史；工具前 Hook 可以拦截约定调用，却挡不住扩展自己调用 Node API 或其他拥有同权限的进程。",
+          "Codemode 的 QuickJS 没有 Node、文件系统和网络 API，但可调用被提供的工具；bash 的实际权限不会因此降低。`--tools read` 也不自动移除全部 MCP；应结合 `--no-mcp` 或明确 MCP 过滤，按当前 CLI 文档核查暴露集合。"
+        ],
+        "bullets": [
+          "少给工具可减少误操作入口，不能代替操作系统隔离。",
+          "显式 -e 加载的扩展与项目自动发现路径不同，要分别审查来源。"
+        ]
+      },
+      {
+        "title": "把边界放在可验证的位置",
+        "paragraphs": [
+          "直接启动 Pi 时，cwd 只影响资源发现和默认工具位置；同一用户能访问的其他目录仍可被进程访问。完整 Pi 跑在容器、虚拟机或 sandbox 中，边界覆盖 Pi、扩展和子进程；宿主 Pi 只把内建工具委托给 Gondolin，则其他扩展仍在宿主。",
+          "卷挂载、环境变量和网络决定隔离内仍能触及什么。只读挂载与短期窄权限凭证有明确效果；共享 HOME、挂整个凭证目录或开放网络会扩大暴露。Multica 的普通 run 同样不提供文件系统沙箱，应在 daemon 外设置边界。"
+        ],
+        "bullets": [
+          "先用自建哨兵文件验证边界，不读取真实 SSH key 或个人文件。",
+          "会话可能含文件内容、命令结果和凭证；分享前审查原日志。"
+        ]
+      }
+    ],
+    "lab": {
+      "title": "离线证明 trust 与工具开关是两道不同的控制",
+      "objective": "仅在自建临时目录里，验证项目扩展受信任开关控制，而已加载扩展即使无模型工具仍能写入 cwd 之外。",
+      "steps": [
+        "需要已安装的 Pi v1.5.0 与 Node；下面使用全新的 PI_CODING_AGENT_DIR，不改现有配置和信任记录。",
+        "把代码保存为 `trust-lab.sh`，执行 `bash trust-lab.sh`。脚本只创建自身临时目录与实验标记，不发模型请求。",
+        "对照两次 help 输出与标记文件；全部材料保留在打印的目录中，供手工检查。"
+      ],
+      "codeLanguage": "bash",
+      "code": "set -eu\nsecurity_lab=\"$(mktemp -d \"${TMPDIR:-/tmp}/pi-trust-lab.XXXXXX\")\"\nmkdir -p \"$security_lab/project/.pi/extensions\" \"$security_lab/agent-home\"\ncat > \"$security_lab/project/.pi/extensions/probe.ts\" <<'EXT'\nimport { writeFileSync } from \"node:fs\";\nimport { resolve } from \"node:path\";\nexport default function () {\n  writeFileSync(resolve(process.cwd(), \"..\", \"extension-loaded.txt\"), \"self-created experiment marker\\n\");\n}\nEXT\n(\n  cd \"$security_lab/project\"\n  PI_CODING_AGENT_DIR=\"$security_lab/agent-home\" pi --offline --no-session --no-approve --no-tools --no-mcp --help > \"$security_lab/declined-help.txt\"\n)\ntest ! -e \"$security_lab/extension-loaded.txt\"\n(\n  cd \"$security_lab/project\"\n  PI_CODING_AGENT_DIR=\"$security_lab/agent-home\" pi --offline --no-session --approve --no-tools --no-mcp --help > \"$security_lab/approved-help.txt\"\n)\ntest -f \"$security_lab/extension-loaded.txt\"\nprintf 'PASS: trust controls loading; no-tools is not a process sandbox\\nEvidence: %s\\n' \"$security_lab\"",
+      "expected": [
+        "拒绝项目资源时没有标记；批准加载后出现父目录中的实验标记。",
+        "两次运行都没有模型工具、MCP 连接和模型请求。",
+        "原用户的 ~/.pi/agent 配置与 trust.json 不因本实验被修改。"
+      ],
+      "verification": "同时检查第一轮标记不存在与第二轮标记存在；只出现一次成功结果不算完成。该实验不声称拒绝信任会阻止所有上下文文件读取。",
+      "requires": "installed CLI",
+      "notes": "本轮使用隔离目录中的预装 Pi v1.5.0 实跑通过；所有实验文件位于新建临时根目录，未读取用户真实 Pi 配置，未调用模型。help 前会按信任决定加载项目扩展。"
+    },
+    "pitfalls": [
+      "用提示词“不要越界”代替文件系统或网络策略。",
+      "以为项目已批准就安全，或拒绝后所有文本都不会加载。",
+      "把只隔离内建工具的方案当成整个 Pi 与扩展都已隔离。"
+    ],
+    "sources": [
+      {
+        "title": "v1.5.0 Security 与 project trust",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/security.md"
+      },
+      {
+        "title": "v1.5.0 完整进程与工具隔离",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/containerization.md"
+      },
+      {
+        "title": "v1.5.0 扩展权限",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/extensions.md"
+      },
+      {
+        "title": "v1.5.0 启动与 help 资源加载顺序",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/src/main.ts"
+      }
+    ],
+    "migration": "旧稿“Pi 无内建逐工具审批/沙箱”的边界仍重要；当前已增加 project trust，必须补上其资源加载作用与明确例外，不能把它误写成全面权限系统。"
+  },
+  {
+    "number": 14,
+    "id": "chapter-14",
+    "tag": "MULTICA × PI × MAGPIE",
+    "title": "三层实践：Multica、Pi 与 Magpie",
+    "summary": "Multica–Pi 与 Magpie–Pi 都有官方适配；完整 Multica → Pi → Magpie → 模型服务的链路仍需联测。本章给出同机基线、配置顺序、故障定位和验收办法，不把三者画在一起就当成已集成成功。",
+    "questions": [
+      "Multica 选定的模型、Pi 已有会话模型与 Magpie 路由组同时存在时，谁决定这次实际请求？",
+      "某个 run 显示完成，为什么仍要核对产物、真实服务模型和续接上下文？",
+      "项目 MCP、绑定 skills 与用户本机配置冲突时，应怎样判断谁加载了什么？"
+    ],
+    "sections": [
+      {
+        "title": "先冻结版本与职责，再接通两个官方适配",
+        "paragraphs": [
+          "本章冻结 2026-11-03 21:20:47 上海时间：Pi v1.5.0，Multica v0.8.0，Magpie 默认 latest v0.1.2858、stable v0.1.2115。Magpie 两个渠道分别发布于 11 月 3 日 21:10:10 与 10 月 30 日 07:08:31；不能把源码新 tag 直接当成客户端发布。",
+          "Multica 的 daemon 领取任务并调用 Pi，记录 run、日志与交付；Pi 管上下文、模型/工具循环与 CLI 会话；Magpie 管模型连接、协议转换和路由。默认三层同机、同用户先做基线，避免把 PATH、用户配置目录与网关网络问题混在一起。"
+        ],
+        "bullets": [
+          "本轮已核对官方资料与源码，并实跑第 11–13 章离线实验；没有登录账号或运行完整三层链路。",
+          "独立 Pi Durable 不会因 Multica 调用了 Pi CLI 就自动启用。"
+        ]
+      },
+      {
+        "title": "配置顺序：先单机模型，再 Pi，再 Multica",
+        "paragraphs": [
+          "第一步在 Magpie 供应商页添加已有凭证，或完成其支持的登录；从 `magpie models` 获取实际可选 ID，再由 `magpie pi <清单中的ID>` 为 Pi 设置模型。不要复制官网示意模型名当作账户必有额度。用 `pi --list-models` 再确认 Pi 自己的完整 provider/model，先测试固定单模型，暂不加路由组和故障转移。",
+          "第二步启动全新 Pi 会话，核对响应和 Magpie 路由记录；再续接同一测试会话。第三步让相同机器和用户的 Multica daemon 检测到同一 Pi 可执行文件；重启检测后，新建测试 issue，选择 Pi runtime。先留空 Multica 模型字段使用 Pi 默认值，或刷新 runtime 清单后选完全相同的模型；不要沿用其他后端的模型值。"
+        ],
+        "bullets": [
+          "配置改变通常要新会话/新 run；旧会话续接必须单独验收。",
+          "服务启动环境与终端可能不同：核对 PATH、PI_CODING_AGENT_DIR、会话目录及网关进程。",
+          "容器里的 127.0.0.1 不是宿主 Magpie；先解决可达地址和访问密钥再继续。"
+        ]
+      },
+      {
+        "title": "MCP 与 skills：按当前适配实际加载",
+        "paragraphs": [
+          "Multica v0.8.0 对 Pi 的受管 MCP 要求 Pi 至少 v0.99.0：它创建临时扩展，通过显式 `--extension` 调用 `registerMcpServer`，不等于信任全部项目资源。绑定 skills 写到 `.pi/skills/` 后逐个显式传 `--skill`；同名已有技能保留，受管副本采用另名。",
+          "先只测试基础任务，再逐个增加 MCP 和一项可识别的只读 skill。Pi 自己也加载用户层 MCP；同一服务器由不同管理层重复配置可能造成冲突。不要为排障盲目加 `--approve`、共享凭证目录或关掉边界；先看真实启动参数、扩展错误、运行记录与工具清单。"
+        ],
+        "bullets": [
+          "CLI 路径找不到：同一 daemon 环境核对 command -v，再重新检测；自定义兼容 profile 可设置绝对路径。",
+          "模型不生效：查显式模型覆盖、旧会话、enabledModels 与新 run，再对照 Magpie 的实际 served 模型。",
+          "续接失败：查原 JSONL/cwd 是否仍在原 runtime；回落新会话不算续接通过。",
+          "MCP 缺失：查 Pi 版本、受管扩展错误、本机配置和同名定义；不要只看设置页面。",
+          "skill 缺失：查绑定、实际注入名称和 --skill 路径，确认任务能展示一条独有只读规则。",
+          "网关报认证或连接错：查 Magpie 是否运行、账户额度和当前用户配置；不要把真实 key 写入 issue。",
+          "权限越界：停止加权限，核对 daemon 用户、完整进程隔离、卷挂载和网络边界。"
+        ]
+      },
+      {
+        "title": "验收产物，不只验收绿色状态",
+        "paragraphs": [
+          "给测试 issue 写明确合同：只在指定测试仓库生成 `stack-proof.json`，字段含固定 nonce、输入文件摘要和检查结果；先不访问外部写服务。核对 Multica run ID、Pi 会话路径、Magpie 请求记录与真实文件四者能相互对应，再做同 issue 的一次续接、一次取消/steering 和一项受管能力测试。",
+          "只有这些证据齐全，才记录该主机、版本、模型、配置的组合通过；不得推广成所有模型和订阅都兼容。之后一次只加一个变量：路由组、定时触发、Squad 或远端 runtime。run 完成由系统报告，业务验收由任务合同和使用者决定；成本数字只是估算，还要对供应商账单。"
+        ],
+        "bullets": [
+          "三层共同失败时先缩回 Pi → 单模型，再定位模型接入或任务调度。",
+          "带副作用的联测必须有幂等键与外部结果核对，避免多层重试重复执行。"
+        ]
+      }
+    ],
+    "lab": {
+      "title": "固定模型的两段烟雾检查与任务证据合同",
+      "objective": "先验证 Pi → Magpie 的新会话和续接，再把同一模型交给 Multica，留下可核对的四层证据。",
+      "steps": [
+        "前置：三个工具已安装、Magpie 已添加一个可用供应商。运行下方命令；按实际清单输入 ID，不在命令行输入真实 key。",
+        "在 Multica 新建测试 agent，绑定本机 Pi runtime，模型留空或选清单中的对应 ID。新建 issue，要求只在测试目录生成 stack-proof.json：nonce=STACK-42、sourceFile=README.md、sha256=文件实际摘要；附检查命令及结果。",
+        "首次完成后在同一 issue 追问 STACK-42 的来源，不重复给 nonce；核对 Pi 会话路径是否复用。再单独测试一项 skill、一个只读 MCP 和取消/steering，各记录结果。"
+      ],
+      "codeLanguage": "bash",
+      "code": "set -eu\ncommand -v pi\npi --version\ncommand -v magpie\nmagpie --version\nmagpie models\nread -r -p '复制 magpie models 中一个真实 provider/model：' gateway_model\ntest -n \"$gateway_model\"\nmagpie pi \"$gateway_model\"\npi --offline --list-models\nread -r -p '复制 Pi 清单对应的完整 provider/model：' pi_model\ntest -n \"$pi_model\"\nstack_lab=\"$(mktemp -d \"${TMPDIR:-/tmp}/pi-stack-lab.XXXXXX\")\"\nmkdir -p \"$stack_lab/sessions\"\n(\n  cd \"$stack_lab\"\n  pi --model \"$pi_model\" --session-dir \"$stack_lab/sessions\" --session-id stack-smoke --no-tools --no-mcp -p '记住本会话测试标记 STACK-42；只回复 STACK-42。'\n  pi --model \"$pi_model\" --session-dir \"$stack_lab/sessions\" --session-id stack-smoke --no-tools --no-mcp -p '只回复上轮的测试标记。'\n)\nmagpie ls\nmultica daemon status\n# 仅在测试环境需要重新检测 CLI/环境时运行，不与生产任务混用：\n# multica daemon restart\nprintf 'Local evidence directory: %s\\n' \"$stack_lab\"",
+      "expected": [
+        "两次独立 Pi 调用返回 STACK-42，Magpie 可找到对应请求与实际服务模型。",
+        "Multica 首次任务产物的 SHA-256 与测试文件相符；同 issue 后续 run 使用原 Pi 会话。",
+        "取消/steering、skill、MCP 分别有日志和结果；未做的项目保留为未验证。"
+      ],
+      "verification": "保存版本/主机/模型、run ID、Pi 会话路径、Magpie 请求记录、stack-proof.json 与检查输出。只有模型能回复或 run 显示完成均不足以通过。",
+      "requires": "provider credentials",
+      "notes": "此实验会消耗所选模型额度；需要用户在自己的测试环境操作。本轮只提供并核对步骤，未宣称链路联测通过。不要导出凭证，也不要把已有生产 issue 当第一次烟雾测试。"
+    },
+    "pitfalls": [
+      "把两对官方适配误报为所有三层配置已经联合测试。",
+      "只改 Magpie 默认模型，却忽略 Multica 显式模型或旧 Pi 会话。",
+      "把 task/run 自动重试与模型连接回退当成外部动作的去重保证。",
+      "把 project trust、Multica worktree 和 Magpie 脱敏误当成文件系统沙箱。"
+    ],
+    "sources": [
+      {
+        "title": "Multica v0.8.0 Providers：模型、续接、MCP 与 skills",
+        "url": "https://github.com/multica-ai/multica/blob/v0.8.0/apps/docs/content/docs/providers.mdx"
+      },
+      {
+        "title": "Multica v0.8.0 Pi 后端与显式资源加载",
+        "url": "https://github.com/multica-ai/multica/blob/v0.8.0/server/pkg/agent/pi.go"
+      },
+      {
+        "title": "Multica v0.8.0 daemon、数据与配置边界",
+        "url": "https://github.com/multica-ai/multica/blob/v0.8.0/apps/docs/content/docs/daemon-runtimes.mdx"
+      },
+      {
+        "title": "Magpie v0.1.2858：模型网关、配置与路由",
+        "url": "https://github.com/yetone/magpie/blob/v0.1.2858/README.md"
+      }
+    ],
+    "migration": "把旧“Pi 与其他工具谁更强”的平面对照，改成任务管理、Agent 执行、模型接入三个控制层。当前官方两对适配已有实现，三层组合保留版本化联测门禁；旧20:50快照Magpie v2854仍作为历史记录。"
+  }
+]

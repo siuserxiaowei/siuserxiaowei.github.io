@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#d6ff43">
-  <meta name="description" content="Pi Runtime Field Guide：2026-11-03 更新至 Pi v1.5.0，核对原生 MCP、可选 Codemode、实验性 Pi Durable，并比较 Multica 与 Magpie。保留 8 月源码课程与资料归档。">
+  <meta name="description" content="Pi v1.5.0 完整14章教程：模型、Loop、工具、MCP/Codemode、上下文、会话与Pi Durable，附可执行实验和Multica/Pi/Magpie三层实践。">
   <meta property="og:title" content="Pi Runtime Field Guide">
-  <meta property="og:description" content="Pi v1.5.0 最新变化与 Multica、Magpie 对照；另有 2026-08-26 冻结的 14 章课程、DSH 源码比较与 Top 50。">
+  <meta property="og:description" content="14章全文升级至Pi v1.5.0：固定源码、动手实验和三层组合实践。Multica管任务团队，Pi执行Agent，Magpie接模型。">
   <meta property="og:image" content="./assets/og.svg">
   <title>Pi Runtime Field Guide — v1.5.0 更新与工具对照</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script defer src="./app.js"></script>
+  <link rel="stylesheet" href="./styles.css?v=1.5.0-curriculum">
+  <script defer src="./curriculum/chapters.js?v=1.5.0-curriculum"></script>
+  <script defer src="./app.js?v=1.5.0-curriculum"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -23,7 +24,7 @@
     <nav aria-label="主导航">
       <a class="fresh-link" href="#latest">最新更新</a>
       <a class="fresh-link" href="#tools-compare">工具区别</a>
-      <a href="#curriculum">课程</a>
+      <a class="fresh-link" href="#curriculum">14章教程</a>
       <a href="#compare">对照</a>
       <a href="#top50">Top 50</a>
       <a href="#method">方法</a>
@@ -37,20 +38,20 @@
       <div class="hero-grid">
         <div>
           <h1><span>PI</span><br>不是一条链。<br><em>它是一套运行时。</em></h1>
-          <p class="hero-intro">更新至 Pi v1.5.0：原生 MCP、可选 Codemode，以及独立的实验性 Pi Durable。先看它与 Multica、Magpie 各管哪一层，再沿着 8 月归档的 14 章课程读源码。</p>
+          <p class="hero-intro">14 章全文升级至 Pi v1.5.0。从模型、Loop、工具和 MCP，学到上下文、会话树与独立 Pi Durable；每章都有当前源码、动手实验与验收。最后把 Multica、Pi、Magpie 放进同一条工作流。</p>
         </div>
         <aside class="hero-note">
           <span class="note-index">01</span>
-          <p><strong>Pi v1.5.0</strong> 于 11 月 2 日发布。旧 AgentHarness 已从 core 移除；CLI 会话与 Pi Durable 要分开理解。版本核验快照：<strong>11 月 3 日 20:50，上海</strong>。</p>
-          <a href="#latest">查看 11 月更新 ↓</a>
+          <p><strong>Pi v1.5.0</strong> 于 11 月 2 日发布，本轮重新核对官方发布总览。14 章正文、接口、实验与源码链接均按该版本重写。<strong>CLI 会话和实验性 Durable 分开学。</strong></p>
+          <a href="./curriculum/">打开完整 14 章阅读页 ↗</a>
         </aside>
       </div>
-      <p class="archive-label">以下统计属于 2026-08-26 冻结研究，本轮未重新采集或排名。</p>
-      <div class="hero-stats" aria-label="2026 年 8 月 26 日归档研究统计">
-        <div><strong>14</strong><span>归档源码章节</span></div>
+      <p class="archive-label">14 章为本次完整新版；资料库的 50 条来源、33 个原页平台保留 8 月策展日期。</p>
+      <div class="hero-stats" aria-label="新版教程与历史资料统计">
+        <div><strong>14</strong><span>v1.5.0 完整章节</span></div>
         <div><strong>50</strong><span>归档主审资料</span></div>
         <div><strong>33</strong><span>归档原页平台</span></div>
-        <div><strong>2×</strong><span>归档 Harness 对照</span></div>
+        <div><strong>3</strong><span>任务·执行·模型接入</span></div>
       </div>
       <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL TO ENTER THE LOOP</div>
     </section>
@@ -58,23 +59,23 @@
     <section class="latest reveal" id="latest" aria-labelledby="latest-title">
       <div class="section-heading">
         <div class="section-label">UPDATE / 2026.11.03</div>
-        <h2 id="latest-title">从 8 月归档，<br>走到 v1.5.0</h2>
-        <p>核对官方发布总览、npm 与固定版本文档。下面是会改变理解与代码用法的变化；本轮未安装运行或做性能测评。</p>
+        <h2 id="latest-title">14 章，<br>从接口学到可验收的实践</h2>
+        <p>正文按 v1.5.0 固定源码重写。模型替身和离线实验用于核验接口、事件与状态；真实模型质量和三工具联合运行分别验收。</p>
       </div>
       <div class="update-grid">
         <article><span>01 / PACKAGE BOUNDARY</span><h3>持久化从 core 拆出</h3><p>v1.0.0 移除旧 AgentHarness 导出。基础循环看 pi-agent-core；可恢复任务看独立的 pi-durable，其 API 仍属实验性。</p><a href="https://github.com/earendil-works/pi/blob/v1.5.0/packages/agent/CHANGELOG.md#100---2026-10-01">官方迁移记录 ↗</a></article>
-        <article><span>02 / TOOLS</span><h3>原生 MCP，可选 Codemode</h3><p>MCP 已支持 stdio、streamable HTTP 与 OAuth。Codemode 让模型用 JavaScript 并行调用和筛选工具结果，需要主动开启。</p><a href="https://github.com/earendil-works/pi/blob/v1.5.0/packages/coding-agent/docs/mcp.md">MCP 文档 ↗</a><a href="https://github.com/earendil-works/pi/blob/v1.5.0/packages/coding-agent/docs/codemode.md">Codemode 文档 ↗</a></article>
+        <article><span>02 / TOOLS</span><h3>原生 MCP，可选 Codemode</h3><p>MCP 已支持 stdio、streamable HTTP 与 OAuth。Codemode 让模型用 JavaScript 并行调用和筛选结果。通常默认关闭；MCP 也可按 exposure 配置需要自动开启。</p><a href="https://github.com/earendil-works/pi/blob/v1.5.0/packages/coding-agent/docs/mcp.md">MCP 文档 ↗</a><a href="https://github.com/earendil-works/pi/blob/v1.5.0/packages/coding-agent/docs/codemode.md">Codemode 文档 ↗</a></article>
         <article><span>03 / CONTEXT &amp; LOOP</span><h3>上下文与停止接口更新</h3><p>ContextEditEntry 改变未来模型上下文并保留原始历史；旧 shouldStopAfterTurn 已改为 finishTurn。v1.5.0 还改进流式渲染与 Schema 验证。</p><a href="https://github.com/earendil-works/pi/releases/tag/v1.5.0">v1.5.0 发布记录 ↗</a></article>
       </div>
       <div class="update-boundary"><strong>两条边界：</strong>CLI 的 JSONL 会话树不等于 Pi Durable 的持久任务引擎。Pi 默认仍没有逐工具权限系统，也不内置 subagents 或 plan mode；需要扩展与外部隔离。<a href="https://github.com/earendil-works/pi/blob/v1.5.0/README.md">官方包图与默认能力 ↗</a></div>
-      <div class="update-links"><a class="update-primary" href="./updates/2026-11-03.html">阅读完整更新与比较 ↗</a><a href="./research/updates/2026-11-03-pi-multica-magpie.md">Markdown 研究原稿 ↗</a><a href="https://github.com/earendil-works/pi/releases">发布总览 ↗</a><a href="https://registry.npmjs.org/@earendil-works%2Fpi-coding-agent">npm 版本证据 ↗</a></div>
+      <div class="update-links"><a class="update-primary" href="#curriculum">开始新版 14 章 ↗</a><a href="./curriculum/">完整教程阅读页 ↗</a><a href="./updates/agent-stack.html">三层架构与组合实践 ↗</a><a href="./updates/2026-11-03.html">早先的版本差分记录 ↗</a><a href="https://github.com/earendil-works/pi/releases">发布总览 ↗</a></div>
     </section>
 
     <section class="tools-compare band-ink reveal" id="tools-compare" aria-labelledby="tools-compare-title">
       <div class="section-heading">
         <div class="section-label">COMPARE / THREE LAYERS</div>
         <h2 id="tools-compare-title">Multica 管任务，<br>Pi 执行，Magpie 接模型</h2>
-        <p>它们可以搭配。版本渠道快照截至 2026-11-03 20:50（上海）；“默认更新渠道”和“stable 渠道”分开记。</p>
+        <p>它们可以搭配。版本渠道快照截至 2026-11-03 21:20:47（上海）；“默认更新渠道”和“stable 渠道”分开记。</p>
       </div>
       <p class="table-hint" id="tools-table-hint">窄屏可在表格内左右滑动。</p>
       <div class="comparison-table-wrap tool-table-wrap" role="region" aria-label="Multica、Pi 与 Magpie 能力比较" aria-describedby="tools-table-hint" tabindex="0">
@@ -82,7 +83,7 @@
           <caption>三个项目的职责、版本与使用边界</caption>
           <thead><tr><th scope="col">维度</th><th scope="col">Multica</th><th scope="col">Pi</th><th scope="col">Magpie</th></tr></thead>
           <tbody>
-            <tr><th scope="row">发布快照</th><td>正式版 v0.8.0</td><td>正式版 v1.5.0</td><td>默认 v0.1.2854<br>stable v0.1.2115</td></tr>
+            <tr><th scope="row">发布快照</th><td>正式版 v0.8.0</td><td>正式版 v1.5.0</td><td>默认 v0.1.2858<br>stable v0.1.2115</td></tr>
             <tr><th scope="row">主要职责</th><td>任务工作台、运行队列、进度与团队派工</td><td>终端 Agent、模型 SDK 与可组合的执行循环</td><td>本地模型网关、协议转换、账户与路由</td></tr>
             <tr><th scope="row">谁执行任务</th><td>runtime 调用已安装的 Agent CLI，Pi 是正式后端之一</td><td>Pi 执行模型推理与工具循环；可用 SDK / RPC 嵌入应用</td><td>由接入的 Codex、Claude Code、Pi 等 Agent 执行</td></tr>
             <tr><th scope="row">多 Agent 与定时</th><td>Squad 派工；Autopilot 支持 cron、webhook 与手动触发</td><td>CLI 默认无 subagents；扩展可定制，Durable 有构建示例</td><td>分发 Agent 配置，主要负责模型连接，不承担团队任务编排</td></tr>
@@ -91,8 +92,8 @@
           </tbody>
         </table>
       </div>
-      <p class="tools-evidence">官方依据：<a href="https://multica.ai/docs/providers">Multica 后端</a> · <a href="https://multica.ai/docs/squads">Squads</a> · <a href="https://multica.ai/licensing">许可场景</a> · <a href="https://github.com/multica-ai/multica/releases/tag/v0.8.0">Multica v0.8.0</a> · <a href="https://github.com/earendil-works/pi/blob/v1.5.0/README.md">Pi 包边界</a> · <a href="https://github.com/yetone/magpie/blob/v0.1.2854/README.md">Magpie 固定版</a> · <a href="https://usemagpie.ai/api/latest">Magpie 默认渠道</a> · <a href="https://usemagpie.ai/api/latest?channel=stable">Magpie stable 渠道</a></p>
-      <div class="tools-caveat"><strong>组合边界：</strong>已核对 Multica–Pi、Magpie–Pi 两对官方集成；本轮未联合测试 <code>Multica → Pi → Magpie → 模型</code>。协议兼容也不能证明模型效果相同。<a href="./updates/2026-11-03.html">看完整依据与选择建议 ↗</a></div>
+      <p class="tools-evidence">官方依据：<a href="https://multica.ai/docs/providers">Multica 后端</a> · <a href="https://multica.ai/docs/squads">Squads</a> · <a href="https://multica.ai/licensing">许可场景</a> · <a href="https://github.com/multica-ai/multica/releases/tag/v0.8.0">Multica v0.8.0</a> · <a href="https://github.com/earendil-works/pi/blob/v1.5.0/README.md">Pi 包边界</a> · <a href="https://github.com/yetone/magpie/blob/v0.1.2858/README.md">Magpie 固定版</a> · <a href="https://usemagpie.ai/api/latest">Magpie 默认渠道</a> · <a href="https://usemagpie.ai/api/latest?channel=stable">Magpie stable 渠道</a></p>
+      <div class="tools-caveat"><strong>组合边界：</strong>已核对 Multica–Pi、Magpie–Pi 两对官方集成；本轮未联合测试 <code>Multica → Pi → Magpie → 模型</code>。协议兼容也不能证明模型效果相同。<a href="./updates/agent-stack.html">看完整依据与组合实践 ↗</a></div>
     </section>
 
     <section class="manifesto band-dark reveal">
@@ -143,14 +144,15 @@
           <ul><li>原生 MCP 与可选 Codemode</li><li>独立、实验性的 pi-durable</li><li>上下文投影与 finishTurn 迁移</li></ul>
         </div>
       </div>
-      <p class="diff-note">旧课程与代码仍按 8 月版本归档，固定 commit 链接保留。新接口与包边界见 <a href="./updates/2026-11-03.html">11 月更新</a>，不能把历史示例直接当作 v1.5.0 教程。</p>
+      <p class="diff-note">下方 14 章已全部换成 v1.5.0 正文、接口和实验。旧课程数据移至 <a href="./curriculum/archive/2026-08-26-chapters.json">8 月归档</a>，不再作为当前教程。</p>
     </section>
 
     <section class="curriculum reveal" id="curriculum">
       <div class="section-heading sticky-heading">
         <div class="section-label">03 / CURRICULUM</div>
-        <h2>14 章源码<br>学习路线</h2>
-        <p><b>2026-08-26 归档课程。</b>每章先读三个问题，再看当时版本的概念、源码与实验。旧 Harness 与停止 API 先对照<a href="#latest">最新迁移说明</a>。</p>
+        <h2>Pi v1.5.0<br>14 章完整教程</h2>
+        <p>每章包含当前机制、三个问题、动手实验、预期结果和源码。新版学习进度单独记录，完成旧版课程后也可以从这里重新验收。</p>
+        <p><a href="./curriculum/">连续阅读全部 14 章 ↗</a><br><a href="./curriculum/README.md">仓库中的逐章原文 ↗</a><br><a href="./curriculum/labs/README.md">离线实验与运行方法 ↗</a><br><a href="./research/updates/2026-11-03-curriculum-validation.json">实验与页面核验记录 ↗</a></p>
         <div class="progress-shell" aria-label="章节进度"><span id="chapter-progress"></span></div>
         <small id="progress-copy">0 / 14 已标记完成</small>
       </div>
@@ -230,7 +232,7 @@
 
   <footer>
     <div class="footer-brand">π / RUNTIME FIELD GUIDE</div>
-    <div><p>最新研究：2026-11-03。课程与资料账本：2026-08-26 归档。</p><p>Pi / DeepSeek Harness 源码均为 MIT；第三方教程与其他项目依各自许可。</p></div>
+    <div><p>14 章完整教程：Pi v1.5.0 · 2026-11-03。DSH 对照与资料账本保留 8 月日期。</p><p>Pi / DeepSeek Harness 源码均为 MIT；第三方教程与其他项目依各自许可。</p></div>
     <div><a href="./updates/2026-11-03.html">11 月更新与工具比较</a><a href="./research/run-pi-agent-runtime-20260826/ranking-output/report.md">8 月研究报告</a><a href="./research/run-pi-agent-runtime-20260826/ranking-output/package_validation.json">8 月验证结果</a><a href="https://github.com/earendil-works/pi">Pi Source</a></div>
   </footer>
 </body>

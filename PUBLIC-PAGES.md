@@ -7,7 +7,7 @@
 - [geek-practice-archive](https://siuserxiaowei.github.io/geek-practice-archive/)
 - [opc-policy](https://siuserxiaowei.github.io/opc-policy/)
 - [daily-hotboard-studio](https://siuserxiaowei.github.io/daily-hotboard-studio/)
-- [pi-runtime-field-guide](https://siuserxiaowei.github.io/pi-runtime-field-guide/)（2026-11-03 更新：[Pi v1.5.0 与 Multica、Magpie 对比](https://siuserxiaowei.github.io/pi-runtime-field-guide/updates/2026-11-03.html)）
+- [pi-runtime-field-guide](https://siuserxiaowei.github.io/pi-runtime-field-guide/)（2026-11-03 全文升级：[Pi v1.5.0 完整 14 章](https://siuserxiaowei.github.io/pi-runtime-field-guide/curriculum/) · [Multica / Pi / Magpie 三层实践](https://siuserxiaowei.github.io/pi-runtime-field-guide/updates/agent-stack.html)）
 - [upstream-procurement](https://siuserxiaowei.github.io/upstream-procurement/)
 - [awesome-gpt-image-2.5](https://siuserxiaowei.github.io/awesome-gpt-image-2.5/)
 - [weibo-sponsored-risk-gate](https://siuserxiaowei.github.io/weibo-sponsored-risk-gate/)

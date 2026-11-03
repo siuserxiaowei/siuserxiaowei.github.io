@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Multica、Pi、Magpie：三层 Agent 工作流与联测手册</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="report.css" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<nav class="report-nav"><a href="../index.html#tools-compare">← 三工具对照</a><a href="../curriculum/">完整 14 章教程</a><a href="../research/updates/2026-11-03-agent-stack-field-study.md">Markdown 原文</a></nav>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#multica-pi-magpie三层-agent-工作流研究与联测手册"
+id="toc-multica-pi-magpie三层-agent-工作流研究与联测手册">Multica → Pi →
+Magpie：三层 Agent 工作流研究与联测手册</a>
+<ul>
+<li><a href="#三个控制层分别决定什么" id="toc-三个控制层分别决定什么">1.
+三个控制层分别决定什么</a></li>
+<li><a href="#数据与凭证沿哪条路走" id="toc-数据与凭证沿哪条路走">2.
+数据与凭证沿哪条路走</a></li>
+<li><a href="#谁决定模型谁验收结果" id="toc-谁决定模型谁验收结果">3.
+谁决定模型，谁验收结果</a></li>
+<li><a href="#最常见的冲突与定位顺序" id="toc-最常见的冲突与定位顺序">4.
+最常见的冲突与定位顺序</a></li>
+<li><a href="#可操作的联测合同" id="toc-可操作的联测合同">5.
+可操作的联测合同</a></li>
+<li><a href="#版本与来源" id="toc-版本与来源">版本与来源</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="multica-pi-magpie三层-agent-工作流研究与联测手册">Multica → Pi →
+Magpie：三层 Agent 工作流研究与联测手册</h1>
+<p>冻结时间：2026-11-03 21:20:47，Asia/Shanghai。Pi 正式版 v1.5.0，源码
+<code>f9a26365568127461c47a07a37dcb42c140a3ac5</code>；Multica 正式版
+v0.8.0；Magpie 默认/latest v0.1.2858，stable
+v0.1.2115。本轮核对资料与源码，未登录三工具账号，未用账号跑三层联合实验。第
+11–13 章已在 Node 22.23.2 与 v1.5.0
+依赖中离线实跑：分支投影、两次进程恢复、项目扩展信任检查均通过；不能据此认定整条业务链路通过。</p>
+<h2 id="三个控制层分别决定什么">1. 三个控制层分别决定什么</h2>
+<p>Multica 把 issue、chat 或触发器变成 run，由 daemon
+所在电脑执行；它管理排队、派工、运行状态和协作记录。Pi
+负责本次请求带什么上下文、调用哪些工具、何时继续推理、如何形成会话。Magpie
+把 Pi 等 Agent
+的模型请求接到选定供应商，转换协议、选择账号、进行路由和额度回退。</p>
+<p>这条分工有实现依据：Multica 正式支持 Pi，Magpie 也有 Pi
+适配。但两对集成成立，并不证明任意配置的三者联合运行成立。Magpie 的
+Library 还能分发 instructions、skills、MCP 和 subagents
+文件；它分发的是配置，不因此承担 Multica 的团队任务编排。Claude
+订阅路径会驱动真实 Claude Code 并桥接工具，故也不能把 Magpie
+所有路径简化为 HTTP 透传。</p>
+<p>Pi CLI 会话续接和独立 Pi Durable 要分开。Multica 调用普通 Pi
+CLI，不会自动获得 Durable 的任务检查点、存储事务和重放策略。</p>
+<h2 id="数据与凭证沿哪条路走">2. 数据与凭证沿哪条路走</h2>
+<p>Multica 服务端保存任务、评论、Agent 配置、run
+上下文与写回结果；本地目录不会自动整份上传，但回复里包含的代码和文件片段会随结果回去。Agent
+的 custom environment 与受管 MCP
+配置可能存服务端再下发，不能把“本地执行”写成“所有秘密永不离机”。运行专用
+MULTICA_TOKEN 也会由进程环境传给子进程，应避免进入
+prompt、文件和日志。</p>
+<p>Pi 读取的内容可能进入模型上下文和原始会话。经 Magpie
+时，提示词流向实际选中的上游。Magpie
+的模型请求路径不经过其自营服务端，发布版仍有默认开启、可关闭的每日统计。隐私脱敏默认关闭；开启后也依赖规则与可选本机模型识别，不能替代权限隔离。会话
+context_edit 隐藏某条消息，只改变未来模型投影，原日志仍可能含原值。</p>
+<p>三层初次配置应放在同一台机器、同一系统用户下，先减少变量。容器内
+localhost 指向容器本身；Pi
+被放进隔离环境后，网关地址、访问密钥与网络策略都要重新验证，不能直接照搬宿主的
+127.0.0.1。</p>
+<h2 id="谁决定模型谁验收结果">3. 谁决定模型，谁验收结果</h2>
+<p>先用 <code>magpie models</code> 查供应商实际模型 ID，再用
+<code>magpie pi &lt;ID&gt;</code> 接入 Pi；随后用 Pi 自己的
+<code>--list-models</code> 查完整
+provider/model。不能把网页举例、订阅名称或另一个 Agent
+的模型别名当作当前 runtime 必有的 ID。</p>
+<p>Multica 显式选择模型、Pi 默认模型、已续接会话的模型和 Magpie
+路由组可能共同影响请求。先固定一个模型，启动新 Pi 会话，再在 Multica 新
+issue 中使用同一选择；确认后才测试旧会话续接。Magpie
+可按轮选择模型并保留工具轮次的路由，真实上游以其请求记录为准；Pi
+看到的网关名称未必足以证明底下哪个账号回答。</p>
+<p>Multica 的绿色 run
+状态证明执行器报告结束，不证明任务合同达成。验收应把 run ID、Pi
+会话路径、Magpie
+请求记录和实际产物关联起来。费用栏多为估算，供应商账单才用于结算。多层重试也不保证外部动作去重：有邮件、支付或远端写入时，业务必须提供稳定幂等键并核对外部结果。</p>
+<h2 id="最常见的冲突与定位顺序">4. 最常见的冲突与定位顺序</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>现象</th>
+<th>先检查什么</th>
+<th>最小处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>终端能用，Multica 找不到 Pi</td>
+<td>daemon 用户、PATH 与实际可执行文件</td>
+<td>同环境确认路径，重新检测；兼容 profile 可设绝对路径</td>
+</tr>
+<tr>
+<td>改了模型仍不生效</td>
+<td>显式模型、旧会话、enabledModels、配置目录</td>
+<td>新会话与新 issue 固定模型对照，不同时开启自动路由</td>
+</tr>
+<tr>
+<td>同 issue 后续运行失忆</td>
+<td>原 JSONL、记录的 cwd、原电脑及清理情况</td>
+<td>核对会话路径是否复用；回落新会话单独记失败</td>
+</tr>
+<tr>
+<td>MCP 缺失或重复</td>
+<td>受管临时扩展、Pi 版本、用户本机配置、同名服务</td>
+<td>一次只加一个只读服务，检查真实工具与错误日志</td>
+</tr>
+<tr>
+<td>skill 绑定却未生效</td>
+<td>实际注入名、SKILL.md 内容、显式路径</td>
+<td>用一条独有只读规则验收，不靠“已绑定”徽标</td>
+</tr>
+<tr>
+<td>连接错误或权限越界</td>
+<td>网关进程/地址/额度；daemon 系统权限/挂载</td>
+<td>分开处理连接和隔离，禁止靠无限加权限排障</td>
+</tr>
+</tbody>
+</table>
+<p>Multica v0.8.0 的 Pi 适配把绑定 skills 逐个经 <code>--skill</code>
+显式传入。受管 MCP 要求 Pi 至少 v0.99.0，通过临时扩展调用
+<code>registerMcpServer</code>。它不为此自动信任整个项目，也不默认用
+<code>--tools</code> 把扩展工具截掉。Pi
+本机配置仍可能参与加载；不要为了修受管资源而一股脑
+<code>--approve</code> 所有项目内容。</p>
+<h2 id="可操作的联测合同">5. 可操作的联测合同</h2>
+<ol type="1">
+<li>记录三个版本、主机、系统用户、CLI 绝对路径、Pi
+配置目录与会话目录。选择固定单模型，确认 Magpie
+网关可达，保留账号凭证在其合法配置位置。</li>
+<li>用临时项目在 Pi 中记住 nonce
+<code>STACK-42</code>；退出再续接，要求只复述 nonce。核对真实会话文件与
+Magpie 两次请求。不要把 key 当 nonce。</li>
+<li>在 Multica 绑定同机 Pi runtime，新建测试 issue。只允许在测试仓库生成
+<code>stack-proof.json</code>：含 nonce、输入文件名、实际
+SHA-256、执行的检查与结果；人工独立核对摘要。</li>
+<li>在同 issue 追加一次追问，核对会话复用；再分别测取消/steering、一条
+skill 和一个只读
+MCP。取消要检查实际进程和后续请求停止，不能只看按钮变灰。</li>
+<li>记录每项通过、失败、未验证及四层证据。基线通过后，一次只加路由组、定时触发、Squad
+或远程 runtime 中的一项；有外部写动作再增加幂等验收。</li>
+</ol>
+<p>选型按缺口决定：已有 Agent 只想换模型，先评估
+Magpie；要改上下文、工具和执行逻辑，选
+Pi；需要多人分工、定时派活与交付复核，再加
+Multica。三者相加会增加排障面，只有需要相应控制层时才引入。</p>
+<h2 id="版本与来源">版本与来源</h2>
+<ul>
+<li><a
+href="https://github.com/earendil-works/pi/releases/tag/v1.5.0">Pi
+v1.5.0 release</a>、<a
+href="https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/session-format.md">固定版会话</a>、<a
+href="https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/durable/README.md">固定版
+Durable</a>、<a
+href="https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/security.md">安全边界</a>。</li>
+<li><a href="https://github.com/multica-ai/multica/releases">Multica
+releases 总览</a>与 latest 端点均为 v0.8.0，发布于上海时间 11 月 3 日
+18:30:52；<a
+href="https://github.com/multica-ai/multica/blob/v0.8.0/apps/docs/content/docs/providers.mdx">固定版
+Providers</a>、<a
+href="https://github.com/multica-ai/multica/blob/v0.8.0/server/pkg/agent/pi.go">Pi
+后端</a>、<a
+href="https://github.com/multica-ai/multica/blob/v0.8.0/apps/docs/content/docs/daemon-runtimes.mdx">daemon
+数据边界</a>、<a
+href="https://github.com/multica-ai/multica/blob/v0.8.0/apps/docs/content/docs/security-model.mdx">安全模型</a>。</li>
+<li><a
+href="https://usemagpie.ai/api/latest?audit=20261103T132047Z">Magpie
+默认 API</a>与<a
+href="https://github.com/yetone/magpie-releases/releases">分发 releases
+总览</a>交叉确认 v0.1.2858，上海时间 11 月 3 日 21:10:10 发布；<a
+href="https://usemagpie.ai/api/latest?channel=stable&amp;audit=20261103T132047Z">stable
+API</a>仍指向<a
+href="https://github.com/yetone/magpie-releases/releases/tag/v0.1.2115">v0.1.2115</a>，上海时间
+10 月 30 日 07:08:31 发布。第一次无审计参数的读取曾返回旧
+v2854，换新查询 URL
+后与发布列表一致；这可能是缓存或更新延迟，因此以交叉核验后的冻结记录为准，不追逐未发布
+tag。</li>
+<li><a
+href="https://github.com/yetone/magpie/blob/v0.1.2858/README.md">Magpie
+v0.1.2858 README</a>、<a
+href="https://github.com/yetone/magpie/blob/v0.1.2858/docs/reference.md">CLI
+命令参考</a>、<a
+href="https://github.com/yetone/magpie/blob/v0.1.2858/internal/agent/pi.go">Pi
+适配</a>、<a
+href="https://usemagpie.ai/docs/privacy">隐私文档</a>。项目支持的跨客户端订阅接法不等于供应商认可全部用途；本轮未逐家核验服务条款，也没有质量、成本或延迟排名。</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,422 @@
+[
+  {
+    "number": 1,
+    "id": "chapter-01",
+    "tag": "地图",
+    "title": "Pi v1.5.0：包边界、安装与四种入口",
+    "summary": "先区分终端产品、基础循环和持久任务运行库，再选择安装方式与交互入口；本章全部按 v1.5.0 的包边界讲解。",
+    "questions": [
+      "pi-coding-agent、pi-agent-core 与 pi-durable 分别解决什么问题？",
+      "为什么 CLI 能续接 JSONL 会话，不等于自动获得 Durable 的任务恢复？",
+      "交互、print、JSON 和 RPC 分别由谁驱动，输出供谁消费？"
+    ],
+    "sections": [
+      {
+        "title": "从产品向下看三个边界",
+        "paragraphs": [
+          "Pi 是一个 monorepo，也是一组可组合库。pi-coding-agent 是直接可用的终端产品，包含资源加载、会话与交互；pi-agent-core 提供 Agent、工具循环和状态事件；pi-ai 负责供应商模型与请求语义。应用可以直接嵌入库，而不必启动终端界面。",
+          "pi-tui 处理终端渲染，pi-telemetry 提供观测契约。独立的 pi-durable 构建可恢复的 conversation、task 和 document；它依赖 pi-ai 与 Chord，仍是实验 API。CLI 当前依赖不包含 pi-durable，两者不是同一套会话实现。"
+        ],
+        "bullets": [
+          "选择成品：CLI；嵌入现有程序：SDK / RPC；控制执行循环：core；构建持久任务：另评估 Durable。"
+        ]
+      },
+      {
+        "title": "安装必须同时检查版本和运行环境",
+        "paragraphs": [
+          "v1.5.0 的 Node 要求是 >=22.19.0。官网安装器按发布锁文件固定传递依赖，并用 pi update 更新；直接 npm 安装不会固定全部传递依赖。课程实验应在独立目录固定包版本，避免把更新学习材料变成修改现有工作环境。",
+          "CLI 默认开启 read、bash、edit、write。Codemode 与 tool_search 是内建扩展，通常关闭；MCP 服务器的 exposure 需要它们时，MCP 扩展可自动开启。默认工具集不是操作系统权限边界。"
+        ],
+        "bullets": [
+          "Pi 不内置完整的文件、进程或网络权限隔离；工具与扩展继承启动用户的权限。"
+        ]
+      },
+      {
+        "title": "四种入口共享 Agent 与会话机制",
+        "paragraphs": [
+          "交互模式面向终端中的人；print 模式运行提示并写出最终回答；JSON 模式输出事件 JSONL，方便程序追踪中间状态；RPC 模式从 stdin 接收 JSONL 命令，向 stdout 写响应和事件。TypeScript SDK 则在进程内直接创建与控制会话。",
+          "选择入口时先决定谁拥有会话和生命周期：只是脚本拿最终文本可用 print；需要可视化事件可用 JSON；外部宿主要持续控制可用 RPC。CLI 默认没有 subagents 或 plan mode，这些需要扩展或包定制。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "不发模型请求，核对 CLI 身份",
+      "objective": "确认本机运行环境、CLI 版本和模式参数，建立可复现的学习基线。",
+      "steps": [
+        "准备 Node.js 22.19.0 或更高版本；若还未安装 CLI，在独立实验环境按官方说明固定安装 @earendil-works/pi-coding-agent@1.5.0。",
+        "执行下面三个只读命令；不要运行 pi update 或替换已有全局安装。",
+        "从帮助中找到 --print、--mode、--tools，并写出四种入口分别面向人还是程序。"
+      ],
+      "codeLanguage": "bash",
+      "code": "node --version\npi --version\npi --help",
+      "expected": [
+        "Node 版本满足 >=22.19.0，CLI 版本为 1.5.0；若不同，应记录实际版本并切换隔离实验环境。",
+        "帮助包含 print / JSON / RPC 等参数说明；这三个命令不需要供应商 API 凭证。"
+      ],
+      "verification": "版本输出与固定源码一致，能解释交互、print、JSON、RPC 的驱动方与输出；本章未要求向真实模型发送任务。",
+      "requires": "installed CLI",
+      "notes": "首次获取 npm 包或安装器需要联网；命令核对本身不调用模型 API。安装器与 npm 的依赖固定方式不同。"
+    },
+    "pitfalls": [
+      "把根仓库的所有包看成 CLI 默认已启用的功能。",
+      "把 project trust、--tools 或工作目录当作完整安全隔离。",
+      "把终端会话续接和 Durable 任务恢复混为一谈。"
+    ],
+    "sources": [
+      {
+        "title": "v1.5.0 包图、安装与权限",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/README.md"
+      },
+      {
+        "title": "CLI 模式、默认工具与开关",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/cli.md"
+      },
+      {
+        "title": "CLI 依赖与 Node engines",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/package.json"
+      },
+      {
+        "title": "CLI 的会话与接口机制",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/how-pi-works.md"
+      }
+    ],
+    "migration": "8 月的 core 内 AgentHarness 已被移除；当前持久任务路线是独立、实验性的 pi-durable。"
+  },
+  {
+    "number": 2,
+    "id": "chapter-02",
+    "tag": "Provider",
+    "title": "pi-ai：用 Models 集合统一模型、错误与用量",
+    "summary": "以当前 Models 与 provider factory API 建立模型集合，区分供应商接入、模型操作类型、流式错误和费用来源。",
+    "questions": [
+      "Models 集合与某一家 provider factory 各自持有什么？",
+      "流返回后的失败，为什么需要同时观察 error 事件和最终消息？",
+      "usage.cost.total 是供应商账单，还是目录价格估算，如何判断？"
+    ],
+    "sections": [
+      {
+        "title": "显式构建 provider 集合",
+        "paragraphs": [
+          "当前推荐从 createModels() 建立集合，再用 setProvider() 注册需要的 factory，例如 openaiProvider()。这比依赖隐式全局注册更容易确定鉴权、模型目录和应用边界。builtinModels() 会显式注册全部内置供应商，方便使用，但也会引入更大的目录与模块入口。",
+          "getModels() 和 getModel() 同步读取最后已知的 chat 模型；动态目录获取是显式异步操作。读取模型目录并不证明凭证可用。chat、image、classifier 具有不同操作入口，不能把图像模型对象传给对话 stream。"
+        ],
+        "bullets": [
+          "生产应用只接需要的 provider；离线学习可用官方 fauxProvider，不访问真实服务。"
+        ]
+      },
+      {
+        "title": "先统一消息与流，再判断失败",
+        "paragraphs": [
+          "Models 的公开方法接收 Context，并先归一化为 TranscriptContext。供应商实现负责把文本、thinking、工具调用、停止原因和 usage 转换成共同语义。统一接口不能消除模型能力差异，也不能保证换模型后工具表现相同。",
+          "流返回后，请求失败通过 error 事件与最终 AssistantMessage 表达，stopReason 为 error 或 aborted；最终消息可以保留部分内容和用量。集合中的鉴权失败会进入流错误，但直接 API 的 streamSimple 在缺少鉴权时可能同步抛错，调用边界仍要做异常处理。"
+        ],
+        "bullets": [
+          "先看 stopReason 和 errorMessage，再决定重试；看到部分文本不代表请求成功。"
+        ]
+      },
+      {
+        "title": "用量、费用和重试分开处理",
+        "paragraphs": [
+          "Usage 区分 input、output、cacheRead、cacheWrite 和 totalTokens，并记录相应费用。cost.totalFromProvider 为 true 才表示 total 来自供应商报告的收费；false 或旧记录缺少该字段时，应按目录估算理解，不能当结算账单。",
+          "供应商网络失败与执行工具失败属于不同层。模型请求可以按适配器策略做有界重试；工具可能已经发送消息或写入外部系统，不能因为请求重试可行就重复执行。跨模型接续还需要适配历史消息、thinking 与工具格式。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "用官方 Faux 供应商观察成功与失败",
+      "objective": "在不使用 API key 的情况下执行两次 pi-ai 请求，核对停止状态和结构化 usage。",
+      "steps": [
+        "在独立实验目录准备 @earendil-works/pi-ai@1.5.0；以下代码保存为 provider-lab.mjs。",
+        "运行 node provider-lab.mjs，保留两次结果。",
+        "观察脚本注入的错误如何作为最终消息返回；它不是一次真实供应商故障测评。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { createModels, fauxProvider, fauxAssistantMessage } from \"@earendil-works/pi-ai\";\nconst faux = fauxProvider();\nconst models = createModels();\nmodels.setProvider(faux.provider);\nfaux.setResponses([\n  fauxAssistantMessage(\"hello offline\"),\n  fauxAssistantMessage(\"\", { stopReason: \"error\", errorMessage: \"injected-error\" }),\n]);\nconst context = { messages: [{ role: \"user\", content: \"test\", timestamp: Date.now() }] };\nconst first = await models.complete(faux.getModel(), context);\nconst second = await models.complete(faux.getModel(), context);\nassert.equal(first.stopReason, \"stop\");\nassert.equal(second.stopReason, \"error\");\nassert.match(second.errorMessage, /injected-error/);\nassert.equal(typeof first.usage.totalTokens, \"number\");\nconsole.log({ first: first.stopReason, second: second.stopReason, usage: first.usage });",
+      "expected": [
+        "first 为 stop，second 为 error，并带 injected-error。",
+        "usage 有数字字段；Faux 的合成 usage 只用于检查结构，不代表真实计费。"
+      ],
+      "verification": "断言通过，且没有配置或读取真实供应商凭证；实验验证程序接口，不验证模型质量、成本或重试效果。",
+      "requires": "offline",
+      "notes": "需要预先安装固定版本依赖；首次下载依赖需联网。Faux 数据不能拿来推算真实 token 或价格。"
+    },
+    "pitfalls": [
+      "照搬旧全局模型 API，却没有显式注册 provider。",
+      "只捕获 throw，遗漏流中的 error 与最终 stopReason。",
+      "把目录读取当鉴权成功，把估算费用当供应商账单。"
+    ],
+    "sources": [
+      {
+        "title": "Models、错误、usage 与 Faux 用法",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/README.md"
+      },
+      {
+        "title": "供应商集合实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/models.ts"
+      },
+      {
+        "title": "当前消息与用量类型",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/types.ts"
+      },
+      {
+        "title": "官方 Faux 供应商实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/providers/faux.ts"
+      }
+    ],
+    "migration": "示例统一使用 createModels / provider factory，避免把兼容层旧全局 API 当作新应用的默认入口。"
+  },
+  {
+    "number": 3,
+    "id": "chapter-03",
+    "tag": "Messages",
+    "title": "消息与上下文：把历史、执行工具和模型请求分清",
+    "summary": "理解 AgentMessage 到模型消息的转换，以及当前 transcript 中的 system sections、工具声明和持久上下文投影。",
+    "questions": [
+      "内部 AgentMessage 为什么可以比供应商消息更丰富？",
+      "工具的 execute 函数和发给模型的工具声明是不是同一对象？",
+      "修改未来模型上下文时，为什么不应直接抹掉原始历史？"
+    ],
+    "sections": [
+      {
+        "title": "应用消息先富化，再收敛",
+        "paragraphs": [
+          "Agent 内部使用 AgentMessage，可以包含标准 system、user、assistant、toolResult，也可以通过 TypeScript 声明合并增加应用角色。默认 convertToLlm 仅保留标准模型角色；自定义通知、UI 状态和审计字段必须由应用明确过滤或转换，不能直接发给供应商。",
+          "发送请求前，transformContext 先在应用消息层做裁剪或注入，convertToLlm 再转换为模型消息，最后 normalizeContext 形成只有 messages 的 TranscriptContext。转换应保持工具调用与结果的对应关系，不要为省 token 删掉一半协议记录。"
+        ],
+        "bullets": [
+          "工具给模型的 content 与应用使用的 details 各有用途；业务详情不应无选择地进入上下文。"
+        ]
+      },
+      {
+        "title": "系统提示与工具声明属于 transcript",
+        "paragraphs": [
+          "Context 的 systemPrompt 与 tools 是公开入口的简写；归一化后，初始提示、命名 sections 和 toolsAdded 进入首条 system message。后续 system message 可以补充说明、按名称替换或删除 section，并声明 toolsAdded / toolsRemoved。",
+          "getCurrentSystemPrompt() 与 getCurrentTools() 按顺序重放这些变更。Agent 的 systemPrompt 是从 transcript 重放得到的只读视图；state.tools 则是本进程可执行的工具集合。它变化后，循环会在下一次请求前把声明差异写入 system message，execute 函数不发送给模型。"
+        ],
+        "bullets": [
+          "供应商若不支持中途 system 或工具变化，适配器会按兼容能力折叠消息，不能假定所有模型保留相同缓存前缀。"
+        ]
+      },
+      {
+        "title": "持久会话以投影构造请求",
+        "paragraphs": [
+          "基础 Agent 管当前内存 transcript，CLI 的 AgentSession 则由 SessionManager 生成持久会话上下文。ContextEditEntry 通过追加记录省略或替换早先消息的模型可见内容，原始历史、导出和用量并不会随之删除。",
+          "因此，临时 transformContext 与持久 context_edit 不是一回事。前者改变一次请求的输入；后者改变所在分支以后的上下文投影。需要恢复或导航 CLI 会话时，应使用会话管理接口，而不是认为给 agent.state.messages 赋数组就改好了持久历史。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "离线重放提示 section 与工具移除",
+      "objective": "验证后续 system 变更只改变当前有效视图，原始消息仍可检查。",
+      "steps": [
+        "在已准备 pi-ai@1.5.0 的实验目录，将代码保存为 transcript-lab.mjs。",
+        "运行 node transcript-lab.mjs；对比重放前的记录和重放后的当前提示、工具。",
+        "把第二条 system 的 rules 改成 null 再运行，观察该 section 被删除。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { normalizeContext, getCurrentSystemPrompt, getCurrentTools } from \"@earendil-works/pi-ai\";\nconst echo = { name: \"echo\", description: \"Echo text\", parameters: { type: \"object\" } };\nconst messages = [\n  { role: \"system\", content: \"BASE\", sections: { rules: \"SHORT\" }, toolsAdded: [echo], timestamp: 1 },\n  { role: \"user\", content: \"hi\", timestamp: 2 },\n  { role: \"system\", content: \"\", sections: { rules: \"LONG\" }, toolsRemoved: [{ name: \"echo\" }], timestamp: 3 },\n];\nconst context = normalizeContext({ messages });\nconst prompt = getCurrentSystemPrompt(context.messages);\nconst tools = getCurrentTools(context.messages);\nassert.equal(prompt, \"BASE\\n\\nLONG\");\nassert.deepEqual(tools, []);\nassert.equal(messages[0].sections.rules, \"SHORT\");\nconsole.log({ prompt, tools, originalRules: messages[0].sections.rules });",
+      "expected": [
+        "有效 prompt 为 BASE、空行、LONG；当前工具为空。",
+        "第一条原始消息仍记录 SHORT，说明重放视图与原始记录有区别。"
+      ],
+      "verification": "三条断言通过；能指出当前有效声明、历史声明与工具执行函数之间的边界。",
+      "requires": "offline",
+      "notes": "这段实验只重放 pi-ai transcript，不冒充 CLI SessionManager 或 context_edit 的端到端测试。"
+    },
+    "pitfalls": [
+      "在自定义 StreamFn 内继续读取不存在的 context.systemPrompt / context.tools。",
+      "直接给只读 systemPrompt 赋值，或把 execute 函数塞进供应商工具声明。",
+      "把一次请求的裁剪当成已持久保存的会话变更。"
+    ],
+    "sources": [
+      {
+        "title": "系统消息与归一化契约",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/README.md#system-messages"
+      },
+      {
+        "title": "transcript 重放函数",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/utils/transcript.ts"
+      },
+      {
+        "title": "Agent 状态与消息转换",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/src/agent.ts"
+      },
+      {
+        "title": "CLI ContextEditEntry 与投影",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/coding-agent/docs/session-format.md#contexteditentry"
+      }
+    ],
+    "migration": "当前请求以 transcript 的 system messages 表达提示和工具变化；CLI 持久上下文以 SessionManager 为准。"
+  },
+  {
+    "number": 4,
+    "id": "chapter-04",
+    "tag": "Loop",
+    "title": "新版 Agent Loop：两个队列与明确的请求边界",
+    "summary": "用 steering、follow-up、prepareRequest 和 finishTurn 理解 v1.5.0 的调度与停止，而不是用一个 while 黑盒解释所有继续。",
+    "questions": [
+      "steering 什么时候进入上下文，为什么不能回滚正在执行的工具？",
+      "prepareRequest 与 finishTurn 分别位于一轮的哪个位置？",
+      "finishTurn 返回 continue 时，已有工具或队列触发的请求会不会再多算一次？"
+    ],
+    "sections": [
+      {
+        "title": "turn 与 run 不是同一层",
+        "paragraphs": [
+          "一个 turn 包含一次供应商响应及其工具结果；一个 run 可以有多个 turn。模型给出工具调用后，工具执行结果回到上下文，循环再请求模型。没有工具调用时，也要检查待处理输入与宿主决策，不能仅看最终文本是否出现。",
+          "steering 影响当前工作链，在当前工具批次完成后的正常轮询点进入；follow-up 等当前工作自然停止后再开启后续工作。默认两类队列均逐条取出，也可配置 all。steering 不会撤销已经发生的文件写入或中断正在运行的工具体。"
+        ],
+        "bullets": [
+          "已结束工具批次 → steering；没有更多工具或 steering 时 → follow-up。"
+        ]
+      },
+      {
+        "title": "请求前准备和轮次收口",
+        "paragraphs": [
+          "已选中的输入写入上下文后，prepareRequest 在每次供应商请求之前运行，首轮也包括在内。它可以返回 canonical context、model 或 thinkingLevel 的更新；它本身不轮询队列，执行期间到来的 steering 等下一次正常轮询。",
+          "assistant 与全部工具结果完成后，finishTurn 在 turn_end 之前运行，决策在 turn_end 之后应用。返回 undefined 保留调度；end 直接结束本次 run，跳过队列；continue 确保还有一次请求。若工具或队列已经触发该请求，就不会额外再加一次。"
+        ],
+        "bullets": [
+          "对 error / aborted 响应仍调用 finishTurn，但它们是硬退出，其决策不生效。"
+        ]
+      },
+      {
+        "title": "停止与 settled 是可观察的时序",
+        "paragraphs": [
+          "工具结果可以给 terminate 提示，只有同批全部最终结果都要求终止，循环才跳过自动续推；混合批次继续正常调度。宿主若用 finishTurn 一直无条件返回 continue，会制造无限循环，应定义任务预算或退出条件。",
+          "Agent 的事件订阅按注册顺序等待。agent_end 表示循环不再发新事件，但异步订阅还可能做收尾；prompt() 和 waitForIdle() 要等这些工作结束才 settle。此期间 isStreaming 仍为 true，因此界面不能只凭最后一段文本就宣布全部完成。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "离线验证 steering 先于 follow-up",
+      "objective": "用三条预设回答观察队列顺序，并计数 prepareRequest 与 finishTurn。",
+      "steps": [
+        "在实验目录准备 pi-ai@1.5.0 与 pi-agent-core@1.5.0；将代码保存为 loop-lab.mjs。",
+        "运行 node loop-lab.mjs，不配置任何供应商密钥。",
+        "第二轮实验可让 finishTurn 在首次响应返回 end；观察两个队列没有被自动消费，再恢复代码。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { Agent } from \"@earendil-works/pi-agent-core\";\nimport { createModels, fauxProvider, fauxAssistantMessage } from \"@earendil-works/pi-ai\";\nconst faux = fauxProvider();\nconst models = createModels();\nmodels.setProvider(faux.provider);\nfaux.setResponses([\"first\", \"steered\", \"followed\"].map(x => fauxAssistantMessage(x)));\nlet requests = 0, finishes = 0, queued = false;\nconst agent = new Agent({\n  initialState: { model: faux.getModel() },\n  streamFn: models.streamSimple.bind(models),\n  prepareRequest: async () => { requests++; },\n  finishTurn: async () => { finishes++; },\n});\nagent.subscribe(event => {\n  if (!queued && event.type === \"message_end\" && event.message.role === \"assistant\") {\n    queued = true;\n    agent.steer({ role: \"user\", content: \"STEER\", timestamp: 2 });\n    agent.followUp({ role: \"user\", content: \"FOLLOW\", timestamp: 3 });\n  }\n});\nawait agent.prompt(\"START\");\nconst users = agent.state.messages.filter(x => x.role === \"user\").map(x => typeof x.content === \"string\" ? x.content : x.content.filter(b => b.type === \"text\").map(b => b.text).join(\"\"));\nassert.deepEqual(users, [\"START\", \"STEER\", \"FOLLOW\"]);\nassert.equal(requests, 3);\nassert.equal(finishes, 3);\nassert.equal(agent.state.isStreaming, false);\nconsole.log({ users, requests, finishes, idle: !agent.state.isStreaming });",
+      "expected": [
+        "users 严格依次为 START、STEER、FOLLOW。",
+        "prepareRequest 与 finishTurn 各运行三次，prompt 返回时 idle 为 true。"
+      ],
+      "verification": "四条断言通过，能解释每条用户输入被哪个队列选择；Faux 仅验证调度，不测试真实供应商。",
+      "requires": "offline",
+      "notes": "使用绑定到 Models 的 streamSimple 作为 StreamFn，接口来自当前官方 Agent README。示例不会执行文件或网络工具。"
+    },
+    "pitfalls": [
+      "把 steering 理解为能抢占并回滚任意工具。",
+      "在 prepareRequest 中偷偷消费队列，导致调度顺序改变。",
+      "无条件返回 continue，或把 agent_end 通知当成异步收尾已经结束。"
+    ],
+    "sources": [
+      {
+        "title": "Agent 调度与当前公开接口",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/README.md"
+      },
+      {
+        "title": "loop 请求、工具、队列与退出顺序",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/src/agent-loop.ts"
+      },
+      {
+        "title": "Agent 队列和异步订阅状态",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/src/agent.ts"
+      },
+      {
+        "title": "finishTurn 迁移记录",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/CHANGELOG.md#0870---2026-09-21"
+      }
+    ],
+    "migration": "shouldStopAfterTurn 已移除；新代码用 finishTurn，处理正常与 error / aborted 的调用差异。"
+  },
+  {
+    "number": 5,
+    "id": "chapter-05",
+    "tag": "Streaming",
+    "title": "流式与取消：看到片段，不等于允许执行",
+    "summary": "将流式展示、最终响应、工具参数验证和 AbortSignal 分开，理解 v1.5.0 如何避免执行输出截断的工具调用。",
+    "questions": [
+      "toolcall_delta 中看起来完整的参数，为什么仍不能马上执行？",
+      "stopReason 为 length 时，即使 Schema 验证能通过，工具能否运行？",
+      "取消请求能保证什么，又不能撤销哪些已经发生的外部行为？"
+    ],
+    "sections": [
+      {
+        "title": "流事件用于观察，最终消息决定下一步",
+        "paragraphs": [
+          "pi-ai 把一次回答表示为 start、文本或 thinking 增量、工具参数增量，最后以 done 或 error 收口。AssistantMessageEventStream.result() 给出最终 AssistantMessage。Agent 把流映射为 message_start / update / end，再进入工具阶段。",
+          "流中工具参数可以增量解析，用于 UI 展示和减少重复解析开销，但片段不是执行许可。Agent 先结算最终响应，等待 assistant message_end 的订阅屏障，再预检工具；这样审计或宿主不会在工具已经动手后才收到完整请求。"
+        ],
+        "bullets": [
+          "部分内容可展示；停止原因、完整工具参数和验证结果决定能否执行。"
+        ]
+      },
+      {
+        "title": "输出截断时拒绝本条回答的全部调用",
+        "paragraphs": [
+          "如果最终 stopReason 是 length，模型输出可能在任何工具参数中间被截断。修复型 JSON 解析器有时能得到看似合法的对象，甚至能通过 Schema；这仍不证明模型本来就打算执行这个值。",
+          "v1.5.0 的 loop 对该 assistant message 中所有工具调用生成失败结果，不执行工具体，然后让模型按正常工具/队列规则继续。普通参数校验失败、未知工具和工具体异常也应变成明确错误结果，不要把半截参数当作成功输入继续写入。"
+        ],
+        "bullets": [
+          "“可解析”不等于“完整”；Schema 约束也不能恢复模型尚未生成的意图。"
+        ]
+      },
+      {
+        "title": "取消是协作终止，不是事务回滚",
+        "paragraphs": [
+          "models.stream() 接收 AbortSignal，Agent.abort() 会触发当前运行的取消信号；自定义 StreamFn、工具及外部程序必须配合响应。最终 aborted 消息可以保留部分内容与用量，不能把用户按下停止键解释为本次请求从未发生。",
+          "模型请求已经收费、文件已经写入或消息已经发送时，取消不会自动撤销副作用。工具还要有清理、超时、幂等或补偿设计。CLI 保存历史与 Durable 的恢复策略也不是继续同一条供应商流，不能承诺从断开的 token 原位恢复。"
+        ],
+        "bullets": []
+      }
+    ],
+    "lab": {
+      "title": "截断调用不执行，取消保留明确终态",
+      "objective": "用 Faux 构造能通过类型检查但输出被截断的调用，再观察协作取消。",
+      "steps": [
+        "在实验目录保存为 stream-lab.mjs，依赖版本与第 4 章相同。",
+        "运行 node stream-lab.mjs；echo 只修改内存计数，不写文件或发网络请求。",
+        "先检查截断分支的零执行计数，再检查慢速文本流被 abort 后的终态。"
+      ],
+      "codeLanguage": "javascript",
+      "code": "import assert from \"node:assert/strict\";\nimport { Agent } from \"@earendil-works/pi-agent-core\";\nimport { createModels, fauxProvider, fauxAssistantMessage, fauxToolCall } from \"@earendil-works/pi-ai\";\nconst models = createModels();\nconst faux = fauxProvider();\nmodels.setProvider(faux.provider);\nlet executed = 0;\nconst echo = {\n  name: \"echo\", label: \"Echo\", description: \"Count executions\",\n  parameters: { type: \"object\", properties: { value: { type: \"string\" } }, required: [\"value\"] },\n  execute: async () => { executed++; return { content: [{ type: \"text\", text: \"ok\" }], details: {} }; },\n};\nfaux.setResponses([\n  fauxAssistantMessage([fauxToolCall(\"echo\", { value: \"hel\" })], { stopReason: \"length\" }),\n  fauxAssistantMessage(\"recovered\"),\n]);\nconst agent = new Agent({ initialState: { model: faux.getModel(), tools: [echo] }, streamFn: models.streamSimple.bind(models) });\nawait agent.prompt(\"test truncation\");\nconst errors = agent.state.messages.filter(x => x.role === \"toolResult\" && x.isError);\nassert.equal(executed, 0);\nassert.equal(errors.length, 1);\nconst slow = fauxProvider({ tokensPerSecond: 20 });\nmodels.setProvider(slow.provider);\nslow.setResponses([fauxAssistantMessage(\"a deliberately long offline response for cancellation\")]);\nconst cancelled = new Agent({ initialState: { model: slow.getModel() }, streamFn: models.streamSimple.bind(models) });\ncancelled.subscribe(event => {\n  if (event.type === \"message_update\" && event.assistantMessageEvent.type === \"text_delta\") cancelled.abort();\n});\nawait cancelled.prompt(\"test abort\");\nconst last = cancelled.state.messages.at(-1);\nassert.equal(last.stopReason, \"aborted\");\nconsole.log({ executed, toolErrors: errors.length, cancelled: last.stopReason });",
+      "expected": [
+        "executed 为 0，toolErrors 为 1；字符串 hel 虽符合 Schema，也没有被执行。",
+        "第二次运行的最终 stopReason 为 aborted，脚本断言通过。"
+      ],
+      "verification": "观察零副作用计数和明确的 aborted 终态；该测试不证明任意第三方工具或供应商都能及时响应取消。",
+      "requires": "offline",
+      "notes": "依赖准备后不调用真实 API。Faux 只控制事件，不代表网络断流、计费或进程恢复测试。"
+    },
+    "pitfalls": [
+      "在 toolcall_delta 到达时提前运行工具。",
+      "仅因 JSON 可修复或 Schema 通过，就忽略 length 停止原因。",
+      "把 abort、UI 不再输出和外部副作用回滚当成同一结果。"
+    ],
+    "sources": [
+      {
+        "title": "loop 最终响应与截断保护",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/src/agent-loop.ts"
+      },
+      {
+        "title": "官方截断调用回归测试",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/agent/test/agent-loop.test.ts"
+      },
+      {
+        "title": "事件流与最终结果实现",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/src/utils/event-stream.ts"
+      },
+      {
+        "title": "流式错误与 AbortSignal",
+        "url": "https://github.com/earendil-works/pi/blob/f9a26365568127461c47a07a37dcb42c140a3ac5/packages/ai/README.md#error-handling"
+      }
+    ],
+    "migration": "length 响应中的全部工具调用仍转为失败结果；增量解析不代表可提前执行。"
+  }
+]
