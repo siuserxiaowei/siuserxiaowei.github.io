@@ -11,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = 'siuser小伟 - 思考、创造、记录',
-  description = '一个关于技术、思考与创造的个人空间',
+  title = 'siuser小伟 · AI 实操、教程与作品',
+  description = 'siuser小伟的 AI 实操教程、Agent 工作流、内容创作与公开作品。',
   showProgress = false,
   ogImage = '',
   ogType = 'website'
@@ -53,11 +53,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       '@type': 'WebSite',
       name: 'siuser小伟',
       url: 'https://siuserxiaowei.com',
-      description: '关于技术、思考与创造的个人博客',
+      description,
       author: {
         '@type': 'Person',
         name: 'siuser小伟',
-        url: 'https://siuserxiaowei.com'
+        url: 'https://siuserxiaowei.com/about',
+        jobTitle: '中文 AI 实操创作者与 Agent 工作流构建者',
+        sameAs: [
+          'https://x.com/_HIT_SZ_',
+          'https://github.com/siuserxiaowei',
+          'https://space.bilibili.com/315989217'
+        ]
       }
     })}
   />
@@ -73,9 +79,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <script is:inline>
     (() => {
-      document.documentElement.classList.add('has-js');
-      const saved = localStorage.getItem('theme');
-      document.documentElement.setAttribute('data-theme', saved || 'light');
+      const applySavedTheme = (root) => {
+        root.classList.add('has-js');
+        root.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+      };
+      applySavedTheme(document.documentElement);
+      // The client router replaces <html> attributes during navigation.
+      // Set the incoming document's theme before the swap to avoid a flash.
+      if (!window.__siuserThemeSwapReady) {
+        window.__siuserThemeSwapReady = true;
+        document.addEventListener('astro:before-swap', (event) => {
+          applySavedTheme(event.newDocument.documentElement);
+        });
+      }
     })();
   </script>
 </head>

@@ -2,110 +2,186 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { profile, portfolioProjects, recognition } from '../data/portfolio.js';
 
 const focusAreas = [
-  { tag: '01', label: 'AI 与自动化产品' },
-  { tag: '02', label: '产品工程与工具化' },
-  { tag: '03', label: '学习系统与公开构建' },
-  { tag: '04', label: '长期主义下的个人工作台' }
+  { tag: '01', label: 'AI 产品实测与中文教程' },
+  { tag: '02', label: 'Agent Skills 与办公工作流' },
+  { tag: '03', label: '知识动画与内容生产工具' },
+  { tag: '04', label: '公开记录使用体验和限制' }
 ];
+const representativeWork = portfolioProjects.filter((project) => ['grokguide', 'taku-guide', 'cross-platform-top50'].includes(project.id));
 ---
 
-<BaseLayout title="关于 · siuser小伟" description="关于 siuser小伟，以及这个网站为什么会长成现在这样。">
+<BaseLayout title="关于与合作 · siuser小伟" description="中文 AI 实操创作者与 Agent 工作流构建者。了解小伟的公开作品、团队比赛经历和合作入口。">
   <Header />
-
   <main class="flex-1">
-
-    <!-- Hero -->
     <section class="mx-auto px-6 pt-32 pb-14 md:pt-40 md:pb-20" style="max-width: var(--container-max);">
       <div class="about-hero">
         <div class="scroll-reveal about-hero-copy">
-          <p class="section-kicker">About</p>
-          <h1>关于我，<br/>也关于这个网站<br/>为什么长成这样。</h1>
-          <p class="about-lede">
-            这里不是一页信息堆出来的个人介绍。<br/>
-            我把关心的问题、正在做的事情、持续形成的判断，<br/>
-            整理成一个长期运行的工作台。
-          </p>
+          <p class="section-kicker">About Xiaowei</p>
+          <h1>我是小伟，<br />把 AI 用法做成<br />能看懂、能照做的作品。</h1>
+          <p class="about-role">{profile.role}</p>
+          <p class="about-lede">{profile.description}</p>
+          <p class="about-english" lang="en">I’m Xiaowei, a Chinese-language AI creator and agent workflow builder. I turn hands-on product experience into tutorials, reusable skills and visual explainers, with clear sources and practical limits.</p>
         </div>
-
         <aside class="scroll-reveal surface-card gradient-border about-focus">
           <p class="section-kicker">Current Focus</p>
           <div class="about-focus-list">
-            {focusAreas.map((item) => (
-              <div class="about-focus-row">
-                <span>{item.tag}</span>
-                <p>{item.label}</p>
-              </div>
-            ))}
+            {focusAreas.map((item) => <div class="about-focus-row"><span>{item.tag}</span><p>{item.label}</p></div>)}
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Narrative -->
     <section class="mx-auto px-6 pb-16 md:pb-20" style="max-width: var(--container-max);">
       <article class="scroll-reveal about-story">
-        <p class="section-kicker">Narrative</p>
-        <div class="story-copy">
-          <p>我是 siuser小伟。独立开发者，AI 语音机器人方案商，也在持续做一些自己用、也能给别人用的小产品。</p>
-          <p>
-            早些年在无锡做制造业咨询，见过工厂一线怎么算账、怎么走政策。后来转到技术方向，发现好产品总是来自「真的有人在用、真的有问题要解决」。
-            现在这个网站就是我把判断、实验和正在做的东西整理出来的地方——先让自己能高效运转，再让来的人能快速进入。
-          </p>
-          <p>
-            关注方向是 AI 产品、自动化、内容工具、学习系统这几个交叉地带。写东西的时候优先记录真实进展，做工具的时候优先解决高频动作，推项目的时候优先让它公开可见。
-          </p>
+        <div>
+          <p class="section-kicker">Work & Practice</p>
+          <div class="story-copy">
+            <p>我持续做的事情，是把一个具体问题从“想试试”，推进到有步骤、有结果、能分享。</p>
+            <p>在 Grok Bot 中文教程站，我整理从上手到排错的操作路径；体验 Taku 时，我做出选题整理器和公开网页，再把过程写成 22 章、配有 30 张实机截图的手册。</p>
+            <p>重复使用的流程会继续整理成 Skill，例如跨平台研究和多尺寸封面；需要把复杂概念讲清时，我也会与 AI 协作制作知识动画。每种成果都保留具体参与说明与参考来源。</p>
+          </div>
+          <a class="about-text-link" href="/projects">查看全部 {portfolioProjects.length} 件代表作品 <span aria-hidden="true">↗</span></a>
         </div>
-
         <div class="story-pillars">
-          <div class="story-pillar">
-            <span>Write</span>
-            <p>把判断写成可被引用的日志，不是自我介绍。</p>
-          </div>
-          <div class="story-pillar">
-            <span>Build</span>
-            <p>重复动作沉淀成浏览器内的工具，少记少搜。</p>
-          </div>
-          <div class="story-pillar">
-            <span>Ship</span>
-            <p>公开推进的项目和比赛雷达，用外部约束逼迭代。</p>
-          </div>
+          {representativeWork.map((project) => (
+            <a class="story-pillar" href={project.href} target="_blank" rel="noopener noreferrer">
+              <span>{project.category}</span>
+              <h2>{project.title} <em aria-hidden="true">↗</em></h2>
+              <p>{project.detail}</p>
+            </a>
+          ))}
         </div>
       </article>
     </section>
 
-    <!-- Contact -->
+    <section class="mx-auto px-6 pb-16 md:pb-20" style="max-width: var(--container-max);" aria-labelledby="recognition-title">
+      <div class="scroll-reveal surface-card gradient-border recognition-card">
+        <div>
+          <p class="section-kicker">Team Recognition</p>
+          <h2 id="recognition-title">{recognition.project}</h2>
+          <p class="recognition-event">{recognition.event}</p>
+        </div>
+        <div class="recognition-detail">
+          <p class="recognition-result">{recognition.title}</p>
+          <p>{recognition.result}</p>
+          <p>{recognition.contribution}</p>
+          <p class="recognition-english" lang="en">Team project · Bronze award in the Smart Office Assistant track. I am listed as the team’s competition representative.</p>
+          <a class="about-text-link" href={recognition.href} target="_blank" rel="noopener noreferrer">查看官方获奖记录 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
     <section class="mx-auto px-6 pb-24" style="max-width: var(--container-max);">
       <div class="scroll-reveal surface-card gradient-border contact-card">
         <div class="contact-lead">
-          <p class="section-kicker">Contact</p>
-          <h2>如果你在做类似方向，<br/>欢迎直接找我。</h2>
-          <p class="contact-copy">AI、自动化、内容产品、学习工具这些方向都可以聊。希望结识一起做东西的人，而不是交换名片。</p>
+          <p class="section-kicker">Contact & Collaboration</p>
+          <h2>一起把工具的价值，<br />做给真实用户看。</h2>
+          <p class="contact-copy">欢迎交流产品体验、中文教程、演示内容与 Agent 工作流合作。邮件中附上产品、目标用户和希望一起完成的事，方便直接讨论具体方案。</p>
+          <p class="contact-copy contact-english" lang="en">For product feedback, Chinese tutorials, demos and agent workflow collaborations, email me with your product, audience and project idea.</p>
         </div>
-
         <div class="contact-links">
-          <a href="https://github.com/siuserxiaowei" target="_blank" rel="noopener">
-            <span>GitHub</span>
-            <em>@siuserxiaowei</em>
-          </a>
-          <a href="mailto:hi@siuserxiaowei.com">
-            <span>Email</span>
-            <em>hi@siuserxiaowei.com</em>
-          </a>
-          <a href="/rss.xml">
-            <span>RSS</span>
-            <em>订阅更新</em>
-          </a>
+          {profile.accounts.map((account) => (
+            <a href={account.href} target="_blank" rel="noopener noreferrer"><span>{account.label}</span><em>{account.handle}</em></a>
+          ))}
+          <a href={`mailto:${profile.email}`}><span>Email / 合作</span><em>{profile.email}</em></a>
+          <a href="/rss.xml"><span>RSS</span><em>订阅更新</em></a>
         </div>
       </div>
     </section>
   </main>
-
   <Footer />
 </BaseLayout>
 
 <style>
+  .about-role {
+    margin-top: 1.2rem;
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .about-english {
+    max-width: 44rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .about-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-bottom: 0.25rem;
+    color: var(--text);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .about-text-link:hover,
+  .about-text-link span,
+  .story-pillar h2 em {
+    color: var(--color-accent);
+  }
+
+  .story-pillar h2 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-size: 1.12rem;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .story-pillar h2 em {
+    font-style: normal;
+  }
+
+  .recognition-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 3rem;
+    padding: 2rem;
+    border-radius: 28px;
+  }
+
+  .recognition-card h2 {
+    margin-top: 0.7rem;
+    color: var(--text);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.4;
+  }
+
+  .recognition-event,
+  .recognition-detail > p {
+    margin-top: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .recognition-detail .recognition-result {
+    margin-top: 0;
+    color: var(--color-accent);
+    font-size: 1.15rem;
+  }
+
+  .recognition-detail .recognition-english,
+  .contact-english {
+    font-size: 0.88rem;
+  }
+
+  .about-text-link:focus-visible,
+  .story-pillar:focus-visible,
+  .contact-links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 5px;
+  }
+
   .about-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
@@ -200,7 +276,7 @@ const focusAreas = [
   .story-pillars {
     display: grid;
     gap: 1.1rem;
-    margin-top: 2.3rem;
+    margin-top: 0;
   }
 
   .story-pillar {
@@ -258,6 +334,7 @@ const focusAreas = [
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    min-width: 0;
     padding: 0.9rem 1rem;
     border-radius: 18px;
     border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
@@ -280,13 +357,15 @@ const focusAreas = [
     font-style: normal;
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+    text-align: right;
   }
 
   @media (max-width: 980px) {
     .about-hero,
     .about-story,
+    .recognition-card,
     .contact-card {
       grid-template-columns: 1fr;
     }

@@ -1,5 +1,13 @@
 # Astro Starter Kit: Minimal
 
+## 公开作品资料维护
+
+- 正式站点：https://siuserxiaowei.com ，部署到 Cloudflare Pages 项目 `siuserxiaowei-blog`。
+- 当前源码位于 `siuserxiaowei/siuserxiaowei.github.io` 的 `projects/个人展示与博客/blog` 子目录。
+- 首页、作品页与关于页共用 `src/data/portfolio.js`。新增作品时写明公开入口、状态和本人贡献，保留参考来源；团队奖项写清赛道与参与身份。
+- 在本目录执行 `npm ci`、`npm run build`、`npm run preview`；确认页面与链接后执行 `npm run deploy` 发布。该项目为手动上传，Git 推送不会自动发布。
+- `public/llms.txt` 提供公开资料入口，更新作品时同步维护。页面不应包含私有资料或尚未获得的合作身份。
+
 <!-- SIUSER-REPO-GUIDE:START -->
 ## 项目介绍 / Project Introduction
 

@@ -7,9 +7,9 @@ const isKnowledge = currentPath === '/knowledge' || currentPath.startsWith('/kno
 
 const homeLinks = [
   { href: '#home', label: '首页' },
-  { href: '#work', label: '工作台' },
-  { href: '#projects', label: '项目' },
-  { href: '#blog', label: '文章' },
+  { href: '#projects', label: '作品' },
+  { href: '#tutorials', label: '教程' },
+  { href: '#recognition', label: '经历' },
   { href: '/knowledge/', label: '知识库' },
   { href: '/tools', label: '工具箱' },
   { href: '#contact', label: '联系' },
@@ -33,7 +33,7 @@ const pageLinks = [
       <span class="brand-mark">SW</span>
       <span class="brand-text">
         <span class="brand-name">siuser小伟</span>
-        <span class="brand-sub">open workbench · updated in public</span>
+        <span class="brand-sub">AI creator · build in public</span>
       </span>
     </a>
 
@@ -64,7 +64,7 @@ const pageLinks = [
         <span class="theme-icon theme-light">☼</span>
         <span class="theme-icon theme-dark">◐</span>
       </button>
-      <a href="/admin/" class="cta-btn" aria-label="写文章">Publish</a>
+      <a href="/#contact" class="cta-btn" aria-label="联系小伟聊合作">聊合作</a>
     </div>
 
     <button id="mobile-menu-btn" class="mobile-btn" type="button" aria-label="菜单" aria-controls="mobile-menu" aria-expanded="false">
@@ -83,7 +83,7 @@ const pageLinks = [
       ))}
       <div class="mobile-actions">
         <button id="mobile-theme-toggle" class="icon-btn" type="button" aria-label="切换主题">主题</button>
-        <a href="/admin/" class="cta-btn">Publish</a>
+        <a href="/#contact" class="cta-btn">聊合作</a>
       </div>
     </div>
   </div>

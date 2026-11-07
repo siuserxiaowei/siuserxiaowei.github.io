@@ -2,6 +2,24 @@
 
 This site documents independent software, AI, creative technology, and small-team product work in Chinese.
 
+Public profile and selected work (updated 2026-11-07)
+
+- About Xiaowei: https://siuserxiaowei.com/about
+- Project portfolio with contribution and publication status: https://siuserxiaowei.com/projects
+- Grok Bot Chinese guide, 15 chapters plus practical recipes and troubleshooting: https://grokguide.si/
+- Taku handbook, 22 chapters and 30 hands-on screenshots: https://siuserxiaowei.github.io/taku-guide/
+- Cross-platform research Skill, source verification and public examples: https://github.com/siuserxiaowei/cross-platform-top50
+- Knowledge animation case study, including learning adaptations and source attribution: https://x.com/_HIT_SZ_/status/2118152851348472138
+- Personal cover workflow and gallery: https://github.com/siuserxiaowei/generate-xiaowei-covers
+- X: https://x.com/_HIT_SZ_
+- GitHub: https://github.com/siuserxiaowei
+- Bilibili: https://space.bilibili.com/315989217
+
+Team recognition
+
+- HerClaw won bronze, ranked fifth in the Smart Office Assistant track of the fifth Pazhou Algorithm Competition's Super Claw challenge. This is a team project and a track-specific award, not an overall competition rank or an individual award.
+- Official results and competition representative list: https://www.aicompetition-pz.com/topic_detail/33
+
 Primary competition resources
 
 - Competition radar: https://siuserxiaowei.com/competitions/
